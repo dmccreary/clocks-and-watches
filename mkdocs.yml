@@ -13,7 +13,7 @@ nav:
     - Introduction: setup/index.md
     - Desktop Setup: setup/01-desktop.md
     - Purchasing Parts: setup/02-purchasing-parts.md
-    - Cable Harness: setup/03-display-cable-harness.md
+    - Display Cable Harness: setup/03-display-cable-harness.md
     - LED Art Clocks: setup/04-led-clocks.md
     - Pico Wireless: setup/06-pico-w-setup.md
     - Sound and Speakers: setup/07-sound.md
