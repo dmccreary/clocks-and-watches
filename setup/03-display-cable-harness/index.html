@@ -447,6 +447,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Cable Harness
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -456,6 +467,52 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#spi-display-to-breadboard-connections" class="md-nav__link">
+    <span class="md-ellipsis">
+      SPI Display to Breadboard Connections
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sample-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sample Code
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debugging Tips
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1022,6 +1079,41 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#spi-display-to-breadboard-connections" class="md-nav__link">
+    <span class="md-ellipsis">
+      SPI Display to Breadboard Connections
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sample-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sample Code
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debugging Tips
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1043,8 +1135,8 @@
 <p>To keep our displays running reliably, we can use a 20 cm ribbon cable and some hot glue to make a connector that is easy to hook up and be much more reliable.</p>
 <p>We start by purchasing some 20cm long Male-Female Dupont ribbon connectors from eBay. The price should be about $8 for 120 connectors. Make sure to get the Male-Female version.</p>
 <p><img alt="20 cm dupont" src="../../img/dupont-ribbon-cable-m-f.png" /></p>
-<p>We then separate out seven of these wires trying to use the black and red colors in the GND and VCC edge of the group of wires.</p>
-<p><img alt="Display Cable Harness 1" src="../img/display-harness-1.jpg" /></p>
+<p>We then separate out seven of these wires trying to use the black (or brown) and red colors in the GND and VCC edge of the group of wires.  Note that some of
+the display cable use brown for GND rather than black.</p>
 <p>You can see a close-up of each of the colors and their connections in the picture below.</p>
 <p><img alt="Display Cable Harness 2" src="../../img/display-harness-2.jpg" /></p>
 <p>At the other end of the cable, we need to make a small change in the order of the cable. Here are the changes:</p>
@@ -1064,10 +1156,74 @@ marker.</li>
 <p>We have found that once we create these cable assemblies with hot glue to keep the pins in the right order it makes it much easier to connect the displays.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Note that we still MUST make sure that the black wire in the wiring harness is connected to the GND. It is easy to get the cable reversed so make sure to double-check the cable orientation before you use power on the board.</p>
+<p>Note that we still MUST make sure that the black (or brown) wire in the wiring harness is connected to the GND. It is easy to get the cable reversed so make sure to double-check the cable orientation before you use power on the board.</p>
 </div>
 <p>For younger students, don't be shy about providing a few color-coded hints on the breadboard to guide their assembly process.</p>
-<p><img alt="" src="../../img/color-coded-breadboard-2.jpg" /></p>
+<p><img alt="" src="../../img/display-cable-breadboard-end.jpg" /></p>
+<h2 id="spi-display-to-breadboard-connections">SPI Display to Breadboard Connections</h2>
+<p>If you use a standard display cable the connectors will be as follows when
+reading the wires from the bottom of the display end to the top:</p>
+<p>|Display|Name|Color|Breadboard|
+|---|---|---|
+|GND|Ground|Black or Brown|BB Row 8|
+|VCC|Power|Red|3.3 volt rail or row 5 on the right|
+|SCL|Clock|Orange|BB Row 4 - GPIO 2|
+|SDA|Data|Yellow|BB Row 5 - GPIO 3|
+|RES|Reset|Green|BB Row 6 - GPIO 4|
+|DC|Data or Command|Blue|BB Row 7|
+|CS|Chip Select|Purple|BB Row 9|</p>
+<p>Note that "BB Row" refers to the breadboard row which starts at row 1 at the top
+where the USB is.  Note that any row that ends in "3" or "8" is a GND.</p>
+<h2 id="sample-code">Sample Code</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>
+<span class="kn">import</span> <span class="nn">ssd1306</span>
+
+<span class="c1"># Note the order from row 4 to 6, skip 8 for GND and 9</span>
+<span class="n">SCL</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># SPI CLock bb row 4</span>
+<span class="n">SDA</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># SPI Data (mosi) bb row 5</span>
+<span class="n">RES</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="c1"># Reset bb rwo 6</span>
+<span class="n">DC</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># Data/command bb row 7</span>
+<span class="n">CS</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="c1"># Chip Select bb row 9</span>
+
+<span class="n">spi</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">SPI</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sck</span><span class="o">=</span><span class="n">SCL</span><span class="p">,</span> <span class="n">mosi</span><span class="o">=</span><span class="n">SDA</span><span class="p">)</span>
+<span class="n">oled</span> <span class="o">=</span> <span class="n">ssd1306</span><span class="o">.</span><span class="n">SSD1306_SPI</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">spi</span><span class="p">,</span> <span class="n">DC</span><span class="p">,</span> <span class="n">RES</span><span class="p">,</span> <span class="n">CS</span><span class="p">)</span>
+
+<span class="c1"># erase the entire screen with black (0=black)</span>
+<span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># place a hello message at point (0,0) in white (1=white text)</span>
+<span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;Hello World!&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># send the entire frame buffer to the display via the SPI bus</span>
+<span class="n">oled</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<p>When you press "Run" on Thonny you should see "Hello World!" on the display.</p>
+<p><img alt="" src="../../img/hello-world.jpg" /></p>
+<h2 id="debugging-tips">Debugging Tips</h2>
+<ol>
+<li>Carefully check your connections from the display to the breadboard.  Sometimes the colors get mixed up.</li>
+<li>Verify that both the </li>
+</ol>
 
 
 
