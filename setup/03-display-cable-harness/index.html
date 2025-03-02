@@ -1162,15 +1162,60 @@ marker.</li>
 <h2 id="spi-display-to-breadboard-connections">SPI Display to Breadboard Connections</h2>
 <p>If you use a standard display cable the connectors will be as follows when
 reading the wires from the bottom of the display end to the top:</p>
-<p>|Display|Name|Color|Breadboard|
-|---|---|---|
-|GND|Ground|Black or Brown|BB Row 8|
-|VCC|Power|Red|3.3 volt rail or row 5 on the right|
-|SCL|Clock|Orange|BB Row 4 - GPIO 2|
-|SDA|Data|Yellow|BB Row 5 - GPIO 3|
-|RES|Reset|Green|BB Row 6 - GPIO 4|
-|DC|Data or Command|Blue|BB Row 7|
-|CS|Chip Select|Purple|BB Row 9|</p>
+<table>
+<thead>
+<tr>
+<th>Display</th>
+<th>Name</th>
+<th>Color</th>
+<th>Breadboard</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GND</td>
+<td>Ground</td>
+<td>Black or Brown</td>
+<td>BB Row 8</td>
+</tr>
+<tr>
+<td>VCC</td>
+<td>Power</td>
+<td>Red</td>
+<td>3.3 volt rail or row 5 on the right</td>
+</tr>
+<tr>
+<td>SCL</td>
+<td>Clock</td>
+<td>Orange</td>
+<td>BB Row 4 - GPIO 2</td>
+</tr>
+<tr>
+<td>SDA</td>
+<td>Data</td>
+<td>Yellow</td>
+<td>BB Row 5 - GPIO 3</td>
+</tr>
+<tr>
+<td>RES</td>
+<td>Reset</td>
+<td>Green</td>
+<td>BB Row 6 - GPIO 4</td>
+</tr>
+<tr>
+<td>DC</td>
+<td>Data or Command</td>
+<td>Blue</td>
+<td>BB Row 7</td>
+</tr>
+<tr>
+<td>CS</td>
+<td>Chip Select</td>
+<td>Purple</td>
+<td>BB Row 9</td>
+</tr>
+</tbody>
+</table>
 <p>Note that "BB Row" refers to the breadboard row which starts at row 1 at the top
 where the USB is.  Note that any row that ends in "3" or "8" is a GND.</p>
 <h2 id="sample-code">Sample Code</h2>
