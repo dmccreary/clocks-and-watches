@@ -10,17 +10,21 @@ Here is what our final display cable harness will look like when connected to th
 
 Note that the male pins are on the left side and you will note that the red power wire is separated from the rest of the wires which are all glued together so they can be plugged directly into the breadboard.
 
+## Building the Display Harness
+
 We start by purchasing some 20cm long Male-Female Dupont ribbon connectors from eBay. The price should be about $8 for 120 connectors. Make sure to get the Male-Female version.  The female pins will go on the display and the male ends will go into our breadboard.
 
 ![20 CM Male-Female Dupont Connector](../img/dupont-ribbon-cable-m-f.png)
 
-We then separate out seven of these wires trying to use the black (or brown) and red colors in the GND and VCC edge of the group of wires.  Note that some of
-the display cable use brown for GND rather than black.
+We then separate out seven of these wires trying to use the black (or brown) and red colors in the GND and VCC edge of the group of wires.  Note that some of the display cable use brown for GND rather than black.
+
+## The Display Connection
 
 You can see a close-up of each of the colors and their connections in the picture below.
 
 Backside view of the display harness at the display end:
 ![Display Cable Harness Display End Back Side View](../img/display-harness-display-end.png)
+
 Note that from the backside, the brown wire on the right (near the "1") is GND and the purple wire on the left (near the "7") is CS (chip select).  Note that "VSS" is the same an GND and "VDD" is the same and 3.3 volt power.
 
 Front side view of display harness at the display end:
@@ -29,12 +33,19 @@ Note from this perspective that the brown wire is GND and the purple wire is CS 
 
 At the other end of the cable, we need to make a small change in the order of the cable. Here are the changes:
 
-1. We separate the red wire from the rest of the group and connect the red to the 3.3V regulated output of the Raspberry Pi Pico.  All our displays run on 3.3v now.
-2. We move the back GND wire to be in between the blue (DC) and purple (CS) wires. This allows the row of all the wires to be connected in a single block of wires.  We can hot glue these pins together to get a more reliable connection.  This is called a "Wire Harness".
+1. We separate the red wire from the rest of the group and connect the red to the 3.3V regulated output of the Raspberry Pi Pico.  Almost all the displays in our kits run on 3.3V now.  Some older LCD displays needed exactly 5 volts, but our OLED displays work fine on either 3.3V or 5V.
+2. We move the black GND wire to be in between the blue (DC) and purple (CS) wires. This allows the row of all the wires to be connected in a single block of wires.  We can hot glue these pins together to get a more reliable connection.  This is called a "Wire Harness".
 
 ![Display Cable Harness Breadboard Male Pins](../img/display-harness-3.jpg)
 
-We can then plug this group of wires directly into the breadboard from breadboard rows 3 to 9. This is shown below.  Make sure the black GND is on the Pico GND on row 8 of the breadboard.
+## Breadboard Connections
+
+![Image of the Pico on the breadboard with the USB end at row 1](../img/pico-w-on-breadboard.png)
+
+In our kits the USB connector is placed at the **top** of the breadboard near row 1.  Make sure your breadboard is oriented correctly so the row numbers in this document will make sense.  Note that the breadboard row numbers are on the left and begin with the number "1".  Don't confuse this with
+the logical GPIO numbers inside the Pico that begin with "0".  So in our setup, GPIO 0 is on breadboard row 1.
+
+We can then plug this group of wires directly into the left side of the breadboard from breadboard rows 3 to 9. This is shown below.  Make sure the black GND is on the Pico GND on row 8 of the breadboard.
 
 ![Display Cable Breadboard End](../img/display-cable-breadboard-end.jpg)
 Note in this figure, the I2C bus uses breadboard rows 1 to 3.  The display cable only uses breadboard rows 4 to 9.
@@ -103,7 +114,7 @@ When you press "Run" on Thonny you should see "Hello World!" on the display.
 
 ## Debugging Tips
 
-One of 
+One of the challenges of this project is that there is no status indicator on the display.  It usually works perfectly or it does not work at all.  The OLED displays are pretty robust. I have not had any fail yet.  But they require all seven wires to be hooked up perfectly, which can be a challenge!
 
 If your test "Hello World!" program does not run, please try the following debugging tips:
 
@@ -118,4 +129,5 @@ If your test "Hello World!" program does not run, please try the following debug
 9. According to the [SSD1306 Datasheet](https://www.digikey.com/htmldatasheets/production/2047793/0/0/1/ssd1306.html) the Chip Select (CS) pin is active low.  Which means it should be at GND for the device
 to be working.  With an ohm meter, check the voltage of the CS pin.  It should be near zero.
 10. If you have a logic analyzer, hook it up to the the SCL, SDA, DC, Reset and CS.  You should see CS be at GND and a clock signal on the SCL line.  The SDA, DC and RES signals should appear similar to the diagrams in the datasheets.
+11. If you see what looks like random noise or "show" on the display, it usually means that one of the DC/RES or CS wires has gotten reversed.  This means you are close!
 
