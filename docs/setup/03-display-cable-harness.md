@@ -4,6 +4,12 @@ Unlike simple sensors that only have a few wires, displays have up to seven wire
 
 To keep our displays running reliably, we can use a 20 cm ribbon cable and some hot glue to make a connector that is easy to hook up and be much more reliable.
 
+Here is what our final display cable harness will look like when connected to the display at the right:
+
+![20cm Display Cable Harness](../img/display-cable-harness.jpg)
+
+Note that the male pins are on the left side and you will note that the red power wire is separated from the rest of the wires which are all glued together so they can be plugged directly into the breadboard.
+
 We start by purchasing some 20cm long Male-Female Dupont ribbon connectors from eBay. The price should be about $8 for 120 connectors. Make sure to get the Male-Female version.  The female pins will go on the display and the male ends will go into our breadboard.
 
 ![20 CM Male-Female Dupont Connector](../img/dupont-ribbon-cable-m-f.png)
@@ -13,11 +19,11 @@ the display cable use brown for GND rather than black.
 
 You can see a close-up of each of the colors and their connections in the picture below.
 
-Backside view:
+Backside view of the display harness at the display end:
 ![Display Cable Harness Display End Back Side View](../img/display-harness-display-end.png)
 Note that from the backside, the brown wire on the right (near the "1") is GND and the purple wire on the left (near the "7") is CS (chip select).  Note that "VSS" is the same an GND and "VDD" is the same and 3.3 volt power.
 
-Front side view:
+Front side view of display harness at the display end:
 ![Display Cable Harness Display End Fronts Side View](../img/display-harness-display-end-front.png)
 Note from this perspective that the brown wire is GND and the purple wire is CS (chip select).
 
