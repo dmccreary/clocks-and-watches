@@ -18,7 +18,7 @@ Backside view:
 Note that the brown wire is GND and the purple wire is CS (chip select).
 
 Front side view:
-![](../img/.display-harness-display-end-front)
+![](../img/.display-harness-display-end-front.png)
 Note again that the brown wire is GND and the purple wire is CS (chip select).
 
 At the other end of the cable, we need to make a small change in the order of the cable. Here are the changes:
