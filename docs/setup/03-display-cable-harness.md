@@ -54,7 +54,7 @@ For younger students, don't be shy about providing a few color-coded hints on th
 ## SPI Display to Breadboard Connections
 
 If you use a standard display cable the connectors will be as follows when
-reading the wires from the bottom of the display end to the top:
+reading the connection labels from the **bottom** of the display end to the **top** of the display:
 
 |Display|Name|Color|Breadboard|
 |---|---|---|---|
@@ -75,12 +75,13 @@ where the USB is.  Note that any row that ends in "3" or "8" is a GND.
 import machine
 import ssd1306
 
+# Pins for our standard display cable harness where GND is in row 8
 # Note the order from row 4 to 6, skip 8 for GND and 9
-SCL=machine.Pin(2) # SPI CLock bb row 4
-SDA=machine.Pin(3) # SPI Data (mosi) bb row 5
+SCL = machine.Pin(2) # SPI CLock bb row 4
+SDA = machine.Pin(3) # SPI Data (mosi) bb row 5
 RES = machine.Pin(4) # Reset bb rwo 6
-DC = machine.Pin(5) # Data/command bb row 7
-CS = machine.Pin(6) # Chip Select bb row 9
+DC  = machine.Pin(5) # Data/command bb row 7
+CS  = machine.Pin(6) # Chip Select bb row 9
 
 spi=machine.SPI(0, sck=SCL, mosi=SDA)
 oled = ssd1306.SSD1306_SPI(128, 64, spi, DC, RES, CS)
