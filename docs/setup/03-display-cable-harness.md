@@ -45,7 +45,7 @@ If you use a standard display cable the connectors will be as follows when
 reading the wires from the bottom of the display end to the top:
 
 |Display|Name|Color|Breadboard|
-|---|---|---|
+|---|---|---|---|
 |GND|Ground|Black or Brown|BB Row 8|
 |VCC|Power|Red|3.3 volt rail or row 5 on the right|
 |SCL|Clock|Orange|BB Row 4 - GPIO 2|
