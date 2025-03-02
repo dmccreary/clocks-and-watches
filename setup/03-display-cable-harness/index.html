@@ -1169,7 +1169,7 @@ marker.</li>
 <p>For younger students, don't be shy about providing a few color-coded hints on the breadboard to guide their assembly process as in the image above.</p>
 <h2 id="spi-display-to-breadboard-connections">SPI Display to Breadboard Connections</h2>
 <p>If you use a standard display cable the connectors will be as follows when
-reading the wires from the bottom of the display end to the top:</p>
+reading the connection labels from the <strong>bottom</strong> of the display end to the <strong>top</strong> of the display:</p>
 <table>
 <thead>
 <tr>
@@ -1247,15 +1247,17 @@ where the USB is.  Note that any row that ends in "3" or "8" is a GND.</p>
 <span class="normal">18</span>
 <span class="normal">19</span>
 <span class="normal">20</span>
-<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>
 <span class="kn">import</span> <span class="nn">ssd1306</span>
 
+<span class="c1"># Pins for our standard display cable harness where GND is in row 8</span>
 <span class="c1"># Note the order from row 4 to 6, skip 8 for GND and 9</span>
-<span class="n">SCL</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># SPI CLock bb row 4</span>
-<span class="n">SDA</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># SPI Data (mosi) bb row 5</span>
+<span class="n">SCL</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># SPI CLock bb row 4</span>
+<span class="n">SDA</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># SPI Data (mosi) bb row 5</span>
 <span class="n">RES</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="c1"># Reset bb rwo 6</span>
-<span class="n">DC</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># Data/command bb row 7</span>
-<span class="n">CS</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="c1"># Chip Select bb row 9</span>
+<span class="n">DC</span>  <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># Data/command bb row 7</span>
+<span class="n">CS</span>  <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="c1"># Chip Select bb row 9</span>
 
 <span class="n">spi</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">SPI</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sck</span><span class="o">=</span><span class="n">SCL</span><span class="p">,</span> <span class="n">mosi</span><span class="o">=</span><span class="n">SDA</span><span class="p">)</span>
 <span class="n">oled</span> <span class="o">=</span> <span class="n">ssd1306</span><span class="o">.</span><span class="n">SSD1306_SPI</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">spi</span><span class="p">,</span> <span class="n">DC</span><span class="p">,</span> <span class="n">RES</span><span class="p">,</span> <span class="n">CS</span><span class="p">)</span>
