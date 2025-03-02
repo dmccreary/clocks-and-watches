@@ -24,7 +24,7 @@ At the other end of the cable, we need to make a small change in the order of th
 
 We can then plug this group of wires directly into the breadboard from breadboard rows 3 to 9. This is shown below.  Make sure the black GND is on the Pico GND on row 8 of the breadboard.
 
-![Display Cable Harness 3](../img/display-harness-4.jpg)
+![Display Cable Breadboard End](../img/display-cable-breadboard-end.jpg)
 
 We designed these connections with the following rules:
 
@@ -37,9 +37,7 @@ We have found that once we create these cable assemblies with hot glue to keep t
 !!! Warning
     Note that we still MUST make sure that the black (or brown) wire in the wiring harness is connected to the GND. It is easy to get the cable reversed so make sure to double-check the cable orientation before you use power on the board.
 
-For younger students, don't be shy about providing a few color-coded hints on the breadboard to guide their assembly process.
-
-![](../img/display-cable-breadboard-end.jpg)
+For younger students, don't be shy about providing a few color-coded hints on the breadboard to guide their assembly process as in the image above.
 
 ## SPI Display to Breadboard Connections
 
