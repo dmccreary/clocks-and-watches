@@ -22,7 +22,7 @@ Here is the code:
 import machine
 import ssd1306
 
-# customise these numbers if your hardware config is different
+# customize these numbers if your hardware config is different
 SCL=machine.Pin(2) # SPI CLock
 SDA=machine.Pin(3) # SPI Data
 RES = machine.Pin(4) # Reset

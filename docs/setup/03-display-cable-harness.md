@@ -8,9 +8,8 @@ We start by purchasing some 20cm long Male-Female Dupont ribbon connectors from 
 
 ![20 cm dupont](../img/dupont-ribbon-cable-m-f.png)
 
-We then separate out seven of these wires trying to use the black and red colors in the GND and VCC edge of the group of wires.
-
-![Display Cable Harness 1](../img/display-harness-1.jpg)
+We then separate out seven of these wires trying to use the black (or brown) and red colors in the GND and VCC edge of the group of wires.  Note that some of
+the display cable use brown for GND rather than black.
 
 You can see a close-up of each of the colors and their connections in the picture below.
 
@@ -36,8 +35,62 @@ marker.
 We have found that once we create these cable assemblies with hot glue to keep the pins in the right order it makes it much easier to connect the displays.
 
 !!! Warning
-    Note that we still MUST make sure that the black wire in the wiring harness is connected to the GND. It is easy to get the cable reversed so make sure to double-check the cable orientation before you use power on the board.
+    Note that we still MUST make sure that the black (or brown) wire in the wiring harness is connected to the GND. It is easy to get the cable reversed so make sure to double-check the cable orientation before you use power on the board.
 
 For younger students, don't be shy about providing a few color-coded hints on the breadboard to guide their assembly process.
 
-![](../img/color-coded-breadboard-2.jpg)
+![](../img/display-cable-breadboard-end.jpg)
+
+## SPI Display to Breadboard Connections
+
+If you use a standard display cable the connectors will be as follows when
+reading the wires from the bottom of the display end to the top:
+
+|Display|Name|Color|Breadboard|
+|---|---|---|
+|GND|Ground|Black or Brown|BB Row 8|
+|VCC|Power|Red|3.3 volt rail or row 5 on the right|
+|SCL|Clock|Orange|BB Row 4 - GPIO 2|
+|SDA|Data|Yellow|BB Row 5 - GPIO 3|
+|RES|Reset|Green|BB Row 6 - GPIO 4|
+|DC|Data or Command|Blue|BB Row 7|
+|CS|Chip Select|Purple|BB Row 9|
+
+Note that "BB Row" refers to the breadboard row which starts at row 1 at the top
+where the USB is.  Note that any row that ends in "3" or "8" is a GND.
+
+## Sample Code
+
+```python
+import machine
+import ssd1306
+
+# Note the order from row 4 to 6, skip 8 for GND and 9
+SCL=machine.Pin(2) # SPI CLock bb row 4
+SDA=machine.Pin(3) # SPI Data (mosi) bb row 5
+RES = machine.Pin(4) # Reset bb rwo 6
+DC = machine.Pin(5) # Data/command bb row 7
+CS = machine.Pin(6) # Chip Select bb row 9
+
+spi=machine.SPI(0, sck=SCL, mosi=SDA)
+oled = ssd1306.SSD1306_SPI(128, 64, spi, DC, RES, CS)
+
+# erase the entire screen with black (0=black)
+oled.fill(0)
+
+# place a hello message at point (0,0) in white (1=white text)
+oled.text("Hello World!", 0, 0, 1)
+
+# send the entire frame buffer to the display via the SPI bus
+oled.show()
+```
+
+When you press "Run" on Thonny you should see "Hello World!" on the display.
+
+![](../img/hello-world.jpg)
+
+## Debugging Tips
+
+1. Carefully check your connections from the display to the breadboard.  Sometimes the colors get mixed up.
+2. Verify that both the 
+
