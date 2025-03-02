@@ -13,7 +13,13 @@ the display cable use brown for GND rather than black.
 
 You can see a close-up of each of the colors and their connections in the picture below.
 
-![Display Cable Harness 2](../img/display-harness-2.jpg)
+Backside view:
+![Display Cable Harness 2](../img/display-harness-display-end.png)
+Note that the brown wire is GND and the purple wire is CS (chip select).
+
+Front side view:
+![](../img/.display-harness-display-end-front)
+Note again that the brown wire is GND and the purple wire is CS (chip select).
 
 At the other end of the cable, we need to make a small change in the order of the cable. Here are the changes:
 
