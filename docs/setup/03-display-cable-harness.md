@@ -37,6 +37,7 @@ At the other end of the cable, we need to make a small change in the order of th
 We can then plug this group of wires directly into the breadboard from breadboard rows 3 to 9. This is shown below.  Make sure the black GND is on the Pico GND on row 8 of the breadboard.
 
 ![Display Cable Breadboard End](../img/display-cable-breadboard-end.jpg)
+Note in this figure, the I2C bus uses breadboard rows 1 to 3.  The display cable only uses breadboard rows 4 to 9.
 
 We designed these connections with the following rules:
 
@@ -47,7 +48,7 @@ marker.
 We have found that once we create these cable assemblies with hot glue to keep the pins in the right order it makes it much easier to connect the displays.
 
 !!! Warning
-    Note that we still MUST make sure that the black (or brown) wire in the wiring harness is connected to the GND. It is easy to get the cable reversed so make sure to double-check the cable orientation before you use power on the board.
+    Note that we still MUST make sure that the black (or brown) wire in the wiring harness is connected to the GND. It is easy to get the cable reversed so make sure to double-check the cable orientation before you apply power to the Pico or USB.
 
 For younger students, don't be shy about providing a few color-coded hints on the breadboard to guide their assembly process as in the image above.
 
@@ -102,6 +103,19 @@ When you press "Run" on Thonny you should see "Hello World!" on the display.
 
 ## Debugging Tips
 
+One of 
+
+If your test "Hello World!" program does not run, please try the following debugging tips:
+
 1. Carefully check your connections from the display to the breadboard.  Sometimes the colors get mixed up.
-2. Verify that both the 
+2. Verify that both the GND (black or brown) and the CS (purple) pins on the display are connected correctly.  It is easy to get the connections reversed.
+3. Trace the wires from their label on the the display to the right GPIO pin.  Make sure that your code references the right pin.
+4. Try checking the conductivity of the wires using an ohm meter with the power disconnected.
+5. Double check the pin numbers in your code.  Having just one pin number incorrect will cause the display to not work.
+6. With the power applied to the pico, check the voltage at the display ned on the VDD pin.  It should read 3.3 volts.
+7. If you have an extra display harness, try swapping that harness in for the current one.
+8. If you have another OLED display, try swapping that display in for the current display.
+9. According to the [SSD1306 Datasheet](https://www.digikey.com/htmldatasheets/production/2047793/0/0/1/ssd1306.html) the Chip Select (CS) pin is active low.  Which means it should be at GND for the device
+to be working.  With an ohm meter, check the voltage of the CS pin.  It should be near zero.
+10. If you have a logic analyzer, hook it up to the the SCL, SDA, DC, Reset and CS.  You should see CS be at GND and a clock signal on the SCL line.  The SDA, DC and RES signals should appear similar to the diagrams in the datasheets.
 
