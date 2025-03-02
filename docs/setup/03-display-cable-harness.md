@@ -4,9 +4,9 @@ Unlike simple sensors that only have a few wires, displays have up to seven wire
 
 To keep our displays running reliably, we can use a 20 cm ribbon cable and some hot glue to make a connector that is easy to hook up and be much more reliable.
 
-We start by purchasing some 20cm long Male-Female Dupont ribbon connectors from eBay. The price should be about $8 for 120 connectors. Make sure to get the Male-Female version.
+We start by purchasing some 20cm long Male-Female Dupont ribbon connectors from eBay. The price should be about $8 for 120 connectors. Make sure to get the Male-Female version.  The female pins will go on the display and the male ends will go into our breadboard.
 
-![20 cm dupont](../img/dupont-ribbon-cable-m-f.png)
+![20 CM Male-Female Dupont Connector](../img/dupont-ribbon-cable-m-f.png)
 
 We then separate out seven of these wires trying to use the black (or brown) and red colors in the GND and VCC edge of the group of wires.  Note that some of
 the display cable use brown for GND rather than black.
@@ -18,15 +18,15 @@ Backside view:
 Note that from the backside, the brown wire on the right (near the "1") is GND and the purple wire on the left (near the "7") is CS (chip select).  Note that "VSS" is the same an GND and "VDD" is the same and 3.3 volt power.
 
 Front side view:
-![Display Cable Harness Display End Fronts Side View](../img/.display-harness-display-end-front.png)
+![Display Cable Harness Display End Fronts Side View](../img/display-harness-display-end-front.png)
 Note from this perspective that the brown wire is GND and the purple wire is CS (chip select).
 
 At the other end of the cable, we need to make a small change in the order of the cable. Here are the changes:
 
 1. We separate the red wire from the rest of the group and connect the red to the 3.3V regulated output of the Raspberry Pi Pico.  All our displays run on 3.3v now.
-2. We move the back GND wire to be in between the blue and purple CS and DC wires. This allows the row of all the wires to be connected in a single block of wires.
+2. We move the back GND wire to be in between the blue (DC) and purple (CS) wires. This allows the row of all the wires to be connected in a single block of wires.  We can hot glue these pins together to get a more reliable connection.  This is called a "Wire Harness".
 
-![Display Cable Harness 3](../img/display-harness-3.jpg)
+![Display Cable Harness Breadboard Male Pins](../img/display-harness-3.jpg)
 
 We can then plug this group of wires directly into the breadboard from breadboard rows 3 to 9. This is shown below.  Make sure the black GND is on the Pico GND on row 8 of the breadboard.
 
