@@ -1217,8 +1217,8 @@ the logical GPIO numbers inside the Pico that begin with "0".  So in our setup, 
 Note in this figure, the I2C bus uses breadboard rows 1 to 3.  The display cable only uses breadboard rows 4 to 9.</p>
 <p>We designed these connections with the following rules:</p>
 <ol>
-<li>The Clock (SCL) and Data (SDA) MUST be connected to rows 4 and 5 respectively because this is where SPI0 CLK and SPI0 TX are located.</li>
-<li>The other three signals RES, DC and CS can be on pin so we will use the rows that make the cable connectors direct to rows 6, 7 and 9. Note that GND is on breadboard row 8 which I mark with a black
+<li>The Clock (SCL) and Data (SDA) <strong>MUST</strong> be connected to rows 4 and 5 respectively because this is where SPI0 CLK and SPI0 TX are located.</li>
+<li>The other three signals RES, DC and CS can be on any pin so we will use the rows that make the cable connectors direct to rows 6, 7 and 9. Note that GND is on breadboard row 8 which I mark with a black
 marker.</li>
 </ol>
 <p>We have found that once we create these cable assemblies with hot glue to keep the pins in the right order it makes it much easier to connect the displays.</p>
@@ -1233,15 +1233,15 @@ reading the connection labels from the <strong>bottom</strong> of the display en
 <table>
 <thead>
 <tr>
-<th>Display</th>
+<th>Display Label</th>
 <th>Name</th>
-<th>Color</th>
-<th>Breadboard</th>
+<th>Wire Color</th>
+<th>Breadboard Row</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>GND</td>
+<td>VSS</td>
 <td>Ground</td>
 <td>Black or Brown</td>
 <td>BB Row 8</td>
