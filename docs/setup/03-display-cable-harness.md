@@ -52,8 +52,8 @@ Note in this figure, the I2C bus uses breadboard rows 1 to 3.  The display cable
 
 We designed these connections with the following rules:
 
-1. The Clock (SCL) and Data (SDA) MUST be connected to rows 4 and 5 respectively because this is where SPI0 CLK and SPI0 TX are located.
-2. The other three signals RES, DC and CS can be on pin so we will use the rows that make the cable connectors direct to rows 6, 7 and 9. Note that GND is on breadboard row 8 which I mark with a black
+1. The Clock (SCL) and Data (SDA) **MUST** be connected to rows 4 and 5 respectively because this is where SPI0 CLK and SPI0 TX are located.
+2. The other three signals RES, DC and CS can be on any pin so we will use the rows that make the cable connectors direct to rows 6, 7 and 9. Note that GND is on breadboard row 8 which I mark with a black
 marker.
 
 We have found that once we create these cable assemblies with hot glue to keep the pins in the right order it makes it much easier to connect the displays.
@@ -68,9 +68,9 @@ For younger students, don't be shy about providing a few color-coded hints on th
 If you use a standard display cable the connectors will be as follows when
 reading the connection labels from the **bottom** of the display end to the **top** of the display:
 
-|Display|Name|Color|Breadboard|
+|Display Label|Name|Wire Color|Breadboard Row|
 |---|---|---|---|
-|GND|Ground|Black or Brown|BB Row 8|
+|VSS|Ground|Black or Brown|BB Row 8|
 |VCC|Power|Red|3.3 volt rail or row 5 on the right|
 |SCL|Clock|Orange|BB Row 4 - GPIO 2|
 |SDA|Data|Yellow|BB Row 5 - GPIO 3|
