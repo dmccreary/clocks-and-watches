@@ -1750,9 +1750,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sample-clock" class="md-nav__link">
+  <a href="#sample-clock-program" class="md-nav__link">
     <span class="md-ellipsis">
-      Sample Clock
+      Sample Clock Program
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#purchasing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purchasing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
     </span>
   </a>
   
@@ -1829,20 +1847,7 @@ create a clock that will display the date, time and temperature </p>
 <span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sda</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">scl</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">400000</span><span class="p">)</span>
 <span class="n">lcd</span> <span class="o">=</span> <span class="n">I2cLcd</span><span class="p">(</span><span class="n">i2c</span><span class="p">,</span> <span class="n">I2C_ADDR</span><span class="p">,</span> <span class="n">I2C_NUM_ROWS</span><span class="p">,</span> <span class="n">I2C_NUM_COLS</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<h2 id="sample-clock">Sample Clock</h2>
-<p>```python
-from machine import I2C, Pin
-from lcd_api import LcdApi
-from pico_i2c_lcd import I2cLcd
-from utime import sleep, localtime</p>
-<p>I2C_ADDR     = 0x27
-I2C_NUM_ROWS = 2
-I2C_NUM_COLS = 16</p>
-<p>i2c = I2C(0, sda=Pin(0), scl=Pin(1), freq=400000)
-lcd = I2cLcd(i2c, I2C_ADDR, I2C_NUM_ROWS, I2C_NUM_COLS)</p>
-<p>while True:
-    # Clear the display before writing new content
-    lcd.clear()</p>
+<h2 id="sample-clock-program">Sample Clock Program</h2>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1882,47 +1887,74 @@ lcd = I2cLcd(i2c, I2C_ADDR, I2C_NUM_ROWS, I2C_NUM_COLS)</p>
 <span class="normal">37</span>
 <span class="normal">38</span>
 <span class="normal">39</span>
-<span class="normal">40</span></pre></div></td><td class="code"><div><pre><span></span><code># change this line to read the RTC time
-now = localtime()
-year = now[0]
-month = now[1]
-day = now[2]
-hour = now[3]
-minute = now[4]
-second = now[5]
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">I2C</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">from</span> <span class="nn">lcd_api</span> <span class="kn">import</span> <span class="n">LcdApi</span>
+<span class="kn">from</span> <span class="nn">pico_i2c_lcd</span> <span class="kn">import</span> <span class="n">I2cLcd</span>
+<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span><span class="p">,</span> <span class="n">localtime</span>
 
-if hour == 0:
-    # Midnight edge case
-    hour = 12
-    am_pm = &#39;AM&#39;
-elif hour == 12:
-    # Noon edge case
-    am_pm = &#39;PM&#39;
-elif hour &gt; 12:
-    # Afternoon hours
-    hour -= 12
-    am_pm = &#39;PM&#39;
-else:
-    # Morning hours
-    am_pm = &#39;AM&#39;
+<span class="n">I2C_ADDR</span>     <span class="o">=</span> <span class="mh">0x27</span>
+<span class="n">I2C_NUM_ROWS</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">I2C_NUM_COLS</span> <span class="o">=</span> <span class="mi">16</span>
 
-# Format date on first row - centered
-date_str = f&quot;{month:02d}/{day:02d}/{year}&quot;
-lcd.move_to((16 - len(date_str)) // 2, 0)  # Center the date
-lcd.putstr(date_str)
+<span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sda</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">scl</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">400000</span><span class="p">)</span>
+<span class="n">lcd</span> <span class="o">=</span> <span class="n">I2cLcd</span><span class="p">(</span><span class="n">i2c</span><span class="p">,</span> <span class="n">I2C_ADDR</span><span class="p">,</span> <span class="n">I2C_NUM_ROWS</span><span class="p">,</span> <span class="n">I2C_NUM_COLS</span><span class="p">)</span>
 
-# Format time on second row with seconds
-time_str = f&quot;{hour}:{minute:02d}:{second:02d} {am_pm}&quot;
-lcd.move_to((16 - len(time_str)) // 2, 1)  # Center the time
-lcd.putstr(time_str)
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="c1"># Clear the display before writing new content</span>
+    <span class="n">lcd</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
 
-sleep(1)
-```
+    <span class="c1"># change this line to read the RTC time</span>
+    <span class="n">now</span> <span class="o">=</span> <span class="n">localtime</span><span class="p">()</span>
+    <span class="n">year</span> <span class="o">=</span> <span class="n">now</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">month</span> <span class="o">=</span> <span class="n">now</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">day</span> <span class="o">=</span> <span class="n">now</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">hour</span> <span class="o">=</span> <span class="n">now</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+    <span class="n">minute</span> <span class="o">=</span> <span class="n">now</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+    <span class="n">second</span> <span class="o">=</span> <span class="n">now</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
 
-## References
+    <span class="k">if</span> <span class="n">hour</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c1"># Midnight edge case</span>
+        <span class="n">hour</span> <span class="o">=</span> <span class="mi">12</span>
+        <span class="n">am_pm</span> <span class="o">=</span> <span class="s1">&#39;AM&#39;</span>
+    <span class="k">elif</span> <span class="n">hour</span> <span class="o">==</span> <span class="mi">12</span><span class="p">:</span>
+        <span class="c1"># Noon edge case</span>
+        <span class="n">am_pm</span> <span class="o">=</span> <span class="s1">&#39;PM&#39;</span>
+    <span class="k">elif</span> <span class="n">hour</span> <span class="o">&gt;</span> <span class="mi">12</span><span class="p">:</span>
+        <span class="c1"># Afternoon hours</span>
+        <span class="n">hour</span> <span class="o">-=</span> <span class="mi">12</span>
+        <span class="n">am_pm</span> <span class="o">=</span> <span class="s1">&#39;PM&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Morning hours</span>
+        <span class="n">am_pm</span> <span class="o">=</span> <span class="s1">&#39;AM&#39;</span>
 
-[eBay Search for 16X3 LCD Display I2C](https://www.ebay.com/sch/i.html?_nkw=16%C3%972+LCD+Display+I2C)
+    <span class="c1"># Format date on first row - centered</span>
+    <span class="n">date_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">month</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">day</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">lcd</span><span class="o">.</span><span class="n">move_to</span><span class="p">((</span><span class="mi">16</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">date_str</span><span class="p">))</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># Center the date</span>
+    <span class="n">lcd</span><span class="o">.</span><span class="n">putstr</span><span class="p">(</span><span class="n">date_str</span><span class="p">)</span>
+
+    <span class="c1"># Format time on second row with seconds</span>
+    <span class="n">time_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">hour</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">minute</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">second</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">am_pm</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">lcd</span><span class="o">.</span><span class="n">move_to</span><span class="p">((</span><span class="mi">16</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">time_str</span><span class="p">))</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Center the time</span>
+    <span class="n">lcd</span><span class="o">.</span><span class="n">putstr</span><span class="p">(</span><span class="n">time_str</span><span class="p">)</span>
+
+    <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
+<h2 id="purchasing">Purchasing</h2>
+<p>I recommend getting the version with the </p>
+<p><a href="eBay-listing-16X2-char-lcd-i2c.png">eBay Listing with I2c Backpack</a></p>
+<h2 id="references">References</h2>
+<p><a href="https://www.ebay.com/sch/i.html?_nkw=16%C3%972+LCD+Display+I2C">eBay Search for 16X3 LCD Display I2C</a></p>
 
 
 
