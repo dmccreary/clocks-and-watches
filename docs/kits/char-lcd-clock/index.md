@@ -48,7 +48,7 @@ i2c = I2C(0, sda=Pin(0), scl=Pin(1), freq=400000)
 lcd = I2cLcd(i2c, I2C_ADDR, I2C_NUM_ROWS, I2C_NUM_COLS)
 ```
 
-## Sample Clock
+## Sample Clock Program
 
 ```python
 from machine import I2C, Pin
@@ -102,8 +102,14 @@ while True:
     lcd.putstr(time_str)
     
     sleep(1)
-    ```
+```
 
-    ## References
+## Purchasing
 
-    [eBay Search for 16X3 LCD Display I2C](https://www.ebay.com/sch/i.html?_nkw=16%C3%972+LCD+Display+I2C)
+I recommend getting the version with the 
+
+[eBay Listing with I2c Backpack](eBay-listing-16X2-char-lcd-i2c.png)
+
+## References
+
+[eBay Search for 16X3 LCD Display I2C](https://www.ebay.com/sch/i.html?_nkw=16%C3%972+LCD+Display+I2C)
