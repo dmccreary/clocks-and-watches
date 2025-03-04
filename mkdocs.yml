@@ -102,6 +102,8 @@ nav:
         - Assembly: kits/neopixel/fibonacci-clock/assembly.md
         - Code: kits/neopixel/fibonacci-clock/code.md
         - GenAI Prompt: kits/neopixel/fibonacci-clock/prompt.md
+    - Character LCD:
+      - Introduction: kits/char-lcd-clock/index.md
     - SSD1306 I2C:
       - Introduction: kits/ssd1306-i2c/index.md
       - Assembly: kits/ssd1306-i2c/assembly.md

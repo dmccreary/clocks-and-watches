@@ -2,13 +2,13 @@
 
 Unlike simple sensors that only have a few wires, displays have up to seven wires that need to be connected. This can be tricky when we use breadboards where we can accidentally pull one wire out.
 
-To keep our displays running reliably, we can use a 20 cm ribbon cable and some hot glue to make a connector that is easy to hook up and be much more reliable.
+To keep our displays running reliably, we can use a 20 cm ribbon cable and some hot glue to make a connector that is easy to hook up and be much more reliable.  We call this ribbon cable a "harness" since it connects the wires together.
 
 Here is what our final display cable harness will look like when connected to the display at the right:
 
 ![20cm Display Cable Harness](../img/display-cable-harness.jpg)
 
-Note that the male pins are on the left side and you will note that the red power wire is separated from the rest of the wires which are all glued together so they can be plugged directly into the breadboard.
+Note that the male pins are on the left side and the red power wire is separated from the rest of the wires which are all hot glued together so they can be easily plugged directly into the breadboard.
 
 ## Building the Display Harness
 
@@ -16,24 +16,25 @@ We start by purchasing some 20cm long Male-Female Dupont ribbon connectors from 
 
 ![20 CM Male-Female Dupont Connector](../img/dupont-ribbon-cable-m-f.png)
 
-We then separate out seven of these wires trying to use the black (or brown) and red colors in the GND and VCC edge of the group of wires.  Note that some of the display cable use brown for GND rather than black.
+We then separate out seven of these wires using the black (or brown) and red colors for the VDD (GND) and VCC (3.3V) edge of the group of wires.  Note that some of the Dupont cables use brown for GND rather than black.
 
 ## The Display Connection
 
-You can see a close-up of each of the colors and their connections in the picture below.
+You can see a close-up photograph of each of the colors and their connections in the picture below.
 
-Backside view of the display harness at the display end:
+There is the backside view of the display harness at the display end:
 ![Display Cable Harness Display End Back Side View](../img/display-harness-display-end.png)
 
 Note that from the backside, the brown wire on the right (near the "1") is GND and the purple wire on the left (near the "7") is CS (chip select).  Note that "VSS" is the same an GND and "VDD" is the same and 3.3 volt power.
 
-Front side view of display harness at the display end:
+Here is the front side view of display harness at the display end:
 ![Display Cable Harness Display End Fronts Side View](../img/display-harness-display-end-front.png)
 Note from this perspective that the brown wire is GND and the purple wire is CS (chip select).
 
-At the other end of the cable, we need to make a small change in the order of the cable. Here are the changes:
+At the other end of the cable, we need to make a small change in the order of the cable because
+ever fifth wire is a GND on the Pico. Here are the changes:
 
-1. We separate the red wire from the rest of the group and connect the red to the 3.3V regulated output of the Raspberry Pi Pico.  Almost all the displays in our kits run on 3.3V now.  Some older LCD displays needed exactly 5 volts, but our OLED displays work fine on either 3.3V or 5V.
+1. We separate the red wire from the rest of the group and connect the red to the 3.3V regulated output of the Raspberry Pi Pico.  Almost all the displays in our kits run on 3.3V.  Some older LCD displays needed exactly 5 volts, but our OLED displays work fine on either 3.3V or 5V.
 2. We move the black GND wire to be in between the blue (DC) and purple (CS) wires. This allows the row of all the wires to be connected in a single block of wires.  We can hot glue these pins together to get a more reliable connection.  This is called a "Wire Harness".
 
 ![Display Cable Harness Breadboard Male Pins](../img/display-harness-3.jpg)
