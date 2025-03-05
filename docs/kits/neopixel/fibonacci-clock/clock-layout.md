@@ -23,4 +23,5 @@ The optimal landscape arrangement would be:
 
 This arrangement will give you a rectangle that's exactly 6 inches wide (3.75" + 2.25") and 3.75 inches tall, making efficient use of our 6-inch wide display while maintaining the Fibonacci sequence relationship between the squares.
 
+![](./fib-clock-wiring-front.jpg)
 

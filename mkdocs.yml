@@ -99,7 +99,7 @@ nav:
         - Prompt: kits/neopixel/seven-segment-clock/prompt.md
       - Fibonacci Clock:
         - Introduction: kits/neopixel/fibonacci-clock/index.md
-        - Assembly: kits/neopixel/fibonacci-clock/assembly.md
+        - Clock Layout: kits/neopixel/fibonacci-clock/clock-layout.md
         - Code: kits/neopixel/fibonacci-clock/code.md
         - GenAI Prompt: kits/neopixel/fibonacci-clock/prompt.md
     - Character LCD:
