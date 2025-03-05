@@ -18,7 +18,7 @@
         <link rel="prev" href="../seven-segment-clock/prompt/">
       
       
-        <link rel="next" href="assembly/">
+        <link rel="next" href="clock-layout/">
       
       
       <link rel="icon" href="../../../img/favicon.ico">
@@ -923,11 +923,11 @@
   
   
     <li class="md-nav__item">
-      <a href="assembly/" class="md-nav__link">
+      <a href="clock-layout/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Assembly
+    Clock Layout
   </span>
   
 
@@ -1964,6 +1964,41 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#clock-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clock Layout
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reading-the-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reading the Time
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#some-limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Some Limitations
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1981,17 +2016,17 @@
 
 
 <h1 id="fibonacci-clock">Fibonacci Clock</h1>
-<h1 id="fibonacci-clock_1">Fibonacci Clock</h1>
+<iframe src="https://dmccreary.github.io/microsims/sims/fibonacci-clock/main.html" width="600" height="565"  scrolling="no"></iframe>
+
 <p>What is the minimum number of colored LED necessary to tell the time?
-The Fibonacci Clock is a unique timepiece that uses just five colored squares of different sizes to tell time. Here's how it works:</p>
+The Fibonacci Clock is a unique timepiece that uses just five colored squares of different sizes to tell time. Here's how it works.</p>
 <h2 id="clock-layout">Clock Layout</h2>
 <ul>
 <li>The clock consists of five squares whose sizes correspond to the first five Fibonacci numbers (1, 1, 2, 3, 5)</li>
 <li>These squares are arranged in a pattern that forms a rectangle, with the largest square (5) typically on one side.  In our example, it will be on the right side.</li>
 </ul>
 <h2 id="reading-the-time">Reading the Time</h2>
-<iframe src="https://dmccreary.github.io/microsims/sims/fibonacci-clock/main.html" width="600" height="565"  scrolling="no"></iframe>
-
+<p>Reading the time requires you to do some quick mental calculations.</p>
 <ul>
 <li><strong>Colors indicate function</strong>:<ul>
 <li><strong>Red squares</strong> represent hours</li>
@@ -2013,11 +2048,11 @@ The Fibonacci Clock is a unique timepiece that uses just five colored squares of
 <ul>
 <li>Hours are displayed in 12-hour format (1-12)</li>
 <li>Minutes are displayed in 5-minute increments (0, 5, 10, 15, etc.).  We actually round the actual minute to the closest value so the number you calculate is within 2.5 minutes of the actual time.</li>
-<li>The clock can only display certain minute values due to the limited combinations possible with the five Fibonacci squares</li>
+<li>The clock can only display certain minute values due to the limited combinations possible with the five Fibonacci squares.</li>
 </ul>
 <p>This clever design creates a visually interesting timepiece that requires a bit of mental arithmetic to read, making it both decorative and intellectually engaging.</p>
 <p>It will take you a bit of time to get used to doing the math.  After a while is will become easier.</p>
-<p><a href="assembly/">Assembly</a></p>
+<p><a href="clock-layout/">Clock Layout</a></p>
 <p><a href="code/">Programming Code</a></p>
 <p><a href="prompt/">Generative AI Prompt</a></p>
 
@@ -2077,13 +2112,13 @@ The Fibonacci Clock is a unique timepiece that uses just five colored squares of
         
         
           
-          <a href="assembly/" class="md-footer__link md-footer__link--next" aria-label="Next: Assembly">
+          <a href="clock-layout/" class="md-footer__link md-footer__link--next" aria-label="Next: Clock Layout">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Assembly
+                Clock Layout
               </div>
             </div>
             <div class="md-footer__button md-icon">
