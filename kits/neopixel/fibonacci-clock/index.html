@@ -1981,6 +1981,42 @@
 
 
 <h1 id="fibonacci-clock">Fibonacci Clock</h1>
+<h1 id="fibonacci-clock_1">Fibonacci Clock</h1>
+<p>What is the minimum number of colored LED necessary to tell the time?
+The Fibonacci Clock is a unique timepiece that uses just five colored squares of different sizes to tell time. Here's how it works:</p>
+<h2 id="clock-layout">Clock Layout</h2>
+<ul>
+<li>The clock consists of five squares whose sizes correspond to the first five Fibonacci numbers (1, 1, 2, 3, 5)</li>
+<li>These squares are arranged in a pattern that forms a rectangle, with the largest square (5) typically on one side.  In our example, it will be on the right side.</li>
+</ul>
+<h2 id="reading-the-time">Reading the Time</h2>
+<iframe src="https://dmccreary.github.io/microsims/sims/fibonacci-clock/main.html" width="600" height="565"  scrolling="no"></iframe>
+
+<ul>
+<li><strong>Colors indicate function</strong>:<ul>
+<li><strong>Red squares</strong> represent hours</li>
+<li><strong>Green squares</strong> represent minutes</li>
+<li><strong>Blue squares</strong> represent both hours and minutes</li>
+<li><strong>Black squares</strong> are inactive (not used for the current time)</li>
+</ul>
+</li>
+<li><strong>To read the hours</strong>: Add the values of all red and blue squares<ul>
+<li>Example: If the 5-square is red and the 3-square is blue, the hour is 8</li>
+</ul>
+</li>
+<li><strong>To read the minutes</strong>: Add the values of all green and blue squares, then multiply by 5<ul>
+<li>Example: If the 2-square is green and the 3-square is blue, the minutes are (2+3) × 5 = 25</li>
+</ul>
+</li>
+</ul>
+<h2 id="some-limitations">Some Limitations</h2>
+<ul>
+<li>Hours are displayed in 12-hour format (1-12)</li>
+<li>Minutes are displayed in 5-minute increments (0, 5, 10, 15, etc.).  We actually round the actual minute to the closest value so the number you calculate is within 2.5 minutes of the actual time.</li>
+<li>The clock can only display certain minute values due to the limited combinations possible with the five Fibonacci squares</li>
+</ul>
+<p>This clever design creates a visually interesting timepiece that requires a bit of mental arithmetic to read, making it both decorative and intellectually engaging.</p>
+<p>It will take you a bit of time to get used to doing the math.  After a while is will become easier.</p>
 <p><a href="assembly/">Assembly</a></p>
 <p><a href="code/">Programming Code</a></p>
 <p><a href="prompt/">Generative AI Prompt</a></p>
