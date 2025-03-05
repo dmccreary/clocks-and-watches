@@ -1,6 +1,6 @@
 # Fibonacci Clock
 
-<iframe src="https://dmccreary.github.io/microsims/sims/fibonacci-clock/main.html" width="600" height="565"  scrolling="no"></iframe>
+![](fib-clock.png)
 
 What is the minimum number of colored LED necessary to tell the time?
 The Fibonacci Clock is a unique timepiece that uses just five colored squares of different sizes to tell time. Here's how it works.
@@ -11,6 +11,8 @@ The Fibonacci Clock is a unique timepiece that uses just five colored squares of
 - These squares are arranged in a pattern that forms a rectangle, with the largest square (5) typically on one side.  In our example, it will be on the right side.
 
 ## Reading the Time
+
+<iframe src="https://dmccreary.github.io/microsims/sims/fibonacci-clock/main.html" width="600" height="565"  scrolling="no"></iframe>
 
 Reading the time requires you to do some quick mental calculations.
 
