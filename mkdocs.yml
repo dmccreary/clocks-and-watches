@@ -100,6 +100,8 @@ nav:
       - Fibonacci Clock:
         - Introduction: kits/neopixel/fibonacci-clock/index.md
         - Clock Layout: kits/neopixel/fibonacci-clock/clock-layout.md
+        - Pixel Test: kits/neopixel/fibonacci-clock/pixel-test.md
+        - RTC Test: kits/neopixel/fibonacci-clock/test-rtc.md
         - Code: kits/neopixel/fibonacci-clock/code.md
         - GenAI Prompt: kits/neopixel/fibonacci-clock/prompt.md
     - Character LCD:

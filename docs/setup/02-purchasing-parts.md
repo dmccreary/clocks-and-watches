@@ -46,6 +46,8 @@ There are two challenges you might face with the ESP-32:
 Although the small 1" OLED displays work, they are hard to read from a distance.
 We like the 2.42" inch OLED displays since they are bright and have a wide viewing angle.
 
+[2.4" 2.42 inch 128x64 OLED LCD Display Module SSD1309 12864 7 Pin SPI/IIC I2C Serial Interface 2.42 inch oled module](https://www.alibaba.com/product-detail/2-4-2-42-inch-128x64_1600942149379.html) - Alibaba $8.00
+
 ### SmartWatch Displays
 
 [Waveshare RP2040-LCD-1.28](https://www.waveshare.com/wiki/RP2040-LCD-1.28)
