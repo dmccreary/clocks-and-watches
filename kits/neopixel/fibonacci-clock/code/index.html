@@ -1036,6 +1036,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#the-fib_time-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      The fib_time Function
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#full-main-program" class="md-nav__link">
     <span class="md-ellipsis">
       Full Main Program
@@ -2066,6 +2075,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#the-fib_time-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      The fib_time Function
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#full-main-program" class="md-nav__link">
     <span class="md-ellipsis">
       Full Main Program
@@ -2093,6 +2111,14 @@
 
 
 <h1 id="code">Code</h1>
+<p>The Fibonacci clock shares a common code base with most of
+the other clocks in our site.  It needs to read the
+actual time from the real-time clock (RTC) or WiFi and in needs
+to have the RTC set if you don't use WiFi to synchronize your time.</p>
+<p>The key difference is how the hour and minute digits are converted
+into turning on the right LEDs.</p>
+<h2 id="the-fib_time-function">The <code>fib_time</code> Function</h2>
+<p>At the core of this process is the <code>fib_time</code> function.  This function has two inputs (hours and minutes) and returns a sequence of five binary numbers, one for each cell in our clock. Here is that code:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2118,7 +2144,8 @@
 <span class="normal">23</span>
 <span class="normal">24</span>
 <span class="normal">25</span>
-<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Fibonacci time function</span>
+<span class="normal">26</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Fibonacci time function</span>
 <span class="k">def</span> <span class="nf">fib_time</span><span class="p">(</span><span class="n">hours</span><span class="p">,</span> <span class="n">minutes</span><span class="p">):</span>
     <span class="n">vals</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
     <span class="n">state</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
@@ -2126,6 +2153,7 @@
     <span class="c1"># Calculate Fibonacci representation for hours</span>
     <span class="n">remaining_hours</span> <span class="o">=</span> <span class="n">hours</span>
     <span class="n">idx</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="c1"># step through values in reverse order</span>
     <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">vals</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
         <span class="k">if</span> <span class="n">remaining_hours</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">idx</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span> <span class="k">break</span>
         <span class="k">if</span> <span class="n">remaining_hours</span> <span class="o">&gt;=</span> <span class="n">v</span><span class="p">:</span>
@@ -2145,6 +2173,57 @@
 
     <span class="k">return</span> <span class="n">state</span>
 </code></pre></div></td></tr></table></div>
+<p>You will see that <code>fib_time()</code> has two loops, one for the hours and one for the minutes.  For each loop it starts with the initial value and then subtracts
+the value for each cell.  It breaks out of the loop if there are no more
+values left or the index (idx) is less than zero.</p>
+<p>Here is a step by step explanation of the code that calculate the hours:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Calculate Fibonacci representation for hours</span>
+<span class="n">remaining_hours</span> <span class="o">=</span> <span class="n">hours</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">vals</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">remaining_hours</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">idx</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span> <span class="k">break</span>
+    <span class="k">if</span> <span class="n">remaining_hours</span> <span class="o">&gt;=</span> <span class="n">v</span><span class="p">:</span>
+        <span class="n">state</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">remaining_hours</span> <span class="o">-=</span> <span class="n">v</span>
+    <span class="n">idx</span> <span class="o">-=</span> <span class="mi">1</span>
+</code></pre></div></td></tr></table></div>
+<p>This code is taking a number of hours and representing it using Fibonacci numbers. </p>
+<ol>
+<li>
+<p><code>remaining_hours = hours</code> - This creates a variable that starts with the total number of hours we're trying to represent.  It gets hours as an input parameter. We'll subtract from this as we go.</p>
+</li>
+<li>
+<p><code>idx = len(vals) - 1</code> - This sets an index to point to the last element of the <code>vals</code> list, which contains the first five Fibonacci values ( 1, 1, 2, 3, 5).</p>
+</li>
+<li>
+<p><code>for v in vals[::-1]:</code> - This loop goes through the <code>vals</code> list in reverse order. The <code>[::-1]</code> is a Python trick that means "start at the end and move backward." We start with the largest Fibonacci numbers first.</p>
+</li>
+<li>
+<p><code>if remaining_hours == 0 or idx &lt; 0: break</code> - This says "if we've used up all the hours or run out of Fibonacci numbers, stop the loop."</p>
+</li>
+<li>
+<p><code>if remaining_hours &gt;= v:</code> - This checks if the current Fibonacci number can fit into our remaining hours.</p>
+</li>
+<li>
+<p><code>state[idx] += 1</code> - If the Fibonacci number fits, we increment a value in the <code>state</code> list at position <code>idx</code>. This is tracking which Fibonacci numbers we're using.</p>
+</li>
+<li>
+<p><code>remaining_hours -= v</code> - We subtract the Fibonacci value from our remaining hours.</p>
+</li>
+<li>
+<p><code>idx -= 1</code> - We move to the next position in our tracking list, regardless of whether we used the current Fibonacci number.</p>
+</li>
+</ol>
+<p>In simple terms, this algorithm is like making change with coins, but using Fibonacci numbers instead of coins. It starts with the largest Fibonacci value and works down to the smallest, trying to represent the hours using as few Fibonacci numbers as possible.</p>
+<p>Looking at the other files you've provided, this appears to be part of a Fibonacci clock, where time is represented using Fibonacci squares on a display of LED lights.</p>
 <h2 id="full-main-program">Full Main Program</h2>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>
 </code></pre></div></td></tr></table></div>

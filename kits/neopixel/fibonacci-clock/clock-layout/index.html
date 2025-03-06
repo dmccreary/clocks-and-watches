@@ -936,6 +936,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Clock Layout
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -945,6 +956,34 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sample-python-test-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sample Python Test Code
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -2020,6 +2059,23 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sample-python-test-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sample Python Test Code
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2055,7 +2111,106 @@
 <li>To the right of the 2-square, stack the two 1-squares (0.75" each)</li>
 </ul>
 <p>This arrangement will give you a rectangle that's exactly 6 inches wide (3.75" + 2.25") and 3.75 inches tall, making efficient use of our 6-inch wide display while maintaining the Fibonacci sequence relationship between the squares.</p>
-<p><img alt="" src="../fib-clock-wiring-front.jpg" /></p>
+<p>Here is a photograph of the wiring of our clock using <a href="../../../../glossary/#neopixel">NeoPixels</a>.
+<img alt="" src="../fib-clock-wiring-front.jpg" /></p>
+<p>Here are a few notes on our NeoPixel layout.</p>
+<ol>
+<li>We are using NeoPixels that come in strips.  We used the double-sided tape on the back of the LED strips to adhere the strips to a six-inch wide board that was 1/4 inch think plywood.</li>
+<li>There are 60 pixels per meter so the spacing between each NeoPixel is 1/60th of a meter or 0.656 inches per pixel</li>
+<li>This spacing is about right for a single pixel for the one cells, 2x2 or 4 pixels for the two cell, 3x3 or 9 pixels for the three cell and 5x5 or pixels for the five cell.</li>
+<li>Note that we actually use 6 columns in the image, but that was more due to an error on my part.</li>
+<li>We used the back end of the LED strip that had both the 5V and GND wires presoldered onto the strip.</li>
+<li>We used 22 gauge solid wire to hook up the data pins.  The data pin comes in at the upper left corner and then we use the yellow wire from the upper right corner to go to the second row.  The right end of the second row goes to the input of the third row.  We repeat this for the third and forth rows for the data wire.</li>
+<li>For the power and ground, we just soldered short red and black wires between the rows so that each strip had power and ground connections.  We used short 1-inch wires and bent the ends so they would align with the copper pads on the LED strips.</li>
+<li>We carefully tested the power and ground connections with a ohm-meter to make sure all the connections were working.</li>
+<li>We used a simple MicroPython test program to verify that each color of each pixel was working correctly.</li>
+</ol>
+<h2 id="sample-python-test-code">Sample Python Test Code</h2>
+<p>Below is a test program in MicroPython that makes sure that all the NeoPixels are connected correctly and that we have the index numbers of each NeoPixel in a list for each cell.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="o">//</span> <span class="n">Fibonacci</span> <span class="n">Pixel</span> <span class="n">Test</span>
+<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">from</span> <span class="nn">neopixel</span> <span class="kn">import</span> <span class="n">NeoPixel</span>
+<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span><span class="p">,</span> <span class="n">ticks_ms</span>
+
+<span class="n">NEOPIXEL_PIN</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">NUMBER_PIXELS</span> <span class="o">=</span> <span class="mi">45</span>
+<span class="n">RAINBOW_LENGTH</span> <span class="o">=</span> <span class="mi">7</span>
+
+<span class="n">strip</span> <span class="o">=</span> <span class="n">NeoPixel</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">NEOPIXEL_PIN</span><span class="p">),</span> <span class="n">NUMBER_PIXELS</span><span class="p">)</span>
+
+<span class="c1">## our matrix is five rows by 9 columns</span>
+<span class="c1">## rows 1 to five columns 4 to 9</span>
+<span class="n">five</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">21</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">24</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">26</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">33</span><span class="p">,</span><span class="mi">34</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">39</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">41</span><span class="p">,</span><span class="mi">42</span><span class="p">,</span><span class="mi">43</span><span class="p">,</span><span class="mi">44</span><span class="p">]</span>   
+<span class="n">three</span> <span class="o">=</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">29</span><span class="p">,</span><span class="mi">36</span><span class="p">,</span><span class="mi">37</span><span class="p">,</span><span class="mi">38</span><span class="p">]</span>
+<span class="n">two</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">]</span> 
+<span class="n">oneA</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">oneB</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">]</span>
+
+<span class="n">lists</span> <span class="o">=</span> <span class="p">[</span><span class="n">oneA</span><span class="p">,</span> <span class="n">oneB</span><span class="p">,</span> <span class="n">two</span><span class="p">,</span> <span class="n">three</span><span class="p">,</span> <span class="n">five</span><span class="p">]</span>
+
+<span class="c1"># make the five cell red</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">five</span><span class="p">:</span>
+   <span class="n">strip</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># make the three cell green</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">three</span><span class="p">:</span>
+   <span class="n">strip</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># make the two cell blue</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">two</span><span class="p">:</span>
+   <span class="n">strip</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">25</span><span class="p">)</span>
+
+<span class="c1"># make the one A cell yellow</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">oneA</span><span class="p">:</span>
+   <span class="n">strip</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># make the one B cell purple</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">oneB</span><span class="p">:</span>
+   <span class="n">strip</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">25</span><span class="p">)</span>
+
+<span class="n">strip</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
 
 
 
