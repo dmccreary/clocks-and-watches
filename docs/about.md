@@ -3,7 +3,7 @@
 ![](./img/timekeeping-art-computational-thinking.png)
 
 Innovation often occurs at the seams of specialties.  This book fits
-at the intersection of timekeeping, art and teaching computational thinking.
+at the intersection of timekeeping, art, and teaching computational thinking.
 
 This book can serve as a hands-on guide to introducing students to the fun
 world of building your own customized clocks and watches with low-cost parts and some
@@ -26,13 +26,13 @@ Reference the following points:
 7. The focus on user experience
 -->
 
-My STEM students often hold a special facination with timekeeping.
+My STEM students often hold a special fascination with timekeeping.
 I don't know exactly what it is that gets them so excited about
 these projects.  But the bottom line is they quickly become
 motivated to learn Python to create their own timekeeping
 devices that are customized to their interests.  Owning their
 own devices and showing off these
-projects to their friends is also a big plus.
+projects to their friends and family is also a big plus.
 
 At the core of
  [Project Based Learning (PBL)](https://en.wikipedia.org/wiki/Project-based_learning)

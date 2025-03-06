@@ -3,7 +3,7 @@
 ![](fib-clock.png)
 
 What is the minimum number of colored LED necessary to tell the time?
-The Fibonacci Clock is a unique timepiece that uses just five colored squares of different sizes to tell time. Here's how it works.
+The Fibonacci Clock is a unique timepiece that uses just five colored squares of different sizes to tell time within 2.5 minutes. Here's how it works.
 
 ## Clock Layout
 
@@ -19,7 +19,7 @@ Reading the time requires you to do some quick mental calculations.
 - **Colors indicate function**:
     - **Red squares** represent hours
     - **Green squares** represent minutes
-    - **Blue squares** represent both hours and minutes
+    - **Blue squares** represent **both** hours and minutes
     - **Black squares** are inactive (not used for the current time)
 - **To read the hours**: Add the values of all red and blue squares
     -  Example: If the 5-square is red and the 3-square is blue, the hour is 8
@@ -29,8 +29,8 @@ Reading the time requires you to do some quick mental calculations.
 ## Some Limitations
 
 - Hours are displayed in 12-hour format (1-12)
-- Minutes are displayed in 5-minute increments (0, 5, 10, 15, etc.).  We actually round the actual minute to the closest value so the number you calculate is within 2.5 minutes of the actual time.
-- The clock can only display certain minute values due to the limited combinations possible with the five Fibonacci squares.
+- Minutes are displayed in 5-minute increments (0, 5, 10, 15, etc.).  
+- The clock can only display certain minute values due to the limited combinations possible with the five Fibonacci squares.  We actually round the actual minute to the closest 5-minute value so the number see on the display is always within 2.5 minutes of the actual time.  For most particle household clocks this a good compromise.
 
 This clever design creates a visually interesting timepiece that requires a bit of mental arithmetic to read, making it both decorative and intellectually engaging.
 

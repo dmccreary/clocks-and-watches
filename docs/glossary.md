@@ -571,6 +571,14 @@ Methods for measuring and tracking power consumption in battery-operated devices
 
 **Example:** Logging battery voltage and current draw to optimize device lifetime.
 
+#### Project-Based Learning
+
+A teaching methodology in which students actively engage in exploring real-world problems and challenges through extended inquiry, collaboration, and the creation of tangible products or presentations. 
+
+Project-Based Learning (PBL) emphasizes student-centered learning, critical thinking, and application of knowledge in authentic contexts.  We focus on what topics are most interesting to students and what they are curious about.  By doing PBL students also learn soft-skills needed to work in teams.
+
+**Example:** A high school coding class implements project-based learning by having students design and build a wall clock that adjusts the time using WiFi.  They do this by applying principles of microcontrollers, displays and wireless. Students research, prototype, test, and refine their designs before presenting their findings to the class.
+
 #### Pull-up Resistor
 An electronic component that ensures a consistent voltage level on input pins when buttons or switches are not pressed.
 
