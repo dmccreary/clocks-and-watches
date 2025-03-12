@@ -1,0 +1,10 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+
+# MicroPython Import Rules
+
+- use "from utime import sleep" when using the sleep method
+- use "from machine import Pin" when using the Pin methods

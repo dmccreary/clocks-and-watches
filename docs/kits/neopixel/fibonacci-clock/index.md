@@ -42,3 +42,6 @@ It will take you a bit of time to get used to doing the math.  After a while is 
 
 [Generative AI Prompt](./prompt.md)
 
+## References
+
+[Fibonacci Clock Explorer MicroSim](https://editor.p5js.org/dmccreary/sketches/m7-FcCw2p)
