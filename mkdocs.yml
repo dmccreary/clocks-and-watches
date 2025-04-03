@@ -178,6 +178,8 @@ nav:
     - Alarm Clock:
       - Intro: kits/alarm-clock/index.md
       - Alarm Icon: kits/alarm-clock/display-alarm-icon.md
+    - TM1650 Clock: kits/tm1650-led-clock/index.md
+
   - MicroSims:
     - List of MicroSims: sims/index.md
     - Binary Number: sims/binary-number/index.md
