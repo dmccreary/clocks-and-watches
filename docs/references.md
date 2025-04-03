@@ -31,6 +31,8 @@ way to try out different designs.  This web app allows you to change the format 
 
 * [Single Digit Clock with 7 Servos](https://www.instructables.com/Single-Digit-Clock/)
 
+* [Electronic Clock for Raspberry Pi Pico, Accurate RTC, Multi Functions, LED Digits](https://www.waveshare.com/pico-clock-green.htm)
+
 ## Data Sheets
 
 ### Battery Management
