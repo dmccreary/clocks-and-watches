@@ -2247,7 +2247,7 @@
 
 
 <h1 id="tm1637-micropython-clock-program-code-walkthrough">TM1637 MicroPython Clock Program - Code Walkthrough</h1>
-<p>I'll create a detailed step-by-step walkthrough of the <code>main.py</code> file (document 7) which implements a digital clock using a DS3231 real-time clock module and a TM1637 LED display. This walkthrough is designed for high school students who are just learning Python.</p>
+<p>In this section we do a detailed step-by-step walkthrough of the <code>main.py</code> file which implements a digital clock using a DS3231 real-time clock module and a TM1637 LED display. This walkthrough is designed for high school students who are just learning Python.</p>
 <h2 id="introduction">Introduction</h2>
 <p>This program creates a digital clock with a 4-digit 7-segment LED display connected to a Raspberry Pi Pico microcontroller. The clock gets accurate time from a DS3231 real-time clock (RTC) module and also allows you to set the time using buttons.</p>
 <h2 id="program-structure-overview">Program Structure Overview</h2>
@@ -2545,9 +2545,11 @@
 <ul>
 <li>Implements debouncing like the mode button</li>
 <li>Gets the current date and time from the RTC</li>
-<li>Performs different actions based on the current mode:</li>
+<li>Performs different actions based on the current mode:<ul>
 <li>In mode 1: Increments the hour</li>
 <li>In mode 2: Increments the minute</li>
+</ul>
+</li>
 <li>In mode 3: Toggles between AM and PM</li>
 <li>Updates the RTC with the new time</li>
 <li>Refreshes global variables with the updated time</li>
@@ -2750,11 +2752,13 @@
 <li>Gets the current time from the RTC</li>
 <li>Prints the time only when the second changes (to avoid flooding the console)</li>
 <li>Converts 24-hour format to 12-hour format for display</li>
-<li>Updates the display based on the current mode:</li>
+<li>Updates the display based on the current mode:<ul>
 <li>Run mode: Normal clock display</li>
 <li>Set hour mode: Display with flashing hours</li>
 <li>Set minute mode: Display with flashing minutes</li>
 <li>Set AM/PM mode: Display with flashing PM indicator</li>
+</ul>
+</li>
 <li>Sleeps briefly to save power and maintain responsiveness</li>
 </ol>
 <h2 id="key-programming-concepts-demonstrated">Key Programming Concepts Demonstrated</h2>
