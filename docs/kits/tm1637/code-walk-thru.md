@@ -1,6 +1,6 @@
 # TM1637 MicroPython Clock Program - Code Walkthrough
 
-I'll create a detailed step-by-step walkthrough of the `main.py` file (document 7) which implements a digital clock using a DS3231 real-time clock module and a TM1637 LED display. This walkthrough is designed for high school students who are just learning Python.
+In this section we do a detailed step-by-step walkthrough of the `main.py` file which implements a digital clock using a DS3231 real-time clock module and a TM1637 LED display. This walkthrough is designed for high school students who are just learning Python.
 
 ## Introduction
 
@@ -227,9 +227,9 @@ This function:
 - Implements debouncing like the mode button
 - Gets the current date and time from the RTC
 - Performs different actions based on the current mode:
-  - In mode 1: Increments the hour
-  - In mode 2: Increments the minute
-  - In mode 3: Toggles between AM and PM
+    - In mode 1: Increments the hour
+    - In mode 2: Increments the minute
+- In mode 3: Toggles between AM and PM
 - Updates the RTC with the new time
 - Refreshes global variables with the updated time
 - Prints the new formatted time
@@ -357,10 +357,10 @@ This is the main program loop that:
 4. Prints the time only when the second changes (to avoid flooding the console)
 5. Converts 24-hour format to 12-hour format for display
 6. Updates the display based on the current mode:
-   - Run mode: Normal clock display
-   - Set hour mode: Display with flashing hours
-   - Set minute mode: Display with flashing minutes
-   - Set AM/PM mode: Display with flashing PM indicator
+    - Run mode: Normal clock display
+    - Set hour mode: Display with flashing hours
+    - Set minute mode: Display with flashing minutes
+    - Set AM/PM mode: Display with flashing PM indicator
 7. Sleeps briefly to save power and maintain responsiveness
 
 ## Key Programming Concepts Demonstrated

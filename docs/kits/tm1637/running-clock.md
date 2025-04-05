@@ -1,6 +1,6 @@
 # Full Running Clock Using the TM1637
 
-I'll create a detailed example of a running clock using the TM1637 display. This builds on some of the concepts shown in the clock-driver.py file you shared, but simplified for the TM1637.
+In this section we create a detailed example of a running clock using the TM1637 display. This builds on some of the concepts shown in previous clock examples, but simplified for the TM1637.
 
 ```python
 import tm1637
