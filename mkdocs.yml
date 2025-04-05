@@ -74,6 +74,7 @@ nav:
       - Intro: kits/tm1637/index.md
       - Manually Setting Time: kits/tm1637/manual-time-setting.md
       - Running the Clock: kits/tm1637/running-clock.md
+      - Code Walkthrough: kits/tm1637/code-walk-thru.md
     - LED Displays: 
       - Intro: kits/led-displays/index.md
       - Simple TM1637 Display: kits/led-displays/clock-simple.md
