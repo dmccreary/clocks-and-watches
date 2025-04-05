@@ -131,10 +131,9 @@ def handle_previous(pin):
             
         last_prev_press = current_time
 
-def numbers_nlz(num1, num2, colon_state=True, flash_state=False, flash_mode=None):
+def numbers_nlz(num1, num2, colon=True, flash_state=False, flash_mode=None):
     """Display two numeric values with flashing capability
-    flash_mode can be 'hour', 'minute', or None
-    colon_state controls the colon (True=on, False=off)"""
+    flash_mode can be 'hour', 'minute', or None"""
     num1 = max(-9, min(num1, 99))
     num2 = max(-9, min(num2, 99))
     prefix = ' ' if num1 < 10 else ''
@@ -149,7 +148,7 @@ def numbers_nlz(num1, num2, colon_state=True, flash_state=False, flash_mode=None
         # Normal running display
         segments = tm.encode_string(f'{prefix}{num1:d}{num2:0>2d}')
     
-    if colon_state:
+    if colon and (not flash_state or flash_mode != 'colon'):
         segments[1] |= 0x80  # colon on
     tm.write(segments)
 
@@ -167,13 +166,10 @@ last_second = -1  # Use -1 to force initial display update
 while True:
     current_time = ticks_ms()
     
-    # Update flash state every FLASH_INTERVAL_MS for UI flashing
+    # Update flash state every FLASH_INTERVAL_MS
     flash_state = (ticks_diff(current_time, last_flash) // FLASH_INTERVAL_MS) % 2
     if ticks_diff(current_time, last_flash) >= FLASH_INTERVAL_MS:
         last_flash = current_time
-        
-    # Colon state matches the second (on for even seconds, off for odd seconds)
-    colon_state = second % 2 == 0
     
     # Get current time from DS3231 RTC
     dt = rtc.datetime()
@@ -190,17 +186,17 @@ while True:
     set_pm()  # Update AM/PM status based on hour
     
     if mode == 0:  # Run mode
-        # Normal clock display with colon controlled by seconds
-        numbers_nlz(display_hour, minute, colon_state, flash_state)
+        # Normal clock display with flashing colon
+        numbers_nlz(display_hour, minute, True, flash_state)
         pm_pin.value(1 if is_pm else 0)
     elif mode == 1:  # Set hour mode
-        numbers_nlz(display_hour, minute, colon_state, flash_state, 'hour')
+        numbers_nlz(display_hour, minute, True, flash_state, 'hour')
         pm_pin.value(1 if is_pm else 0)
     elif mode == 2:  # Set minute mode
-        numbers_nlz(display_hour, minute, colon_state, flash_state, 'minute')
+        numbers_nlz(display_hour, minute, True, flash_state, 'minute')
         pm_pin.value(1 if is_pm else 0)
     elif mode == 3:  # Set AM/PM mode
-        numbers_nlz(display_hour, minute, colon_state)
+        numbers_nlz(display_hour, minute, True)
         # Flash the PM LED
         pm_pin.value(0 if flash_state else (1 if is_pm else 0))
     
