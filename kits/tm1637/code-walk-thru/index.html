@@ -2303,12 +2303,14 @@
 <span class="n">next_pin</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">NEXT_PIN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">PULL_UP</span><span class="p">)</span>
 <span class="n">previous_pin</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">PREV_PIN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">PULL_UP</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p>This section:
-- Sets up I2C communication with the RTC
-- Initializes the TM1637 LED display
-- Configures GPIO pins for:
-  - PM LED indicator (output)
-  - Three buttons with internal pull-up resistors (input)</p>
+<p>This section:</p>
+<ul>
+<li>Sets up I2C communication with the RTC</li>
+<li>Initializes the TM1637 LED display</li>
+<li>Configures GPIO pins for:</li>
+<li>PM LED indicator (output)</li>
+<li>Three buttons with internal pull-up resistors (input)</li>
+</ul>
 <h2 id="step-3-setting-up-global-variables">Step 3: Setting Up Global Variables</h2>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -2350,12 +2352,14 @@
 <span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="n">weekday</span><span class="p">,</span> <span class="n">hour</span><span class="p">,</span> <span class="n">minute</span><span class="p">,</span> <span class="n">second</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">dt</span>
 <span class="n">is_pm</span> <span class="o">=</span> <span class="n">hour</span> <span class="o">&gt;=</span> <span class="mi">12</span>
 </code></pre></div></td></tr></table></div>
-<p>This code:
-- Defines the different modes for the clock (running, setting hours, etc.)
-- Sets up variables for button debouncing (preventing multiple triggers from one press)
-- Configures display flashing variables
-- Gets the initial time from the RTC and unpacks the values
-- Determines if it's AM or PM based on the hour</p>
+<p>This code:</p>
+<ul>
+<li>Defines the different modes for the clock (running, setting hours, etc.)</li>
+<li>Sets up variables for button debouncing (preventing multiple triggers from one press)</li>
+<li>Configures display flashing variables</li>
+<li>Gets the initial time from the RTC and unpacks the values</li>
+<li>Determines if it's AM or PM based on the hour</li>
+</ul>
 <h2 id="step-4-helper-functions">Step 4: Helper Functions</h2>
 <h3 id="41-formatting-time-for-display">4.1: Formatting Time for Display</h3>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -2366,9 +2370,11 @@
     <span class="n">display_hour</span> <span class="o">=</span> <span class="p">((</span><span class="n">hour</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">12</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">display_hour</span><span class="si">:</span><span class="s2">d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">minute</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">second</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;PM&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">is_pm</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;AM&#39;</span><span class="si">}</span><span class="s2">&quot;</span>
 </code></pre></div></td></tr></table></div>
-<p>This function:
-- Converts 24-hour format to 12-hour format
-- Creates a formatted time string (e.g., "3:45:30 PM")</p>
+<p>This function:</p>
+<ul>
+<li>Converts 24-hour format to 12-hour format</li>
+<li>Creates a formatted time string (e.g., "3:45:30 PM")</li>
+</ul>
 <h3 id="42-setting-the-pm-indicator">4.2: Setting the PM Indicator</h3>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -2378,9 +2384,11 @@
     <span class="n">is_pm</span> <span class="o">=</span> <span class="n">hour</span> <span class="o">&gt;=</span> <span class="mi">12</span>
     <span class="n">pm_pin</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span> <span class="k">if</span> <span class="n">is_pm</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p>This function:
-- Updates the <code>is_pm</code> flag based on the current hour
-- Sets the PM indicator LED on or off accordingly</p>
+<p>This function:</p>
+<ul>
+<li>Updates the <code>is_pm</code> flag based on the current hour</li>
+<li>Sets the PM indicator LED on or off accordingly</li>
+</ul>
 <h3 id="43-display-function">4.3: Display Function</h3>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -2424,16 +2432,18 @@
         <span class="n">segments</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">|=</span> <span class="mh">0x80</span>  <span class="c1"># colon on</span>
     <span class="n">tm</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">segments</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p>This function:
-- Takes hour and minute values to display
-- Limits numbers to valid range (-9 to 99)
-- Adds a leading space for single-digit hours
-- Handles different display modes:
-  - Normal display
-  - Flashing hours (when setting hours)
-  - Flashing minutes (when setting minutes)
-- Controls the colon between hours and minutes
-- Writes the encoded segments to the display</p>
+<p>This function:</p>
+<ul>
+<li>Takes hour and minute values to display</li>
+<li>Limits numbers to valid range (-9 to 99)</li>
+<li>Adds a leading space for single-digit hours</li>
+<li>Handles different display modes:</li>
+<li>Normal display</li>
+<li>Flashing hours (when setting hours)</li>
+<li>Flashing minutes (when setting minutes)</li>
+<li>Controls the colon between hours and minutes</li>
+<li>Writes the encoded segments to the display</li>
+</ul>
 <h2 id="step-5-button-handler-functions">Step 5: Button Handler Functions</h2>
 <h3 id="51-mode-button-handler">5.1: Mode Button Handler</h3>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -2450,12 +2460,14 @@
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mode: </span><span class="si">{</span><span class="n">mode_names</span><span class="p">[</span><span class="n">mode</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="n">last_mode_press</span> <span class="o">=</span> <span class="n">current_time</span>
 </code></pre></div></td></tr></table></div>
-<p>This function:
-- Gets the current time in milliseconds
-- Checks if enough time has passed since the last button press (debouncing)
-- Cycles through the available modes
-- Updates the mode and prints the new mode name
-- Records the time of this button press</p>
+<p>This function:</p>
+<ul>
+<li>Gets the current time in milliseconds</li>
+<li>Checks if enough time has passed since the last button press (debouncing)</li>
+<li>Cycles through the available modes</li>
+<li>Updates the mode and prints the new mode name</li>
+<li>Records the time of this button press</li>
+</ul>
 <h3 id="52-next-button-handler">5.2: Next Button Handler</h3>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -2529,17 +2541,19 @@
 
         <span class="n">last_next_press</span> <span class="o">=</span> <span class="n">current_time</span>
 </code></pre></div></td></tr></table></div>
-<p>This function:
-- Implements debouncing like the mode button
-- Gets the current date and time from the RTC
-- Performs different actions based on the current mode:
-  - In mode 1: Increments the hour
-  - In mode 2: Increments the minute
-  - In mode 3: Toggles between AM and PM
-- Updates the RTC with the new time
-- Refreshes global variables with the updated time
-- Prints the new formatted time
-- Records the time of this button press</p>
+<p>This function:</p>
+<ul>
+<li>Implements debouncing like the mode button</li>
+<li>Gets the current date and time from the RTC</li>
+<li>Performs different actions based on the current mode:</li>
+<li>In mode 1: Increments the hour</li>
+<li>In mode 2: Increments the minute</li>
+<li>In mode 3: Toggles between AM and PM</li>
+<li>Updates the RTC with the new time</li>
+<li>Refreshes global variables with the updated time</li>
+<li>Prints the new formatted time</li>
+<li>Records the time of this button press</li>
+</ul>
 <h3 id="53-previous-button-handler">5.3: Previous Button Handler</h3>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -2613,10 +2627,12 @@
 
         <span class="n">last_prev_press</span> <span class="o">=</span> <span class="n">current_time</span>
 </code></pre></div></td></tr></table></div>
-<p>This function is similar to the "next" button handler but:
-- Decrements the hour in mode 1
-- Decrements the minute in mode 2
-- Toggles AM/PM (same as the next handler) in mode 3</p>
+<p>This function is similar to the "next" button handler but:</p>
+<ul>
+<li>Decrements the hour in mode 1</li>
+<li>Decrements the minute in mode 2</li>
+<li>Toggles AM/PM (same as the next handler) in mode 3</li>
+</ul>
 <h2 id="step-6-setting-up-button-interrupts">Step 6: Setting Up Button Interrupts</h2>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -2626,10 +2642,12 @@
 <span class="n">next_pin</span><span class="o">.</span><span class="n">irq</span><span class="p">(</span><span class="n">trigger</span><span class="o">=</span><span class="n">Pin</span><span class="o">.</span><span class="n">IRQ_FALLING</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="n">handle_next</span><span class="p">)</span>
 <span class="n">previous_pin</span><span class="o">.</span><span class="n">irq</span><span class="p">(</span><span class="n">trigger</span><span class="o">=</span><span class="n">Pin</span><span class="o">.</span><span class="n">IRQ_FALLING</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="n">handle_previous</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p>This code:
-- Configures each button to trigger an interrupt when pressed (falling edge)
-- Associates each button with its respective handler function
-- These are "interrupt service routines" that run whenever a button is pressed</p>
+<p>This code:</p>
+<ul>
+<li>Configures each button to trigger an interrupt when pressed (falling edge)</li>
+<li>Associates each button with its respective handler function</li>
+<li>These are "interrupt service routines" that run whenever a button is pressed</li>
+</ul>
 <h2 id="step-7-main-loop">Step 7: Main Loop</h2>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -2725,18 +2743,20 @@
 
     <span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>  <span class="c1"># Short sleep for responsive UI</span>
 </code></pre></div></td></tr></table></div>
-<p>This is the main program loop that:
-1. Updates the flash state for UI elements that blink
-2. Determines if the colon should be on or off based on even/odd seconds
-3. Gets the current time from the RTC
-4. Prints the time only when the second changes (to avoid flooding the console)
-5. Converts 24-hour format to 12-hour format for display
-6. Updates the display based on the current mode:
-   - Run mode: Normal clock display
-   - Set hour mode: Display with flashing hours
-   - Set minute mode: Display with flashing minutes
-   - Set AM/PM mode: Display with flashing PM indicator
-7. Sleeps briefly to save power and maintain responsiveness</p>
+<p>This is the main program loop that:</p>
+<ol>
+<li>Updates the flash state for UI elements that blink</li>
+<li>Determines if the colon should be on or off based on even/odd seconds</li>
+<li>Gets the current time from the RTC</li>
+<li>Prints the time only when the second changes (to avoid flooding the console)</li>
+<li>Converts 24-hour format to 12-hour format for display</li>
+<li>Updates the display based on the current mode:</li>
+<li>Run mode: Normal clock display</li>
+<li>Set hour mode: Display with flashing hours</li>
+<li>Set minute mode: Display with flashing minutes</li>
+<li>Set AM/PM mode: Display with flashing PM indicator</li>
+<li>Sleeps briefly to save power and maintain responsiveness</li>
+</ol>
 <h2 id="key-programming-concepts-demonstrated">Key Programming Concepts Demonstrated</h2>
 <ol>
 <li><strong>Object-Oriented Programming</strong>: Uses objects for hardware components (I2C, RTC, display)</li>
