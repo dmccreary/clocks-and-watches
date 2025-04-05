@@ -51,6 +51,7 @@ previous_pin = Pin(config.PREV_PIN, Pin.IN, Pin.PULL_UP)
 ```
 
 This section:
+
 - Sets up I2C communication with the RTC
 - Initializes the TM1637 LED display
 - Configures GPIO pins for:
@@ -83,6 +84,7 @@ is_pm = hour >= 12
 ```
 
 This code:
+
 - Defines the different modes for the clock (running, setting hours, etc.)
 - Sets up variables for button debouncing (preventing multiple triggers from one press)
 - Configures display flashing variables
@@ -101,6 +103,7 @@ def format_time():
 ```
 
 This function:
+
 - Converts 24-hour format to 12-hour format
 - Creates a formatted time string (e.g., "3:45:30 PM")
 
@@ -114,6 +117,7 @@ def set_pm():
 ```
 
 This function:
+
 - Updates the `is_pm` flag based on the current hour
 - Sets the PM indicator LED on or off accordingly
 
@@ -144,6 +148,7 @@ def numbers_nlz(num1, num2, colon_state=True, flash_state=False, flash_mode=None
 ```
 
 This function:
+
 - Takes hour and minute values to display
 - Limits numbers to valid range (-9 to 99)
 - Adds a leading space for single-digit hours
@@ -169,6 +174,7 @@ def handle_mode(pin):
 ```
 
 This function:
+
 - Gets the current time in milliseconds
 - Checks if enough time has passed since the last button press (debouncing)
 - Cycles through the available modes
@@ -217,6 +223,7 @@ def handle_next(pin):
 ```
 
 This function:
+
 - Implements debouncing like the mode button
 - Gets the current date and time from the RTC
 - Performs different actions based on the current mode:
@@ -270,6 +277,7 @@ def handle_previous(pin):
 ```
 
 This function is similar to the "next" button handler but:
+
 - Decrements the hour in mode 1
 - Decrements the minute in mode 2
 - Toggles AM/PM (same as the next handler) in mode 3
@@ -284,6 +292,7 @@ previous_pin.irq(trigger=Pin.IRQ_FALLING, handler=handle_previous)
 ```
 
 This code:
+
 - Configures each button to trigger an interrupt when pressed (falling edge)
 - Associates each button with its respective handler function
 - These are "interrupt service routines" that run whenever a button is pressed
@@ -341,6 +350,7 @@ while True:
 ```
 
 This is the main program loop that:
+
 1. Updates the flash state for UI elements that blink
 2. Determines if the colon should be on or off based on even/odd seconds
 3. Gets the current time from the RTC
