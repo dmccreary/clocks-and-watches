@@ -1,12 +1,12 @@
-# Rapsberry Pi Pico W Clock Hardware Configuration file.
+# Raspberry Pi Pico W Clock Hardware Configuration file.
 
 # SPI Display Bus and Pins
 SPI_BUS = 0
 SPI_SCL_PIN = 2 # Clock
 SPI_SDA_PIN = 3 # labeled SDI(MOSI) on the back of the display
 SPI_RESET_PIN = 4 # Reset
-SPI_DC_PIN = 6 # Data/command
-SPI_CS_PIN = 5 # Chip Select
+SPI_DC_PIN = 5 # Data/command
+SPI_CS_PIN = 6 # Chip Select
 
 # OLED Screen Dimensions
 DISPLAY_WIDTH=128
