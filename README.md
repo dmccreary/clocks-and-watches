@@ -3,23 +3,22 @@
 [![Website](https://img.shields.io/website?url=https%3A%2F%2Fdmccreary.github.io%2Fclocks-and-watches)](https://dmccreary.github.io/clocks-and-watches)
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
-A comprehensive educational resource for designing and building clocks and watches using MicroPython, AI, and low-cost components. This project combines hands-on electronics with computational thinking principles.
+A comprehensive educational resource for designing and building clocks and watches using MicroPython, AI, and low-cost components. This project combines low-cost hands-on electronics to make teaching computational thinking principles fun!
 
 ## 🌟 Features
 
+- **Comprehensive Tutorials**: Step-by-step guides from basic setup to advanced projects including basic setup for students with no prior Python coding experience
 - **Multiple Clock Kits**: 15+ different clock implementations including OLED, LED, NeoPixel, and e-paper displays
-- **MicroPython Code**: Well-documented examples for various microcontroller platforms
+- **MicroPython Code**: Well-documented examples for various clock and watch platforms
 - **AI Integration**: Use generative AI prompts to create custom clock designs
 - **Interactive Simulations**: Browser-based microsimulations for learning concepts
-- **Comprehensive Tutorials**: Step-by-step guides from basic setup to advanced projects
 
 ## 🚀 Getting Started
 
-### Prerequisites
+### Suggested Setup
 
-- Raspberry Pi Pico W or compatible microcontroller
-- MicroPython firmware
-- Basic electronic components (displays, sensors, breadboards)
+- Raspberry Pi Pico/Pico W or compatible microcontroller
+- Basic electronic components (displays, real-time clocks, breadboards)
 - [Thonny IDE](https://thonny.org/) for development
 
 ### Quick Start
@@ -41,11 +40,17 @@ A comprehensive educational resource for designing and building clocks and watch
 
 ## 🎯 Project Structure
 
+Here are some of the main folders in the site:
+
 ```
 ├── docs/          # Documentation source files
+├── docs/
+│   ├── setup/     # Get your environment setup
+│   ├── lessons/   # Tutorial code examples
+│   ├── prompts/   # Sample prompts to generate code
+│   ├── sims/      # MicroSimulators of clock and watch components
 ├── src/           # MicroPython source code
 │   ├── kits/      # Individual clock project implementations
-│   ├── lessons/   # Tutorial code examples
 │   └── lib/       # Shared libraries and utilities
 ├── slides/        # Presentation materials
 └── fonts/         # Custom fonts for displays
