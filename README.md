@@ -81,7 +81,7 @@ We welcome contributions! Please see our [contribution guidelines](CONTRIBUTING.
 
 - **Documentation**: [https://dmccreary.github.io/clocks-and-watches](https://dmccreary.github.io/clocks-and-watches)
 - **MicroPython**: [micropython.org](https://micropython.org/)
-- **Raspberry Pi Pico**: [raspberrypi.org](https://www.raspberrypi.org/products/raspberry-pi-pico/)
+- **Raspberry Pi Pico**: [https://www.raspberrypi.org/products/raspberry-pi-pico/](https://www.raspberrypi.org/products/raspberry-pi-pico/)
 
 ## 📄 License
 
