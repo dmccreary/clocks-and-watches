@@ -21,7 +21,7 @@
 
 I'll help you write a MicroPython program to test the I2S DAC module with your Pico. We'll create a simple test that generates a sine wave tone to verify the setup is working correctly.
 
-[I2S DAC Test Program](01-test-connections.py)
+[I2S DAC Test Program](test-connections.py)
 
 
 This program provides a basic test of your I2S DAC setup. Here's how it works:
