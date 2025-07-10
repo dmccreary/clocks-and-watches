@@ -91,7 +91,7 @@ This project is licensed under the [Creative Commons Attribution-NonCommercial-S
 
 **Dan McCreary** - *Educational Technology Consultant*
 
-- Website: [dan.mcreary.org](https://dan.mcreary.org)
+- Website: [dmccreary.github.io/dmccreary](https://dmccreary.github.io/dmccreary/)
 - GitHub: [@dmccreary](https://github.com/dmccreary)
 
 ## 🙏 Acknowledgments
