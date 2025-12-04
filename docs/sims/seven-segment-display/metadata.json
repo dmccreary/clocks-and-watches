@@ -1,0 +1,35 @@
+{
+  "title": "Seven-Segment Display",
+  "description": "Interactive p5.js simulation demonstrating how seven-segment displays work, with individual segment control and digit pattern visualization.",
+  "creator": "Dan McCreary",
+  "date": "2024-07-04",
+  "subject": [
+    "Seven-Segment Display",
+    "Digital Display",
+    "Electronics",
+    "LED Display"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "educationalLevel": "Middle School to High School",
+  "learningResourceType": "simulation",
+  "audience": "Students, Educators, Electronics Enthusiasts",
+  "version": "1.0.0",
+  "bloomLevel": [
+    "Remember",
+    "Understand",
+    "Apply"
+  ],
+  "concepts": [
+    "Seven-Segment Display",
+    "Segment Mapping",
+    "Binary Control",
+    "Digital Electronics"
+  ],
+  "prerequisites": [
+    "Understanding of binary on/off states"
+  ],
+  "library": "p5.js"
+}

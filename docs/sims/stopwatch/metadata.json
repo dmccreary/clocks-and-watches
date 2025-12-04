@@ -1,0 +1,34 @@
+{
+  "title": "Stopwatch",
+  "description": "Interactive p5.js stopwatch simulation with start/stop and reset controls, displaying elapsed time in MM:SS.mmm format on an OLED-style display.",
+  "creator": "Dan McCreary",
+  "date": "2024-07-04",
+  "subject": [
+    "Stopwatch",
+    "Time Measurement",
+    "State Machine",
+    "User Interface"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "educationalLevel": "Middle School to High School",
+  "learningResourceType": "simulation",
+  "audience": "Students, Educators",
+  "version": "1.0.0",
+  "bloomLevel": [
+    "Understand",
+    "Apply"
+  ],
+  "concepts": [
+    "Time Measurement",
+    "State Management",
+    "User Interface Design",
+    "Event Handling"
+  ],
+  "prerequisites": [
+    "Basic understanding of time"
+  ],
+  "library": "p5.js"
+}

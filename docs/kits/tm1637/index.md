@@ -9,6 +9,7 @@
 The TM1637 LED digital display is an incredibly popular and cost-effective 4-digit 7-segment display module widely used in hobbyist electronics and educational projects. At around 30 cents per unit when purchased in bulk, it offers exceptional value for clock projects, counters, and basic numeric displays.
 
 Key features:
+
 - 4 digits with decimal points
 - Built-in controller chip that handles multiplexing
 - Simple 2-wire interface (clock and data)

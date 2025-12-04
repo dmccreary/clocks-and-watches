@@ -1,0 +1,38 @@
+{
+  "title": "Battery Drain",
+  "description": "Interactive p5.js simulation demonstrating how battery discharge rates are affected by motor speed, teaching concepts of power consumption and energy management in robotics.",
+  "creator": "Dan McCreary",
+  "date": "2024-07-04",
+  "subject": [
+    "Battery",
+    "Power Consumption",
+    "Electric Motor",
+    "Robotics",
+    "Energy Management"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "educationalLevel": "Elementary to Middle School",
+  "learningResourceType": "simulation",
+  "audience": "Students, Educators, Robotics Enthusiasts",
+  "version": "1.0.0",
+  "bloomLevel": [
+    "Understand",
+    "Apply",
+    "Analyze"
+  ],
+  "concepts": [
+    "Battery Discharge",
+    "Power Consumption",
+    "Electric Circuits",
+    "Motor Speed Control",
+    "Energy Conservation"
+  ],
+  "prerequisites": [
+    "Basic understanding of electricity",
+    "Familiarity with batteries"
+  ],
+  "library": "p5.js"
+}

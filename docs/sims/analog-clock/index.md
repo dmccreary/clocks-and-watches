@@ -1,47 +1,60 @@
+---
+title: Analog Clock
+description: Interactive p5.js analog clock simulation with manual and automatic modes, demonstrating trigonometric functions for hand positioning
+image: /sims/analog-clock/analog-clock.png
+og:image: /sims/analog-clock/analog-clock.png
+quality_score: 75
+---
+
 # Analog Clock
 
-<figure markdown>
-   ![Analog Clock](./analog-clock.png){ width="400" }
-   <figcaption>Analog Clock</figcaption>
-</figure>
+<iframe src="analog-clock.html" width="100%" height="550px" scrolling="no"></iframe>
 
-[Run Analog Clock MicroSim](./analog-clock.html){ .md-button .md-button--primary }
+**Copy this iframe to your website:**
 
-## Prompt
-
-```
-Create a single p5.js sketch file that uses a 400x400 canvas.
-The file is a simulation of an analog clock face.
-The clock face has a black background.
-The clock has white hands for the minute and hour hand.
-The clock as a red second hand.
-There are two modes: manual and automtic
-Manual mode allows the use to manually set the time using three sliders for hours, minute and seconds.
-Automatic mode use the local time to update the display.
-Add labels and values for the sliders.
-Make sure to reenable the controls as we switch back to manual mode.
+```html
+<iframe src="https://dmccreary.github.io/clocks-and-watches/sims/analog-clock/analog-clock.html" width="100%" height="550px" scrolling="no"></iframe>
 ```
 
-## Code
+[Run the Analog Clock MicroSim in fullscreen](analog-clock.html){ .md-button .md-button--primary }
 
-This is a wonderful lab to demonstrate some use of the trigonomic functions sine() and cosine().  We ask the question:
+[Edit in the p5.js Editor](https://editor.p5js.org/dmccreary/sketches/){ .md-button }
 
-*Write some Python code that will take in the seconds as a number
-from 0 to 59 and it will return the x and y positions
-of the tip of the second hand.*
+## Description
+
+This MicroSim simulates an analog clock face with hour, minute, and second hands. It demonstrates the practical application of trigonometric functions (sine and cosine) to calculate hand positions based on time values.
+
+Key features:
+
+- Real-time clock synchronized to local system time
+- Manual mode with sliders to set custom time
+- Automatic mode that displays current time
+- Visual demonstration of polar-to-Cartesian coordinate conversion
+
+### How to Use
+
+1. **Automatic Mode**: Watch the clock display real-time
+2. **Manual Mode**: Use the sliders to set hours (0-11), minutes (0-59), and seconds (0-59)
+3. **Switch Mode Button**: Toggle between automatic and manual modes
+
+## Trigonometry Demonstration
+
+This is a wonderful lab to demonstrate the use of trigonometric functions sine() and cosine(). We ask the question:
+
+*Write some code that will take in the seconds as a number from 0 to 59 and return the x and y positions of the tip of the second hand.*
 
 ```js
 // Draw second hand
 // convert seconds to radians
 secondHand = map(sc, 0, 60, 0, TWO_PI) - HALF_PI;
 // draw a line from the center of the canvas to the endpoint
-line(0, 0, cos(secondHand) * canvasSize / 2.5, 
+line(0, 0, cos(secondHand) * canvasSize / 2.5,
            sin(secondHand) * canvasSize / 2.5);
 ```
 
-## FUll Program Source
+## Full Program Source
 
-```py
+```js
 let canvasSize = 400;
 let hourHand, minuteHand, secondHand;
 let hourSlider, minuteSlider, secondSlider;
@@ -49,10 +62,7 @@ let manualMode = true;
 
 function setup() {
   const canvas = createCanvas(400, 400);
-  // use this line in the web
   canvas.parent('canvas-container');
-  // use this in editor
-  // createCanvas(canvasSize, canvasSize);
   background(0);
 
   // Create sliders for manual mode
@@ -106,22 +116,45 @@ function draw() {
 
 function switchMode() {
   manualMode = !manualMode;
-  
-  // disable the controls
-  if manualMode {
-    hourSlider.attribute('disabled', !manualMode);
-    minuteSlider.attribute('disabled', !manualMode);
-    secondSlider.attribute('disabled', !manualMode);
-  } else {
-    hourSlider.attribute('enabled', !manualMode);
-    minuteSlider.attribute('enabled', !manualMode);
-    secondSlider.attribute('enabled', !manualMode);
-  }
-
+  hourSlider.attribute('disabled', !manualMode);
+  minuteSlider.attribute('disabled', !manualMode);
+  secondSlider.attribute('disabled', !manualMode);
 }
-
 ```
 
 ## Version 2
 
 [Version 2 - Blue clock with tick marks](./v2.html)
+
+## Lesson Plan
+
+### Learning Objectives
+
+After completing this lesson, students will be able to:
+
+- Apply sine and cosine functions to convert polar coordinates to Cartesian coordinates
+- Explain how angles are mapped from time values to radians
+- Modify code parameters to customize clock appearance
+
+### Target Audience
+
+- Grade level: High school (grades 9-12)
+- Prerequisites: Basic trigonometry (understanding of sine, cosine, and radians)
+
+### Activities
+
+1. **Exploration Activity**: Use manual mode to observe how hand positions change with different time values
+2. **Guided Investigation**: Calculate the expected (x, y) position for a given second value and verify with the simulation
+3. **Extension Activity**: Modify the code to add tick marks or change hand colors
+
+### Assessment
+
+- Can students predict the angle of the second hand for a given second value?
+- Can students explain why HALF_PI is subtracted in the angle calculation?
+- Can students modify the code to display a 24-hour clock face?
+
+## References
+
+- [p5.js Reference](https://p5js.org/reference/) - Documentation for the p5.js library
+- [Trigonometry for Games](https://www.mathsisfun.com/sine-cosine-tangent.html) - Math is Fun trigonometry tutorial
+- [Polar Coordinates](https://en.wikipedia.org/wiki/Polar_coordinate_system) - Wikipedia article on polar coordinate systems

@@ -1,0 +1,38 @@
+{
+  "title": "Shift Register",
+  "description": "Interactive p5.js simulation of a 74HC594 shift register demonstrating serial-to-parallel data conversion with clock and latch control signals.",
+  "creator": "Dan McCreary",
+  "date": "2024-07-04",
+  "subject": [
+    "Shift Register",
+    "Digital Electronics",
+    "Serial to Parallel",
+    "74HC594",
+    "Microcontroller I/O"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "educationalLevel": "High School to Undergraduate",
+  "learningResourceType": "simulation",
+  "audience": "Students, Educators, Electronics Enthusiasts",
+  "version": "1.0.0",
+  "bloomLevel": [
+    "Understand",
+    "Apply",
+    "Analyze"
+  ],
+  "concepts": [
+    "Shift Register",
+    "Serial Data Transfer",
+    "Parallel Output",
+    "Clock Signals",
+    "Latch Control"
+  ],
+  "prerequisites": [
+    "Binary Numbers",
+    "Basic Digital Logic"
+  ],
+  "library": "p5.js"
+}

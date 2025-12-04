@@ -1,0 +1,35 @@
+{
+  "title": "Four-Digit Digital Clock",
+  "description": "An interactive p5.js simulation displaying current time using four seven-segment digits with AM/PM indicator. Demonstrates seven-segment display logic and real-time clock functionality.",
+  "creator": "Dan McCreary",
+  "date": "2024-07-04",
+  "subject": [
+    "Digital Clock",
+    "Seven-Segment Display",
+    "Time Display",
+    "p5.js"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "educationalLevel": "Middle School to High School",
+  "learningResourceType": "simulation",
+  "audience": "Students, Educators",
+  "version": "1.0.0",
+  "bloomLevel": [
+    "Understand",
+    "Apply"
+  ],
+  "concepts": [
+    "Seven-Segment Display",
+    "Binary Mapping",
+    "Time Formatting",
+    "12-Hour Clock"
+  ],
+  "prerequisites": [
+    "Basic JavaScript",
+    "Binary Numbers"
+  ],
+  "library": "p5.js"
+}

@@ -14,6 +14,7 @@ very new round displays up to 5 inches.  These would be ideal for robot faces bu
 way to try out different designs.  This web app allows you to change the format of the markers, digits and hands.
 9. [Blocklayer Clock Face](https://www.blocklayer.com/clock-face)
 10. [Mick Make's YouTube Video: Build a talking Alarm Clock synced to Google calendars](ttps://www.youtube.com/watch?v=IoX6t03ULnc) - great example of how to use the Google API to access your personal calendar.
+11. [Tim Hanewich MicroPython SSD1306](https://github.com/TimHanewich/MicroPython-SSD1306)
 
 ## Inspirational Electronic Clocks
 
