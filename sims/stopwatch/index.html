@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking.">
+        <meta name="description" content="Interactive p5.js stopwatch simulation with start/stop and reset controls, displaying time in MM:SS.mmm format">
       
       
         <meta name="author" content="Dan McCreary">
@@ -75,7 +75,7 @@
       
         <meta  property="og:title"  content="Stopwatch - Clocks and Watches with AI" >
       
-        <meta  property="og:description"  content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." >
+        <meta  property="og:description"  content="Interactive p5.js stopwatch simulation with start/stop and reset controls, displaying time in MM:SS.mmm format" >
       
         <meta  property="og:image"  content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/sims/stopwatch/index.png" >
       
@@ -91,7 +91,7 @@
       
         <meta  name="twitter:title"  content="Stopwatch - Clocks and Watches with AI" >
       
-        <meta  name="twitter:description"  content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." >
+        <meta  name="twitter:description"  content="Interactive p5.js stopwatch simulation with start/stop and reset controls, displaying time in MM:SS.mmm format" >
       
         <meta  name="twitter:image"  content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/sims/stopwatch/index.png" >
       
@@ -802,6 +802,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Stopwatch
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -811,6 +822,118 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to Use
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      Related Lab
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#target-audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      Target Audience
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1112,6 +1235,107 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to Use
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      Related Lab
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#target-audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      Target Audience
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1129,11 +1353,63 @@
 
 
 <h1 id="stopwatch-microsim">Stopwatch MicroSim</h1>
-<iframe src="main.html" height="280px" width="370px"></iframe>
+<iframe src="main.html" width="370" height="300" scrolling="no"></iframe>
 
-<p><a class="md-button md-button--primary" href="main.html">Run the Stopwatch MicroSim</a></p>
-<p><a href="https://editor.p5js.org/dmccreary/sketches/8kQCSNdA6">Edit the Stopwatch MicroSim</a></p>
-<p>The Stopwatch MicroSim allows you to simulate the actual stopwatch lab here: <a href="../../kits/stopwatch/">Stopwatch Lab</a></p>
+<p><strong>Copy this iframe to your website:</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://dmccreary.github.io/clocks-and-watches/sims/stopwatch/main.html&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;370&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;300&quot;</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">&quot;no&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
+<p><a class="md-button md-button--primary" href="main.html">Run the Stopwatch MicroSim in fullscreen</a></p>
+<p><a class="md-button" href="https://editor.p5js.org/dmccreary/sketches/8kQCSNdA6">Edit in the p5.js Editor</a></p>
+<h2 id="description">Description</h2>
+<p>This MicroSim simulates a digital stopwatch with start/stop and reset functionality. It displays elapsed time in minutes, seconds, and milliseconds format (MM:SS.mmm), similar to what you would see on a real OLED display.</p>
+<p>Key features:</p>
+<ul>
+<li>OLED-style black display with white text</li>
+<li>Start/Stop toggle button</li>
+<li>Reset button to clear elapsed time</li>
+<li>High-precision millisecond timing</li>
+<li>Debounce protection on button presses</li>
+</ul>
+<h3 id="how-to-use">How to Use</h3>
+<ol>
+<li>Click "Start/Stop" to begin timing</li>
+<li>Click "Start/Stop" again to pause</li>
+<li>Click "Reset" to clear the elapsed time</li>
+<li>The timer continues from where it left off when resumed</li>
+</ol>
+<h2 id="related-lab">Related Lab</h2>
+<p>The Stopwatch MicroSim allows you to simulate the actual stopwatch hardware lab: <a href="../../kits/stopwatch/">Stopwatch Lab</a></p>
+<h2 id="lesson-plan">Lesson Plan</h2>
+<h3 id="learning-objectives">Learning Objectives</h3>
+<p>After completing this lesson, students will be able to:</p>
+<ul>
+<li>Understand state management in user interfaces (running vs. stopped)</li>
+<li>Calculate elapsed time using system timestamps</li>
+<li>Format time values into human-readable strings</li>
+</ul>
+<h3 id="target-audience">Target Audience</h3>
+<ul>
+<li>Grade level: Middle school to high school (grades 6-12)</li>
+<li>Prerequisites: Basic understanding of time measurement</li>
+</ul>
+<h3 id="activities">Activities</h3>
+<ol>
+<li><strong>Exploration Activity</strong>: Use the stopwatch to time various activities and record results</li>
+<li><strong>Guided Investigation</strong>: Compare the accuracy of this digital stopwatch to a physical one</li>
+<li><strong>Extension Activity</strong>: Modify the code to add lap time functionality</li>
+</ol>
+<h3 id="assessment">Assessment</h3>
+<ul>
+<li>Can students explain how elapsed time is calculated?</li>
+<li>Can students describe the difference between running and stopped states?</li>
+<li>Can students suggest improvements to the stopwatch functionality?</li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://p5js.org/reference/">p5.js Reference</a> - Documentation for the p5.js library</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date">JavaScript Date Object</a> - MDN documentation on JavaScript timing</li>
+<li><a href="https://en.wikipedia.org/wiki/Finite-state_machine">State Machine Design</a> - Wikipedia article on finite state machines</li>
+</ul>
 
 
 

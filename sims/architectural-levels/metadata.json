@@ -1,0 +1,40 @@
+{
+  "title": "Architectural Levels Zoom",
+  "description": "Interactive visualization demonstrating progressive zoom levels of clock system architecture, revealing components from high-level overview to detailed internal structure including microcontroller cores and PIO.",
+  "creator": "Dan McCreary",
+  "date": "2024-07-04",
+  "subject": [
+    "System Architecture",
+    "Hardware Components",
+    "Clock Design",
+    "Microcontroller",
+    "Embedded Systems"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "educationalLevel": "High School to Undergraduate",
+  "learningResourceType": "simulation",
+  "audience": "Students, Educators, Hardware Enthusiasts",
+  "version": "1.0.0",
+  "bloomLevel": [
+    "Remember",
+    "Understand",
+    "Analyze"
+  ],
+  "concepts": [
+    "System Architecture",
+    "Component Hierarchy",
+    "SPI Bus",
+    "I2C Bus",
+    "Microcontroller Architecture",
+    "Dual Core Processing",
+    "PIO"
+  ],
+  "prerequisites": [
+    "Basic Electronics",
+    "Understanding of Digital Systems"
+  ],
+  "library": "p5.js"
+}

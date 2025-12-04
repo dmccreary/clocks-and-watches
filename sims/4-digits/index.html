@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking.">
+        <meta name="description" content="An interactive p5.js simulation displaying current time using four seven-segment digits with AM/PM indicator">
       
       
         <meta name="author" content="Dan McCreary">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Four Digit Display - Clocks and Watches with AI</title>
+        <title>Four-Digit Digital Clock - Clocks and Watches with AI</title>
       
     
     
@@ -73,9 +73,9 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Four Digit Display - Clocks and Watches with AI" >
+        <meta  property="og:title"  content="Four-Digit Digital Clock - Clocks and Watches with AI" >
       
-        <meta  property="og:description"  content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." >
+        <meta  property="og:description"  content="An interactive p5.js simulation displaying current time using four seven-segment digits with AM/PM indicator" >
       
         <meta  property="og:image"  content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/sims/4-digits/index.png" >
       
@@ -89,9 +89,9 @@
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Four Digit Display - Clocks and Watches with AI" >
+        <meta  name="twitter:title"  content="Four-Digit Digital Clock - Clocks and Watches with AI" >
       
-        <meta  name="twitter:description"  content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." >
+        <meta  name="twitter:description"  content="An interactive p5.js simulation displaying current time using four seven-segment digits with AM/PM indicator" >
       
         <meta  name="twitter:image"  content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/sims/4-digits/index.png" >
       
@@ -114,7 +114,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#example-of-a-four-digit-digital-clock-face" class="md-skip">
+        <a href="#four-digit-digital-clock" class="md-skip">
           Skip to content
         </a>
       
@@ -149,7 +149,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Four Digit Display
+              Four-Digit Digital Clock
             
           </span>
         </div>
@@ -760,6 +760,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Four Digit Display
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -769,6 +780,109 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to Use
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#target-audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      Target Audience
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1112,6 +1226,98 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to Use
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#target-audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      Target Audience
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1128,8 +1334,60 @@
   
 
 
-<h1 id="example-of-a-four-digit-digital-clock-face">Example of a Four-Digit Digital Clock Face</h1>
-<p><a href="main.html">Four Digit Digital Clock</a></p>
+<h1 id="four-digit-digital-clock">Four-Digit Digital Clock</h1>
+<iframe src="main.html" width="100%" height="280px" scrolling="no"></iframe>
+
+<p><strong>Copy this iframe to your website:</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://dmccreary.github.io/clocks-and-watches/sims/4-digits/main.html&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;100%&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;280px&quot;</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">&quot;no&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
+<p><a class="md-button md-button--primary" href="main.html">Run the Four-Digit Digital Clock MicroSim in fullscreen</a></p>
+<h2 id="description">Description</h2>
+<p>This MicroSim displays the current time using a classic four-digit seven-segment display format commonly seen in digital clocks and alarm clocks. The simulation automatically updates to show hours and minutes with a blinking colon separator and an AM/PM indicator.</p>
+<p>Key features:</p>
+<ul>
+<li>Real-time clock display synced to your device's local time</li>
+<li>Seven-segment digit rendering using p5.js line drawing</li>
+<li>12-hour format with AM/PM indicator</li>
+<li>Navy blue digits on an alice blue background</li>
+<li>Leading zero suppression for single-digit hours</li>
+</ul>
+<h3 id="how-to-use">How to Use</h3>
+<ol>
+<li>Open the simulation to see the current time displayed</li>
+<li>The clock automatically updates every minute</li>
+<li>The colon between hours and minutes provides visual separation</li>
+<li>AM or PM is displayed to the right of the minutes</li>
+</ol>
+<h2 id="lesson-plan">Lesson Plan</h2>
+<h3 id="learning-objectives">Learning Objectives</h3>
+<p>After completing this lesson, students will be able to:</p>
+<ul>
+<li>Understand how seven-segment displays work to show digits 0-9</li>
+<li>Explain the binary mapping used to control individual segments</li>
+<li>Apply trigonometry concepts to understand digit positioning</li>
+</ul>
+<h3 id="target-audience">Target Audience</h3>
+<ul>
+<li>Grade level: Middle school to high school (grades 6-12)</li>
+<li>Prerequisites: Basic understanding of binary numbers and coordinate systems</li>
+</ul>
+<h3 id="activities">Activities</h3>
+<ol>
+<li><strong>Exploration Activity</strong>: Observe which segments light up for each digit and create a mapping table</li>
+<li><strong>Guided Investigation</strong>: Modify the code to change colors or add seconds display</li>
+<li><strong>Extension Activity</strong>: Design a countdown timer or stopwatch using the same display logic</li>
+</ol>
+<h3 id="assessment">Assessment</h3>
+<ul>
+<li>Can students identify which segments are active for any given digit?</li>
+<li>Can students explain how the time values are split into individual digits?</li>
+<li>Can students modify the display colors or add new features?</li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://p5js.org/reference/">p5.js Reference</a> - Documentation for the p5.js library</li>
+<li><a href="https://en.wikipedia.org/wiki/Seven-segment_display">Seven-Segment Display</a> - Wikipedia article on seven-segment displays</li>
+</ul>
 
 
 

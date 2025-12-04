@@ -1,0 +1,32 @@
+{
+  "title": "Learning Graph Viewer",
+  "description": "Interactive vis-network visualization of the learning graph for the Clocks and Watches with MicroPython course, showing concept dependencies and learning pathways.",
+  "creator": "Dan McCreary",
+  "date": "2024-07-04",
+  "subject": [
+    "Learning Graph",
+    "Knowledge Visualization",
+    "Course Planning",
+    "Concept Dependencies"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "educationalLevel": "High School to Undergraduate",
+  "learningResourceType": "visualization",
+  "audience": "Students, Educators, Curriculum Designers",
+  "version": "1.0.0",
+  "bloomLevel": [
+    "Understand",
+    "Analyze"
+  ],
+  "concepts": [
+    "Learning Graphs",
+    "Concept Dependencies",
+    "Prerequisite Mapping",
+    "Curriculum Visualization"
+  ],
+  "prerequisites": [],
+  "library": "vis-network"
+}

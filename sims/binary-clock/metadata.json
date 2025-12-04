@@ -1,0 +1,38 @@
+{
+  "title": "Binary Clock",
+  "description": "Interactive p5.js simulation displaying current time in binary format using vertical LED columns, teaching binary number representation and time reading skills.",
+  "creator": "Dan McCreary",
+  "date": "2024-07-04",
+  "subject": [
+    "Binary Clock",
+    "Binary Numbers",
+    "Time Display",
+    "LED Display",
+    "p5.js"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "educationalLevel": "Middle School to High School",
+  "learningResourceType": "simulation",
+  "audience": "Students, Educators",
+  "version": "1.0.0",
+  "bloomLevel": [
+    "Remember",
+    "Understand",
+    "Apply"
+  ],
+  "concepts": [
+    "Binary Numbers",
+    "Place Value",
+    "Powers of 2",
+    "Time Representation",
+    "Digital Displays"
+  ],
+  "prerequisites": [
+    "Basic arithmetic",
+    "Understanding of place value"
+  ],
+  "library": "p5.js"
+}

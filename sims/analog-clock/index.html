@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking.">
+        <meta name="description" content="Interactive p5.js analog clock simulation with manual and automatic modes, demonstrating trigonometric functions for hand positioning">
       
       
         <meta name="author" content="Dan McCreary">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Analog Clock Face - Clocks and Watches with AI</title>
+        <title>Analog Clock - Clocks and Watches with AI</title>
       
     
     
@@ -73,9 +73,9 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Analog Clock Face - Clocks and Watches with AI" >
+        <meta  property="og:title"  content="Analog Clock - Clocks and Watches with AI" >
       
-        <meta  property="og:description"  content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." >
+        <meta  property="og:description"  content="Interactive p5.js analog clock simulation with manual and automatic modes, demonstrating trigonometric functions for hand positioning" >
       
         <meta  property="og:image"  content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/sims/analog-clock/index.png" >
       
@@ -89,9 +89,9 @@
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Analog Clock Face - Clocks and Watches with AI" >
+        <meta  name="twitter:title"  content="Analog Clock - Clocks and Watches with AI" >
       
-        <meta  name="twitter:description"  content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." >
+        <meta  name="twitter:description"  content="Interactive p5.js analog clock simulation with manual and automatic modes, demonstrating trigonometric functions for hand positioning" >
       
         <meta  name="twitter:image"  content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/sims/analog-clock/index.png" >
       
@@ -149,7 +149,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Analog Clock Face
+              Analog Clock
             
           </span>
         </div>
@@ -818,18 +818,33 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#prompt" class="md-nav__link">
+  <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
-      Prompt
+      Description
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to Use
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#code" class="md-nav__link">
+  <a href="#trigonometry-demonstration" class="md-nav__link">
     <span class="md-ellipsis">
-      Code
+      Trigonometry Demonstration
     </span>
   </a>
   
@@ -838,7 +853,7 @@
         <li class="md-nav__item">
   <a href="#full-program-source" class="md-nav__link">
     <span class="md-ellipsis">
-      FUll Program Source
+      Full Program Source
     </span>
   </a>
   
@@ -848,6 +863,66 @@
   <a href="#version-2" class="md-nav__link">
     <span class="md-ellipsis">
       Version 2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#target-audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      Target Audience
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
     </span>
   </a>
   
@@ -1185,18 +1260,33 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#prompt" class="md-nav__link">
+  <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
-      Prompt
+      Description
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to Use
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#code" class="md-nav__link">
+  <a href="#trigonometry-demonstration" class="md-nav__link">
     <span class="md-ellipsis">
-      Code
+      Trigonometry Demonstration
     </span>
   </a>
   
@@ -1205,7 +1295,7 @@
         <li class="md-nav__item">
   <a href="#full-program-source" class="md-nav__link">
     <span class="md-ellipsis">
-      FUll Program Source
+      Full Program Source
     </span>
   </a>
   
@@ -1215,6 +1305,66 @@
   <a href="#version-2" class="md-nav__link">
     <span class="md-ellipsis">
       Version 2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#target-audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      Target Audience
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
     </span>
   </a>
   
@@ -1239,38 +1389,31 @@
 
 
 <h1 id="analog-clock">Analog Clock</h1>
-<figure>
-<p><img alt="Analog Clock" src="analog-clock.png" width="400" />
-   </p>
-<figcaption>Analog Clock</figcaption>
-</figure>
-<p><a class="md-button md-button--primary" href="analog-clock.html">Run Analog Clock MicroSim</a></p>
-<h2 id="prompt">Prompt</h2>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code>Create a single p5.js sketch file that uses a 400x400 canvas.
-The file is a simulation of an analog clock face.
-The clock face has a black background.
-The clock has white hands for the minute and hour hand.
-The clock as a red second hand.
-There are two modes: manual and automtic
-Manual mode allows the use to manually set the time using three sliders for hours, minute and seconds.
-Automatic mode use the local time to update the display.
-Add labels and values for the sliders.
-Make sure to reenable the controls as we switch back to manual mode.
+<iframe src="analog-clock.html" width="100%" height="550px" scrolling="no"></iframe>
+
+<p><strong>Copy this iframe to your website:</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://dmccreary.github.io/clocks-and-watches/sims/analog-clock/analog-clock.html&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;100%&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;550px&quot;</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">&quot;no&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
 </code></pre></div></td></tr></table></div>
-<h2 id="code">Code</h2>
-<p>This is a wonderful lab to demonstrate some use of the trigonomic functions sine() and cosine().  We ask the question:</p>
-<p><em>Write some Python code that will take in the seconds as a number
-from 0 to 59 and it will return the x and y positions
-of the tip of the second hand.</em></p>
+<p><a class="md-button md-button--primary" href="analog-clock.html">Run the Analog Clock MicroSim in fullscreen</a></p>
+<p><a class="md-button" href="https://editor.p5js.org/dmccreary/sketches/">Edit in the p5.js Editor</a></p>
+<h2 id="description">Description</h2>
+<p>This MicroSim simulates an analog clock face with hour, minute, and second hands. It demonstrates the practical application of trigonometric functions (sine and cosine) to calculate hand positions based on time values.</p>
+<p>Key features:</p>
+<ul>
+<li>Real-time clock synchronized to local system time</li>
+<li>Manual mode with sliders to set custom time</li>
+<li>Automatic mode that displays current time</li>
+<li>Visual demonstration of polar-to-Cartesian coordinate conversion</li>
+</ul>
+<h3 id="how-to-use">How to Use</h3>
+<ol>
+<li><strong>Automatic Mode</strong>: Watch the clock display real-time</li>
+<li><strong>Manual Mode</strong>: Use the sliders to set hours (0-11), minutes (0-59), and seconds (0-59)</li>
+<li><strong>Switch Mode Button</strong>: Toggle between automatic and manual modes</li>
+</ol>
+<h2 id="trigonometry-demonstration">Trigonometry Demonstration</h2>
+<p>This is a wonderful lab to demonstrate the use of trigonometric functions sine() and cosine(). We ask the question:</p>
+<p><em>Write some code that will take in the seconds as a number from 0 to 59 and return the x and y positions of the tip of the second hand.</em></p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1280,10 +1423,10 @@ of the tip of the second hand.</em></p>
 <span class="c1">// convert seconds to radians</span>
 <span class="nx">secondHand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">map</span><span class="p">(</span><span class="nx">sc</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">60</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">TWO_PI</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">HALF_PI</span><span class="p">;</span>
 <span class="c1">// draw a line from the center of the canvas to the endpoint</span>
-<span class="nx">line</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">cos</span><span class="p">(</span><span class="nx">secondHand</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">canvasSize</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.5</span><span class="p">,</span><span class="w"> </span>
+<span class="nx">line</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">cos</span><span class="p">(</span><span class="nx">secondHand</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">canvasSize</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.5</span><span class="p">,</span>
 <span class="w">           </span><span class="nx">sin</span><span class="p">(</span><span class="nx">secondHand</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">canvasSize</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.5</span><span class="p">);</span>
 </code></pre></div></td></tr></table></div>
-<h2 id="full-program-source">FUll Program Source</h2>
+<h2 id="full-program-source">Full Program Source</h2>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1348,98 +1491,105 @@ of the tip of the second hand.</em></p>
 <span class="normal">62</span>
 <span class="normal">63</span>
 <span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span>
-<span class="normal">67</span>
-<span class="normal">68</span>
-<span class="normal">69</span>
-<span class="normal">70</span>
-<span class="normal">71</span>
-<span class="normal">72</span>
-<span class="normal">73</span>
-<span class="normal">74</span>
-<span class="normal">75</span>
-<span class="normal">76</span>
-<span class="normal">77</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">let</span> <span class="n">canvasSize</span> <span class="o">=</span> <span class="mi">400</span><span class="p">;</span>
-<span class="n">let</span> <span class="n">hourHand</span><span class="p">,</span> <span class="n">minuteHand</span><span class="p">,</span> <span class="n">secondHand</span><span class="p">;</span>
-<span class="n">let</span> <span class="n">hourSlider</span><span class="p">,</span> <span class="n">minuteSlider</span><span class="p">,</span> <span class="n">secondSlider</span><span class="p">;</span>
-<span class="n">let</span> <span class="n">manualMode</span> <span class="o">=</span> <span class="n">true</span><span class="p">;</span>
+<span class="normal">65</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">canvasSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">400</span><span class="p">;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">hourHand</span><span class="p">,</span><span class="w"> </span><span class="nx">minuteHand</span><span class="p">,</span><span class="w"> </span><span class="nx">secondHand</span><span class="p">;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">hourSlider</span><span class="p">,</span><span class="w"> </span><span class="nx">minuteSlider</span><span class="p">,</span><span class="w"> </span><span class="nx">secondSlider</span><span class="p">;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">manualMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
 
-<span class="n">function</span> <span class="n">setup</span><span class="p">()</span> <span class="p">{</span>
-  <span class="n">const</span> <span class="n">canvas</span> <span class="o">=</span> <span class="n">createCanvas</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">400</span><span class="p">);</span>
-  <span class="o">//</span> <span class="n">use</span> <span class="n">this</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">web</span>
-  <span class="n">canvas</span><span class="o">.</span><span class="n">parent</span><span class="p">(</span><span class="s1">&#39;canvas-container&#39;</span><span class="p">);</span>
-  <span class="o">//</span> <span class="n">use</span> <span class="n">this</span> <span class="ow">in</span> <span class="n">editor</span>
-  <span class="o">//</span> <span class="n">createCanvas</span><span class="p">(</span><span class="n">canvasSize</span><span class="p">,</span> <span class="n">canvasSize</span><span class="p">);</span>
-  <span class="n">background</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">canvas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createCanvas</span><span class="p">(</span><span class="mf">400</span><span class="p">,</span><span class="w"> </span><span class="mf">400</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">canvas</span><span class="p">.</span><span class="nx">parent</span><span class="p">(</span><span class="s1">&#39;canvas-container&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">background</span><span class="p">(</span><span class="mf">0</span><span class="p">);</span>
 
-  <span class="o">//</span> <span class="n">Create</span> <span class="n">sliders</span> <span class="k">for</span> <span class="n">manual</span> <span class="n">mode</span>
-  <span class="n">hourSlider</span> <span class="o">=</span> <span class="n">createSlider</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-  <span class="n">hourSlider</span><span class="o">.</span><span class="n">position</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">canvasSize</span> <span class="o">+</span> <span class="mi">10</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// Create sliders for manual mode</span>
+<span class="w">  </span><span class="nx">hourSlider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createSlider</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">11</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">hourSlider</span><span class="p">.</span><span class="nx">position</span><span class="p">(</span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="nx">canvasSize</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">10</span><span class="p">);</span>
 
-  <span class="n">minuteSlider</span> <span class="o">=</span> <span class="n">createSlider</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-  <span class="n">minuteSlider</span><span class="o">.</span><span class="n">position</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">canvasSize</span> <span class="o">+</span> <span class="mi">40</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">minuteSlider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createSlider</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">59</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">minuteSlider</span><span class="p">.</span><span class="nx">position</span><span class="p">(</span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="nx">canvasSize</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">40</span><span class="p">);</span>
 
-  <span class="n">secondSlider</span> <span class="o">=</span> <span class="n">createSlider</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-  <span class="n">secondSlider</span><span class="o">.</span><span class="n">position</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">canvasSize</span> <span class="o">+</span> <span class="mi">70</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">secondSlider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createSlider</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">59</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">secondSlider</span><span class="p">.</span><span class="nx">position</span><span class="p">(</span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="nx">canvasSize</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">70</span><span class="p">);</span>
 
-  <span class="n">let</span> <span class="n">modeButton</span> <span class="o">=</span> <span class="n">createButton</span><span class="p">(</span><span class="s1">&#39;Switch Mode&#39;</span><span class="p">);</span>
-  <span class="n">modeButton</span><span class="o">.</span><span class="n">position</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">canvasSize</span> <span class="o">+</span> <span class="mi">100</span><span class="p">);</span>
-  <span class="n">modeButton</span><span class="o">.</span><span class="n">mousePressed</span><span class="p">(</span><span class="n">switchMode</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">modeButton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createButton</span><span class="p">(</span><span class="s1">&#39;Switch Mode&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">modeButton</span><span class="p">.</span><span class="nx">position</span><span class="p">(</span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="nx">canvasSize</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">100</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">modeButton</span><span class="p">.</span><span class="nx">mousePressed</span><span class="p">(</span><span class="nx">switchMode</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="n">function</span> <span class="n">draw</span><span class="p">()</span> <span class="p">{</span>
-  <span class="n">background</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-  <span class="n">translate</span><span class="p">(</span><span class="n">canvasSize</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">canvasSize</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">draw</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">background</span><span class="p">(</span><span class="mf">0</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">translate</span><span class="p">(</span><span class="nx">canvasSize</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">canvasSize</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span>
 
-  <span class="n">let</span> <span class="n">hr</span><span class="p">,</span> <span class="n">mn</span><span class="p">,</span> <span class="n">sc</span><span class="p">;</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">manualMode</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">hr</span> <span class="o">=</span> <span class="n">hourSlider</span><span class="o">.</span><span class="n">value</span><span class="p">();</span>
-    <span class="n">mn</span> <span class="o">=</span> <span class="n">minuteSlider</span><span class="o">.</span><span class="n">value</span><span class="p">();</span>
-    <span class="n">sc</span> <span class="o">=</span> <span class="n">secondSlider</span><span class="o">.</span><span class="n">value</span><span class="p">();</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="n">let</span> <span class="n">now</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Date</span><span class="p">();</span>
-    <span class="n">hr</span> <span class="o">=</span> <span class="n">now</span><span class="o">.</span><span class="n">getHours</span><span class="p">()</span> <span class="o">%</span> <span class="mi">12</span><span class="p">;</span>
-    <span class="n">mn</span> <span class="o">=</span> <span class="n">now</span><span class="o">.</span><span class="n">getMinutes</span><span class="p">();</span>
-    <span class="n">sc</span> <span class="o">=</span> <span class="n">now</span><span class="o">.</span><span class="n">getSeconds</span><span class="p">();</span>
-  <span class="p">}</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">hr</span><span class="p">,</span><span class="w"> </span><span class="nx">mn</span><span class="p">,</span><span class="w"> </span><span class="nx">sc</span><span class="p">;</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">manualMode</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">hr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">hourSlider</span><span class="p">.</span><span class="nx">value</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">mn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">minuteSlider</span><span class="p">.</span><span class="nx">value</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">sc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">secondSlider</span><span class="p">.</span><span class="nx">value</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">hr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">now</span><span class="p">.</span><span class="nx">getHours</span><span class="p">()</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mf">12</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">mn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">now</span><span class="p">.</span><span class="nx">getMinutes</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">sc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">now</span><span class="p">.</span><span class="nx">getSeconds</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
 
-  <span class="o">//</span> <span class="n">Draw</span> <span class="n">hour</span> <span class="n">hand</span>
-  <span class="n">stroke</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
-  <span class="n">strokeWeight</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
-  <span class="n">hourHand</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="n">hr</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">TWO_PI</span><span class="p">)</span> <span class="o">-</span> <span class="n">HALF_PI</span><span class="p">;</span>
-  <span class="n">line</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">cos</span><span class="p">(</span><span class="n">hourHand</span><span class="p">)</span> <span class="o">*</span> <span class="n">canvasSize</span> <span class="o">/</span> <span class="mi">4</span><span class="p">,</span> <span class="n">sin</span><span class="p">(</span><span class="n">hourHand</span><span class="p">)</span> <span class="o">*</span> <span class="n">canvasSize</span> <span class="o">/</span> <span class="mi">4</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// Draw hour hand</span>
+<span class="w">  </span><span class="nx">stroke</span><span class="p">(</span><span class="mf">255</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">strokeWeight</span><span class="p">(</span><span class="mf">10</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">hourHand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">map</span><span class="p">(</span><span class="nx">hr</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">12</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">TWO_PI</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">HALF_PI</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">line</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">cos</span><span class="p">(</span><span class="nx">hourHand</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">canvasSize</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="nx">sin</span><span class="p">(</span><span class="nx">hourHand</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">canvasSize</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">4</span><span class="p">);</span>
 
-  <span class="o">//</span> <span class="n">Draw</span> <span class="n">minute</span> <span class="n">hand</span>
-  <span class="n">strokeWeight</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span>
-  <span class="n">minuteHand</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="n">mn</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">TWO_PI</span><span class="p">)</span> <span class="o">-</span> <span class="n">HALF_PI</span><span class="p">;</span>
-  <span class="n">line</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">cos</span><span class="p">(</span><span class="n">minuteHand</span><span class="p">)</span> <span class="o">*</span> <span class="n">canvasSize</span> <span class="o">/</span> <span class="mi">3</span><span class="p">,</span> <span class="n">sin</span><span class="p">(</span><span class="n">minuteHand</span><span class="p">)</span> <span class="o">*</span> <span class="n">canvasSize</span> <span class="o">/</span> <span class="mi">3</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// Draw minute hand</span>
+<span class="w">  </span><span class="nx">strokeWeight</span><span class="p">(</span><span class="mf">8</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">minuteHand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">map</span><span class="p">(</span><span class="nx">mn</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">60</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">TWO_PI</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">HALF_PI</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">line</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">cos</span><span class="p">(</span><span class="nx">minuteHand</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">canvasSize</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="nx">sin</span><span class="p">(</span><span class="nx">minuteHand</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">canvasSize</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">3</span><span class="p">);</span>
 
-  <span class="o">//</span> <span class="n">Draw</span> <span class="n">second</span> <span class="n">hand</span>
-  <span class="n">stroke</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-  <span class="n">strokeWeight</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
-  <span class="n">secondHand</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">TWO_PI</span><span class="p">)</span> <span class="o">-</span> <span class="n">HALF_PI</span><span class="p">;</span>
-  <span class="n">line</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">cos</span><span class="p">(</span><span class="n">secondHand</span><span class="p">)</span> <span class="o">*</span> <span class="n">canvasSize</span> <span class="o">/</span> <span class="mf">2.5</span><span class="p">,</span> <span class="n">sin</span><span class="p">(</span><span class="n">secondHand</span><span class="p">)</span> <span class="o">*</span> <span class="n">canvasSize</span> <span class="o">/</span> <span class="mf">2.5</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// Draw second hand</span>
+<span class="w">  </span><span class="nx">stroke</span><span class="p">(</span><span class="mf">255</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">strokeWeight</span><span class="p">(</span><span class="mf">4</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">secondHand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">map</span><span class="p">(</span><span class="nx">sc</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">60</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">TWO_PI</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">HALF_PI</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">line</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">cos</span><span class="p">(</span><span class="nx">secondHand</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">canvasSize</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.5</span><span class="p">,</span><span class="w"> </span><span class="nx">sin</span><span class="p">(</span><span class="nx">secondHand</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">canvasSize</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.5</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="n">function</span> <span class="n">switchMode</span><span class="p">()</span> <span class="p">{</span>
-  <span class="n">manualMode</span> <span class="o">=</span> <span class="err">!</span><span class="n">manualMode</span><span class="p">;</span>
-
-  <span class="o">//</span> <span class="n">disable</span> <span class="n">the</span> <span class="n">controls</span>
-  <span class="k">if</span> <span class="n">manualMode</span> <span class="p">{</span>
-    <span class="n">hourSlider</span><span class="o">.</span><span class="n">attribute</span><span class="p">(</span><span class="s1">&#39;disabled&#39;</span><span class="p">,</span> <span class="err">!</span><span class="n">manualMode</span><span class="p">);</span>
-    <span class="n">minuteSlider</span><span class="o">.</span><span class="n">attribute</span><span class="p">(</span><span class="s1">&#39;disabled&#39;</span><span class="p">,</span> <span class="err">!</span><span class="n">manualMode</span><span class="p">);</span>
-    <span class="n">secondSlider</span><span class="o">.</span><span class="n">attribute</span><span class="p">(</span><span class="s1">&#39;disabled&#39;</span><span class="p">,</span> <span class="err">!</span><span class="n">manualMode</span><span class="p">);</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="n">hourSlider</span><span class="o">.</span><span class="n">attribute</span><span class="p">(</span><span class="s1">&#39;enabled&#39;</span><span class="p">,</span> <span class="err">!</span><span class="n">manualMode</span><span class="p">);</span>
-    <span class="n">minuteSlider</span><span class="o">.</span><span class="n">attribute</span><span class="p">(</span><span class="s1">&#39;enabled&#39;</span><span class="p">,</span> <span class="err">!</span><span class="n">manualMode</span><span class="p">);</span>
-    <span class="n">secondSlider</span><span class="o">.</span><span class="n">attribute</span><span class="p">(</span><span class="s1">&#39;enabled&#39;</span><span class="p">,</span> <span class="err">!</span><span class="n">manualMode</span><span class="p">);</span>
-  <span class="p">}</span>
-
+<span class="kd">function</span><span class="w"> </span><span class="nx">switchMode</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">manualMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">!</span><span class="nx">manualMode</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">hourSlider</span><span class="p">.</span><span class="nx">attribute</span><span class="p">(</span><span class="s1">&#39;disabled&#39;</span><span class="p">,</span><span class="w"> </span><span class="o">!</span><span class="nx">manualMode</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">minuteSlider</span><span class="p">.</span><span class="nx">attribute</span><span class="p">(</span><span class="s1">&#39;disabled&#39;</span><span class="p">,</span><span class="w"> </span><span class="o">!</span><span class="nx">manualMode</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">secondSlider</span><span class="p">.</span><span class="nx">attribute</span><span class="p">(</span><span class="s1">&#39;disabled&#39;</span><span class="p">,</span><span class="w"> </span><span class="o">!</span><span class="nx">manualMode</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="version-2">Version 2</h2>
 <p><a href="v2.html">Version 2 - Blue clock with tick marks</a></p>
+<h2 id="lesson-plan">Lesson Plan</h2>
+<h3 id="learning-objectives">Learning Objectives</h3>
+<p>After completing this lesson, students will be able to:</p>
+<ul>
+<li>Apply sine and cosine functions to convert polar coordinates to Cartesian coordinates</li>
+<li>Explain how angles are mapped from time values to radians</li>
+<li>Modify code parameters to customize clock appearance</li>
+</ul>
+<h3 id="target-audience">Target Audience</h3>
+<ul>
+<li>Grade level: High school (grades 9-12)</li>
+<li>Prerequisites: Basic trigonometry (understanding of sine, cosine, and radians)</li>
+</ul>
+<h3 id="activities">Activities</h3>
+<ol>
+<li><strong>Exploration Activity</strong>: Use manual mode to observe how hand positions change with different time values</li>
+<li><strong>Guided Investigation</strong>: Calculate the expected (x, y) position for a given second value and verify with the simulation</li>
+<li><strong>Extension Activity</strong>: Modify the code to add tick marks or change hand colors</li>
+</ol>
+<h3 id="assessment">Assessment</h3>
+<ul>
+<li>Can students predict the angle of the second hand for a given second value?</li>
+<li>Can students explain why HALF_PI is subtracted in the angle calculation?</li>
+<li>Can students modify the code to display a 24-hour clock face?</li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://p5js.org/reference/">p5.js Reference</a> - Documentation for the p5.js library</li>
+<li><a href="https://www.mathsisfun.com/sine-cosine-tangent.html">Trigonometry for Games</a> - Math is Fun trigonometry tutorial</li>
+<li><a href="https://en.wikipedia.org/wiki/Polar_coordinate_system">Polar Coordinates</a> - Wikipedia article on polar coordinate systems</li>
+</ul>
 
 
 

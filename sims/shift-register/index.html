@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking.">
+        <meta name="description" content="Interactive p5.js simulation of a 74HC594 shift register demonstrating serial-to-parallel data conversion">
       
       
         <meta name="author" content="Dan McCreary">
@@ -75,7 +75,7 @@
       
         <meta  property="og:title"  content="Shift Register - Clocks and Watches with AI" >
       
-        <meta  property="og:description"  content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." >
+        <meta  property="og:description"  content="Interactive p5.js simulation of a 74HC594 shift register demonstrating serial-to-parallel data conversion" >
       
         <meta  property="og:image"  content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/sims/shift-register/index.png" >
       
@@ -91,7 +91,7 @@
       
         <meta  name="twitter:title"  content="Shift Register - Clocks and Watches with AI" >
       
-        <meta  name="twitter:description"  content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." >
+        <meta  name="twitter:description"  content="Interactive p5.js simulation of a 74HC594 shift register demonstrating serial-to-parallel data conversion" >
       
         <meta  name="twitter:image"  content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/sims/shift-register/index.png" >
       
@@ -886,6 +886,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Shift Register
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -895,6 +906,118 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to Use
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-shift-registers-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      How Shift Registers Work
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#target-audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      Target Audience
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1112,6 +1235,107 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to Use
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-shift-registers-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      How Shift Registers Work
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#target-audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      Target Audience
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1129,8 +1353,68 @@
 
 
 <h1 id="shift-register-microsim">Shift Register MicroSim</h1>
-<p><a href="main.html">Run Shift Register MicroSim</a></p>
-<p><a href="https://editor.p5js.org/dmccreary/sketches/dgYs8vQ_Y">Logic Analyzer View</a></p>
+<iframe src="main.html" width="100%" height="480px" scrolling="no"></iframe>
+
+<p><strong>Copy this iframe to your website:</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://dmccreary.github.io/clocks-and-watches/sims/shift-register/main.html&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;100%&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;480px&quot;</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">&quot;no&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
+<p><a class="md-button md-button--primary" href="main.html">Run the Shift Register MicroSim in fullscreen</a></p>
+<p><a class="md-button" href="https://editor.p5js.org/dmccreary/sketches/dgYs8vQ_Y">Logic Analyzer View</a></p>
+<h2 id="description">Description</h2>
+<p>This MicroSim demonstrates how a 74HC594 shift register works. Shift registers are essential components in digital electronics that convert serial data to parallel output, allowing microcontrollers to control many outputs with just a few pins.</p>
+<p>Key features:</p>
+<ul>
+<li>Visual representation of the 74HC594 chip</li>
+<li>Interactive data input (0 or 1)</li>
+<li>Clock button to shift data through the register</li>
+<li>Latch button to transfer shift register to output</li>
+<li>8-bit shift register and output register visualization</li>
+</ul>
+<h3 id="how-to-use">How to Use</h3>
+<ol>
+<li>Select the data input value (0 or 1) using the radio buttons</li>
+<li>Press "NEXT CLOCK" to shift data into the register</li>
+<li>Observe how bits move through the 8-position shift register</li>
+<li>Press "LATCH" to transfer the shift register contents to the output pins</li>
+</ol>
+<h2 id="how-shift-registers-work">How Shift Registers Work</h2>
+<p>The 74HC594 contains two registers:</p>
+<ol>
+<li><strong>Shift Register</strong>: An internal 8-bit register that accepts serial data</li>
+<li><strong>Output Register</strong>: Holds the parallel output that drives the pins</li>
+</ol>
+<p>Each clock pulse shifts all bits one position and loads the new data bit at position 0. The latch pulse copies the entire shift register to the output register.</p>
+<h2 id="lesson-plan">Lesson Plan</h2>
+<h3 id="learning-objectives">Learning Objectives</h3>
+<p>After completing this lesson, students will be able to:</p>
+<ul>
+<li>Explain the purpose of a shift register in digital circuits</li>
+<li>Describe the difference between serial and parallel data transfer</li>
+<li>Demonstrate how clock and latch signals control data movement</li>
+</ul>
+<h3 id="target-audience">Target Audience</h3>
+<ul>
+<li>Grade level: High school to undergraduate (grades 10-14)</li>
+<li>Prerequisites: Basic understanding of binary numbers and digital logic</li>
+</ul>
+<h3 id="activities">Activities</h3>
+<ol>
+<li><strong>Exploration Activity</strong>: Load a specific 8-bit pattern (e.g., 10101010) into the shift register</li>
+<li><strong>Guided Investigation</strong>: Time how many clock pulses are needed to completely load 8 bits</li>
+<li><strong>Extension Activity</strong>: Research how shift registers are used to drive LED displays or expand I/O</li>
+</ol>
+<h3 id="assessment">Assessment</h3>
+<ul>
+<li>Can students predict the output after a series of clock and data inputs?</li>
+<li>Can students explain why we need both clock and latch signals?</li>
+<li>Can students describe a real-world application of shift registers?</li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://www.ti.com/lit/ds/symlink/sn74hc595.pdf">74HC595 Datasheet</a> - Texas Instruments datasheet</li>
+<li><a href="https://www.arduino.cc/en/Tutorial/Foundations/ShiftOut">Shift Register Tutorial</a> - Arduino shift register tutorial</li>
+<li><a href="https://p5js.org/reference/">p5.js Reference</a> - Documentation for the p5.js library</li>
+</ul>
 
 
 

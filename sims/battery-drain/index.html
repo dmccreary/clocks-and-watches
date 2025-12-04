@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking.">
+        <meta name="description" content="Interactive p5.js simulation demonstrating battery discharge rates when powering a motor at different speeds">
       
       
         <meta name="author" content="Dan McCreary">
@@ -75,7 +75,7 @@
       
         <meta  property="og:title"  content="Battery Drain - Clocks and Watches with AI" >
       
-        <meta  property="og:description"  content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." >
+        <meta  property="og:description"  content="Interactive p5.js simulation demonstrating battery discharge rates when powering a motor at different speeds" >
       
         <meta  property="og:image"  content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/sims/battery-drain/index.png" >
       
@@ -91,7 +91,7 @@
       
         <meta  name="twitter:title"  content="Battery Drain - Clocks and Watches with AI" >
       
-        <meta  name="twitter:description"  content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." >
+        <meta  name="twitter:description"  content="Interactive p5.js simulation demonstrating battery discharge rates when powering a motor at different speeds" >
       
         <meta  name="twitter:image"  content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/sims/battery-drain/index.png" >
       
@@ -902,11 +902,26 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#about-the-battery-drain-microsim" class="md-nav__link">
+  <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
-      About The Battery Drain MicroSim
+      Description
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to Use
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -929,13 +944,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#lesson-plans" class="md-nav__link">
+  <a href="#challenges" class="md-nav__link">
     <span class="md-ellipsis">
-      Lesson Plans
+      Challenges
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Lesson Plans">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Plan">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -972,6 +996,11 @@
       Materials
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1042,9 +1071,13 @@
     </nav>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
   
 </li>
       
@@ -1296,11 +1329,26 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#about-the-battery-drain-microsim" class="md-nav__link">
+  <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
-      About The Battery Drain MicroSim
+      Description
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to Use
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1323,13 +1371,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#lesson-plans" class="md-nav__link">
+  <a href="#challenges" class="md-nav__link">
     <span class="md-ellipsis">
-      Lesson Plans
+      Challenges
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Lesson Plans">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Plan">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1366,6 +1423,11 @@
       Materials
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1436,9 +1498,13 @@
     </nav>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
   
 </li>
       
@@ -1461,31 +1527,51 @@
 
 
 <h1 id="battery-drain">Battery Drain</h1>
-<figure>
-<p><img alt="Image Name" src="battery-drain.png" width="400" />
-   </p>
-<figcaption>Battery Drain</figcaption>
-</figure>
-<p><a class="md-button md-button--primary" href="battery-drain.html">Run the Battery Drain Demo</a></p>
-<p><a href="https://editor.p5js.org/dmccreary/sketches/4MkEFEt0i">Edit the Simulation</a></p>
-<h2 id="about-the-battery-drain-microsim">About The Battery Drain MicroSim</h2>
-<p>This MicroSim teaches students how batteries work in robots.  The
-student can adjust the speed of the motor.  But the more power
-the motor draws, the faster the battery drains.  When the motor
-is off, there is no drain.  When the battery is fully drained
-the motor will no longer turn.</p>
+<iframe src="battery-drain.html" width="100%" height="460px" scrolling="no"></iframe>
+
+<p><strong>Copy this iframe to your website:</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://dmccreary.github.io/clocks-and-watches/sims/battery-drain/battery-drain.html&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;100%&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;460px&quot;</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">&quot;no&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
+<p><a class="md-button md-button--primary" href="battery-drain.html">Run the Battery Drain MicroSim in fullscreen</a></p>
+<p><a class="md-button" href="https://editor.p5js.org/dmccreary/sketches/4MkEFEt0i">Edit in the p5.js Editor</a></p>
+<h2 id="description">Description</h2>
+<p>This MicroSim teaches students how batteries work in robots. The student can adjust the speed of the motor, but the more power the motor draws, the faster the battery drains. When the motor is off, there is no drain. When the battery is fully drained, the motor will no longer turn.</p>
+<p>Key features:</p>
+<ul>
+<li>Visual battery with charge level indicator</li>
+<li>Adjustable motor speed via slider</li>
+<li>Real-time battery discharge based on power consumption</li>
+<li>Motor animation that stops when battery is depleted</li>
+<li>Wire connections showing circuit layout</li>
+</ul>
+<h3 id="how-to-use">How to Use</h3>
+<ol>
+<li>Use the speed slider to adjust motor speed (0-100)</li>
+<li>Observe the green battery charge indicator decrease</li>
+<li>Watch the motor spin faster at higher speeds</li>
+<li>Notice the motor stops when battery is depleted</li>
+</ol>
 <h2 id="sample-prompt">Sample Prompt</h2>
-<div class="highlight"><pre><span></span><code>Generate a p5.js file on a 400x400 canvas that demonstrates the
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code>Generate a p5.js file on a 400x400 canvas that demonstrates the
 rate that a battery is discharged when it is powering a motor.
 Add a slider at the bottom of the canvas that allows the user
-to adjust the speed of the motor.  Place the battery on the
-left side.  Make the negative sign be at the bottom and 
-use a black filled rect.  Make the battery top be positive
-and use a gold filled rect to draw it.  Draw wires from
-the battery&#39;s positive and negative to a motor in the right side.
+to adjust the speed of the motor. Place the battery on the
+left side. Make the negative sign be at the bottom and
+use a black filled rect. Make the battery top be positive
+and use a gold filled rect to draw it. Draw wires from
+the battery&#39;s positive and negative to a motor on the right side.
 The motor should drive a circle that spins faster as the slider is changed.
 The motor should only spin if we have power.
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 <h2 id="sample-code">Sample Code</h2>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -1560,24 +1646,7 @@ The motor should only spin if we have power.
 <span class="normal">71</span>
 <span class="normal">72</span>
 <span class="normal">73</span>
-<span class="normal">74</span>
-<span class="normal">75</span>
-<span class="normal">76</span>
-<span class="normal">77</span>
-<span class="normal">78</span>
-<span class="normal">79</span>
-<span class="normal">80</span>
-<span class="normal">81</span>
-<span class="normal">82</span>
-<span class="normal">83</span>
-<span class="normal">84</span>
-<span class="normal">85</span>
-<span class="normal">86</span>
-<span class="normal">87</span>
-<span class="normal">88</span>
-<span class="normal">89</span>
-<span class="normal">90</span>
-<span class="normal">91</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// battery drain</span>
+<span class="normal">74</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// battery drain</span>
 <span class="c1">// Animate a motor that drains a battery faster the more power is used</span>
 <span class="kd">let</span><span class="w"> </span><span class="nx">canvasWidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">400</span><span class="p">;</span>
 <span class="kd">let</span><span class="w"> </span><span class="nx">drawHeight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">400</span><span class="p">;</span>
@@ -1590,7 +1659,6 @@ The motor should only spin if we have power.
 
 <span class="kd">function</span><span class="w"> </span><span class="nx">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">canvas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createCanvas</span><span class="p">(</span><span class="nx">canvasWidth</span><span class="p">,</span><span class="w"> </span><span class="nx">canvasHeight</span><span class="p">);</span>
-<span class="w">  </span><span class="c1">//</span>
 <span class="w">  </span><span class="nx">textSize</span><span class="p">(</span><span class="mf">16</span><span class="p">);</span>
 
 <span class="w">  </span><span class="nx">motorSpeedSlider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createSlider</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="mf">50</span><span class="p">);</span>
@@ -1607,21 +1675,14 @@ The motor should only spin if we have power.
 <span class="w">  </span><span class="nx">rect</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="nx">drawHeight</span><span class="p">,</span><span class="nx">canvasWidth</span><span class="p">,</span><span class="nx">canvasHeight</span><span class="o">-</span><span class="nx">drawHeight</span><span class="p">);</span>
 
 <span class="w">  </span><span class="nx">motorSpeed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">motorSpeedSlider</span><span class="p">.</span><span class="nx">value</span><span class="p">();</span>
-<span class="w">  </span><span class="c1">// Battery representation</span>
 <span class="w">  </span><span class="nx">drawBattery</span><span class="p">();</span>
 
-<span class="w">  </span><span class="c1">// Wires from battery to motor</span>
 <span class="w">  </span><span class="nx">stroke</span><span class="p">(</span><span class="mf">0</span><span class="p">);</span>
-<span class="w">  </span><span class="c1">// top wire</span>
 <span class="w">  </span><span class="nx">line</span><span class="p">(</span><span class="mf">50</span><span class="p">,</span><span class="w"> </span><span class="mf">50</span><span class="p">,</span><span class="w"> </span><span class="mf">350</span><span class="p">,</span><span class="w"> </span><span class="mf">50</span><span class="p">);</span>
-<span class="w">  </span><span class="c1">// bottom wire</span>
 <span class="w">  </span><span class="nx">line</span><span class="p">(</span><span class="mf">50</span><span class="p">,</span><span class="w"> </span><span class="mf">350</span><span class="p">,</span><span class="w"> </span><span class="mf">350</span><span class="p">,</span><span class="w"> </span><span class="mf">350</span><span class="p">);</span>
 <span class="w">  </span><span class="nx">line</span><span class="p">(</span><span class="mf">350</span><span class="p">,</span><span class="w"> </span><span class="mf">50</span><span class="p">,</span><span class="w"> </span><span class="mf">350</span><span class="p">,</span><span class="w"> </span><span class="mf">350</span><span class="p">);</span>
 
-<span class="w">  </span><span class="c1">// Motor and spinning circle</span>
 <span class="w">  </span><span class="nx">drawMotor</span><span class="p">();</span>
-
-<span class="w">  </span><span class="c1">// Update battery discharge</span>
 <span class="w">  </span><span class="nx">updateBattery</span><span class="p">();</span>
 <span class="w">  </span><span class="nx">noStroke</span><span class="p">();</span>
 <span class="w">  </span><span class="nx">fill</span><span class="p">(</span><span class="s1">&#39;black&#39;</span><span class="p">);</span>
@@ -1629,57 +1690,46 @@ The motor should only spin if we have power.
 <span class="p">}</span>
 
 <span class="kd">function</span><span class="w"> </span><span class="nx">drawBattery</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// Battery body</span>
-
 <span class="w">  </span><span class="nx">percentGold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">.4</span>
-<span class="w">  </span><span class="c1">// Positive terminal</span>
-<span class="w">  </span><span class="nx">fill</span><span class="p">(</span><span class="s1">&#39;gold&#39;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Gold color</span>
+<span class="w">  </span><span class="nx">fill</span><span class="p">(</span><span class="s1">&#39;gold&#39;</span><span class="p">);</span>
 <span class="w">  </span><span class="nx">rect</span><span class="p">(</span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="mf">50</span><span class="p">,</span><span class="w"> </span><span class="mf">50</span><span class="p">,</span><span class="w"> </span><span class="mf">300</span><span class="o">*</span><span class="nx">percentGold</span><span class="p">);</span>
-
-<span class="w">  </span><span class="c1">// Negative terminal</span>
 <span class="w">  </span><span class="nx">fill</span><span class="p">(</span><span class="s1">&#39;black&#39;</span><span class="p">);</span>
 <span class="w">  </span><span class="nx">rect</span><span class="p">(</span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="mf">350</span><span class="o">*</span><span class="nx">percentGold</span><span class="p">,</span><span class="w"> </span><span class="mf">50</span><span class="p">,</span><span class="w"> </span><span class="mf">350</span><span class="o">*</span><span class="p">(</span><span class="mf">1</span><span class="o">-</span><span class="nx">percentGold</span><span class="p">));</span>
 
-<span class="w">  </span><span class="c1">// Battery level</span>
 <span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">levelHeight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">map</span><span class="p">(</span><span class="nx">batteryLevel</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">300</span><span class="p">);</span>
 <span class="w">  </span><span class="nx">fill</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">255</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
 <span class="w">  </span><span class="nx">rect</span><span class="p">(</span><span class="mf">30</span><span class="p">,</span><span class="w"> </span><span class="mf">350</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">levelHeight</span><span class="p">,</span><span class="w"> </span><span class="mf">30</span><span class="p">,</span><span class="w"> </span><span class="nx">levelHeight</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="c1">// draw a spinning motor if we have power</span>
 <span class="kd">function</span><span class="w"> </span><span class="nx">drawMotor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">fill</span><span class="p">(</span><span class="mf">150</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">ellipse</span><span class="p">(</span><span class="mf">350</span><span class="p">,</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="mf">100</span><span class="p">);</span><span class="w"> </span><span class="c1">// Motor body</span>
+<span class="w">  </span><span class="nx">ellipse</span><span class="p">(</span><span class="mf">350</span><span class="p">,</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="mf">100</span><span class="p">);</span>
 
-<span class="w">  </span><span class="c1">// draw the spinner if we have power</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">batteryLevel</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">   </span><span class="nx">push</span><span class="p">();</span>
 <span class="w">      </span><span class="nx">translate</span><span class="p">(</span><span class="mf">350</span><span class="p">,</span><span class="w"> </span><span class="mf">200</span><span class="p">);</span>
 <span class="w">      </span><span class="nx">rotate</span><span class="p">(</span><span class="nx">frameCount</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">50</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">motorSpeed</span><span class="p">);</span>
 <span class="w">      </span><span class="nx">fill</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">255</span><span class="p">);</span>
-<span class="w">      </span><span class="nx">ellipse</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">40</span><span class="p">,</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="mf">20</span><span class="p">);</span><span class="w"> </span><span class="c1">// Spinning circle</span>
+<span class="w">      </span><span class="nx">ellipse</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">40</span><span class="p">,</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="mf">20</span><span class="p">);</span>
 <span class="w">   </span><span class="nx">pop</span><span class="p">();</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="c1">// the battery level goes down with time</span>
 <span class="kd">function</span><span class="w"> </span><span class="nx">updateBattery</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">dischargeRate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">motorSpeedSlider</span><span class="p">.</span><span class="nx">value</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1000</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">batteryLevel</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="nx">dischargeRate</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">batteryLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">max</span><span class="p">(</span><span class="nx">batteryLevel</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-<div class="admonition challenges">
-<p class="admonition-title">Challenges</p>
+<h2 id="challenges">Challenges</h2>
 <ol>
 <li>Add a label that shows the percent of charge remaining</li>
 <li>Add a label that predicts how long the battery will last at the current discharge rate</li>
 <li>Add another button called "Recharge" that will slowly recharge the battery</li>
-<li>Add animation to the wires of red dots moving along the wires.  Make the dots go faster at a higher power.</li>
+<li>Add animation to the wires of red dots moving along the wires. Make the dots go faster at a higher power.</li>
 <li>Make the battery explode if you charge it too quickly</li>
 </ol>
-</div>
-<h2 id="lesson-plans">Lesson Plans</h2>
+<h2 id="lesson-plan">Lesson Plan</h2>
 <h3 id="5th-grade-robotics-class-lesson-plan">5th Grade Robotics Class Lesson Plan</h3>
 <h4 id="objective">Objective</h4>
 <ul>
@@ -1688,49 +1738,53 @@ The motor should only spin if we have power.
 <li>Ask questions about what we do with batteries when they are discharged?</li>
 </ul>
 <h4 id="duration">Duration</h4>
-<ul>
-<li>1 hour</li>
-</ul>
+<p>1 hour</p>
 <h4 id="materials">Materials</h4>
 <ul>
 <li>Computers with internet access to use the p5.js Web Editor.</li>
 <li>Projector to demonstrate the p5.js simulation.</li>
 <li>Printed screenshots of the p5.js canvas setup (for reference).</li>
 </ul>
-<h4 id="introduction-10-minutes">Introduction (10 minutes)</h4>
+<h3 id="introduction-10-minutes">Introduction (10 minutes)</h3>
 <ul>
 <li><strong>Interactive Questioning</strong>: Begin by asking students about their experiences with batteries. "What devices at home use batteries?" "Have you noticed how the performance changes as the battery drains?"</li>
 <li><strong>Relevance to Robotics</strong>: Discuss why robots need batteries, linking to their own experiences with battery-powered devices.</li>
 </ul>
-<h4 id="demonstration-of-the-simulation-10-minutes">Demonstration of the Simulation (10 minutes)</h4>
+<h3 id="demonstration-of-the-simulation-10-minutes">Demonstration of the Simulation (10 minutes)</h3>
 <ul>
 <li><strong>Show the p5.js Simulation</strong>: Project the simulation on the screen. Demonstrate how the motor's speed changes with the slider and how this affects battery discharge.</li>
 <li><strong>Explain the Components</strong>: Point out the battery, the wires, the motor, and the spinning circle, explaining their roles.</li>
 </ul>
-<h4 id="group-activity-experimenting-with-the-simulation-20-minutes">Group Activity: Experimenting with the Simulation (20 minutes)</h4>
+<h3 id="group-activity-experimenting-with-the-simulation-20-minutes">Group Activity: Experimenting with the Simulation (20 minutes)</h3>
 <ul>
 <li><strong>Hands-On Exploration</strong>: Students work in pairs on computers to experiment with the simulation.</li>
 <li><strong>Guided Inquiry</strong>: Encourage students to observe what happens as they adjust the motor speed. Does the battery discharge faster at higher speeds?</li>
 </ul>
-<h4 id="discussion-and-reflection-15-minutes">Discussion and Reflection (15 minutes)</h4>
+<h3 id="discussion-and-reflection-15-minutes">Discussion and Reflection (15 minutes)</h3>
 <ul>
 <li><strong>Group Discussion</strong>: Reconvene as a class and discuss observations. Key questions: "How did changing the motor speed affect the battery life?" "Why is this important for designing robots?"</li>
 <li><strong>Connecting to Real Life</strong>: Relate the activity to real-world scenarios. "How might this knowledge impact the way we design battery-powered devices or robots?"</li>
 </ul>
-<h4 id="conclusion-5-minutes">Conclusion (5 minutes)</h4>
+<h3 id="conclusion-5-minutes">Conclusion (5 minutes)</h3>
 <ul>
 <li><strong>Summarize Key Learnings</strong>: Reinforce the importance of understanding battery usage in robotics and everyday devices.</li>
 <li><strong>Reflect on the Activity</strong>: Ask students to share one new thing they learned and how they might apply this knowledge.</li>
 </ul>
-<h4 id="assessment">Assessment</h4>
+<h3 id="assessment">Assessment</h3>
 <ul>
 <li>Participation and engagement during the activity.</li>
 <li>Responses during the discussion, reflecting understanding of the concept.</li>
 </ul>
-<h4 id="follow-up">Follow-Up</h4>
+<h3 id="follow-up">Follow-Up</h3>
 <ul>
 <li>In the next lesson, explore other factors affecting battery life in robots, like weight or the type of task performed.</li>
 <li>Assign a small project where students design a simple battery-powered device or robot, considering battery life.</li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://p5js.org/reference/">p5.js Reference</a> - Documentation for the p5.js library</li>
+<li><a href="https://www.batterypoweronline.com/">Battery Chemistry Basics</a> - Information about how batteries work</li>
+<li><a href="https://en.wikipedia.org/wiki/Electric_motor">Electric Motors</a> - Wikipedia article on electric motors</li>
 </ul>
 
 
