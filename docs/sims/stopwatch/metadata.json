@@ -30,5 +30,23 @@
   "prerequisites": [
     "Basic understanding of time"
   ],
-  "library": "p5.js"
+  "library": "p5.js",
+  "visualizationType": [
+    "interactive-demo",
+    "simulation"
+  ],
+  "learningObjectives": [
+    "Understand the key concepts of stopwatch",
+    "Explore stopwatch through interactive visualization",
+    "Apply knowledge of stopwatch to solve problems",
+    "Experiment with parameters to observe their effects on stopwatch"
+  ],
+  "bloomsTaxonomy": [
+    "Remember",
+    "Understand",
+    "Apply",
+    "Analyze",
+    "Evaluate",
+    "Create"
+  ]
 }

@@ -36,5 +36,24 @@
     "Basic Electronics",
     "Understanding of Digital Systems"
   ],
-  "library": "p5.js"
+  "library": "p5.js",
+  "visualizationType": [
+    "diagram",
+    "interactive-demo",
+    "map",
+    "network"
+  ],
+  "learningObjectives": [
+    "Understand the key concepts of architectural levels zoom",
+    "Explore architectural levels zoom through interactive visualization",
+    "Apply knowledge of architectural levels zoom to solve problems",
+    "Experiment with parameters to observe their effects on architectural levels zoom"
+  ],
+  "bloomsTaxonomy": [
+    "Remember",
+    "Understand",
+    "Apply",
+    "Evaluate",
+    "Create"
+  ]
 }
