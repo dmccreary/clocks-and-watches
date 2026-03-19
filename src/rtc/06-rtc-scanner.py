@@ -1,7 +1,7 @@
 from machine import I2C, Pin
 
 # Both modules use same I2C interface setup
-i2c = I2C(0, sda=Pin(0), scl=Pin(1))
+i2c = I2C(0, sda=Pin(16), scl=Pin(17), freq=400_000)
 print(i2c.scan())
 
 # RTC module addresses

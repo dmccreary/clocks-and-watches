@@ -3,15 +3,15 @@ import ssd1306
 import config
 from time import localtime
 
-SCL=machine.Pin(config.SCL_PIN) # SPI CLock
-SDA=machine.Pin(config.SDA_PIN) # SPI Data
+SCL=machine.Pin(config.SPI_SCL_PIN) # SPI CLock
+SDA=machine.Pin(config.SPI_SDA_PIN) # SPI Data
 
-RES = machine.Pin(config.RESET_PIN) # Reset
-DC = machine.Pin(config.DC_PIN) # Data/command
-CS = machine.Pin(config.CS_PIN) # Chip Select
+RES = machine.Pin(config.SPI_RESET_PIN) # Reset
+DC = machine.Pin(config.SPI_DC_PIN) # Data/command
+CS = machine.Pin(config.SPI_CS_PIN) # Chip Select
 
-spi=machine.SPI(config.SPI_BUS, sck=SCL, mosi=SDA, baudrate=100000)
-oled = ssd1306.SSD1306_SPI(config.WIDTH, config.HEIGHT, spi, DC, RES, CS)
+spi=machine.SPI(config.SPI_BUS, sck=SCL, mosi=SDA, baudrate=10_000_000)
+oled = ssd1306.SSD1306_SPI(config.DISPLAY_WIDTH, config.DISPLAY_HEIGHT, spi, DC, RES, CS)
 
 while True:
     # clear the entire screen

@@ -2,8 +2,8 @@ from machine import Pin, I2C
 from utime import localtime, sleep
 from ds1307 import DS1307
 
-I2C_DATA_PIN = 8
-I2C_CLOCK_PIN = 9
+I2C_DATA_PIN = 16
+I2C_CLOCK_PIN = 17
 
 I2C_ADDR = 0x68     # DEC 104, HEX 0x68
 

@@ -3,10 +3,10 @@ import time
 import ds3231
 
 # I2C setup
-I2C_SDA_PIN = 0  # data pin
-I2C_SCL_PIN = 1  # clock
+I2C_SDA_PIN = 16  # data pin
+I2C_SCL_PIN = 17  # clock
 I2C_BUS = 0
-I2C_FREQUENCY = 200000
+I2C_FREQUENCY = 1_000_000
 
 print("I2C Data SDA on pin: ", I2C_SDA_PIN)
 print("I2C Clock SCL on pin: ", I2C_SCL_PIN)
