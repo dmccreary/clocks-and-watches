@@ -1,0 +1,84 @@
+{
+  "title": "Shift Register",
+  "description": "Interactive p5.js simulation of a 74HC594 shift register demonstrating serial-to-parallel data conversion with clock and latch control signals.",
+  "creator": "Dan McCreary",
+  "date": "2024-07-04",
+  "subject": [
+    "Shift Register",
+    "Digital Electronics",
+    "Serial to Parallel",
+    "74HC594",
+    "Microcontroller I/O"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "educationalLevel": "High School to Undergraduate",
+  "learningResourceType": "simulation",
+  "audience": "Students, Educators, Electronics Enthusiasts",
+  "version": "1.0.0",
+  "bloomLevel": [
+    "Understand",
+    "Apply",
+    "Analyze"
+  ],
+  "concepts": [
+    "Shift Register",
+    "Serial Data Transfer",
+    "Parallel Output",
+    "Clock Signals",
+    "Latch Control"
+  ],
+  "prerequisites": [
+    "Binary Numbers",
+    "Basic Digital Logic"
+  ],
+  "library": "p5.js",
+  "visualizationType": [
+    "graph",
+    "interactive-demo",
+    "map",
+    "network",
+    "simulation",
+    "timeline"
+  ],
+  "learningObjectives": [
+    "Understand the key concepts of shift register",
+    "Explore shift register through interactive visualization",
+    "Apply knowledge of shift register to solve problems",
+    "Experiment with parameters to observe their effects on shift register"
+  ],
+  "bloomsTaxonomy": [
+    "Remember",
+    "Understand",
+    "Apply",
+    "Analyze",
+    "Evaluate",
+    "Create"
+  ],
+  "pedagogical": {
+    "pattern": "assessment",
+    "bloomAlignment": [
+      "understand",
+      "apply",
+      "analyze"
+    ],
+    "bloomVerbs": [
+      "compare",
+      "describe",
+      "explain",
+      "demonstrate",
+      "illustrate"
+    ],
+    "pacing": "self-paced",
+    "supportsPrediction": true,
+    "dataVisibility": "high",
+    "feedbackType": [
+      "immediate",
+      "corrective",
+      "explanatory"
+    ],
+    "interactionStyle": "construct"
+  }
+}

@@ -257,7 +257,12 @@ extra_css:
 extra_javascript:
   - js/extra.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+copyright: Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
 extra:
+  schema: https://dmccreary.github.io/intelligent-textbooks/ns/textbook/v1
+  textbook_name: Clocks and Watches with AI
+  textbook_version: "1.0"
+  generator: false
   analytics:
     provider: google
     # https://analytics.google.com/analytics/web/#/a1420179p349994530/admin/streams/table/4433129821
