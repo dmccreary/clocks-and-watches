@@ -31,5 +31,47 @@
     "Basic JavaScript",
     "Binary Numbers"
   ],
-  "library": "p5.js"
+  "library": "p5.js",
+  "visualizationType": [
+    "graph",
+    "interactive-demo",
+    "map",
+    "simulation"
+  ],
+  "learningObjectives": [
+    "Understand the key concepts of four-digit digital clock",
+    "Explore four-digit digital clock through interactive visualization",
+    "Apply knowledge of four-digit digital clock to solve problems",
+    "Experiment with parameters to observe their effects on four-digit digital clock"
+  ],
+  "bloomsTaxonomy": [
+    "Remember",
+    "Understand",
+    "Apply",
+    "Evaluate",
+    "Create"
+  ],
+  "pedagogical": {
+    "pattern": "demonstration",
+    "bloomAlignment": [
+      "understand",
+      "apply",
+      "evaluate"
+    ],
+    "bloomVerbs": [
+      "explain",
+      "apply",
+      "implement",
+      "use",
+      "assess"
+    ],
+    "pacing": "timed",
+    "supportsPrediction": false,
+    "dataVisibility": "high",
+    "feedbackType": [
+      "immediate",
+      "corrective"
+    ],
+    "interactionStyle": "construct"
+  }
 }

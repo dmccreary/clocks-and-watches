@@ -1,0 +1,4481 @@
+{
+  "metadata": {
+    "title": "Building Clocks and Watches with MicroPython",
+    "description": "A 14-week hands-on course where high school students learn computational thinking by designing and programming timekeeping devices using MicroPython on the Raspberry Pi Pico W, covering LED clocks, OLED displays, color TFTs, NeoPixel art clocks, WiFi time sync, and custom smartwatch projects.",
+    "creator": "Dan McCreary",
+    "date": "2026-03-19",
+    "version": "1.0",
+    "format": "Learning Graph JSON v1.0",
+    "schema": "https://raw.githubusercontent.com/dmccreary/learning-graphs/refs/heads/main/src/schema/learning-graph-schema.json",
+    "license": "CC BY-NC-SA 4.0 DEED"
+  },
+  "groups": {
+    "FOUND": {
+      "classifierName": "Foundation Concepts",
+      "color": "LightCoral",
+      "font": {
+        "color": "white"
+      }
+    },
+    "PYTH": {
+      "classifierName": "Python Programming",
+      "color": "PeachPuff",
+      "font": {
+        "color": "black"
+      }
+    },
+    "HARD": {
+      "classifierName": "Hardware and Electronics",
+      "color": "Thistle",
+      "font": {
+        "color": "black"
+      }
+    },
+    "MCTR": {
+      "classifierName": "Microcontroller",
+      "color": "PaleTurquoise",
+      "font": {
+        "color": "black"
+      }
+    },
+    "COMM": {
+      "classifierName": "Communication Buses",
+      "color": "LightSteelBlue",
+      "font": {
+        "color": "black"
+      }
+    },
+    "TIME": {
+      "classifierName": "Timekeeping",
+      "color": "LightYellow",
+      "font": {
+        "color": "black"
+      }
+    },
+    "DISP": {
+      "classifierName": "Displays and Drawing",
+      "color": "PaleGreen",
+      "font": {
+        "color": "black"
+      }
+    },
+    "MATH": {
+      "classifierName": "Math and Geometry",
+      "color": "Lavender",
+      "font": {
+        "color": "black"
+      }
+    },
+    "INPT": {
+      "classifierName": "Input and Sensors",
+      "color": "LightPink",
+      "font": {
+        "color": "black"
+      }
+    },
+    "SNPW": {
+      "classifierName": "Sound and Power",
+      "color": "Plum",
+      "font": {
+        "color": "white"
+      }
+    },
+    "PROJ": {
+      "classifierName": "Projects and Kits",
+      "color": "Aquamarine",
+      "font": {
+        "color": "black"
+      }
+    },
+    "DSGN": {
+      "classifierName": "Design and Development",
+      "color": "MistyRose",
+      "font": {
+        "color": "black"
+      }
+    }
+  },
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Computational Thinking",
+      "group": "FOUND",
+      "shape": "box"
+    },
+    {
+      "id": 2,
+      "label": "Decomposition",
+      "group": "FOUND"
+    },
+    {
+      "id": 3,
+      "label": "Pattern Recognition",
+      "group": "FOUND"
+    },
+    {
+      "id": 4,
+      "label": "Abstraction",
+      "group": "FOUND"
+    },
+    {
+      "id": 5,
+      "label": "Algorithmic Thinking",
+      "group": "FOUND"
+    },
+    {
+      "id": 6,
+      "label": "MicroPython",
+      "group": "PYTH"
+    },
+    {
+      "id": 7,
+      "label": "Python Syntax",
+      "group": "PYTH",
+      "shape": "box"
+    },
+    {
+      "id": 8,
+      "label": "Variables",
+      "group": "PYTH"
+    },
+    {
+      "id": 9,
+      "label": "Data Types",
+      "group": "PYTH"
+    },
+    {
+      "id": 10,
+      "label": "Integers",
+      "group": "PYTH"
+    },
+    {
+      "id": 11,
+      "label": "Floats",
+      "group": "PYTH"
+    },
+    {
+      "id": 12,
+      "label": "Strings",
+      "group": "PYTH"
+    },
+    {
+      "id": 13,
+      "label": "Booleans",
+      "group": "PYTH"
+    },
+    {
+      "id": 14,
+      "label": "Lists",
+      "group": "PYTH"
+    },
+    {
+      "id": 15,
+      "label": "Tuples",
+      "group": "PYTH"
+    },
+    {
+      "id": 16,
+      "label": "Dictionaries",
+      "group": "PYTH"
+    },
+    {
+      "id": 17,
+      "label": "Arithmetic Operations",
+      "group": "PYTH"
+    },
+    {
+      "id": 18,
+      "label": "Assignment Operators",
+      "group": "PYTH"
+    },
+    {
+      "id": 19,
+      "label": "Conditionals",
+      "group": "PYTH"
+    },
+    {
+      "id": 20,
+      "label": "If Else Elif",
+      "group": "PYTH"
+    },
+    {
+      "id": 21,
+      "label": "For Loops",
+      "group": "PYTH"
+    },
+    {
+      "id": 22,
+      "label": "While Loops",
+      "group": "PYTH"
+    },
+    {
+      "id": 23,
+      "label": "Loop Control",
+      "group": "PYTH"
+    },
+    {
+      "id": 24,
+      "label": "Functions",
+      "group": "PYTH"
+    },
+    {
+      "id": 25,
+      "label": "Arguments and Returns",
+      "group": "PYTH"
+    },
+    {
+      "id": 26,
+      "label": "Lambda Functions",
+      "group": "PYTH"
+    },
+    {
+      "id": 27,
+      "label": "Import Statements",
+      "group": "PYTH"
+    },
+    {
+      "id": 28,
+      "label": "Libraries",
+      "group": "PYTH"
+    },
+    {
+      "id": 29,
+      "label": "Modules",
+      "group": "PYTH"
+    },
+    {
+      "id": 30,
+      "label": "Error Handling",
+      "group": "PYTH"
+    },
+    {
+      "id": 31,
+      "label": "Try Except Blocks",
+      "group": "PYTH"
+    },
+    {
+      "id": 32,
+      "label": "Raspberry Pi Pico",
+      "group": "MCTR"
+    },
+    {
+      "id": 33,
+      "label": "RP2040 Chip",
+      "group": "MCTR"
+    },
+    {
+      "id": 34,
+      "label": "Dual Core Architecture",
+      "group": "MCTR"
+    },
+    {
+      "id": 35,
+      "label": "GPIO Pins",
+      "group": "MCTR"
+    },
+    {
+      "id": 36,
+      "label": "Pin Configuration",
+      "group": "MCTR"
+    },
+    {
+      "id": 37,
+      "label": "Pull-Up Resistors",
+      "group": "MCTR"
+    },
+    {
+      "id": 38,
+      "label": "Internal Pull-Up",
+      "group": "MCTR"
+    },
+    {
+      "id": 39,
+      "label": "Breadboard",
+      "group": "HARD",
+      "shape": "box"
+    },
+    {
+      "id": 40,
+      "label": "Breadboard Wiring",
+      "group": "HARD"
+    },
+    {
+      "id": 41,
+      "label": "USB Connection",
+      "group": "MCTR"
+    },
+    {
+      "id": 42,
+      "label": "Thonny IDE",
+      "group": "MCTR"
+    },
+    {
+      "id": 43,
+      "label": "REPL",
+      "group": "MCTR"
+    },
+    {
+      "id": 44,
+      "label": "Flash Memory",
+      "group": "MCTR"
+    },
+    {
+      "id": 45,
+      "label": "File System on Pico",
+      "group": "MCTR"
+    },
+    {
+      "id": 46,
+      "label": "Config File Pattern",
+      "group": "MCTR"
+    },
+    {
+      "id": 47,
+      "label": "Microcontroller",
+      "group": "MCTR",
+      "shape": "box"
+    },
+    {
+      "id": 48,
+      "label": "Physical Computing",
+      "group": "FOUND"
+    },
+    {
+      "id": 49,
+      "label": "Clock Architecture",
+      "group": "MCTR"
+    },
+    {
+      "id": 50,
+      "label": "Sensors",
+      "group": "MCTR"
+    },
+    {
+      "id": 51,
+      "label": "Actuators",
+      "group": "MCTR"
+    },
+    {
+      "id": 52,
+      "label": "Power Supply",
+      "group": "HARD"
+    },
+    {
+      "id": 53,
+      "label": "Voltage Levels",
+      "group": "HARD"
+    },
+    {
+      "id": 54,
+      "label": "3.3V vs 5V Logic",
+      "group": "HARD"
+    },
+    {
+      "id": 55,
+      "label": "Ground Connection",
+      "group": "HARD"
+    },
+    {
+      "id": 56,
+      "label": "I2C Bus",
+      "group": "COMM"
+    },
+    {
+      "id": 57,
+      "label": "I2C SDA Pin",
+      "group": "COMM"
+    },
+    {
+      "id": 58,
+      "label": "I2C SCL Pin",
+      "group": "COMM"
+    },
+    {
+      "id": 59,
+      "label": "I2C Device Addressing",
+      "group": "COMM"
+    },
+    {
+      "id": 60,
+      "label": "I2C Scanner",
+      "group": "COMM"
+    },
+    {
+      "id": 61,
+      "label": "I2C Pull-Up Resistors",
+      "group": "COMM"
+    },
+    {
+      "id": 62,
+      "label": "I2C Bus Speed",
+      "group": "COMM"
+    },
+    {
+      "id": 63,
+      "label": "SPI Bus",
+      "group": "COMM"
+    },
+    {
+      "id": 64,
+      "label": "SPI Clock Pin",
+      "group": "COMM"
+    },
+    {
+      "id": 65,
+      "label": "SPI Data Pin",
+      "group": "COMM"
+    },
+    {
+      "id": 66,
+      "label": "SPI Chip Select",
+      "group": "COMM"
+    },
+    {
+      "id": 67,
+      "label": "SPI DC Pin",
+      "group": "COMM"
+    },
+    {
+      "id": 68,
+      "label": "SPI Reset Pin",
+      "group": "COMM"
+    },
+    {
+      "id": 69,
+      "label": "SPI Baudrate",
+      "group": "COMM"
+    },
+    {
+      "id": 70,
+      "label": "Baudrate Tuning",
+      "group": "COMM"
+    },
+    {
+      "id": 71,
+      "label": "Bus Speed Comparison",
+      "group": "COMM"
+    },
+    {
+      "id": 72,
+      "label": "Momentary Push Button",
+      "group": "INPT"
+    },
+    {
+      "id": 73,
+      "label": "Button Wiring",
+      "group": "INPT"
+    },
+    {
+      "id": 74,
+      "label": "Button Debouncing",
+      "group": "INPT"
+    },
+    {
+      "id": 75,
+      "label": "Software Debounce",
+      "group": "INPT"
+    },
+    {
+      "id": 76,
+      "label": "Hardware Debounce",
+      "group": "INPT"
+    },
+    {
+      "id": 77,
+      "label": "Interrupt Handlers",
+      "group": "INPT"
+    },
+    {
+      "id": 78,
+      "label": "IRQ Falling Edge",
+      "group": "INPT"
+    },
+    {
+      "id": 79,
+      "label": "State Machine",
+      "group": "INPT"
+    },
+    {
+      "id": 80,
+      "label": "Mode Cycling",
+      "group": "INPT"
+    },
+    {
+      "id": 81,
+      "label": "Modular Arithmetic",
+      "group": "MATH"
+    },
+    {
+      "id": 82,
+      "label": "Rotary Encoder",
+      "group": "INPT"
+    },
+    {
+      "id": 83,
+      "label": "Encoder Direction",
+      "group": "INPT"
+    },
+    {
+      "id": 84,
+      "label": "Encoder Acceleration",
+      "group": "INPT"
+    },
+    {
+      "id": 85,
+      "label": "Localtime Function",
+      "group": "TIME"
+    },
+    {
+      "id": 86,
+      "label": "Time Tuple",
+      "group": "TIME"
+    },
+    {
+      "id": 87,
+      "label": "Year Month Day",
+      "group": "TIME"
+    },
+    {
+      "id": 88,
+      "label": "Hour Minute Second",
+      "group": "TIME"
+    },
+    {
+      "id": 89,
+      "label": "Weekday Number",
+      "group": "TIME"
+    },
+    {
+      "id": 90,
+      "label": "Day of Year",
+      "group": "TIME"
+    },
+    {
+      "id": 91,
+      "label": "12 Hour Format",
+      "group": "TIME"
+    },
+    {
+      "id": 92,
+      "label": "24 Hour Format",
+      "group": "TIME"
+    },
+    {
+      "id": 93,
+      "label": "AM PM Conversion",
+      "group": "TIME"
+    },
+    {
+      "id": 94,
+      "label": "Time Formatting",
+      "group": "TIME"
+    },
+    {
+      "id": 95,
+      "label": "Date Formatting",
+      "group": "TIME"
+    },
+    {
+      "id": 96,
+      "label": "Weekday Labels",
+      "group": "TIME"
+    },
+    {
+      "id": 97,
+      "label": "Month Labels",
+      "group": "TIME"
+    },
+    {
+      "id": 98,
+      "label": "Real-Time Clock",
+      "group": "TIME"
+    },
+    {
+      "id": 99,
+      "label": "DS3231 RTC",
+      "group": "TIME"
+    },
+    {
+      "id": 100,
+      "label": "RTC Battery Backup",
+      "group": "TIME"
+    },
+    {
+      "id": 101,
+      "label": "CR2032 Coin Cell",
+      "group": "SNPW"
+    },
+    {
+      "id": 102,
+      "label": "Temperature Compensation",
+      "group": "TIME"
+    },
+    {
+      "id": 103,
+      "label": "BCD Format",
+      "group": "TIME"
+    },
+    {
+      "id": 104,
+      "label": "RTC I2C Address",
+      "group": "TIME"
+    },
+    {
+      "id": 105,
+      "label": "RTC Registers",
+      "group": "TIME"
+    },
+    {
+      "id": 106,
+      "label": "RTC Alarm Feature",
+      "group": "TIME"
+    },
+    {
+      "id": 107,
+      "label": "RTC Temperature Sensor",
+      "group": "TIME"
+    },
+    {
+      "id": 108,
+      "label": "Internal Pico RTC",
+      "group": "TIME"
+    },
+    {
+      "id": 109,
+      "label": "Time Source Comparison",
+      "group": "TIME"
+    },
+    {
+      "id": 110,
+      "label": "WiFi Connectivity",
+      "group": "TIME"
+    },
+    {
+      "id": 111,
+      "label": "Pico W",
+      "group": "MCTR"
+    },
+    {
+      "id": 112,
+      "label": "Secrets File",
+      "group": "TIME"
+    },
+    {
+      "id": 113,
+      "label": "WiFi SSID and Password",
+      "group": "TIME"
+    },
+    {
+      "id": 114,
+      "label": "Network Configuration",
+      "group": "TIME"
+    },
+    {
+      "id": 115,
+      "label": "NTP Protocol",
+      "group": "TIME"
+    },
+    {
+      "id": 116,
+      "label": "NTP Client Server",
+      "group": "TIME"
+    },
+    {
+      "id": 117,
+      "label": "NTP Stratum Hierarchy",
+      "group": "TIME"
+    },
+    {
+      "id": 118,
+      "label": "NTP Time Sync",
+      "group": "TIME"
+    },
+    {
+      "id": 119,
+      "label": "UTC Time",
+      "group": "TIME"
+    },
+    {
+      "id": 120,
+      "label": "Timezone Conversion",
+      "group": "TIME"
+    },
+    {
+      "id": 121,
+      "label": "Daylight Saving Time",
+      "group": "TIME"
+    },
+    {
+      "id": 122,
+      "label": "Ntptime Library",
+      "group": "TIME"
+    },
+    {
+      "id": 123,
+      "label": "LED Display",
+      "group": "DISP"
+    },
+    {
+      "id": 124,
+      "label": "Seven Segment Display",
+      "group": "DISP"
+    },
+    {
+      "id": 125,
+      "label": "Segment Multiplexing",
+      "group": "DISP"
+    },
+    {
+      "id": 126,
+      "label": "TM1637 Driver",
+      "group": "DISP"
+    },
+    {
+      "id": 127,
+      "label": "TM1637 Wiring",
+      "group": "DISP"
+    },
+    {
+      "id": 128,
+      "label": "Colon Flashing",
+      "group": "DISP"
+    },
+    {
+      "id": 129,
+      "label": "Brightness Control",
+      "group": "DISP"
+    },
+    {
+      "id": 130,
+      "label": "MAX7219 Driver",
+      "group": "DISP"
+    },
+    {
+      "id": 131,
+      "label": "Character LCD",
+      "group": "DISP"
+    },
+    {
+      "id": 132,
+      "label": "LCD1602 Display",
+      "group": "DISP"
+    },
+    {
+      "id": 133,
+      "label": "OLED Display",
+      "group": "DISP"
+    },
+    {
+      "id": 134,
+      "label": "SSD1306 Driver",
+      "group": "DISP"
+    },
+    {
+      "id": 135,
+      "label": "SSD1306 I2C Setup",
+      "group": "DISP"
+    },
+    {
+      "id": 136,
+      "label": "SSD1306 SPI Setup",
+      "group": "DISP"
+    },
+    {
+      "id": 137,
+      "label": "SH1106 Driver",
+      "group": "DISP"
+    },
+    {
+      "id": 138,
+      "label": "Framebuffer",
+      "group": "DISP"
+    },
+    {
+      "id": 139,
+      "label": "Display Show Command",
+      "group": "DISP"
+    },
+    {
+      "id": 140,
+      "label": "Display Fill Command",
+      "group": "DISP"
+    },
+    {
+      "id": 141,
+      "label": "Pixel Drawing",
+      "group": "DISP"
+    },
+    {
+      "id": 142,
+      "label": "Line Drawing",
+      "group": "DISP"
+    },
+    {
+      "id": 143,
+      "label": "Rectangle Drawing",
+      "group": "DISP"
+    },
+    {
+      "id": 144,
+      "label": "Circle Drawing",
+      "group": "DISP"
+    },
+    {
+      "id": 145,
+      "label": "Polygon Drawing",
+      "group": "DISP"
+    },
+    {
+      "id": 146,
+      "label": "Triangle Drawing",
+      "group": "DISP"
+    },
+    {
+      "id": 147,
+      "label": "Text Rendering",
+      "group": "DISP"
+    },
+    {
+      "id": 148,
+      "label": "Font Loading",
+      "group": "DISP"
+    },
+    {
+      "id": 149,
+      "label": "Custom Fonts",
+      "group": "DISP"
+    },
+    {
+      "id": 150,
+      "label": "Font to Py Converter",
+      "group": "DISP"
+    },
+    {
+      "id": 151,
+      "label": "Multiple Font Support",
+      "group": "DISP"
+    },
+    {
+      "id": 152,
+      "label": "Scaled Digits",
+      "group": "DISP"
+    },
+    {
+      "id": 153,
+      "label": "Color Display",
+      "group": "DISP"
+    },
+    {
+      "id": 154,
+      "label": "TFT LCD",
+      "group": "DISP"
+    },
+    {
+      "id": 155,
+      "label": "ILI9341 Driver",
+      "group": "DISP"
+    },
+    {
+      "id": 156,
+      "label": "ST7735 Driver",
+      "group": "DISP"
+    },
+    {
+      "id": 157,
+      "label": "GC9A01 Driver",
+      "group": "DISP"
+    },
+    {
+      "id": 158,
+      "label": "RGB565 Color Encoding",
+      "group": "DISP"
+    },
+    {
+      "id": 159,
+      "label": "Color565 Function",
+      "group": "DISP"
+    },
+    {
+      "id": 160,
+      "label": "Color Palette",
+      "group": "DISP"
+    },
+    {
+      "id": 161,
+      "label": "Colors File",
+      "group": "DISP"
+    },
+    {
+      "id": 162,
+      "label": "Round Display",
+      "group": "DISP"
+    },
+    {
+      "id": 163,
+      "label": "Smartwatch Display",
+      "group": "DISP"
+    },
+    {
+      "id": 164,
+      "label": "Display Rotation",
+      "group": "DISP"
+    },
+    {
+      "id": 165,
+      "label": "Analog Clock Face",
+      "group": "DISP"
+    },
+    {
+      "id": 166,
+      "label": "Clock Tick Marks",
+      "group": "DISP"
+    },
+    {
+      "id": 167,
+      "label": "Clock Hands",
+      "group": "DISP"
+    },
+    {
+      "id": 168,
+      "label": "Rotating Hands",
+      "group": "DISP"
+    },
+    {
+      "id": 169,
+      "label": "Digital Clock Face",
+      "group": "DISP"
+    },
+    {
+      "id": 170,
+      "label": "NeoPixel LEDs",
+      "group": "PROJ"
+    },
+    {
+      "id": 171,
+      "label": "WS2812B Standard",
+      "group": "PROJ"
+    },
+    {
+      "id": 172,
+      "label": "NeoPixel Wiring",
+      "group": "PROJ"
+    },
+    {
+      "id": 173,
+      "label": "Addressable LEDs",
+      "group": "PROJ"
+    },
+    {
+      "id": 174,
+      "label": "NeoPixel Color Mixing",
+      "group": "PROJ"
+    },
+    {
+      "id": 175,
+      "label": "Binary Clock",
+      "group": "PROJ"
+    },
+    {
+      "id": 176,
+      "label": "Fibonacci Clock",
+      "group": "PROJ"
+    },
+    {
+      "id": 177,
+      "label": "NeoPixel Seven Segment",
+      "group": "PROJ"
+    },
+    {
+      "id": 178,
+      "label": "Shift Register",
+      "group": "PROJ"
+    },
+    {
+      "id": 179,
+      "label": "74HC595 Chip",
+      "group": "PROJ"
+    },
+    {
+      "id": 180,
+      "label": "Serial to Parallel",
+      "group": "PROJ"
+    },
+    {
+      "id": 181,
+      "label": "Latch Pin",
+      "group": "PROJ"
+    },
+    {
+      "id": 182,
+      "label": "Shift Register Chaining",
+      "group": "PROJ"
+    },
+    {
+      "id": 183,
+      "label": "PWM Sound",
+      "group": "SNPW"
+    },
+    {
+      "id": 184,
+      "label": "Piezo Buzzer",
+      "group": "SNPW"
+    },
+    {
+      "id": 185,
+      "label": "Speaker Output",
+      "group": "SNPW"
+    },
+    {
+      "id": 186,
+      "label": "DAC PCM5102",
+      "group": "SNPW"
+    },
+    {
+      "id": 187,
+      "label": "I2S Protocol",
+      "group": "SNPW"
+    },
+    {
+      "id": 188,
+      "label": "Audio Sampling Rate",
+      "group": "SNPW"
+    },
+    {
+      "id": 189,
+      "label": "Alarm Tones",
+      "group": "SNPW"
+    },
+    {
+      "id": 190,
+      "label": "Alarm Clock Features",
+      "group": "PROJ"
+    },
+    {
+      "id": 191,
+      "label": "Snooze Function",
+      "group": "PROJ"
+    },
+    {
+      "id": 192,
+      "label": "Stopwatch",
+      "group": "PROJ"
+    },
+    {
+      "id": 193,
+      "label": "Timer",
+      "group": "PROJ"
+    },
+    {
+      "id": 194,
+      "label": "Elapsed Time Tracking",
+      "group": "PROJ"
+    },
+    {
+      "id": 195,
+      "label": "Photosensor",
+      "group": "INPT"
+    },
+    {
+      "id": 196,
+      "label": "Light Dependent Resistor",
+      "group": "INPT"
+    },
+    {
+      "id": 197,
+      "label": "ADC Reading",
+      "group": "INPT"
+    },
+    {
+      "id": 198,
+      "label": "Auto Brightness",
+      "group": "INPT"
+    },
+    {
+      "id": 199,
+      "label": "Hysteresis",
+      "group": "INPT"
+    },
+    {
+      "id": 200,
+      "label": "Power Management",
+      "group": "SNPW"
+    },
+    {
+      "id": 201,
+      "label": "USB Power",
+      "group": "SNPW"
+    },
+    {
+      "id": 202,
+      "label": "Battery Power",
+      "group": "SNPW"
+    },
+    {
+      "id": 203,
+      "label": "LiPo Battery",
+      "group": "SNPW"
+    },
+    {
+      "id": 204,
+      "label": "AA Battery Pack",
+      "group": "SNPW"
+    },
+    {
+      "id": 205,
+      "label": "E-Paper Display",
+      "group": "DISP"
+    },
+    {
+      "id": 206,
+      "label": "Waveshare Display",
+      "group": "DISP"
+    },
+    {
+      "id": 207,
+      "label": "Display Refresh Rate",
+      "group": "DISP"
+    },
+    {
+      "id": 208,
+      "label": "Low Power Mode",
+      "group": "SNPW"
+    },
+    {
+      "id": 209,
+      "label": "Soldering Skills",
+      "group": "HARD"
+    },
+    {
+      "id": 210,
+      "label": "Project Planning",
+      "group": "DSGN"
+    },
+    {
+      "id": 211,
+      "label": "Design Trade-Offs",
+      "group": "DSGN"
+    },
+    {
+      "id": 212,
+      "label": "Cost Analysis",
+      "group": "DSGN"
+    },
+    {
+      "id": 213,
+      "label": "User Experience Design",
+      "group": "DSGN"
+    },
+    {
+      "id": 214,
+      "label": "Code Modularity",
+      "group": "DSGN"
+    },
+    {
+      "id": 215,
+      "label": "Program Variants",
+      "group": "DSGN"
+    },
+    {
+      "id": 216,
+      "label": "Main Buttons Program",
+      "group": "DSGN"
+    },
+    {
+      "id": 217,
+      "label": "Main RTC Program",
+      "group": "DSGN"
+    },
+    {
+      "id": 218,
+      "label": "Main WiFi Program",
+      "group": "DSGN"
+    },
+    {
+      "id": 219,
+      "label": "Generative AI Prompts",
+      "group": "DSGN"
+    },
+    {
+      "id": 220,
+      "label": "AI Code Generation",
+      "group": "DSGN"
+    },
+    {
+      "id": 221,
+      "label": "AI Code Review",
+      "group": "DSGN"
+    },
+    {
+      "id": 222,
+      "label": "Peer Review",
+      "group": "DSGN"
+    },
+    {
+      "id": 223,
+      "label": "Final Presentation",
+      "group": "DSGN"
+    },
+    {
+      "id": 224,
+      "label": "Wiring Diagrams",
+      "group": "DSGN"
+    },
+    {
+      "id": 225,
+      "label": "Troubleshooting",
+      "group": "DSGN"
+    },
+    {
+      "id": 226,
+      "label": "Debugging Techniques",
+      "group": "DSGN"
+    },
+    {
+      "id": 227,
+      "label": "Display Flicker Fix",
+      "group": "DSGN"
+    },
+    {
+      "id": 228,
+      "label": "Clock Drift",
+      "group": "DSGN"
+    },
+    {
+      "id": 229,
+      "label": "Dual Core Usage",
+      "group": "MCTR"
+    },
+    {
+      "id": 230,
+      "label": "E-Paper Refresh",
+      "group": "DISP"
+    },
+    {
+      "id": 231,
+      "label": "Sine Function",
+      "group": "MATH"
+    },
+    {
+      "id": 232,
+      "label": "Cosine Function",
+      "group": "MATH"
+    },
+    {
+      "id": 233,
+      "label": "Trigonometry Basics",
+      "group": "MATH"
+    },
+    {
+      "id": 234,
+      "label": "Polar Coordinates",
+      "group": "MATH"
+    },
+    {
+      "id": 235,
+      "label": "Radians vs Degrees",
+      "group": "MATH"
+    },
+    {
+      "id": 236,
+      "label": "Angle Calculation",
+      "group": "MATH"
+    },
+    {
+      "id": 237,
+      "label": "X Y Coordinate System",
+      "group": "MATH"
+    },
+    {
+      "id": 238,
+      "label": "Pixel Coordinate Mapping",
+      "group": "MATH"
+    },
+    {
+      "id": 239,
+      "label": "Center Point Calculation",
+      "group": "MATH"
+    },
+    {
+      "id": 240,
+      "label": "Clock Hand Length",
+      "group": "MATH"
+    },
+    {
+      "id": 241,
+      "label": "Tick Mark Geometry",
+      "group": "MATH"
+    },
+    {
+      "id": 242,
+      "label": "Arc Drawing",
+      "group": "MATH"
+    },
+    {
+      "id": 243,
+      "label": "Rotation Math",
+      "group": "MATH"
+    },
+    {
+      "id": 244,
+      "label": "Integer Math Tricks",
+      "group": "MATH"
+    },
+    {
+      "id": 245,
+      "label": "Fixed Point Arithmetic",
+      "group": "MATH"
+    },
+    {
+      "id": 246,
+      "label": "Machine Module",
+      "group": "PYTH"
+    },
+    {
+      "id": 247,
+      "label": "Utime Module",
+      "group": "PYTH"
+    },
+    {
+      "id": 248,
+      "label": "Sleep Function",
+      "group": "PYTH"
+    },
+    {
+      "id": 249,
+      "label": "Ticks Ms Function",
+      "group": "PYTH"
+    },
+    {
+      "id": 250,
+      "label": "Ticks Diff Function",
+      "group": "PYTH"
+    },
+    {
+      "id": 251,
+      "label": "F-String Formatting",
+      "group": "PYTH"
+    },
+    {
+      "id": 252,
+      "label": "String Concatenation",
+      "group": "PYTH"
+    },
+    {
+      "id": 253,
+      "label": "Global Keyword",
+      "group": "PYTH"
+    },
+    {
+      "id": 254,
+      "label": "Callback Functions",
+      "group": "PYTH"
+    },
+    {
+      "id": 255,
+      "label": "Classes and Objects",
+      "group": "PYTH"
+    },
+    {
+      "id": 256,
+      "label": "Object Methods",
+      "group": "PYTH"
+    },
+    {
+      "id": 257,
+      "label": "Memory Management",
+      "group": "PYTH"
+    },
+    {
+      "id": 258,
+      "label": "Garbage Collection",
+      "group": "PYTH"
+    },
+    {
+      "id": 259,
+      "label": "Print Debugging",
+      "group": "PYTH"
+    },
+    {
+      "id": 260,
+      "label": "Micropython Differences",
+      "group": "PYTH"
+    },
+    {
+      "id": 261,
+      "label": "Firmware Versions",
+      "group": "PYTH"
+    },
+    {
+      "id": 262,
+      "label": "Firmware Flashing",
+      "group": "PYTH"
+    },
+    {
+      "id": 263,
+      "label": "Boot and Main Files",
+      "group": "PYTH"
+    },
+    {
+      "id": 264,
+      "label": "Ohms Law",
+      "group": "HARD",
+      "shape": "box"
+    },
+    {
+      "id": 265,
+      "label": "Current Limiting",
+      "group": "HARD"
+    },
+    {
+      "id": 266,
+      "label": "Voltage Divider",
+      "group": "HARD"
+    },
+    {
+      "id": 267,
+      "label": "Capacitors",
+      "group": "HARD"
+    },
+    {
+      "id": 268,
+      "label": "Resistor Values",
+      "group": "HARD"
+    },
+    {
+      "id": 269,
+      "label": "LED Basics",
+      "group": "HARD"
+    },
+    {
+      "id": 270,
+      "label": "LED Current Draw",
+      "group": "HARD"
+    },
+    {
+      "id": 271,
+      "label": "Wire Color Coding",
+      "group": "HARD"
+    },
+    {
+      "id": 272,
+      "label": "Circuit Diagrams",
+      "group": "HARD"
+    },
+    {
+      "id": 273,
+      "label": "Multimeter Usage",
+      "group": "HARD"
+    },
+    {
+      "id": 274,
+      "label": "Signal Integrity",
+      "group": "HARD"
+    },
+    {
+      "id": 275,
+      "label": "Crosstalk",
+      "group": "HARD"
+    },
+    {
+      "id": 276,
+      "label": "Connector Types",
+      "group": "HARD"
+    },
+    {
+      "id": 277,
+      "label": "Jumper Wires",
+      "group": "HARD"
+    },
+    {
+      "id": 278,
+      "label": "Header Pins",
+      "group": "HARD"
+    },
+    {
+      "id": 279,
+      "label": "Display Resolution",
+      "group": "DISP"
+    },
+    {
+      "id": 280,
+      "label": "Contrast Ratio",
+      "group": "DISP"
+    },
+    {
+      "id": 281,
+      "label": "Viewing Angle",
+      "group": "DISP"
+    },
+    {
+      "id": 282,
+      "label": "Direct Write Display",
+      "group": "DISP"
+    },
+    {
+      "id": 283,
+      "label": "Screen Clearing",
+      "group": "DISP"
+    },
+    {
+      "id": 284,
+      "label": "Animation Technique",
+      "group": "DISP"
+    },
+    {
+      "id": 285,
+      "label": "Double Buffering",
+      "group": "DISP"
+    },
+    {
+      "id": 286,
+      "label": "Partial Screen Update",
+      "group": "DISP"
+    },
+    {
+      "id": 287,
+      "label": "Scroll Marquee",
+      "group": "DISP"
+    },
+    {
+      "id": 288,
+      "label": "Display Coordinates",
+      "group": "DISP"
+    },
+    {
+      "id": 289,
+      "label": "Bounding Box",
+      "group": "DISP"
+    },
+    {
+      "id": 290,
+      "label": "Clipping Region",
+      "group": "DISP"
+    },
+    {
+      "id": 291,
+      "label": "Crystal Oscillator",
+      "group": "MCTR"
+    },
+    {
+      "id": 292,
+      "label": "Clock Accuracy",
+      "group": "TIME"
+    },
+    {
+      "id": 293,
+      "label": "Clock Precision",
+      "group": "TIME"
+    },
+    {
+      "id": 294,
+      "label": "Epoch Time",
+      "group": "TIME"
+    },
+    {
+      "id": 295,
+      "label": "Unix Timestamp",
+      "group": "TIME"
+    },
+    {
+      "id": 296,
+      "label": "Leap Year Handling",
+      "group": "TIME"
+    },
+    {
+      "id": 297,
+      "label": "Time Drift Compensation",
+      "group": "TIME"
+    },
+    {
+      "id": 298,
+      "label": "Clock Calibration",
+      "group": "TIME"
+    },
+    {
+      "id": 299,
+      "label": "Seconds Since Midnight",
+      "group": "TIME"
+    },
+    {
+      "id": 300,
+      "label": "Time Math",
+      "group": "TIME"
+    },
+    {
+      "id": 301,
+      "label": "World Clock",
+      "group": "PROJ"
+    },
+    {
+      "id": 302,
+      "label": "Countdown Timer",
+      "group": "PROJ"
+    },
+    {
+      "id": 303,
+      "label": "Pomodoro Timer",
+      "group": "PROJ"
+    },
+    {
+      "id": 304,
+      "label": "Weather Station Display",
+      "group": "PROJ"
+    },
+    {
+      "id": 305,
+      "label": "Temperature Display",
+      "group": "PROJ"
+    },
+    {
+      "id": 306,
+      "label": "Humidity Display",
+      "group": "PROJ"
+    },
+    {
+      "id": 307,
+      "label": "Enclosure Design",
+      "group": "DSGN"
+    },
+    {
+      "id": 308,
+      "label": "Acrylic Mounting",
+      "group": "DSGN"
+    },
+    {
+      "id": 309,
+      "label": "Bill of Materials",
+      "group": "DSGN"
+    },
+    {
+      "id": 310,
+      "label": "Component Sourcing",
+      "group": "DSGN"
+    },
+    {
+      "id": 311,
+      "label": "HSV Color Model",
+      "group": "PROJ"
+    },
+    {
+      "id": 312,
+      "label": "Color Wheel",
+      "group": "PROJ"
+    },
+    {
+      "id": 313,
+      "label": "LED Power Calculation",
+      "group": "PROJ"
+    },
+    {
+      "id": 314,
+      "label": "NeoPixel Strip Types",
+      "group": "PROJ"
+    },
+    {
+      "id": 315,
+      "label": "NeoPixel Ring",
+      "group": "PROJ"
+    },
+    {
+      "id": 316,
+      "label": "NeoPixel Matrix",
+      "group": "PROJ"
+    },
+    {
+      "id": 317,
+      "label": "NeoPixel Library",
+      "group": "PROJ"
+    },
+    {
+      "id": 318,
+      "label": "LED Density Per Meter",
+      "group": "PROJ"
+    },
+    {
+      "id": 319,
+      "label": "File Transfer to Pico",
+      "group": "DSGN"
+    },
+    {
+      "id": 320,
+      "label": "Serial Monitor",
+      "group": "DSGN"
+    },
+    {
+      "id": 321,
+      "label": "Interpreter Selection",
+      "group": "DSGN"
+    },
+    {
+      "id": 322,
+      "label": "Thonny Time Sync",
+      "group": "DSGN"
+    },
+    {
+      "id": 323,
+      "label": "Code Upload Process",
+      "group": "DSGN"
+    },
+    {
+      "id": 324,
+      "label": "Version Control Basics",
+      "group": "DSGN"
+    },
+    {
+      "id": 325,
+      "label": "UART Protocol",
+      "group": "COMM"
+    },
+    {
+      "id": 326,
+      "label": "Bit Ordering",
+      "group": "COMM"
+    },
+    {
+      "id": 327,
+      "label": "Clock Polarity",
+      "group": "COMM"
+    },
+    {
+      "id": 328,
+      "label": "Data Packet Structure",
+      "group": "COMM"
+    },
+    {
+      "id": 329,
+      "label": "MSB and LSB",
+      "group": "COMM"
+    },
+    {
+      "id": 330,
+      "label": "Byte and Bit Operations",
+      "group": "COMM"
+    },
+    {
+      "id": 331,
+      "label": "Hardware Testing",
+      "group": "DSGN"
+    },
+    {
+      "id": 332,
+      "label": "Integration Testing",
+      "group": "DSGN"
+    },
+    {
+      "id": 333,
+      "label": "Code Walkthrough",
+      "group": "DSGN"
+    },
+    {
+      "id": 334,
+      "label": "Systematic Debugging",
+      "group": "DSGN"
+    },
+    {
+      "id": 335,
+      "label": "Logic Analyzer Basics",
+      "group": "DSGN"
+    },
+    {
+      "id": 336,
+      "label": "Voltage Regulator",
+      "group": "SNPW"
+    },
+    {
+      "id": 337,
+      "label": "Current Draw Calculation",
+      "group": "SNPW"
+    },
+    {
+      "id": 338,
+      "label": "Sleep Mode Wake Source",
+      "group": "SNPW"
+    },
+    {
+      "id": 339,
+      "label": "Brownout Detection",
+      "group": "SNPW"
+    },
+    {
+      "id": 340,
+      "label": "USB Battery Pack",
+      "group": "SNPW"
+    },
+    {
+      "id": 341,
+      "label": "LilyGo RP2040 Board",
+      "group": "PROJ"
+    },
+    {
+      "id": 342,
+      "label": "Waveshare RP2040 Board",
+      "group": "PROJ"
+    },
+    {
+      "id": 343,
+      "label": "Accelerometer Basics",
+      "group": "INPT"
+    },
+    {
+      "id": 344,
+      "label": "Gyroscope Basics",
+      "group": "INPT"
+    },
+    {
+      "id": 345,
+      "label": "Tilt Detection",
+      "group": "INPT"
+    },
+    {
+      "id": 346,
+      "label": "Step Counter Concept",
+      "group": "INPT"
+    },
+    {
+      "id": 347,
+      "label": "Watch Band Integration",
+      "group": "PROJ"
+    },
+    {
+      "id": 348,
+      "label": "Bistable Display",
+      "group": "DISP"
+    },
+    {
+      "id": 349,
+      "label": "E-Paper Ghosting",
+      "group": "DISP"
+    },
+    {
+      "id": 350,
+      "label": "Partial E-Paper Refresh",
+      "group": "DISP"
+    }
+  ],
+  "edges": [
+    {
+      "from": 2,
+      "to": 1
+    },
+    {
+      "from": 3,
+      "to": 1
+    },
+    {
+      "from": 4,
+      "to": 1
+    },
+    {
+      "from": 4,
+      "to": 2
+    },
+    {
+      "from": 5,
+      "to": 1
+    },
+    {
+      "from": 5,
+      "to": 2
+    },
+    {
+      "from": 5,
+      "to": 3
+    },
+    {
+      "from": 6,
+      "to": 7
+    },
+    {
+      "from": 8,
+      "to": 7
+    },
+    {
+      "from": 9,
+      "to": 8
+    },
+    {
+      "from": 10,
+      "to": 9
+    },
+    {
+      "from": 11,
+      "to": 9
+    },
+    {
+      "from": 12,
+      "to": 9
+    },
+    {
+      "from": 13,
+      "to": 9
+    },
+    {
+      "from": 14,
+      "to": 9
+    },
+    {
+      "from": 15,
+      "to": 9
+    },
+    {
+      "from": 15,
+      "to": 14
+    },
+    {
+      "from": 16,
+      "to": 9
+    },
+    {
+      "from": 16,
+      "to": 14
+    },
+    {
+      "from": 17,
+      "to": 10
+    },
+    {
+      "from": 17,
+      "to": 11
+    },
+    {
+      "from": 18,
+      "to": 8
+    },
+    {
+      "from": 19,
+      "to": 8
+    },
+    {
+      "from": 19,
+      "to": 13
+    },
+    {
+      "from": 20,
+      "to": 19
+    },
+    {
+      "from": 21,
+      "to": 14
+    },
+    {
+      "from": 21,
+      "to": 19
+    },
+    {
+      "from": 22,
+      "to": 19
+    },
+    {
+      "from": 23,
+      "to": 21
+    },
+    {
+      "from": 23,
+      "to": 22
+    },
+    {
+      "from": 24,
+      "to": 8
+    },
+    {
+      "from": 24,
+      "to": 19
+    },
+    {
+      "from": 25,
+      "to": 24
+    },
+    {
+      "from": 26,
+      "to": 24
+    },
+    {
+      "from": 26,
+      "to": 25
+    },
+    {
+      "from": 27,
+      "to": 7
+    },
+    {
+      "from": 28,
+      "to": 27
+    },
+    {
+      "from": 29,
+      "to": 27
+    },
+    {
+      "from": 29,
+      "to": 28
+    },
+    {
+      "from": 30,
+      "to": 24
+    },
+    {
+      "from": 31,
+      "to": 30
+    },
+    {
+      "from": 32,
+      "to": 47
+    },
+    {
+      "from": 33,
+      "to": 32
+    },
+    {
+      "from": 34,
+      "to": 33
+    },
+    {
+      "from": 35,
+      "to": 32
+    },
+    {
+      "from": 35,
+      "to": 36
+    },
+    {
+      "from": 36,
+      "to": 32
+    },
+    {
+      "from": 37,
+      "to": 264
+    },
+    {
+      "from": 37,
+      "to": 35
+    },
+    {
+      "from": 38,
+      "to": 37
+    },
+    {
+      "from": 40,
+      "to": 39
+    },
+    {
+      "from": 40,
+      "to": 277
+    },
+    {
+      "from": 41,
+      "to": 32
+    },
+    {
+      "from": 42,
+      "to": 6
+    },
+    {
+      "from": 42,
+      "to": 41
+    },
+    {
+      "from": 43,
+      "to": 42
+    },
+    {
+      "from": 44,
+      "to": 33
+    },
+    {
+      "from": 45,
+      "to": 44
+    },
+    {
+      "from": 46,
+      "to": 45
+    },
+    {
+      "from": 46,
+      "to": 29
+    },
+    {
+      "from": 46,
+      "to": 214
+    },
+    {
+      "from": 48,
+      "to": 47
+    },
+    {
+      "from": 48,
+      "to": 50
+    },
+    {
+      "from": 48,
+      "to": 51
+    },
+    {
+      "from": 49,
+      "to": 47
+    },
+    {
+      "from": 49,
+      "to": 50
+    },
+    {
+      "from": 49,
+      "to": 51
+    },
+    {
+      "from": 49,
+      "to": 52
+    },
+    {
+      "from": 50,
+      "to": 47
+    },
+    {
+      "from": 51,
+      "to": 47
+    },
+    {
+      "from": 52,
+      "to": 264
+    },
+    {
+      "from": 53,
+      "to": 264
+    },
+    {
+      "from": 54,
+      "to": 53
+    },
+    {
+      "from": 55,
+      "to": 264
+    },
+    {
+      "from": 56,
+      "to": 47
+    },
+    {
+      "from": 56,
+      "to": 57
+    },
+    {
+      "from": 56,
+      "to": 58
+    },
+    {
+      "from": 57,
+      "to": 35
+    },
+    {
+      "from": 58,
+      "to": 35
+    },
+    {
+      "from": 59,
+      "to": 56
+    },
+    {
+      "from": 60,
+      "to": 56
+    },
+    {
+      "from": 60,
+      "to": 59
+    },
+    {
+      "from": 60,
+      "to": 6
+    },
+    {
+      "from": 61,
+      "to": 56
+    },
+    {
+      "from": 61,
+      "to": 37
+    },
+    {
+      "from": 62,
+      "to": 56
+    },
+    {
+      "from": 63,
+      "to": 47
+    },
+    {
+      "from": 63,
+      "to": 64
+    },
+    {
+      "from": 63,
+      "to": 65
+    },
+    {
+      "from": 64,
+      "to": 35
+    },
+    {
+      "from": 65,
+      "to": 35
+    },
+    {
+      "from": 66,
+      "to": 63
+    },
+    {
+      "from": 66,
+      "to": 35
+    },
+    {
+      "from": 67,
+      "to": 63
+    },
+    {
+      "from": 67,
+      "to": 35
+    },
+    {
+      "from": 68,
+      "to": 63
+    },
+    {
+      "from": 68,
+      "to": 35
+    },
+    {
+      "from": 69,
+      "to": 63
+    },
+    {
+      "from": 70,
+      "to": 69
+    },
+    {
+      "from": 70,
+      "to": 207
+    },
+    {
+      "from": 71,
+      "to": 56
+    },
+    {
+      "from": 71,
+      "to": 63
+    },
+    {
+      "from": 72,
+      "to": 39
+    },
+    {
+      "from": 72,
+      "to": 35
+    },
+    {
+      "from": 73,
+      "to": 72
+    },
+    {
+      "from": 73,
+      "to": 40
+    },
+    {
+      "from": 73,
+      "to": 37
+    },
+    {
+      "from": 74,
+      "to": 73
+    },
+    {
+      "from": 75,
+      "to": 74
+    },
+    {
+      "from": 75,
+      "to": 248
+    },
+    {
+      "from": 75,
+      "to": 249
+    },
+    {
+      "from": 76,
+      "to": 74
+    },
+    {
+      "from": 76,
+      "to": 267
+    },
+    {
+      "from": 77,
+      "to": 35
+    },
+    {
+      "from": 77,
+      "to": 24
+    },
+    {
+      "from": 77,
+      "to": 254
+    },
+    {
+      "from": 78,
+      "to": 77
+    },
+    {
+      "from": 79,
+      "to": 20
+    },
+    {
+      "from": 79,
+      "to": 22
+    },
+    {
+      "from": 79,
+      "to": 8
+    },
+    {
+      "from": 80,
+      "to": 79
+    },
+    {
+      "from": 80,
+      "to": 81
+    },
+    {
+      "from": 80,
+      "to": 77
+    },
+    {
+      "from": 81,
+      "to": 17
+    },
+    {
+      "from": 81,
+      "to": 10
+    },
+    {
+      "from": 82,
+      "to": 50
+    },
+    {
+      "from": 82,
+      "to": 35
+    },
+    {
+      "from": 82,
+      "to": 77
+    },
+    {
+      "from": 83,
+      "to": 82
+    },
+    {
+      "from": 84,
+      "to": 83
+    },
+    {
+      "from": 84,
+      "to": 17
+    },
+    {
+      "from": 85,
+      "to": 6
+    },
+    {
+      "from": 85,
+      "to": 86
+    },
+    {
+      "from": 86,
+      "to": 15
+    },
+    {
+      "from": 87,
+      "to": 85
+    },
+    {
+      "from": 88,
+      "to": 85
+    },
+    {
+      "from": 89,
+      "to": 85
+    },
+    {
+      "from": 90,
+      "to": 85
+    },
+    {
+      "from": 91,
+      "to": 88
+    },
+    {
+      "from": 91,
+      "to": 19
+    },
+    {
+      "from": 92,
+      "to": 88
+    },
+    {
+      "from": 93,
+      "to": 91
+    },
+    {
+      "from": 93,
+      "to": 19
+    },
+    {
+      "from": 94,
+      "to": 85
+    },
+    {
+      "from": 94,
+      "to": 251
+    },
+    {
+      "from": 94,
+      "to": 12
+    },
+    {
+      "from": 95,
+      "to": 85
+    },
+    {
+      "from": 95,
+      "to": 251
+    },
+    {
+      "from": 95,
+      "to": 12
+    },
+    {
+      "from": 96,
+      "to": 89
+    },
+    {
+      "from": 96,
+      "to": 14
+    },
+    {
+      "from": 97,
+      "to": 87
+    },
+    {
+      "from": 97,
+      "to": 14
+    },
+    {
+      "from": 98,
+      "to": 49
+    },
+    {
+      "from": 98,
+      "to": 56
+    },
+    {
+      "from": 99,
+      "to": 98
+    },
+    {
+      "from": 99,
+      "to": 56
+    },
+    {
+      "from": 100,
+      "to": 99
+    },
+    {
+      "from": 100,
+      "to": 101
+    },
+    {
+      "from": 101,
+      "to": 52
+    },
+    {
+      "from": 102,
+      "to": 99
+    },
+    {
+      "from": 102,
+      "to": 291
+    },
+    {
+      "from": 103,
+      "to": 99
+    },
+    {
+      "from": 103,
+      "to": 10
+    },
+    {
+      "from": 104,
+      "to": 99
+    },
+    {
+      "from": 104,
+      "to": 59
+    },
+    {
+      "from": 105,
+      "to": 99
+    },
+    {
+      "from": 105,
+      "to": 103
+    },
+    {
+      "from": 106,
+      "to": 105
+    },
+    {
+      "from": 106,
+      "to": 190
+    },
+    {
+      "from": 107,
+      "to": 99
+    },
+    {
+      "from": 107,
+      "to": 105
+    },
+    {
+      "from": 108,
+      "to": 33
+    },
+    {
+      "from": 108,
+      "to": 85
+    },
+    {
+      "from": 109,
+      "to": 108
+    },
+    {
+      "from": 109,
+      "to": 99
+    },
+    {
+      "from": 109,
+      "to": 118
+    },
+    {
+      "from": 110,
+      "to": 111
+    },
+    {
+      "from": 110,
+      "to": 114
+    },
+    {
+      "from": 111,
+      "to": 32
+    },
+    {
+      "from": 112,
+      "to": 45
+    },
+    {
+      "from": 112,
+      "to": 110
+    },
+    {
+      "from": 113,
+      "to": 112
+    },
+    {
+      "from": 114,
+      "to": 111
+    },
+    {
+      "from": 114,
+      "to": 29
+    },
+    {
+      "from": 115,
+      "to": 119
+    },
+    {
+      "from": 116,
+      "to": 115
+    },
+    {
+      "from": 117,
+      "to": 116
+    },
+    {
+      "from": 118,
+      "to": 110
+    },
+    {
+      "from": 118,
+      "to": 115
+    },
+    {
+      "from": 118,
+      "to": 122
+    },
+    {
+      "from": 119,
+      "to": 85
+    },
+    {
+      "from": 120,
+      "to": 119
+    },
+    {
+      "from": 120,
+      "to": 17
+    },
+    {
+      "from": 121,
+      "to": 120
+    },
+    {
+      "from": 122,
+      "to": 28
+    },
+    {
+      "from": 122,
+      "to": 115
+    },
+    {
+      "from": 123,
+      "to": 51
+    },
+    {
+      "from": 123,
+      "to": 269
+    },
+    {
+      "from": 124,
+      "to": 123
+    },
+    {
+      "from": 125,
+      "to": 124
+    },
+    {
+      "from": 125,
+      "to": 22
+    },
+    {
+      "from": 126,
+      "to": 124
+    },
+    {
+      "from": 126,
+      "to": 28
+    },
+    {
+      "from": 126,
+      "to": 56
+    },
+    {
+      "from": 127,
+      "to": 126
+    },
+    {
+      "from": 127,
+      "to": 40
+    },
+    {
+      "from": 128,
+      "to": 126
+    },
+    {
+      "from": 128,
+      "to": 22
+    },
+    {
+      "from": 128,
+      "to": 248
+    },
+    {
+      "from": 129,
+      "to": 126
+    },
+    {
+      "from": 129,
+      "to": 197
+    },
+    {
+      "from": 130,
+      "to": 124
+    },
+    {
+      "from": 130,
+      "to": 63
+    },
+    {
+      "from": 130,
+      "to": 28
+    },
+    {
+      "from": 131,
+      "to": 123
+    },
+    {
+      "from": 132,
+      "to": 131
+    },
+    {
+      "from": 132,
+      "to": 56
+    },
+    {
+      "from": 133,
+      "to": 123
+    },
+    {
+      "from": 133,
+      "to": 279
+    },
+    {
+      "from": 134,
+      "to": 133
+    },
+    {
+      "from": 134,
+      "to": 28
+    },
+    {
+      "from": 135,
+      "to": 134
+    },
+    {
+      "from": 135,
+      "to": 56
+    },
+    {
+      "from": 136,
+      "to": 134
+    },
+    {
+      "from": 136,
+      "to": 63
+    },
+    {
+      "from": 137,
+      "to": 133
+    },
+    {
+      "from": 137,
+      "to": 56
+    },
+    {
+      "from": 137,
+      "to": 28
+    },
+    {
+      "from": 138,
+      "to": 133
+    },
+    {
+      "from": 138,
+      "to": 44
+    },
+    {
+      "from": 139,
+      "to": 138
+    },
+    {
+      "from": 140,
+      "to": 138
+    },
+    {
+      "from": 141,
+      "to": 138
+    },
+    {
+      "from": 141,
+      "to": 237
+    },
+    {
+      "from": 142,
+      "to": 141
+    },
+    {
+      "from": 143,
+      "to": 142
+    },
+    {
+      "from": 144,
+      "to": 142
+    },
+    {
+      "from": 144,
+      "to": 233
+    },
+    {
+      "from": 145,
+      "to": 142
+    },
+    {
+      "from": 145,
+      "to": 14
+    },
+    {
+      "from": 146,
+      "to": 145
+    },
+    {
+      "from": 147,
+      "to": 138
+    },
+    {
+      "from": 147,
+      "to": 12
+    },
+    {
+      "from": 148,
+      "to": 147
+    },
+    {
+      "from": 148,
+      "to": 28
+    },
+    {
+      "from": 149,
+      "to": 148
+    },
+    {
+      "from": 150,
+      "to": 149
+    },
+    {
+      "from": 151,
+      "to": 149
+    },
+    {
+      "from": 151,
+      "to": 150
+    },
+    {
+      "from": 152,
+      "to": 147
+    },
+    {
+      "from": 152,
+      "to": 17
+    },
+    {
+      "from": 153,
+      "to": 123
+    },
+    {
+      "from": 153,
+      "to": 158
+    },
+    {
+      "from": 154,
+      "to": 153
+    },
+    {
+      "from": 155,
+      "to": 154
+    },
+    {
+      "from": 155,
+      "to": 63
+    },
+    {
+      "from": 155,
+      "to": 28
+    },
+    {
+      "from": 156,
+      "to": 154
+    },
+    {
+      "from": 156,
+      "to": 63
+    },
+    {
+      "from": 156,
+      "to": 28
+    },
+    {
+      "from": 157,
+      "to": 154
+    },
+    {
+      "from": 157,
+      "to": 63
+    },
+    {
+      "from": 157,
+      "to": 28
+    },
+    {
+      "from": 157,
+      "to": 162
+    },
+    {
+      "from": 158,
+      "to": 10
+    },
+    {
+      "from": 158,
+      "to": 160
+    },
+    {
+      "from": 159,
+      "to": 158
+    },
+    {
+      "from": 159,
+      "to": 24
+    },
+    {
+      "from": 160,
+      "to": 14
+    },
+    {
+      "from": 160,
+      "to": 269
+    },
+    {
+      "from": 161,
+      "to": 160
+    },
+    {
+      "from": 161,
+      "to": 29
+    },
+    {
+      "from": 161,
+      "to": 159
+    },
+    {
+      "from": 162,
+      "to": 153
+    },
+    {
+      "from": 162,
+      "to": 279
+    },
+    {
+      "from": 163,
+      "to": 162
+    },
+    {
+      "from": 163,
+      "to": 157
+    },
+    {
+      "from": 164,
+      "to": 138
+    },
+    {
+      "from": 164,
+      "to": 46
+    },
+    {
+      "from": 165,
+      "to": 144
+    },
+    {
+      "from": 165,
+      "to": 166
+    },
+    {
+      "from": 165,
+      "to": 167
+    },
+    {
+      "from": 165,
+      "to": 233
+    },
+    {
+      "from": 166,
+      "to": 142
+    },
+    {
+      "from": 166,
+      "to": 241
+    },
+    {
+      "from": 167,
+      "to": 142
+    },
+    {
+      "from": 167,
+      "to": 240
+    },
+    {
+      "from": 168,
+      "to": 167
+    },
+    {
+      "from": 168,
+      "to": 243
+    },
+    {
+      "from": 168,
+      "to": 231
+    },
+    {
+      "from": 168,
+      "to": 232
+    },
+    {
+      "from": 169,
+      "to": 147
+    },
+    {
+      "from": 169,
+      "to": 152
+    },
+    {
+      "from": 169,
+      "to": 94
+    },
+    {
+      "from": 170,
+      "to": 173
+    },
+    {
+      "from": 170,
+      "to": 269
+    },
+    {
+      "from": 171,
+      "to": 170
+    },
+    {
+      "from": 172,
+      "to": 170
+    },
+    {
+      "from": 172,
+      "to": 40
+    },
+    {
+      "from": 173,
+      "to": 269
+    },
+    {
+      "from": 173,
+      "to": 35
+    },
+    {
+      "from": 174,
+      "to": 170
+    },
+    {
+      "from": 174,
+      "to": 311
+    },
+    {
+      "from": 175,
+      "to": 170
+    },
+    {
+      "from": 175,
+      "to": 10
+    },
+    {
+      "from": 175,
+      "to": 330
+    },
+    {
+      "from": 176,
+      "to": 170
+    },
+    {
+      "from": 176,
+      "to": 3
+    },
+    {
+      "from": 176,
+      "to": 17
+    },
+    {
+      "from": 177,
+      "to": 170
+    },
+    {
+      "from": 177,
+      "to": 124
+    },
+    {
+      "from": 178,
+      "to": 180
+    },
+    {
+      "from": 179,
+      "to": 178
+    },
+    {
+      "from": 179,
+      "to": 35
+    },
+    {
+      "from": 180,
+      "to": 47
+    },
+    {
+      "from": 180,
+      "to": 330
+    },
+    {
+      "from": 181,
+      "to": 179
+    },
+    {
+      "from": 182,
+      "to": 179
+    },
+    {
+      "from": 182,
+      "to": 181
+    },
+    {
+      "from": 183,
+      "to": 35
+    },
+    {
+      "from": 183,
+      "to": 6
+    },
+    {
+      "from": 183,
+      "to": 17
+    },
+    {
+      "from": 184,
+      "to": 183
+    },
+    {
+      "from": 184,
+      "to": 51
+    },
+    {
+      "from": 185,
+      "to": 183
+    },
+    {
+      "from": 185,
+      "to": 270
+    },
+    {
+      "from": 186,
+      "to": 187
+    },
+    {
+      "from": 186,
+      "to": 28
+    },
+    {
+      "from": 187,
+      "to": 47
+    },
+    {
+      "from": 187,
+      "to": 63
+    },
+    {
+      "from": 188,
+      "to": 186
+    },
+    {
+      "from": 189,
+      "to": 184
+    },
+    {
+      "from": 189,
+      "to": 14
+    },
+    {
+      "from": 190,
+      "to": 79
+    },
+    {
+      "from": 190,
+      "to": 80
+    },
+    {
+      "from": 190,
+      "to": 189
+    },
+    {
+      "from": 191,
+      "to": 190
+    },
+    {
+      "from": 191,
+      "to": 193
+    },
+    {
+      "from": 192,
+      "to": 194
+    },
+    {
+      "from": 192,
+      "to": 80
+    },
+    {
+      "from": 192,
+      "to": 22
+    },
+    {
+      "from": 193,
+      "to": 22
+    },
+    {
+      "from": 193,
+      "to": 85
+    },
+    {
+      "from": 193,
+      "to": 194
+    },
+    {
+      "from": 194,
+      "to": 249
+    },
+    {
+      "from": 194,
+      "to": 250
+    },
+    {
+      "from": 194,
+      "to": 17
+    },
+    {
+      "from": 195,
+      "to": 50
+    },
+    {
+      "from": 195,
+      "to": 197
+    },
+    {
+      "from": 196,
+      "to": 195
+    },
+    {
+      "from": 196,
+      "to": 266
+    },
+    {
+      "from": 197,
+      "to": 50
+    },
+    {
+      "from": 197,
+      "to": 35
+    },
+    {
+      "from": 197,
+      "to": 10
+    },
+    {
+      "from": 198,
+      "to": 195
+    },
+    {
+      "from": 198,
+      "to": 197
+    },
+    {
+      "from": 198,
+      "to": 129
+    },
+    {
+      "from": 199,
+      "to": 198
+    },
+    {
+      "from": 199,
+      "to": 19
+    },
+    {
+      "from": 200,
+      "to": 52
+    },
+    {
+      "from": 200,
+      "to": 53
+    },
+    {
+      "from": 201,
+      "to": 200
+    },
+    {
+      "from": 201,
+      "to": 41
+    },
+    {
+      "from": 202,
+      "to": 200
+    },
+    {
+      "from": 203,
+      "to": 202
+    },
+    {
+      "from": 204,
+      "to": 202
+    },
+    {
+      "from": 205,
+      "to": 123
+    },
+    {
+      "from": 205,
+      "to": 63
+    },
+    {
+      "from": 206,
+      "to": 205
+    },
+    {
+      "from": 207,
+      "to": 138
+    },
+    {
+      "from": 207,
+      "to": 69
+    },
+    {
+      "from": 208,
+      "to": 33
+    },
+    {
+      "from": 208,
+      "to": 200
+    },
+    {
+      "from": 208,
+      "to": 338
+    },
+    {
+      "from": 209,
+      "to": 39
+    },
+    {
+      "from": 209,
+      "to": 277
+    },
+    {
+      "from": 210,
+      "to": 1
+    },
+    {
+      "from": 210,
+      "to": 2
+    },
+    {
+      "from": 210,
+      "to": 5
+    },
+    {
+      "from": 211,
+      "to": 210
+    },
+    {
+      "from": 211,
+      "to": 212
+    },
+    {
+      "from": 212,
+      "to": 210
+    },
+    {
+      "from": 212,
+      "to": 309
+    },
+    {
+      "from": 213,
+      "to": 211
+    },
+    {
+      "from": 213,
+      "to": 280
+    },
+    {
+      "from": 213,
+      "to": 281
+    },
+    {
+      "from": 214,
+      "to": 24
+    },
+    {
+      "from": 214,
+      "to": 4
+    },
+    {
+      "from": 215,
+      "to": 214
+    },
+    {
+      "from": 215,
+      "to": 46
+    },
+    {
+      "from": 216,
+      "to": 215
+    },
+    {
+      "from": 216,
+      "to": 80
+    },
+    {
+      "from": 216,
+      "to": 75
+    },
+    {
+      "from": 217,
+      "to": 215
+    },
+    {
+      "from": 217,
+      "to": 99
+    },
+    {
+      "from": 218,
+      "to": 215
+    },
+    {
+      "from": 218,
+      "to": 118
+    },
+    {
+      "from": 219,
+      "to": 210
+    },
+    {
+      "from": 219,
+      "to": 12
+    },
+    {
+      "from": 220,
+      "to": 219
+    },
+    {
+      "from": 220,
+      "to": 6
+    },
+    {
+      "from": 221,
+      "to": 220
+    },
+    {
+      "from": 221,
+      "to": 30
+    },
+    {
+      "from": 222,
+      "to": 214
+    },
+    {
+      "from": 222,
+      "to": 225
+    },
+    {
+      "from": 223,
+      "to": 210
+    },
+    {
+      "from": 223,
+      "to": 211
+    },
+    {
+      "from": 223,
+      "to": 224
+    },
+    {
+      "from": 224,
+      "to": 272
+    },
+    {
+      "from": 224,
+      "to": 40
+    },
+    {
+      "from": 225,
+      "to": 226
+    },
+    {
+      "from": 225,
+      "to": 60
+    },
+    {
+      "from": 226,
+      "to": 259
+    },
+    {
+      "from": 226,
+      "to": 43
+    },
+    {
+      "from": 227,
+      "to": 70
+    },
+    {
+      "from": 227,
+      "to": 207
+    },
+    {
+      "from": 228,
+      "to": 292
+    },
+    {
+      "from": 228,
+      "to": 293
+    },
+    {
+      "from": 228,
+      "to": 297
+    },
+    {
+      "from": 229,
+      "to": 34
+    },
+    {
+      "from": 229,
+      "to": 6
+    },
+    {
+      "from": 230,
+      "to": 205
+    },
+    {
+      "from": 230,
+      "to": 207
+    },
+    {
+      "from": 231,
+      "to": 233
+    },
+    {
+      "from": 232,
+      "to": 233
+    },
+    {
+      "from": 233,
+      "to": 17
+    },
+    {
+      "from": 233,
+      "to": 235
+    },
+    {
+      "from": 234,
+      "to": 233
+    },
+    {
+      "from": 234,
+      "to": 237
+    },
+    {
+      "from": 235,
+      "to": 17
+    },
+    {
+      "from": 236,
+      "to": 233
+    },
+    {
+      "from": 236,
+      "to": 234
+    },
+    {
+      "from": 237,
+      "to": 10
+    },
+    {
+      "from": 237,
+      "to": 17
+    },
+    {
+      "from": 238,
+      "to": 237
+    },
+    {
+      "from": 238,
+      "to": 279
+    },
+    {
+      "from": 239,
+      "to": 237
+    },
+    {
+      "from": 239,
+      "to": 17
+    },
+    {
+      "from": 240,
+      "to": 239
+    },
+    {
+      "from": 240,
+      "to": 237
+    },
+    {
+      "from": 241,
+      "to": 236
+    },
+    {
+      "from": 241,
+      "to": 239
+    },
+    {
+      "from": 242,
+      "to": 144
+    },
+    {
+      "from": 242,
+      "to": 236
+    },
+    {
+      "from": 243,
+      "to": 231
+    },
+    {
+      "from": 243,
+      "to": 232
+    },
+    {
+      "from": 243,
+      "to": 236
+    },
+    {
+      "from": 244,
+      "to": 17
+    },
+    {
+      "from": 244,
+      "to": 10
+    },
+    {
+      "from": 245,
+      "to": 244
+    },
+    {
+      "from": 245,
+      "to": 11
+    },
+    {
+      "from": 246,
+      "to": 6
+    },
+    {
+      "from": 246,
+      "to": 29
+    },
+    {
+      "from": 247,
+      "to": 6
+    },
+    {
+      "from": 247,
+      "to": 29
+    },
+    {
+      "from": 247,
+      "to": 85
+    },
+    {
+      "from": 248,
+      "to": 247
+    },
+    {
+      "from": 249,
+      "to": 247
+    },
+    {
+      "from": 250,
+      "to": 249
+    },
+    {
+      "from": 251,
+      "to": 12
+    },
+    {
+      "from": 251,
+      "to": 8
+    },
+    {
+      "from": 252,
+      "to": 12
+    },
+    {
+      "from": 253,
+      "to": 8
+    },
+    {
+      "from": 253,
+      "to": 24
+    },
+    {
+      "from": 254,
+      "to": 24
+    },
+    {
+      "from": 254,
+      "to": 25
+    },
+    {
+      "from": 255,
+      "to": 24
+    },
+    {
+      "from": 255,
+      "to": 9
+    },
+    {
+      "from": 256,
+      "to": 255
+    },
+    {
+      "from": 257,
+      "to": 33
+    },
+    {
+      "from": 257,
+      "to": 6
+    },
+    {
+      "from": 258,
+      "to": 257
+    },
+    {
+      "from": 259,
+      "to": 43
+    },
+    {
+      "from": 259,
+      "to": 12
+    },
+    {
+      "from": 260,
+      "to": 6
+    },
+    {
+      "from": 260,
+      "to": 7
+    },
+    {
+      "from": 261,
+      "to": 33
+    },
+    {
+      "from": 261,
+      "to": 6
+    },
+    {
+      "from": 262,
+      "to": 261
+    },
+    {
+      "from": 262,
+      "to": 41
+    },
+    {
+      "from": 263,
+      "to": 45
+    },
+    {
+      "from": 263,
+      "to": 262
+    },
+    {
+      "from": 265,
+      "to": 264
+    },
+    {
+      "from": 265,
+      "to": 268
+    },
+    {
+      "from": 266,
+      "to": 264
+    },
+    {
+      "from": 266,
+      "to": 268
+    },
+    {
+      "from": 267,
+      "to": 264
+    },
+    {
+      "from": 268,
+      "to": 264
+    },
+    {
+      "from": 269,
+      "to": 264
+    },
+    {
+      "from": 269,
+      "to": 53
+    },
+    {
+      "from": 270,
+      "to": 269
+    },
+    {
+      "from": 270,
+      "to": 265
+    },
+    {
+      "from": 271,
+      "to": 39
+    },
+    {
+      "from": 272,
+      "to": 264
+    },
+    {
+      "from": 272,
+      "to": 269
+    },
+    {
+      "from": 273,
+      "to": 264
+    },
+    {
+      "from": 273,
+      "to": 53
+    },
+    {
+      "from": 274,
+      "to": 63
+    },
+    {
+      "from": 274,
+      "to": 69
+    },
+    {
+      "from": 275,
+      "to": 274
+    },
+    {
+      "from": 276,
+      "to": 39
+    },
+    {
+      "from": 277,
+      "to": 39
+    },
+    {
+      "from": 277,
+      "to": 276
+    },
+    {
+      "from": 278,
+      "to": 39
+    },
+    {
+      "from": 278,
+      "to": 276
+    },
+    {
+      "from": 279,
+      "to": 123
+    },
+    {
+      "from": 280,
+      "to": 133
+    },
+    {
+      "from": 280,
+      "to": 153
+    },
+    {
+      "from": 281,
+      "to": 133
+    },
+    {
+      "from": 281,
+      "to": 153
+    },
+    {
+      "from": 282,
+      "to": 155
+    },
+    {
+      "from": 282,
+      "to": 156
+    },
+    {
+      "from": 282,
+      "to": 157
+    },
+    {
+      "from": 283,
+      "to": 140
+    },
+    {
+      "from": 284,
+      "to": 22
+    },
+    {
+      "from": 284,
+      "to": 248
+    },
+    {
+      "from": 284,
+      "to": 139
+    },
+    {
+      "from": 285,
+      "to": 138
+    },
+    {
+      "from": 285,
+      "to": 284
+    },
+    {
+      "from": 286,
+      "to": 138
+    },
+    {
+      "from": 286,
+      "to": 207
+    },
+    {
+      "from": 287,
+      "to": 147
+    },
+    {
+      "from": 287,
+      "to": 22
+    },
+    {
+      "from": 287,
+      "to": 284
+    },
+    {
+      "from": 288,
+      "to": 237
+    },
+    {
+      "from": 288,
+      "to": 138
+    },
+    {
+      "from": 289,
+      "to": 288
+    },
+    {
+      "from": 289,
+      "to": 143
+    },
+    {
+      "from": 290,
+      "to": 289
+    },
+    {
+      "from": 291,
+      "to": 47
+    },
+    {
+      "from": 292,
+      "to": 291
+    },
+    {
+      "from": 292,
+      "to": 99
+    },
+    {
+      "from": 293,
+      "to": 292
+    },
+    {
+      "from": 294,
+      "to": 85
+    },
+    {
+      "from": 294,
+      "to": 10
+    },
+    {
+      "from": 295,
+      "to": 294
+    },
+    {
+      "from": 296,
+      "to": 87
+    },
+    {
+      "from": 296,
+      "to": 81
+    },
+    {
+      "from": 296,
+      "to": 19
+    },
+    {
+      "from": 297,
+      "to": 292
+    },
+    {
+      "from": 297,
+      "to": 118
+    },
+    {
+      "from": 298,
+      "to": 292
+    },
+    {
+      "from": 298,
+      "to": 297
+    },
+    {
+      "from": 299,
+      "to": 88
+    },
+    {
+      "from": 299,
+      "to": 17
+    },
+    {
+      "from": 300,
+      "to": 85
+    },
+    {
+      "from": 300,
+      "to": 17
+    },
+    {
+      "from": 300,
+      "to": 81
+    },
+    {
+      "from": 301,
+      "to": 120
+    },
+    {
+      "from": 301,
+      "to": 121
+    },
+    {
+      "from": 301,
+      "to": 169
+    },
+    {
+      "from": 302,
+      "to": 193
+    },
+    {
+      "from": 302,
+      "to": 169
+    },
+    {
+      "from": 303,
+      "to": 302
+    },
+    {
+      "from": 303,
+      "to": 190
+    },
+    {
+      "from": 304,
+      "to": 110
+    },
+    {
+      "from": 304,
+      "to": 107
+    },
+    {
+      "from": 304,
+      "to": 305
+    },
+    {
+      "from": 304,
+      "to": 306
+    },
+    {
+      "from": 305,
+      "to": 107
+    },
+    {
+      "from": 305,
+      "to": 147
+    },
+    {
+      "from": 305,
+      "to": 94
+    },
+    {
+      "from": 306,
+      "to": 305
+    },
+    {
+      "from": 306,
+      "to": 50
+    },
+    {
+      "from": 307,
+      "to": 211
+    },
+    {
+      "from": 307,
+      "to": 308
+    },
+    {
+      "from": 308,
+      "to": 209
+    },
+    {
+      "from": 308,
+      "to": 39
+    },
+    {
+      "from": 309,
+      "to": 49
+    },
+    {
+      "from": 309,
+      "to": 210
+    },
+    {
+      "from": 310,
+      "to": 309
+    },
+    {
+      "from": 311,
+      "to": 160
+    },
+    {
+      "from": 311,
+      "to": 17
+    },
+    {
+      "from": 312,
+      "to": 311
+    },
+    {
+      "from": 313,
+      "to": 270
+    },
+    {
+      "from": 313,
+      "to": 172
+    },
+    {
+      "from": 313,
+      "to": 17
+    },
+    {
+      "from": 314,
+      "to": 170
+    },
+    {
+      "from": 314,
+      "to": 318
+    },
+    {
+      "from": 315,
+      "to": 170
+    },
+    {
+      "from": 315,
+      "to": 162
+    },
+    {
+      "from": 316,
+      "to": 170
+    },
+    {
+      "from": 316,
+      "to": 314
+    },
+    {
+      "from": 317,
+      "to": 170
+    },
+    {
+      "from": 317,
+      "to": 28
+    },
+    {
+      "from": 318,
+      "to": 170
+    },
+    {
+      "from": 319,
+      "to": 42
+    },
+    {
+      "from": 319,
+      "to": 45
+    },
+    {
+      "from": 320,
+      "to": 42
+    },
+    {
+      "from": 320,
+      "to": 43
+    },
+    {
+      "from": 321,
+      "to": 42
+    },
+    {
+      "from": 322,
+      "to": 42
+    },
+    {
+      "from": 322,
+      "to": 85
+    },
+    {
+      "from": 322,
+      "to": 108
+    },
+    {
+      "from": 323,
+      "to": 319
+    },
+    {
+      "from": 323,
+      "to": 263
+    },
+    {
+      "from": 324,
+      "to": 45
+    },
+    {
+      "from": 325,
+      "to": 47
+    },
+    {
+      "from": 325,
+      "to": 35
+    },
+    {
+      "from": 326,
+      "to": 325
+    },
+    {
+      "from": 326,
+      "to": 330
+    },
+    {
+      "from": 327,
+      "to": 63
+    },
+    {
+      "from": 327,
+      "to": 325
+    },
+    {
+      "from": 328,
+      "to": 325
+    },
+    {
+      "from": 328,
+      "to": 326
+    },
+    {
+      "from": 329,
+      "to": 326
+    },
+    {
+      "from": 330,
+      "to": 10
+    },
+    {
+      "from": 330,
+      "to": 17
+    },
+    {
+      "from": 331,
+      "to": 273
+    },
+    {
+      "from": 331,
+      "to": 60
+    },
+    {
+      "from": 331,
+      "to": 225
+    },
+    {
+      "from": 332,
+      "to": 331
+    },
+    {
+      "from": 332,
+      "to": 215
+    },
+    {
+      "from": 333,
+      "to": 214
+    },
+    {
+      "from": 333,
+      "to": 222
+    },
+    {
+      "from": 334,
+      "to": 226
+    },
+    {
+      "from": 334,
+      "to": 225
+    },
+    {
+      "from": 334,
+      "to": 331
+    },
+    {
+      "from": 335,
+      "to": 274
+    },
+    {
+      "from": 335,
+      "to": 273
+    },
+    {
+      "from": 336,
+      "to": 53
+    },
+    {
+      "from": 336,
+      "to": 264
+    },
+    {
+      "from": 337,
+      "to": 270
+    },
+    {
+      "from": 337,
+      "to": 264
+    },
+    {
+      "from": 337,
+      "to": 17
+    },
+    {
+      "from": 338,
+      "to": 33
+    },
+    {
+      "from": 338,
+      "to": 77
+    },
+    {
+      "from": 338,
+      "to": 200
+    },
+    {
+      "from": 339,
+      "to": 336
+    },
+    {
+      "from": 339,
+      "to": 200
+    },
+    {
+      "from": 340,
+      "to": 201
+    },
+    {
+      "from": 340,
+      "to": 202
+    },
+    {
+      "from": 341,
+      "to": 32
+    },
+    {
+      "from": 341,
+      "to": 153
+    },
+    {
+      "from": 341,
+      "to": 203
+    },
+    {
+      "from": 342,
+      "to": 32
+    },
+    {
+      "from": 342,
+      "to": 162
+    },
+    {
+      "from": 342,
+      "to": 343
+    },
+    {
+      "from": 342,
+      "to": 344
+    },
+    {
+      "from": 343,
+      "to": 50
+    },
+    {
+      "from": 343,
+      "to": 56
+    },
+    {
+      "from": 344,
+      "to": 50
+    },
+    {
+      "from": 344,
+      "to": 56
+    },
+    {
+      "from": 345,
+      "to": 343
+    },
+    {
+      "from": 346,
+      "to": 343
+    },
+    {
+      "from": 346,
+      "to": 22
+    },
+    {
+      "from": 346,
+      "to": 17
+    },
+    {
+      "from": 347,
+      "to": 163
+    },
+    {
+      "from": 347,
+      "to": 307
+    },
+    {
+      "from": 348,
+      "to": 123
+    },
+    {
+      "from": 349,
+      "to": 230
+    },
+    {
+      "from": 349,
+      "to": 348
+    },
+    {
+      "from": 350,
+      "to": 230
+    },
+    {
+      "from": 350,
+      "to": 286
+    },
+    {
+      "from": 350,
+      "to": 348
+    }
+  ]
+}

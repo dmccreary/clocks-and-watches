@@ -1,0 +1,351 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,Computational Thinking,,FOUND
+2,Decomposition,1,FOUND
+3,Pattern Recognition,1,FOUND
+4,Abstraction,1|2,FOUND
+5,Algorithmic Thinking,1|2|3,FOUND
+6,MicroPython,7,PYTH
+7,Python Syntax,,PYTH
+8,Variables,7,PYTH
+9,Data Types,8,PYTH
+10,Integers,9,PYTH
+11,Floats,9,PYTH
+12,Strings,9,PYTH
+13,Booleans,9,PYTH
+14,Lists,9,PYTH
+15,Tuples,9|14,PYTH
+16,Dictionaries,9|14,PYTH
+17,Arithmetic Operations,10|11,PYTH
+18,Assignment Operators,8,PYTH
+19,Conditionals,8|13,PYTH
+20,If Else Elif,19,PYTH
+21,For Loops,14|19,PYTH
+22,While Loops,19,PYTH
+23,Loop Control,21|22,PYTH
+24,Functions,8|19,PYTH
+25,Arguments and Returns,24,PYTH
+26,Lambda Functions,24|25,PYTH
+27,Import Statements,7,PYTH
+28,Libraries,27,PYTH
+29,Modules,27|28,PYTH
+30,Error Handling,24,PYTH
+31,Try Except Blocks,30,PYTH
+32,Raspberry Pi Pico,47,MCTR
+33,RP2040 Chip,32,MCTR
+34,Dual Core Architecture,33,MCTR
+35,GPIO Pins,32|36,MCTR
+36,Pin Configuration,32,MCTR
+37,Pull-Up Resistors,264|35,MCTR
+38,Internal Pull-Up,37,MCTR
+39,Breadboard,,HARD
+40,Breadboard Wiring,39|277,HARD
+41,USB Connection,32,MCTR
+42,Thonny IDE,6|41,MCTR
+43,REPL,42,MCTR
+44,Flash Memory,33,MCTR
+45,File System on Pico,44,MCTR
+46,Config File Pattern,45|29|214,MCTR
+47,Microcontroller,,MCTR
+48,Physical Computing,47|50|51,FOUND
+49,Clock Architecture,47|50|51|52,MCTR
+50,Sensors,47,MCTR
+51,Actuators,47,MCTR
+52,Power Supply,264,HARD
+53,Voltage Levels,264,HARD
+54,3.3V vs 5V Logic,53,HARD
+55,Ground Connection,264,HARD
+56,I2C Bus,47|57|58,COMM
+57,I2C SDA Pin,35,COMM
+58,I2C SCL Pin,35,COMM
+59,I2C Device Addressing,56,COMM
+60,I2C Scanner,56|59|6,COMM
+61,I2C Pull-Up Resistors,56|37,COMM
+62,I2C Bus Speed,56,COMM
+63,SPI Bus,47|64|65,COMM
+64,SPI Clock Pin,35,COMM
+65,SPI Data Pin,35,COMM
+66,SPI Chip Select,63|35,COMM
+67,SPI DC Pin,63|35,COMM
+68,SPI Reset Pin,63|35,COMM
+69,SPI Baudrate,63,COMM
+70,Baudrate Tuning,69|207,COMM
+71,Bus Speed Comparison,56|63,COMM
+72,Momentary Push Button,39|35,INPT
+73,Button Wiring,72|40|37,INPT
+74,Button Debouncing,73,INPT
+75,Software Debounce,74|248|249,INPT
+76,Hardware Debounce,74|267,INPT
+77,Interrupt Handlers,35|24|254,INPT
+78,IRQ Falling Edge,77,INPT
+79,State Machine,20|22|8,INPT
+80,Mode Cycling,79|81|77,INPT
+81,Modular Arithmetic,17|10,MATH
+82,Rotary Encoder,50|35|77,INPT
+83,Encoder Direction,82,INPT
+84,Encoder Acceleration,83|17,INPT
+85,Localtime Function,6|86,TIME
+86,Time Tuple,15,TIME
+87,Year Month Day,85,TIME
+88,Hour Minute Second,85,TIME
+89,Weekday Number,85,TIME
+90,Day of Year,85,TIME
+91,12 Hour Format,88|19,TIME
+92,24 Hour Format,88,TIME
+93,AM PM Conversion,91|19,TIME
+94,Time Formatting,85|251|12,TIME
+95,Date Formatting,85|251|12,TIME
+96,Weekday Labels,89|14,TIME
+97,Month Labels,87|14,TIME
+98,Real-Time Clock,49|56,TIME
+99,DS3231 RTC,98|56,TIME
+100,RTC Battery Backup,99|101,TIME
+101,CR2032 Coin Cell,52,SNPW
+102,Temperature Compensation,99|291,TIME
+103,BCD Format,99|10,TIME
+104,RTC I2C Address,99|59,TIME
+105,RTC Registers,99|103,TIME
+106,RTC Alarm Feature,105|190,TIME
+107,RTC Temperature Sensor,99|105,TIME
+108,Internal Pico RTC,33|85,TIME
+109,Time Source Comparison,108|99|118,TIME
+110,WiFi Connectivity,111|114,TIME
+111,Pico W,32,MCTR
+112,Secrets File,45|110,TIME
+113,WiFi SSID and Password,112,TIME
+114,Network Configuration,111|29,TIME
+115,NTP Protocol,119,TIME
+116,NTP Client Server,115,TIME
+117,NTP Stratum Hierarchy,116,TIME
+118,NTP Time Sync,110|115|122,TIME
+119,UTC Time,85,TIME
+120,Timezone Conversion,119|17,TIME
+121,Daylight Saving Time,120,TIME
+122,Ntptime Library,28|115,TIME
+123,LED Display,51|269,DISP
+124,Seven Segment Display,123,DISP
+125,Segment Multiplexing,124|22,DISP
+126,TM1637 Driver,124|28|56,DISP
+127,TM1637 Wiring,126|40,DISP
+128,Colon Flashing,126|22|248,DISP
+129,Brightness Control,126|197,DISP
+130,MAX7219 Driver,124|63|28,DISP
+131,Character LCD,123,DISP
+132,LCD1602 Display,131|56,DISP
+133,OLED Display,123|279,DISP
+134,SSD1306 Driver,133|28,DISP
+135,SSD1306 I2C Setup,134|56,DISP
+136,SSD1306 SPI Setup,134|63,DISP
+137,SH1106 Driver,133|56|28,DISP
+138,Framebuffer,133|44,DISP
+139,Display Show Command,138,DISP
+140,Display Fill Command,138,DISP
+141,Pixel Drawing,138|237,DISP
+142,Line Drawing,141,DISP
+143,Rectangle Drawing,142,DISP
+144,Circle Drawing,142|233,DISP
+145,Polygon Drawing,142|14,DISP
+146,Triangle Drawing,145,DISP
+147,Text Rendering,138|12,DISP
+148,Font Loading,147|28,DISP
+149,Custom Fonts,148,DISP
+150,Font to Py Converter,149,DISP
+151,Multiple Font Support,149|150,DISP
+152,Scaled Digits,147|17,DISP
+153,Color Display,123|158,DISP
+154,TFT LCD,153,DISP
+155,ILI9341 Driver,154|63|28,DISP
+156,ST7735 Driver,154|63|28,DISP
+157,GC9A01 Driver,154|63|28|162,DISP
+158,RGB565 Color Encoding,10|160,DISP
+159,Color565 Function,158|24,DISP
+160,Color Palette,14|269,DISP
+161,Colors File,160|29|159,DISP
+162,Round Display,153|279,DISP
+163,Smartwatch Display,162|157,DISP
+164,Display Rotation,138|46,DISP
+165,Analog Clock Face,144|166|167|233,DISP
+166,Clock Tick Marks,142|241,DISP
+167,Clock Hands,142|240,DISP
+168,Rotating Hands,167|243|231|232,DISP
+169,Digital Clock Face,147|152|94,DISP
+170,NeoPixel LEDs,173|269,PROJ
+171,WS2812B Standard,170,PROJ
+172,NeoPixel Wiring,170|40,PROJ
+173,Addressable LEDs,269|35,PROJ
+174,NeoPixel Color Mixing,170|311,PROJ
+175,Binary Clock,170|10|330,PROJ
+176,Fibonacci Clock,170|3|17,PROJ
+177,NeoPixel Seven Segment,170|124,PROJ
+178,Shift Register,180,PROJ
+179,74HC595 Chip,178|35,PROJ
+180,Serial to Parallel,47|330,PROJ
+181,Latch Pin,179,PROJ
+182,Shift Register Chaining,179|181,PROJ
+183,PWM Sound,35|6|17,SNPW
+184,Piezo Buzzer,183|51,SNPW
+185,Speaker Output,183|270,SNPW
+186,DAC PCM5102,187|28,SNPW
+187,I2S Protocol,47|63,SNPW
+188,Audio Sampling Rate,186,SNPW
+189,Alarm Tones,184|14,SNPW
+190,Alarm Clock Features,79|80|189,PROJ
+191,Snooze Function,190|193,PROJ
+192,Stopwatch,194|80|22,PROJ
+193,Timer,22|85|194,PROJ
+194,Elapsed Time Tracking,249|250|17,PROJ
+195,Photosensor,50|197,INPT
+196,Light Dependent Resistor,195|266,INPT
+197,ADC Reading,50|35|10,INPT
+198,Auto Brightness,195|197|129,INPT
+199,Hysteresis,198|19,INPT
+200,Power Management,52|53,SNPW
+201,USB Power,200|41,SNPW
+202,Battery Power,200,SNPW
+203,LiPo Battery,202,SNPW
+204,AA Battery Pack,202,SNPW
+205,E-Paper Display,123|63,DISP
+206,Waveshare Display,205,DISP
+207,Display Refresh Rate,138|69,DISP
+208,Low Power Mode,33|200|338,SNPW
+209,Soldering Skills,39|277,HARD
+210,Project Planning,1|2|5,DSGN
+211,Design Trade-Offs,210|212,DSGN
+212,Cost Analysis,210|309,DSGN
+213,User Experience Design,211|280|281,DSGN
+214,Code Modularity,24|4,DSGN
+215,Program Variants,214|46,DSGN
+216,Main Buttons Program,215|80|75,DSGN
+217,Main RTC Program,215|99,DSGN
+218,Main WiFi Program,215|118,DSGN
+219,Generative AI Prompts,210|12,DSGN
+220,AI Code Generation,219|6,DSGN
+221,AI Code Review,220|30,DSGN
+222,Peer Review,214|225,DSGN
+223,Final Presentation,210|211|224,DSGN
+224,Wiring Diagrams,272|40,DSGN
+225,Troubleshooting,226|60,DSGN
+226,Debugging Techniques,259|43,DSGN
+227,Display Flicker Fix,70|207,DSGN
+228,Clock Drift,292|293|297,DSGN
+229,Dual Core Usage,34|6,MCTR
+230,E-Paper Refresh,205|207,DISP
+231,Sine Function,233,MATH
+232,Cosine Function,233,MATH
+233,Trigonometry Basics,17|235,MATH
+234,Polar Coordinates,233|237,MATH
+235,Radians vs Degrees,17,MATH
+236,Angle Calculation,233|234,MATH
+237,X Y Coordinate System,10|17,MATH
+238,Pixel Coordinate Mapping,237|279,MATH
+239,Center Point Calculation,237|17,MATH
+240,Clock Hand Length,239|237,MATH
+241,Tick Mark Geometry,236|239,MATH
+242,Arc Drawing,144|236,MATH
+243,Rotation Math,231|232|236,MATH
+244,Integer Math Tricks,17|10,MATH
+245,Fixed Point Arithmetic,244|11,MATH
+246,Machine Module,6|29,PYTH
+247,Utime Module,6|29|85,PYTH
+248,Sleep Function,247,PYTH
+249,Ticks Ms Function,247,PYTH
+250,Ticks Diff Function,249,PYTH
+251,F-String Formatting,12|8,PYTH
+252,String Concatenation,12,PYTH
+253,Global Keyword,8|24,PYTH
+254,Callback Functions,24|25,PYTH
+255,Classes and Objects,24|9,PYTH
+256,Object Methods,255,PYTH
+257,Memory Management,33|6,PYTH
+258,Garbage Collection,257,PYTH
+259,Print Debugging,43|12,PYTH
+260,Micropython Differences,6|7,PYTH
+261,Firmware Versions,33|6,PYTH
+262,Firmware Flashing,261|41,PYTH
+263,Boot and Main Files,45|262,PYTH
+264,Ohms Law,,HARD
+265,Current Limiting,264|268,HARD
+266,Voltage Divider,264|268,HARD
+267,Capacitors,264,HARD
+268,Resistor Values,264,HARD
+269,LED Basics,264|53,HARD
+270,LED Current Draw,269|265,HARD
+271,Wire Color Coding,39,HARD
+272,Circuit Diagrams,264|269,HARD
+273,Multimeter Usage,264|53,HARD
+274,Signal Integrity,63|69,HARD
+275,Crosstalk,274,HARD
+276,Connector Types,39,HARD
+277,Jumper Wires,39|276,HARD
+278,Header Pins,39|276,HARD
+279,Display Resolution,123,DISP
+280,Contrast Ratio,133|153,DISP
+281,Viewing Angle,133|153,DISP
+282,Direct Write Display,155|156|157,DISP
+283,Screen Clearing,140,DISP
+284,Animation Technique,22|248|139,DISP
+285,Double Buffering,138|284,DISP
+286,Partial Screen Update,138|207,DISP
+287,Scroll Marquee,147|22|284,DISP
+288,Display Coordinates,237|138,DISP
+289,Bounding Box,288|143,DISP
+290,Clipping Region,289,DISP
+291,Crystal Oscillator,47,MCTR
+292,Clock Accuracy,291|99,TIME
+293,Clock Precision,292,TIME
+294,Epoch Time,85|10,TIME
+295,Unix Timestamp,294,TIME
+296,Leap Year Handling,87|81|19,TIME
+297,Time Drift Compensation,292|118,TIME
+298,Clock Calibration,292|297,TIME
+299,Seconds Since Midnight,88|17,TIME
+300,Time Math,85|17|81,TIME
+301,World Clock,120|121|169,PROJ
+302,Countdown Timer,193|169,PROJ
+303,Pomodoro Timer,302|190,PROJ
+304,Weather Station Display,110|107|305|306,PROJ
+305,Temperature Display,107|147|94,PROJ
+306,Humidity Display,305|50,PROJ
+307,Enclosure Design,211|308,DSGN
+308,Acrylic Mounting,209|39,DSGN
+309,Bill of Materials,49|210,DSGN
+310,Component Sourcing,309,DSGN
+311,HSV Color Model,160|17,PROJ
+312,Color Wheel,311,PROJ
+313,LED Power Calculation,270|172|17,PROJ
+314,NeoPixel Strip Types,170|318,PROJ
+315,NeoPixel Ring,170|162,PROJ
+316,NeoPixel Matrix,170|314,PROJ
+317,NeoPixel Library,170|28,PROJ
+318,LED Density Per Meter,170,PROJ
+319,File Transfer to Pico,42|45,DSGN
+320,Serial Monitor,42|43,DSGN
+321,Interpreter Selection,42,DSGN
+322,Thonny Time Sync,42|85|108,DSGN
+323,Code Upload Process,319|263,DSGN
+324,Version Control Basics,45,DSGN
+325,UART Protocol,47|35,COMM
+326,Bit Ordering,325|330,COMM
+327,Clock Polarity,63|325,COMM
+328,Data Packet Structure,325|326,COMM
+329,MSB and LSB,326,COMM
+330,Byte and Bit Operations,10|17,COMM
+331,Hardware Testing,273|60|225,DSGN
+332,Integration Testing,331|215,DSGN
+333,Code Walkthrough,214|222,DSGN
+334,Systematic Debugging,226|225|331,DSGN
+335,Logic Analyzer Basics,274|273,DSGN
+336,Voltage Regulator,53|264,SNPW
+337,Current Draw Calculation,270|264|17,SNPW
+338,Sleep Mode Wake Source,33|77|200,SNPW
+339,Brownout Detection,336|200,SNPW
+340,USB Battery Pack,201|202,SNPW
+341,LilyGo RP2040 Board,32|153|203,PROJ
+342,Waveshare RP2040 Board,32|162|343|344,PROJ
+343,Accelerometer Basics,50|56,INPT
+344,Gyroscope Basics,50|56,INPT
+345,Tilt Detection,343,INPT
+346,Step Counter Concept,343|22|17,INPT
+347,Watch Band Integration,163|307,PROJ
+348,Bistable Display,123,DISP
+349,E-Paper Ghosting,230|348,DISP
+350,Partial E-Paper Refresh,230|286|348,DISP

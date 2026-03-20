@@ -1,0 +1,14 @@
+{
+  "FOUND": "Foundation Concepts",
+  "PYTH": "Python Programming",
+  "HARD": "Hardware and Electronics",
+  "MCTR": "Microcontroller",
+  "COMM": "Communication Buses",
+  "TIME": "Timekeeping",
+  "DISP": "Displays and Drawing",
+  "MATH": "Math and Geometry",
+  "INPT": "Input and Sensors",
+  "SNPW": "Sound and Power",
+  "PROJ": "Projects and Kits",
+  "DSGN": "Design and Development"
+}
