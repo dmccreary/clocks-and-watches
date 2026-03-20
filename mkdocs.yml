@@ -194,6 +194,7 @@ nav:
     - Binary Clock: sims/binary-clock/index.md
     - Templates: sims/templates/index.md
     - Learning Graph: sims/learning-graph/index.md
+    - Graph Viewer: sims/graph-viewer/index.md
     - Four Digit Display: sims/4-digits/index.md
     - Analog Clock Face: sims/analog-clock/index.md
     - Stopwatch: sims/stopwatch/index.md
