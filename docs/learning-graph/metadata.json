@@ -1,0 +1,10 @@
+{
+  "title": "Building Clocks and Watches with MicroPython",
+  "description": "A 14-week hands-on course where high school students learn computational thinking by designing and programming timekeeping devices using MicroPython on the Raspberry Pi Pico W, covering LED clocks, OLED displays, color TFTs, NeoPixel art clocks, WiFi time sync, and custom smartwatch projects.",
+  "creator": "Dan McCreary",
+  "date": "2026-03-19",
+  "version": "1.0",
+  "format": "Learning Graph JSON v1.0",
+  "schema": "https://raw.githubusercontent.com/dmccreary/learning-graphs/refs/heads/main/src/schema/learning-graph-schema.json",
+  "license": "CC BY-NC-SA 4.0 DEED"
+}
