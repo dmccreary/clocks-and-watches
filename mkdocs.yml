@@ -164,6 +164,8 @@ nav:
       - Draw Filled Triangle: kits/gc9a01/08-draw-filled-triangle.md
     - LILYGO SY7789:
       - Introduction: kits/lilygo/index.md
+    - Portable SmartWatch Kits:
+      - Introduction: kits/portable-watch-kits/index.md
     - Waveshare:
       - Introduction: kits/waveshare-lcd/index.md
       - Hello World: kits/waveshare-lcd/01-hello-world.md
