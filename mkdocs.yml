@@ -222,7 +222,7 @@ nav:
   - Contact: contact.md
   - FAQ: faq.md
 # Dan's Microsite Standards from here down
-edit_uri: 'blob/master/docs'
+edit_uri: 'blob/main/docs'
 theme:
   name: material
   custom_dir: custom-theme
