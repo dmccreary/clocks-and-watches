@@ -100,1756 +100,2106 @@
       "id": 1,
       "label": "Computational Thinking",
       "group": "FOUND",
-      "shape": "box"
+      "shape": "box",
+      "cis": 161
     },
     {
       "id": 2,
       "label": "Decomposition",
-      "group": "FOUND"
+      "group": "FOUND",
+      "cis": 67
     },
     {
       "id": 3,
       "label": "Pattern Recognition",
-      "group": "FOUND"
+      "group": "FOUND",
+      "cis": 27
     },
     {
       "id": 4,
       "label": "Abstraction",
-      "group": "FOUND"
+      "group": "FOUND",
+      "cis": 17
     },
     {
       "id": 5,
       "label": "Algorithmic Thinking",
-      "group": "FOUND"
+      "group": "FOUND",
+      "cis": 25
     },
     {
       "id": 6,
       "label": "MicroPython",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 160
     },
     {
       "id": 7,
       "label": "Python Syntax",
       "group": "PYTH",
-      "shape": "box"
+      "shape": "box",
+      "cis": 1329
     },
     {
       "id": 8,
       "label": "Variables",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 1041
     },
     {
       "id": 9,
       "label": "Data Types",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 824
     },
     {
       "id": 10,
       "label": "Integers",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 275
     },
     {
       "id": 11,
       "label": "Floats",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 164
     },
     {
       "id": 12,
       "label": "Strings",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 56
     },
     {
       "id": 13,
       "label": "Booleans",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 120
     },
     {
       "id": 14,
       "label": "Lists",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 125
     },
     {
       "id": 15,
       "label": "Tuples",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 80
     },
     {
       "id": 16,
       "label": "Dictionaries",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 1
     },
     {
       "id": 17,
       "label": "Arithmetic Operations",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 162
     },
     {
       "id": 18,
       "label": "Assignment Operators",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 1
     },
     {
       "id": 19,
       "label": "Conditionals",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 119
     },
     {
       "id": 20,
       "label": "If Else Elif",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 13
     },
     {
       "id": 21,
       "label": "For Loops",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 2
     },
     {
       "id": 22,
       "label": "While Loops",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 26
     },
     {
       "id": 23,
       "label": "Loop Control",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 1
     },
     {
       "id": 24,
       "label": "Functions",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 72
     },
     {
       "id": 25,
       "label": "Arguments and Returns",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 17
     },
     {
       "id": 26,
       "label": "Lambda Functions",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 1
     },
     {
       "id": 27,
       "label": "Import Statements",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 126
     },
     {
       "id": 28,
       "label": "Libraries",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 80
     },
     {
       "id": 29,
       "label": "Modules",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 45
     },
     {
       "id": 30,
       "label": "Error Handling",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 3
     },
     {
       "id": 31,
       "label": "Try Except Blocks",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 1
     },
     {
       "id": 32,
       "label": "Raspberry Pi Pico",
-      "group": "MCTR"
+      "group": "MCTR",
+      "cis": 956
     },
     {
       "id": 33,
       "label": "RP2040 Chip",
-      "group": "MCTR"
+      "group": "MCTR",
+      "cis": 89
     },
     {
       "id": 34,
       "label": "Dual Core Architecture",
-      "group": "MCTR"
+      "group": "MCTR",
+      "cis": 2
     },
     {
       "id": 35,
       "label": "GPIO Pins",
-      "group": "MCTR"
+      "group": "MCTR",
+      "cis": 404
     },
     {
       "id": 36,
       "label": "Pin Configuration",
-      "group": "MCTR"
+      "group": "MCTR",
+      "cis": 405
     },
     {
       "id": 37,
       "label": "Pull-Up Resistors",
-      "group": "MCTR"
+      "group": "MCTR",
+      "cis": 8
     },
     {
       "id": 38,
       "label": "Internal Pull-Up",
-      "group": "MCTR"
+      "group": "MCTR",
+      "cis": 1
     },
     {
       "id": 39,
       "label": "Breadboard",
       "group": "HARD",
-      "shape": "box"
+      "shape": "box",
+      "cis": 61
     },
     {
       "id": 40,
       "label": "Breadboard Wiring",
-      "group": "HARD"
+      "group": "HARD",
+      "cis": 11
     },
     {
       "id": 41,
       "label": "USB Connection",
-      "group": "MCTR"
+      "group": "MCTR",
+      "cis": 33
     },
     {
       "id": 42,
       "label": "Thonny IDE",
-      "group": "MCTR"
+      "group": "MCTR",
+      "cis": 27
     },
     {
       "id": 43,
       "label": "REPL",
-      "group": "MCTR"
+      "group": "MCTR",
+      "cis": 21
     },
     {
       "id": 44,
       "label": "Flash Memory",
-      "group": "MCTR"
+      "group": "MCTR",
+      "cis": 74
     },
     {
       "id": 45,
       "label": "File System on Pico",
-      "group": "MCTR"
+      "group": "MCTR",
+      "cis": 15
     },
     {
       "id": 46,
       "label": "Config File Pattern",
-      "group": "MCTR"
+      "group": "MCTR",
+      "cis": 7
     },
     {
       "id": 47,
       "label": "Microcontroller",
       "group": "MCTR",
-      "shape": "box"
+      "shape": "box",
+      "cis": 1509
     },
     {
       "id": 48,
       "label": "Physical Computing",
-      "group": "FOUND"
+      "group": "FOUND",
+      "cis": 1
     },
     {
       "id": 49,
       "label": "Clock Architecture",
-      "group": "MCTR"
+      "group": "MCTR",
+      "cis": 47
     },
     {
       "id": 50,
       "label": "Sensors",
-      "group": "MCTR"
+      "group": "MCTR",
+      "cis": 74
     },
     {
       "id": 51,
       "label": "Actuators",
-      "group": "MCTR"
+      "group": "MCTR",
+      "cis": 245
     },
     {
       "id": 52,
       "label": "Power Supply",
-      "group": "HARD"
+      "group": "HARD",
+      "cis": 62
     },
     {
       "id": 53,
       "label": "Voltage Levels",
-      "group": "HARD"
+      "group": "HARD",
+      "cis": 284
     },
     {
       "id": 54,
       "label": "3.3V vs 5V Logic",
-      "group": "HARD"
+      "group": "HARD",
+      "cis": 1
     },
     {
       "id": 55,
       "label": "Ground Connection",
-      "group": "HARD"
+      "group": "HARD",
+      "cis": 1
     },
     {
       "id": 56,
       "label": "I2C Bus",
-      "group": "COMM"
+      "group": "COMM",
+      "cis": 118
     },
     {
       "id": 57,
       "label": "I2C SDA Pin",
-      "group": "COMM"
+      "group": "COMM",
+      "cis": 119
     },
     {
       "id": 58,
       "label": "I2C SCL Pin",
-      "group": "COMM"
+      "group": "COMM",
+      "cis": 119
     },
     {
       "id": 59,
       "label": "I2C Device Addressing",
-      "group": "COMM"
+      "group": "COMM",
+      "cis": 13
     },
     {
       "id": 60,
       "label": "I2C Scanner",
-      "group": "COMM"
+      "group": "COMM",
+      "cis": 11
     },
     {
       "id": 61,
       "label": "I2C Pull-Up Resistors",
-      "group": "COMM"
+      "group": "COMM",
+      "cis": 1
     },
     {
       "id": 62,
       "label": "I2C Bus Speed",
-      "group": "COMM"
+      "group": "COMM",
+      "cis": 1
     },
     {
       "id": 63,
       "label": "SPI Bus",
-      "group": "COMM"
+      "group": "COMM",
+      "cis": 42
     },
     {
       "id": 64,
       "label": "SPI Clock Pin",
-      "group": "COMM"
+      "group": "COMM",
+      "cis": 43
     },
     {
       "id": 65,
       "label": "SPI Data Pin",
-      "group": "COMM"
+      "group": "COMM",
+      "cis": 43
     },
     {
       "id": 66,
       "label": "SPI Chip Select",
-      "group": "COMM"
+      "group": "COMM",
+      "cis": 1
     },
     {
       "id": 67,
       "label": "SPI DC Pin",
-      "group": "COMM"
+      "group": "COMM",
+      "cis": 1
     },
     {
       "id": 68,
       "label": "SPI Reset Pin",
-      "group": "COMM"
+      "group": "COMM",
+      "cis": 1
     },
     {
       "id": 69,
       "label": "SPI Baudrate",
-      "group": "COMM"
+      "group": "COMM",
+      "cis": 15
     },
     {
       "id": 70,
       "label": "Baudrate Tuning",
-      "group": "COMM"
+      "group": "COMM",
+      "cis": 2
     },
     {
       "id": 71,
       "label": "Bus Speed Comparison",
-      "group": "COMM"
+      "group": "COMM",
+      "cis": 1
     },
     {
       "id": 72,
       "label": "Momentary Push Button",
-      "group": "INPT"
+      "group": "INPT",
+      "cis": 6
     },
     {
       "id": 73,
       "label": "Button Wiring",
-      "group": "INPT"
+      "group": "INPT",
+      "cis": 5
     },
     {
       "id": 74,
       "label": "Button Debouncing",
-      "group": "INPT"
+      "group": "INPT",
+      "cis": 4
     },
     {
       "id": 75,
       "label": "Software Debounce",
-      "group": "INPT"
+      "group": "INPT",
+      "cis": 2
     },
     {
       "id": 76,
       "label": "Hardware Debounce",
-      "group": "INPT"
+      "group": "INPT",
+      "cis": 1
     },
     {
       "id": 77,
       "label": "Interrupt Handlers",
-      "group": "INPT"
+      "group": "INPT",
+      "cis": 14
     },
     {
       "id": 78,
       "label": "IRQ Falling Edge",
-      "group": "INPT"
+      "group": "INPT",
+      "cis": 1
     },
     {
       "id": 79,
       "label": "State Machine",
-      "group": "INPT"
+      "group": "INPT",
+      "cis": 12
     },
     {
       "id": 80,
       "label": "Mode Cycling",
-      "group": "INPT"
+      "group": "INPT",
+      "cis": 7
     },
     {
       "id": 81,
       "label": "Modular Arithmetic",
-      "group": "MATH"
+      "group": "MATH",
+      "cis": 10
     },
     {
       "id": 82,
       "label": "Rotary Encoder",
-      "group": "INPT"
+      "group": "INPT",
+      "cis": 3
     },
     {
       "id": 83,
       "label": "Encoder Direction",
-      "group": "INPT"
+      "group": "INPT",
+      "cis": 2
     },
     {
       "id": 84,
       "label": "Encoder Acceleration",
-      "group": "INPT"
+      "group": "INPT",
+      "cis": 1
     },
     {
       "id": 85,
       "label": "Localtime Function",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 78
     },
     {
       "id": 86,
       "label": "Time Tuple",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 79
     },
     {
       "id": 87,
       "label": "Year Month Day",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 3
     },
     {
       "id": 88,
       "label": "Hour Minute Second",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 5
     },
     {
       "id": 89,
       "label": "Weekday Number",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 2
     },
     {
       "id": 90,
       "label": "Day of Year",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 1
     },
     {
       "id": 91,
       "label": "12 Hour Format",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 2
     },
     {
       "id": 92,
       "label": "24 Hour Format",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 1
     },
     {
       "id": 93,
       "label": "AM PM Conversion",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 1
     },
     {
       "id": 94,
       "label": "Time Formatting",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 9
     },
     {
       "id": 95,
       "label": "Date Formatting",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 1
     },
     {
       "id": 96,
       "label": "Weekday Labels",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 1
     },
     {
       "id": 97,
       "label": "Month Labels",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 1
     },
     {
       "id": 98,
       "label": "Real-Time Clock",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 38
     },
     {
       "id": 99,
       "label": "DS3231 RTC",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 37
     },
     {
       "id": 100,
       "label": "RTC Battery Backup",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 1
     },
     {
       "id": 101,
       "label": "CR2032 Coin Cell",
-      "group": "SNPW"
+      "group": "SNPW",
+      "cis": 2
     },
     {
       "id": 102,
       "label": "Temperature Compensation",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 1
     },
     {
       "id": 103,
       "label": "BCD Format",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 9
     },
     {
       "id": 104,
       "label": "RTC I2C Address",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 1
     },
     {
       "id": 105,
       "label": "RTC Registers",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 8
     },
     {
       "id": 106,
       "label": "RTC Alarm Feature",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 1
     },
     {
       "id": 107,
       "label": "RTC Temperature Sensor",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 6
     },
     {
       "id": 108,
       "label": "Internal Pico RTC",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 3
     },
     {
       "id": 109,
       "label": "Time Source Comparison",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 1
     },
     {
       "id": 110,
       "label": "WiFi Connectivity",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 10
     },
     {
       "id": 111,
       "label": "Pico W",
-      "group": "MCTR"
+      "group": "MCTR",
+      "cis": 22
     },
     {
       "id": 112,
       "label": "Secrets File",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 2
     },
     {
       "id": 113,
       "label": "WiFi SSID and Password",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 1
     },
     {
       "id": 114,
       "label": "Network Configuration",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 11
     },
     {
       "id": 115,
       "label": "NTP Protocol",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 16
     },
     {
       "id": 116,
       "label": "NTP Client Server",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 2
     },
     {
       "id": 117,
       "label": "NTP Stratum Hierarchy",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 1
     },
     {
       "id": 118,
       "label": "NTP Time Sync",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 6
     },
     {
       "id": 119,
       "label": "UTC Time",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 21
     },
     {
       "id": 120,
       "label": "Timezone Conversion",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 4
     },
     {
       "id": 121,
       "label": "Daylight Saving Time",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 2
     },
     {
       "id": 122,
       "label": "Ntptime Library",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 7
     },
     {
       "id": 123,
       "label": "LED Display",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 190
     },
     {
       "id": 124,
       "label": "Seven Segment Display",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 10
     },
     {
       "id": 125,
       "label": "Segment Multiplexing",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 1
     },
     {
       "id": 126,
       "label": "TM1637 Driver",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 6
     },
     {
       "id": 127,
       "label": "TM1637 Wiring",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 1
     },
     {
       "id": 128,
       "label": "Colon Flashing",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 1
     },
     {
       "id": 129,
       "label": "Brightness Control",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 3
     },
     {
       "id": 130,
       "label": "MAX7219 Driver",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 1
     },
     {
       "id": 131,
       "label": "Character LCD",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 2
     },
     {
       "id": 132,
       "label": "LCD1602 Display",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 1
     },
     {
       "id": 133,
       "label": "OLED Display",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 67
     },
     {
       "id": 134,
       "label": "SSD1306 Driver",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 3
     },
     {
       "id": 135,
       "label": "SSD1306 I2C Setup",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 1
     },
     {
       "id": 136,
       "label": "SSD1306 SPI Setup",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 1
     },
     {
       "id": 137,
       "label": "SH1106 Driver",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 1
     },
     {
       "id": 138,
       "label": "Framebuffer",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 58
     },
     {
       "id": 139,
       "label": "Display Show Command",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 4
     },
     {
       "id": 140,
       "label": "Display Fill Command",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 2
     },
     {
       "id": 141,
       "label": "Pixel Drawing",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 15
     },
     {
       "id": 142,
       "label": "Line Drawing",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 14
     },
     {
       "id": 143,
       "label": "Rectangle Drawing",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 3
     },
     {
       "id": 144,
       "label": "Circle Drawing",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 3
     },
     {
       "id": 145,
       "label": "Polygon Drawing",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 2
     },
     {
       "id": 146,
       "label": "Triangle Drawing",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 1
     },
     {
       "id": 147,
       "label": "Text Rendering",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 20
     },
     {
       "id": 148,
       "label": "Font Loading",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 5
     },
     {
       "id": 149,
       "label": "Custom Fonts",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 4
     },
     {
       "id": 150,
       "label": "Font to Py Converter",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 2
     },
     {
       "id": 151,
       "label": "Multiple Font Support",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 1
     },
     {
       "id": 152,
       "label": "Scaled Digits",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 5
     },
     {
       "id": 153,
       "label": "Color Display",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 24
     },
     {
       "id": 154,
       "label": "TFT LCD",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 9
     },
     {
       "id": 155,
       "label": "ILI9341 Driver",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 2
     },
     {
       "id": 156,
       "label": "ST7735 Driver",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 2
     },
     {
       "id": 157,
       "label": "GC9A01 Driver",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 4
     },
     {
       "id": 158,
       "label": "RGB565 Color Encoding",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 27
     },
     {
       "id": 159,
       "label": "Color565 Function",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 2
     },
     {
       "id": 160,
       "label": "Color Palette",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 32
     },
     {
       "id": 161,
       "label": "Colors File",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 1
     },
     {
       "id": 162,
       "label": "Round Display",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 9
     },
     {
       "id": 163,
       "label": "Smartwatch Display",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 2
     },
     {
       "id": 164,
       "label": "Display Rotation",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 1
     },
     {
       "id": 165,
       "label": "Analog Clock Face",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 1
     },
     {
       "id": 166,
       "label": "Clock Tick Marks",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 2
     },
     {
       "id": 167,
       "label": "Clock Hands",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 3
     },
     {
       "id": 168,
       "label": "Rotating Hands",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 1
     },
     {
       "id": 169,
       "label": "Digital Clock Face",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 4
     },
     {
       "id": 170,
       "label": "NeoPixel LEDs",
-      "group": "PROJ"
+      "group": "PROJ",
+      "cis": 16
     },
     {
       "id": 171,
       "label": "WS2812B Standard",
-      "group": "PROJ"
+      "group": "PROJ",
+      "cis": 1
     },
     {
       "id": 172,
       "label": "NeoPixel Wiring",
-      "group": "PROJ"
+      "group": "PROJ",
+      "cis": 2
     },
     {
       "id": 173,
       "label": "Addressable LEDs",
-      "group": "PROJ"
+      "group": "PROJ",
+      "cis": 17
     },
     {
       "id": 174,
       "label": "NeoPixel Color Mixing",
-      "group": "PROJ"
+      "group": "PROJ",
+      "cis": 1
     },
     {
       "id": 175,
       "label": "Binary Clock",
-      "group": "PROJ"
+      "group": "PROJ",
+      "cis": 1
     },
     {
       "id": 176,
       "label": "Fibonacci Clock",
-      "group": "PROJ"
+      "group": "PROJ",
+      "cis": 1
     },
     {
       "id": 177,
       "label": "NeoPixel Seven Segment",
-      "group": "PROJ"
+      "group": "PROJ",
+      "cis": 1
     },
     {
       "id": 178,
       "label": "Shift Register",
-      "group": "PROJ"
+      "group": "PROJ",
+      "cis": 5
     },
     {
       "id": 179,
       "label": "74HC595 Chip",
-      "group": "PROJ"
+      "group": "PROJ",
+      "cis": 4
     },
     {
       "id": 180,
       "label": "Serial to Parallel",
-      "group": "PROJ"
+      "group": "PROJ",
+      "cis": 6
     },
     {
       "id": 181,
       "label": "Latch Pin",
-      "group": "PROJ"
+      "group": "PROJ",
+      "cis": 2
     },
     {
       "id": 182,
       "label": "Shift Register Chaining",
-      "group": "PROJ"
+      "group": "PROJ",
+      "cis": 1
     },
     {
       "id": 183,
       "label": "PWM Sound",
-      "group": "SNPW"
+      "group": "SNPW",
+      "cis": 8
     },
     {
       "id": 184,
       "label": "Piezo Buzzer",
-      "group": "SNPW"
+      "group": "SNPW",
+      "cis": 6
     },
     {
       "id": 185,
       "label": "Speaker Output",
-      "group": "SNPW"
+      "group": "SNPW",
+      "cis": 1
     },
     {
       "id": 186,
       "label": "DAC PCM5102",
-      "group": "SNPW"
+      "group": "SNPW",
+      "cis": 2
     },
     {
       "id": 187,
       "label": "I2S Protocol",
-      "group": "SNPW"
+      "group": "SNPW",
+      "cis": 3
     },
     {
       "id": 188,
       "label": "Audio Sampling Rate",
-      "group": "SNPW"
+      "group": "SNPW",
+      "cis": 1
     },
     {
       "id": 189,
       "label": "Alarm Tones",
-      "group": "SNPW"
+      "group": "SNPW",
+      "cis": 5
     },
     {
       "id": 190,
       "label": "Alarm Clock Features",
-      "group": "PROJ"
+      "group": "PROJ",
+      "cis": 4
     },
     {
       "id": 191,
       "label": "Snooze Function",
-      "group": "PROJ"
+      "group": "PROJ",
+      "cis": 1
     },
     {
       "id": 192,
       "label": "Stopwatch",
-      "group": "PROJ"
+      "group": "PROJ",
+      "cis": 1
     },
     {
       "id": 193,
       "label": "Timer",
-      "group": "PROJ"
+      "group": "PROJ",
+      "cis": 4
     },
     {
       "id": 194,
       "label": "Elapsed Time Tracking",
-      "group": "PROJ"
+      "group": "PROJ",
+      "cis": 6
     },
     {
       "id": 195,
       "label": "Photosensor",
-      "group": "INPT"
+      "group": "INPT",
+      "cis": 4
     },
     {
       "id": 196,
       "label": "Light Dependent Resistor",
-      "group": "INPT"
+      "group": "INPT",
+      "cis": 1
     },
     {
       "id": 197,
       "label": "ADC Reading",
-      "group": "INPT"
+      "group": "INPT",
+      "cis": 10
     },
     {
       "id": 198,
       "label": "Auto Brightness",
-      "group": "INPT"
+      "group": "INPT",
+      "cis": 2
     },
     {
       "id": 199,
       "label": "Hysteresis",
-      "group": "INPT"
+      "group": "INPT",
+      "cis": 1
     },
     {
       "id": 200,
       "label": "Power Management",
-      "group": "SNPW"
+      "group": "SNPW",
+      "cis": 12
     },
     {
       "id": 201,
       "label": "USB Power",
-      "group": "SNPW"
+      "group": "SNPW",
+      "cis": 2
     },
     {
       "id": 202,
       "label": "Battery Power",
-      "group": "SNPW"
+      "group": "SNPW",
+      "cis": 5
     },
     {
       "id": 203,
       "label": "LiPo Battery",
-      "group": "SNPW"
+      "group": "SNPW",
+      "cis": 2
     },
     {
       "id": 204,
       "label": "AA Battery Pack",
-      "group": "SNPW"
+      "group": "SNPW",
+      "cis": 1
     },
     {
       "id": 205,
       "label": "E-Paper Display",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 5
     },
     {
       "id": 206,
       "label": "Waveshare Display",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 1
     },
     {
       "id": 207,
       "label": "Display Refresh Rate",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 9
     },
     {
       "id": 208,
       "label": "Low Power Mode",
-      "group": "SNPW"
+      "group": "SNPW",
+      "cis": 1
     },
     {
       "id": 209,
       "label": "Soldering Skills",
-      "group": "HARD"
+      "group": "HARD",
+      "cis": 4
     },
     {
       "id": 210,
       "label": "Project Planning",
-      "group": "DSGN"
+      "group": "DSGN",
+      "cis": 24
     },
     {
       "id": 211,
       "label": "Design Trade-Offs",
-      "group": "DSGN"
+      "group": "DSGN",
+      "cis": 5
     },
     {
       "id": 212,
       "label": "Cost Analysis",
-      "group": "DSGN"
+      "group": "DSGN",
+      "cis": 6
     },
     {
       "id": 213,
       "label": "User Experience Design",
-      "group": "DSGN"
+      "group": "DSGN",
+      "cis": 1
     },
     {
       "id": 214,
       "label": "Code Modularity",
-      "group": "DSGN"
+      "group": "DSGN",
+      "cis": 16
     },
     {
       "id": 215,
       "label": "Program Variants",
-      "group": "DSGN"
+      "group": "DSGN",
+      "cis": 5
     },
     {
       "id": 216,
       "label": "Main Buttons Program",
-      "group": "DSGN"
+      "group": "DSGN",
+      "cis": 1
     },
     {
       "id": 217,
       "label": "Main RTC Program",
-      "group": "DSGN"
+      "group": "DSGN",
+      "cis": 1
     },
     {
       "id": 218,
       "label": "Main WiFi Program",
-      "group": "DSGN"
+      "group": "DSGN",
+      "cis": 1
     },
     {
       "id": 219,
       "label": "Generative AI Prompts",
-      "group": "DSGN"
+      "group": "DSGN",
+      "cis": 3
     },
     {
       "id": 220,
       "label": "AI Code Generation",
-      "group": "DSGN"
+      "group": "DSGN",
+      "cis": 2
     },
     {
       "id": 221,
       "label": "AI Code Review",
-      "group": "DSGN"
+      "group": "DSGN",
+      "cis": 1
     },
     {
       "id": 222,
       "label": "Peer Review",
-      "group": "DSGN"
+      "group": "DSGN",
+      "cis": 2
     },
     {
       "id": 223,
       "label": "Final Presentation",
-      "group": "DSGN"
+      "group": "DSGN",
+      "cis": 1
     },
     {
       "id": 224,
       "label": "Wiring Diagrams",
-      "group": "DSGN"
+      "group": "DSGN",
+      "cis": 2
     },
     {
       "id": 225,
       "label": "Troubleshooting",
-      "group": "DSGN"
+      "group": "DSGN",
+      "cis": 7
     },
     {
       "id": 226,
       "label": "Debugging Techniques",
-      "group": "DSGN"
+      "group": "DSGN",
+      "cis": 9
     },
     {
       "id": 227,
       "label": "Display Flicker Fix",
-      "group": "DSGN"
+      "group": "DSGN",
+      "cis": 1
     },
     {
       "id": 228,
       "label": "Clock Drift",
-      "group": "DSGN"
+      "group": "DSGN",
+      "cis": 1
     },
     {
       "id": 229,
       "label": "Dual Core Usage",
-      "group": "MCTR"
+      "group": "MCTR",
+      "cis": 1
     },
     {
       "id": 230,
       "label": "E-Paper Refresh",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 3
     },
     {
       "id": 231,
       "label": "Sine Function",
-      "group": "MATH"
+      "group": "MATH",
+      "cis": 4
     },
     {
       "id": 232,
       "label": "Cosine Function",
-      "group": "MATH"
+      "group": "MATH",
+      "cis": 4
     },
     {
       "id": 233,
       "label": "Trigonometry Basics",
-      "group": "MATH"
+      "group": "MATH",
+      "cis": 28
     },
     {
       "id": 234,
       "label": "Polar Coordinates",
-      "group": "MATH"
+      "group": "MATH",
+      "cis": 8
     },
     {
       "id": 235,
       "label": "Radians vs Degrees",
-      "group": "MATH"
+      "group": "MATH",
+      "cis": 29
     },
     {
       "id": 236,
       "label": "Angle Calculation",
-      "group": "MATH"
+      "group": "MATH",
+      "cis": 7
     },
     {
       "id": 237,
       "label": "X Y Coordinate System",
-      "group": "MATH"
+      "group": "MATH",
+      "cis": 40
     },
     {
       "id": 238,
       "label": "Pixel Coordinate Mapping",
-      "group": "MATH"
+      "group": "MATH",
+      "cis": 1
     },
     {
       "id": 239,
       "label": "Center Point Calculation",
-      "group": "MATH"
+      "group": "MATH",
+      "cis": 8
     },
     {
       "id": 240,
       "label": "Clock Hand Length",
-      "group": "MATH"
+      "group": "MATH",
+      "cis": 4
     },
     {
       "id": 241,
       "label": "Tick Mark Geometry",
-      "group": "MATH"
+      "group": "MATH",
+      "cis": 3
     },
     {
       "id": 242,
       "label": "Arc Drawing",
-      "group": "MATH"
+      "group": "MATH",
+      "cis": 1
     },
     {
       "id": 243,
       "label": "Rotation Math",
-      "group": "MATH"
+      "group": "MATH",
+      "cis": 2
     },
     {
       "id": 244,
       "label": "Integer Math Tricks",
-      "group": "MATH"
+      "group": "MATH",
+      "cis": 2
     },
     {
       "id": 245,
       "label": "Fixed Point Arithmetic",
-      "group": "MATH"
+      "group": "MATH",
+      "cis": 1
     },
     {
       "id": 246,
       "label": "Machine Module",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 1
     },
     {
       "id": 247,
       "label": "Utime Module",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 24
     },
     {
       "id": 248,
       "label": "Sleep Function",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 7
     },
     {
       "id": 249,
       "label": "Ticks Ms Function",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 16
     },
     {
       "id": 250,
       "label": "Ticks Diff Function",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 7
     },
     {
       "id": 251,
       "label": "F-String Formatting",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 11
     },
     {
       "id": 252,
       "label": "String Concatenation",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 1
     },
     {
       "id": 253,
       "label": "Global Keyword",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 1
     },
     {
       "id": 254,
       "label": "Callback Functions",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 15
     },
     {
       "id": 255,
       "label": "Classes and Objects",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 2
     },
     {
       "id": 256,
       "label": "Object Methods",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 1
     },
     {
       "id": 257,
       "label": "Memory Management",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 2
     },
     {
       "id": 258,
       "label": "Garbage Collection",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 1
     },
     {
       "id": 259,
       "label": "Print Debugging",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 10
     },
     {
       "id": 260,
       "label": "Micropython Differences",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 1
     },
     {
       "id": 261,
       "label": "Firmware Versions",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 4
     },
     {
       "id": 262,
       "label": "Firmware Flashing",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 3
     },
     {
       "id": 263,
       "label": "Boot and Main Files",
-      "group": "PYTH"
+      "group": "PYTH",
+      "cis": 2
     },
     {
       "id": 264,
       "label": "Ohms Law",
       "group": "HARD",
-      "shape": "box"
+      "shape": "box",
+      "cis": 647
     },
     {
       "id": 265,
       "label": "Current Limiting",
-      "group": "HARD"
+      "group": "HARD",
+      "cis": 5
     },
     {
       "id": 266,
       "label": "Voltage Divider",
-      "group": "HARD"
+      "group": "HARD",
+      "cis": 2
     },
     {
       "id": 267,
       "label": "Capacitors",
-      "group": "HARD"
+      "group": "HARD",
+      "cis": 2
     },
     {
       "id": 268,
       "label": "Resistor Values",
-      "group": "HARD"
+      "group": "HARD",
+      "cis": 8
     },
     {
       "id": 269,
       "label": "LED Basics",
-      "group": "HARD"
+      "group": "HARD",
+      "cis": 263
     },
     {
       "id": 270,
       "label": "LED Current Draw",
-      "group": "HARD"
+      "group": "HARD",
+      "cis": 4
     },
     {
       "id": 271,
       "label": "Wire Color Coding",
-      "group": "HARD"
+      "group": "HARD",
+      "cis": 1
     },
     {
       "id": 272,
       "label": "Circuit Diagrams",
-      "group": "HARD"
+      "group": "HARD",
+      "cis": 3
     },
     {
       "id": 273,
       "label": "Multimeter Usage",
-      "group": "HARD"
+      "group": "HARD",
+      "cis": 5
     },
     {
       "id": 274,
       "label": "Signal Integrity",
-      "group": "HARD"
+      "group": "HARD",
+      "cis": 3
     },
     {
       "id": 275,
       "label": "Crosstalk",
-      "group": "HARD"
+      "group": "HARD",
+      "cis": 1
     },
     {
       "id": 276,
       "label": "Connector Types",
-      "group": "HARD"
+      "group": "HARD",
+      "cis": 18
     },
     {
       "id": 277,
       "label": "Jumper Wires",
-      "group": "HARD"
+      "group": "HARD",
+      "cis": 16
     },
     {
       "id": 278,
       "label": "Header Pins",
-      "group": "HARD"
+      "group": "HARD",
+      "cis": 1
     },
     {
       "id": 279,
       "label": "Display Resolution",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 78
     },
     {
       "id": 280,
       "label": "Contrast Ratio",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 2
     },
     {
       "id": 281,
       "label": "Viewing Angle",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 2
     },
     {
       "id": 282,
       "label": "Direct Write Display",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 1
     },
     {
       "id": 283,
       "label": "Screen Clearing",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 1
     },
     {
       "id": 284,
       "label": "Animation Technique",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 3
     },
     {
       "id": 285,
       "label": "Double Buffering",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 1
     },
     {
       "id": 286,
       "label": "Partial Screen Update",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 2
     },
     {
       "id": 287,
       "label": "Scroll Marquee",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 1
     },
     {
       "id": 288,
       "label": "Display Coordinates",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 3
     },
     {
       "id": 289,
       "label": "Bounding Box",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 2
     },
     {
       "id": 290,
       "label": "Clipping Region",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 1
     },
     {
       "id": 291,
       "label": "Crystal Oscillator",
-      "group": "MCTR"
+      "group": "MCTR",
+      "cis": 10
     },
     {
       "id": 292,
       "label": "Clock Accuracy",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 8
     },
     {
       "id": 293,
       "label": "Clock Precision",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 2
     },
     {
       "id": 294,
       "label": "Epoch Time",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 2
     },
     {
       "id": 295,
       "label": "Unix Timestamp",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 1
     },
     {
       "id": 296,
       "label": "Leap Year Handling",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 1
     },
     {
       "id": 297,
       "label": "Time Drift Compensation",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 3
     },
     {
       "id": 298,
       "label": "Clock Calibration",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 1
     },
     {
       "id": 299,
       "label": "Seconds Since Midnight",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 1
     },
     {
       "id": 300,
       "label": "Time Math",
-      "group": "TIME"
+      "group": "TIME",
+      "cis": 1
     },
     {
       "id": 301,
       "label": "World Clock",
-      "group": "PROJ"
+      "group": "PROJ",
+      "cis": 1
     },
     {
       "id": 302,
       "label": "Countdown Timer",
-      "group": "PROJ"
+      "group": "PROJ",
+      "cis": 2
     },
     {
       "id": 303,
       "label": "Pomodoro Timer",
-      "group": "PROJ"
+      "group": "PROJ",
+      "cis": 1
     },
     {
       "id": 304,
       "label": "Weather Station Display",
-      "group": "PROJ"
+      "group": "PROJ",
+      "cis": 1
     },
     {
       "id": 305,
       "label": "Temperature Display",
-      "group": "PROJ"
+      "group": "PROJ",
+      "cis": 4
     },
     {
       "id": 306,
       "label": "Humidity Display",
-      "group": "PROJ"
+      "group": "PROJ",
+      "cis": 2
     },
     {
       "id": 307,
       "label": "Enclosure Design",
-      "group": "DSGN"
+      "group": "DSGN",
+      "cis": 2
     },
     {
       "id": 308,
       "label": "Acrylic Mounting",
-      "group": "DSGN"
+      "group": "DSGN",
+      "cis": 3
     },
     {
       "id": 309,
       "label": "Bill of Materials",
-      "group": "DSGN"
+      "group": "DSGN",
+      "cis": 8
     },
     {
       "id": 310,
       "label": "Component Sourcing",
-      "group": "DSGN"
+      "group": "DSGN",
+      "cis": 1
     },
     {
       "id": 311,
       "label": "HSV Color Model",
-      "group": "PROJ"
+      "group": "PROJ",
+      "cis": 3
     },
     {
       "id": 312,
       "label": "Color Wheel",
-      "group": "PROJ"
+      "group": "PROJ",
+      "cis": 1
     },
     {
       "id": 313,
       "label": "LED Power Calculation",
-      "group": "PROJ"
+      "group": "PROJ",
+      "cis": 1
     },
     {
       "id": 314,
       "label": "NeoPixel Strip Types",
-      "group": "PROJ"
+      "group": "PROJ",
+      "cis": 2
     },
     {
       "id": 315,
       "label": "NeoPixel Ring",
-      "group": "PROJ"
+      "group": "PROJ",
+      "cis": 1
     },
     {
       "id": 316,
       "label": "NeoPixel Matrix",
-      "group": "PROJ"
+      "group": "PROJ",
+      "cis": 1
     },
     {
       "id": 317,
       "label": "NeoPixel Library",
-      "group": "PROJ"
+      "group": "PROJ",
+      "cis": 1
     },
     {
       "id": 318,
       "label": "LED Density Per Meter",
-      "group": "PROJ"
+      "group": "PROJ",
+      "cis": 3
     },
     {
       "id": 319,
       "label": "File Transfer to Pico",
-      "group": "DSGN"
+      "group": "DSGN",
+      "cis": 2
     },
     {
       "id": 320,
       "label": "Serial Monitor",
-      "group": "DSGN"
+      "group": "DSGN",
+      "cis": 1
     },
     {
       "id": 321,
       "label": "Interpreter Selection",
-      "group": "DSGN"
+      "group": "DSGN",
+      "cis": 1
     },
     {
       "id": 322,
       "label": "Thonny Time Sync",
-      "group": "DSGN"
+      "group": "DSGN",
+      "cis": 1
     },
     {
       "id": 323,
       "label": "Code Upload Process",
-      "group": "DSGN"
+      "group": "DSGN",
+      "cis": 1
     },
     {
       "id": 324,
       "label": "Version Control Basics",
-      "group": "DSGN"
+      "group": "DSGN",
+      "cis": 1
     },
     {
       "id": 325,
       "label": "UART Protocol",
-      "group": "COMM"
+      "group": "COMM",
+      "cis": 6
     },
     {
       "id": 326,
       "label": "Bit Ordering",
-      "group": "COMM"
+      "group": "COMM",
+      "cis": 3
     },
     {
       "id": 327,
       "label": "Clock Polarity",
-      "group": "COMM"
+      "group": "COMM",
+      "cis": 1
     },
     {
       "id": 328,
       "label": "Data Packet Structure",
-      "group": "COMM"
+      "group": "COMM",
+      "cis": 1
     },
     {
       "id": 329,
       "label": "MSB and LSB",
-      "group": "COMM"
+      "group": "COMM",
+      "cis": 1
     },
     {
       "id": 330,
       "label": "Byte and Bit Operations",
-      "group": "COMM"
+      "group": "COMM",
+      "cis": 11
     },
     {
       "id": 331,
       "label": "Hardware Testing",
-      "group": "DSGN"
+      "group": "DSGN",
+      "cis": 3
     },
     {
       "id": 332,
       "label": "Integration Testing",
-      "group": "DSGN"
+      "group": "DSGN",
+      "cis": 1
     },
     {
       "id": 333,
       "label": "Code Walkthrough",
-      "group": "DSGN"
+      "group": "DSGN",
+      "cis": 1
     },
     {
       "id": 334,
       "label": "Systematic Debugging",
-      "group": "DSGN"
+      "group": "DSGN",
+      "cis": 1
     },
     {
       "id": 335,
       "label": "Logic Analyzer Basics",
-      "group": "DSGN"
+      "group": "DSGN",
+      "cis": 1
     },
     {
       "id": 336,
       "label": "Voltage Regulator",
-      "group": "SNPW"
+      "group": "SNPW",
+      "cis": 2
     },
     {
       "id": 337,
       "label": "Current Draw Calculation",
-      "group": "SNPW"
+      "group": "SNPW",
+      "cis": 1
     },
     {
       "id": 338,
       "label": "Sleep Mode Wake Source",
-      "group": "SNPW"
+      "group": "SNPW",
+      "cis": 2
     },
     {
       "id": 339,
       "label": "Brownout Detection",
-      "group": "SNPW"
+      "group": "SNPW",
+      "cis": 1
     },
     {
       "id": 340,
       "label": "USB Battery Pack",
-      "group": "SNPW"
+      "group": "SNPW",
+      "cis": 1
     },
     {
       "id": 341,
       "label": "LilyGo RP2040 Board",
-      "group": "PROJ"
+      "group": "PROJ",
+      "cis": 1
     },
     {
       "id": 342,
       "label": "Waveshare RP2040 Board",
-      "group": "PROJ"
+      "group": "PROJ",
+      "cis": 1
     },
     {
       "id": 343,
       "label": "Accelerometer Basics",
-      "group": "INPT"
+      "group": "INPT",
+      "cis": 4
     },
     {
       "id": 344,
       "label": "Gyroscope Basics",
-      "group": "INPT"
+      "group": "INPT",
+      "cis": 2
     },
     {
       "id": 345,
       "label": "Tilt Detection",
-      "group": "INPT"
+      "group": "INPT",
+      "cis": 1
     },
     {
       "id": 346,
       "label": "Step Counter Concept",
-      "group": "INPT"
+      "group": "INPT",
+      "cis": 1
     },
     {
       "id": 347,
       "label": "Watch Band Integration",
-      "group": "PROJ"
+      "group": "PROJ",
+      "cis": 1
     },
     {
       "id": 348,
       "label": "Bistable Display",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 3
     },
     {
       "id": 349,
       "label": "E-Paper Ghosting",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 1
     },
     {
       "id": 350,
       "label": "Partial E-Paper Refresh",
-      "group": "DISP"
+      "group": "DISP",
+      "cis": 1
     }
   ],
   "edges": [
