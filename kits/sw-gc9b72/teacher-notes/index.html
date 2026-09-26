@@ -3218,6 +3218,11 @@ real code in a desktop simulator of the GC9B72 display. The simulator
 decodes the same SPI commands the Pico sends to the panel, so the
 pictures show exactly the pixels the program draws. Every lab has also
 been run on a real Pico 2 W and GC9B72 panel.</p>
+<p>The simulator is in the repository at
+<a href="https://github.com/dmccreary/clocks-and-watches/tree/main/src/display-simulators/gc9b72"><code>src/display-simulators/gc9b72</code></a>.
+After changing a lab, <code>render_sw_gc9b72_docs.py</code> regenerates all of
+these pictures, and <code>checks/run_all.py</code> re-runs the checks described
+on this page.</p>
 </div>
 <h2 id="what-the-probe-reports">What the Probe Reports</h2>
 <p><code>01-probe.py</code> checks everything software can check. Here is what it
