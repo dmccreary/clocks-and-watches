@@ -88,6 +88,12 @@ BUTTON_MODE_PIN = 13
 BUTTON_INCREMENT_PIN = 14
 BUTTON_DECREMENT_PIN = 15
 
+# An optional piezo buzzer for the countdown timer's alarm (lab 11). Wire
+# its + leg to a free GPIO pin and its - leg to GND, then put that pin
+# number here. None means no buzzer: the alarm flashes the screen and the
+# onboard LED instead.
+BUZZER_PIN = None
+
 # RGB565: five bits of red, six of green, five of blue, packed into 16
 # bits. color565(red, green, blue) builds any color from three ordinary
 # 0-255 values, and it is re-exported above so labs can use config.color565().

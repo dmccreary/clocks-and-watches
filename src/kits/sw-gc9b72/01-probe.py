@@ -32,7 +32,7 @@ import machine
 from machine import Pin
 
 NAME = "01-probe.py"
-VERSION = "1.1"
+VERSION = "1.2"
 
 warnings = []
 
@@ -197,6 +197,7 @@ REQUIRED = (
     ("config.py", "pin numbers and settings"),
     ("wifi_time.py", "sets the clock over WiFi"),
     ("forecast.py", "gets the weather forecast"),
+    ("lib/watchparts.py", "digits, rings, text, buttons"),
 )
 for path, purpose in REQUIRED:
     if exists(path):

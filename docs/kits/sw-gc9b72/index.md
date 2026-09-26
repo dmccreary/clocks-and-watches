@@ -100,6 +100,9 @@ Every pin number lives in one file, `config.py`, which every lab imports.
 | 7 | `07-set-time.py` | Set the time by hand: Mode picks the field, Up/Down change it, with debounce and hold-to-repeat |
 | 8 | `08-digital-watch-face.py` | Big seven-segment digits, the date, and a seconds ring, repainting only the pixels that change. Meant to become `main.py`. |
 | 9 | `09-weather-clock.py` | Time, date, and today's and tomorrow's forecast with weather icons, from the Open-Meteo web service. Meant to become `main.py`. |
+| 10 | `10-stopwatch.py` | A stopwatch with hundredths and lap times, run by the three buttons |
+| 11 | `11-countdown-timer.py` | A countdown timer you set with the buttons, with a ring that empties as time runs out and a flashing alarm |
+| 12 | `12-main-template.py` | One watch with five modes (weather, analog, digital, stopwatch, timer), switched with MODE and loaded only when needed. Meant to become `main.py`. |
 
 Every lab has been run on a real Pico 2 W and GC9B72 panel. The colors
 come out in the right order, all three buttons work, and the edge of the
@@ -309,12 +312,158 @@ catches up.
 Measured on the Pico 2 W, a normal second takes 1.8 ms, and a new forecast
 takes about 190 ms to draw.
 
+## Stopwatch and Countdown Timer
+
+Both tools use the three buttons the same way, so moving between them is
+easy. UP starts and stops, DOWN resets, and MODE does each tool's extra
+job. DOWN only resets when the tool is stopped or paused, so a bump can't
+wipe out a run. A line near the top of the screen always shows what the
+buttons do right now.
+
+| Button | Stopwatch (lab 10) | Timer (lab 11) |
+|---|---|---|
+| UP (GP14) | Start / stop | Start / pause. While setting: add one. |
+| DOWN (GP15) | Reset, when stopped | Reset, when paused. While setting: take one away. |
+| MODE (GP13) | Lap, while running | Set: minutes, then seconds, then done |
+
+### The stopwatch
+
+The time shows as MM:SS in large digits, with hundredths of a second in
+smaller ones, and a dot runs around the rim once a minute. Each MODE press
+while running records a lap, and the three most recent laps are listed
+below the time, newest on top in yellow. Once there are two laps, the
+fastest one turns green, and a line just under the digits shows the best
+and average lap times. The best time stays there even after the fastest
+lap has scrolled off the list.
+
+A stopwatch never keeps time by adding a little each time around its
+loop, because the loop's speed changes whenever it draws something. It
+remembers *when* it started and asks the Pico's millisecond clock how long
+ago that was. Stopping adds the time so far to a running total, so the
+next start carries on from there.
+
+### The countdown timer
+
+Press MODE to set the minutes, then the seconds, with UP and DOWN. Hold
+either one and the number keeps changing. Press MODE once more when done,
+then UP to start. The ring starts full and empties back toward 12 o'clock
+as time runs out, and the digits turn red for the last 10 seconds. At zero
+the display flashes 00:00 in red, the onboard LED flashes with it, and
+both keep going until any button is pressed.
+
+The timer is a good first look at a **state machine**. What a button does
+depends on what the timer is doing: UP means "add one" while setting,
+"start" when ready, and "pause" while running. The program keeps one
+variable that says which of six states it is in, and handles every button
+press by checking that state first. The header of
+`11-countdown-timer.py` has the whole machine drawn out.
+
+!!! tip "Adding a buzzer"
+    The alarm is silent unless you add a piezo buzzer. Wire its + leg to a
+    free GPIO pin and its − leg to GND, then set `BUZZER_PIN` in
+    `config.py` to that pin number. It will then beep in time with the
+    flashing.
+
+### The watch parts module
+
+The seven-segment digits and the seconds ring from lab 08, and the button
+handling from lab 07, are packaged in `lib/watchparts.py` so that any face
+can use them:
+
+| Part | What it does |
+|---|---|
+| `Digit` | A seven-segment digit of any size, repainting only the pieces that change |
+| `TickRing` | 60 ticks around the rim, each repainted only when its color changes |
+| `TextLine` | A fixed-width line of text, repainting only the characters that change |
+| `Button` | A push button with debounce and hold-to-repeat |
+
+Each display part remembers what it last drew, so showing the same thing
+again sends nothing at all.
+
+## One Watch, Five Modes
+
+`12-main-template.py` turns the kit into one watch. Press MODE to step
+through five modes:
+
+**Weather → Analog → Digital → Stopwatch → Timer →** back to Weather
+
+It starts in Weather. A row of five dots at the bottom of the screen shows
+which mode you are in. On the analog face, the dots take the place of the
+6 o'clock hour marker.
+
+### Modes are loaded only when needed
+
+Each mode is its own module: `mode_weather.py`, `mode_analog.py`,
+`mode_digital.py`, `mode_stopwatch.py`, and `mode_timer.py`. Only the mode
+on the screen is in memory. When you press MODE, the template:
+
+1. asks the current mode to `stop()`, and keeps whatever it hands back
+2. removes that mode, and every module it brought in with it, from
+   memory, then runs the garbage collector
+3. imports the next mode and calls its `start()`
+
+Measured on the Pico 2 W, 364–400 KB stays free in every mode, and it does
+not creep down as you switch. A switch takes 0.7–0.9 s from pressing MODE
+to the new mode fully drawn.
+
+### The four functions every mode has
+
+That is all the template knows about a mode, so a sixth mode is just one
+more module like these:
+
+| Function | What it does |
+|---|---|
+| `start(display, up, down, saved)` | Draw the whole screen. `saved` is what `stop()` returned last time, or `None`. |
+| `update(now)` | Called about every 10 ms. Read UP and DOWN, redraw only what changed. |
+| `on_mode(kind)` | Optional. MODE was pressed, `SHORT` or `LONG`. Return `True` if the mode used the press itself. |
+| `stop()` | Turn off anything that is on, and return a dict to keep for next time, or `None`. |
+
+A mode must also leave the strip where the dots go clear, and must not
+clear the whole screen except in `start()`.
+
+### Modes keep running in the background
+
+What `stop()` hands back is how a mode keeps going while you look at
+another one:
+
+- **Stopwatch:** a running stopwatch keeps running. Its time always comes
+  from the Pico's millisecond clock, so it is still right when you come
+  back.
+- **Timer:** a running timer keeps counting down. Its saved state includes
+  a `wake_at` time, and when that moment comes the template switches
+  straight to the timer for the alarm, whatever mode is showing.
+- **Weather:** the weather mode keeps its last forecast. If that forecast
+  is less than 30 minutes old and from today, it is shown right away with
+  no wait for WiFi.
+
+### The buttons in each mode
+
+MODE now switches modes, so the stopwatch and timer use it differently
+than labs 10 and 11 do:
+
+| Mode | UP | DOWN | MODE |
+|---|---|---|---|
+| Stopwatch | Start / stop | Lap while running, reset while stopped | Next mode |
+| Timer | Start / pause (+1 while setting) | Reset while paused (−1 while setting) | Next mode. **Hold 1 s** to set; while setting, next field. |
+
+While the timer is being set, or its alarm is going off, it keeps MODE
+for itself, so a press there can't switch modes by accident.
+
+Short and long presses are told apart by `Button.short_or_long()` in
+`lib/watchparts.py`. A short press is reported when the button is let go,
+and a long press as soon as it has been held for a second. Each `Button`
+also uses a pin **interrupt** to catch quick taps. The analog face spends
+up to 232 ms each second drawing, and a weather fetch takes a second or
+two. A tap that goes down and up during that time would otherwise never be
+seen by the loop.
+
 ## Making the Watch Start by Itself
 
 MicroPython runs `main.py` from the Pico's filesystem at power-up. To turn
-the kit into a standalone watch, copy `05-analog-watch-face.py`,
-`08-digital-watch-face.py`, or `09-weather-clock.py` to the Pico as
-`main.py`. With `SYNC_WITH_WIFI = True` either face sets its clock over
+the kit into a standalone watch, copy `12-main-template.py` to the Pico
+as `main.py` for all five modes. Or copy just one face:
+`05-analog-watch-face.py`, `08-digital-watch-face.py`, or
+`09-weather-clock.py`. With `SYNC_WITH_WIFI = True` either face sets its clock over
 WiFi at power-up and again at 3:00 AM every night. If WiFi is not
 available it keeps running on whatever time the clock already has.
 
