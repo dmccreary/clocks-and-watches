@@ -162,6 +162,7 @@ nav:
       - Watch Face: kits/gc9a01/09-watch-face.md
       - Draw 12 Digits: kits/gc9a01/07-draw-12-digits.md
       - Draw Filled Triangle: kits/gc9a01/08-draw-filled-triangle.md
+    - GC9B72 Smartwatch (Pico 2 W): kits/sw-gc9b72/index.md
     - LILYGO SY7789:
       - Introduction: kits/lilygo/index.md
     - Portable SmartWatch Kits:
