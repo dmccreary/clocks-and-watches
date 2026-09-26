@@ -39,10 +39,10 @@
     "timeline"
   ],
   "learningObjectives": [
-    "Identify each of the seven segments by its standard letter name A through G in the display layout",
-    "Construct every digit from 0 to 9 by toggling the correct combination of individual segments",
-    "Explain why the digit 8 requires all seven segments while the digit 1 lights only segments B and C",
-    "Translate between a decimal digit and its seven-bit segment on/off pattern using the standard mapping table"
+    "Understand the key concepts of seven-segment display",
+    "Explore seven-segment display through interactive visualization",
+    "Apply knowledge of seven-segment display to solve problems",
+    "Experiment with parameters to observe their effects on seven-segment display"
   ],
   "bloomsTaxonomy": [
     "Remember",
