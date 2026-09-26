@@ -3,3 +3,6 @@ site
 .cache
 .DS_Store
 ~$*
+
+# WiFi credentials -- never commit these. Copy secrets-template.py to secrets.py.
+secrets.py
