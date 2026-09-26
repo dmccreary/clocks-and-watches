@@ -1486,6 +1486,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#the-weather-clock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Weather Clock
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Weather Clock">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where-the-forecast-comes-from" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where the forecast comes from
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-icons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The icons
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-often-it-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How often it updates
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#making-the-watch-start-by-itself" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2410,6 +2460,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#the-weather-clock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Weather Clock
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Weather Clock">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where-the-forecast-comes-from" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where the forecast comes from
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-icons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The icons
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-often-it-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How often it updates
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#making-the-watch-start-by-itself" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2715,6 +2815,11 @@ labs.
 <td><code>08-digital-watch-face.py</code></td>
 <td>Big seven-segment digits, the date, and a seconds ring, repainting only the pixels that change. Meant to become <code>main.py</code>.</td>
 </tr>
+<tr>
+<td>9</td>
+<td><code>09-weather-clock.py</code></td>
+<td>Time, date, and today's and tomorrow's forecast with weather icons, from the Open-Meteo web service. Meant to become <code>main.py</code>.</td>
+</tr>
 </tbody>
 </table>
 <p>Every lab has been run on a real Pico 2 W and GC9B72 panel. The colors
@@ -2894,10 +2999,101 @@ about 7 ms per tick. None of that changes, so the face computes each
 tick's pixels once at startup and replays them after that. It's a
 <strong>compute once, draw many times</strong> trade: 0.6 s at startup and 53 KB of
 RAM.</p>
+<h2 id="the-weather-clock">The Weather Clock</h2>
+<p><code>09-weather-clock.py</code> shows the time in smaller seven-segment digits and
+the date. Below them are two columns, Today and Tomorrow, each with a
+weather icon, the high and low temperatures, and a word or two.</p>
+<h3 id="where-the-forecast-comes-from">Where the forecast comes from</h3>
+<p>The forecast comes from <a href="https://open-meteo.com">Open-Meteo</a>, a free
+weather service that needs no account and no API key. You ask for exactly
+the numbers you want, and it sends back only those. For two days of
+highs, lows, and weather codes the whole answer is about 450 bytes:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">{</span><span class="nt">"daily"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"2026-09-25"</span><span class="p">,</span><span class="w"> </span><span class="s2">"2026-09-26"</span><span class="p">],</span>
+<span class="w">           </span><span class="nt">"weather_code"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">63</span><span class="p">],</span>
+<span class="w">           </span><span class="nt">"temperature_2m_max"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">70.3</span><span class="p">,</span><span class="w"> </span><span class="mf">61.0</span><span class="p">],</span>
+<span class="w">           </span><span class="nt">"temperature_2m_min"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">58.1</span><span class="p">,</span><span class="w"> </span><span class="mf">56.8</span><span class="p">]}}</span>
+</code></pre></div></td></tr></table></div>
+<p>The Pico fetches and reads that in about a second. <code>forecast.py</code> does the
+fetching. To see the same answer from your computer, run:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>curl<span class="w"> </span><span class="s2">"http://api.open-meteo.com/v1/forecast?latitude=44.98&amp;longitude=-93.27&amp;daily=weather_code,temperature_2m_max,temperature_2m_min&amp;temperature_unit=fahrenheit&amp;timezone=auto&amp;forecast_days=2"</span>
+</code></pre></div></td></tr></table></div>
+<p>Set your own location with <code>LATITUDE</code> and <code>LONGITUDE</code> in <code>config.py</code>
+(the default is Minneapolis), and <code>TEMPERATURE_UNIT</code> to <code>"fahrenheit"</code> or
+<code>"celsius"</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Why not OpenWeatherMap?</p>
+<p>The weather labs in the Learning MicroPython course use OpenWeatherMap.
+Its 5-day forecast also has sun, cloud, and rain conditions, but it
+needs an API key and sends 40 three-hour forecasts, about 16 KB. You
+would then work out each day's high and low yourself. Open-Meteo sends
+the daily high and low directly.</p>
+</div>
+<h3 id="the-icons">The icons</h3>
+<p>The <code>weather_code</code> is a WMO code, a numbering the World Meteorological
+Organization uses for weather. <code>forecast.describe()</code> turns it into one of
+five icons:</p>
+<table>
+<thead>
+<tr>
+<th>Icon</th>
+<th>WMO codes</th>
+<th>Words shown</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sunny</td>
+<td>0, 1</td>
+<td>Sunny</td>
+</tr>
+<tr>
+<td>Partly cloudy</td>
+<td>2</td>
+<td>Pt cloudy</td>
+</tr>
+<tr>
+<td>Cloudy</td>
+<td>3, 45, 48</td>
+<td>Cloudy, Fog</td>
+</tr>
+<tr>
+<td>Rain</td>
+<td>51-67, 80-82, 95-99</td>
+<td>Drizzle, Rain, Frz rain, Showers, T-storms</td>
+</tr>
+<tr>
+<td>Snow</td>
+<td>71-77, 85, 86</td>
+<td>Snow</td>
+</tr>
+</tbody>
+</table>
+<p>Each icon is built from circles, polygons, and lines. Drawn straight to
+the glass, you would see it being built. So each icon is drawn first in
+RAM, in a 64×64 frame buffer (8 KB) using MicroPython's <code>framebuf</code> module
+and its filled <code>ellipse()</code> and <code>poly()</code>. It is then sent to the display in
+one <code>blit_buffer()</code> call, and the screen goes straight from the old icon
+to the new one.</p>
+<p>One catch: <code>framebuf</code> stores each RGB565 pixel low byte first, and the
+GC9B72 wants the high byte first. Every color drawn into the frame buffer
+goes through <code>swapped()</code> to fix that. Without it, red comes out as a murky
+green.</p>
+<h3 id="how-often-it-updates">How often it updates</h3>
+<p>The forecast refreshes at :00:30 and :30:30 every hour. The one just after
+midnight moves Tomorrow over to Today. If the WiFi or the service does not
+answer, the clock keeps showing the last forecast and tries again every 5
+minutes. The clock stands still for the second or two a fetch takes, then
+catches up.</p>
+<p>Measured on the Pico 2 W, a normal second takes 1.8 ms, and a new forecast
+takes about 190 ms to draw.</p>
 <h2 id="making-the-watch-start-by-itself">Making the Watch Start by Itself</h2>
 <p>MicroPython runs <code>main.py</code> from the Pico's filesystem at power-up. To turn
-the kit into a standalone watch, copy <code>05-analog-watch-face.py</code> or
-<code>08-digital-watch-face.py</code> to the Pico as <code>main.py</code>. With <code>SYNC_WITH_WIFI = True</code> either face sets its clock over
+the kit into a standalone watch, copy <code>05-analog-watch-face.py</code>,
+<code>08-digital-watch-face.py</code>, or <code>09-weather-clock.py</code> to the Pico as
+<code>main.py</code>. With <code>SYNC_WITH_WIFI = True</code> either face sets its clock over
 WiFi at power-up and again at 3:00 AM every night. If WiFi is not
 available it keeps running on whatever time the clock already has.</p>
 <h2 id="troubleshooting">Troubleshooting</h2>
@@ -2936,6 +3132,10 @@ available it keeps running on whatever time the clock already has.</p>
 <tr>
 <td>The probe says your network was not found</td>
 <td>Check the spelling in <code>secrets.py</code>, and that the network is 2.4 GHz.</td>
+</tr>
+<tr>
+<td>The weather clock shows <code>--</code> for every temperature</td>
+<td>It has not received a forecast yet. Check the Thonny shell for <code>Forecast failed</code>. It tries again every 5 minutes.</td>
 </tr>
 <tr>
 <td>A button does nothing</td>
