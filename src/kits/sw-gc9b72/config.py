@@ -130,6 +130,15 @@ TIMEZONE_HOURS = -6
 # that does not change its clocks.
 USE_US_DST = True
 
+# Where to get the weather forecast for (see forecast.py). Latitude and
+# longitude in degrees -- look up your town on a map site, or search for
+# "<your town> latitude longitude". North and east are positive; the
+# United States has a NEGATIVE longitude. This is Minneapolis, the same
+# city as the weather labs in the Learning MicroPython course.
+LATITUDE = 44.98
+LONGITUDE = -93.27
+TEMPERATURE_UNIT = "fahrenheit"      # or "celsius"
+
 # Fonts live in lib/ alongside the driver. The GC9B72 driver has no
 # built-in font -- text() takes a font MODULE as its first argument.
 import vga1_8x16 as SMALL_FONT       # 8 x 16 -- 45 characters across

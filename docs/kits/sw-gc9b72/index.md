@@ -99,6 +99,7 @@ Every pin number lives in one file, `config.py`, which every lab imports.
 | 6 | `06-button-test.py` | See each button's state live |
 | 7 | `07-set-time.py` | Set the time by hand: Mode picks the field, Up/Down change it, with debounce and hold-to-repeat |
 | 8 | `08-digital-watch-face.py` | Big seven-segment digits, the date, and a seconds ring, repainting only the pixels that change. Meant to become `main.py`. |
+| 9 | `09-weather-clock.py` | Time, date, and today's and tomorrow's forecast with weather icons, from the Open-Meteo web service. Meant to become `main.py`. |
 
 Every lab has been run on a real Pico 2 W and GC9B72 panel. The colors
 come out in the right order, all three buttons work, and the edge of the
@@ -233,11 +234,87 @@ tick's pixels once at startup and replays them after that. It's a
 **compute once, draw many times** trade: 0.6 s at startup and 53 KB of
 RAM.
 
+## The Weather Clock
+
+`09-weather-clock.py` shows the time in smaller seven-segment digits and
+the date. Below them are two columns, Today and Tomorrow, each with a
+weather icon, the high and low temperatures, and a word or two.
+
+### Where the forecast comes from
+
+The forecast comes from [Open-Meteo](https://open-meteo.com), a free
+weather service that needs no account and no API key. You ask for exactly
+the numbers you want, and it sends back only those. For two days of
+highs, lows, and weather codes the whole answer is about 450 bytes:
+
+```json
+{"daily": {"time": ["2026-09-25", "2026-09-26"],
+           "weather_code": [3, 63],
+           "temperature_2m_max": [70.3, 61.0],
+           "temperature_2m_min": [58.1, 56.8]}}
+```
+
+The Pico fetches and reads that in about a second. `forecast.py` does the
+fetching. To see the same answer from your computer, run:
+
+```bash
+curl "http://api.open-meteo.com/v1/forecast?latitude=44.98&longitude=-93.27&daily=weather_code,temperature_2m_max,temperature_2m_min&temperature_unit=fahrenheit&timezone=auto&forecast_days=2"
+```
+
+Set your own location with `LATITUDE` and `LONGITUDE` in `config.py`
+(the default is Minneapolis), and `TEMPERATURE_UNIT` to `"fahrenheit"` or
+`"celsius"`.
+
+!!! note "Why not OpenWeatherMap?"
+    The weather labs in the Learning MicroPython course use OpenWeatherMap.
+    Its 5-day forecast also has sun, cloud, and rain conditions, but it
+    needs an API key and sends 40 three-hour forecasts, about 16 KB. You
+    would then work out each day's high and low yourself. Open-Meteo sends
+    the daily high and low directly.
+
+### The icons
+
+The `weather_code` is a WMO code, a numbering the World Meteorological
+Organization uses for weather. `forecast.describe()` turns it into one of
+five icons:
+
+| Icon | WMO codes | Words shown |
+|---|---|---|
+| Sunny | 0, 1 | Sunny |
+| Partly cloudy | 2 | Pt cloudy |
+| Cloudy | 3, 45, 48 | Cloudy, Fog |
+| Rain | 51-67, 80-82, 95-99 | Drizzle, Rain, Frz rain, Showers, T-storms |
+| Snow | 71-77, 85, 86 | Snow |
+
+Each icon is built from circles, polygons, and lines. Drawn straight to
+the glass, you would see it being built. So each icon is drawn first in
+RAM, in a 64×64 frame buffer (8 KB) using MicroPython's `framebuf` module
+and its filled `ellipse()` and `poly()`. It is then sent to the display in
+one `blit_buffer()` call, and the screen goes straight from the old icon
+to the new one.
+
+One catch: `framebuf` stores each RGB565 pixel low byte first, and the
+GC9B72 wants the high byte first. Every color drawn into the frame buffer
+goes through `swapped()` to fix that. Without it, red comes out as a murky
+green.
+
+### How often it updates
+
+The forecast refreshes at :00:30 and :30:30 every hour. The one just after
+midnight moves Tomorrow over to Today. If the WiFi or the service does not
+answer, the clock keeps showing the last forecast and tries again every 5
+minutes. The clock stands still for the second or two a fetch takes, then
+catches up.
+
+Measured on the Pico 2 W, a normal second takes 1.8 ms, and a new forecast
+takes about 190 ms to draw.
+
 ## Making the Watch Start by Itself
 
 MicroPython runs `main.py` from the Pico's filesystem at power-up. To turn
-the kit into a standalone watch, copy `05-analog-watch-face.py` or
-`08-digital-watch-face.py` to the Pico as `main.py`. With `SYNC_WITH_WIFI = True` either face sets its clock over
+the kit into a standalone watch, copy `05-analog-watch-face.py`,
+`08-digital-watch-face.py`, or `09-weather-clock.py` to the Pico as
+`main.py`. With `SYNC_WITH_WIFI = True` either face sets its clock over
 WiFi at power-up and again at 3:00 AM every night. If WiFi is not
 available it keeps running on whatever time the clock already has.
 
@@ -252,4 +329,5 @@ available it keeps running on whatever time the clock already has.
 | The clock shows the wrong time on battery | The Pico has no clock battery. Thonny sets the clock while it is connected. Use lab 04, or `SYNC_WITH_WIFI` in lab 05. |
 | Time is off by one hour | Check `TIMEZONE_HOURS` and `USE_US_DST` in `config.py`. |
 | The probe says your network was not found | Check the spelling in `secrets.py`, and that the network is 2.4 GHz. |
+| The weather clock shows `--` for every temperature | It has not received a forecast yet. Check the Thonny shell for `Forecast failed`. It tries again every 5 minutes. |
 | A button does nothing | An unwired button reads "not pressed" forever. Use lab 06 to test each one. |

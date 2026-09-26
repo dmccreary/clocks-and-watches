@@ -32,7 +32,7 @@ import machine
 from machine import Pin
 
 NAME = "01-probe.py"
-VERSION = "1.0"
+VERSION = "1.1"
 
 warnings = []
 
@@ -196,6 +196,7 @@ REQUIRED = (
     ("lib/shapes.py", "circles, polygons, and rings"),
     ("config.py", "pin numbers and settings"),
     ("wifi_time.py", "sets the clock over WiFi"),
+    ("forecast.py", "gets the weather forecast"),
 )
 for path, purpose in REQUIRED:
     if exists(path):
@@ -212,7 +213,7 @@ else:
         "secrets.py", "optional -- only needed for WiFi time sync"))
 
 # Sections 8-10 need the driver, both fonts, shapes, and config.py --
-# everything above except wifi_time.py.
+# the first five files above.
 config = None
 if all(exists(path) for path, _ in REQUIRED[:5]):
     import config
