@@ -21,8 +21,9 @@ HEIGHT = 360
 
 # Pico 2 W + bare GC9B72 module, on SPI0.
 #
-# The 10-pad breakout reads (left to right): GND VCC SDA SCL RST DC CS BL
-# SDO TE. Only 8 of those are wired -- SDO (read-back) and TE (frame
+# The 10-pad breakout reads (left to right): GND VCC SCL SDA RST DC CS BL
+# SDO TE. (Confirmed from a photo of the board -- earlier notes had SCL
+# and SDA the other way round. The wiring below was always right.) Only 8 of those are wired -- SDO (read-back) and TE (frame
 # tearing sync) are not used by this driver and left unconnected.
 #
 #   Module pin   Pico pin   Wire color

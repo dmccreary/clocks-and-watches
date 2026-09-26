@@ -46,7 +46,7 @@
 # for those, and the timer is set with a long press.
 
 NAME = "12-main-template.py"
-VERSION = "1.0"
+VERSION = "1.1"
 print("{} v{}".format(NAME, VERSION))
 
 import gc
@@ -79,8 +79,9 @@ DOT_OFF = config.color565(70, 70, 70)
 
 
 def draw_dots(current):
-    """Five dots across the bottom: the current mode's is bright."""
-    x = config.CENTER_X - 2 * DOT_SPACING
+    """One dot per mode across the bottom, centered; the current mode's
+    is bright."""
+    x = config.CENTER_X - (len(MODES) - 1) * DOT_SPACING // 2
     for i in range(len(MODES)):
         shapes.circle(display, x + i * DOT_SPACING, DOT_Y, DOT_RADIUS,
                       DOT_ON if i == current else DOT_OFF, config.FILL)

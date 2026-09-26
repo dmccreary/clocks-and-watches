@@ -1,482 +1,133 @@
-# GC9B72 Smartwatch Kit (Pico 2 W)
+# GC9B72 Smartwatch Clock Kit
 
-This kit pairs a **Raspberry Pi Pico 2 W** with a **2.1" round 360×360
-display** driven by the GalaxyCore **GC9B72** controller, plus three push
-buttons. It has 2.25 times the pixels of our 240×240
-[GC9A01 kit](../gc9a01/index.md), and because the Pico 2 W has WiFi, the
-watch can set its own clock from the internet every time it powers up.
+![The smartwatch kit showing the weather clock: 7:49 PM, cloudy today, rain tomorrow](large-smartwatch-clock.jpg)
 
-All of the code lives in
-[`src/kits/sw-gc9b72`](https://github.com/dmccreary/clocks-and-watches/tree/main/src/kits/sw-gc9b72).
+This kit turns a tiny computer and a round color screen into a watch that
+**you** program. By the end, your watch will:
 
-## Parts
+- show the time with big, bright numbers or with an old-style clock face
+- set its own clock by asking the internet what time it is
+- show today's and tomorrow's weather, with little pictures of sun, clouds,
+  rain, and snow
+- work as a stopwatch that times laps, and as a countdown timer with an
+  alarm
+- switch between all of these with the press of a button
 
-| Part | Notes |
-|---|---|
-| Raspberry Pi Pico 2 W | RP2350 at 150 MHz, 520 KB RAM, 4 MB flash, 2.4 GHz WiFi |
-| GC9B72 round display | 2.1" 360×360 SPI TFT. Silkscreen reads "Driver IC: GC9B72, Resolution: 360x360". |
-| 3 momentary push buttons | Mode, Up, Down |
-| Breadboard and jumper wires | |
+![Five watch faces you will build: analog, digital, weather, stopwatch, and timer](img/kit-banner.png)
 
-!!! note "Ignore the 640×640 listings"
-    Some online listings for this panel claim a 640×640 resolution. The
-    silkscreen on the panel says 360×360, and that is what the driver uses.
+You will build it one small step at a time. There are 13 labs, numbered
+00 to 12. Each lab is one program. Start at lab 00, and each lab teaches
+one new idea you will use in the labs after it.
 
-## Wiring
-
-The display's 10-pad breakout reads, left to right:
-`GND VCC SDA SCL RST DC CS BL SDO TE`. Only 8 are wired: `SDO`
-(read-back) and `TE` (tearing sync) are not used.
-
-| Display pin | Pico 2 W pin | Wire color |
-|---|---|---|
-| GND | GND | black |
-| VCC | 3V3 (**not** 5 V) | red |
-| SDA / MOSI | GP3 | yellow |
-| SCL / CLK | GP2 | orange |
-| RST | GP4 | green |
-| DC | GP5 | blue |
-| CS | GP6 | purple |
-| BL (backlight) | GP7 | gray |
-
-Each button connects its GPIO pin to GND. The Pico's internal pull-up
-resistors hold the pins high, so a pin reads `1` until its button is
-pressed and `0` while it is held.
-
-| Button | Pico 2 W pin | What it does |
-|---|---|---|
-| Mode | GP13 | Steps through what the Up/Down buttons change |
-| Up | GP14 | The current setting goes up |
-| Down | GP15 | The current setting goes down |
-
-These are the same pin numbers and names (`BUTTON_MODE_PIN`,
-`BUTTON_INCREMENT_PIN`, `BUTTON_DECREMENT_PIN`) our other clock kits use.
-Every pin number lives in one file, `config.py`, which every lab imports.
-
-!!! warning "Pico 2 W pins you cannot use"
-    GP23, GP24, GP25, and GP29 are connected to the WiFi chip. The onboard
-    LED hangs off the WiFi chip too, so use `Pin("LED")`, never `Pin(25)`.
-
-## Getting Started
-
-1. **Flash MicroPython.** Use the `RPI_PICO2_W` firmware from
-   [micropython.org](https://micropython.org/download/RPI_PICO2_W/), not
-   the plain `RPI_PICO2` build. The plain build has no WiFi and no
-   `Pin("LED")`.
-2. **Add your WiFi network.** Copy `secrets-template.py` to `secrets.py`
-   and fill in your network name and password. `secrets.py` is listed in
-   `.gitignore`, so your password is never committed. The Pico 2 W only
-   connects to 2.4 GHz networks.
-3. **Set your time zone.** Edit `TIMEZONE_HOURS` in `config.py`: -5
-   Eastern, -6 Central, -7 Mountain, -8 Pacific. Set `USE_US_DST = False`
-   if your area does not change its clocks.
-4. **Upload the code.** Quit Thonny first, since only one program can use
-   the Pico's USB serial port at a time. Then run:
-
-    ```bash
-    cd src/kits/sw-gc9b72
-    ./upload-code.sh
-    ```
-
-    The script needs [`mpremote`](https://docs.micropython.org/en/latest/reference/mpremote.html)
-    (`pip install mpremote`). It uploads the driver, fonts, and
-    `shapes.py` to `/lib`, then `config.py`, your `secrets.py`, and all the
-    labs.
-5. **Run the probe.** Open `01-probe.py` in Thonny and run it. If the
-   screen shows red, green, blue, and white bars and **Probe OK**, the
-   whole kit is working.
-
-## Labs
-
-| Lab | File | What it teaches |
-|---|---|---|
-| 0 | `00-blink-onboard-led.py` | The board works: blink the LED with `Pin("LED")` |
-| 1 | `01-probe.py` | A full hardware report: board, RAM, flash, kit files, WiFi, clock, buttons, SPI speed, display |
-| 2 | `02-hello.py` | The display works, and `text()` needs a font module |
-| 3 | `03-digital-clock.py` | Time, day, and date, redrawing only what changed |
-| 4 | `04-wifi-sync-time.py` | Set the clock from an internet time server (NTP), with time zone and daylight saving |
-| 5 | `05-analog-watch-face.py` | A full analog watch face that sets its own time. Meant to become `main.py`. |
-| 6 | `06-button-test.py` | See each button's state live |
-| 7 | `07-set-time.py` | Set the time by hand: Mode picks the field, Up/Down change it, with debounce and hold-to-repeat |
-| 8 | `08-digital-watch-face.py` | Big seven-segment digits, the date, and a seconds ring, repainting only the pixels that change. Meant to become `main.py`. |
-| 9 | `09-weather-clock.py` | Time, date, and today's and tomorrow's forecast with weather icons, from the Open-Meteo web service. Meant to become `main.py`. |
-| 10 | `10-stopwatch.py` | A stopwatch with hundredths and lap times, run by the three buttons |
-| 11 | `11-countdown-timer.py` | A countdown timer you set with the buttons, with a ring that empties as time runs out and a flashing alarm |
-| 12 | `12-main-template.py` | One watch with five modes (weather, analog, digital, stopwatch, timer), switched with MODE and loaded only when needed. Meant to become `main.py`. |
-
-Every lab has been run on a real Pico 2 W and GC9B72 panel. The colors
-come out in the right order, all three buttons work, and the edge of the
-visible circle matches `SAFE_RADIUS` in `config.py`. Each program prints
-its name and version when it starts, so you can check in Thonny's shell
-which one is running.
-
-### What the probe reports
-
-`01-probe.py` checks everything software can check. Here is what it
-measured on our kit:
-
-| Check | Result |
-|---|---|
-| Board | Raspberry Pi Pico 2 W with RP2350, MicroPython 1.29.0, 150 MHz |
-| RAM | 436 KB of Python heap (of the chip's 520 KB) |
-| Full frame buffer | A 360×360 RGB565 buffer (253 KB) **fits** |
-| Flash | 4 MB chip: 1.5 MB firmware, 2.5 MB filesystem |
-| SPI | Asked for 24 MHz, got 24 MHz |
-| Full-screen fill | 131 ms, so at most about 8 full redraws per second |
-
-The flash chip size is not something MicroPython will tell you. The probe
-finds it with a trick: the flash chip ignores address bits it does not
-have, so on a 4 MB chip, reading 4 MB past the start "wraps around" and
-returns the same bytes as the start.
-
-## The Driver
-
-GalaxyCore has never published a public datasheet for the GC9B72. The
-register start-up sequence in `lib/gc9b72.py` comes from the xboot
-project's [`fb-gc9b72.c`](https://github.com/xboot/xstar/blob/main/xstar/driver/framebuffer/fb-gc9b72.c), by way of
-the [MaliosDark/Arduino_GC9B72](https://github.com/MaliosDark/Arduino_GC9B72)
-Arduino driver (MIT). It was translated to MicroPython for the
-[robot-faces](https://github.com/dmccreary/robot-faces) project, where it
-was first tested on real hardware. This kit uses that same file, unchanged.
-
-The driver works like the GC9A01 driver in our other smartwatch kit:
-
-- **There is no frame buffer and no `show()`.** Every drawing call sends
-  its pixels over SPI immediately.
-- **There is no built-in font.** `text()` takes a font module as its first
-  argument: `config.SMALL_FONT` (8×16) or `config.BIG_FONT` (16×32).
-- **There is no `ellipse()` or `poly()`.** `lib/shapes.py` builds circles,
-  rings, polygons, and triangles from the horizontal lines the driver can
-  draw.
-
-### SPI speed
-
-MicroPython makes the SPI clock by dividing a 48 MHz peripheral clock, and
-it rounds *down* to the nearest speed it can make. That gives 24 MHz or
-12 MHz, with nothing in between and nothing above 24:
-
-| You ask for | You get |
-|---|---|
-| 20,000,000 | 12,000,000 |
-| 24,000,000 | 24,000,000 |
-| 62,500,000 | 24,000,000 |
-
-The kit runs at 24 MHz. If you see speckled pixels on long wires, change
-`BAUDRATE` in `config.py` to `12_000_000`.
-
-## How the Watch Face Avoids Flicker
-
-A full-screen fill takes 131 ms. Clearing and redrawing the whole face
-every second would make the screen flash. So `05-analog-watch-face.py`
-draws the dial **once** and then, each second:
-
-1. erases the old second hand by drawing it again in black
-2. if the minute changed, erases the old minute and hour hands the same way
-3. repairs whatever the erased second hand passed over
-4. draws all three hands at their new angles
-
-Step 3 stays small because of how the dial is laid out:
-
-- The ticks sit **outside** the tip of the longest hand, so no hand ever
-  touches them.
-- The numerals sit **outside** the minute and hour hands, so only the
-  second hand crosses them, and only the numeral nearest to it at that.
-- The hour and minute hands get redrawn every second anyway.
-
-Measured on the real kit, drawing the dial takes 617 ms at start-up, and
-each second's update takes at most 232 ms (302 ms when the minute changes).
-
-To check this layout, we ran the watch face against a simulated screen
-and compared every second's partial redraw, pixel by pixel, with a fresh
-drawing of the same time. They matched at every step, including noon,
-midnight, and large time jumps. Making the minute hand long enough to
-reach the numerals broke the match 208 times. Lab 05's comments suggest
-trying this yourself.
-
-## The Digital Watch Face
-
-`08-digital-watch-face.py` shows the time in seven-segment digits 114
-pixels tall, big enough to read across a room. The date sits below in the
-small font, and a ring of 60 ticks around the rim fills up as the seconds
-pass.
-
-It follows one rule: **only send the pixels that change.**
-
-- Each digit is seven segments plus the six square joints where
-  segments meet. A joint lights up whenever any segment touching it is
-  lit, so each digit reads as one solid stroke. Each digit's pattern is
-  stored as a number with one bit per piece, so `old ^ new` gives exactly
-  the pieces that switched. Only those get repainted. Going from 12:59 to
-  1:00, a piece lit in both is never touched.
-- On a 12-hour clock the leftmost digit is only ever "1" or blank, so it
-  is drawn as a narrow half digit (just the right-hand column), and the
-  row is centered around it.
-- Unlit segments are painted a faint "ghost" color, like a real LCD
-  watch. Turning a segment off means repainting it, never erasing it.
-- Each second lights one more tick on the ring.
-- The date is padded to a fixed width, and only characters that differ
-  are repainted.
-
-Run in a simulator with the real driver, every update sent exactly the
-pixels that changed and no others:
-
-| Update | Pixels sent | Time on the Pico 2 W |
-|---|---|---|
-| A normal second | 333 | 8.5 ms |
-| A new minute (10:31 to 10:32) | 5,490 | about 0.3 s |
-| 12:59:59 to 1:00:00 | 9,078 | about 0.3 s |
-
-Most of the new-minute time goes to the 59 ticks that go dark at the top
-of the minute, which shows as a quick sweep around the ring. For
-comparison, the analog face in lab 05 takes up to 232 ms every second,
-because erasing its second hand also means redrawing the other hands.
-
-The tick shapes use sines, cosines, and a scanline fill, which takes
-about 7 ms per tick. None of that changes, so the face computes each
-tick's pixels once at startup and replays them after that. It's a
-**compute once, draw many times** trade: 0.6 s at startup and 53 KB of
-RAM.
-
-## The Weather Clock
-
-`09-weather-clock.py` shows the time in smaller seven-segment digits and
-the date. Below them are two columns, Today and Tomorrow, each with a
-weather icon, the high and low temperatures, and a word or two.
-
-### Where the forecast comes from
-
-The forecast comes from [Open-Meteo](https://open-meteo.com), a free
-weather service that needs no account and no API key. You ask for exactly
-the numbers you want, and it sends back only those. For two days of
-highs, lows, and weather codes the whole answer is about 450 bytes:
-
-```json
-{"daily": {"time": ["2026-09-25", "2026-09-26"],
-           "weather_code": [3, 63],
-           "temperature_2m_max": [70.3, 61.0],
-           "temperature_2m_min": [58.1, 56.8]}}
-```
-
-The Pico fetches and reads that in about a second. `forecast.py` does the
-fetching. To see the same answer from your computer, run:
-
-```bash
-curl "http://api.open-meteo.com/v1/forecast?latitude=44.98&longitude=-93.27&daily=weather_code,temperature_2m_max,temperature_2m_min&temperature_unit=fahrenheit&timezone=auto&forecast_days=2"
-```
-
-Set your own location with `LATITUDE` and `LONGITUDE` in `config.py`
-(the default is Minneapolis), and `TEMPERATURE_UNIT` to `"fahrenheit"` or
-`"celsius"`.
-
-!!! note "Why not OpenWeatherMap?"
-    The weather labs in the Learning MicroPython course use OpenWeatherMap.
-    Its 5-day forecast also has sun, cloud, and rain conditions, but it
-    needs an API key and sends 40 three-hour forecasts, about 16 KB. You
-    would then work out each day's high and low yourself. Open-Meteo sends
-    the daily high and low directly.
-
-### The icons
-
-The `weather_code` is a WMO code, a numbering the World Meteorological
-Organization uses for weather. `forecast.describe()` turns it into one of
-five icons:
-
-| Icon | WMO codes | Words shown |
-|---|---|---|
-| Sunny | 0, 1 | Sunny |
-| Partly cloudy | 2 | Pt cloudy |
-| Cloudy | 3, 45, 48 | Cloudy, Fog |
-| Rain | 51-67, 80-82, 95-99 | Drizzle, Rain, Frz rain, Showers, T-storms |
-| Snow | 71-77, 85, 86 | Snow |
-
-Each icon is built from circles, polygons, and lines. Drawn straight to
-the glass, you would see it being built. So each icon is drawn first in
-RAM, in a 64×64 frame buffer (8 KB) using MicroPython's `framebuf` module
-and its filled `ellipse()` and `poly()`. It is then sent to the display in
-one `blit_buffer()` call, and the screen goes straight from the old icon
-to the new one.
-
-One catch: `framebuf` stores each RGB565 pixel low byte first, and the
-GC9B72 wants the high byte first. Every color drawn into the frame buffer
-goes through `swapped()` to fix that. Without it, red comes out as a murky
-green.
-
-### How often it updates
-
-The forecast refreshes at :00:30 and :30:30 every hour. The one just after
-midnight moves Tomorrow over to Today. If the WiFi or the service does not
-answer, the clock keeps showing the last forecast and tries again every 5
-minutes. The clock stands still for the second or two a fetch takes, then
-catches up.
-
-Measured on the Pico 2 W, a normal second takes 1.8 ms, and a new forecast
-takes about 190 ms to draw.
-
-## Stopwatch and Countdown Timer
-
-Both tools use the three buttons the same way, so moving between them is
-easy. UP starts and stops, DOWN resets, and MODE does each tool's extra
-job. DOWN only resets when the tool is stopped or paused, so a bump can't
-wipe out a run. A line near the top of the screen always shows what the
-buttons do right now.
-
-| Button | Stopwatch (lab 10) | Timer (lab 11) |
-|---|---|---|
-| UP (GP14) | Start / stop | Start / pause. While setting: add one. |
-| DOWN (GP15) | Reset, when stopped | Reset, when paused. While setting: take one away. |
-| MODE (GP13) | Lap, while running | Set: minutes, then seconds, then done |
-
-### The stopwatch
-
-The time shows as MM:SS in large digits, with hundredths of a second in
-smaller ones, and a dot runs around the rim once a minute. Each MODE press
-while running records a lap, and the three most recent laps are listed
-below the time, newest on top in yellow. Once there are two laps, the
-fastest one turns green, and a line just under the digits shows the best
-and average lap times. The best time stays there even after the fastest
-lap has scrolled off the list.
-
-A stopwatch never keeps time by adding a little each time around its
-loop, because the loop's speed changes whenever it draws something. It
-remembers *when* it started and asks the Pico's millisecond clock how long
-ago that was. Stopping adds the time so far to a running total, so the
-next start carries on from there.
-
-### The countdown timer
-
-Press MODE to set the minutes, then the seconds, with UP and DOWN. Hold
-either one and the number keeps changing. Press MODE once more when done,
-then UP to start. The ring starts full and empties back toward 12 o'clock
-as time runs out, and the digits turn red for the last 10 seconds. At zero
-the display flashes 00:00 in red, the onboard LED flashes with it, and
-both keep going until any button is pressed.
-
-The timer is a good first look at a **state machine**. What a button does
-depends on what the timer is doing: UP means "add one" while setting,
-"start" when ready, and "pause" while running. The program keeps one
-variable that says which of six states it is in, and handles every button
-press by checking that state first. The header of
-`11-countdown-timer.py` has the whole machine drawn out.
-
-!!! tip "Adding a buzzer"
-    The alarm is silent unless you add a piezo buzzer. Wire its + leg to a
-    free GPIO pin and its − leg to GND, then set `BUZZER_PIN` in
-    `config.py` to that pin number. It will then beep in time with the
-    flashing.
-
-### The watch parts module
-
-The seven-segment digits and the seconds ring from lab 08, and the button
-handling from lab 07, are packaged in `lib/watchparts.py` so that any face
-can use them:
+## What's in the Kit
 
 | Part | What it does |
 |---|---|
-| `Digit` | A seven-segment digit of any size, repainting only the pieces that change |
-| `TickRing` | 60 ticks around the rim, each repainted only when its color changes |
-| `TextLine` | A fixed-width line of text, repainting only the characters that change |
-| `Button` | A push button with debounce and hold-to-repeat |
+| **Raspberry Pi Pico 2 W** | The brain of the watch. It's a *microcontroller*, a tiny computer on a board about the size of a stick of gum. The **W** means it has WiFi, so it can talk to the internet. |
+| **Round color display** | The watch face. It is 2.1 inches across and has 360 × 360 tiny dots of light called **pixels**. A chip on the back called the **GC9B72** turns the Pico's messages into pictures. |
+| **Three push buttons** | How you control the watch. They are called **MODE**, **UP**, and **DOWN**. |
+| **Breadboard and wires** | Connect everything without soldering. |
+| **USB cable** | Gives the Pico power, and lets your computer send it programs. |
 
-Each display part remembers what it last drew, so showing the same thing
-again sends nothing at all.
+## How It Is Wired
 
-## One Watch, Five Modes
+The display has a row of 10 connection points along its bottom edge.
+Reading from left to right, they are labeled:
+**GND VCC SCL SDA RST DC CS BL SDO TE**.
+Only the first eight are used. Each one connects to a numbered pin on the
+Pico, like this:
 
-`12-main-template.py` turns the kit into one watch. Press MODE to step
-through five modes:
-
-**Weather → Analog → Digital → Stopwatch → Timer →** back to Weather
-
-It starts in Weather. A row of five dots at the bottom of the screen shows
-which mode you are in. On the analog face, the dots take the place of the
-6 o'clock hour marker.
-
-### Modes are loaded only when needed
-
-Each mode is its own module: `mode_weather.py`, `mode_analog.py`,
-`mode_digital.py`, `mode_stopwatch.py`, and `mode_timer.py`. Only the mode
-on the screen is in memory. When you press MODE, the template:
-
-1. asks the current mode to `stop()`, and keeps whatever it hands back
-2. removes that mode, and every module it brought in with it, from
-   memory, then runs the garbage collector
-3. imports the next mode and calls its `start()`
-
-Measured on the Pico 2 W, 364–400 KB stays free in every mode, and it does
-not creep down as you switch. A switch takes 0.7–0.9 s from pressing MODE
-to the new mode fully drawn.
-
-### The four functions every mode has
-
-That is all the template knows about a mode, so a sixth mode is just one
-more module like these:
-
-| Function | What it does |
-|---|---|
-| `start(display, up, down, saved)` | Draw the whole screen. `saved` is what `stop()` returned last time, or `None`. |
-| `update(now)` | Called about every 10 ms. Read UP and DOWN, redraw only what changed. |
-| `on_mode(kind)` | Optional. MODE was pressed, `SHORT` or `LONG`. Return `True` if the mode used the press itself. |
-| `stop()` | Turn off anything that is on, and return a dict to keep for next time, or `None`. |
-
-A mode must also leave the strip where the dots go clear, and must not
-clear the whole screen except in `start()`.
-
-### Modes keep running in the background
-
-What `stop()` hands back is how a mode keeps going while you look at
-another one:
-
-- **Stopwatch:** a running stopwatch keeps running. Its time always comes
-  from the Pico's millisecond clock, so it is still right when you come
-  back.
-- **Timer:** a running timer keeps counting down. Its saved state includes
-  a `wake_at` time, and when that moment comes the template switches
-  straight to the timer for the alarm, whatever mode is showing.
-- **Weather:** the weather mode keeps its last forecast. If that forecast
-  is less than 30 minutes old and from today, it is shown right away with
-  no wait for WiFi.
-
-### The buttons in each mode
-
-MODE now switches modes, so the stopwatch and timer use it differently
-than labs 10 and 11 do:
-
-| Mode | UP | DOWN | MODE |
+| Display pin | Pico pin | Wire color | What it carries |
 |---|---|---|---|
-| Stopwatch | Start / stop | Lap while running, reset while stopped | Next mode |
-| Timer | Start / pause (+1 while setting) | Reset while paused (−1 while setting) | Next mode. **Hold 1 s** to set; while setting, next field. |
+| GND | GND | black | Ground, the "minus" side of the power |
+| VCC | 3V3 | red | Power, 3.3 volts |
+| SCL | GP2 | orange | The clock beat that keeps the Pico and display in step |
+| SDA | GP3 | yellow | The data: the actual colors of the pixels |
+| RST | GP4 | green | Reset: tells the display to start fresh |
+| DC | GP5 | blue | Says whether the next data is a command or a picture |
+| CS | GP6 | purple | "Hey display, I'm talking to you!" |
+| BL | GP7 | gray | The backlight that makes the screen glow |
 
-While the timer is being set, or its alarm is going off, it keeps MODE
-for itself, so a press there can't switch modes by accident.
+!!! warning "Use 3V3, not 5 volts"
+    The display's VCC wire must go to the Pico's **3V3** pin. The display
+    is built for 3.3 volts, and 5 volts can damage it.
 
-Short and long presses are told apart by `Button.short_or_long()` in
-`lib/watchparts.py`. A short press is reported when the button is let go,
-and a long press as soon as it has been held for a second. Each `Button`
-also uses a pin **interrupt** to catch quick taps. The analog face spends
-up to 232 ms each second drawing, and a weather fetch takes a second or
-two. A tap that goes down and up during that time would otherwise never be
-seen by the loop.
+Each button has two legs. One leg goes to a Pico pin, and the other goes
+to GND:
 
-## Making the Watch Start by Itself
+| Button | Pico pin | What it usually does |
+|---|---|---|
+| MODE | GP13 | Changes what the watch is doing |
+| UP | GP14 | Makes a number go up, or starts something |
+| DOWN | GP15 | Makes a number go down, or resets something |
 
-MicroPython runs `main.py` from the Pico's filesystem at power-up. To turn
-the kit into a standalone watch, copy `12-main-template.py` to the Pico
-as `main.py` for all five modes. Or copy just one face:
-`05-analog-watch-face.py`, `08-digital-watch-face.py`, or
-`09-weather-clock.py`. With `SYNC_WITH_WIFI = True` either face sets its clock over
-WiFi at power-up and again at 3:00 AM every night. If WiFi is not
-available it keeps running on whatever time the clock already has.
+## Before You Start
 
-## Troubleshooting
+You only need to do these steps once.
 
-| Symptom | Likely cause |
+1. **Put MicroPython on the Pico.** MicroPython is the version of the
+   Python language that runs on small boards like the Pico. Be sure to use
+   the version for the **Pico 2 W**, which your teacher can find at
+   [micropython.org](https://micropython.org/download/RPI_PICO2_W/). The
+   version for the plain Pico 2 has no WiFi.
+2. **Install Thonny.** [Thonny](https://thonny.org) is the program you
+   will use to write code and send it to the Pico.
+3. **Copy the kit's files onto the Pico.** The labs need some helper files
+   that live in a folder called `lib` on the Pico, and a settings file
+   called `config.py`. Your teacher may have done this for you. If not, the
+   kit folder has a script called `upload-code.sh` that copies everything
+   at once.
+4. **Tell the watch about your WiFi.** Copy the file `secrets-template.py`
+   to a new file called `secrets.py`, and type in your WiFi network's name
+   and password. Labs 04, 05, 09, and 12 use it. (`secrets.py` is kept
+   private: it never gets shared online.)
+5. **Tell the watch your time zone.** Open `config.py` and find
+   `TIMEZONE_HOURS`. Use -5 for Eastern time, -6 for Central, -7 for
+   Mountain, or -8 for Pacific.
+
+## The Labs
+
+Click a picture to open that lab.
+
+| Lab | | What you will do |
+|---|---|---|
+| [00](00-blink-onboard-led.md) | [![Blinking LED](../../img/blink-on-board-led.gif){ width="110" }](00-blink-onboard-led.md) | Make a tiny light on the Pico blink, to check that everything works |
+| [01](01-probe.md) | [![Probe](img/01-probe.png){ width="110" }](01-probe.md) | Give the whole kit a checkup, like a doctor's visit |
+| [02](02-hello.md) | [![Hello](img/02-hello.png){ width="110" }](02-hello.md) | Say hello on the round screen |
+| [03](03-digital-clock.md) | [![Digital clock](img/03-digital-clock.png){ width="110" }](03-digital-clock.md) | Show the time, day, and date |
+| [04](04-wifi-sync-time.md) | [![WiFi time](img/04-wifi-sync-time.png){ width="110" }](04-wifi-sync-time.md) | Ask the internet what time it is |
+| [05](05-analog-watch-face.md) | [![Analog face](img/05-analog-watch-face.png){ width="110" }](05-analog-watch-face.md) | Build a clock face with moving hands |
+| [06](06-button-test.md) | [![Buttons](img/06-button-test.png){ width="110" }](06-button-test.md) | Test the three buttons |
+| [07](07-set-time.md) | [![Set time](img/07-set-time.png){ width="110" }](07-set-time.md) | Set the time with the buttons |
+| [08](08-digital-watch-face.md) | [![Digital face](img/08-digital-watch-face.png){ width="110" }](08-digital-watch-face.md) | Build a digital watch with giant numbers |
+| [09](09-weather-clock.md) | [![Weather clock](img/09-weather-clock.png){ width="110" }](09-weather-clock.md) | Add the weather forecast |
+| [10](10-stopwatch.md) | [![Stopwatch](img/10-stopwatch.png){ width="110" }](10-stopwatch.md) | Make a stopwatch that times laps |
+| [11](11-countdown-timer.md) | [![Timer](img/11-timer-running.png){ width="110" }](11-countdown-timer.md) | Make a countdown timer with an alarm |
+| [12](12-main-template.md) | [![Five modes](img/12-mode-weather.png){ width="110" }](12-main-template.md) | Put it all together into one watch with five modes |
+
+!!! tip "Which program is running?"
+    Every lab prints its name and version number in Thonny's shell when it
+    starts, like `05-analog-watch-face.py v1.0`. If the screen isn't doing
+    what you expect, check that line first. It tells you which program the
+    Pico is actually running.
+
+## Words to Know
+
+| Word | What it means |
 |---|---|
-| `mpremote: failed to access ... (it may be in use by another program)` | Thonny is still connected. Quit it or click Stop/Disconnect. |
-| `ImportError: no module named 'gc9b72'` | The `lib/` files did not upload. Run `upload-code.sh` again. |
-| Screen stays black | Check the five signal wires (SCL, SDA, RST, DC, CS). Swapped SCL and SDA is the most common mistake. Check that VCC is on 3V3. |
-| The LED does not blink in lab 00 | You flashed the plain `RPI_PICO2` firmware. Use `RPI_PICO2_W`. |
-| The clock shows the wrong time on battery | The Pico has no clock battery. Thonny sets the clock while it is connected. Use lab 04, or `SYNC_WITH_WIFI` in lab 05. |
-| Time is off by one hour | Check `TIMEZONE_HOURS` and `USE_US_DST` in `config.py`. |
-| The probe says your network was not found | Check the spelling in `secrets.py`, and that the network is 2.4 GHz. |
-| The weather clock shows `--` for every temperature | It has not received a forecast yet. Check the Thonny shell for `Forecast failed`. It tries again every 5 minutes. |
-| A button does nothing | An unwired button reads "not pressed" forever. Use lab 06 to test each one. |
+| **Pixel** | One tiny dot of light on the screen. This screen has 360 × 360 = 129,600 of them. |
+| **Microcontroller** | A small computer built to control one thing, like a watch, a toy, or a microwave. |
+| **Program** | A list of instructions for a computer, written in a language like Python. |
+| **Loop** | Part of a program that repeats over and over. A watch's program runs in a loop forever. |
+| **Variable** | A name that holds a value, like `second = 42`. |
+| **Function** | A named set of instructions you can use again and again, like `draw_hand()`. |
+| **Module** | A file of Python code that other programs can borrow from with `import`. |
+| **WiFi** | A way for devices to connect to the internet without wires. |
+
+## For Teachers
+
+The [Notes for Teachers](teacher-notes.md) page has the technical details:
+where the display driver came from, how fast the hardware really is, how
+each watch face avoids flicker, and a troubleshooting table. The screen
+pictures in these pages were made by running each lab's real code in a
+simulator of the display.

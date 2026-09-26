@@ -162,7 +162,22 @@ nav:
       - Watch Face: kits/gc9a01/09-watch-face.md
       - Draw 12 Digits: kits/gc9a01/07-draw-12-digits.md
       - Draw Filled Triangle: kits/gc9a01/08-draw-filled-triangle.md
-    - GC9B72 Smartwatch (Pico 2 W): kits/sw-gc9b72/index.md
+    - GC9B72 Smartwatch (Pico 2 W):
+      - Introduction: kits/sw-gc9b72/index.md
+      - 00 Blink the LED: kits/sw-gc9b72/00-blink-onboard-led.md
+      - 01 Kit Checkup: kits/sw-gc9b72/01-probe.md
+      - 02 Hello World: kits/sw-gc9b72/02-hello.md
+      - 03 Digital Clock: kits/sw-gc9b72/03-digital-clock.md
+      - 04 WiFi Time: kits/sw-gc9b72/04-wifi-sync-time.md
+      - 05 Analog Watch Face: kits/sw-gc9b72/05-analog-watch-face.md
+      - 06 Button Test: kits/sw-gc9b72/06-button-test.md
+      - 07 Set the Time: kits/sw-gc9b72/07-set-time.md
+      - 08 Digital Watch Face: kits/sw-gc9b72/08-digital-watch-face.md
+      - 09 Weather Clock: kits/sw-gc9b72/09-weather-clock.md
+      - 10 Stopwatch: kits/sw-gc9b72/10-stopwatch.md
+      - 11 Countdown Timer: kits/sw-gc9b72/11-countdown-timer.md
+      - 12 Five Modes: kits/sw-gc9b72/12-main-template.md
+      - Notes for Teachers: kits/sw-gc9b72/teacher-notes.md
     - LILYGO SY7789:
       - Introduction: kits/lilygo/index.md
     - Portable SmartWatch Kits:
@@ -254,7 +269,11 @@ plugins:
 markdown_extensions:
   - admonition
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - attr_list
   - abbr
   - md_in_html
