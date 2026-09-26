@@ -266,6 +266,12 @@ theme:
 plugins:
   - search
   - social
+
+# Lets a page's `image:` front matter replace the social plugin's
+# generated preview card (see plugins/social_override.py).
+hooks:
+  - plugins/social_override.py
+
 markdown_extensions:
   - admonition
   - pymdownx.details
