@@ -1475,6 +1475,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#the-digital-watch-face" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Digital Watch Face
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#making-the-watch-start-by-itself" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2388,6 +2399,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#the-digital-watch-face" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Digital Watch Face
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#making-the-watch-start-by-itself" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2688,6 +2710,11 @@ labs.
 <td><code>07-set-time.py</code></td>
 <td>Set the time by hand: Mode picks the field, Up/Down change it, with debounce and hold-to-repeat</td>
 </tr>
+<tr>
+<td>8</td>
+<td><code>08-digital-watch-face.py</code></td>
+<td>Big seven-segment digits, the date, and a seconds ring, repainting only the pixels that change. Meant to become <code>main.py</code>.</td>
+</tr>
 </tbody>
 </table>
 <p>Every lab has been run on a real Pico 2 W and GC9B72 panel. The colors
@@ -2808,10 +2835,69 @@ drawing of the same time. They matched at every step, including noon,
 midnight, and large time jumps. Making the minute hand long enough to
 reach the numerals broke the match 208 times. Lab 05's comments suggest
 trying this yourself.</p>
+<h2 id="the-digital-watch-face">The Digital Watch Face</h2>
+<p><code>08-digital-watch-face.py</code> shows the time in seven-segment digits 114
+pixels tall, big enough to read across a room. The date sits below in the
+small font, and a ring of 60 ticks around the rim fills up as the seconds
+pass.</p>
+<p>It follows one rule: <strong>only send the pixels that change.</strong></p>
+<ul>
+<li>Each digit is seven segments plus the six square joints where
+  segments meet. A joint lights up whenever any segment touching it is
+  lit, so each digit reads as one solid stroke. Each digit's pattern is
+  stored as a number with one bit per piece, so <code>old ^ new</code> gives exactly
+  the pieces that switched. Only those get repainted. Going from 12:59 to
+  1:00, a piece lit in both is never touched.</li>
+<li>On a 12-hour clock the leftmost digit is only ever "1" or blank, so it
+  is drawn as a narrow half digit (just the right-hand column), and the
+  row is centered around it.</li>
+<li>Unlit segments are painted a faint "ghost" color, like a real LCD
+  watch. Turning a segment off means repainting it, never erasing it.</li>
+<li>Each second lights one more tick on the ring.</li>
+<li>The date is padded to a fixed width, and only characters that differ
+  are repainted.</li>
+</ul>
+<p>Run in a simulator with the real driver, every update sent exactly the
+pixels that changed and no others:</p>
+<table>
+<thead>
+<tr>
+<th>Update</th>
+<th>Pixels sent</th>
+<th>Time on the Pico 2 W</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A normal second</td>
+<td>333</td>
+<td>8.5 ms</td>
+</tr>
+<tr>
+<td>A new minute (10:31 to 10:32)</td>
+<td>5,490</td>
+<td>about 0.3 s</td>
+</tr>
+<tr>
+<td>12:59:59 to 1:00:00</td>
+<td>9,078</td>
+<td>about 0.3 s</td>
+</tr>
+</tbody>
+</table>
+<p>Most of the new-minute time goes to the 59 ticks that go dark at the top
+of the minute, which shows as a quick sweep around the ring. For
+comparison, the analog face in lab 05 takes up to 232 ms every second,
+because erasing its second hand also means redrawing the other hands.</p>
+<p>The tick shapes use sines, cosines, and a scanline fill, which takes
+about 7 ms per tick. None of that changes, so the face computes each
+tick's pixels once at startup and replays them after that. It's a
+<strong>compute once, draw many times</strong> trade: 0.6 s at startup and 53 KB of
+RAM.</p>
 <h2 id="making-the-watch-start-by-itself">Making the Watch Start by Itself</h2>
 <p>MicroPython runs <code>main.py</code> from the Pico's filesystem at power-up. To turn
-the kit into a standalone watch, copy <code>05-analog-watch-face.py</code> to the
-Pico as <code>main.py</code>. With <code>SYNC_WITH_WIFI = True</code> it sets its clock over
+the kit into a standalone watch, copy <code>05-analog-watch-face.py</code> or
+<code>08-digital-watch-face.py</code> to the Pico as <code>main.py</code>. With <code>SYNC_WITH_WIFI = True</code> either face sets its clock over
 WiFi at power-up and again at 3:00 AM every night. If WiFi is not
 available it keeps running on whatever time the clock already has.</p>
 <h2 id="troubleshooting">Troubleshooting</h2>
