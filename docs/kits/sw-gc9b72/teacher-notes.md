@@ -13,6 +13,12 @@ around 11 years old.
     pictures show exactly the pixels the program draws. Every lab has also
     been run on a real Pico 2 W and GC9B72 panel.
 
+    The simulator is in the repository at
+    [`src/display-simulators/gc9b72`](https://github.com/dmccreary/clocks-and-watches/tree/main/src/display-simulators/gc9b72).
+    After changing a lab, `render_sw_gc9b72_docs.py` regenerates all of
+    these pictures, and `checks/run_all.py` re-runs the checks described
+    on this page.
+
 ## What the Probe Reports
 
 `01-probe.py` checks everything software can check. Here is what it

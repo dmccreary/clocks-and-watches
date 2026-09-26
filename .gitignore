@@ -6,3 +6,6 @@ site
 
 # WiFi credentials -- never commit these. Copy secrets-template.py to secrets.py.
 secrets.py
+
+# Python bytecode caches (the display simulator, the MkDocs hook)
+__pycache__/

@@ -231,7 +231,7 @@ produced **208 mismatches**, proving the test can fail. The lab tells
 students to try that same break. On hardware, the dial takes 617 ms and a
 second's update at most 232 ms (302 ms at a minute change).
 
-## 9. The Simulator (Not Committed)
+## 9. The Simulator (Later Committed)
 
 Most verification ran against a CPython simulator kept in the session
 scratchpad:
@@ -250,8 +250,9 @@ scratchpad:
   RTC writes not reflected (a simulator gap, fixed), and the mode-dots
   collision checks.
 
-It wasn't added to the repo. It's listed as a possible next step, since
-robot-faces has its own `check-labs.py` / `check-circle.py` precedent.
+It started in the session scratchpad. It was later moved into the repo at
+`src/display-simulators/gc9b72` (see section 19), outside the kit folder so
+`upload-code.sh` never copies it to a Pico.
 
 ## 10. The Digital Face (Lab 08): Send Only Changed Pixels
 
@@ -485,11 +486,36 @@ trimmed that file's "Done" section.
 
 - Try lab 12 with the physical MODE button: cycle the modes, hold MODE in
   the timer, and let a background timer take over the screen.
-- Add `__pycache__/` to `.gitignore`. Every `mkdocs` build now imports the
-  hook and leaves `plugins/__pycache__`.
 - Port the `og:image:type` fix back to ibook-skills' `social_override.py`.
-- Consider committing the simulator (with `check-labs`-style runners), as
-  robot-faces did, so future labs can be verified the same way.
 - Items in `ideas.md`: the MAX98357A `sound.py` module with a melodic
   timer alarm, the frame-buffer analog face, the digital ring's color
   alternation, and a stopwatch past 99:59.99.
+
+## 19. The Display Simulator, Moved into the Repo
+
+The user asked for the simulator to live in `src/display-simulators/gc9b72`,
+where `upload-code.sh` can't reach it, and for other projects that use the
+display to generate their documentation with it. Making it reusable
+changed three things:
+
+- **No hard-coded kit.** `runner.use_kit(path)` points it at any kit
+  folder, and forgets the modules of a kit used earlier in the same run.
+- **No assumed DC pin.** The scratch version treated GP5 as the
+  data/command line. The package instead wraps the kit's own
+  `GC9B72.__init__` and uses whatever `dc` pin it's given. Verified: this
+  kit copied with DC moved to GP9 renders pixel-identical images.
+- **Labs that never sleep.** Rendering all 35 robot-faces labs hung on
+  `15-no-blocking.py`, which paces itself with `ticks_ms()` and never
+  sleeps. Now more than 50 clock reads in a row without a sleep move the
+  fake clock 1 ms each, and a 120-second real-time watchdog stops anything
+  else. Labs that sleep every pass are unaffected: all 26 published images
+  still regenerate pixel-identical. It also needed MicroPython's old
+  `u`-module names (`utime`, `ujson`, ...), since robot-faces labs use
+  them.
+
+The package is `gc9b72_sim` (`hardware.py`, `runner.py`, `render.py`,
+`pico2w.py`), with `render_lab.py` for any kit, `render_sw_gc9b72_docs.py`
+to regenerate this kit's images, and eight checks under `checks/`
+(`run_all.py`, about 35 s). The rule that GC9B72 projects use this
+simulator for their docs is recorded in the global `~/.claude/CLAUDE.md`
+and in this project's memory.
