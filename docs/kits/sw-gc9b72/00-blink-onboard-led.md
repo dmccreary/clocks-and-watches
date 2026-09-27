@@ -53,8 +53,8 @@ Let's read it line by line:
 - `sleep(0.5)` waits half a second before the loop goes around again.
 
 !!! note "Why \"LED\" and not a number?"
-    On a plain Pico, the light is on pin number 25. On the Pico 2 **W**,
-    it's wired to the WiFi chip instead. Using the name `"LED"` works on
+    On a plain Pico, the light is on pin number 25. On a Pico **W** or
+    Pico 2 **W**, it's wired to the WiFi chip instead. Using the name `"LED"` works on
     both boards, so that's what this kit uses.
 
 !!! tip "Try This"
@@ -68,6 +68,7 @@ Let's read it line by line:
   to the Pico: look at the bottom-right corner of the Thonny window for
   "MicroPython (Raspberry Pi Pico)".
 - **The program runs, but the light stays dark.** The Pico may have the
-  wrong version of MicroPython. It needs the one for the **Pico 2 W**.
+  wrong version of MicroPython. It needs the one with WiFi that matches
+  the board: **Pico W** or **Pico 2 W**.
 
 **Next:** [Lab 01: Give the Kit a Checkup](01-probe.md)

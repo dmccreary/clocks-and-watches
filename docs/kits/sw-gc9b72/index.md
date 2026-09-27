@@ -1,6 +1,6 @@
 ---
 title: GC9B72 Smartwatch Clock Kit
-description: Program a round-screen smartwatch with a Raspberry Pi Pico 2 W - clock faces, a weather forecast, a stopwatch, and a timer, in 13 labs for students.
+description: Program a round-screen smartwatch with a Raspberry Pi Pico W - clock faces, a weather forecast, a stopwatch, and a timer, in 13 labs for students.
 image: /kits/sw-gc9b72/img/social-card.jpg
 og:image: /kits/sw-gc9b72/img/social-card.jpg
 twitter:image: /kits/sw-gc9b72/img/social-card.jpg
@@ -29,9 +29,13 @@ one new idea you will use in the labs after it.
 
 ## What's in the Kit
 
+![](./img/smart-clock-rear.jpg)<br/>
+*A rear view of the Smart Clock kit showing the breadboard, buttons and a 20cm Dupont cable with hot glue
+to make it easy for the student to connect the display.*
+
 | Part | What it does |
 |---|---|
-| **Raspberry Pi Pico 2 W** | The brain of the watch. It's a *microcontroller*, a tiny computer on a board about the size of a stick of gum. The **W** means it has WiFi, so it can talk to the internet. |
+| **Raspberry Pi Pico W** | The brain of the watch. It's a *microcontroller*, a tiny computer on a board about the size of a stick of gum. The **W** means it has WiFi, so it can talk to the internet. A Pico 2 W works too. |
 | **Round color display** | The watch face. It is 2.1 inches across and has 360 × 360 tiny dots of light called **pixels**. A chip on the back called the **GC9B72** turns the Pico's messages into pictures. |
 | **Three push buttons** | How you control the watch. They are called **MODE**, **UP**, and **DOWN**. |
 | **Breadboard and wires** | Connect everything without soldering. |
@@ -75,9 +79,10 @@ You only need to do these steps once.
 
 1. **Put MicroPython on the Pico.** MicroPython is the version of the
    Python language that runs on small boards like the Pico. Be sure to use
-   the version for the **Pico 2 W**, which your teacher can find at
-   [micropython.org](https://micropython.org/download/RPI_PICO2_W/). The
-   version for the plain Pico 2 has no WiFi.
+   the version that matches your board, for the
+   [Pico W](https://micropython.org/download/RPI_PICO_W/) or the
+   [Pico 2 W](https://micropython.org/download/RPI_PICO2_W/). The versions
+   for the plain Pico and Pico 2 have no WiFi.
 2. **Install Thonny.** [Thonny](https://thonny.org) is the program you
    will use to write code and send it to the Pico.
 3. **Copy the kit's files onto the Pico.** The labs need some helper files

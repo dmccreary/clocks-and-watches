@@ -1,9 +1,9 @@
 # Notes for Teachers
 
 These notes are for teachers, parents, and anyone who wants the technical
-story behind the [GC9B72 Smartwatch Kit](index.md): where the driver came
-from, how fast the hardware really is, and how each watch face keeps
-flicker to a minimum. The lab pages themselves are written for students
+story behind the [GC9B72 Smartwatch Kit](index.md): where to buy the
+parts, where the driver came from, how fast the hardware really is, and
+how each watch face keeps flicker to a minimum. The lab pages themselves are written for students
 around 11 years old.
 
 !!! note "About the pictures in these pages"
@@ -18,6 +18,148 @@ around 11 years old.
     After changing a lab, `render_sw_gc9b72_docs.py` regenerates all of
     these pictures, and `checks/run_all.py` re-runs the checks described
     on this page.
+
+## Sourcing Parts
+
+Prices on these parts change every week, and single listings come and go.
+So the display links below are **searches**, each one already sorted from
+lowest to highest price.
+
+### The Pico: buy it at MicroCenter
+
+The kit works with a **Pico W** or a **Pico 2 W**. It needs the **W** for
+WiFi, but not the 2. We built it on a Pico 2 W only because that is the
+board we had on hand, so the timings on this page come from a Pico 2 W.
+
+MicroCenter has had consistently lower prices on Raspberry Pi Pico boards
+than anywhere else we have found, online or in a store. Here is its Pico W
+page in September 2026:
+
+![MicroCenter's product page for the Raspberry Pi Pico W, on sale for $4.99](img/microcenter-pico-w.png)
+
+Two things to notice in the picture:
+
+- **The sale price has a limit.** It is $4.99 for one, and the regular
+  $5.99 each for six or more.
+- **It is not shipped.** MicroCenter's Pico prices are for pickup at one of
+  its stores.
+
+The [Pico WH](https://www.microcenter.com/product/650109/raspberry-pi-pico-wh-pico-wireless-with-headers-soldered)
+comes with its pins already soldered on, so it goes straight into a
+breadboard.
+
+### The round display
+
+The display is a 2.1-inch round TFT with 360×360 pixels and a GC9B72
+driver chip. Searching for the chip name finds only a few listings, but
+nearly all of them are the right display. Searching by size and
+resolution finds more sellers, mixed in with other displays.
+
+| Store | Search by chip | Search by size |
+|---|---|---|
+| AliExpress | [GC9B72](https://www.aliexpress.com/w/wholesale-gc9b72.html?sortType=price_asc) | [2.1 inch round 360x360](https://www.aliexpress.com/w/wholesale-2.1-inch-round-tft-360x360.html?sortType=price_asc) |
+| eBay | [GC9B72](https://www.ebay.com/sch/i.html?_nkw=GC9B72&_sop=15) | [2.1 inch round 360x360](https://www.ebay.com/sch/i.html?_nkw=2.1+inch+round+tft+display+360x360&_sop=15) |
+| Amazon | [GC9B72](https://www.amazon.com/s?k=GC9B72&s=price-asc-rank) | [2.1 inch round 360x360](https://www.amazon.com/s?k=2.1+inch+round+tft+display+360x360&s=price-asc-rank) |
+
+One part of each URL does the sorting. To sort a search of your own, keep
+that part and change the search words:
+
+| Store | Sorting part of the URL | Sorts by |
+|---|---|---|
+| AliExpress | `sortType=price_asc` | Price, lowest first |
+| eBay | `_sop=15` | Price plus shipping, lowest first |
+| Amazon | `s=price-asc-rank` | Price, lowest first |
+
+eBay's sort adds in the shipping, which matters when a cheap display ships
+from overseas for $12.
+
+!!! warning "Check the listing before you buy"
+    Sorting by price brings the wrong items to the top along with the
+    cheap right ones. Make sure the listing says **2.1 inch**,
+    **360×360**, **SPI**, and **GC9B72**. Watch out for:
+
+    - **2.1-inch round panels with 480×480 pixels.** They look the same,
+      but they use a parallel RGB or MIPI connection instead of SPI, and
+      this kit's driver cannot run them.
+    - **1.28-inch round panels with a GC9A01 chip.** These are the
+      240×240 displays for our [GC9A01 kit](../gc9a01/index.md), and they
+      need a different driver.
+    - **Price ranges** like "$3.78 to $4.83". The low price is for the
+      cheapest choice in the listing, which may be a different screen or
+      just a cable.
+    - **AliExpress "Welcome deal" prices** of a dollar or two. They are
+      for a shopper's first order only.
+    - **eBay's "Results matching fewer words."** Below the real matches,
+      eBay adds listings that match only some of your words, and it does
+      not sort them by price.
+    - **Amazon** mixes square displays into its round-display results.
+
+    The kit's display has a row of 10 pins labeled
+    **GND VCC SCL SDA RST DC CS BL SDO TE**. A board with the same labels
+    wires up exactly as shown in [How It Is Wired](index.md#how-it-is-wired).
+
+Displays from AliExpress, and many on eBay, ship from overseas and can
+take several weeks to arrive. Order them well before the class needs them.
+
+### The display cable
+
+For the display cable, buy **20 cm Male-Female Dupont jumper wires**. The
+female ends push onto the display's pins, and the male ends go into the
+breadboard. They usually come as a 40-wire ribbon. Peel off eight wires
+starting at a brown one, and the colors come out in the same order as the
+kit's [wiring table](index.md#how-it-is-wired): brown (in place of
+black) for GND, then red, orange, yellow, green, blue, purple, and gray.
+
+| Store | Search, lowest price first |
+|---|---|
+| eBay | [20cm male female dupont](https://www.ebay.com/sch/i.html?_nkw=20cm+male+female+dupont+jumper+wires&_sop=15) |
+| AliExpress | [20cm male female dupont](https://www.aliexpress.com/w/wholesale-20cm-male-female-dupont.html?sortType=price_asc) |
+| Amazon | [20cm male female dupont](https://www.amazon.com/s?k=20cm+male+to+female+dupont+jumper+wires&s=price-asc-rank) |
+
+Check for **Male-Female** (or M-F) in the listing. Many of the cheapest
+are Female-Female. Mixed packs of 120, with 40 each of M-F, M-M, and F-F,
+work too, and the Male-Male wires are handy for the buttons.
+
+Loose wires get pulled out of a breadboard, and then the screen goes
+black. Hot-gluing the wires into a **display harness** keeps them in
+order, so a student plugs in the whole display in one move. Two guides
+show how to build one:
+
+- [Display Cable Harness](../../setup/03-display-cable-harness.md), in
+  this book
+- [Display Wiring Harness](https://dmccreary.github.io/learning-micropython/hands-on-labs/15-oled-setup/19-wiring-harness/),
+  a step-by-step student lab in *Learning MicroPython*
+
+Both build a seven-wire harness for our OLED displays, and those seven
+wires land on the same Pico pins this kit uses (GP2 to GP6, GND, and
+3V3). This display adds an eighth wire, the gray BL (backlight) wire.
+It goes on GP7, in breadboard row 10, right after CS in row 9.
+
+### The USB cable
+
+The Pico W and Pico 2 W both have a **micro-USB** port. You need a
+micro-USB **data** cable whose other end fits your computer: USB-A (the
+wide rectangle) on most older computers, or USB-C on newer Macs and many
+Chromebooks.
+
+| Computer port | Search, lowest price first |
+|---|---|
+| USB-A | [Amazon](https://www.amazon.com/s?k=usb+a+to+micro+usb+data+cable&s=price-asc-rank), [eBay](https://www.ebay.com/sch/i.html?_nkw=usb+a+to+micro+usb+data+cable&_sop=15) |
+| USB-C | [Amazon](https://www.amazon.com/s?k=usb+c+to+micro+usb+data+cable&s=price-asc-rank), [eBay](https://www.ebay.com/sch/i.html?_nkw=usb+c+to+micro+usb+data+cable&_sop=15) |
+
+Two kinds of cable look right but are not:
+
+- **Charge-only cables.** They power the Pico, but the computer never
+  sees it, and Thonny cannot connect. The listing should say "data" or
+  "data sync". Test every cable before class.
+- **USB 3 Micro-B cables**, sold for external hard drives. The plug is
+  twice as wide as micro-USB and will not fit the Pico.
+
+### Buttons and breadboards
+
+The push buttons and breadboards are the same parts our other kits use.
+See our [parts purchasing guide](../../setup/02-purchasing-parts.md) for
+where we buy them in bulk.
 
 ## What the Probe Reports
 
@@ -383,7 +525,7 @@ available it keeps running on whatever time the clock already has.
 | `mpremote: failed to access ... (it may be in use by another program)` | Thonny is still connected. Quit it or click Stop/Disconnect. |
 | `ImportError: no module named 'gc9b72'` | The `lib/` files did not upload. Run `upload-code.sh` again. |
 | Screen stays black | Check the five signal wires (SCL, SDA, RST, DC, CS). Swapped SCL and SDA is the most common mistake. Check that VCC is on 3V3. |
-| The LED does not blink in lab 00 | You flashed the plain `RPI_PICO2` firmware. Use `RPI_PICO2_W`. |
+| The LED does not blink in lab 00 | You flashed firmware without WiFi (`RPI_PICO` or `RPI_PICO2`). Use `RPI_PICO_W` on a Pico W, or `RPI_PICO2_W` on a Pico 2 W. |
 | The clock shows the wrong time on battery | The Pico has no clock battery. Thonny sets the clock while it is connected. Use lab 04, or `SYNC_WITH_WIFI` in lab 05. |
 | Time is off by one hour | Check `TIMEZONE_HOURS` and `USE_US_DST` in `config.py`. |
 | The probe says your network was not found | Check the spelling in `secrets.py`, and that the network is 2.4 GHz. |

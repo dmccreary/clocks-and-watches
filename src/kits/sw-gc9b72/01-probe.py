@@ -87,8 +87,8 @@ for cause in ("PWRON_RESET", "WDT_RESET", "HARD_RESET", "SOFT_RESET",
 cause = machine.reset_cause()
 print("last reset:", RESET_CAUSES.get(cause, cause))
 
-if "Pico 2 W" not in board:
-    warn("this kit is written for a Pico 2 W, but this board is: " + board)
+if "Pico W" not in board and "Pico 2 W" not in board:
+    warn("this kit needs a Pico W or Pico 2 W, but this board is: " + board)
 if cause == getattr(machine, "WDT_RESET", None):
     warn("the last reset was the watchdog -- a program hung or crashed")
 
