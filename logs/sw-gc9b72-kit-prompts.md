@@ -16,7 +16,8 @@ behind each step are in the companion
 - Below each prompt is a short note on what it led to, and the commit it
   produced, if any.
 
-**By the numbers:** 42 prompts. 9 were sent while Claude was working, and
+**By the numbers:** 42 prompts reached Claude, and one more was typed but
+never delivered (see 2a). 9 were sent while Claude was working, and
 10 were reports from the real hardware. 8 were "publish", "commit and
 push", or similar, which together produced 9 commits.
 
@@ -46,6 +47,18 @@ look in the ../stem-robots for examples
 hardware-tested driver in both `stem-robots` and `robot-faces`, and the
 two copies were identical. That driver, its fonts, and `shapes.py` were
 reused unchanged.
+
+**2a. (Typed while Claude was working, but never delivered)**
+
+```text
+/Users/dan/projects/robot-faces/src/kits/sw-gc9b72
+```
+
+This was sent at 18:49:02, pointing at the right folder. The session
+transcript shows it was queued but never handed to Claude: every other
+message sent mid-task was delivered within about a second. It didn't
+matter in the end. Claude had already found robot-faces through a GitHub
+search and cloned it at 18:47.
 
 **3. (While Claude was working)**
 
@@ -530,3 +543,22 @@ button wiring.
   shaped every sentence of the documentation.
 - **A one-word "publish"**, defined once in `CLAUDE.md`, made every commit
   consistent.
+
+---
+
+## Part 3: How Long Did It Take?
+
+**Claim:** about two hours. **Rough estimate: about two hours of Claude's
+working time.** The evidence supports it.
+
+- **Claude (Opus 5.5) worked for about 1 hour 55 minutes** in total. The
+  times come from the Claude Code session transcript, which timestamps
+  every prompt and response.
+- **Clock time from the first prompt (18:45) to the finished, published
+  kit (21:05) was about 2 hours 20 minutes.** The difference is mostly
+  the author testing each stage on the real hardware. The git commit
+  times match: the first commit was at 19:17, and the kit with its
+  documentation was done by 21:05.
+- **The Pico's own clock agrees.** Each time the watch set its time from
+  an internet time server, the transcript recorded the same moment within
+  a minute, so the timestamps are trustworthy.
