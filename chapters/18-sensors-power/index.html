@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking.">
+        <meta name="description" content="Light and motion sensors, ADC readings, auto brightness, batteries, current budgets, and low-power design.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -29,7 +29,7 @@
     
     
       
-        <title>18. Sensors, Power, and Low-Power Design - Clocks and Watches with AI</title>
+        <title>Sensors, Power, and Low-Power Design - Clocks and Watches with AI</title>
       
     
     
@@ -77,16 +77,16 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="18. Sensors, Power, and Low-Power Design - Clocks and Watches with AI" />
-<meta property="og:description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." />
+<meta property="og:title" content="Sensors, Power, and Low-Power Design - Clocks and Watches with AI" />
+<meta property="og:description" content="Light and motion sensors, ADC readings, auto brightness, batteries, current budgets, and low-power design." />
 <meta property="og:image" content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/chapters/18-sensors-power/index.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://dmccreary.github.io/clocks-and-watches/chapters/18-sensors-power/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="18. Sensors, Power, and Low-Power Design - Clocks and Watches with AI" />
-<meta property="twitter:description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." />
+<meta property="twitter:title" content="Sensors, Power, and Low-Power Design - Clocks and Watches with AI" />
+<meta property="twitter:description" content="Light and motion sensors, ADC readings, auto brightness, batteries, current budgets, and low-power design." />
 <meta property="twitter:image" content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/chapters/18-sensors-power/index.png" />
 </head>
   
@@ -140,7 +140,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              18. Sensors, Power, and Low-Power Design
+              Sensors, Power, and Low-Power Design
             
           </span>
         </div>
@@ -1084,6 +1084,424 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#sensing-and-powering-a-clock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sensing and Powering a Clock
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adc-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ADC Reading
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#photosensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Photosensor
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Photosensor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#light-dependent-resistor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Light-Dependent Resistor
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Light-Dependent Resistor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-ldr-light-sensor-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: LDR Light Sensor Lab
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auto-brightness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auto Brightness
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Auto Brightness">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#brightness-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Brightness Control
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hysteresis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hysteresis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hysteresis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-hysteresis-demonstrator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Hysteresis Demonstrator
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accelerometer-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accelerometer Basics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Accelerometer Basics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gyroscope-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gyroscope Basics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tilt-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tilt Detection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-counter-concept" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step Counter Concept
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step Counter Concept">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-tilt-and-step-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Tilt and Step Explorer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#power-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Power Management
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Power Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usb-power" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        USB Power
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#battery-power" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Battery Power
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lipo-battery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LiPo Battery
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aa-battery-pack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AA Battery Pack
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usb-battery-pack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        USB Battery Pack
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="USB Battery Pack">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-battery-drain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Battery Drain
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-draw-calculation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Current Draw Calculation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Current Draw Calculation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-battery-life-calculator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Battery Life Calculator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#brownout-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Brownout Detection
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sleep-mode-wake-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sleep Mode Wake Source
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sleep Mode Wake Source">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#low-power-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Low Power Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#all-in-one-watch-boards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        All-in-One Watch Boards
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="All-in-One Watch Boards">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lilygo-rp2040-board" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LilyGo RP2040 Board
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#waveshare-rp2040-board" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Waveshare RP2040 Board
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Putting It Together
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1754,6 +2172,424 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#sensing-and-powering-a-clock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sensing and Powering a Clock
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adc-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ADC Reading
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#photosensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Photosensor
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Photosensor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#light-dependent-resistor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Light-Dependent Resistor
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Light-Dependent Resistor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-ldr-light-sensor-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: LDR Light Sensor Lab
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auto-brightness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auto Brightness
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Auto Brightness">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#brightness-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Brightness Control
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hysteresis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hysteresis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hysteresis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-hysteresis-demonstrator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Hysteresis Demonstrator
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accelerometer-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accelerometer Basics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Accelerometer Basics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gyroscope-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gyroscope Basics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tilt-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tilt Detection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-counter-concept" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step Counter Concept
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step Counter Concept">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-tilt-and-step-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Tilt and Step Explorer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#power-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Power Management
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Power Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usb-power" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        USB Power
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#battery-power" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Battery Power
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lipo-battery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LiPo Battery
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aa-battery-pack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AA Battery Pack
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usb-battery-pack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        USB Battery Pack
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="USB Battery Pack">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-battery-drain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Battery Drain
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-draw-calculation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Current Draw Calculation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Current Draw Calculation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-battery-life-calculator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Battery Life Calculator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#brownout-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Brownout Detection
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sleep-mode-wake-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sleep Mode Wake Source
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sleep Mode Wake Source">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#low-power-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Low Power Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#all-in-one-watch-boards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        All-in-One Watch Boards
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="All-in-One Watch Boards">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lilygo-rp2040-board" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LilyGo RP2040 Board
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#waveshare-rp2040-board" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Waveshare RP2040 Board
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Putting It Together
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1939,13 +2775,459 @@
 <li><a href="../15-color-displays/">Chapter 15: Color Displays and Smartwatch Faces</a></li>
 </ul>
 <hr />
-<p>TODO: Generate Chapter Content</p>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">A Clock That Notices</p>
+<p><img alt="Chrono waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+Your clock can dim itself at night, notice when your wrist turns, and run on a battery for a day or more. This chapter gives it senses and stamina. Let's make time tick!</p>
+</div>
+<h2 id="sensing-and-powering-a-clock">Sensing and Powering a Clock</h2>
+<p>Two ideas turn a clock into a smart, portable gadget. <strong>Sensors</strong> let it respond to the world: room light, motion, and tilt. <strong>Power management</strong> lets it run away from the wall: choosing a battery, estimating how long it lasts, and sleeping to save energy. The chapter covers analog readings first, then light and motion sensors, then power sources and low-power design.</p>
+<h2 id="adc-reading">ADC Reading</h2>
+<p>The world is not digital. Light, temperature, and battery voltage all vary smoothly. A GPIO pin can only tell 0 from 1, so to read a smooth voltage the Pico uses an <strong>ADC</strong> (analog-to-digital converter), which measures a voltage and turns it into a number.</p>
+<p>The Pico's ADC has three inputs you can use, on <strong>GP26, GP27, and GP28</strong> (channels ADC0, ADC1, and ADC2). It measures voltages from 0 V to 3.3 V, and the RP2040 does it with 12 bits of resolution, giving <span class="arithmatex">\( 2^{12} = 4096 \)</span> levels. MicroPython scales the result to 16 bits, so the value you read runs from 0 to 65,535 no matter how many bits the hardware has.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">ADC</span><span class="p">,</span> <span class="n">Pin</span>
+
+<span class="n">adc</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">26</span><span class="p">))</span>            <span class="c1"># GP26, channel ADC0</span>
+<span class="n">raw</span> <span class="o">=</span> <span class="n">adc</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>          <span class="c1"># 0 to 65535</span>
+<span class="n">volts</span> <span class="o">=</span> <span class="n">raw</span> <span class="o">*</span> <span class="mf">3.3</span> <span class="o">/</span> <span class="mi">65535</span>     <span class="c1"># convert to volts</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">volts</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Worked example.</strong> A reading of 32,768 is about half of full scale, so the voltage is <span class="arithmatex">\( 32{,}768 \times 3.3 / 65{,}535 \approx 1.65 \)</span> V.</p>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Average Away the Noise</p>
+<p><img alt="Chrono with a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+ADC readings jitter a little even when nothing changes. Read the pin 8 or 16 times and use the average, and your light-sensing clock will stop flickering between brightness levels.</p>
+</div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">read_average</span><span class="p">(</span><span class="n">adc</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">16</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">adc</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">))</span> <span class="o">//</span> <span class="n">n</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="photosensor">Photosensor</h2>
+<p>A <strong>photosensor</strong> is a part whose electrical behavior changes with light. The simplest and cheapest is the <strong>light-dependent resistor</strong>.</p>
+<h3 id="light-dependent-resistor">Light-Dependent Resistor</h3>
+<p>A <strong>light-dependent resistor (LDR)</strong>, also called a photoresistor, is a resistor whose resistance <em>falls</em> as light gets brighter. In the dark it can be over a megaohm, and in bright light it drops to a few kilohms.</p>
+<p>The ADC measures voltage, not resistance, so you put the LDR in a <strong>voltage divider</strong> (Chapter 2) with a fixed resistor. Connect 3.3 V to the LDR, the LDR to the ADC pin, and a 10 kΩ resistor from the ADC pin to ground:</p>
+<div class="arithmatex">\[ V_{out} = 3.3 \times \frac{R_{fixed}}{R_{LDR} + R_{fixed}} \]</div>
+<p>In bright light, <span class="arithmatex">\( R_{LDR} \)</span> is small, so <span class="arithmatex">\( V_{out} \)</span> is high. In the dark, <span class="arithmatex">\( R_{LDR} \)</span> is large, so <span class="arithmatex">\( V_{out} \)</span> is low. With this wiring, a <em>bigger</em> ADC reading means <em>brighter</em> light.</p>
+<p><strong>Worked example.</strong> In a bright room the LDR is 2 kΩ: <span class="arithmatex">\( V_{out} = 3.3 \times 10 / (2 + 10) = 2.75 \)</span> V. In a dim room it is 50 kΩ: <span class="arithmatex">\( V_{out} = 3.3 \times 10 / 60 = 0.55 \)</span> V.</p>
+<h4 id="diagram-ldr-light-sensor-lab">Diagram: LDR Light Sensor Lab</h4>
+<details>
+<summary>LDR Light Sensor Lab</summary>
+<p>Type: MicroSim
+<strong>sim-id:</strong> ldr-light-sensor-lab<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p><strong>Learning objective:</strong> Students will <em>apply</em> the voltage divider formula to predict the ADC reading for different light levels (Bloom: Applying).</p>
+<p><strong>Visual elements:</strong> A schematic of 3.3 V, an LDR, a 10 kΩ resistor, and the ADC pin, next to a room scene with a lamp. A gauge shows the ADC value (0 to 65535).</p>
+<p><strong>Controls:</strong> A slider for room brightness (dark to sunlight), which maps to LDR resistance (1 MΩ down to 500 Ω); a slider for the fixed resistor (1 kΩ to 100 kΩ). Readouts show <span class="arithmatex">\( R_{LDR} \)</span>, <span class="arithmatex">\( V_{out} \)</span>, and the raw ADC value.</p>
+<p><strong>Responsive design:</strong> The schematic and scene stack on narrow screens.</p>
+<p>Implementation: p5.js with the divider formula.</p>
+</details>
+<h2 id="auto-brightness">Auto Brightness</h2>
+<p><strong>Auto brightness</strong> adjusts the display's brightness to match the room. A bright display in a dark bedroom is glaring, and a dim display in daylight is unreadable. The recipe is a mapping from the light reading to a brightness level:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">brightness_from_light</span><span class="p">(</span><span class="n">light</span><span class="p">,</span> <span class="n">max_level</span><span class="o">=</span><span class="mi">7</span><span class="p">):</span>
+    <span class="c1"># light: 0..65535. Squeeze into 0..max_level</span>
+    <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">max_level</span><span class="p">,</span> <span class="n">light</span> <span class="o">*</span> <span class="p">(</span><span class="n">max_level</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">65536</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Because your eyes respond to light on a roughly logarithmic scale, a linear mapping works but can feel abrupt at the dark end. A simple improvement is to set a <strong>minimum</strong> brightness so the display never goes fully off, and use a lookup table to make the steps feel even.</p>
+<h3 id="brightness-control">Brightness Control</h3>
+<p>How you set brightness depends on the display, so it is worth listing:</p>
+<table>
+<thead>
+<tr>
+<th>Display</th>
+<th>How to control brightness</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TM1637 LED</td>
+<td><code>tm.brightness(0..7)</code></td>
+</tr>
+<tr>
+<td>SSD1306 OLED</td>
+<td><code>oled.contrast(0..255)</code></td>
+</tr>
+<tr>
+<td>TFT LCD (backlight)</td>
+<td>PWM the <strong>BL</strong> pin: <code>PWM(Pin(7)).duty_u16(level)</code></td>
+</tr>
+<tr>
+<td>NeoPixels</td>
+<td>Scale the color values (or the HSV value)</td>
+</tr>
+</tbody>
+</table>
+<p>A PWM backlight is the most flexible, since it can dim smoothly across the whole range. The PWM frequency should be above about 1 kHz so the display does not visibly flicker.</p>
+<h3 id="hysteresis">Hysteresis</h3>
+<p>If the room light hovers right at a threshold, the reading bounces above and below it, and the display flickers between two brightness levels. <strong>Hysteresis</strong> cures this by using <strong>two thresholds</strong> instead of one: a higher one to switch up, and a lower one to switch back down. The gap between them is a dead zone where nothing changes.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">HIGH</span><span class="p">,</span> <span class="n">LOW</span> <span class="o">=</span> <span class="mi">30000</span><span class="p">,</span> <span class="mi">26000</span>       <span class="c1"># switch up above HIGH, back down below LOW</span>
+<span class="n">bright</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="n">light</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">bright</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">bright</span> <span class="ow">and</span> <span class="n">light</span> <span class="o">&gt;</span> <span class="n">HIGH</span><span class="p">:</span>
+        <span class="n">bright</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">elif</span> <span class="n">bright</span> <span class="ow">and</span> <span class="n">light</span> <span class="o">&lt;</span> <span class="n">LOW</span><span class="p">:</span>
+        <span class="n">bright</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="n">bright</span>
+</code></pre></div></td></tr></table></div>
+<p>Hysteresis is the same idea as debouncing in Chapter 7: both ignore small changes so that a noisy input gives a clean output. Thermostats use it, so the furnace does not switch on and off every few seconds.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Two Thresholds Beat One</p>
+<p><img alt="Chrono thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+With a single threshold, noise near the line makes the output chatter. Add a gap between the "up" and "down" thresholds and the noise falls inside the gap, where nothing happens. That small gap is what makes automatic controls feel calm.</p>
+</div>
+<h4 id="diagram-hysteresis-demonstrator">Diagram: Hysteresis Demonstrator</h4>
+<details>
+<summary>Hysteresis Demonstrator</summary>
+<p>Type: MicroSim
+<strong>sim-id:</strong> hysteresis-demonstrator<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p><strong>Learning objective:</strong> Students will <em>analyze</em> how a dead zone removes chatter from a noisy sensor (Bloom: Analyzing).</p>
+<p><strong>Visual elements:</strong> A scrolling line chart of a noisy light reading with two horizontal threshold lines, and below it, two on/off traces: "Single threshold" and "With hysteresis."</p>
+<p><strong>Controls:</strong> Sliders for the noise amount, the upper threshold, and the lower threshold; a "Lock thresholds together" toggle (which makes the gap zero). A counter shows how many times each output switched.</p>
+<p><strong>Responsive design:</strong> The charts scale to container width.</p>
+<p>Implementation: p5.js with Gaussian noise around a slowly varying light level.</p>
+</details>
+<h2 id="accelerometer-basics">Accelerometer Basics</h2>
+<p>An <strong>accelerometer</strong> measures acceleration along three axes: x, y, and z. It reports in units of <strong>g</strong>, where 1 g is the acceleration of gravity. A resting accelerometer does not read zero. It reads 1 g pointing "down," so it can tell which way is down and how the board is tilted.</p>
+<p>Common accelerometer chips such as the MPU6050 connect over I2C (Chapter 8). The MPU6050's address is <code>0x68</code>, the same as the DS3231. If you use both on one bus, tie the MPU6050's AD0 pin high to move it to <code>0x69</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">struct</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>
+
+<span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sda</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">scl</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">400000</span><span class="p">)</span>
+<span class="n">MPU</span> <span class="o">=</span> <span class="mh">0x69</span>                                     <span class="c1"># AD0 tied high</span>
+
+<span class="n">i2c</span><span class="o">.</span><span class="n">writeto_mem</span><span class="p">(</span><span class="n">MPU</span><span class="p">,</span> <span class="mh">0x6B</span><span class="p">,</span> <span class="sa">b</span><span class="s2">"</span><span class="se">\x00</span><span class="s2">"</span><span class="p">)</span>            <span class="c1"># wake the chip up</span>
+<span class="n">raw</span> <span class="o">=</span> <span class="n">i2c</span><span class="o">.</span><span class="n">readfrom_mem</span><span class="p">(</span><span class="n">MPU</span><span class="p">,</span> <span class="mh">0x3B</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>           <span class="c1"># x, y, z acceleration</span>
+<span class="n">ax</span><span class="p">,</span> <span class="n">ay</span><span class="p">,</span> <span class="n">az</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s2">"&gt;hhh"</span><span class="p">,</span> <span class="n">raw</span><span class="p">)</span>        <span class="c1"># three signed 16-bit numbers</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ax</span> <span class="o">/</span> <span class="mi">16384</span><span class="p">,</span> <span class="n">ay</span> <span class="o">/</span> <span class="mi">16384</span><span class="p">,</span> <span class="n">az</span> <span class="o">/</span> <span class="mi">16384</span><span class="p">)</span>      <span class="c1"># convert to g (at the +/-2 g range)</span>
+</code></pre></div></td></tr></table></div>
+<p>The chip sends two bytes for each axis, high byte first, so <code>"&gt;hhh"</code> unpacks three signed 16-bit integers. At the default range of ±2 g, 16,384 counts equal 1 g.</p>
+<h3 id="gyroscope-basics">Gyroscope Basics</h3>
+<p>A <strong>gyroscope</strong> measures how fast the board is <em>rotating</em>, in degrees per second, around each axis. It responds to turning, not to which way is down. Its output is zero when the board is still, even if it is tilted. The MPU6050 has both sensors on one chip, and its gyroscope data starts at register <code>0x43</code>.</p>
+<p>To get an angle from a gyroscope, add up (integrate) the rotation rate over time. The catch is drift: tiny errors add up, so the angle slowly wanders. Accelerometer and gyroscope complement each other: the accelerometer gives a stable but noisy tilt, and the gyroscope gives smooth but drifting rotation.</p>
+<h3 id="tilt-detection">Tilt Detection</h3>
+<p><strong>Tilt detection</strong> uses the accelerometer to decide the orientation of the board. When the watch is flat and face-up, gravity is along z, so <code>az</code> is near 1 g and <code>ax</code> and <code>ay</code> near 0. When the wrist is raised to look at the watch, the 1 g shifts to another axis.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">face_up</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">ay</span><span class="p">,</span> <span class="n">az</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">az</span> <span class="o">&gt;</span> <span class="mf">0.8</span>                 <span class="c1"># gravity mostly along z (values in g)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">wrist_raised</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">ay</span><span class="p">,</span> <span class="n">az</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">ay</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">0.5</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">az</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.6</span>    <span class="c1"># example rule; depends on how it is mounted</span>
+</code></pre></div></td></tr></table></div>
+<p>Use tilt to wake the screen when the wrist rises, to turn it off when the arm drops, or to rotate the display. Combine it with hysteresis so that small shakes do not flicker the screen.</p>
+<h3 id="step-counter-concept">Step Counter Concept</h3>
+<p>A <strong>step counter</strong> counts steps by looking for the rhythmic bumps of walking in the accelerometer data. Combine the three axes into one <strong>magnitude</strong>:</p>
+<div class="arithmatex">\[ |a| = \sqrt{a_x^2 + a_y^2 + a_z^2} \]</div>
+<p>At rest this is about 1 g. Each footstep makes it spike above roughly 1.2 g. Count each time the magnitude <em>crosses upward</em> through a threshold, and ignore any crossing within about 250 milliseconds of the last one, since people walk at about 2 steps per second. This is the same threshold-plus-debounce pattern used for buttons and light sensing. Real fitness watches use much smarter filtering, but this simple version is a good project.</p>
+<h4 id="diagram-tilt-and-step-explorer">Diagram: Tilt and Step Explorer</h4>
+<details>
+<summary>Tilt and Step Explorer</summary>
+<p>Type: MicroSim
+<strong>sim-id:</strong> tilt-step-explorer<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p><strong>Learning objective:</strong> Students will <em>apply</em> accelerometer axes to detect tilt and <em>analyze</em> a step-counting threshold (Bloom: Applying, Analyzing).</p>
+<p><strong>Visual elements:</strong> A 3D-style watch on the left that the student can drag to tilt, with the three g values shown as bars. On the right, a scrolling plot of acceleration magnitude with a threshold line and step markers.</p>
+<p><strong>Controls:</strong> Drag to rotate the watch; a "Walk" button that generates a simulated walking signal; sliders for the step threshold and the minimum time between steps; a step count readout.</p>
+<p><strong>Responsive design:</strong> The two panels stack below 600 px.</p>
+<p>Implementation: p5.js with simulated accelerometer vectors.</p>
+</details>
+<h2 id="power-management">Power Management</h2>
+<p><strong>Power management</strong> means choosing and controlling how a device gets and uses electricity, so it works reliably and lasts as long as needed. It has two sides: the <strong>supply</strong> (where the energy comes from) and the <strong>load</strong> (how much your clock uses). You control the load by choosing efficient parts and turning things off when they are not needed.</p>
+<p>The main power source options for a clock are:</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Voltage</th>
+<th>Best for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>USB from a computer or wall adapter</td>
+<td>5 V</td>
+<td>Desk and wall clocks</td>
+</tr>
+<tr>
+<td>USB battery pack (power bank)</td>
+<td>5 V</td>
+<td>Long-lasting portable clocks</td>
+</tr>
+<tr>
+<td>LiPo battery</td>
+<td>3.7 V</td>
+<td>Compact watches</td>
+</tr>
+<tr>
+<td>AA battery pack</td>
+<td>3 to 4.5 V</td>
+<td>Low cost, replaceable</td>
+</tr>
+</tbody>
+</table>
+<h3 id="usb-power">USB Power</h3>
+<p><strong>USB power</strong> is the simplest. The Pico takes 5 V from the USB connector and the board's regulator makes the 3.3 V it needs (Chapter 2). A computer port supplies about 500 mA and a wall adapter usually 1 A or more. A Pico by itself uses only a few tens of milliamps, so USB power is plenty unless you add many NeoPixels (Chapter 16).</p>
+<h3 id="battery-power">Battery Power</h3>
+<p>For portable clocks, energy is stored in a battery. Two numbers describe it. <strong>Voltage</strong> must be in the range the Pico accepts. The <strong>capacity</strong>, in milliamp-hours (mAh), is how much current it can supply for how long. A simple estimate of the runtime is</p>
+<div class="arithmatex">\[ \text{runtime (hours)} = \frac{\text{capacity (mAh)} \times 0.8}{\text{average current (mA)}} \]</div>
+<p>The 0.8 factor allows for the fact that batteries never deliver their full labeled capacity. <strong>Worked example.</strong> A 500 mAh battery powering a clock that averages 30 mA runs for about <span class="arithmatex">\( 500 \times 0.8 / 30 \approx 13 \)</span> hours.</p>
+<p>The Pico's <strong>VSYS</strong> pin accepts anywhere from 1.8 V to 5.5 V, and the board's built-in regulator converts it to 3.3 V. That range is what lets several battery types work.</p>
+<h3 id="lipo-battery">LiPo Battery</h3>
+<p>A <strong>LiPo (lithium polymer) battery</strong> is a thin, rechargeable battery with high energy for its size, which is why phones and smartwatches use them. It is 3.7 V nominal, reads 4.2 V when full, and must never be discharged below about 3.0 V.</p>
+<p>Handle LiPo cells with respect. They need a <strong>charging circuit</strong> designed for lithium cells, and ideally a <strong>protection circuit</strong> against over-discharge and short circuits. Their connectors are not always standardized, and connecting one with reversed polarity can destroy a board or start a fire. Do not puncture or crush a LiPo, and do not charge one that is swollen.</p>
+<h3 id="aa-battery-pack">AA Battery Pack</h3>
+<p>An <strong>AA battery pack</strong> holds AA cells in a plastic holder with a lead. Cells are cheap, easy to buy, and replaceable anywhere. The voltage depends on the count:</p>
+<table>
+<thead>
+<tr>
+<th>Pack</th>
+<th>Voltage (alkaline)</th>
+<th>Works with VSYS?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2 × AA</td>
+<td>3.0 V</td>
+<td>Yes; regulator boosts as needed</td>
+</tr>
+<tr>
+<td>3 × AA</td>
+<td>4.5 V</td>
+<td>Yes; the recommended choice</td>
+</tr>
+<tr>
+<td>4 × AA</td>
+<td>6.0 V</td>
+<td><strong>No</strong>; exceeds the 5.5 V limit</td>
+</tr>
+</tbody>
+</table>
+<p>An AA cell holds roughly 2,000 to 3,000 mAh, much more than a small LiPo, so an AA pack can run a low-power clock for weeks.</p>
+<h3 id="usb-battery-pack">USB Battery Pack</h3>
+<p>A <strong>USB battery pack</strong> (power bank) is a rechargeable battery with a USB output, made to charge phones. It is the easiest way to run a Pico from a battery: plug in the cable and go. Packs hold thousands of mAh.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Power Banks Can Switch Off</p>
+<p><img alt="Chrono warning" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+Many power banks shut themselves off when the current draw is very low, because they think nothing is connected. A Pico clock uses so little that the bank may turn off after a minute and your clock stops. Choose a pack with an "always on" or low-current mode, or add a small extra load such as a resistor that draws about 100 mA.</p>
+</div>
+<h4 id="diagram-battery-drain">Diagram: Battery Drain</h4>
+<iframe src="../../sims/battery-drain/battery-drain.html" width="100%" height="460px" scrolling="no"></iframe>
+
+<p><a class="md-button" href="../../sims/battery-drain/battery-drain.html">Run the Battery Drain MicroSim fullscreen</a></p>
+<details>
+<summary>Battery Drain (existing MicroSim)</summary>
+<p>Type: MicroSim
+<strong>sim-id:</strong> battery-drain<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> docs/sims/battery-drain/</p>
+<p>This MicroSim is already part of this book. Learning objective: students will <em>apply</em> capacity and current draw to estimate battery life (Bloom: Applying).</p>
+</details>
+<h2 id="current-draw-calculation">Current Draw Calculation</h2>
+<p>To predict battery life you need the total current your clock uses. <strong>Current draw calculation</strong> is adding up the current of each part. The values below are typical; parts vary, so measure your own by placing a multimeter in series with the power wire (Chapter 2).</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Typical current</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pico running MicroPython</td>
+<td>20 to 30 mA</td>
+</tr>
+<tr>
+<td>Pico W with WiFi active</td>
+<td>40 to 100 mA</td>
+</tr>
+<tr>
+<td>Small OLED</td>
+<td>10 to 20 mA</td>
+</tr>
+<tr>
+<td>Color TFT backlight</td>
+<td>20 to 80 mA</td>
+</tr>
+<tr>
+<td>DS3231 RTC</td>
+<td>under 1 mA</td>
+</tr>
+<tr>
+<td>Piezo buzzer</td>
+<td>5 to 30 mA</td>
+</tr>
+<tr>
+<td>NeoPixel, each, at full white</td>
+<td>up to 60 mA</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Worked example.</strong> A smartwatch with a Pico (25 mA), a round display backlight (60 mA), and an RTC (0.2 mA) draws about 85 mA. A 500 mAh LiPo gives <span class="arithmatex">\( 500 \times 0.8 / 85 \approx 4.7 \)</span> hours. Dimming the backlight to 20 mA drops the total to about 45 mA and roughly doubles the runtime to 8.9 hours. The display is the biggest target for savings.</p>
+<h4 id="diagram-battery-life-calculator">Diagram: Battery Life Calculator</h4>
+<details>
+<summary>Battery Life Calculator</summary>
+<p>Type: MicroSim
+<strong>sim-id:</strong> battery-life-calculator<br/>
+<strong>Library:</strong> Chart.js<br/>
+<strong>Status:</strong> Specified</p>
+<p><strong>Learning objective:</strong> Students will <em>calculate</em> battery life and <em>evaluate</em> which design changes save the most energy (Bloom: Applying, Evaluating).</p>
+<p><strong>Visual elements:</strong> A stacked bar showing each part's current, a total current readout, and a large "Estimated runtime" label.</p>
+<p><strong>Controls:</strong> Checkboxes to include each part in the table, sliders for the backlight brightness and the fraction of time asleep, and a dropdown for battery capacity (150, 500, 1000, 2500 mAh). A bar chart compares runtime before and after the student's changes.</p>
+<p><strong>Responsive design:</strong> The chart resizes to the container.</p>
+<p>Implementation: Chart.js with the runtime formula.</p>
+</details>
+<h3 id="brownout-detection">Brownout Detection</h3>
+<p>A <strong>brownout</strong> is when the supply voltage sags below what the chip needs, but not all the way to zero. The Pico may reset, freeze, or behave strangely, and a display can show garbage. Brownouts happen when a load surges (a backlight, WiFi transmission, or a bank of NeoPixels turning on) and the battery or a thin wire cannot deliver the current, or when a battery is nearly empty.</p>
+<p>The RP2040 has hardware to detect a low supply and reset safely. You can find out why the Pico last restarted with <code>machine.reset_cause()</code>, and print it at startup to see whether a mysterious reboot was a power problem. Signs of brownout are resets when the backlight or WiFi turns on. Fixes include a larger capacitor near the Pico's power pins (Chapter 2), a fresher battery, shorter and thicker power wires, and lowering the peak current.</p>
+<h2 id="sleep-mode-wake-source">Sleep Mode Wake Source</h2>
+<p>Even a Pico that does nothing uses power, so the most effective saving is to <strong>sleep</strong> between tasks. A clock that only needs to update once per minute can sleep for most of that minute. In <strong>sleep mode</strong>, the processor stops running your program and draws much less current. Something must wake it, and the thing that wakes it is called a <strong>wake source</strong>.</p>
+<p>The common wake sources are:</p>
+<table>
+<thead>
+<tr>
+<th>Wake source</th>
+<th>Example use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Timer</td>
+<td>Wake every second or minute to update the display</td>
+</tr>
+<tr>
+<td>GPIO pin change</td>
+<td>Wake when a button is pressed</td>
+</tr>
+<tr>
+<td>RTC alarm pin</td>
+<td>The DS3231's INT pin wakes the Pico at an alarm time (Chapter 17)</td>
+</tr>
+</tbody>
+</table>
+<p>In MicroPython, <code>machine.lightsleep(ms)</code> sleeps for a number of milliseconds:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
+<span class="n">machine</span><span class="o">.</span><span class="n">lightsleep</span><span class="p">(</span><span class="mi">60_000</span><span class="p">)</span>      <span class="c1"># sleep for 60 seconds, then continue running</span>
+</code></pre></div></td></tr></table></div>
+<p>Which wake sources are available, and how much current you actually save, depends on your board and MicroPython version, so check the documentation for your firmware and <strong>measure</strong>. Peripherals that stay powered, such as a display backlight, can use more energy than the sleeping chip does.</p>
+<h3 id="low-power-mode">Low Power Mode</h3>
+<p><strong>Low power mode</strong> is a design approach that combines every trick to make a battery last. A low-power clock does several things at once:</p>
+<ul>
+<li>Sleeps between updates with <code>lightsleep()</code> and a timer or RTC alarm wake source.</li>
+<li>Dims or turns off the backlight when no one is looking (using the tilt or auto brightness ideas above).</li>
+<li>Turns off WiFi (<code>wlan.active(False)</code>) except during the short sync described in Chapter 14.</li>
+<li>Updates the display only when something has changed (partial updates, Chapter 12).</li>
+<li>Uses a lower CPU speed if the program allows.</li>
+</ul>
+<p>Sleeping fits the sense-think-act loop of Chapter 1 nicely: most of the time the clock is doing nothing at all.</p>
+<h2 id="all-in-one-watch-boards">All-in-One Watch Boards</h2>
+<p>Instead of wiring a Pico, display, sensors, and battery charger together, some boards combine them on one small circuit board. They are handy for wearable projects because they are compact and include a LiPo charger.</p>
+<h3 id="lilygo-rp2040-board">LilyGo RP2040 Board</h3>
+<p>The <strong>LilyGo RP2040 boards</strong> put an RP2040, a built-in color display, and a battery connection on a single board. They plug in with a USB cable and run the same MicroPython code as the Pico, though the display pin numbers differ from a wired build, so check the vendor's pinout.</p>
+<h3 id="waveshare-rp2040-board">Waveshare RP2040 Board</h3>
+<p>The <strong>Waveshare RP2040 boards</strong>, such as the round LCD models, combine the RP2040, a round color display, a motion sensor (accelerometer and gyroscope), and a LiPo charger in a watch-sized package. They are a shortcut to a finished smartwatch. As with any all-in-one board, read the vendor documentation to get the exact chips, pin assignments, and driver libraries for the model you buy.</p>
+<h2 id="putting-it-together">Putting It Together</h2>
+<table>
+<thead>
+<tr>
+<th>Goal</th>
+<th>Tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Read a smooth voltage</td>
+<td><code>ADC(Pin(26)).read_u16()</code>, averaged</td>
+</tr>
+<tr>
+<td>Sense light</td>
+<td>LDR in a voltage divider</td>
+</tr>
+<tr>
+<td>Adjust brightness without flicker</td>
+<td>Auto brightness with hysteresis</td>
+</tr>
+<tr>
+<td>Sense motion or tilt</td>
+<td>Accelerometer over I2C</td>
+</tr>
+<tr>
+<td>Choose a battery</td>
+<td>Match voltage to VSYS; capacity ÷ current for runtime</td>
+</tr>
+<tr>
+<td>Save power</td>
+<td>Sleep, dim, WiFi off, update less often</td>
+</tr>
+</tbody>
+</table>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li>The ADC turns a voltage from 0 to 3.3 V into a number; average several readings to reduce noise.</li>
+<li>An LDR in a voltage divider senses light; auto brightness maps that reading to display brightness.</li>
+<li>Hysteresis uses two thresholds so a noisy sensor does not make the display flicker.</li>
+<li>An accelerometer reads gravity and motion; a gyroscope reads rotation; together they enable tilt and step detection.</li>
+<li>Battery life is capacity × 0.8 ÷ average current; the display backlight is usually the biggest load.</li>
+<li>LiPo cells need proper charging and care, 4 × AA is too much voltage, and power banks may shut off at low current.</li>
+<li>Sleeping between updates, with a timer, button, or RTC alarm as wake source, saves the most power.</li>
+</ul>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Smart and Portable</p>
+<p><img alt="Chrono celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+You can now read analog sensors, dim the display automatically without flicker, detect tilt, and predict how long a battery will last. Your clock can sense its world and go anywhere. Every second counts!</p>
+</div>
+<h2 id="practice-questions">Practice Questions</h2>
+<ol>
+<li>An ADC reads 49,152. What voltage is that, and is the room brighter or darker than when it read 16,384 with an LDR divider?</li>
+<li>Explain why adding hysteresis to auto brightness stops the display from flickering.</li>
+<li>A clock draws 40 mA on average. How long will a 1,000 mAh battery run it, using the 0.8 factor?</li>
+<li>Why is a 4 × AA alkaline pack unsuitable for the VSYS pin?</li>
+<li>List three things you would do to make a smartwatch last longer on its battery.</li>
+</ol>
 
 
 
 
 
 
+
+  
+  
 
 
 

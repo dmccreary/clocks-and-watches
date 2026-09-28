@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking.">
+        <meta name="description" content="Planning, design trade-offs, cost, testing, debugging, using generative AI, peer review, and presenting a custom clock project.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -29,7 +29,7 @@
     
     
       
-        <title>20. Design, Testing, and AI-Assisted Development - Clocks and Watches with AI</title>
+        <title>Design, Testing, and AI-Assisted Development - Clocks and Watches with AI</title>
       
     
     
@@ -77,16 +77,16 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="20. Design, Testing, and AI-Assisted Development - Clocks and Watches with AI" />
-<meta property="og:description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." />
+<meta property="og:title" content="Design, Testing, and AI-Assisted Development - Clocks and Watches with AI" />
+<meta property="og:description" content="Planning, design trade-offs, cost, testing, debugging, using generative AI, peer review, and presenting a custom clock project." />
 <meta property="og:image" content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/chapters/20-design-testing-ai/index.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://dmccreary.github.io/clocks-and-watches/chapters/20-design-testing-ai/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="20. Design, Testing, and AI-Assisted Development - Clocks and Watches with AI" />
-<meta property="twitter:description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." />
+<meta property="twitter:title" content="Design, Testing, and AI-Assisted Development - Clocks and Watches with AI" />
+<meta property="twitter:description" content="Planning, design trade-offs, cost, testing, debugging, using generative AI, peer review, and presenting a custom clock project." />
 <meta property="twitter:image" content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/chapters/20-design-testing-ai/index.png" />
 </head>
   
@@ -140,7 +140,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              20. Design, Testing, and AI-Assisted Development
+              Design, Testing, and AI-Assisted Development
             
           </span>
         </div>
@@ -1140,6 +1140,367 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#from-following-to-designing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        From Following to Designing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-planning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project Planning
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#design-trade-offs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design Trade-Offs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Design Trade-Offs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-design-decision-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Design Decision Matrix
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cost-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cost Analysis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cost Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bill-of-materials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bill of Materials
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#component-sourcing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Component Sourcing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-experience-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        User Experience Design
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enclosure-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enclosure Design
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Enclosure Design">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#watch-band-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Watch Band Integration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hardware-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware Testing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integration Testing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-troubleshooting-decision-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Troubleshooting Decision Tree
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-techniques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Debugging Techniques
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#systematic-debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Systematic Debugging
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#display-flicker-fix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Display Flicker Fix
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logic-analyzer-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logic Analyzer Basics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Logic Analyzer Basics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-logic-analyzer-trace-reader" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Logic Analyzer Trace Reader
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-generative-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using Generative AI
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using Generative AI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generative-ai-prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generative AI Prompts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai-code-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI Code Generation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai-code-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI Code Review
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#human-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Human Review
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Human Review">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#peer-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Peer Review
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-walkthrough" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code Walkthrough
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-presentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Final Presentation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1754,6 +2115,367 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#from-following-to-designing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        From Following to Designing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-planning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project Planning
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#design-trade-offs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design Trade-Offs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Design Trade-Offs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-design-decision-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Design Decision Matrix
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cost-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cost Analysis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cost Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bill-of-materials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bill of Materials
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#component-sourcing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Component Sourcing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-experience-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        User Experience Design
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enclosure-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enclosure Design
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Enclosure Design">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#watch-band-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Watch Band Integration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hardware-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware Testing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integration Testing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-troubleshooting-decision-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Troubleshooting Decision Tree
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-techniques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Debugging Techniques
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#systematic-debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Systematic Debugging
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#display-flicker-fix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Display Flicker Fix
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logic-analyzer-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logic Analyzer Basics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Logic Analyzer Basics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-logic-analyzer-trace-reader" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Logic Analyzer Trace Reader
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-generative-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using Generative AI
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using Generative AI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generative-ai-prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generative AI Prompts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai-code-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI Code Generation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai-code-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI Code Review
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#human-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Human Review
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Human Review">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#peer-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Peer Review
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-walkthrough" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code Walkthrough
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-presentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Final Presentation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1935,13 +2657,610 @@
 <li><a href="../15-color-displays/">Chapter 15: Color Displays and Smartwatch Faces</a></li>
 </ul>
 <hr />
-<p>TODO: Generate Chapter Content</p>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Your Turn to Design</p>
+<p><img alt="Chrono waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+You've collected every skill you need. Now you'll plan your own clock, test it, fix what breaks, use AI as a helper without letting it drive, and show it off. This is where you become the designer. Let's make time tick!</p>
+</div>
+<h2 id="from-following-to-designing">From Following to Designing</h2>
+<p>The earlier chapters taught parts: displays, buses, sensors, sound, and power. A real project asks you to choose among them, fit them together, and make them work. This chapter covers the whole journey in the order you will live it: <strong>plan and design</strong>, <strong>source and build</strong>, <strong>test and debug</strong>, <strong>use AI wisely</strong>, and <strong>review and present</strong>. The habits here matter as much as any single piece of code.</p>
+<h2 id="project-planning">Project Planning</h2>
+<p><strong>Project planning</strong> is deciding what you will build, how, and in what order, before you buy parts or write code. A short plan saves hours of rework. A good plan answers five questions:</p>
+<table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Example answer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Goal:</strong> what should it do?</td>
+<td>"Show the time and outdoor temperature on a round display"</td>
+</tr>
+<tr>
+<td><strong>User:</strong> who uses it, and where?</td>
+<td>"Me, on my desk, glancing across the room"</td>
+</tr>
+<tr>
+<td><strong>Constraints:</strong> budget, time, skills?</td>
+<td>"$30, three weeks, no soldering"</td>
+</tr>
+<tr>
+<td><strong>Requirements:</strong> must, should, could?</td>
+<td>Must: show correct time. Should: auto-dim. Could: alarm</td>
+</tr>
+<tr>
+<td><strong>Risks:</strong> what might go wrong?</td>
+<td>"Display arrives late or has different pins"</td>
+</tr>
+</tbody>
+</table>
+<p>Use the decomposition skill from Chapter 1 to split the goal into small tasks, and order them so that something works early. A dependable order is:</p>
+<ol>
+<li>Get the Pico running (blink an LED).</li>
+<li>Get the display showing anything at all.</li>
+<li>Show the time.</li>
+<li>Add inputs (buttons).</li>
+<li>Add extras one at a time (sound, sensors, WiFi).</li>
+<li>Build the enclosure.</li>
+</ol>
+<p>Each step ends with something you can see working, so you always have a working version to fall back on. The <strong>must-should-could</strong> list protects you from over-promising: finish every "must" before touching a "could."</p>
+<h2 id="design-trade-offs">Design Trade-Offs</h2>
+<p>Every design choice gives up something to gain something else. A <strong>design trade-off</strong> is a decision where improving one quality worsens another. You have met many already: a bigger display costs more and uses more power, a faster SPI speed risks garbled pixels, and WiFi sync gives accuracy at the price of battery life.</p>
+<p>The main qualities for a clock are cost, display readability, power consumption, accuracy, and user experience. A <strong>decision matrix</strong> compares designs fairly. Give each quality a <strong>weight</strong> by importance and each design a <strong>score</strong> from 1 to 5, then multiply and add.</p>
+<p><strong>Worked example.</strong> A student compares two designs for a bedside clock. Weights: readability 4, cost 2, power 1, accuracy 3.</p>
+<table>
+<thead>
+<tr>
+<th>Quality</th>
+<th>Weight</th>
+<th>TM1637 LED clock</th>
+<th>Round color watch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Readability (in the dark)</td>
+<td>4</td>
+<td>5</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Cost</td>
+<td>2</td>
+<td>5</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Power</td>
+<td>1</td>
+<td>4</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Accuracy (with WiFi sync)</td>
+<td>3</td>
+<td>3</td>
+<td>5</td>
+</tr>
+<tr>
+<td><strong>Weighted total</strong></td>
+<td></td>
+<td><span class="arithmatex">\( 20+10+4+9 = 43 \)</span></td>
+<td><span class="arithmatex">\( 16+4+2+15 = 37 \)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The LED clock wins for this user. A student who wants a wearable, or who gives power and accuracy higher weights, could reach the opposite answer, and that is the point: the weights capture <em>your</em> priorities, so the decision is explained rather than guessed.</p>
+<h4 id="diagram-design-decision-matrix">Diagram: Design Decision Matrix</h4>
+<details>
+<summary>Design Decision Matrix</summary>
+<p>Type: MicroSim
+<strong>sim-id:</strong> design-decision-matrix<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p><strong>Learning objective:</strong> Students will <em>evaluate</em> competing clock designs by weighting criteria and <em>justify</em> a choice (Bloom: Evaluating).</p>
+<p><strong>Visual elements:</strong> A table with criteria as rows and up to four designs as columns, with slider inputs for the weights and 1 to 5 score cells. A bar chart on the right shows each design's weighted total, with the winner highlighted.</p>
+<p><strong>Controls:</strong> Sliders for each criterion's weight (0 to 5); editable scores; presets loading the worked example; a "Sensitivity" button that reports how much a weight must change before the winner flips.</p>
+<p><strong>Responsive design:</strong> The table scrolls horizontally on narrow screens and the chart moves below it.</p>
+<p>Implementation: p5.js with a weighted sum.</p>
+</details>
+<h2 id="cost-analysis">Cost Analysis</h2>
+<p><strong>Cost analysis</strong> is working out what a project really costs, so it stays inside the budget. Add the cost of every part, then add shipping, spare parts, and tools you do not already own.</p>
+<h3 id="bill-of-materials">Bill of Materials</h3>
+<p>A <strong>bill of materials (BOM)</strong> is the complete list of parts in a project, with quantity, price, and source. It is the document you buy from and the one that lets someone else rebuild your clock. Here is a sample for a simple OLED clock with a real-time clock. Prices marked "est." are rough estimates, so replace them with the actual listing price.</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Qty</th>
+<th>Unit cost</th>
+<th>Total</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Raspberry Pi Pico W</td>
+<td>1</td>
+<td>$5.99</td>
+<td>$5.99</td>
+<td>Micro Center</td>
+</tr>
+<tr>
+<td>128×64 SSD1306 OLED</td>
+<td>1</td>
+<td>$3.50</td>
+<td>$3.50</td>
+<td>Online marketplace</td>
+</tr>
+<tr>
+<td>DS3231 RTC module</td>
+<td>1</td>
+<td>$3.00</td>
+<td>$3.00</td>
+<td>Online marketplace</td>
+</tr>
+<tr>
+<td>Half-size breadboard</td>
+<td>1</td>
+<td>$2.00 est.</td>
+<td>$2.00</td>
+<td>Bulk pack</td>
+</tr>
+<tr>
+<td>Jumper wires (pack)</td>
+<td>1</td>
+<td>$3.00 est.</td>
+<td>$3.00</td>
+<td>Online marketplace</td>
+</tr>
+<tr>
+<td>Push buttons</td>
+<td>2</td>
+<td>$0.20 est.</td>
+<td>$0.40</td>
+<td>Online marketplace</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td></td>
+<td></td>
+<td><strong>$17.89</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>A good BOM includes 10 to 20 percent more budget for spares, since jumper wires and cheap modules do fail. The <a href="../../setup/02-purchasing-parts/">Purchasing Parts guide</a> explains where the course sources its parts.</p>
+<h3 id="component-sourcing">Component Sourcing</h3>
+<p><strong>Component sourcing</strong> is where you buy parts. Local electronics stores are fast and easy to return to. Online marketplaces are cheaper but slower, and their listings can be wrong, which is a trap.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Listings Can Lie</p>
+<p><img alt="Chrono warning" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+A real example from this course: some listings for the 2.1 inch round display claim a 640 by 640 resolution, but the silkscreen on the board reads 360 by 360, which is what the driver expects. Cheap listings can misstate resolution, controller, and voltage. Before ordering, look for the controller chip name, a pin list, and a datasheet, and read the reviews for people using it with MicroPython.</p>
+</div>
+<p>Sourcing habits that pay off:</p>
+<ul>
+<li>Buy from sellers who show the controller chip and pin labels in the photos.</li>
+<li>Order one or two extra of anything cheap.</li>
+<li>Buy breadboards and jumpers in bulk.</li>
+<li>Match your parts to a driver library that already exists.</li>
+</ul>
+<h2 id="user-experience-design">User Experience Design</h2>
+<p><strong>User experience (UX) design</strong> is making the clock pleasant and obvious to use for the person who uses it. A clock is glanced at for a second, so the design has to work at a glance.</p>
+<table>
+<thead>
+<tr>
+<th>Principle</th>
+<th>In practice</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Glanceable</td>
+<td>Large digits, the time as the biggest thing on screen</td>
+</tr>
+<tr>
+<td>Readable</td>
+<td>High contrast, right brightness for the room (Chapter 18)</td>
+</tr>
+<tr>
+<td>Consistent</td>
+<td>Each button always means the same thing</td>
+</tr>
+<tr>
+<td>Forgiving</td>
+<td>Setting mode times out back to run mode after 10 seconds</td>
+</tr>
+<tr>
+<td>Responsive</td>
+<td>Beep or flash on a press, so the user knows it registered</td>
+</tr>
+<tr>
+<td>Honest</td>
+<td>Shows when the time source has failed</td>
+</tr>
+</tbody>
+</table>
+<p>Watch someone else use your clock without explaining it. Wherever they hesitate is a UX problem, and you will learn more from two minutes of watching than from an hour of thinking.</p>
+<h2 id="enclosure-design">Enclosure Design</h2>
+<p>An <strong>enclosure</strong> is the case that holds the electronics. It protects the parts, hides the wires, and makes the project look finished. Simple options include the acrylic mount from Chapter 2, a box cut from foam board, or a 3D-printed or laser-cut case.</p>
+<p>Design checklist: measure the parts with calipers before cutting, leave openings for the USB cable and buttons, make the bezel cover the display's unusable edge (the safe radius from Chapter 15), and give the light sensor a small window (Chapter 18). Keep wires from being pulled by fastening them so that a tug does not yank a connector loose.</p>
+<h3 id="watch-band-integration">Watch Band Integration</h3>
+<p>A <strong>watch band integration</strong> turns a round-display board into something you can wear. The main challenges are size, comfort, and safety: a LiPo battery and bare board pressed against skin need insulation, a rounded back plate, and no exposed contacts. The case needs lugs sized for a standard strap width (commonly 20 or 22 mm) so an ordinary watch band fits, and the weight should sit close to the wrist. All-in-one boards from Chapter 18 make this much easier than a wired breadboard build.</p>
+<h2 id="hardware-testing">Hardware Testing</h2>
+<p><strong>Hardware testing</strong> means checking each physical part <em>by itself</em> before you combine them. A part that misbehaves alone will misbehave in the finished clock, and it is much easier to find the fault when it is the only thing connected.</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Simple test</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Power</td>
+<td>Multimeter shows 3.3 V on the rail</td>
+</tr>
+<tr>
+<td>Wires</td>
+<td>Continuity beep between the two ends</td>
+</tr>
+<tr>
+<td>Pico</td>
+<td>Blink the on-board LED</td>
+</tr>
+<tr>
+<td>Buttons</td>
+<td>Print <code>value()</code> when pressed</td>
+</tr>
+<tr>
+<td>I2C devices</td>
+<td>Run the scanner (Chapter 8)</td>
+</tr>
+<tr>
+<td>Display</td>
+<td><code>fill()</code> with a bright color, then draw a border</td>
+</tr>
+</tbody>
+</table>
+<p>Test in this order, from the bottom up, and record the result of each test.</p>
+<div class="admonition mascot-tip">
+<p class="admonition-title">One Change at a Time</p>
+<p><img alt="Chrono with a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+When you add a new part, add only that part, then test. If something breaks, you know exactly which change did it. Wiring five things and then wondering what went wrong is how afternoons disappear.</p>
+</div>
+<h2 id="integration-testing">Integration Testing</h2>
+<p><strong>Integration testing</strong> checks that parts still work <em>together</em>. Two parts can each work alone and still fail as a pair: WiFi can brown out the supply and garble the display (Chapter 18), or an interrupt can interrupt a drawing routine (Chapter 7).</p>
+<p>Plan the tests around the times that break clocks:</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>What to check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Midnight</td>
+<td>23:59:59 rolls to 00:00:00 and the date advances</td>
+</tr>
+<tr>
+<td>Noon and 12-hour display</td>
+<td>11:59 AM to 12:00 PM, and 12:59 to 1:00</td>
+</tr>
+<tr>
+<td>Month and year end</td>
+<td>Jan 31 to Feb 1; Dec 31 to Jan 1</td>
+</tr>
+<tr>
+<td>Leap day</td>
+<td>Feb 28 to Feb 29 in a leap year</td>
+</tr>
+<tr>
+<td>Daylight saving change</td>
+<td>The hour jumps at the correct time (Chapter 14)</td>
+</tr>
+<tr>
+<td>Power loss</td>
+<td>Unplug it; it returns with the correct time</td>
+</tr>
+<tr>
+<td>Long run</td>
+<td>Leave it 24 hours; check drift and memory (<code>gc.mem_free()</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>To test rollovers quickly, set the time to 23:59:50 with your set-time function and watch for ten seconds, instead of waiting a day.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p><strong>Troubleshooting</strong> is finding and fixing the cause of a problem. Most problems fall into a few families, so knowing the common ones makes you fast. This table collects the ones from earlier chapters:</p>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely cause</th>
+<th>Where to look</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Display is blank</td>
+<td>Missing <code>show()</code>, wrong pins, no power</td>
+<td>Chapter 11</td>
+</tr>
+<tr>
+<td>I2C scan finds nothing</td>
+<td>SDA and SCL swapped, no ground, wrong pin pair</td>
+<td>Chapter 8</td>
+</tr>
+<tr>
+<td>Colors are wrong</td>
+<td>RGB/BGR order or byte swap</td>
+<td>Chapter 15</td>
+</tr>
+<tr>
+<td>Garbled pixels</td>
+<td>SPI baudrate too high, long wires</td>
+<td>Chapters 8, 11</td>
+</tr>
+<tr>
+<td>Button counts many times</td>
+<td>Contact bounce</td>
+<td>Chapter 7</td>
+</tr>
+<tr>
+<td>Time shows 2021 after power-up</td>
+<td>No RTC or sync</td>
+<td>Chapters 6, 13</td>
+</tr>
+<tr>
+<td>Time is hours off</td>
+<td>Time zone or DST, or Thonny local vs UTC</td>
+<td>Chapter 14</td>
+</tr>
+<tr>
+<td>Random resets</td>
+<td>Brownout: weak supply or big load</td>
+<td>Chapter 18</td>
+</tr>
+<tr>
+<td>Program does not start by itself</td>
+<td>Not saved as <code>main.py</code></td>
+<td>Chapter 5</td>
+</tr>
+<tr>
+<td>WiFi will not connect</td>
+<td>5 GHz network, wrong password</td>
+<td>Chapter 14</td>
+</tr>
+</tbody>
+</table>
+<p>Work from the cheapest, most likely cause to the most expensive. Check power and wiring before code, and code before blaming the hardware.</p>
+<h4 id="diagram-troubleshooting-decision-tree">Diagram: Troubleshooting Decision Tree</h4>
+<details>
+<summary>Troubleshooting Decision Tree</summary>
+<p>Type: workflow diagram
+<strong>sim-id:</strong> troubleshooting-decision-tree<br/>
+<strong>Library:</strong> Mermaid<br/>
+<strong>Status:</strong> Specified</p>
+<p><strong>Learning objective:</strong> Students will <em>analyze</em> a symptom and <em>select</em> the most likely cause and the next test (Bloom: Analyzing).</p>
+<p><strong>Nodes:</strong> A root "What is the symptom?" leading to branches: nothing on the display, wrong image, wrong time, buttons misbehave, random resets. Each branch asks yes/no questions ("Does the I2C scan find the device?") and ends at a suggested fix and the chapter to review.</p>
+<p><strong>Interactions:</strong> Every node has a Mermaid <code>click</code> directive that shows the reasoning and the test to run. A "Start over" button resets the path, and a breadcrumb shows the questions answered so far.</p>
+<p><strong>Responsive design:</strong> The diagram scales to container width.</p>
+<p>Implementation: Mermaid flowchart with click callbacks.</p>
+</details>
+<h3 id="debugging-techniques">Debugging Techniques</h3>
+<p><strong>Debugging</strong> is finding and fixing bugs in code. These are the techniques you already know, gathered in one list:</p>
+<ul>
+<li><strong>Print debugging</strong> (Chapter 3): print the value of a variable, labeled, at key points.</li>
+<li><strong>Read the traceback:</strong> the last line names the error; the line above names where.</li>
+<li><strong>Isolate:</strong> run the smallest piece that shows the problem, in the REPL.</li>
+<li><strong>Check types:</strong> print <code>type(x)</code>, since an <code>int</code> may really be a <code>str</code> or <code>float</code>.</li>
+<li><strong>Compare with a working example:</strong> the kit's sample code is a known-good reference.</li>
+<li><strong>Rubber duck:</strong> explain the code out loud, line by line, to a friend or even a rubber duck. Explaining often reveals the bug.</li>
+</ul>
+<h3 id="systematic-debugging">Systematic Debugging</h3>
+<p><strong>Systematic debugging</strong> is debugging as a scientific method instead of random poking. It has four repeating steps:</p>
+<ol>
+<li><strong>Reproduce:</strong> make the bug happen on purpose, every time.</li>
+<li><strong>Hypothesize:</strong> guess one cause, in writing.</li>
+<li><strong>Test:</strong> run one experiment that would prove the guess wrong.</li>
+<li><strong>Fix and verify:</strong> change one thing, then confirm the bug is gone and nothing else broke.</li>
+</ol>
+<p>A powerful trick is <strong>divide and conquer</strong>: comment out half the program and see whether the bug remains, then halve again, until you have cornered it in a few lines. Version control (Chapter 5) helps here as well, since you can compare the current code with the last version that worked.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Every Bug Is an Experiment</p>
+<p><img alt="Chrono thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Treat a bug as a question the computer is answering honestly: "here is what your code really does." Form a guess, design a test that could prove it wrong, and let the result guide you. Random changes teach you nothing, but a good experiment teaches you something every time.</p>
+</div>
+<h3 id="display-flicker-fix">Display Flicker Fix</h3>
+<p>A display that flashes or blinks with every update is a common problem, especially on the direct write screens of Chapter 15. The usual cause is <strong>clearing the whole screen and redrawing it</strong>, so for a moment the viewer sees a blank screen. Fixes, in order of effectiveness:</p>
+<ol>
+<li><strong>Do not clear.</strong> Draw text with a background color so the new characters cover the old ones (Chapter 15).</li>
+<li><strong>Draw the static parts once,</strong> such as the dial and labels, and update only what changed.</li>
+<li><strong>Erase just the old bounding box</strong> before drawing the new item (Chapter 12).</li>
+<li><strong>Update less often.</strong> If the time changes once per second, do not redraw ten times per second.</li>
+<li><strong>Check the supply.</strong> A backlight or WiFi that dips the voltage can cause visible flicker (Chapter 18).</li>
+</ol>
+<h3 id="logic-analyzer-basics">Logic Analyzer Basics</h3>
+<p>Sometimes the fault is in the signals themselves: a bus that does not answer, or timing that is off. A <strong>logic analyzer</strong> is a small tool that records several digital signals over time and shows them as waveforms on your computer. Inexpensive USB models cost about ten dollars, and free software can decode I2C and SPI traffic into readable bytes.</p>
+<p>Connect one channel to SDA, another to SCL, and one to ground, then trigger a capture while your program talks to the device. You can see the start condition, the address byte, and whether the device answered. If the address is sent and the ninth clock shows no acknowledgment, the device did not respond: you have the wrong address, the wrong wiring, or no pull-up resistors. You can also measure the real clock speed, and see contact bounce on a button.</p>
+<p>A logic analyzer is the electronics version of a print statement: it shows what is <em>actually</em> happening on the wires, which may be different from what you think you told it to do.</p>
+<h4 id="diagram-logic-analyzer-trace-reader">Diagram: Logic Analyzer Trace Reader</h4>
+<details>
+<summary>Logic Analyzer Trace Reader</summary>
+<p>Type: MicroSim
+<strong>sim-id:</strong> logic-analyzer-trace-reader<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p><strong>Learning objective:</strong> Students will <em>interpret</em> a captured I2C waveform and <em>diagnose</em> a missing acknowledgment (Bloom: Analyzing).</p>
+<p><strong>Visual elements:</strong> Two stacked digital traces labeled SCL and SDA, with a time axis and an annotation layer that decodes start, address, read/write bit, ACK, data bytes, and stop.</p>
+<p><strong>Controls:</strong> A dropdown chooses a scenario: <em>good write to 0x3C</em>, <em>wrong address (no ACK)</em>, <em>missing pull-ups (slow edges)</em>, and <em>button bounce on a GPIO</em>. Clicking any part of the waveform opens an infobox naming what it is. A "Diagnose" quiz asks what is wrong and gives feedback.</p>
+<p><strong>Responsive design:</strong> The trace scrolls horizontally on narrow screens.</p>
+<p>Implementation: p5.js with pre-defined waveform arrays.</p>
+</details>
+<h2 id="using-generative-ai">Using Generative AI</h2>
+<p>Generative AI tools such as ChatGPT and Claude can explain code, draft programs, and spot mistakes. They are powerful helpers, and like any powerful tool they work best when you understand what they do well and where they fail. See <a href="../../setup/05-ai-in-the-classroom/">AI in the Classroom</a> and the <a href="../../prompts/">sample prompts</a> for this course's approach.</p>
+<h3 id="generative-ai-prompts">Generative AI Prompts</h3>
+<p>A <strong>prompt</strong> is the instruction you give the AI. The quality of the answer depends on the quality of the prompt. A strong prompt states:</p>
+<ul>
+<li><strong>Context:</strong> the board (Pico W), firmware (MicroPython), display, and libraries.</li>
+<li><strong>Goal:</strong> exactly what you want the program to do.</li>
+<li><strong>Constraints:</strong> no blocking loops, use <code>config.py</code>, print the name and version banner.</li>
+<li><strong>Examples:</strong> paste a working program and say "just like this one, but with red digits."</li>
+<li><strong>Output format:</strong> "explain each change" or "return only the changed function."</li>
+</ul>
+<p>Here is a sample prompt:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>I have a Raspberry Pi Pico W running MicroPython with a 128x64 SSD1306 OLED
+on I2C (SDA GP0, SCL GP1) and a DS3231 at 0x68. Below is my working program.
+Add a snooze feature: pressing the button on GP14 while the alarm is ringing
+should stop it and set it to ring again in 9 minutes. Do not use sleep();
+use ticks_ms(). Explain each change in one sentence.
+</code></pre></div></td></tr></table></div>
+<p>The context, goal, constraint, and format are all in the prompt. Vague prompts like "make my clock better" produce vague code.</p>
+<h3 id="ai-code-generation">AI Code Generation</h3>
+<p><strong>AI code generation</strong> is having the AI write code for you. Treat the result as a <strong>draft from a fast but overconfident assistant</strong>. It often looks correct and is wrong in small ways, especially for MicroPython, which is far less common than regular Python.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Confident and Wrong</p>
+<p><img alt="Chrono warning" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+AI tools often invent functions that don't exist in MicroPython, use modules like <code>datetime</code> that the Pico doesn't have, or mix up GP numbers and pin numbers. They say it with total confidence. Run every line on the real board, and when it fails, paste the exact error message back to the AI.</p>
+</div>
+<p>Common problems to look for:</p>
+<table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Regular Python only</td>
+<td><code>datetime.now()</code>, <code>time.strftime()</code></td>
+</tr>
+<tr>
+<td>Wrong pin numbering</td>
+<td>Uses physical pin numbers in <code>Pin()</code></td>
+</tr>
+<tr>
+<td>Blocking code</td>
+<td><code>sleep(60)</code> inside the main loop</td>
+</tr>
+<tr>
+<td>Invented driver calls</td>
+<td><code>display.draw_circle()</code> on a driver with no such method</td>
+</tr>
+<tr>
+<td>Missing setup</td>
+<td>No <code>oled.show()</code> or <code>fill(0)</code></td>
+</tr>
+</tbody>
+</table>
+<p>You are responsible for every line you submit, no matter who or what wrote it. If you cannot explain the code, you are not finished: ask the AI to explain it, then check the explanation against the documentation.</p>
+<h3 id="ai-code-review">AI Code Review</h3>
+<p><strong>AI code review</strong> flips the roles: you write the code and the AI checks it. It is very good at spotting things a tired human misses. A useful prompt:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>Review this MicroPython clock program for a Raspberry Pi Pico W. Look for:
+bugs at midnight and noon, blocking loops, unhandled exceptions from WiFi,
+memory problems, and unclear names. List issues by severity and suggest a fix
+for each. Do not rewrite the whole program.
+</code></pre></div></td></tr></table></div>
+<p>Treat each finding as a <strong>hypothesis</strong> to verify, not a fact. Some suggestions will be wrong, and some will not apply to MicroPython. Test the ones you accept, and decline the rest.</p>
+<h2 id="human-review">Human Review</h2>
+<h3 id="peer-review">Peer Review</h3>
+<p><strong>Peer review</strong> is having a classmate examine your project, and examining theirs in return. A fresh pair of eyes catches problems you can no longer see. Use a short checklist:</p>
+<ul>
+<li>Does it run from a fresh power-up, with no computer?</li>
+<li>Are pin numbers in <code>config.py</code> and names clear?</li>
+<li>Does each file print its name and version?</li>
+<li>Are secrets kept out of shared files?</li>
+<li>Does the wiring match the diagram?</li>
+</ul>
+<p>Give feedback that is specific and kind. A useful format is <strong>I like, I wish, What if</strong>: "I like the big digits. I wish the buttons beeped. What if the alarm got louder over time?"</p>
+<h3 id="code-walkthrough">Code Walkthrough</h3>
+<p>A <strong>code walkthrough</strong> is a meeting in which the author explains the code line by line while others follow along and ask questions. Its power comes from <em>tracing with real values</em>: pick a specific time, such as 23:59:59, and step through the code as if you were the Pico, saying what each variable holds after each line. Rollover and off-by-one bugs tend to show up within minutes. Keep the walkthrough short (10 to 15 minutes) and focus on the code, not the person.</p>
+<h2 id="final-presentation">Final Presentation</h2>
+<p>The <strong>final presentation</strong> is where you show your clock and explain your thinking. Aim for five to seven minutes with this structure:</p>
+<ol>
+<li><strong>The goal:</strong> what you set out to build, and for whom.</li>
+<li><strong>A live demo,</strong> with a backup video in case something fails.</li>
+<li><strong>Design trade-offs:</strong> the choices you made and what you gave up (cost, readability, power, accuracy, user experience).</li>
+<li><strong>What went wrong:</strong> one bug and how you found it, using systematic debugging.</li>
+<li><strong>Cost:</strong> your bill of materials and total.</li>
+<li><strong>AI:</strong> how you used it, one thing it got wrong, and how you caught it.</li>
+<li><strong>Next steps:</strong> what you would add with more time.</li>
+</ol>
+<p>Presenters are judged on the whole process, not only on the finished object. A clock that did not fully work but was debugged with clear thinking can be a better project than one that worked by luck.</p>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Excellent looks like</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Function</td>
+<td>Runs by itself and shows the correct time</td>
+</tr>
+<tr>
+<td>Design</td>
+<td>Trade-offs are explained with evidence</td>
+</tr>
+<tr>
+<td>Testing</td>
+<td>Rollovers and power loss were tested</td>
+</tr>
+<tr>
+<td>Process</td>
+<td>The plan, BOM, and debugging are documented</td>
+</tr>
+<tr>
+<td>Communication</td>
+<td>Clear, on time, and the demo works</td>
+</tr>
+</tbody>
+</table>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li>Plan first: goal, user, constraints, must-should-could requirements, and a build order that always leaves something working.</li>
+<li>A weighted decision matrix turns design trade-offs into an explained decision.</li>
+<li>A bill of materials with a spares allowance keeps the project on budget; verify listings before you buy.</li>
+<li>Test each part alone (hardware testing), then together, including midnight, month end, leap day, and power loss.</li>
+<li>Debug by reproducing, hypothesizing, testing, and changing one thing at a time.</li>
+<li>Flicker is fixed by not clearing the screen and updating only what changed.</li>
+<li>Use AI with clear prompts, verify everything it writes on the real board, and take responsibility for your code.</li>
+<li>Peer reviews, code walkthroughs, and a good presentation make a project trustworthy and shareable.</li>
+</ul>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">You're a Clock Builder</p>
+<p><img alt="Chrono celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+You can now plan a project, weigh trade-offs, test and debug like an engineer, use AI wisely, and present your work. That's every skill in this book, and you built a clock with them. Every second counts, and yours were well spent!</p>
+</div>
+<h2 id="practice-questions">Practice Questions</h2>
+<ol>
+<li>Write a must-should-could list for a stopwatch that also shows the time.</li>
+<li>Use the decision matrix method to compare an OLED clock and an e-paper clock for a solar-powered outdoor clock. Which qualities would you weight most heavily?</li>
+<li>Make a bill of materials for a TM1637 clock with an RTC, including a 15 percent spares allowance.</li>
+<li>Your clock shows the wrong date after midnight on December 31. Describe a systematic debugging plan, starting with how you reproduce it quickly.</li>
+<li>An AI gives you a program that calls <code>time.strftime()</code>. What is the problem, and what would you do?</li>
+</ol>
 
 
 
 
 
 
+
+  
+  
 
 
 

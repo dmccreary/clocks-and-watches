@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking.">
+        <meta name="description" content="NeoPixel LEDs, HSV color, LED power budgeting, and 74HC595 shift registers for creative art clocks.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -29,7 +29,7 @@
     
     
       
-        <title>16. NeoPixels and Shift Register Clocks - Clocks and Watches with AI</title>
+        <title>NeoPixels and Shift Register Clocks - Clocks and Watches with AI</title>
       
     
     
@@ -77,16 +77,16 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="16. NeoPixels and Shift Register Clocks - Clocks and Watches with AI" />
-<meta property="og:description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." />
+<meta property="og:title" content="NeoPixels and Shift Register Clocks - Clocks and Watches with AI" />
+<meta property="og:description" content="NeoPixel LEDs, HSV color, LED power budgeting, and 74HC595 shift registers for creative art clocks." />
 <meta property="og:image" content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/chapters/16-neopixels-shift-registers/index.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://dmccreary.github.io/clocks-and-watches/chapters/16-neopixels-shift-registers/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="16. NeoPixels and Shift Register Clocks - Clocks and Watches with AI" />
-<meta property="twitter:description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." />
+<meta property="twitter:title" content="NeoPixels and Shift Register Clocks - Clocks and Watches with AI" />
+<meta property="twitter:description" content="NeoPixel LEDs, HSV color, LED power budgeting, and 74HC595 shift registers for creative art clocks." />
 <meta property="twitter:image" content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/chapters/16-neopixels-shift-registers/index.png" />
 </head>
   
@@ -140,7 +140,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              16. NeoPixels and Shift Register Clocks
+              NeoPixels and Shift Register Clocks
             
           </span>
         </div>
@@ -1028,6 +1028,385 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#clocks-made-of-light" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clocks Made of Light
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neopixel-leds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NeoPixel LEDs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NeoPixel LEDs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ws2812b-standard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WS2812B Standard
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neopixel-wiring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NeoPixel Wiring
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-neopixel-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The NeoPixel Library
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The NeoPixel Library">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neopixel-color-mixing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NeoPixel Color Mixing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#led-power-calculation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LED Power Calculation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LED Power Calculation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neopixel-strip-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NeoPixel Strip Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#led-density-per-meter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LED Density Per Meter
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LED Density Per Meter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-neopixel-power-budget" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: NeoPixel Power Budget
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hsv-color-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HSV Color Model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HSV Color Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#color-wheel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Color Wheel
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Color Wheel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-hsv-color-wheel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: HSV Color Wheel
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neopixel-ring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NeoPixel Ring
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neopixel-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NeoPixel Matrix
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neopixel-seven-segment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NeoPixel Seven Segment
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NeoPixel Seven Segment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-neopixel-digit-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: NeoPixel Digit Layout
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#binary-clock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Binary Clock
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Binary Clock">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-binary-clock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Binary Clock
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fibonacci-clock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fibonacci Clock
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#serial-to-parallel-conversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Serial to Parallel Conversion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shift-register" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shift Register
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Shift Register">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-74hc595-chip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The 74HC595 Chip
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#latch-pin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Latch Pin
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shift-register-chaining" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shift Register Chaining
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Shift Register Chaining">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-shift-register-simulator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Shift Register Simulator
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Putting It Together
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1754,6 +2133,385 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#clocks-made-of-light" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clocks Made of Light
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neopixel-leds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NeoPixel LEDs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NeoPixel LEDs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ws2812b-standard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WS2812B Standard
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neopixel-wiring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NeoPixel Wiring
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-neopixel-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The NeoPixel Library
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The NeoPixel Library">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neopixel-color-mixing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NeoPixel Color Mixing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#led-power-calculation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LED Power Calculation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LED Power Calculation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neopixel-strip-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NeoPixel Strip Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#led-density-per-meter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LED Density Per Meter
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LED Density Per Meter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-neopixel-power-budget" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: NeoPixel Power Budget
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hsv-color-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HSV Color Model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HSV Color Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#color-wheel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Color Wheel
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Color Wheel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-hsv-color-wheel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: HSV Color Wheel
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neopixel-ring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NeoPixel Ring
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neopixel-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NeoPixel Matrix
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neopixel-seven-segment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NeoPixel Seven Segment
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NeoPixel Seven Segment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-neopixel-digit-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: NeoPixel Digit Layout
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#binary-clock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Binary Clock
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Binary Clock">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-binary-clock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Binary Clock
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fibonacci-clock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fibonacci Clock
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#serial-to-parallel-conversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Serial to Parallel Conversion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shift-register" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shift Register
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Shift Register">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-74hc595-chip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The 74HC595 Chip
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#latch-pin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Latch Pin
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shift-register-chaining" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shift Register Chaining
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Shift Register Chaining">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-shift-register-simulator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Shift Register Simulator
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Putting It Together
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1930,13 +2688,677 @@
 <li><a href="../15-color-displays/">Chapter 15: Color Displays and Smartwatch Faces</a></li>
 </ul>
 <hr />
-<p>TODO: Generate Chapter Content</p>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Let's Get Colorful</p>
+<p><img alt="Chrono waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+Now for the fun part: clocks made of glowing lights. You'll control hundreds of full-color LEDs with a single wire, and learn a chip that turns three pins into as many outputs as you like. Let's make time tick!</p>
+</div>
+<h2 id="clocks-made-of-light">Clocks Made of Light</h2>
+<p>Every clock so far used a display module. In this chapter the <em>arrangement of lights</em> becomes the display. A strip of addressable LEDs can be bent into a ring, folded into digits, or laid out as a binary or Fibonacci pattern, and the clock's personality comes from your design. We also meet a second tool for the same goal: the shift register, which gives you more output pins when you run out.</p>
+<h2 id="neopixel-leds">NeoPixel LEDs</h2>
+<p>A <strong>NeoPixel</strong> is an LED that contains a tiny controller chip and a red, a green, and a blue LED in one package. The chips are chained together. The Pico sends a stream of color data down one wire; the first pixel takes its color and passes the rest along to the next, and so on down the line. Each pixel can be set to any color and brightness independently.</p>
+<p>The name NeoPixel is Adafruit's brand. The chip inside most of them is the <strong>WS2812B</strong>, which you will also see in many cheap strips. The advantage over the LED displays of Chapter 9 is huge:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Individual LEDs</th>
+<th>NeoPixels</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wires per pixel</td>
+<td>2 or more (plus a resistor)</td>
+<td>Shared; 3 wires for the whole strip</td>
+</tr>
+<tr>
+<td>Pico pins for 100 LEDs</td>
+<td>100 or more</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Color</td>
+<td>One per LED</td>
+<td>16 million per pixel</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ws2812b-standard">WS2812B Standard</h3>
+<p>The <strong>WS2812B</strong> is the specification these LEDs follow. Three facts matter for us:</p>
+<ul>
+<li>It runs from <strong>5 V</strong> power.</li>
+<li>It receives data on a single wire at <strong>800 kHz</strong>, which is fast, and any timing error garbles the colors. MicroPython handles the timing for you.</li>
+<li>Each pixel takes <strong>24 bits</strong> of data: 8 each for green, red, and blue, so every color channel runs from 0 to 255. The pixel latches its color when the data line is quiet for about 50 microseconds.</li>
+</ul>
+<h3 id="neopixel-wiring">NeoPixel Wiring</h3>
+<p>A strip has three connections: <strong>5V</strong>, <strong>GND</strong>, and <strong>DIN</strong> (data in). Connect them as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Strip wire</th>
+<th>Connect to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5V (red)</td>
+<td>VBUS (5 V from USB) or an external 5 V supply</td>
+</tr>
+<tr>
+<td>GND (black)</td>
+<td>Pico GND, and the supply's ground</td>
+</tr>
+<tr>
+<td>DIN (data, often green)</td>
+<td>A Pico GPIO pin such as GP16</td>
+</tr>
+</tbody>
+</table>
+<p>Three good habits protect the LEDs and the Pico:</p>
+<ul>
+<li><strong>Always connect the grounds together.</strong> The data signal is measured relative to ground, so without a shared ground the strip ignores it.</li>
+<li>Place a <strong>300 to 500 ohm resistor</strong> in series with the data line, close to the first pixel, to protect it from voltage spikes.</li>
+<li>Add a <strong>large capacitor</strong>, about 1000 µF, across the strip's 5 V and GND, near its start, to absorb the surge when the LEDs switch on.</li>
+</ul>
+<p>The strip wants a data signal near its supply voltage, while the Pico provides 3.3 V. For short wires this usually works in practice, though it is technically outside the specification. If the first pixels flicker or show random colors, use a <strong>level shifter</strong> to raise the data line to 5 V.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Share the Ground First</p>
+<p><img alt="Chrono warning" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+A strip that lights up randomly, or not at all, is usually missing a shared ground or has power connected before ground. Connect ground first, add the data resistor, and then apply power. It takes a few seconds and saves both strip and Pico.</p>
+</div>
+<h2 id="the-neopixel-library">The NeoPixel Library</h2>
+<p>MicroPython includes a built-in <strong><code>neopixel</code></strong> library. You create a strip object by telling it which pin and how many pixels, set individual pixels by index, and call <code>write()</code> to send the colors, just like <code>show()</code> on a framebuffer display.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">NAME</span> <span class="o">=</span> <span class="s2">"16-neopixel-hello.py"</span>
+<span class="n">VERSION</span> <span class="o">=</span> <span class="s2">"1.0"</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{}</span><span class="s2"> v</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">NAME</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">))</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">neopixel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="n">NUM</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">np</span> <span class="o">=</span> <span class="n">neopixel</span><span class="o">.</span><span class="n">NeoPixel</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">),</span> <span class="n">NUM</span><span class="p">)</span>
+
+<span class="n">np</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>         <span class="c1"># first pixel red   (red, green, blue)</span>
+<span class="n">np</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>         <span class="c1"># second pixel green</span>
+<span class="n">np</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>         <span class="c1"># third pixel blue</span>
+<span class="n">np</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>                  <span class="c1"># nothing lights up until this line</span>
+<span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">fill</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>          <span class="c1"># all pixels off</span>
+<span class="n">np</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<p>Nothing changes until <code>write()</code>, so you can update every pixel and then show them all at the same instant. Pixels are numbered from 0, starting at the end of the strip that connects to the Pico.</p>
+<h3 id="neopixel-color-mixing">NeoPixel Color Mixing</h3>
+<p>NeoPixel color is <strong>additive</strong>: light from the three LEDs adds together. Full red plus full green looks yellow, and all three at full make white. Values are three numbers from 0 to 255.</p>
+<table>
+<thead>
+<tr>
+<th>Color</th>
+<th>(R, G, B)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Red</td>
+<td>(255, 0, 0)</td>
+</tr>
+<tr>
+<td>Yellow</td>
+<td>(255, 255, 0)</td>
+</tr>
+<tr>
+<td>Cyan</td>
+<td>(0, 255, 255)</td>
+</tr>
+<tr>
+<td>Purple</td>
+<td>(128, 0, 128)</td>
+</tr>
+<tr>
+<td>Warm white</td>
+<td>(255, 147, 41)</td>
+</tr>
+<tr>
+<td>White</td>
+<td>(255, 255, 255)</td>
+</tr>
+</tbody>
+</table>
+<p>NeoPixels are extremely bright, and a value of 255 is uncomfortable to look at from a desk. Use values from about 10 to 60 for indoor clocks. That also saves power, as the next sections show.</p>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Turn Down the Brightness</p>
+<p><img alt="Chrono with a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+Start every NeoPixel project with color values of 30 or less. You'll get a more pleasant glow, a cooler strip, and a much smaller power bill. You can always turn it up later.</p>
+</div>
+<h2 id="led-power-calculation">LED Power Calculation</h2>
+<p>Each NeoPixel draws up to about <strong>60 mA</strong> when all three colors are at full brightness (white at 255). Lit pixels of a single color draw about 20 mA. The current adds up quickly over a whole strip:</p>
+<div class="arithmatex">\[ I = N \times 60\ \text{mA} \times \text{brightness fraction} \]</div>
+<p><strong>Worked example.</strong> A ring of 60 pixels, all white, at 25 percent brightness draws <span class="arithmatex">\( 60 \times 60 \times 0.25 = 900 \)</span> mA, almost a full amp. A USB port provides about 500 mA, so this ring could overload it. But a clock rarely lights all its pixels at once. Three lit pixels with a moderate color draw <span class="arithmatex">\( 3 \times 20 = 60 \)</span> mA, no problem.</p>
+<p>Compare the worst case for whole strips:</p>
+<table>
+<thead>
+<tr>
+<th>Strip density</th>
+<th>LEDs per meter</th>
+<th>Worst-case current per meter (all white)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Low</td>
+<td>30</td>
+<td>1.8 A</td>
+</tr>
+<tr>
+<td>Standard</td>
+<td>60</td>
+<td>3.6 A</td>
+</tr>
+<tr>
+<td>Dense</td>
+<td>144</td>
+<td>8.6 A</td>
+</tr>
+</tbody>
+</table>
+<p>Plan for the maximum your program can light up, and if it exceeds about 400 mA, power the strip from a separate 5 V supply, with its ground tied to the Pico's ground.</p>
+<h3 id="neopixel-strip-types">NeoPixel Strip Types</h3>
+<p>NeoPixels come in several shapes, each suited to a different clock:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+<th>Good for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Strip</td>
+<td>A long flexible line</td>
+<td>Seven-segment art, binary clocks</td>
+</tr>
+<tr>
+<td>Ring</td>
+<td>Pixels in a circle (12, 16, 24, or 60)</td>
+<td>Analog-style faces</td>
+</tr>
+<tr>
+<td>Matrix</td>
+<td>A grid (8 by 8, 16 by 16)</td>
+<td>Scrolling text, pictures</td>
+</tr>
+<tr>
+<td>String</td>
+<td>Individual pixels on a wire</td>
+<td>Placing pixels anywhere</td>
+</tr>
+</tbody>
+</table>
+<h3 id="led-density-per-meter">LED Density Per Meter</h3>
+<p><strong>LED density</strong> is how many pixels a strip packs into each meter. Common densities are 30, 60, and 144 per meter. A denser strip looks smoother and brighter, but costs more and draws more power, as the table above showed. Sixty per meter puts pixels about 17 mm apart, a good size for a clock digit. Pick the density to match your layout: sparse strips suit large art clocks, and dense strips suit small, detailed ones.</p>
+<h4 id="diagram-neopixel-power-budget">Diagram: NeoPixel Power Budget</h4>
+<details>
+<summary>NeoPixel Power Budget</summary>
+<p>Type: MicroSim
+<strong>sim-id:</strong> neopixel-power-budget<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p><strong>Learning objective:</strong> Students will <em>calculate</em> the current a LED design draws and <em>evaluate</em> whether it needs an external supply (Bloom: Applying, Evaluating).</p>
+<p><strong>Visual elements:</strong> A strip of pixels where the student clicks to light each one. A gauge shows total current in mA with a green zone below 400 mA, yellow to 500 mA, and red above 500 mA (the USB limit).</p>
+<p><strong>Controls:</strong> A dropdown for strip length (12, 30, 60, 144), a color picker for the lit color, a brightness slider (0 to 100 percent), and a "Light all" button. The readout shows the formula with the numbers substituted.</p>
+<p><strong>Responsive design:</strong> The strip wraps into rows on narrow screens.</p>
+<p>Implementation: p5.js with a per-pixel current estimate of R+G+B channel values times 20 mA per full channel.</p>
+</details>
+<h2 id="hsv-color-model">HSV Color Model</h2>
+<p>Mixing red, green, and blue by hand is awkward when you want "the same color, but dimmer" or a rainbow. The <strong>HSV color model</strong> describes a color with three more natural numbers:</p>
+<ul>
+<li><strong>Hue:</strong> the color itself, as an angle from 0 to 359 degrees around a color wheel (0 is red, 120 green, 240 blue).</li>
+<li><strong>Saturation:</strong> how vivid it is, from gray (0) to pure color (255).</li>
+<li><strong>Value:</strong> how bright it is, from 0 (off) to 255 (full).</li>
+</ul>
+<p>To change brightness, you change only the value. To move through the rainbow, you change only the hue. MicroPython has no built-in HSV converter, so here is a compact one that uses only integers:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">hsv_to_rgb</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""h: 0-359, s and v: 0-255. Returns an (r, g, b) tuple."""</span>
+    <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+    <span class="n">region</span> <span class="o">=</span> <span class="n">h</span> <span class="o">//</span> <span class="mi">60</span>
+    <span class="n">rem</span> <span class="o">=</span> <span class="p">(</span><span class="n">h</span> <span class="o">%</span> <span class="mi">60</span><span class="p">)</span> <span class="o">*</span> <span class="mi">255</span> <span class="o">//</span> <span class="mi">60</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">v</span> <span class="o">*</span> <span class="p">(</span><span class="mi">255</span> <span class="o">-</span> <span class="n">s</span><span class="p">)</span> <span class="o">//</span> <span class="mi">255</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">v</span> <span class="o">*</span> <span class="p">(</span><span class="mi">255</span> <span class="o">-</span> <span class="n">s</span> <span class="o">*</span> <span class="n">rem</span> <span class="o">//</span> <span class="mi">255</span><span class="p">)</span> <span class="o">//</span> <span class="mi">255</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">v</span> <span class="o">*</span> <span class="p">(</span><span class="mi">255</span> <span class="o">-</span> <span class="n">s</span> <span class="o">*</span> <span class="p">(</span><span class="mi">255</span> <span class="o">-</span> <span class="n">rem</span><span class="p">)</span> <span class="o">//</span> <span class="mi">255</span><span class="p">)</span> <span class="o">//</span> <span class="mi">255</span>
+    <span class="k">if</span> <span class="n">region</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">region</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="k">return</span> <span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">region</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span> <span class="k">return</span> <span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">region</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span> <span class="k">return</span> <span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">region</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span> <span class="k">return</span> <span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="color-wheel">Color Wheel</h3>
+<p>A <strong>color wheel</strong> arranges all the hues around a circle, so the hue of a point is just its angle, the same idea as the clock angles of Chapter 10. On a ring of <code>N</code> pixels, giving pixel <code>i</code> the hue <span class="arithmatex">\( 360 \times i / N \)</span> paints a rainbow. Adding an offset that grows every frame rotates it.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">NAME</span> <span class="o">=</span> <span class="s2">"16-rainbow-ring.py"</span>
+<span class="n">VERSION</span> <span class="o">=</span> <span class="s2">"1.0"</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{}</span><span class="s2"> v</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">NAME</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">))</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">neopixel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep_ms</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">np</span> <span class="o">=</span> <span class="n">neopixel</span><span class="o">.</span><span class="n">NeoPixel</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">),</span> <span class="n">N</span><span class="p">)</span>
+
+<span class="n">offset</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="n">hue</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="mi">360</span> <span class="o">//</span> <span class="n">N</span> <span class="o">+</span> <span class="n">offset</span><span class="p">)</span> <span class="o">%</span> <span class="mi">360</span>
+        <span class="n">np</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">hsv_to_rgb</span><span class="p">(</span><span class="n">hue</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>     <span class="c1"># value 30: comfortable brightness</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+    <span class="n">offset</span> <span class="o">=</span> <span class="p">(</span><span class="n">offset</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span> <span class="o">%</span> <span class="mi">360</span>
+    <span class="n">sleep_ms</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Because value stays at 30, the rainbow is easy on the eyes, and changing that one number changes the brightness of everything.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Hue Is Just an Angle</p>
+<p><img alt="Chrono thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+A color wheel is a circle, and a hue is an angle on it. You already know how to spin an angle around a clock face, so making colors move is the same skill: add a little to the angle each frame and wrap around at 360.</p>
+</div>
+<h4 id="diagram-hsv-color-wheel">Diagram: HSV Color Wheel</h4>
+<details>
+<summary>HSV Color Wheel</summary>
+<p>Type: MicroSim
+<strong>sim-id:</strong> hsv-color-wheel<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p><strong>Learning objective:</strong> Students will <em>understand</em> hue, saturation, and value and <em>convert</em> between HSV and RGB (Bloom: Understanding, Applying).</p>
+<p><strong>Visual elements:</strong> A color wheel with a draggable marker, and a swatch of the selected color. A 12-pixel virtual ring below it shows the rainbow that <code>hsv_to_rgb</code> would produce.</p>
+<p><strong>Controls:</strong> Sliders for hue (0 to 359), saturation, and value. Readouts for R, G, B and the <code>np[i] = (...)</code> code line. A "Rotate" button animates the offset as in the rainbow program.</p>
+<p><strong>Responsive design:</strong> The wheel scales to container width.</p>
+<p>Implementation: p5.js with the same integer conversion as the MicroPython code.</p>
+</details>
+<h2 id="neopixel-ring">NeoPixel Ring</h2>
+<p>A <strong>NeoPixel ring</strong> is a circle of pixels, usually 12, 16, 24, or 60. A 12-pixel ring maps naturally to the 12 hours on a clock face. Pixel 0 sits at one point on the ring (often near the data connector), and you mount the ring so pixel 0 is at the top, at 12 o'clock.</p>
+<p>A simple 12-pixel clock lights one pixel for the hour and one for the minute (each pixel is five minutes):</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">h</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">()[</span><span class="mi">3</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">np</span><span class="o">.</span><span class="n">fill</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">np</span><span class="p">[</span><span class="n">h</span> <span class="o">%</span> <span class="mi">12</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>               <span class="c1"># hour: red</span>
+<span class="n">np</span><span class="p">[</span><span class="n">m</span> <span class="o">//</span> <span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>               <span class="c1"># minute (in 5-minute steps): green</span>
+<span class="k">if</span> <span class="n">h</span> <span class="o">%</span> <span class="mi">12</span> <span class="o">==</span> <span class="n">m</span> <span class="o">//</span> <span class="mi">5</span><span class="p">:</span>                  <span class="c1"># both on the same pixel</span>
+    <span class="n">np</span><span class="p">[</span><span class="n">h</span> <span class="o">%</span> <span class="mi">12</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>          <span class="c1"># additive mix: yellow</span>
+<span class="n">np</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<p>The overlap rule shows the additive color mixing of NeoPixels in action: red and green together make yellow.</p>
+<h2 id="neopixel-matrix">NeoPixel Matrix</h2>
+<p>A <strong>NeoPixel matrix</strong> is a grid of pixels wired as one long strip that snakes back and forth. To draw on it by (x, y) position, you convert the coordinates to a strip index. On an 8 by 8 matrix wired in a <strong>zigzag</strong> (odd rows run backward):</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">index</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">8</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">y</span> <span class="o">*</span> <span class="n">width</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span> <span class="k">if</span> <span class="n">y</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">width</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>This is the same coordinate idea as the display coordinates in Chapter 12. A matrix can show scrolling text, small pictures, and 3 by 5 pixel digits.</p>
+<h2 id="neopixel-seven-segment">NeoPixel Seven Segment</h2>
+<p>A <strong>NeoPixel seven-segment display</strong> builds each digit from strip pixels, with every segment made of two or three pixels. It is the addressable-LED cousin of the seven-segment display in Chapter 9, and it uses the same <code>0x3F</code>-style segment bytes.</p>
+<p>The idea is to note which pixels belong to each segment, then light them when the digit's segment bit is on:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">SEG_PIXELS</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">)]</span>   <span class="c1"># a to g</span>
+<span class="n">DIGITS</span> <span class="o">=</span> <span class="p">[</span><span class="mh">0x3F</span><span class="p">,</span> <span class="mh">0x06</span><span class="p">,</span> <span class="mh">0x5B</span><span class="p">,</span> <span class="mh">0x4F</span><span class="p">,</span> <span class="mh">0x66</span><span class="p">,</span> <span class="mh">0x6D</span><span class="p">,</span> <span class="mh">0x7D</span><span class="p">,</span> <span class="mh">0x07</span><span class="p">,</span> <span class="mh">0x7F</span><span class="p">,</span> <span class="mh">0x6F</span><span class="p">]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">show_digit</span><span class="p">(</span><span class="n">np</span><span class="p">,</span> <span class="n">first_pixel</span><span class="p">,</span> <span class="n">digit</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+    <span class="n">pattern</span> <span class="o">=</span> <span class="n">DIGITS</span><span class="p">[</span><span class="n">digit</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">seg</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">):</span>
+        <span class="n">on</span> <span class="o">=</span> <span class="p">(</span><span class="n">pattern</span> <span class="o">&gt;&gt;</span> <span class="n">seg</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">SEG_PIXELS</span><span class="p">[</span><span class="n">seg</span><span class="p">]:</span>
+            <span class="n">np</span><span class="p">[</span><span class="n">first_pixel</span> <span class="o">+</span> <span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">color</span> <span class="k">if</span> <span class="n">on</span> <span class="k">else</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>With two pixels per segment, a digit uses 14 pixels, and a four-digit clock with two colon pixels needs about 58. A single 60-pixel strip is enough to display the entire time, in any color, even changing color with the hour.</p>
+<h4 id="diagram-neopixel-digit-layout">Diagram: NeoPixel Digit Layout</h4>
+<details>
+<summary>NeoPixel Digit Layout</summary>
+<p>Type: interactive diagram
+<strong>sim-id:</strong> neopixel-digit-layout<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p><strong>Learning objective:</strong> Students will <em>design</em> a pixel-to-segment mapping and <em>apply</em> it to display a digit (Bloom: Applying, Creating).</p>
+<p><strong>Visual elements:</strong> A single digit drawn as seven segments, each showing its pixel numbers (0 to 13).</p>
+<p><strong>Interactions:</strong> The student can click a segment to see which pixels it contains, choose a digit 0 to 9 to see which segments and pixel indices light, and toggle "Show strip order" to see how the strip snakes through the digit. A "Copy <code>SEG_PIXELS</code>" button outputs the mapping as Python.</p>
+<p><strong>Responsive design:</strong> Digit scales to canvas size.</p>
+<p>Implementation: p5.js with segment polygons and a lookup table.</p>
+</details>
+<h2 id="binary-clock">Binary Clock</h2>
+<p>A <strong>binary clock</strong> shows the time in binary, with each LED representing one bit (Chapter 8). The hours, minutes, and seconds each get a row. A pixel that is on is a 1, off is a 0. Minutes and seconds go up to 59, which needs 6 bits (32 + 16 + 8 + 4 + 2 + 1); hours go up to 23, which needs 5.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">show_bits</span><span class="p">(</span><span class="n">np</span><span class="p">,</span> <span class="n">first_pixel</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">bits</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">bits</span><span class="p">):</span>
+        <span class="n">on</span> <span class="o">=</span> <span class="p">(</span><span class="n">value</span> <span class="o">&gt;&gt;</span> <span class="n">b</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">1</span>
+        <span class="n">np</span><span class="p">[</span><span class="n">first_pixel</span> <span class="o">+</span> <span class="n">b</span><span class="p">]</span> <span class="o">=</span> <span class="n">color</span> <span class="k">if</span> <span class="n">on</span> <span class="k">else</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">h</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">()[</span><span class="mi">3</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">show_bits</span><span class="p">(</span><span class="n">np</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">40</span><span class="p">))</span>      <span class="c1"># seconds on pixels 0 to 5</span>
+<span class="n">show_bits</span><span class="p">(</span><span class="n">np</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>      <span class="c1"># minutes on pixels 6 to 11</span>
+<span class="n">show_bits</span><span class="p">(</span><span class="n">np</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>     <span class="c1"># hours on pixels 12 to 16</span>
+<span class="n">np</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<p>This is a fun challenge to read: at 9:37, minutes is 37 = 32 + 4 + 1, so the 32, 4, and 1 pixels are lit. Try the interactive version below.</p>
+<h4 id="diagram-binary-clock">Diagram: Binary Clock</h4>
+<iframe src="../../sims/binary-clock/binary-clock-vertical.html" width="420" height="295" scrolling="no"></iframe>
+
+<p><a class="md-button" href="../../sims/binary-clock/binary-clock-vertical.html">Run the Binary Clock MicroSim fullscreen</a></p>
+<details>
+<summary>Binary Clock (existing MicroSim)</summary>
+<p>Type: MicroSim
+<strong>sim-id:</strong> binary-clock<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> docs/sims/binary-clock/</p>
+<p>This MicroSim is already part of this book. Learning objective: students will <em>apply</em> binary place values to read the time (Bloom: Applying).</p>
+</details>
+<h2 id="fibonacci-clock">Fibonacci Clock</h2>
+<p>A <strong>Fibonacci clock</strong> shows the time using five squares whose sizes are the first Fibonacci numbers: 1, 1, 2, 3, and 5. Each square can be lit in one of four ways, and the sum of the sizes shows the value:</p>
+<table>
+<thead>
+<tr>
+<th>Square color</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Red</td>
+<td>Counts toward the <strong>hour</strong></td>
+</tr>
+<tr>
+<td>Green</td>
+<td>Counts toward the <strong>minutes</strong> in 5-minute units</td>
+</tr>
+<tr>
+<td>Blue</td>
+<td>Counts toward <strong>both</strong></td>
+</tr>
+<tr>
+<td>Off (white or dark)</td>
+<td>Counts toward neither</td>
+</tr>
+</tbody>
+</table>
+<p>The hour is the sum of the red and blue squares, and the minutes divided by 5 is the sum of the green and blue squares. For 3:20, the hour is 3, and the minutes in 5-minute units are <span class="arithmatex">\( 20 / 5 = 4 \)</span>. Light the 3-square <strong>blue</strong>, since it counts toward both totals (hour = 3, and 3 of the 4 minute units), then light a 1-square <strong>green</strong> to add the last minute unit (3 + 1 = 4). Many times have more than one valid arrangement, which the clock can pick at random, so the same time looks different each time.</p>
+<p>The Fibonacci clock combines the thinking skills from Chapter 1: the <em>pattern</em> (Fibonacci sums), <em>abstraction</em> (five squares hide the time), and an <em>algorithm</em> (choose which squares make the required sums).</p>
+<h2 id="serial-to-parallel-conversion">Serial to Parallel Conversion</h2>
+<p>Now for a different way to get more outputs. You know two ways of moving data: <strong>serially</strong> (bits one after another on a wire) and <strong>in parallel</strong> (many bits at the same instant on many wires). <strong>Serial-to-parallel conversion</strong> takes a stream of serial bits and presents them as parallel outputs. A special chip does this job so that your Pico needs only a few pins to control many outputs.</p>
+<h2 id="shift-register">Shift Register</h2>
+<p>A <strong>shift register</strong> is a chip that holds a row of bits and moves them along, one position at a time, each time it receives a pulse on its clock input. Think of a row of eight boxes, each holding a 0 or 1. Each clock pulse slides every bit one box to the right and drops a new bit into the first box. After eight pulses, the row holds the eight bits you sent, and those bits control eight output pins.</p>
+<h3 id="the-74hc595-chip">The 74HC595 Chip</h3>
+<p>The <strong>74HC595</strong> is the standard shift register for hobby projects. It is an 8-bit serial-in, parallel-out register that costs pennies. Its important pins:</p>
+<table>
+<thead>
+<tr>
+<th>Pin name</th>
+<th>Also called</th>
+<th>Job</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SER</td>
+<td>DS, DATA</td>
+<td>Serial data in (one bit at a time)</td>
+</tr>
+<tr>
+<td>SRCLK</td>
+<td>SHCP, CLOCK</td>
+<td>Shifts the data one place on each rising edge</td>
+</tr>
+<tr>
+<td>RCLK</td>
+<td>STCP, LATCH</td>
+<td>Copies the shifted bits to the outputs</td>
+</tr>
+<tr>
+<td>Q0 to Q7</td>
+<td>Outputs</td>
+<td>The eight parallel outputs</td>
+</tr>
+<tr>
+<td>QH'</td>
+<td>Serial out</td>
+<td>Passes the overflow bit on to a second chip</td>
+</tr>
+<tr>
+<td>OE</td>
+<td>Output enable</td>
+<td>Tie to GND to keep outputs on</td>
+</tr>
+<tr>
+<td>SRCLR</td>
+<td>Clear</td>
+<td>Tie to 3.3 V to disable clearing</td>
+</tr>
+<tr>
+<td>VCC, GND</td>
+<td>Power</td>
+<td>3.3 V and ground</td>
+</tr>
+</tbody>
+</table>
+<p>Each output can supply about 6 mA comfortably, so connect an LED with a current-limiting resistor (Chapter 2), or a transistor for bigger loads. Outputs are limited to a few dozen milliamps in total.</p>
+<h3 id="latch-pin">Latch Pin</h3>
+<p>The <strong>latch pin</strong> solves a problem. While bits are being shifted in, the outputs would flicker as the data moves along. The 74HC595 avoids this with two stages: the <strong>shift register</strong> collects the bits, and a separate <strong>storage register</strong> drives the outputs. Pulsing the latch pin copies the shift register into the storage register in one instant, so all eight outputs change at exactly the same moment.</p>
+<p>The complete sequence has three steps: shift in eight bits with the clock, then pulse the latch once. Here is the MicroPython function:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">NAME</span> <span class="o">=</span> <span class="s2">"16-shift-register.py"</span>
+<span class="n">VERSION</span> <span class="o">=</span> <span class="s2">"1.0"</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{}</span><span class="s2"> v</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">NAME</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">))</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>      <span class="c1"># SER</span>
+<span class="n">clock</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>     <span class="c1"># SRCLK</span>
+<span class="n">latch</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>     <span class="c1"># RCLK</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">write_byte</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="n">latch</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">value</span><span class="p">((</span><span class="n">value</span> <span class="o">&gt;&gt;</span> <span class="p">(</span><span class="mi">7</span> <span class="o">-</span> <span class="n">i</span><span class="p">))</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">)</span>   <span class="c1"># most significant bit first</span>
+        <span class="n">clock</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>                       <span class="c1"># shift this bit in</span>
+        <span class="n">clock</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">latch</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>                           <span class="c1"># copy to the outputs</span>
+
+<span class="n">write_byte</span><span class="p">(</span><span class="mb">0b10101010</span><span class="p">)</span>      <span class="c1"># lights Q7, Q5, Q3, Q1</span>
+</code></pre></div></td></tr></table></div>
+<p>Sending the most significant bit first makes bit <em>n</em> of the value appear on output <em>Qn</em>, so <code>0b00000001</code> lights Q0. This uses the bit ordering ideas of Chapter 8. You can also use the Pico's hardware SPI for the same job, and it is faster.</p>
+<h3 id="shift-register-chaining">Shift Register Chaining</h3>
+<p>The <code>QH'</code> output passes the bit that falls off the end to the next chip's <code>SER</code> input. If you connect the <code>QH'</code> of one chip to the <code>SER</code> of another and share the clock and latch lines, the two chips act as a single 16-bit register. Send two bytes instead of one, and all 16 outputs update. Chain four chips for 32 outputs, enough for a four-digit, seven-segment clock with eight segments (including the decimal point) per digit, still using only three Pico pins.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">write_bytes</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+    <span class="n">latch</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>              <span class="c1"># send the far chip's byte first</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">value</span><span class="p">((</span><span class="n">value</span> <span class="o">&gt;&gt;</span> <span class="p">(</span><span class="mi">7</span> <span class="o">-</span> <span class="n">i</span><span class="p">))</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">clock</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">clock</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">latch</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">digits</span> <span class="o">=</span> <span class="p">[</span><span class="mh">0x3F</span><span class="p">,</span> <span class="mh">0x06</span><span class="p">,</span> <span class="mh">0x5B</span><span class="p">,</span> <span class="mh">0x4F</span><span class="p">]</span>     <span class="c1"># 0, 1, 2, 3 from Chapter 9</span>
+<span class="n">write_bytes</span><span class="p">(</span><span class="n">digits</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>This design needs no multiplexing (Chapter 9), since every segment has its own output and stays lit on its own. It costs four chips and 32 resistors instead, but it is simple, rock solid, and needs no constant refreshing.</p>
+<h4 id="diagram-shift-register-simulator">Diagram: Shift Register Simulator</h4>
+<iframe src="../../sims/shift-register/main.html" width="100%" height="480px" scrolling="no"></iframe>
+
+<p><a class="md-button" href="../../sims/shift-register/main.html">Run the Shift Register MicroSim fullscreen</a></p>
+<details>
+<summary>Shift Register (existing MicroSim)</summary>
+<p>Type: MicroSim
+<strong>sim-id:</strong> shift-register<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> docs/sims/shift-register/</p>
+<p>This MicroSim is already part of this book. Learning objective: students will <em>understand</em> how serial bits shift in and appear on parallel outputs after a latch pulse (Bloom: Understanding).</p>
+</details>
+<h2 id="putting-it-together">Putting It Together</h2>
+<table>
+<thead>
+<tr>
+<th>Goal</th>
+<th>Tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Many full-color LEDs, one pin</td>
+<td>NeoPixels with <code>neopixel.NeoPixel</code></td>
+</tr>
+<tr>
+<td>A rainbow or brightness control</td>
+<td>HSV with <code>hsv_to_rgb()</code></td>
+</tr>
+<tr>
+<td>Circular clock face</td>
+<td>NeoPixel ring, one pixel per 5 minutes</td>
+</tr>
+<tr>
+<td>Watch out for power</td>
+<td>Current = pixels × 60 mA × brightness</td>
+</tr>
+<tr>
+<td>More outputs from few pins</td>
+<td>74HC595 (serial to parallel)</td>
+</tr>
+<tr>
+<td>Even more outputs</td>
+<td>Chain chips through <code>QH'</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li>A NeoPixel (WS2812B) is an LED with a built-in controller; one data pin drives a whole chain.</li>
+<li>Connect grounds together, add a data resistor and a capacitor, and keep brightness values low.</li>
+<li>Power is about 60 mA per pixel at full white; add it up before choosing a supply.</li>
+<li>HSV separates color, vividness, and brightness, and a hue is an angle on a color wheel.</li>
+<li>Rings, matrices, digit layouts, binary, and Fibonacci designs are different ways to arrange the same pixels.</li>
+<li>A 74HC595 converts serial data to parallel outputs; the latch updates them all at once, and chaining multiplies them.</li>
+</ul>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Lights, Clock, Action</p>
+<p><img alt="Chrono celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+You can now drive NeoPixels, paint a rainbow with HSV, budget the power, and expand your outputs with a shift register. Your art clock is only a design away. Every second counts!</p>
+</div>
+<h2 id="practice-questions">Practice Questions</h2>
+<ol>
+<li>A ring has 24 pixels, and your program lights 6 of them in white at 20 percent brightness. Estimate the current.</li>
+<li>Why must the strip's ground be connected to the Pico's ground?</li>
+<li>Write the hue values for 12 pixels spaced evenly around a color wheel.</li>
+<li>Explain the job of the latch pin and what would happen without it.</li>
+<li>Show the pixels lit in a binary clock for the minute value 45.</li>
+</ol>
 
 
 
 
 
 
+
+  
+  
 
 
 

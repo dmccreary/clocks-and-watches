@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking.">
+        <meta name="description" content="Reading the time with localtime(), splitting the time tuple, formatting time and dates, and timing with sleep and ticks.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -29,7 +29,7 @@
     
     
       
-        <title>6. Getting the Time in MicroPython - Clocks and Watches with AI</title>
+        <title>Getting the Time in MicroPython - Clocks and Watches with AI</title>
       
     
     
@@ -77,16 +77,16 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="6. Getting the Time in MicroPython - Clocks and Watches with AI" />
-<meta property="og:description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." />
+<meta property="og:title" content="Getting the Time in MicroPython - Clocks and Watches with AI" />
+<meta property="og:description" content="Reading the time with localtime(), splitting the time tuple, formatting time and dates, and timing with sleep and ticks." />
 <meta property="og:image" content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/chapters/06-getting-time/index.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://dmccreary.github.io/clocks-and-watches/chapters/06-getting-time/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="6. Getting the Time in MicroPython - Clocks and Watches with AI" />
-<meta property="twitter:description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." />
+<meta property="twitter:title" content="Getting the Time in MicroPython - Clocks and Watches with AI" />
+<meta property="twitter:description" content="Reading the time with localtime(), splitting the time tuple, formatting time and dates, and timing with sleep and ticks." />
 <meta property="twitter:image" content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/chapters/06-getting-time/index.png" />
 </head>
   
@@ -140,7 +140,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              6. Getting the Time in MicroPython
+              Getting the Time in MicroPython
             
           </span>
         </div>
@@ -742,6 +742,333 @@
     <span class="md-ellipsis">
       
         Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asking-the-pico-for-the-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Asking the Pico for the Time
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#localtime-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Localtime Function
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#time-tuple" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Time Tuple
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Time Tuple">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-time-tuple-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Time Tuple Explorer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#year-month-and-day" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Year, Month, and Day
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hour-minute-and-second" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hour, Minute, and Second
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#weekday-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Weekday Number
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#day-of-year" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Day of Year
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#weekday-labels-and-month-labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Weekday Labels and Month Labels
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#time-formatting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Time Formatting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Time Formatting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#24-hour-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        24-Hour Format
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-hour-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12-Hour Format
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ampm-conversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AM/PM Conversion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#date-formatting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Date Formatting
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seconds-since-midnight" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Seconds Since Midnight
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-utime-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Utime Module
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sleep-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sleep Function
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ticks-milliseconds-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ticks Milliseconds Function
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ticks Milliseconds Function">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ticks-difference-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ticks Difference Function
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ticks Difference Function">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-sleep-vs-ticks-timeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Sleep vs Ticks Timeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epoch-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Epoch Time
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Epoch Time">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unix-timestamp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unix Timestamp
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#time-math" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Time Math
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#leap-year-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Leap Year Handling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Putting It Together
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice Questions
       
     </span>
   </a>
@@ -1754,6 +2081,333 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#asking-the-pico-for-the-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Asking the Pico for the Time
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#localtime-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Localtime Function
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#time-tuple" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Time Tuple
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Time Tuple">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-time-tuple-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Time Tuple Explorer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#year-month-and-day" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Year, Month, and Day
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hour-minute-and-second" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hour, Minute, and Second
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#weekday-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Weekday Number
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#day-of-year" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Day of Year
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#weekday-labels-and-month-labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Weekday Labels and Month Labels
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#time-formatting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Time Formatting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Time Formatting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#24-hour-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        24-Hour Format
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-hour-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12-Hour Format
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ampm-conversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AM/PM Conversion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#date-formatting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Date Formatting
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seconds-since-midnight" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Seconds Since Midnight
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-utime-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Utime Module
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sleep-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sleep Function
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ticks-milliseconds-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ticks Milliseconds Function
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ticks Milliseconds Function">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ticks-difference-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ticks Difference Function
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ticks Difference Function">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-sleep-vs-ticks-timeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Sleep vs Ticks Timeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epoch-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Epoch Time
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Epoch Time">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unix-timestamp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unix Timestamp
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#time-math" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Time Math
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#leap-year-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Leap Year Handling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Putting It Together
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1932,13 +2586,505 @@
 <li><a href="../04-control-flow-functions/">Chapter 4: Control Flow, Functions, and Modules</a></li>
 </ul>
 <hr />
-<p>TODO: Generate Chapter Content</p>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Time to Read the Time</p>
+<p><img alt="Chrono waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+Every clock starts with one question: what time is it right now? In this chapter you'll ask the Pico, pull the answer apart, and print it as a clean <code>Mon 3:07 PM</code>. Let's make time tick!</p>
+</div>
+<h2 id="asking-the-pico-for-the-time">Asking the Pico for the Time</h2>
+<p>A clock's first job is to <em>know</em> the time. MicroPython gives you a small toolkit for that: a function that returns the current time, a way to split it into hours, minutes, and seconds, and timers for pacing a program. This chapter covers reading time, formatting it for humans, and measuring short intervals. Where the time comes from (an internet server or a battery-backed chip) is the topic of later chapters.</p>
+<h2 id="localtime-function">Localtime Function</h2>
+<p>The <strong><code>localtime()</code> function</strong> returns the current date and time as a tuple. You get it from the <code>time</code> module:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">())</span>
+</code></pre></div></td></tr></table></div>
+<p>A typical result looks like this:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">271</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>The Pico does not have a calendar built from scratch. It counts seconds in an internal clock (the RTC, covered in Chapter 13). When you connect with Thonny, Thonny sets that clock from your computer, so <code>localtime()</code> matches your computer's local time. If you power the Pico from a wall adapter with no computer, the time starts at a default date (early 2021) and drifts from there until you set it, which is why later chapters add a real-time clock chip and internet sync.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Wrong Date After Unplugging?</p>
+<p><img alt="Chrono warning" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+If your clock shows a date in 2021 after a power cycle, the Pico simply forgot the time. Plain MicroPython has no clock battery, and the fix is a time source: a DS3231 real-time clock (Chapter 13) or WiFi time sync (Chapter 14).</p>
+</div>
+<p>On the Pico, <code>localtime()</code> and <code>gmtime()</code> return the same thing, because MicroPython does not apply time zones by itself. Converting between time zones is something you will do in Chapter 14.</p>
+<h2 id="time-tuple">Time Tuple</h2>
+<p>The result of <code>localtime()</code> is a <strong>time tuple</strong>: an immutable group of eight integers in a fixed order.</p>
+<table>
+<thead>
+<tr>
+<th>Index</th>
+<th>Name</th>
+<th>Range</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>year</td>
+<td>2000 and up</td>
+<td>2026</td>
+</tr>
+<tr>
+<td>1</td>
+<td>month</td>
+<td>1 to 12</td>
+<td>9</td>
+</tr>
+<tr>
+<td>2</td>
+<td>mday (day of month)</td>
+<td>1 to 31</td>
+<td>28</td>
+</tr>
+<tr>
+<td>3</td>
+<td>hour</td>
+<td>0 to 23</td>
+<td>14</td>
+</tr>
+<tr>
+<td>4</td>
+<td>minute</td>
+<td>0 to 59</td>
+<td>5</td>
+</tr>
+<tr>
+<td>5</td>
+<td>second</td>
+<td>0 to 59</td>
+<td>9</td>
+</tr>
+<tr>
+<td>6</td>
+<td>weekday</td>
+<td>0 to 6 (Monday is 0)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>7</td>
+<td>yearday</td>
+<td>1 to 366</td>
+<td>271</td>
+</tr>
+</tbody>
+</table>
+<p>You can pull out one value by its index, or unpack several at once:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">now</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">now</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>                 <span class="c1"># the hour</span>
+<span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span> <span class="o">=</span> <span class="n">now</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">now</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">now</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</code></pre></div></td></tr></table></div>
+<p>The most convenient trick is <strong>slicing</strong>, which takes a range of positions and returns a smaller tuple:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">hour</span><span class="p">,</span> <span class="n">minute</span><span class="p">,</span> <span class="n">second</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">()[</span><span class="mi">3</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>   <span class="c1"># positions 3, 4, 5</span>
+</code></pre></div></td></tr></table></div>
+<p>This one line is the heart of nearly every clock program in the book.</p>
+<h4 id="diagram-time-tuple-explorer">Diagram: Time Tuple Explorer</h4>
+<details>
+<summary>Time Tuple Explorer</summary>
+<p>Type: interactive infographic
+<strong>sim-id:</strong> time-tuple-explorer<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p><strong>Learning objective:</strong> Students will <em>identify</em> each field of the time tuple and <em>apply</em> slicing to extract fields (Bloom: Remembering, Applying).</p>
+<p><strong>Visual elements:</strong> The eight-field tuple drawn as eight labeled boxes with a live value from the browser's clock, and a small analog and digital clock alongside.</p>
+<p><strong>Interactions:</strong></p>
+<ul>
+<li>Hovering a box shows its name and range; clicking shows the Python expression that extracts it, such as <code>now[3]</code>.</li>
+<li>A "Slice" control lets the student drag a bracket over boxes to select <code>[3:6]</code>, and the sim shows the resulting tuple and the unpacking line.</li>
+<li>A "Quiz me" mode asks for the index of the field named at random.</li>
+</ul>
+<p><strong>Responsive design:</strong> Boxes wrap to two rows on narrow screens.</p>
+<p>Implementation: p5.js using JavaScript <code>Date</code> to fill values.</p>
+</details>
+<h3 id="year-month-and-day">Year, Month, and Day</h3>
+<p>Three fields give the <strong>calendar date</strong>: <code>year</code> (a four-digit number), <code>month</code> (1 for January through 12 for December), and <code>mday</code> (the day of the month, 1 to 31). Note that months and days start at 1, not 0, unlike most Python positions.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">()[:</span><span class="mi">3</span><span class="p">]</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="hour-minute-and-second">Hour, Minute, and Second</h3>
+<p>The <strong>clock time</strong> comes from three fields: hour (0 to 23), minute (0 to 59), and second (0 to 59). The hour is always in 24-hour form. Midnight is hour 0, and 11 PM is hour 23. Every display formatting step starts from these three numbers.</p>
+<h3 id="weekday-number">Weekday Number</h3>
+<p>The <strong>weekday number</strong> is a value from 0 to 6, where <strong>Monday is 0</strong> and Sunday is 6. It is <em>not</em> Sunday-first as in some calendars. September 28, 2026 is a Monday, so its weekday is 0. You will use the weekday number as an index into a list of names, next.</p>
+<h3 id="day-of-year">Day of Year</h3>
+<p>The <strong>day of year</strong> (yearday) counts days from January 1, which is day 1. September 28 is day 271 in 2026, since the eight full months before it contain 243 days and <span class="arithmatex">\( 243 + 28 = 271 \)</span>. It is useful for programs that count days until a date or draw a year progress bar.</p>
+<h2 id="weekday-labels-and-month-labels">Weekday Labels and Month Labels</h2>
+<p>The tuple gives numbers, but people want names. The standard approach is a <strong>label list</strong> you index with the number.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">days</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"Mon"</span><span class="p">,</span> <span class="s2">"Tue"</span><span class="p">,</span> <span class="s2">"Wed"</span><span class="p">,</span> <span class="s2">"Thu"</span><span class="p">,</span> <span class="s2">"Fri"</span><span class="p">,</span> <span class="s2">"Sat"</span><span class="p">,</span> <span class="s2">"Sun"</span><span class="p">)</span>
+<span class="n">months</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"Jan"</span><span class="p">,</span> <span class="s2">"Feb"</span><span class="p">,</span> <span class="s2">"Mar"</span><span class="p">,</span> <span class="s2">"Apr"</span><span class="p">,</span> <span class="s2">"May"</span><span class="p">,</span> <span class="s2">"Jun"</span><span class="p">,</span>
+          <span class="s2">"Jul"</span><span class="p">,</span> <span class="s2">"Aug"</span><span class="p">,</span> <span class="s2">"Sep"</span><span class="p">,</span> <span class="s2">"Oct"</span><span class="p">,</span> <span class="s2">"Nov"</span><span class="p">,</span> <span class="s2">"Dec"</span><span class="p">)</span>
+
+<span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="n">hour</span><span class="p">,</span> <span class="n">minute</span><span class="p">,</span> <span class="n">second</span><span class="p">,</span> <span class="n">weekday</span><span class="p">,</span> <span class="n">yearday</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">days</span><span class="p">[</span><span class="n">weekday</span><span class="p">])</span>          <span class="c1"># Mon</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">months</span><span class="p">[</span><span class="n">month</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>      <span class="c1"># Sep</span>
+</code></pre></div></td></tr></table></div>
+<p>Notice the <code>month - 1</code>. The month number starts at 1 but the list index starts at 0, so you must subtract one. Forgetting this <strong>off-by-one</strong> error shows the wrong month, or crashes in December with <code>IndexError</code>. The weekday needs no adjustment because it already starts at 0.</p>
+<h2 id="time-formatting">Time Formatting</h2>
+<p><strong>Time formatting</strong> turns the numbers into readable text. The tools are the f-strings and zero-padding from Chapter 3:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">hour</span><span class="p">,</span> <span class="n">minute</span><span class="p">,</span> <span class="n">second</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">()[</span><span class="mi">3</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">hour</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">minute</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">second</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>    <span class="c1"># 14:05:09</span>
+</code></pre></div></td></tr></table></div>
+<p>The same numbers can be displayed several ways depending on what the user expects.</p>
+<table>
+<thead>
+<tr>
+<th>Style</th>
+<th>Example</th>
+<th>Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>24-hour with seconds</td>
+<td>14:05:09</td>
+<td><code>f"{h:02d}:{m:02d}:{s:02d}"</code></td>
+</tr>
+<tr>
+<td>Short</td>
+<td>14:05</td>
+<td><code>f"{h:02d}:{m:02d}"</code></td>
+</tr>
+<tr>
+<td>Blinking colon (odd seconds)</td>
+<td>14 05</td>
+<td><code>":" if s % 2 == 0 else " "</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="24-hour-format">24-Hour Format</h3>
+<p><strong>24-hour format</strong> counts hours from 0 to 23. It has no AM or PM, and it is what <code>localtime()</code> returns. It is unambiguous, so it is used in computing, aviation, and much of the world. The hour after 12:59 is 13:00.</p>
+<h3 id="12-hour-format">12-Hour Format</h3>
+<p><strong>12-hour format</strong> shows hours from 1 to 12 and adds AM or PM. It is common in the United States. The conversion, from Chapter 3, is one line:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">hour12</span> <span class="o">=</span> <span class="p">(</span><span class="n">hour</span> <span class="o">+</span> <span class="mi">11</span><span class="p">)</span> <span class="o">%</span> <span class="mi">12</span> <span class="o">+</span> <span class="mi">1</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="ampm-conversion">AM/PM Conversion</h3>
+<p>Once you have the 12-hour value, the AM or PM suffix depends only on whether the original 24-hour value is before noon:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">suffix</span> <span class="o">=</span> <span class="s2">"AM"</span> <span class="k">if</span> <span class="n">hour</span> <span class="o">&lt;</span> <span class="mi">12</span> <span class="k">else</span> <span class="s2">"PM"</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">hour12</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">minute</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">suffix</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>The tricky moments are the boundaries. Test them:</p>
+<table>
+<thead>
+<tr>
+<th>24-hour</th>
+<th>12-hour</th>
+<th>Suffix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>12</td>
+<td>AM (midnight)</td>
+</tr>
+<tr>
+<td>9</td>
+<td>9</td>
+<td>AM</td>
+</tr>
+<tr>
+<td>12</td>
+<td>12</td>
+<td>PM (noon)</td>
+</tr>
+<tr>
+<td>15</td>
+<td>3</td>
+<td>PM</td>
+</tr>
+<tr>
+<td>23</td>
+<td>11</td>
+<td>PM</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Test the Edges</p>
+<p><img alt="Chrono with a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+Clock bugs hide at midnight and noon. Whenever you write a time conversion, try hours 0, 11, 12, 13, and 23 by hand before you trust it.</p>
+</div>
+<h3 id="date-formatting">Date Formatting</h3>
+<p><strong>Date formatting</strong> works the same way for the calendar fields. Different regions order them differently, and you should choose one style and stay consistent.</p>
+<table>
+<thead>
+<tr>
+<th>Style</th>
+<th>Example</th>
+<th>Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ISO (year first)</td>
+<td>2026-09-28</td>
+<td><code>f"{y}-{mo:02d}-{d:02d}"</code></td>
+</tr>
+<tr>
+<td>US style</td>
+<td>9/28/2026</td>
+<td><code>f"{mo}/{d}/{y}"</code></td>
+</tr>
+<tr>
+<td>With labels</td>
+<td>Mon Sep 28</td>
+<td><code>f"{days[wd]} {months[mo-1]} {d}"</code></td>
+</tr>
+</tbody>
+</table>
+<p>The ISO order (year, month, day) is the international standard and sorts correctly as text, which makes it the best choice for log files.</p>
+<h2 id="seconds-since-midnight">Seconds Since Midnight</h2>
+<p>Sometimes it is easier to represent the time of day as <strong>one number</strong>: the total seconds since midnight. It compresses hours, minutes, and seconds into a single integer between 0 and 86,399:</p>
+<div class="arithmatex">\[ t = 3600 \times h + 60 \times m + s \]</div>
+<p>For 14:05:09 the value is <span class="arithmatex">\( 3600 \times 14 + 60 \times 5 + 9 = 50{,}709 \)</span>. Working in one number makes comparisons and arithmetic simple. To check whether the time is past a 7:30 alarm, compare <code>t &gt;= 7*3600 + 30*60</code> instead of juggling two fields. To go back to hours, minutes, and seconds, use <code>//</code> and <code>%</code> exactly as in Chapter 3.</p>
+<h2 id="the-utime-module">The Utime Module</h2>
+<p>MicroPython puts timing tools in the <strong>time module</strong>, which older code and documentation call <strong>utime</strong> (the "u" stood for "micro"). Both names work on the Pico, but <code>import time</code> is preferred in current code, and it is what this book uses. If you find <code>import utime</code> in an example, the code works the same way.</p>
+<p>The tools in this module fall into three groups:</p>
+<table>
+<thead>
+<tr>
+<th>Group</th>
+<th>Functions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reading time</td>
+<td><code>localtime()</code>, <code>gmtime()</code>, <code>time()</code>, <code>mktime()</code></td>
+</tr>
+<tr>
+<td>Waiting</td>
+<td><code>sleep()</code>, <code>sleep_ms()</code>, <code>sleep_us()</code></td>
+</tr>
+<tr>
+<td>Measuring intervals</td>
+<td><code>ticks_ms()</code>, <code>ticks_us()</code>, <code>ticks_diff()</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="sleep-function">Sleep Function</h2>
+<p>The <strong><code>sleep()</code> function</strong> pauses your program for a number of seconds, and it accepts fractions: <code>time.sleep(0.5)</code> waits half a second. For shorter waits, <code>sleep_ms(250)</code> waits 250 milliseconds and <code>sleep_us(100)</code> waits 100 microseconds.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>       <span class="c1"># wait one second</span>
+</code></pre></div></td></tr></table></div>
+<p>While a program is sleeping, it does <em>nothing else</em>. The Pico cannot read a button or update a display. That is fine for a simple blink, but it makes a poor way to keep time. If you add one second on each pass of a loop with <code>sleep(1)</code>, the loop also takes time to run its other instructions, so the clock runs slightly slow and the error grows with every second. A better approach is to read the real time on each pass, as this program does:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">NAME</span> <span class="o">=</span> <span class="s2">"06-clock-loop.py"</span>
+<span class="n">VERSION</span> <span class="o">=</span> <span class="s2">"1.0"</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{}</span><span class="s2"> v</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">NAME</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">))</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">h</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">()[</span><span class="mi">3</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">h</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">m</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">s</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>The clock always shows the true time because it asks for it each time. The <code>sleep(1)</code> only controls how often it redraws.</p>
+<h2 id="ticks-milliseconds-function">Ticks Milliseconds Function</h2>
+<p>The <strong><code>ticks_ms()</code> function</strong> returns a counter of milliseconds since an arbitrary starting point (usually the moment the Pico started). It does not tell you the time of day. Instead, you use it to measure <strong>how long something took</strong> or to schedule the next action without stopping the program.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">ticks_ms</span><span class="p">()</span>
+<span class="c1"># ... do some work ...</span>
+<span class="n">elapsed</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">ticks_diff</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">ticks_ms</span><span class="p">(),</span> <span class="n">start</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">elapsed</span><span class="p">,</span> <span class="s2">"ms"</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>The counter is not endless: it wraps back to zero after <span class="arithmatex">\( 2^{30} \)</span> milliseconds, about 12.4 days. That means simple subtraction can give a wrong (even negative) answer around the wrap, which is why the next function exists.</p>
+<h3 id="ticks-difference-function">Ticks Difference Function</h3>
+<p>The <strong><code>ticks_diff(new, old)</code> function</strong> subtracts two tick values correctly, even across the wrap-around. Always use it instead of the <code>-</code> operator.</p>
+<p><strong>Worked example: a non-blocking timer.</strong> The program below toggles an LED every 500 ms <em>without</em> using <code>sleep()</code>, so it stays free to do other things, like watching a button, on every pass:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">NAME</span> <span class="o">=</span> <span class="s2">"06-nonblocking-blink.py"</span>
+<span class="n">VERSION</span> <span class="o">=</span> <span class="s2">"1.0"</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{}</span><span class="s2"> v</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">NAME</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">))</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">ticks_ms</span><span class="p">,</span> <span class="n">ticks_diff</span>
+
+<span class="n">led</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="s2">"LED"</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
+<span class="n">last</span> <span class="o">=</span> <span class="n">ticks_ms</span><span class="p">()</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">now</span> <span class="o">=</span> <span class="n">ticks_ms</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">ticks_diff</span><span class="p">(</span><span class="n">now</span><span class="p">,</span> <span class="n">last</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">500</span><span class="p">:</span>   <span class="c1"># 500 ms passed?</span>
+        <span class="n">led</span><span class="o">.</span><span class="n">toggle</span><span class="p">()</span>
+        <span class="n">last</span> <span class="o">=</span> <span class="n">now</span>
+    <span class="c1"># other work could go here</span>
+</code></pre></div></td></tr></table></div>
+<p>The loop runs thousands of times per second, and each time it asks "has 500 ms passed since the last toggle?" This pattern, comparing ticks to a stored time, is used throughout later chapters for stopwatches and alarms.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Wait Without Freezing</p>
+<p><img alt="Chrono thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+<code>sleep()</code> says "do nothing for this long." <code>ticks_diff()</code> says "keep working, and tell me when this long has passed." That shift, from blocking to checking, is how one Pico handles buttons, displays, and a clock at the same time.</p>
+</div>
+<h4 id="diagram-sleep-vs-ticks-timeline">Diagram: Sleep vs Ticks Timeline</h4>
+<details>
+<summary>Sleep vs Ticks Timeline</summary>
+<p>Type: MicroSim
+<strong>sim-id:</strong> sleep-vs-ticks<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p><strong>Learning objective:</strong> Students will <em>compare</em> blocking (<code>sleep</code>) and non-blocking (<code>ticks_diff</code>) timing by observing how a button press is handled (Bloom: Analyzing).</p>
+<p><strong>Visual elements:</strong> Two horizontal timelines running side by side. The top shows a program using <code>sleep(1)</code>, with long gray "sleeping" blocks. The bottom shows a program using ticks, with many small "checking" blocks. A blinking LED icon sits on each.</p>
+<p><strong>Controls:</strong> A "Press button" button and a speed slider. On the sleep timeline the press is ignored until the sleep ends (latency shown as a red bar), while the ticks timeline responds within a few milliseconds.</p>
+<p><strong>Responsive design:</strong> Timelines scale to container width and stack vertically.</p>
+<p>Implementation: p5.js frame loop with a simulated millisecond counter.</p>
+</details>
+<h2 id="epoch-time">Epoch Time</h2>
+<p><strong>Epoch time</strong> is a way to represent a moment as a single count of seconds since a fixed starting date called the <strong>epoch</strong>. <code>time.time()</code> returns this count, and <code>time.localtime(secs)</code> turns it back into a tuple. It is compact and makes calculations easy.</p>
+<p>The catch: <strong>on the Pico the epoch is January 1, 2000, at 00:00:00</strong>, not 1970.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="n">now</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>          <span class="c1"># seconds since 2000-01-01</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">(</span><span class="n">now</span><span class="p">))</span> <span class="c1"># converts back to a tuple</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">mktime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">()))</span>   <span class="c1"># tuple back to seconds</span>
+</code></pre></div></td></tr></table></div>
+<p>The functions <code>localtime()</code> and <code>mktime()</code> are inverses: one converts seconds to a tuple, the other a tuple to seconds.</p>
+<h3 id="unix-timestamp">Unix Timestamp</h3>
+<p>A <strong>Unix timestamp</strong> is the same idea but counted from <strong>January 1, 1970</strong>. It is the standard on the internet and in most programming languages. The two epochs differ by exactly 946,684,800 seconds (30 years):</p>
+<div class="arithmatex">\[ \text{unix} = \text{pico\_time} + 946{,}684{,}800 \]</div>
+<p>You have to convert whenever you exchange timestamps with a web service. For example, a weather site that sends a Unix timestamp of 1,790,000,000 corresponds to <span class="arithmatex">\( 1{,}790{,}000{,}000 - 946{,}684{,}800 = 843{,}315{,}200 \)</span> on the Pico. Forgetting this offset produces dates 30 years off.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Two Epochs, One Mistake</p>
+<p><img alt="Chrono warning" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+Timestamps from the internet count from 1970, while <code>time.time()</code> on the Pico counts from 2000. Mix them and your clock jumps 30 years. When a time looks wildly wrong, check which epoch it uses and subtract or add 946,684,800.</p>
+</div>
+<h2 id="time-math">Time Math</h2>
+<p><strong>Time math</strong> means adding to or subtracting from times. The easiest way is to work in seconds, then convert back to a tuple. This handles carrying between hours, days, months, and years automatically.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="n">now</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">in_90_minutes</span> <span class="o">=</span> <span class="n">now</span> <span class="o">+</span> <span class="mi">90</span> <span class="o">*</span> <span class="mi">60</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">(</span><span class="n">in_90_minutes</span><span class="p">)[</span><span class="mi">3</span><span class="p">:</span><span class="mi">6</span><span class="p">])</span>     <span class="c1"># hour, minute, second then</span>
+
+<span class="n">diff</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">now</span>                       <span class="c1"># seconds elapsed</span>
+</code></pre></div></td></tr></table></div>
+<p>To find how long until a target, subtract two epoch values and divide. Working with tuples directly (adding 90 to the minute field) would leave values like minute 105, so convert to seconds first.</p>
+<h2 id="leap-year-handling">Leap Year Handling</h2>
+<p>A <strong>leap year</strong> has an extra day, February 29, so that the calendar stays in step with the Earth's orbit. The rule has three parts:</p>
+<ol>
+<li>A year divisible by 4 is a leap year.</li>
+<li>Except a year divisible by 100 is <em>not</em>, </li>
+<li>Unless it is also divisible by 400, in which case it <em>is</em>.</li>
+</ol>
+<p>So 2024 and 2000 are leap years, while 1900 and 2100 are not. As code:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">is_leap</span><span class="p">(</span><span class="n">year</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">year</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">year</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="n">year</span> <span class="o">%</span> <span class="mi">400</span> <span class="o">==</span> <span class="mi">0</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">is_leap</span><span class="p">(</span><span class="mi">2024</span><span class="p">),</span> <span class="n">is_leap</span><span class="p">(</span><span class="mi">2100</span><span class="p">))</span>    <span class="c1"># True False</span>
+</code></pre></div></td></tr></table></div>
+<p>You rarely need this yourself, because <code>localtime()</code> and <code>mktime()</code> already handle leap years and the tuple's yearday runs to 366 in a leap year. You need <code>is_leap()</code> only when you compute calendar values on your own, such as the number of days in February.</p>
+<h2 id="putting-it-together">Putting It Together</h2>
+<p>This program displays a full, friendly date and time using every idea in the chapter:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">NAME</span> <span class="o">=</span> <span class="s2">"06-friendly-clock.py"</span>
+<span class="n">VERSION</span> <span class="o">=</span> <span class="s2">"1.0"</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{}</span><span class="s2"> v</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">NAME</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">))</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="n">days</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"Mon"</span><span class="p">,</span> <span class="s2">"Tue"</span><span class="p">,</span> <span class="s2">"Wed"</span><span class="p">,</span> <span class="s2">"Thu"</span><span class="p">,</span> <span class="s2">"Fri"</span><span class="p">,</span> <span class="s2">"Sat"</span><span class="p">,</span> <span class="s2">"Sun"</span><span class="p">)</span>
+<span class="n">months</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"Jan"</span><span class="p">,</span> <span class="s2">"Feb"</span><span class="p">,</span> <span class="s2">"Mar"</span><span class="p">,</span> <span class="s2">"Apr"</span><span class="p">,</span> <span class="s2">"May"</span><span class="p">,</span> <span class="s2">"Jun"</span><span class="p">,</span>
+          <span class="s2">"Jul"</span><span class="p">,</span> <span class="s2">"Aug"</span><span class="p">,</span> <span class="s2">"Sep"</span><span class="p">,</span> <span class="s2">"Oct"</span><span class="p">,</span> <span class="s2">"Nov"</span><span class="p">,</span> <span class="s2">"Dec"</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">y</span><span class="p">,</span> <span class="n">mo</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">wd</span><span class="p">,</span> <span class="n">yd</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">()</span>
+    <span class="n">h12</span> <span class="o">=</span> <span class="p">(</span><span class="n">h</span> <span class="o">+</span> <span class="mi">11</span><span class="p">)</span> <span class="o">%</span> <span class="mi">12</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">suffix</span> <span class="o">=</span> <span class="s2">"AM"</span> <span class="k">if</span> <span class="n">h</span> <span class="o">&lt;</span> <span class="mi">12</span> <span class="k">else</span> <span class="s2">"PM"</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">days</span><span class="p">[</span><span class="n">wd</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">months</span><span class="p">[</span><span class="n">mo</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">d</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2">   </span><span class="si">{</span><span class="n">h12</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">m</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">s</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">suffix</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li><code>time.localtime()</code> returns an 8-tuple: year, month, day, hour, minute, second, weekday (Monday is 0), and yearday.</li>
+<li>Slice the tuple with <code>[3:6]</code> to get hours, minutes, and seconds.</li>
+<li>Use label lists for names, and subtract 1 from the month to index them.</li>
+<li>Zero-pad with <code>:02d</code>; use <code>(h + 11) % 12 + 1</code> and <code>"AM" if h &lt; 12 else "PM"</code> for 12-hour display.</li>
+<li><code>sleep()</code> blocks; <code>ticks_ms()</code> with <code>ticks_diff()</code> measures time without stopping the program.</li>
+<li>The Pico's epoch is 2000, not 1970, so Unix timestamps differ by 946,684,800 seconds.</li>
+</ul>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Time, Decoded</p>
+<p><img alt="Chrono celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+You can now read the time tuple, format <code>Mon Sep 28, 2026  2:05:09 PM</code>, and time events without freezing your program. That is the software heart of every clock. Every second counts!</p>
+</div>
+<h2 id="practice-questions">Practice Questions</h2>
+<ol>
+<li>What does <code>time.localtime()[3:6]</code> return, and how would you unpack it?</li>
+<li>Write code that prints the weekday name for today using a list of labels.</li>
+<li>Convert these 24-hour times to 12-hour with AM or PM: 0:15, 12:00, 18:45.</li>
+<li>Why should you use <code>ticks_diff()</code> instead of subtracting two <code>ticks_ms()</code> values with <code>-</code>?</li>
+<li>A web service sends the Unix timestamp 1,800,000,000. What value would the Pico's <code>time.localtime()</code> need to be given for the same moment?</li>
+</ol>
 
 
 
 
 
 
+
+  
+  
 
 
 

@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking.">
+        <meta name="description" content="Decisions, loops, functions, modules, and classes for structuring MicroPython clock programs.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -29,7 +29,7 @@
     
     
       
-        <title>4. Control Flow, Functions, and Modules - Clocks and Watches with AI</title>
+        <title>Control Flow, Functions, and Modules - Clocks and Watches with AI</title>
       
     
     
@@ -77,16 +77,16 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="4. Control Flow, Functions, and Modules - Clocks and Watches with AI" />
-<meta property="og:description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." />
+<meta property="og:title" content="Control Flow, Functions, and Modules - Clocks and Watches with AI" />
+<meta property="og:description" content="Decisions, loops, functions, modules, and classes for structuring MicroPython clock programs." />
 <meta property="og:image" content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/chapters/04-control-flow-functions/index.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://dmccreary.github.io/clocks-and-watches/chapters/04-control-flow-functions/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="4. Control Flow, Functions, and Modules - Clocks and Watches with AI" />
-<meta property="twitter:description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." />
+<meta property="twitter:title" content="Control Flow, Functions, and Modules - Clocks and Watches with AI" />
+<meta property="twitter:description" content="Decisions, loops, functions, modules, and classes for structuring MicroPython clock programs." />
 <meta property="twitter:image" content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/chapters/04-control-flow-functions/index.png" />
 </head>
   
@@ -140,7 +140,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              4. Control Flow, Functions, and Modules
+              Control Flow, Functions, and Modules
             
           </span>
         </div>
@@ -686,6 +686,346 @@
     <span class="md-ellipsis">
       
         Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#structuring-a-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structuring a Program
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import-statements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Import Statements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modules
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Libraries
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Libraries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#machine-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Machine Module
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conditionals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conditionals
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Conditionals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#if-else-elif" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        If, Else, Elif
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="If, Else, Elif">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-greeting-decision-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Greeting Decision Path
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#for-loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        For Loops
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#while-loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        While Loops
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="While Loops">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#loop-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Loop Control
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modular-arithmetic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modular Arithmetic
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modular Arithmetic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-wrap-around-dial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Wrap-Around Dial
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arguments-and-returns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arguments and Returns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-keyword" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Global Keyword
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lambda-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lambda Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-modularity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code Modularity
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Code Modularity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-function-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Function Machine
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes-and-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Classes and Objects
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Classes and Objects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#object-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Object Methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Error Handling
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Error Handling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#try-except-blocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Try Except Blocks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Putting It Together
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice Questions
       
     </span>
   </a>
@@ -1754,6 +2094,346 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#structuring-a-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structuring a Program
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import-statements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Import Statements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modules
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Libraries
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Libraries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#machine-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Machine Module
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conditionals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conditionals
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Conditionals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#if-else-elif" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        If, Else, Elif
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="If, Else, Elif">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-greeting-decision-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Greeting Decision Path
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#for-loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        For Loops
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#while-loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        While Loops
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="While Loops">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#loop-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Loop Control
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modular-arithmetic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modular Arithmetic
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modular Arithmetic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-wrap-around-dial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Wrap-Around Dial
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arguments-and-returns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arguments and Returns
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-keyword" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Global Keyword
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lambda-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lambda Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-modularity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code Modularity
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Code Modularity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-function-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Function Machine
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes-and-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Classes and Objects
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Classes and Objects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#object-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Object Methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Error Handling
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Error Handling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#try-except-blocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Try Except Blocks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Putting It Together
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1920,13 +2600,527 @@
 <li><a href="../03-micropython-basics/">Chapter 3: MicroPython Basics: Variables and Data Types</a></li>
 </ul>
 <hr />
-<p>TODO: Generate Chapter Content</p>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Now Your Code Can Decide</p>
+<p><img alt="Chrono waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+Until now your programs ran top to bottom and stopped. In this chapter they learn to make choices, repeat forever, and pack work into tidy pieces, which is exactly what a clock does. Let's make time tick!</p>
+</div>
+<h2 id="structuring-a-program">Structuring a Program</h2>
+<p>A clock never finishes: it checks the time, decides what to show, draws it, and repeats. That needs three things you have not used yet: <strong>decisions</strong> (conditionals), <strong>repetition</strong> (loops), and <strong>reusable pieces</strong> (functions and modules). This chapter covers all three, plus a first look at classes and error handling.</p>
+<h2 id="import-statements">Import Statements</h2>
+<p>An <strong>import statement</strong> loads code from a module so you can use it in your program. Most useful features, such as timing and hardware control, live in modules rather than in the core language.</p>
+<p>There are three common forms:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>                  <span class="c1"># use as time.sleep(1)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>       <span class="c1"># use as sleep(1)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span> <span class="c1"># import several names at once</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">t</span>             <span class="c1"># give the module a short nickname</span>
+</code></pre></div></td></tr></table></div>
+<p>The first form keeps names organized (<code>time.sleep</code>), while the second saves typing. Put imports near the top of the file, but after the name and version banner, so the banner still prints if an import fails. If MicroPython cannot find the module you asked for, it raises <code>ImportError</code>, which usually means a misspelled name or a file that has not been copied to the Pico.</p>
+<h2 id="modules">Modules</h2>
+<p>A <strong>module</strong> is a single Python file (<code>.py</code>) containing functions, variables, or classes that other programs can import. The file name, without <code>.py</code>, becomes the module name. If you save the following on your Pico as <code>clockmath.py</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">to_12_hour</span><span class="p">(</span><span class="n">hour24</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">hour24</span> <span class="o">+</span> <span class="mi">11</span><span class="p">)</span> <span class="o">%</span> <span class="mi">12</span> <span class="o">+</span> <span class="mi">1</span>
+</code></pre></div></td></tr></table></div>
+<p>then any program can use it:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">clockmath</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">clockmath</span><span class="o">.</span><span class="n">to_12_hour</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span>    <span class="c1"># 3</span>
+</code></pre></div></td></tr></table></div>
+<p>Modules let you split a large program across files and reuse the same code in many clocks. MicroPython looks for modules in the Pico's main folder and in a <code>/lib</code> folder. Avoid naming your file after a built-in module such as <code>time</code> or <code>machine</code>, because yours would be found first and break everything else.</p>
+<h2 id="libraries">Libraries</h2>
+<p>A <strong>library</strong> is a collection of modules that provides a set of related features. Some are built into MicroPython and others you add yourself.</p>
+<table>
+<thead>
+<tr>
+<th>Library or module</th>
+<th>What it provides</th>
+<th>Included?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>time</code></td>
+<td>Time, delays, sleeping</td>
+<td>Built in</td>
+</tr>
+<tr>
+<td><code>machine</code></td>
+<td>Pins, I2C, SPI, PWM, ADC</td>
+<td>Built in</td>
+</tr>
+<tr>
+<td><code>framebuf</code></td>
+<td>Drawing to a memory buffer</td>
+<td>Built in</td>
+</tr>
+<tr>
+<td><code>neopixel</code></td>
+<td>NeoPixel LED control</td>
+<td>Built in</td>
+</tr>
+<tr>
+<td><code>ssd1306</code></td>
+<td>OLED display driver</td>
+<td>Copy the file to the Pico</td>
+</tr>
+<tr>
+<td><code>tm1637</code></td>
+<td>Four-digit LED driver</td>
+<td>Copy the file to the Pico</td>
+</tr>
+</tbody>
+</table>
+<p>To add a library that is not built in, copy its <code>.py</code> file to the Pico (Thonny's <em>Save as &gt; MicroPython device</em>), often into a <code>lib</code> folder. A Pico W that is on WiFi can also fetch libraries with the <code>mip</code> installer. Later chapters use these driver libraries so you do not have to write display code from scratch.</p>
+<h3 id="machine-module">Machine Module</h3>
+<p>The <strong>machine module</strong> is MicroPython's gateway to the Pico's hardware. It contains the classes for pins, buses, and analog inputs, so you will import from it in almost every lab:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Pin</code></td>
+<td>Digital input and output pins</td>
+</tr>
+<tr>
+<td><code>I2C</code>, <code>SPI</code></td>
+<td>Communication buses</td>
+</tr>
+<tr>
+<td><code>PWM</code></td>
+<td>Pulse-width modulation for sound and dimming</td>
+</tr>
+<tr>
+<td><code>ADC</code></td>
+<td>Analog-to-digital converter</td>
+</tr>
+</tbody>
+</table>
+<p>It also has utility functions such as <code>machine.freq()</code>, which returns the processor speed (125,000,000 Hz by default), and <code>machine.reset()</code>, which restarts the Pico.</p>
+<h2 id="conditionals">Conditionals</h2>
+<p>A <strong>conditional</strong> is code that runs only when a condition is true. The condition is any expression that gives a boolean, such as <code>hour &lt; 12</code>. The basic form is the <code>if</code> statement:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">hour</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="k">if</span> <span class="n">hour</span> <span class="o">&gt;=</span> <span class="mi">12</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Afternoon or evening"</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>The colon ends the <code>if</code> line, and the indented line under it is the block that runs when the condition is <code>True</code>. If the condition is <code>False</code>, Python skips the block entirely. Indentation is not decoration: it is how Python knows which lines belong to the <code>if</code>.</p>
+<h3 id="if-else-elif">If, Else, Elif</h3>
+<p><code>else</code> supplies a block for when the condition is false, and <code>elif</code> (short for "else if") checks additional conditions in order. Python tests them from the top and runs only the first one that is true.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">hour</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="k">if</span> <span class="n">hour</span> <span class="o">&lt;</span> <span class="mi">12</span><span class="p">:</span>
+    <span class="n">suffix</span> <span class="o">=</span> <span class="s2">"AM"</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">suffix</span> <span class="o">=</span> <span class="s2">"PM"</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">suffix</span><span class="p">)</span>     <span class="c1"># PM</span>
+</code></pre></div></td></tr></table></div>
+<p>Here is a chain with <code>elif</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">if</span> <span class="n">hour</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">:</span>
+    <span class="n">greeting</span> <span class="o">=</span> <span class="s2">"Night"</span>
+<span class="k">elif</span> <span class="n">hour</span> <span class="o">&lt;</span> <span class="mi">12</span><span class="p">:</span>
+    <span class="n">greeting</span> <span class="o">=</span> <span class="s2">"Morning"</span>
+<span class="k">elif</span> <span class="n">hour</span> <span class="o">&lt;</span> <span class="mi">18</span><span class="p">:</span>
+    <span class="n">greeting</span> <span class="o">=</span> <span class="s2">"Afternoon"</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">greeting</span> <span class="o">=</span> <span class="s2">"Evening"</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Worked example.</strong> For <code>hour = 15</code>, the first test (<code>15 &lt; 6</code>) fails, the second (<code>15 &lt; 12</code>) fails, the third (<code>15 &lt; 18</code>) is true, so <code>greeting</code> becomes <code>"Afternoon"</code> and the last <code>else</code> is skipped. Order matters: if you tested <code>hour &lt; 18</code> first, every morning would also be called "Afternoon".</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">One Equals or Two?</p>
+<p><img alt="Chrono warning" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+Writing <code>if hour = 12:</code> is a syntax error because a single <code>=</code> stores a value. Use <code>==</code> to compare. Also check the colon at the end of the <code>if</code> line and the indentation underneath; those are the other two usual suspects.</p>
+</div>
+<h4 id="diagram-greeting-decision-path">Diagram: Greeting Decision Path</h4>
+<details>
+<summary>Greeting Decision Path</summary>
+<p>Type: MicroSim
+<strong>sim-id:</strong> greeting-decision-path<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p><strong>Learning objective:</strong> Students will <em>trace</em> an if/elif/else chain to predict its result (Bloom: Applying).</p>
+<p><strong>Visual elements:</strong> A vertical flowchart with four diamond tests (<code>hour &lt; 6</code>, <code>&lt; 12</code>, <code>&lt; 18</code>, else) and four result boxes. A marker travels down the chain.</p>
+<p><strong>Controls:</strong> A slider for <code>hour</code> (0 to 23) and a "Step" button. The path taken lights up green; skipped tests gray out. A toggle "Reorder tests" swaps the tests to show how order changes the answer.</p>
+<p><strong>Responsive design:</strong> The flowchart scales to canvas width.</p>
+<p>Implementation: p5.js with a small array of test objects.</p>
+</details>
+<h2 id="for-loops">For Loops</h2>
+<p>A <strong>for loop</strong> repeats a block once for each item in a sequence. It is the tool to use when you know how many times to repeat, or when you have a collection to walk through.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"tick"</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>         <span class="c1"># tick 0, tick 1, tick 2</span>
+
+<span class="k">for</span> <span class="n">day</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"Mon"</span><span class="p">,</span> <span class="s2">"Tue"</span><span class="p">,</span> <span class="s2">"Wed"</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">day</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p><code>range(3)</code> produces 0, 1, 2 (it stops <em>before</em> the number). You can give a start, stop, and step: <code>range(0, 60, 5)</code> gives 0, 5, 10, ... 55, which is the position of every five-minute mark on a clock face.</p>
+<h2 id="while-loops">While Loops</h2>
+<p>A <strong>while loop</strong> repeats a block for as long as a condition stays true. Use it when you do not know in advance how many repetitions you need, such as "keep going until a button is pressed."</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">seconds</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">seconds</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">seconds</span><span class="p">)</span>
+    <span class="n">seconds</span> <span class="o">+=</span> <span class="mi">1</span>
+</code></pre></div></td></tr></table></div>
+<p>Every clock program has a <strong>main loop</strong>: <code>while True:</code> runs forever because <code>True</code> is never false. Inside it you read the time, update the display, and pause.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">NAME</span> <span class="o">=</span> <span class="s2">"04-main-loop.py"</span>
+<span class="n">VERSION</span> <span class="o">=</span> <span class="s2">"1.0"</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{}</span><span class="s2"> v</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">NAME</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">))</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>       <span class="c1"># wait one second between passes</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Stopping a Runaway Loop</p>
+<p><img alt="Chrono with a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+A <code>while True:</code> loop never ends by itself. Click Stop in Thonny (or press Ctrl+C in the Shell) to interrupt it, and always add a <code>sleep()</code> so the loop does not spin as fast as possible.</p>
+</div>
+<h3 id="loop-control">Loop Control</h3>
+<p>Two statements change how a loop runs from inside:</p>
+<ul>
+<li><code>break</code> exits the loop immediately.</li>
+<li><code>continue</code> skips the rest of this pass and goes to the next one.</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">continue</span>      <span class="c1"># skip 3</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
+        <span class="k">break</span>         <span class="c1"># stop at 6</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>          <span class="c1"># prints 0 1 2 4 5</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="modular-arithmetic">Modular Arithmetic</h2>
+<p><strong>Modular arithmetic</strong> is math where numbers wrap around after reaching a limit, like the numbers on a clock face. In Python it uses the <code>%</code> operator: <code>x % n</code> is the remainder after dividing by <code>n</code>, and it is always between 0 and <code>n - 1</code>.</p>
+<p>This is the pattern behind every counter in a clock. To add one second and wrap at 60:</p>
+<div class="arithmatex">\[ s_{next} = (s + 1) \bmod 60 \]</div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">seconds</span> <span class="o">=</span> <span class="mi">58</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">seconds</span> <span class="o">=</span> <span class="p">(</span><span class="n">seconds</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">60</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">seconds</span><span class="p">)</span>        <span class="c1"># 59, 0, 1, 2</span>
+</code></pre></div></td></tr></table></div>
+<p>Going backward works too: <code>(0 - 1) % 60</code> gives 59 in Python, which is what you want when a "down" button is pressed on minute 0. The same trick cycles through modes: <code>mode = (mode + 1) % 4</code> walks through mode 0, 1, 2, 3, then back to 0.</p>
+<div class="admonition mascot-tip">
+<p class="admonition-title">The Wrap-Around Trick</p>
+<p><img alt="Chrono with a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+Any time a value must go around like a dial (seconds, hours, menu choices), reach for <code>% limit</code> instead of writing an <code>if</code> to reset it. It is shorter and it also handles going backward.</p>
+</div>
+<h4 id="diagram-wrap-around-dial">Diagram: Wrap-Around Dial</h4>
+<details>
+<summary>Wrap-Around Dial</summary>
+<p>Type: MicroSim
+<strong>sim-id:</strong> wrap-around-dial<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p><strong>Learning objective:</strong> Students will <em>apply</em> the modulo operator to predict where a counter lands after adding or subtracting (Bloom: Applying).</p>
+<p><strong>Visual elements:</strong> A circular dial with a modulus set by a selector (12, 24, or 60). A pointer sits on the current value, and the equation <code>(x + step) % n</code> is shown live.</p>
+<p><strong>Controls:</strong> "+1", "-1", and "+10" buttons, a modulus selector, and a "Predict" mode where the student types the resulting number before the pointer moves.</p>
+<p><strong>Responsive design:</strong> The dial scales to canvas width.</p>
+<p>Implementation: p5.js with polar coordinates for tick placement.</p>
+</details>
+<h2 id="functions">Functions</h2>
+<p>A <strong>function</strong> is a named, reusable block of code that performs one job. You define it once with <code>def</code> and then <strong>call</strong> it by name whenever you need it. Functions are the most powerful tool for keeping programs organized, and they are the abstraction skill from Chapter 1 made real.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">show_time</span><span class="p">(</span><span class="n">hour</span><span class="p">,</span> <span class="n">minute</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">hour</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">minute</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="n">show_time</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>     <span class="c1"># 09:05</span>
+<span class="n">show_time</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>   <span class="c1"># 14:30</span>
+</code></pre></div></td></tr></table></div>
+<p>The line with <code>def</code> names the function and lists its <strong>parameters</strong> (<code>hour</code> and <code>minute</code>), the values it expects. The indented block is its <strong>body</strong>. Python must see the <code>def</code> before the first call, so put definitions near the top.</p>
+<p>Functions have three benefits:</p>
+<ul>
+<li><strong>Reuse:</strong> write once, use many times.</li>
+<li><strong>Clarity:</strong> <code>show_time(h, m)</code> says what happens without showing how.</li>
+<li><strong>Testing:</strong> you can check a small function alone.</li>
+</ul>
+<p>Variables created inside a function are <strong>local</strong>: they exist only while it runs and cannot clash with names elsewhere.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">A Function Is an Abstraction</p>
+<p><img alt="Chrono thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Remember hiding details behind a simple name? That is exactly what <code>def</code> does. Once <code>show_time()</code> works, you can stop thinking about <em>how</em> and only think about <em>when</em> to call it.</p>
+</div>
+<h3 id="arguments-and-returns">Arguments and Returns</h3>
+<p>An <strong>argument</strong> is the actual value you pass into a function when you call it, and the <strong>return value</strong> is what the function sends back. The keyword <code>return</code> ends the function and hands back a result.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">to_12_hour</span><span class="p">(</span><span class="n">hour24</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">hour24</span> <span class="o">+</span> <span class="mi">11</span><span class="p">)</span> <span class="o">%</span> <span class="mi">12</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="n">h</span> <span class="o">=</span> <span class="n">to_12_hour</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>      <span class="c1"># h is now 3</span>
+</code></pre></div></td></tr></table></div>
+<p>A function with no <code>return</code> gives back <code>None</code>. You can also give parameters <strong>default values</strong>, and a function can return several values as a tuple:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">split_seconds</span><span class="p">(</span><span class="n">total</span><span class="p">,</span> <span class="n">per_hour</span><span class="o">=</span><span class="mi">3600</span><span class="p">):</span>
+    <span class="n">hours</span> <span class="o">=</span> <span class="n">total</span> <span class="o">//</span> <span class="n">per_hour</span>
+    <span class="n">left</span> <span class="o">=</span> <span class="n">total</span> <span class="o">%</span> <span class="n">per_hour</span>
+    <span class="k">return</span> <span class="n">hours</span><span class="p">,</span> <span class="n">left</span> <span class="o">//</span> <span class="mi">60</span><span class="p">,</span> <span class="n">left</span> <span class="o">%</span> <span class="mi">60</span>
+
+<span class="n">h</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">split_seconds</span><span class="p">(</span><span class="mi">45296</span><span class="p">)</span>     <span class="c1"># 12, 34, 56</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="global-keyword">Global Keyword</h3>
+<p>Assigning to a variable inside a function normally makes a <em>new</em> local variable. The <strong>global keyword</strong> tells Python to use the variable defined outside the function instead:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">add_tick</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">count</span>
+    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+</code></pre></div></td></tr></table></div>
+<p>Without <code>global count</code>, the line <code>count += 1</code> would raise an error. Use <code>global</code> sparingly. Returning a value is usually cleaner, but interrupt handlers and callbacks in Chapter 7 often need it because they cannot return anything to your main code.</p>
+<h3 id="lambda-functions">Lambda Functions</h3>
+<p>A <strong>lambda function</strong> is a tiny unnamed function written on one line. It is handy when you need a short function just once:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">double</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">double</span><span class="p">(</span><span class="mi">21</span><span class="p">))</span>          <span class="c1"># 42</span>
+<span class="n">to_12</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">h</span><span class="p">:</span> <span class="p">(</span><span class="n">h</span> <span class="o">+</span> <span class="mi">11</span><span class="p">)</span> <span class="o">%</span> <span class="mi">12</span> <span class="o">+</span> <span class="mi">1</span>
+</code></pre></div></td></tr></table></div>
+<p>A lambda can contain only one expression and no statements. If it gets complicated, write a normal <code>def</code> instead.</p>
+<h2 id="code-modularity">Code Modularity</h2>
+<p><strong>Code modularity</strong> means organizing a program into small, independent pieces that each do one thing, so you can understand, test, and reuse each piece separately. It applies the decomposition skill from Chapter 1 to real files.</p>
+<p>A well-modularized clock might look like this:</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Job</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>config.py</code></td>
+<td>Pin numbers and hardware settings</td>
+</tr>
+<tr>
+<td><code>timeutil.py</code></td>
+<td>Time math such as <code>to_12_hour()</code></td>
+</tr>
+<tr>
+<td><code>display.py</code></td>
+<td>Drawing functions</td>
+</tr>
+<tr>
+<td><code>main.py</code></td>
+<td>The main loop that ties them together</td>
+</tr>
+</tbody>
+</table>
+<p>Two habits make modular code work. First, give each function one job and a name that says it. Second, never copy and paste code: if you need the same lines twice, make them a function. Keeping pin numbers in <code>config.py</code> also means switching to a different board changes one file, not fifty lines.</p>
+<h4 id="diagram-function-machine">Diagram: Function Machine</h4>
+<details>
+<summary>Function Machine</summary>
+<p>Type: MicroSim
+<strong>sim-id:</strong> function-machine<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p><strong>Learning objective:</strong> Students will <em>understand</em> functions as input-output machines and <em>create</em> their own simple function (Bloom: Understanding, Creating).</p>
+<p><strong>Visual elements:</strong> A machine box with input chutes on the left labeled by parameter names and an output chute on the right. Number tokens drop into the chutes and a result token comes out.</p>
+<p><strong>Controls:</strong> A dropdown of functions (<code>to_12_hour</code>, <code>split_seconds</code>, <code>add</code>, and a "Write your own" text field with a one-line lambda). Input boxes for arguments and a "Run" button that animates the token flow and shows the return value.</p>
+<p><strong>Responsive design:</strong> Machine scales to container width; controls stack below 600 px.</p>
+<p>Implementation: p5.js with <code>eval</code> restricted to a whitelisted set of expressions.</p>
+</details>
+<h2 id="classes-and-objects">Classes and Objects</h2>
+<p>A <strong>class</strong> is a blueprint that bundles data and the functions that work with that data. An <strong>object</strong> (or instance) is one thing built from that blueprint. You have already used classes: <code>Pin</code> is a class, and <code>led = Pin(15, Pin.OUT)</code> builds one <code>Pin</code> object with its own pin number.</p>
+<p>Here is a small class for a wrap-around counter. The special method <code>__init__</code> runs when the object is created, and <code>self</code> refers to the object itself.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Counter</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">limit</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">limit</span> <span class="o">=</span> <span class="n">limit</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">tick</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">limit</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span>
+
+<span class="n">seconds</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+<span class="n">minutes</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+<span class="n">seconds</span><span class="o">.</span><span class="n">tick</span><span class="p">()</span>      <span class="c1"># 1</span>
+</code></pre></div></td></tr></table></div>
+<p>Each object keeps its own <code>value</code>, so <code>seconds</code> and <code>minutes</code> do not interfere.</p>
+<div class="admonition mascot-encourage">
+<p class="admonition-title">Classes Look Scarier Than They Are</p>
+<p><img alt="Chrono encouraging" class="mascot-admonition-img" src="../../img/mascot/encouraging.png" />
+The words <code>self</code> and <code>__init__</code> puzzle nearly everyone at first. You already use objects every time you write <code>led.toggle()</code>, so you understand the idea; you'll write only a few classes yourself, and each one follows this same pattern.</p>
+</div>
+<h3 id="object-methods">Object Methods</h3>
+<p>A <strong>method</strong> is a function that belongs to an object. You call it with a dot after the object's name. <code>led.toggle()</code> is a method on the <code>Pin</code> object, and <code>"clock".upper()</code> is a method on a string. In the <code>Counter</code> class above, <code>tick()</code> is a method. Methods can read and change the object's own data, which is why <code>seconds.tick()</code> remembers where it left off.</p>
+<h2 id="error-handling">Error Handling</h2>
+<p><strong>Error handling</strong> means writing code that survives problems instead of crashing. When something goes wrong at run time, Python raises an <strong>exception</strong> and, if nothing deals with it, the program stops and prints a <strong>traceback</strong> showing where it happened.</p>
+<p>Common exceptions you will meet:</p>
+<table>
+<thead>
+<tr>
+<th>Exception</th>
+<th>Typical cause</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ValueError</code></td>
+<td><code>int("abc")</code>, a value of the right type but wrong content</td>
+</tr>
+<tr>
+<td><code>TypeError</code></td>
+<td>Adding a string to a number</td>
+</tr>
+<tr>
+<td><code>ZeroDivisionError</code></td>
+<td>Dividing by zero</td>
+</tr>
+<tr>
+<td><code>OSError</code></td>
+<td>Hardware or network trouble (device not found, WiFi failed)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="try-except-blocks">Try Except Blocks</h3>
+<p>A <strong>try/except block</strong> runs code that might fail and provides a fallback if it does:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="s2">"12x"</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Not a number, using 0"</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>This matters for hardware. If a sensor is unplugged, talking to it raises <code>OSError</code>, and a <code>try/except</code> can print a helpful message instead of crashing. Name the exception you expect; a bare <code>except:</code> hides real bugs.</p>
+<h2 id="putting-it-together">Putting It Together</h2>
+<p>This short program combines a function, a conditional, a loop, and modular arithmetic to run a simulated clock in the Shell:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">NAME</span> <span class="o">=</span> <span class="s2">"04-sim-clock.py"</span>
+<span class="n">VERSION</span> <span class="o">=</span> <span class="s2">"1.0"</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{}</span><span class="s2"> v</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">NAME</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">))</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">to_12_hour</span><span class="p">(</span><span class="n">hour24</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">hour24</span> <span class="o">+</span> <span class="mi">11</span><span class="p">)</span> <span class="o">%</span> <span class="mi">12</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="n">hour</span><span class="p">,</span> <span class="n">minute</span> <span class="o">=</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">58</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">suffix</span> <span class="o">=</span> <span class="s2">"AM"</span> <span class="k">if</span> <span class="n">hour</span> <span class="o">&lt;</span> <span class="mi">12</span> <span class="k">else</span> <span class="s2">"PM"</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">to_12_hour</span><span class="p">(</span><span class="n">hour</span><span class="p">)</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">minute</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">suffix</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">minute</span> <span class="o">=</span> <span class="p">(</span><span class="n">minute</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">60</span>
+    <span class="k">if</span> <span class="n">minute</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">hour</span> <span class="o">=</span> <span class="p">(</span><span class="n">hour</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">24</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Watch what happens after 11:59 PM: the minute wraps to 0, the hour wraps to 0, and the display flips to <code>12:00 AM</code>.</p>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li><code>import</code> loads modules; libraries are collections of modules, and <code>machine</code> controls the hardware.</li>
+<li><code>if</code>/<code>elif</code>/<code>else</code> make decisions; <code>for</code> and <code>while</code> repeat; <code>break</code> and <code>continue</code> adjust loops.</li>
+<li>The <code>%</code> operator makes counters wrap around like a clock.</li>
+<li>Functions package work behind a name; <code>return</code> sends back a value; <code>global</code> reaches an outside variable.</li>
+<li>Classes bundle data and methods; <code>try</code>/<code>except</code> keeps programs alive when something fails.</li>
+<li>Modular code splits a project into files that each do one job.</li>
+</ul>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Program Structure Unlocked</p>
+<p><img alt="Chrono celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+You can now write decisions, loops, and functions, and you built a simulated clock that correctly wraps from <code>11:59 PM</code> to <code>12:00 AM</code>. That is the shape of every clock program in this book. Every second counts!</p>
+</div>
+<h2 id="practice-questions">Practice Questions</h2>
+<ol>
+<li>Write an <code>if/elif/else</code> chain that prints "Weekday" for weekday numbers 0 to 4 and "Weekend" for 5 and 6.</li>
+<li>Use a <code>for</code> loop and <code>range</code> to print every 15th minute mark: 0, 15, 30, 45.</li>
+<li>Explain why <code>(0 - 1) % 60</code> is useful for a "minute down" button.</li>
+<li>Write a function <code>pad(n)</code> that returns a two-digit string, so <code>pad(7)</code> returns <code>"07"</code>.</li>
+<li>What is the difference between a function and a method? Give one example of each from code you have seen.</li>
+</ol>
 
 
 
 
 
 
+
+  
+  
 
 
 

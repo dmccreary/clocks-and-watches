@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking.">
+        <meta name="description" content="Connecting the Pico W to WiFi, syncing time with NTP, converting UTC to local time, and correcting clock drift.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -29,7 +29,7 @@
     
     
       
-        <title>14. WiFi, NTP, and Time Accuracy - Clocks and Watches with AI</title>
+        <title>WiFi, NTP, and Time Accuracy - Clocks and Watches with AI</title>
       
     
     
@@ -77,16 +77,16 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="14. WiFi, NTP, and Time Accuracy - Clocks and Watches with AI" />
-<meta property="og:description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." />
+<meta property="og:title" content="WiFi, NTP, and Time Accuracy - Clocks and Watches with AI" />
+<meta property="og:description" content="Connecting the Pico W to WiFi, syncing time with NTP, converting UTC to local time, and correcting clock drift." />
 <meta property="og:image" content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/chapters/14-wifi-ntp/index.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://dmccreary.github.io/clocks-and-watches/chapters/14-wifi-ntp/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="14. WiFi, NTP, and Time Accuracy - Clocks and Watches with AI" />
-<meta property="twitter:description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." />
+<meta property="twitter:title" content="WiFi, NTP, and Time Accuracy - Clocks and Watches with AI" />
+<meta property="twitter:description" content="Connecting the Pico W to WiFi, syncing time with NTP, converting UTC to local time, and correcting clock drift." />
 <meta property="twitter:image" content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/chapters/14-wifi-ntp/index.png" />
 </head>
   
@@ -140,7 +140,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              14. WiFi, NTP, and Time Accuracy
+              WiFi, NTP, and Time Accuracy
             
           </span>
         </div>
@@ -972,6 +972,385 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#time-from-the-internet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Time From the Internet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wifi-connectivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WiFi Connectivity
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="WiFi Connectivity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wifi-ssid-and-password" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WiFi SSID and Password
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secrets-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Secrets File
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Network Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#utc-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UTC Time
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ntp-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NTP Protocol
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NTP Protocol">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ntp-client-server-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NTP Client-Server Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ntp-stratum-hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NTP Stratum Hierarchy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NTP Stratum Hierarchy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-ntp-stratum-hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: NTP Stratum Hierarchy
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-ntptime-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Ntptime Library
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Ntptime Library">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ntp-time-sync" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NTP Time Sync
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NTP Time Sync">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-ntp-sync-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: NTP Sync Flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#timezone-conversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Timezone Conversion
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Timezone Conversion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-timezone-converter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Timezone Converter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#daylight-saving-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Daylight Saving Time
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#time-source-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Time Source Comparison
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Time Source Comparison">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#thonny-time-sync" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thonny Time Sync
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clock-drift" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clock Drift
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Clock Drift">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#time-drift-compensation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Time Drift Compensation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clock-calibration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clock Calibration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Clock Calibration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-sync-interval-calculator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Sync Interval Calculator
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#program-variants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Program Variants
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Program Variants">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#main-buttons-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Main Buttons Program
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#main-rtc-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Main RTC Program
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#main-wifi-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Main WiFi Program
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Putting It Together
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1754,6 +2133,385 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#time-from-the-internet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Time From the Internet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wifi-connectivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WiFi Connectivity
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="WiFi Connectivity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wifi-ssid-and-password" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WiFi SSID and Password
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secrets-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Secrets File
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Network Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#utc-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UTC Time
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ntp-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NTP Protocol
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NTP Protocol">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ntp-client-server-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NTP Client-Server Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ntp-stratum-hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NTP Stratum Hierarchy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NTP Stratum Hierarchy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-ntp-stratum-hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: NTP Stratum Hierarchy
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-ntptime-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Ntptime Library
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Ntptime Library">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ntp-time-sync" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NTP Time Sync
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NTP Time Sync">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-ntp-sync-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: NTP Sync Flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#timezone-conversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Timezone Conversion
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Timezone Conversion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-timezone-converter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Timezone Converter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#daylight-saving-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Daylight Saving Time
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#time-source-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Time Source Comparison
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Time Source Comparison">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#thonny-time-sync" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thonny Time Sync
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clock-drift" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clock Drift
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Clock Drift">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#time-drift-compensation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Time Drift Compensation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clock-calibration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clock Calibration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Clock Calibration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-sync-interval-calculator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Sync Interval Calculator
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#program-variants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Program Variants
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Program Variants">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#main-buttons-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Main Buttons Program
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#main-rtc-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Main RTC Program
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#main-wifi-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Main WiFi Program
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Putting It Together
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1932,13 +2690,606 @@
 <li><a href="../13-real-time-clocks/">Chapter 13: Real-Time Clocks and the DS3231</a></li>
 </ul>
 <hr />
-<p>TODO: Generate Chapter Content</p>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">A Clock That Sets Itself</p>
+<p><img alt="Chrono waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+Imagine plugging in a clock and having it find the exact time from the internet, adjust for your time zone, and even handle daylight saving. That's what this chapter builds with a Pico W and a few lines of code. Let's make time tick!</p>
+</div>
+<h2 id="time-from-the-internet">Time From the Internet</h2>
+<p>A real-time clock keeps time well, but someone still has to set it, and it slowly drifts. The internet offers a better answer: servers around the world that broadcast the exact time. A Pico W can connect to WiFi, ask one of those servers, and set itself. This chapter walks through the whole chain: connecting to WiFi, using the Network Time Protocol (NTP), converting to your time zone, handling daylight saving, and choosing between the time sources you now know. The chapter ends with how to organize the different versions of a clock program.</p>
+<h2 id="wifi-connectivity">WiFi Connectivity</h2>
+<p><strong>WiFi connectivity</strong> is the ability of the Pico W to join a wireless network. Only the <strong>Pico W</strong> can do this, since the plain Pico has no wireless chip (Chapter 5). The Pico W supports <strong>2.4 GHz</strong> WiFi only. If your network name exists only on the 5 GHz band, the Pico cannot see it.</p>
+<p>The <code>network</code> module provides the tools. You create a <strong>station interface</strong> (the Pico acts as a client, like a phone), turn it on, and connect with a network name and password:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">network</span>
+<span class="n">wlan</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">WLAN</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">STA_IF</span><span class="p">)</span>   <span class="c1"># station (client) mode</span>
+<span class="n">wlan</span><span class="o">.</span><span class="n">active</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>                     <span class="c1"># turn the radio on</span>
+<span class="n">wlan</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">SSID</span><span class="p">,</span> <span class="n">PASSWORD</span><span class="p">)</span>          <span class="c1"># ask to join the network</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">wlan</span><span class="o">.</span><span class="n">isconnected</span><span class="p">())</span>             <span class="c1"># True once joined</span>
+</code></pre></div></td></tr></table></div>
+<p>Joining takes a few seconds, so a good program waits in a loop with a <strong>timeout</strong> so it does not hang forever:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">connect</span><span class="p">(</span><span class="n">ssid</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">15</span><span class="p">):</span>
+    <span class="n">wlan</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">WLAN</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">STA_IF</span><span class="p">)</span>
+    <span class="n">wlan</span><span class="o">.</span><span class="n">active</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">wlan</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">ssid</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">wlan</span><span class="o">.</span><span class="n">isconnected</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span> <span class="o">&gt;</span> <span class="n">timeout</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>                  <span class="c1"># gave up</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">wlan</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="wifi-ssid-and-password">WiFi SSID and Password</h3>
+<p>The <strong>SSID</strong> (service set identifier) is the name of the network, the label you see in your phone's WiFi list. It is <strong>case-sensitive</strong>, so <code>HomeWiFi</code> and <code>homewifi</code> are different networks. The <strong>password</strong> must match exactly, including capitals and symbols. Most home networks use WPA2, which requires 8 to 63 characters. Some networks, such as school networks with a sign-in page or enterprise login, will not work directly with a Pico. Ask your teacher for a compatible network or a guest network.</p>
+<h3 id="secrets-file">Secrets File</h3>
+<p>Your WiFi password should never be written into a program you share or upload to a public repository. The standard solution is a separate file named <strong><code>secrets.py</code></strong> that holds your credentials and is never shared:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># secrets.py: keep this file private</span>
+<span class="n">SSID</span> <span class="o">=</span> <span class="s2">"MyHomeNetwork"</span>
+<span class="n">PASSWORD</span> <span class="o">=</span> <span class="s2">"correct-horse-battery"</span>
+</code></pre></div></td></tr></table></div>
+<p>Your program then imports it:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">secrets</span>
+<span class="n">wlan</span> <span class="o">=</span> <span class="n">connect</span><span class="p">(</span><span class="n">secrets</span><span class="o">.</span><span class="n">SSID</span><span class="p">,</span> <span class="n">secrets</span><span class="o">.</span><span class="n">PASSWORD</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Keep the Password Off the Internet</p>
+<p><img alt="Chrono warning" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+If you commit <code>secrets.py</code> to a public Git repository, anyone can read your WiFi password, and bots really do scan for these. Add <code>secrets.py</code> to your <code>.gitignore</code> file (Chapter 5), and commit a <code>secrets_example.py</code> with fake values instead so classmates know what to fill in.</p>
+</div>
+<h3 id="network-configuration">Network Configuration</h3>
+<p>Once connected, the Pico receives a <strong>network configuration</strong> from the router, automatically, through a service called <strong>DHCP</strong>. Four values describe it:</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IP address</td>
+<td>The Pico's unique address on your network</td>
+</tr>
+<tr>
+<td>Subnet mask</td>
+<td>Which addresses count as "local"</td>
+</tr>
+<tr>
+<td>Gateway</td>
+<td>The router that leads to the internet</td>
+</tr>
+<tr>
+<td>DNS server</td>
+<td>The service that turns names like <code>pool.ntp.org</code> into IP addresses</td>
+</tr>
+</tbody>
+</table>
+<p>Print them with <code>wlan.ifconfig()</code>, which returns a tuple of these four values in order. If you can see an IP address other than <code>0.0.0.0</code>, you are connected. The <strong>DNS</strong> entry matters for this chapter, because NTP servers are reached by name.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">wlan</span><span class="o">.</span><span class="n">ifconfig</span><span class="p">())</span>    <span class="c1"># ('192.168.1.42', '255.255.255.0', '192.168.1.1', '192.168.1.1')</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="utc-time">UTC Time</h2>
+<p><strong>UTC</strong> (Coordinated Universal Time) is the world's standard reference time. It is the same everywhere on Earth at any instant, and it does <strong>not</strong> change for daylight saving. Every time zone is described as an offset from UTC.</p>
+<p>Computers and servers exchange time in UTC so that no one has to guess which time zone a timestamp is in. The Pico follows the same rule when it syncs: the NTP server sends UTC, and <strong>your program</strong> converts it for display. It helps to keep this split in mind: <strong>store and compare time in UTC, and convert to local time only when showing it to a person.</strong></p>
+<h2 id="ntp-protocol">NTP Protocol</h2>
+<p><strong>NTP</strong> (Network Time Protocol) is the internet standard for distributing accurate time, in use since 1985. It runs over UDP on port 123 and exchanges a small 48-byte message. The server's reply contains a timestamp counted in seconds since <strong>January 1, 1900</strong>, which is a third epoch to add to the two from Chapter 6:</p>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Epoch (time zero)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NTP</td>
+<td>January 1, 1900</td>
+</tr>
+<tr>
+<td>Unix / internet</td>
+<td>January 1, 1970</td>
+</tr>
+<tr>
+<td>MicroPython on the Pico</td>
+<td>January 1, 2000</td>
+</tr>
+</tbody>
+</table>
+<p>The library handles the conversion, subtracting 3,155,673,600 seconds (the number of seconds between 1900 and 2000). You will rarely do it yourself, but it explains why raw NTP numbers look strange.</p>
+<h3 id="ntp-client-server-model">NTP Client-Server Model</h3>
+<p>NTP uses a <strong>client-server</strong> model. The Pico is the <strong>client</strong>: it sends a request to a <strong>server</strong> that holds accurate time. The server replies with timestamps, and the client uses them to set its clock. The Pico never gives time to anyone. The simple version used on microcontrollers, SNTP, takes the server's time as truth and is accurate to within a fraction of a second, limited by network delay.</p>
+<p>By default the library asks <code>pool.ntp.org</code>, a shared name that hands out one of thousands of volunteer servers around the world.</p>
+<h3 id="ntp-stratum-hierarchy">NTP Stratum Hierarchy</h3>
+<p>Not every NTP server is equally close to the true time. The <strong>stratum</strong> number says how many steps a server is from a reference clock:</p>
+<table>
+<thead>
+<tr>
+<th>Stratum</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Atomic clocks and GPS receivers (the reference)</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Servers directly connected to a stratum 0 device</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Servers that sync from stratum 1</td>
+</tr>
+<tr>
+<td>3 and up</td>
+<td>Servers that sync from the level above</td>
+</tr>
+</tbody>
+</table>
+<p>Each step down adds a little delay and error, but even stratum 2 or 3 servers are accurate to a few milliseconds, far better than a clock needs. The pool servers you will reach are typically stratum 2 or 3.</p>
+<h4 id="diagram-ntp-stratum-hierarchy">Diagram: NTP Stratum Hierarchy</h4>
+<details>
+<summary>NTP Stratum Hierarchy</summary>
+<p>Type: interactive diagram
+<strong>sim-id:</strong> ntp-stratum-hierarchy<br/>
+<strong>Library:</strong> vis-network<br/>
+<strong>Status:</strong> Specified</p>
+<p><strong>Learning objective:</strong> Students will <em>understand</em> how time flows from atomic clocks down through NTP servers to a Pico (Bloom: Understanding).</p>
+<p><strong>Layout:</strong> A top-down tree. Top: "Atomic clock / GPS (Stratum 0)." Next: two stratum 1 servers. Below: four stratum 2 servers. At the bottom: "Your Pico W (client)."</p>
+<p><strong>Interactions:</strong></p>
+<ul>
+<li>Clicking any node opens an infobox describing its role and typical accuracy.</li>
+<li>A "Send request" button animates a packet from the Pico up to a chosen server and the reply back down, showing timestamps.</li>
+<li>A slider "Network delay (ms)" changes the displayed error to show how delay limits accuracy.</li>
+</ul>
+<p><strong>Responsive design:</strong> The canvas fills the container width and calls <code>network.fit()</code> on resize.</p>
+<p>Implementation: vis-network with hierarchical layout and an animated edge.</p>
+</details>
+<h2 id="the-ntptime-library">The Ntptime Library</h2>
+<p>MicroPython includes a small library, <strong><code>ntptime</code></strong>, that does the whole NTP exchange in one call. The key function is <code>ntptime.settime()</code>, which asks the server, gets UTC, and <strong>sets the Pico's internal RTC</strong> to it.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">ntptime</span>
+<span class="n">ntptime</span><span class="o">.</span><span class="n">settime</span><span class="p">()</span>             <span class="c1"># sets the internal clock to UTC</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">())</span>       <span class="c1"># now shows UTC, not local time</span>
+</code></pre></div></td></tr></table></div>
+<p>After <code>settime()</code>, <code>localtime()</code> returns <strong>UTC</strong>, because MicroPython has no idea what your time zone is. You will convert it in the next section. The library can fail with an <code>OSError</code> such as <code>ETIMEDOUT</code> when the network is slow or the server does not answer, so always wrap it in a <code>try/except</code> (Chapter 4) and retry:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">sync_time</span><span class="p">(</span><span class="n">retries</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">retries</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">ntptime</span><span class="o">.</span><span class="n">settime</span><span class="p">()</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">False</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="ntp-time-sync">NTP Time Sync</h3>
+<p><strong>NTP time sync</strong> is the complete routine: connect to WiFi, get UTC from the server, set the clock, and remember when you did it. A good clock syncs when it starts and then again on a schedule, such as every few hours, to cancel drift.</p>
+<p>Servers are shared by everyone, so be a polite client. Do not sync more than once every several minutes. A clock that syncs once every 6 to 24 hours is more than accurate enough.</p>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Retry, Then Carry On</p>
+<p><img alt="Chrono with a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+WiFi and NTP fail sometimes for ordinary reasons. Try a few times, and if it still fails, keep running on the clock's own time and try again later instead of crashing. A clock that keeps ticking is better than one that stops to argue with the router.</p>
+</div>
+<h4 id="diagram-ntp-sync-flow">Diagram: NTP Sync Flow</h4>
+<details>
+<summary>NTP Sync Flow</summary>
+<p>Type: workflow diagram
+<strong>sim-id:</strong> ntp-sync-flow<br/>
+<strong>Library:</strong> Mermaid<br/>
+<strong>Status:</strong> Specified</p>
+<p><strong>Learning objective:</strong> Students will <em>sequence</em> the steps of a time sync and <em>identify</em> what to do at each failure point (Bloom: Understanding, Applying).</p>
+<p><strong>Nodes:</strong> Start, read <code>secrets.py</code>, connect WiFi (timeout?), <code>ntptime.settime()</code> (success?), apply time zone offset and DST, update display, wait N hours, back to connect. Failure branches go to "Retry" and then "Keep running on last known time."</p>
+<p><strong>Interactions:</strong> Every node has a Mermaid <code>click</code> directive that shows the code for the step. Two toggle buttons, "WiFi fails" and "NTP fails," light up the retry paths.</p>
+<p><strong>Responsive design:</strong> The diagram scales to container width.</p>
+<p>Implementation: Mermaid flowchart with click callbacks.</p>
+</details>
+<h2 id="timezone-conversion">Timezone Conversion</h2>
+<p><strong>Timezone conversion</strong> turns UTC into your local time by adding a fixed <strong>offset</strong> in hours. For example, Central Time in the United States is 6 hours behind UTC in winter (offset −6) and 5 behind in summer (offset −5). Because the Pico stores time as a count of seconds, the conversion is one addition, and MicroPython takes care of carrying over into the next or previous day:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="n">OFFSET_HOURS</span> <span class="o">=</span> <span class="o">-</span><span class="mi">6</span>                        <span class="c1"># Central Standard Time</span>
+
+<span class="n">utc_secs</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>                   <span class="c1"># seconds since 2000, in UTC</span>
+<span class="n">local_secs</span> <span class="o">=</span> <span class="n">utc_secs</span> <span class="o">+</span> <span class="n">OFFSET_HOURS</span> <span class="o">*</span> <span class="mi">3600</span>
+<span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="n">hour</span><span class="p">,</span> <span class="n">minute</span><span class="p">,</span> <span class="n">second</span><span class="p">,</span> <span class="n">wd</span><span class="p">,</span> <span class="n">yd</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">(</span><span class="n">local_secs</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<table>
+<thead>
+<tr>
+<th>Zone</th>
+<th>Standard offset</th>
+<th>Daylight offset</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>US Eastern</td>
+<td>−5</td>
+<td>−4</td>
+</tr>
+<tr>
+<td>US Central (Minnesota)</td>
+<td>−6</td>
+<td>−5</td>
+</tr>
+<tr>
+<td>US Mountain</td>
+<td>−7</td>
+<td>−6</td>
+</tr>
+<tr>
+<td>US Pacific</td>
+<td>−8</td>
+<td>−7</td>
+</tr>
+<tr>
+<td>UTC</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Central Europe</td>
+<td>+1</td>
+<td>+2</td>
+</tr>
+<tr>
+<td>India</td>
+<td>+5.5</td>
+<td>(none)</td>
+</tr>
+</tbody>
+</table>
+<p>Some zones use half-hour offsets, as India does, so store the offset as a number that can have a fraction (5.5 hours is 19,800 seconds).</p>
+<p><strong>Worked example.</strong> It is 01:30 UTC on the 15th. Central Standard Time is UTC −6, so the local time is 19:30 on the <strong>14th</strong>. Because the calculation is done on seconds, the date rolls back correctly without extra code.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">UTC Inside, Local Outside</p>
+<p><img alt="Chrono thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Keep your clock's internal time in UTC, the same for everyone, and convert to local time only in the last step before drawing digits. Then moving your clock to another time zone, or handling daylight saving, changes one number in one place.</p>
+</div>
+<h4 id="diagram-timezone-converter">Diagram: Timezone Converter</h4>
+<details>
+<summary>Timezone Converter</summary>
+<p>Type: MicroSim
+<strong>sim-id:</strong> timezone-converter<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p><strong>Learning objective:</strong> Students will <em>apply</em> offsets to convert UTC to local time, including date rollovers (Bloom: Applying).</p>
+<p><strong>Visual elements:</strong> A world strip map with time-zone bands, and a digital clock for UTC and one for the selected zone.</p>
+<p><strong>Controls:</strong> A UTC time slider (0 to 24 hours plus a date), a zone dropdown with the table above, a "DST on/off" toggle, and a "Predict" mode asking for the local time before revealing it.</p>
+<p><strong>Behavior:</strong> When the conversion crosses midnight, the date changes and the display highlights it.</p>
+<p><strong>Responsive design:</strong> The map and clocks stack vertically below 600 px.</p>
+<p>Implementation: p5.js using integer second arithmetic.</p>
+</details>
+<h3 id="daylight-saving-time">Daylight Saving Time</h3>
+<p><strong>Daylight saving time (DST)</strong> is the practice of moving clocks forward one hour in the warm months. In the United States, DST begins at 2:00 a.m. on the <strong>second Sunday in March</strong> and ends at 2:00 a.m. on the <strong>first Sunday in November</strong>. During DST the offset is one hour larger, so Central Time becomes −5.</p>
+<p>The Pico does not know about DST, so your program must. The rule needs the date of "the nth Sunday of a month," which you can find using the weekday from Chapter 6:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">mktime</span><span class="p">,</span> <span class="n">localtime</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">is_dst_us</span><span class="p">(</span><span class="n">utc_secs</span><span class="p">,</span> <span class="n">std_offset</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""True if US daylight saving is in effect at this UTC time."""</span>
+    <span class="n">year</span> <span class="o">=</span> <span class="n">localtime</span><span class="p">(</span><span class="n">utc_secs</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">nth_sunday</span><span class="p">(</span><span class="n">month</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="n">first</span> <span class="o">=</span> <span class="n">mktime</span><span class="p">((</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="n">wd</span> <span class="o">=</span> <span class="n">localtime</span><span class="p">(</span><span class="n">first</span><span class="p">)[</span><span class="mi">6</span><span class="p">]</span>                  <span class="c1"># Monday = 0 ... Sunday = 6</span>
+        <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="mi">6</span> <span class="o">-</span> <span class="n">wd</span><span class="p">)</span> <span class="o">%</span> <span class="mi">7</span> <span class="o">+</span> <span class="mi">7</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">start</span> <span class="o">=</span> <span class="n">mktime</span><span class="p">((</span><span class="n">year</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">nth_sunday</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="o">-</span> <span class="n">std_offset</span> <span class="o">*</span> <span class="mi">3600</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="n">mktime</span><span class="p">((</span><span class="n">year</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="n">nth_sunday</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="o">-</span> <span class="p">(</span><span class="n">std_offset</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">3600</span>
+    <span class="k">return</span> <span class="n">start</span> <span class="o">&lt;=</span> <span class="n">utc_secs</span> <span class="o">&lt;</span> <span class="n">end</span>
+</code></pre></div></td></tr></table></div>
+<p>The function computes when DST starts and ends in UTC, and checks whether the current time falls between them. In 2026 it starts March 8 and ends November 1. Then the offset is <code>std_offset + 1</code> when the function returns <code>True</code>. Laws change, so the rules may differ where you live and in other years. Some regions, like Arizona, do not observe DST at all.</p>
+<h2 id="time-source-comparison">Time Source Comparison</h2>
+<p>You now have four different ways to give a clock its time. Each one has a different strength.</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Accuracy</th>
+<th>Survives power-off?</th>
+<th>Needs</th>
+<th>Best for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Thonny time sync</td>
+<td>About 1 second</td>
+<td>No</td>
+<td>A computer over USB</td>
+<td>Development and testing</td>
+</tr>
+<tr>
+<td>Internal RTC</td>
+<td>About 30 ppm (2.6 s/day)</td>
+<td>No</td>
+<td>Nothing</td>
+<td>Short runs between syncs</td>
+</tr>
+<tr>
+<td>DS3231</td>
+<td>About 2 ppm (5 s/month)</td>
+<td>Yes (battery)</td>
+<td>I2C wiring and a coin cell</td>
+<td>Clocks with no WiFi</td>
+</tr>
+<tr>
+<td>NTP over WiFi</td>
+<td>Milliseconds</td>
+<td>No (re-sync on boot)</td>
+<td>Pico W and WiFi</td>
+<td>Always-connected clocks</td>
+</tr>
+</tbody>
+</table>
+<p>A robust clock combines them: read the DS3231 at startup so the time is right immediately, then correct it from NTP whenever WiFi is available, and write the corrected time back to the DS3231.</p>
+<h3 id="thonny-time-sync">Thonny Time Sync</h3>
+<p>When you connect Thonny to a Pico, it sets the Pico's internal clock to your <strong>computer's local time</strong>. That is why <code>localtime()</code> looks right while you develop. But this is a development convenience only: unplug the Pico and the time is gone. It also causes a subtle mix-up. Thonny sets <strong>local</strong> time, while <code>ntptime</code> sets <strong>UTC</strong>, so a program that works while connected to Thonny can be several hours off when it runs alone. Decide on one convention (UTC in the RTC and convert for display is best) and test the program by unplugging from Thonny.</p>
+<h2 id="clock-drift">Clock Drift</h2>
+<p><strong>Clock drift</strong> is the slow error that builds up as a clock runs faster or slower than true time. It comes from tiny frequency errors in the crystal. You measure it by comparing the clock to a reference after a known time:</p>
+<div class="arithmatex">\[ \text{drift (ppm)} = \frac{\text{error in seconds}}{\text{elapsed seconds}} \times 10^6 \]</div>
+<p><strong>Worked example.</strong> A clock is 3 seconds fast after 10 days (864,000 seconds). Its drift is <span class="arithmatex">\( 3 / 864{,}000 \times 10^6 \approx 3.5 \)</span> ppm, about what you would expect from a DS3231 at room temperature.</p>
+<h3 id="time-drift-compensation">Time Drift Compensation</h3>
+<p><strong>Time drift compensation</strong> means correcting for drift, either by resetting the clock regularly or by adjusting for its known error. The simplest and most reliable method is periodic resynchronization. How often depends on how much error you can tolerate:</p>
+<div class="arithmatex">\[ \text{sync interval} = \frac{\text{tolerated error}}{\text{drift rate}} \]</div>
+<p>For a Pico crystal at 30 ppm and a tolerance of 1 second, the interval is <span class="arithmatex">\( 1 / 0.00003 \approx 33{,}000 \)</span> seconds, or about 9 hours. Syncing once a day gives a worst-case error of about 2.6 seconds, and syncing every 6 hours keeps it below about 0.7 seconds.</p>
+<h3 id="clock-calibration">Clock Calibration</h3>
+<p><strong>Clock calibration</strong> is measuring a specific clock's drift over a long enough time and then applying a correction for that individual unit. The steps are:</p>
+<ol>
+<li>Set the clock to a reference (NTP) at a known moment.</li>
+<li>Let it run for several days without correction.</li>
+<li>Compare it to the reference and compute the drift in ppm.</li>
+<li>Apply the correction: for example, the DS3231 has an <strong>aging offset</strong> register (<code>0x10</code>) that shifts its frequency in small steps, and software can subtract the measured drift.</li>
+</ol>
+<p>Calibration is rarely needed for a clock that syncs over WiFi, but it is the tool of choice for an offline DS3231 clock that must be very accurate.</p>
+<h4 id="diagram-sync-interval-calculator">Diagram: Sync Interval Calculator</h4>
+<details>
+<summary>Sync Interval Calculator</summary>
+<p>Type: chart
+<strong>sim-id:</strong> sync-interval-calculator<br/>
+<strong>Library:</strong> Chart.js<br/>
+<strong>Status:</strong> Specified</p>
+<p><strong>Learning objective:</strong> Students will <em>calculate</em> how often a clock must resynchronize for a given accuracy goal (Bloom: Applying, Evaluating).</p>
+<p><strong>Visual elements:</strong> A sawtooth line chart showing error growing between syncs and resetting to zero at each sync, over 3 days.</p>
+<p><strong>Controls:</strong> Sliders for drift (1 to 100 ppm) and sync interval (1 to 48 hours); a readout "Worst-case error: X seconds" and "Sync interval needed for 1 s accuracy." A preset menu selects Pico crystal (30 ppm), DS1307 (20), DS3231 (2).</p>
+<p><strong>Responsive design:</strong> The chart resizes to the container.</p>
+<p>Implementation: Chart.js line chart with a generated sawtooth dataset.</p>
+</details>
+<h2 id="program-variants">Program Variants</h2>
+<p>A <strong>program variant</strong> is a version of the main clock program built for a particular set of hardware or features. Different kits have different parts, so rather than one giant program full of <code>if</code> statements, we keep several small variants that share the same modules and drivers. The naming convention makes the choice obvious. You copy exactly one variant to the Pico as <code>main.py</code> (Chapter 5) to select it.</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Time source</th>
+<th>Input</th>
+<th>Chapter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>main-buttons.py</code></td>
+<td>Internal RTC, set by buttons</td>
+<td>Two buttons</td>
+<td>7</td>
+</tr>
+<tr>
+<td><code>main-rtc.py</code></td>
+<td>DS3231 battery-backed</td>
+<td>Buttons (optional)</td>
+<td>13</td>
+</tr>
+<tr>
+<td><code>main-w.py</code></td>
+<td>NTP over WiFi (Pico W)</td>
+<td>None needed</td>
+<td>14</td>
+</tr>
+</tbody>
+</table>
+<p>Variants stay small because they import shared code, such as <code>config.py</code>, the display driver, and the time helpers, instead of copying it (Chapter 4). Keep the banner in each variant so you can tell which one is running.</p>
+<h3 id="main-buttons-program">Main Buttons Program</h3>
+<p><code>main-buttons.py</code> is the offline variant. It uses the internal RTC and lets the user set the hour and minute with the mode-cycling state machine from Chapter 7. It needs no WiFi and no extra chips, so it works on any Pico, but it forgets the time at power-off.</p>
+<h3 id="main-rtc-program">Main RTC Program</h3>
+<p><code>main-rtc.py</code> adds the DS3231. At startup it reads the battery-backed time and copies it into the internal clock with <code>machine.RTC().datetime(...)</code> (Chapter 13). If the user sets the time with the buttons, it writes the new value to the DS3231 as well. This variant survives power outages.</p>
+<h3 id="main-wifi-program">Main WiFi Program</h3>
+<p><code>main-w.py</code> is the internet variant for the Pico W. It connects, syncs with NTP, applies the timezone and DST rules, and then displays the local time. Here is a complete skeleton that prints the local time in the Shell:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">NAME</span> <span class="o">=</span> <span class="s2">"main-w.py"</span>
+<span class="n">VERSION</span> <span class="o">=</span> <span class="s2">"1.0"</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{}</span><span class="s2"> v</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">NAME</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">))</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">network</span><span class="o">,</span><span class="w"> </span><span class="nn">ntptime</span><span class="o">,</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">secrets</span>
+
+<span class="n">STD_OFFSET</span> <span class="o">=</span> <span class="o">-</span><span class="mi">6</span>                           <span class="c1"># US Central Standard Time</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">connect</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">15</span><span class="p">):</span>
+    <span class="n">wlan</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">WLAN</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">STA_IF</span><span class="p">)</span>
+    <span class="n">wlan</span><span class="o">.</span><span class="n">active</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">wlan</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">secrets</span><span class="o">.</span><span class="n">SSID</span><span class="p">,</span> <span class="n">secrets</span><span class="o">.</span><span class="n">PASSWORD</span><span class="p">)</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">wlan</span><span class="o">.</span><span class="n">isconnected</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span> <span class="o">&gt;</span> <span class="n">timeout</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">True</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">sync</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">ntptime</span><span class="o">.</span><span class="n">settime</span><span class="p">()</span>             <span class="c1"># RTC now holds UTC</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">False</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">local_now</span><span class="p">():</span>
+    <span class="n">utc</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">offset</span> <span class="o">=</span> <span class="n">STD_OFFSET</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="k">if</span> <span class="n">is_dst_us</span><span class="p">(</span><span class="n">utc</span><span class="p">,</span> <span class="n">STD_OFFSET</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">(</span><span class="n">utc</span> <span class="o">+</span> <span class="n">offset</span> <span class="o">*</span> <span class="mi">3600</span><span class="p">)</span>
+
+<span class="c1"># is_dst_us() is the function from the Daylight Saving Time section</span>
+
+<span class="k">if</span> <span class="n">connect</span><span class="p">()</span> <span class="ow">and</span> <span class="n">sync</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Synced"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Sync failed; using existing time"</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">h</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">local_now</span><span class="p">()[</span><span class="mi">3</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">h</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">m</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">s</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Put <code>is_dst_us()</code> above <code>local_now()</code> in your file, then add your display code in place of <code>print</code>.</p>
+<h2 id="putting-it-together">Putting It Together</h2>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Join WiFi</td>
+<td><code>network.WLAN(STA_IF)</code>, <code>connect()</code>, timeout loop</td>
+</tr>
+<tr>
+<td>Hide the password</td>
+<td><code>secrets.py</code> plus <code>.gitignore</code></td>
+</tr>
+<tr>
+<td>Get exact time</td>
+<td><code>ntptime.settime()</code> (UTC)</td>
+</tr>
+<tr>
+<td>Show local time</td>
+<td>Add offset ± DST, then <code>localtime()</code></td>
+</tr>
+<tr>
+<td>Keep it accurate</td>
+<td>Resync every few hours; use the DS3231 as a fallback</td>
+</tr>
+</tbody>
+</table>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li>The Pico W joins 2.4 GHz WiFi with <code>network.WLAN</code>; store credentials in a private <code>secrets.py</code>.</li>
+<li>NTP delivers UTC from a hierarchy of servers; <code>ntptime.settime()</code> sets the RTC to UTC.</li>
+<li>Convert to local time by adding an offset in seconds, plus one hour when daylight saving is in effect.</li>
+<li>Store UTC internally and convert only for display.</li>
+<li>Drift in ppm tells you how often to resync: interval = tolerated error ÷ drift rate.</li>
+<li>Choose a time source, or combine them, by accuracy, power-off survival, and required hardware.</li>
+<li>Program variants (<code>main-buttons.py</code>, <code>main-rtc.py</code>, <code>main-w.py</code>) keep each hardware setup simple.</li>
+</ul>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Your Clock Sets Itself</p>
+<p><img alt="Chrono celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+You can now join WiFi, fetch UTC with NTP, convert to local time with daylight saving, and choose how often to resync. A clock that corrects itself is a real milestone. Every second counts!</p>
+</div>
+<h2 id="practice-questions">Practice Questions</h2>
+<ol>
+<li>Why should <code>secrets.py</code> be listed in <code>.gitignore</code>?</li>
+<li>It is 03:15 UTC. What is the local time in US Central Standard Time (UTC−6), and on what day?</li>
+<li>A Pico crystal drifts 30 ppm. How often must you resync to stay within 0.5 seconds?</li>
+<li>Explain why the time on your Pico can be hours off after unplugging from Thonny, even though it looked right before.</li>
+<li>Choose a time source for a wall clock with no WiFi that must stay within one minute a year, and justify it.</li>
+</ol>
 
 
 
 
 
 
+
+  
+  
 
 
 

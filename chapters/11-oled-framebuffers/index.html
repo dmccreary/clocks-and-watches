@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking.">
+        <meta name="description" content="OLED displays, the SSD1306 driver, the framebuffer model, show and fill commands, refresh rate, and baudrate tuning.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -29,7 +29,7 @@
     
     
       
-        <title>11. OLED Displays and Framebuffers - Clocks and Watches with AI</title>
+        <title>OLED Displays and Framebuffers - Clocks and Watches with AI</title>
       
     
     
@@ -77,16 +77,16 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="11. OLED Displays and Framebuffers - Clocks and Watches with AI" />
-<meta property="og:description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." />
+<meta property="og:title" content="OLED Displays and Framebuffers - Clocks and Watches with AI" />
+<meta property="og:description" content="OLED displays, the SSD1306 driver, the framebuffer model, show and fill commands, refresh rate, and baudrate tuning." />
 <meta property="og:image" content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/chapters/11-oled-framebuffers/index.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://dmccreary.github.io/clocks-and-watches/chapters/11-oled-framebuffers/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="11. OLED Displays and Framebuffers - Clocks and Watches with AI" />
-<meta property="twitter:description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." />
+<meta property="twitter:title" content="OLED Displays and Framebuffers - Clocks and Watches with AI" />
+<meta property="twitter:description" content="OLED displays, the SSD1306 driver, the framebuffer model, show and fill commands, refresh rate, and baudrate tuning." />
 <meta property="twitter:image" content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/chapters/11-oled-framebuffers/index.png" />
 </head>
   
@@ -140,7 +140,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              11. OLED Displays and Framebuffers
+              OLED Displays and Framebuffers
             
           </span>
         </div>
@@ -882,6 +882,273 @@
     <span class="md-ellipsis">
       
         Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-screen-you-can-draw-on" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A Screen You Can Draw On
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#oled-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OLED Display
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#display-resolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Display Resolution
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Display Resolution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-resolution-and-memory-calculator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Resolution and Memory Calculator
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-ssd1306-driver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The SSD1306 Driver
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The SSD1306 Driver">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ssd1306-i2c-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SSD1306 I2C Setup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssd1306-spi-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SSD1306 SPI Setup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sh1106-driver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SH1106 Driver
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#framebuffer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Framebuffer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Framebuffer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-framebuffer-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Framebuffer Pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pixel-coordinate-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pixel Coordinate Mapping
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#display-show-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Display Show Command
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Display Show Command">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#display-fill-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Display Fill Command
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#screen-clearing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Screen Clearing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pixel-drawing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pixel Drawing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pixel Drawing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-pixel-grid-sketchpad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Pixel Grid Sketchpad
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#display-refresh-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Display Refresh Rate
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Display Refresh Rate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#baudrate-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Baudrate Tuning
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Putting It Together
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice Questions
       
     </span>
   </a>
@@ -1754,6 +2021,273 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#a-screen-you-can-draw-on" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A Screen You Can Draw On
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#oled-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OLED Display
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#display-resolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Display Resolution
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Display Resolution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-resolution-and-memory-calculator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Resolution and Memory Calculator
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-ssd1306-driver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The SSD1306 Driver
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The SSD1306 Driver">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ssd1306-i2c-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SSD1306 I2C Setup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssd1306-spi-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SSD1306 SPI Setup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sh1106-driver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SH1106 Driver
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#framebuffer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Framebuffer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Framebuffer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-framebuffer-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Framebuffer Pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pixel-coordinate-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pixel Coordinate Mapping
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#display-show-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Display Show Command
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Display Show Command">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#display-fill-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Display Fill Command
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#screen-clearing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Screen Clearing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pixel-drawing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pixel Drawing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pixel Drawing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-pixel-grid-sketchpad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Pixel Grid Sketchpad
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#display-refresh-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Display Refresh Rate
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Display Refresh Rate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#baudrate-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Baudrate Tuning
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Putting It Together
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1903,13 +2437,446 @@
 <li><a href="../10-clock-math/">Chapter 10: Coordinates, Trigonometry, and Clock Geometry</a></li>
 </ul>
 <hr />
-<p>TODO: Generate Chapter Content</p>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Pixels You Control</p>
+<p><img alt="Chrono waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+Seven-segment digits are great, but an OLED lets you light any of its 8,192 pixels. In this chapter you'll wire one up, learn the trick of drawing in memory first, and put your first pixels on screen. Let's make time tick!</p>
+</div>
+<h2 id="a-screen-you-can-draw-on">A Screen You Can Draw On</h2>
+<p>The TM1637 can show only digits. To draw a clock face, an icon, or a graph you need a display where <strong>every pixel is individually controlled</strong>. The small OLED display, at about three to four dollars, is the ideal first one. This chapter covers what an OLED is, how to connect and initialize it, and the core idea that makes all modern display programming work: the <strong>framebuffer</strong>.</p>
+<h2 id="oled-display">OLED Display</h2>
+<p>An <strong>OLED</strong> (organic light-emitting diode) display is a screen made of tiny pixels that each emit their own light. Unlike an LCD, it needs no backlight. A pixel that is off is truly black, so OLEDs have excellent contrast and remain readable from wide angles.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>OLED</th>
+<th>LCD (character or TFT)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Light source</td>
+<td>Each pixel glows</td>
+<td>Needs a separate backlight</td>
+</tr>
+<tr>
+<td>Black level</td>
+<td>Truly black (pixel off)</td>
+<td>Dark gray from backlight bleed</td>
+</tr>
+<tr>
+<td>Viewing angle</td>
+<td>Very wide</td>
+<td>Narrower</td>
+</tr>
+<tr>
+<td>Power</td>
+<td>Depends on how many pixels are lit</td>
+<td>Backlight is always on</td>
+</tr>
+<tr>
+<td>Weakness</td>
+<td>Long-term burn-in of static images</td>
+<td>Contrast and angle</td>
+</tr>
+</tbody>
+</table>
+<p>The OLED in your kit is <strong>monochrome</strong>, so each pixel is either on (white, blue, or yellow depending on the model) or off. It measures about 0.96 inch across, has 128 columns by 64 rows, and comes in two versions: a 4-pin I2C model and a 7-pin SPI model.</p>
+<p>Burn-in means that showing the same bright pixels for months can leave a faint ghost. For a clock, an easy fix is to dim the display or shift the image slightly now and then.</p>
+<h2 id="display-resolution">Display Resolution</h2>
+<p><strong>Display resolution</strong> is the number of pixels on the screen, written as width by height. It tells you how much detail you can show.</p>
+<table>
+<thead>
+<tr>
+<th>Display</th>
+<th>Resolution</th>
+<th>Pixels</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Small OLED (SSD1306)</td>
+<td>128 × 64</td>
+<td>8,192</td>
+</tr>
+<tr>
+<td>ST7735 color TFT</td>
+<td>160 × 128</td>
+<td>20,480</td>
+</tr>
+<tr>
+<td>GC9A01 round display</td>
+<td>240 × 240</td>
+<td>57,600</td>
+</tr>
+<tr>
+<td>ILI9341 color TFT</td>
+<td>320 × 240</td>
+<td>76,800</td>
+</tr>
+<tr>
+<td>GC9B72 round smartwatch</td>
+<td>360 × 360</td>
+<td>129,600</td>
+</tr>
+</tbody>
+</table>
+<p>Resolution matters because every pixel has to be stored somewhere. The memory needed is the pixel count times the <strong>bits per pixel</strong> (bpp), which is how many bits describe one pixel's color. A monochrome pixel needs 1 bit. A color pixel in the RGB565 format, from Chapter 15, needs 16 bits, which is 2 bytes.</p>
+<div class="arithmatex">\[ \text{memory (bytes)} = \frac{W \times H \times \text{bpp}}{8} \]</div>
+<p><strong>Worked example.</strong> The OLED needs <span class="arithmatex">\( 128 \times 64 \times 1 / 8 = 1{,}024 \)</span> bytes. A 360 by 360 color display needs <span class="arithmatex">\( 360 \times 360 \times 16 / 8 = 259{,}200 \)</span> bytes, which is almost the entire 264 KB of RAM on the Pico. This single calculation explains why the small OLED can use a full memory copy of its screen and the large color displays sometimes cannot.</p>
+<h4 id="diagram-resolution-and-memory-calculator">Diagram: Resolution and Memory Calculator</h4>
+<details>
+<summary>Resolution and Memory Calculator</summary>
+<p>Type: chart
+<strong>sim-id:</strong> resolution-memory-calculator<br/>
+<strong>Library:</strong> Chart.js<br/>
+<strong>Status:</strong> Specified</p>
+<p><strong>Learning objective:</strong> Students will <em>calculate</em> the memory a screen needs and <em>evaluate</em> whether it fits in the Pico's RAM (Bloom: Applying, Evaluating).</p>
+<p><strong>Visual elements:</strong> A bar chart of framebuffer size in KB for the five displays in the table, with a horizontal red line at 264 KB (total RAM) and a yellow line at 200 KB (a practical limit).</p>
+<p><strong>Controls:</strong> Dropdown to choose bits per pixel (1, 8, 16); a custom "width" and "height" input pair that adds a sixth bar. The tooltip on each bar shows the formula with numbers substituted.</p>
+<p><strong>Responsive design:</strong> The chart resizes to the container.</p>
+<p>Implementation: Chart.js bar chart with a computed dataset.</p>
+</details>
+<h2 id="the-ssd1306-driver">The SSD1306 Driver</h2>
+<p>The <strong>SSD1306</strong> is the controller chip inside most small OLED modules. It stores the pixel pattern and drives the panel. Your program does not talk to the panel directly. It sends bytes to the SSD1306 through a <strong>driver</strong>, a library that hides the chip's commands behind friendly calls. The standard library is a file named <code>ssd1306.py</code> that you copy to the Pico, as shown in Chapter 4.</p>
+<p>The driver has two classes, one per bus: <code>SSD1306_I2C</code> and <code>SSD1306_SPI</code>. Both are built on top of MicroPython's <code>framebuf</code> module, so they share the same drawing methods. Once created, you use the same calls no matter which bus is underneath.</p>
+<h3 id="ssd1306-i2c-setup">SSD1306 I2C Setup</h3>
+<p>On the I2C model, wire four connections: VCC to 3.3 V, GND to ground, SDA to GP0, and SCL to GP1. Confirm the address with the scanner from Chapter 8 (usually <code>0x3C</code>), then create the display.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">NAME</span> <span class="o">=</span> <span class="s2">"11-oled-i2c-hello.py"</span>
+<span class="n">VERSION</span> <span class="o">=</span> <span class="s2">"1.0"</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{}</span><span class="s2"> v</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">NAME</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">))</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ssd1306</span>
+
+<span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sda</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">scl</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">400000</span><span class="p">)</span>
+<span class="n">oled</span> <span class="o">=</span> <span class="n">ssd1306</span><span class="o">.</span><span class="n">SSD1306_I2C</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">i2c</span><span class="p">)</span>    <span class="c1"># width, height, bus</span>
+<span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                                <span class="c1"># clear the buffer</span>
+<span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"Hello"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>                    <span class="c1"># draw text in the buffer</span>
+<span class="n">oled</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                                 <span class="c1"># send the buffer to the screen</span>
+</code></pre></div></td></tr></table></div>
+<p>The three drawing lines are explained in the framebuffer section below. The key points here are the three arguments to <code>SSD1306_I2C</code>: the display width, the height, and the I2C bus.</p>
+<h3 id="ssd1306-spi-setup">SSD1306 SPI Setup</h3>
+<p>The SPI model has seven pins. On these boards the clock pin is labeled <strong>D0</strong> and the data pin is labeled <strong>D1</strong>, which are just SPI names in disguise (see Chapter 8).</p>
+<table>
+<thead>
+<tr>
+<th>OLED pin</th>
+<th>Pico pin</th>
+<th>Signal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GND</td>
+<td>GND</td>
+<td>Ground</td>
+</tr>
+<tr>
+<td>VCC</td>
+<td>3V3(OUT)</td>
+<td>Power</td>
+</tr>
+<tr>
+<td>D0</td>
+<td>GP2</td>
+<td>SPI clock (SCK)</td>
+</tr>
+<tr>
+<td>D1</td>
+<td>GP3</td>
+<td>SPI data (MOSI)</td>
+</tr>
+<tr>
+<td>RES</td>
+<td>GP5</td>
+<td>Reset</td>
+</tr>
+<tr>
+<td>DC</td>
+<td>GP4</td>
+<td>Data/command</td>
+</tr>
+<tr>
+<td>CS</td>
+<td>GP6</td>
+<td>Chip select</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">NAME</span> <span class="o">=</span> <span class="s2">"11-oled-spi-hello.py"</span>
+<span class="n">VERSION</span> <span class="o">=</span> <span class="s2">"1.0"</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{}</span><span class="s2"> v</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">NAME</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">))</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">SPI</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ssd1306</span>
+
+<span class="n">spi</span> <span class="o">=</span> <span class="n">SPI</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">baudrate</span><span class="o">=</span><span class="mi">10_000_000</span><span class="p">,</span> <span class="n">sck</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">mosi</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">dc</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">cs</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">oled</span> <span class="o">=</span> <span class="n">ssd1306</span><span class="o">.</span><span class="n">SSD1306_SPI</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">spi</span><span class="p">,</span> <span class="n">dc</span><span class="p">,</span> <span class="n">res</span><span class="p">,</span> <span class="n">cs</span><span class="p">)</span>
+<span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"Hello SPI"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">oled</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<p>The SPI version is faster than I2C, which is why the larger kits use it.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Blank Screen Checklist</p>
+<p><img alt="Chrono warning" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+A blank OLED almost always means one of three things: a missing <code>show()</code> call, a wrong bus pin or address, or a power wire on the wrong pin. Run the I2C scanner first, then check that you called <code>oled.show()</code> after drawing.</p>
+</div>
+<h3 id="sh1106-driver">SH1106 Driver</h3>
+<p>Some 1.3-inch OLED modules use a different controller, the <strong>SH1106</strong>. It looks the same and even works with the same wiring, but its memory is 132 columns wide instead of 128. If you use the SSD1306 driver on an SH1106 display, the image shows up shifted two pixels to the side with garbage at the edge. The fix is to use the <code>sh1106.py</code> driver, which has the same methods as the SSD1306 one. Check the controller name in the product listing before you buy.</p>
+<h2 id="framebuffer">Framebuffer</h2>
+<p>A <strong>framebuffer</strong> is a block of RAM that holds a copy of every pixel on the screen. When you draw a line or text, you are changing bytes in this buffer, not the physical display. Nothing appears on the OLED until you send the buffer to it.</p>
+<p>This two-step design is the most important idea in this chapter. Its benefits:</p>
+<ul>
+<li><strong>No flicker.</strong> You can draw a hundred things and show them all at the same instant.</li>
+<li><strong>Simple code.</strong> Drawing is just changing memory, with no hardware delays.</li>
+<li><strong>One transfer.</strong> The whole screen goes across the bus in one fast burst.</li>
+</ul>
+<p>The cost is the RAM you calculated earlier. For the OLED, that is only 1,024 bytes.</p>
+<p>The flow is the same every time you update the screen:</p>
+<ol>
+<li><strong>Clear</strong> the buffer.</li>
+<li><strong>Draw</strong> everything into it.</li>
+<li><strong>Show</strong> the buffer on the display.</li>
+</ol>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Draw in Memory, Then Reveal</p>
+<p><img alt="Chrono thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Think of a painter who finishes a canvas behind a curtain, then pulls the curtain. Your program paints into the framebuffer out of sight and then reveals the finished picture with <code>show()</code>, so viewers never see half-drawn frames.</p>
+</div>
+<h4 id="diagram-framebuffer-pipeline">Diagram: Framebuffer Pipeline</h4>
+<details>
+<summary>Framebuffer Pipeline</summary>
+<p>Type: workflow diagram
+<strong>sim-id:</strong> framebuffer-pipeline<br/>
+<strong>Library:</strong> Mermaid<br/>
+<strong>Status:</strong> Specified</p>
+<p><strong>Learning objective:</strong> Students will <em>understand</em> the path from a drawing call to lit pixels (Bloom: Understanding).</p>
+<p><strong>Nodes:</strong> Your program, <code>oled.text()</code> and <code>oled.pixel()</code> (drawing calls), framebuffer in RAM (1,024 bytes), <code>oled.show()</code>, I2C or SPI bus, SSD1306 controller memory, OLED panel.</p>
+<p><strong>Interactions:</strong> Every node has a Mermaid <code>click</code> directive that opens an infobox describing its role and how many bytes pass through it. A toggle highlights the "Before show()" state, where only the buffer has changed and the panel is unchanged, and the "After show()" state.</p>
+<p><strong>Responsive design:</strong> The diagram scales to container width.</p>
+<p>Implementation: Mermaid flowchart with click callbacks.</p>
+</details>
+<h3 id="pixel-coordinate-mapping">Pixel Coordinate Mapping</h3>
+<p>Every pixel in the framebuffer has an address in memory, and understanding it demystifies the whole system. The SSD1306 groups the 64 rows into <strong>8 pages</strong> of 8 rows each. A single byte holds a <strong>vertical strip of 8 pixels</strong> in one column. This layout is called <code>MONO_VLSB</code> (monochrome, vertical, least-significant-bit first).</p>
+<p>For the pixel at (x, y), the byte index and bit position are:</p>
+<div class="arithmatex">\[ \text{index} = x + \left\lfloor \frac{y}{8} \right\rfloor \times \text{width} \qquad \text{bit} = y \bmod 8 \]</div>
+<p><strong>Worked example.</strong> For pixel (10, 20) on a 128-wide display, the page is <span class="arithmatex">\( \lfloor 20/8 \rfloor = 2 \)</span>, so the index is <span class="arithmatex">\( 10 + 2 \times 128 = 266 \)</span>, and the bit is <span class="arithmatex">\( 20 \bmod 8 = 4 \)</span>. Setting that pixel means setting bit 4 of byte 266. You never do this by hand, because <code>pixel()</code> does it for you, but it shows why the bit tricks from Chapter 8 matter.</p>
+<p>The phrase "pixel coordinate mapping" also describes the more everyday job of turning a data value into a screen position. To plot a value from 0 to 100 as a height on the 64-pixel screen, where y = 63 is the bottom:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">map_value</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">in_max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">out_height</span><span class="o">=</span><span class="mi">64</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">out_height</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">v</span> <span class="o">*</span> <span class="p">(</span><span class="n">out_height</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span> <span class="o">//</span> <span class="n">in_max</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">map_value</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>      <span class="c1"># 32: halfway up</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="display-show-command">Display Show Command</h2>
+<p>The <strong><code>show()</code> command</strong> copies the framebuffer to the display. Until you call it, the screen keeps showing the previous picture. Every update needs exactly one <code>show()</code> at the end.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"12:34"</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
+<span class="n">oled</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>               <span class="c1"># nothing changes on screen before this line</span>
+</code></pre></div></td></tr></table></div>
+<p>Calling <code>show()</code> is the slowest step in your drawing code, because it moves the whole 1,024-byte buffer over the bus. Do all your drawing first and call it <strong>once per frame</strong>. Calling it after every line multiplies the cost for no benefit.</p>
+<h3 id="display-fill-command">Display Fill Command</h3>
+<p>The <strong><code>fill()</code> command</strong> sets every pixel in the buffer to one value: <code>oled.fill(0)</code> makes the whole buffer black, and <code>oled.fill(1)</code> makes it all white. It is the standard first step of a new frame.</p>
+<h3 id="screen-clearing">Screen Clearing</h3>
+<p><strong>Screen clearing</strong> is erasing the old picture before drawing a new one. Without it, a changing value is drawn on top of the old one and the digits smear into an unreadable blob. The routine is always <code>fill(0)</code>, then draw, then <code>show()</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">NAME</span> <span class="o">=</span> <span class="s2">"11-oled-counter.py"</span>
+<span class="n">VERSION</span> <span class="o">=</span> <span class="s2">"1.0"</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{}</span><span class="s2"> v</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">NAME</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">))</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ssd1306</span>
+
+<span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sda</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">scl</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">400000</span><span class="p">)</span>
+<span class="n">oled</span> <span class="o">=</span> <span class="n">ssd1306</span><span class="o">.</span><span class="n">SSD1306_I2C</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">i2c</span><span class="p">)</span>
+
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                      <span class="c1"># clear the old picture</span>
+    <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"Count: "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">count</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">oled</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                       <span class="c1"># reveal the new one</span>
+    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>If you removed the <code>fill(0)</code> line, each new number would be drawn over the last, and the display would fill up with overlapping digits.</p>
+<h2 id="pixel-drawing">Pixel Drawing</h2>
+<p>The most basic drawing tool is <strong><code>pixel(x, y, color)</code></strong>, which sets one pixel to color 1 (on) or 0 (off). Calling <code>pixel(x, y)</code> with no color returns the current value. Coordinates use the system from Chapter 10: (0, 0) is the top-left, and y increases downward. Pixels outside the screen are silently ignored, so you do not need to check bounds.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">128</span><span class="p">):</span>
+    <span class="n">oled</span><span class="o">.</span><span class="n">pixel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>         <span class="c1"># top border</span>
+    <span class="n">oled</span><span class="o">.</span><span class="n">pixel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">63</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>        <span class="c1"># bottom border</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">64</span><span class="p">):</span>
+    <span class="n">oled</span><span class="o">.</span><span class="n">pixel</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>     <span class="c1"># a diagonal line</span>
+<span class="n">oled</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<p>Drawing a line pixel by pixel like this works but is slow. Chapter 12 introduces <code>line()</code>, <code>rect()</code>, and <code>ellipse()</code>, which do the same job in a single call.</p>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Test With a Border</p>
+<p><img alt="Chrono with a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+When you set up a new display, draw a one-pixel border around the whole screen first. If any edge is missing, you have the wrong width, height, or controller, and you find out before you build a whole clock on top of it.</p>
+</div>
+<h4 id="diagram-pixel-grid-sketchpad">Diagram: Pixel Grid Sketchpad</h4>
+<details>
+<summary>Pixel Grid Sketchpad</summary>
+<p>Type: MicroSim
+<strong>sim-id:</strong> pixel-grid-sketchpad<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p><strong>Learning objective:</strong> Students will <em>apply</em> coordinates and the buffer layout by turning pixels on and off (Bloom: Applying, Analyzing).</p>
+<p><strong>Visual elements:</strong> A 128 by 64 grid drawn at 6x scale. Beside it, a table of the 1,024 buffer bytes that highlights the byte containing the hovered pixel, with its index and bit.</p>
+<p><strong>Interactions:</strong> Click a pixel to toggle it. Hovering shows <code>(x, y)</code>, the byte index using the formula in the text, and the bit. A "Generate code" button outputs the <code>pixel()</code> calls for the current drawing. A "Challenge" mode asks the student to click a given (x, y).</p>
+<p><strong>Responsive design:</strong> The grid scales to the container width.</p>
+<p>Implementation: p5.js with an array of 1,024 bytes and bit operations.</p>
+</details>
+<h2 id="display-refresh-rate">Display Refresh Rate</h2>
+<p>The <strong>refresh rate</strong> is how many times per second your program redraws the screen, measured in frames per second (fps). The time for one frame is dominated by how long <code>show()</code> takes to send the buffer across the bus:</p>
+<div class="arithmatex">\[ t_{frame} = \frac{\text{bytes} \times \text{bits per byte on the wire}}{\text{bus speed}} \]</div>
+<p>For an I2C bus, each byte takes 9 clock cycles. At 400 kHz, the 1,024-byte OLED buffer takes <span class="arithmatex">\( 1024 \times 9 / 400{,}000 \approx 23 \)</span> ms, or up to about 43 frames per second. On SPI at 10 MHz, the same buffer takes <span class="arithmatex">\( 1024 \times 8 / 10{,}000{,}000 \approx 0.8 \)</span> ms, and other overhead usually dominates.</p>
+<p>You can measure the real time with <code>ticks_us()</code>, which counts microseconds:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">ticks_us</span><span class="p">,</span> <span class="n">ticks_diff</span>
+
+<span class="n">t0</span> <span class="o">=</span> <span class="n">ticks_us</span><span class="p">()</span>
+<span class="n">oled</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">t1</span> <span class="o">=</span> <span class="n">ticks_us</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"show() took"</span><span class="p">,</span> <span class="n">ticks_diff</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">t0</span><span class="p">)</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">,</span> <span class="s2">"ms"</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Your eyes need about 24 to 30 frames per second to see smooth motion. A clock display only needs to change once per second, so an OLED has more than enough speed. Speed matters for animation and for the larger color screens in later chapters.</p>
+<h3 id="baudrate-tuning">Baudrate Tuning</h3>
+<p><strong>Baudrate tuning</strong> is finding the fastest bus speed at which your particular display works reliably. The SPI baudrate from Chapter 8 controls how fast bits move. Faster means a quicker <code>show()</code>, but if it is too fast, the display shows garbled or missing pixels because wires and chips cannot keep up.</p>
+<p>Follow this test procedure:</p>
+<ol>
+<li>Start at a safe speed, such as 1,000,000.</li>
+<li>Draw a full-screen test pattern, such as the border and diagonal above.</li>
+<li>Measure <code>show()</code> time and inspect the picture.</li>
+<li>Increase the baudrate (4 MHz, 8 MHz, 10 MHz, 20 MHz) and repeat.</li>
+<li>Find the first speed that shows errors, then use a value about 20 to 30 percent below it.</li>
+</ol>
+<p>The safe choice matters because a setup that works on your desk can fail with longer wires or a warmer chip. For I2C, the equivalent is the <code>freq</code> argument: try 100 kHz, then 400 kHz. Many small modules do not work above 400 kHz.</p>
+<h2 id="putting-it-together">Putting It Together</h2>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Call</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Create the bus</td>
+<td><code>I2C(...)</code> or <code>SPI(...)</code></td>
+</tr>
+<tr>
+<td>Create the display</td>
+<td><code>SSD1306_I2C(128, 64, i2c)</code> or <code>SSD1306_SPI(...)</code></td>
+</tr>
+<tr>
+<td>Start a frame</td>
+<td><code>oled.fill(0)</code></td>
+</tr>
+<tr>
+<td>Draw</td>
+<td><code>oled.text(...)</code>, <code>oled.pixel(...)</code></td>
+</tr>
+<tr>
+<td>Reveal</td>
+<td><code>oled.show()</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li>An OLED makes its own light, giving high contrast, and the common one is 128 × 64 monochrome.</li>
+<li>Resolution times bits per pixel gives the memory needed; 128 × 64 mono is 1,024 bytes.</li>
+<li>The SSD1306 driver builds on <code>framebuf</code>; choose <code>SSD1306_I2C</code> or <code>SSD1306_SPI</code>.</li>
+<li>Draw in the framebuffer, and call <code>show()</code> once to update the screen.</li>
+<li>Start each frame with <code>fill(0)</code> so old drawings do not smear.</li>
+<li>Measure <code>show()</code> time, and tune the baudrate by testing upward until errors appear.</li>
+</ul>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Pixels On!</p>
+<p><img alt="Chrono celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+You can now initialize an OLED over I2C or SPI, clear a framebuffer, draw pixels, and reveal them with <code>show()</code>. Every display in the rest of this book builds on that same pattern. Every second counts!</p>
+</div>
+<h2 id="practice-questions">Practice Questions</h2>
+<ol>
+<li>How many bytes does a 128 × 64 monochrome framebuffer need? What about a 240 × 240 display at 16 bits per pixel?</li>
+<li>Your program draws text but the OLED stays blank. List the first three things you check.</li>
+<li>Why does a changing number look smudged if you forget <code>fill(0)</code>?</li>
+<li>Find the byte index and bit for pixel (30, 45) on a 128-wide <code>MONO_VLSB</code> buffer.</li>
+<li>An I2C OLED at 400 kHz needs 23 ms per <code>show()</code>. What is the maximum frame rate, and is that enough for a once-per-second clock?</li>
+</ol>
 
 
 
 
 
 
+
+  
+  
 
 
 

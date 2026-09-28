@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking.">
+        <meta name="description" content="Coordinates, radians, sine and cosine, and polar geometry for placing clock hands and tick marks on a display.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -29,7 +29,7 @@
     
     
       
-        <title>10. Coordinates, Trigonometry, and Clock Geometry - Clocks and Watches with AI</title>
+        <title>Coordinates, Trigonometry, and Clock Geometry - Clocks and Watches with AI</title>
       
     
     
@@ -77,16 +77,16 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="10. Coordinates, Trigonometry, and Clock Geometry - Clocks and Watches with AI" />
-<meta property="og:description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." />
+<meta property="og:title" content="Coordinates, Trigonometry, and Clock Geometry - Clocks and Watches with AI" />
+<meta property="og:description" content="Coordinates, radians, sine and cosine, and polar geometry for placing clock hands and tick marks on a display." />
 <meta property="og:image" content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/chapters/10-clock-math/index.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://dmccreary.github.io/clocks-and-watches/chapters/10-clock-math/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="10. Coordinates, Trigonometry, and Clock Geometry - Clocks and Watches with AI" />
-<meta property="twitter:description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." />
+<meta property="twitter:title" content="Coordinates, Trigonometry, and Clock Geometry - Clocks and Watches with AI" />
+<meta property="twitter:description" content="Coordinates, radians, sine and cosine, and polar geometry for placing clock hands and tick marks on a display." />
 <meta property="twitter:image" content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/chapters/10-clock-math/index.png" />
 </head>
   
@@ -140,7 +140,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              10. Coordinates, Trigonometry, and Clock Geometry
+              Coordinates, Trigonometry, and Clock Geometry
             
           </span>
         </div>
@@ -854,6 +854,256 @@
     <span class="md-ellipsis">
       
         Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-a-clock-needs-geometry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why a Clock Needs Geometry
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#x-y-coordinate-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        X Y Coordinate System
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="X Y Coordinate System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#center-point-calculation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Center Point Calculation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#radians-vs-degrees" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Radians vs Degrees
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trigonometry-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trigonometry Basics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Trigonometry Basics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sine-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sine Function
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cosine-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cosine Function
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cosine Function">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-unit-circle-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Unit Circle Explorer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#polar-coordinates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Polar Coordinates
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Polar Coordinates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-polar-to-screen-converter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Polar to Screen Converter
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#angle-calculation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Angle Calculation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Angle Calculation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-analog-clock-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Analog Clock Simulation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clock-hand-length" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clock Hand Length
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tick-mark-geometry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tick Mark Geometry
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rotation-math" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rotation Math
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integer-math-tricks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integer Math Tricks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fixed-point-arithmetic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed Point Arithmetic
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Putting It Together
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice Questions
       
     </span>
   </a>
@@ -1754,6 +2004,256 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#why-a-clock-needs-geometry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why a Clock Needs Geometry
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#x-y-coordinate-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        X Y Coordinate System
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="X Y Coordinate System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#center-point-calculation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Center Point Calculation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#radians-vs-degrees" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Radians vs Degrees
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trigonometry-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trigonometry Basics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Trigonometry Basics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sine-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sine Function
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cosine-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cosine Function
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cosine Function">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-unit-circle-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Unit Circle Explorer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#polar-coordinates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Polar Coordinates
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Polar Coordinates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-polar-to-screen-converter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Polar to Screen Converter
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#angle-calculation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Angle Calculation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Angle Calculation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-analog-clock-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Analog Clock Simulation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clock-hand-length" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clock Hand Length
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tick-mark-geometry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tick Mark Geometry
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rotation-math" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rotation Math
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integer-math-tricks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integer Math Tricks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fixed-point-arithmetic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed Point Arithmetic
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Putting It Together
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1895,13 +2395,459 @@
 <li><a href="../03-micropython-basics/">Chapter 3: MicroPython Basics: Variables and Data Types</a></li>
 </ul>
 <hr />
-<p>TODO: Generate Chapter Content</p>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Math With a Purpose</p>
+<p><img alt="Chrono waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+Ever wonder how a screen knows where to draw the tip of a clock hand? It's a little trigonometry, and this chapter gives you a clear, no-fear recipe for it. Get this right and every analog face in the book becomes easy. Let's make time tick!</p>
+</div>
+<h2 id="why-a-clock-needs-geometry">Why a Clock Needs Geometry</h2>
+<p>A digital clock only needs digits. An <strong>analog</strong> clock draws hands that point at the correct angle, and to draw a hand the Pico must turn "it is 3:30" into "draw a line from the center to the pixel at (x, y)." That conversion uses coordinates, angles, and two functions from trigonometry, sine and cosine. You will learn each piece and then combine them into one short formula that places any hand, tick mark, or digit on a round display.</p>
+<h2 id="x-y-coordinate-system">X Y Coordinate System</h2>
+<p>A display is a grid of pixels, and each pixel is located by two numbers: <strong>x</strong>, the column counted from the left, and <strong>y</strong>, the row counted from the top. Together they form a <strong>coordinate</strong> written as <code>(x, y)</code>.</p>
+<p>The screen's coordinate system differs from the math class graph you may know in one important way:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Math class</th>
+<th>Display</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Origin (0, 0)</td>
+<td>Bottom-left</td>
+<td><strong>Top-left</strong></td>
+</tr>
+<tr>
+<td>x increases</td>
+<td>To the right</td>
+<td>To the right</td>
+</tr>
+<tr>
+<td>y increases</td>
+<td><strong>Upward</strong></td>
+<td><strong>Downward</strong></td>
+</tr>
+</tbody>
+</table>
+<p>That flipped y-axis catches almost everyone once. On a 240 by 240 display, the top-left pixel is (0, 0) and the bottom-right is (239, 239). A point that is "higher" on the screen has a <em>smaller</em> y.</p>
+<p><strong>Worked example.</strong> You want to draw a horizontal line one third of the way down a 240-pixel-tall screen, from the left edge to the right edge. One third down is <span class="arithmatex">\( y = 240 / 3 = 80 \)</span>. The line runs from (0, 80) to (239, 80). To move a shape <strong>up</strong> by 10 pixels you <em>subtract</em> 10 from y.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Upside-Down Y</p>
+<p><img alt="Chrono warning" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+If your hands point down when they should point up, the y-axis is flipped. Math formulas assume y goes up, but the screen's y goes down, so the sign of the y term must be reversed. Every formula in this chapter already accounts for that.</p>
+</div>
+<h3 id="center-point-calculation">Center Point Calculation</h3>
+<p>Analog hands all start at the <strong>center point</strong> of the face. For a screen of a given width and height, the center is half of each:</p>
+<div class="arithmatex">\[ c_x = \frac{W}{2} \qquad c_y = \frac{H}{2} \]</div>
+<p>Use integer division in code so the result stays a whole number:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">WIDTH</span> <span class="o">=</span> <span class="mi">240</span>
+<span class="n">HEIGHT</span> <span class="o">=</span> <span class="mi">240</span>
+<span class="n">cx</span> <span class="o">=</span> <span class="n">WIDTH</span> <span class="o">//</span> <span class="mi">2</span>      <span class="c1"># 120</span>
+<span class="n">cy</span> <span class="o">=</span> <span class="n">HEIGHT</span> <span class="o">//</span> <span class="mi">2</span>     <span class="c1"># 120</span>
+<span class="n">radius</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="n">cy</span><span class="p">)</span> <span class="c1"># 120: distance from the center to the nearest edge</span>
+</code></pre></div></td></tr></table></div>
+<p>For the 360 by 360 round display used in the smartwatch kit, the center is (180, 180) and the radius is 180. Compute these from <code>WIDTH</code> and <code>HEIGHT</code> instead of typing numbers, and the same program will work on any screen.</p>
+<h2 id="radians-vs-degrees">Radians vs Degrees</h2>
+<p>An <strong>angle</strong> measures a turn. Two units are common:</p>
+<ul>
+<li><strong>Degrees</strong> split a full circle into 360 parts. This is the unit people use.</li>
+<li><strong>Radians</strong> measure a turn by the length of arc along a circle of radius 1. A full circle is <span class="arithmatex">\( 2\pi \approx 6.283 \)</span> radians.</li>
+</ul>
+<p>MicroPython's math functions, like most programming languages, expect <strong>radians</strong>. Converting between them uses one relationship, that 180 degrees equals <span class="arithmatex">\( \pi \)</span> radians:</p>
+<div class="arithmatex">\[ \text{radians} = \text{degrees} \times \frac{\pi}{180} \]</div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="n">angle_rad</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>     <span class="c1"># 1.5708</span>
+<span class="n">angle_deg</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="mf">1.5708</span><span class="p">)</span> <span class="c1"># about 90</span>
+</code></pre></div></td></tr></table></div>
+<table>
+<thead>
+<tr>
+<th>Degrees</th>
+<th>Radians</th>
+<th>Clock position</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>12 o'clock</td>
+</tr>
+<tr>
+<td>90</td>
+<td><span class="arithmatex">\( \pi/2 \approx 1.571 \)</span></td>
+<td>3 o'clock</td>
+</tr>
+<tr>
+<td>180</td>
+<td><span class="arithmatex">\( \pi \approx 3.142 \)</span></td>
+<td>6 o'clock</td>
+</tr>
+<tr>
+<td>270</td>
+<td><span class="arithmatex">\( 3\pi/2 \approx 4.712 \)</span></td>
+<td>9 o'clock</td>
+</tr>
+</tbody>
+</table>
+<p>Sending a degree value to <code>math.sin()</code> without converting is a classic mistake. It gives an answer, just the wrong one.</p>
+<h2 id="trigonometry-basics">Trigonometry Basics</h2>
+<p><strong>Trigonometry</strong> is the mathematics of triangles and the angles inside them. For a right triangle, where one angle is exactly 90 degrees, three sides matter: the <strong>hypotenuse</strong> (the longest side, opposite the right angle), the <strong>opposite</strong> side (across from the angle you care about), and the <strong>adjacent</strong> side (next to that angle). The ratios of these sides depend only on the angle.</p>
+<p>The two ratios we need are:</p>
+<div class="arithmatex">\[ \sin\theta = \frac{\text{opposite}}{\text{hypotenuse}} \qquad \cos\theta = \frac{\text{adjacent}}{\text{hypotenuse}} \]</div>
+<p>Rearranged, they tell you the length of each side when you know the hypotenuse and angle. That is what we need: the hand is the hypotenuse, so the horizontal and vertical distances to its tip come from the angle.</p>
+<h3 id="sine-function">Sine Function</h3>
+<p>The <strong>sine function</strong>, <code>math.sin(angle)</code>, takes an angle in radians and returns a number between -1 and 1. It is 0 at 0 degrees, rises to 1 at 90 degrees, returns to 0 at 180, drops to -1 at 270, and repeats every 360. Sine tells you the <em>vertical</em> part of a point on a circle.</p>
+<h3 id="cosine-function">Cosine Function</h3>
+<p>The <strong>cosine function</strong>, <code>math.cos(angle)</code>, has the same shape as sine but shifted a quarter turn. It equals 1 at 0 degrees, 0 at 90, -1 at 180, 0 at 270. Cosine tells you the <em>horizontal</em> part of a point on a circle.</p>
+<table>
+<thead>
+<tr>
+<th>Angle</th>
+<th>sin</th>
+<th>cos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0°</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>90°</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>180°</td>
+<td>0</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>270°</td>
+<td>-1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>A handy way to picture this is the <strong>unit circle</strong>: a circle of radius 1. A point at angle <span class="arithmatex">\( \theta \)</span> on it is <span class="arithmatex">\( (\cos\theta, \sin\theta) \)</span>. Multiplying by a radius <span class="arithmatex">\( r \)</span> gives a point on a circle of any size.</p>
+<h4 id="diagram-unit-circle-explorer">Diagram: Unit Circle Explorer</h4>
+<details>
+<summary>Unit Circle Explorer</summary>
+<p>Type: MicroSim
+<strong>sim-id:</strong> unit-circle-explorer<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p><strong>Learning objective:</strong> Students will <em>understand</em> sine and cosine as the vertical and horizontal parts of a point on a circle (Bloom: Understanding).</p>
+<p><strong>Visual elements:</strong> A circle with a rotating radius and a colored point. A horizontal bar shows the cosine value and a vertical bar shows the sine value. Two small graphs to the right plot sine and cosine against angle.</p>
+<p><strong>Controls:</strong> Slider "Angle" (0 to 360 degrees) with a toggle "Degrees/Radians"; a "Play" button that rotates continuously; checkboxes to show the right triangle and the values.</p>
+<p><strong>Responsive design:</strong> Circle and graphs scale to container width; graphs move below the circle on narrow screens.</p>
+<p>Implementation: p5.js with <code>sin</code> and <code>cos</code> drawn from a single angle variable.</p>
+</details>
+<h2 id="polar-coordinates">Polar Coordinates</h2>
+<p><strong>Polar coordinates</strong> describe a point by <em>how far</em> it is from the center and <em>in which direction</em>, instead of by x and y. A polar coordinate is written <span class="arithmatex">\( (r, \theta) \)</span>: the radius <span class="arithmatex">\( r \)</span> and the angle <span class="arithmatex">\( \theta \)</span>. A clock hand is naturally polar, since its description is "length 90, pointing at 180 degrees."</p>
+<p>The screen needs x and y, so we convert. Clock angles are measured <strong>clockwise from 12 o'clock</strong>, and the y-axis points down. Working through both changes gives this pair:</p>
+<div class="arithmatex">\[ x = c_x + r \sin\theta \]</div>
+<div class="arithmatex">\[ y = c_y - r \cos\theta \]</div>
+<p>where <span class="arithmatex">\( \theta \)</span> is in radians and increases clockwise starting at 12. Check it: at <span class="arithmatex">\( \theta = 0 \)</span> (12 o'clock), <span class="arithmatex">\( x = c_x \)</span> and <span class="arithmatex">\( y = c_y - r \)</span>, a point straight above the center, which is correct. At <span class="arithmatex">\( \theta = 90^\circ \)</span> (3 o'clock), <span class="arithmatex">\( x = c_x + r \)</span> and <span class="arithmatex">\( y = c_y \)</span>, a point to the right. </p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">polar_to_xy</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="n">cy</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">degrees</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">degrees</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">cx</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">r</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">cy</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">r</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">polar_to_xy</span><span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">90</span><span class="p">))</span>    <span class="c1"># (220, 120): 3 o'clock</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">polar_to_xy</span><span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">180</span><span class="p">))</span>   <span class="c1"># (120, 220): 6 o'clock</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Sin for X, Cos for Y (With a Minus)</p>
+<p><img alt="Chrono thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+On a clock, angles start at 12 and go clockwise, which swaps the usual roles: sine goes with x, and cosine goes with y, negated because the screen's y points down. Once you memorize this pair, every hand, tick, and number on a round face uses the same two lines.</p>
+</div>
+<h4 id="diagram-polar-to-screen-converter">Diagram: Polar to Screen Converter</h4>
+<details>
+<summary>Polar to Screen Converter</summary>
+<p>Type: MicroSim
+<strong>sim-id:</strong> polar-to-screen<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p><strong>Learning objective:</strong> Students will <em>apply</em> the polar conversion formulas and <em>predict</em> pixel coordinates (Bloom: Applying).</p>
+<p><strong>Visual elements:</strong> A 240 by 240 screen grid with axes showing pixel coordinates (origin at top-left). A line from the center to a movable point labeled with its (x, y) pixel position and its (r, θ) polar position.</p>
+<p><strong>Controls:</strong> Sliders for radius (0 to 120) and angle (0 to 359); a toggle to show the formula with the current numbers substituted; a "Predict" mode where the student types the x and y before they are revealed.</p>
+<p><strong>Responsive design:</strong> Grid scales to the canvas size.</p>
+<p>Implementation: p5.js with <code>sin</code> and <code>cos</code> on the formula above.</p>
+</details>
+<h2 id="angle-calculation">Angle Calculation</h2>
+<p>An analog clock has three hands that each sweep a full circle at a different rate. Converting the time to an angle in degrees comes down to counting how many degrees per unit:</p>
+<table>
+<thead>
+<tr>
+<th>Hand</th>
+<th>Full circle takes</th>
+<th>Degrees per unit</th>
+<th>Angle formula</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Second</td>
+<td>60 seconds</td>
+<td>6° per second</td>
+<td><span class="arithmatex">\( 6s \)</span></td>
+</tr>
+<tr>
+<td>Minute</td>
+<td>60 minutes</td>
+<td>6° per minute</td>
+<td><span class="arithmatex">\( 6m + 0.1s \)</span></td>
+</tr>
+<tr>
+<td>Hour</td>
+<td>12 hours</td>
+<td>30° per hour</td>
+<td><span class="arithmatex">\( 30(h \bmod 12) + 0.5m \)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The extra terms make the hands move smoothly. The minute hand creeps forward 0.1 degrees each second (6° divided by 60 s), and the hour hand creeps 0.5 degrees each minute (30° divided by 60 min). Without them the hour hand would jump from the 3 straight to the 4 on the hour, which looks wrong at 3:59.</p>
+<p><strong>Worked example.</strong> At 3:30:00, the hour hand is at <span class="arithmatex">\( 30 \times 3 + 0.5 \times 30 = 105^\circ \)</span>, halfway between the 3 and the 4. The minute hand is at <span class="arithmatex">\( 6 \times 30 = 180^\circ \)</span>, pointing straight down at the 6. The second hand is at 0°, pointing up.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">hand_angles</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+    <span class="n">sec_angle</span> <span class="o">=</span> <span class="n">s</span> <span class="o">*</span> <span class="mi">6</span>
+    <span class="n">min_angle</span> <span class="o">=</span> <span class="n">m</span> <span class="o">*</span> <span class="mi">6</span> <span class="o">+</span> <span class="n">s</span> <span class="o">*</span> <span class="mf">0.1</span>
+    <span class="n">hour_angle</span> <span class="o">=</span> <span class="p">(</span><span class="n">h</span> <span class="o">%</span> <span class="mi">12</span><span class="p">)</span> <span class="o">*</span> <span class="mi">30</span> <span class="o">+</span> <span class="n">m</span> <span class="o">*</span> <span class="mf">0.5</span>
+    <span class="k">return</span> <span class="n">hour_angle</span><span class="p">,</span> <span class="n">min_angle</span><span class="p">,</span> <span class="n">sec_angle</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">hand_angles</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>    <span class="c1"># (105.0, 180.0, 0)</span>
+</code></pre></div></td></tr></table></div>
+<p>The interactive clock below shows the hand positions changing as the time changes.</p>
+<h4 id="diagram-analog-clock-simulation">Diagram: Analog Clock Simulation</h4>
+<iframe src="../../sims/analog-clock/analog-clock.html" width="100%" height="550px" scrolling="no"></iframe>
+
+<p><a class="md-button" href="../../sims/analog-clock/analog-clock.html">Run the Analog Clock MicroSim fullscreen</a></p>
+<details>
+<summary>Analog Clock (existing MicroSim)</summary>
+<p>Type: MicroSim
+<strong>sim-id:</strong> analog-clock<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Reused<br/>
+<strong>Source:</strong> docs/sims/analog-clock/</p>
+<p>This MicroSim is already part of this book. Learning objective: students will <em>apply</em> angle formulas to see how time values position each hand (Bloom: Applying).</p>
+</details>
+<h2 id="clock-hand-length">Clock Hand Length</h2>
+<p>Each hand has a <strong>length</strong> measured from the center. The hands are different lengths so you can tell them apart at a glance: the hour hand is shortest and stubbiest, the minute hand is longer, and the second hand is longest and thinnest. Express each length as a fraction of the face <strong>radius</strong>, so the design scales with any display.</p>
+<table>
+<thead>
+<tr>
+<th>Hand</th>
+<th>Fraction of radius</th>
+<th>On a 240 px face (radius 120)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hour</td>
+<td>0.50</td>
+<td>60 px</td>
+</tr>
+<tr>
+<td>Minute</td>
+<td>0.75</td>
+<td>90 px</td>
+</tr>
+<tr>
+<td>Second</td>
+<td>0.90</td>
+<td>108 px</td>
+</tr>
+</tbody>
+</table>
+<p>Now you can combine everything into one tip-position calculation per hand:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">NAME</span> <span class="o">=</span> <span class="s2">"10-hand-tips.py"</span>
+<span class="n">VERSION</span> <span class="o">=</span> <span class="s2">"1.0"</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{}</span><span class="s2"> v</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">NAME</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">))</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">localtime</span>
+
+<span class="n">cx</span><span class="p">,</span> <span class="n">cy</span><span class="p">,</span> <span class="n">radius</span> <span class="o">=</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">120</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">tip</span><span class="p">(</span><span class="n">angle_deg</span><span class="p">,</span> <span class="n">length</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">angle_deg</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">cx</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">length</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)),</span> <span class="n">cy</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">length</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+
+<span class="n">h</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">localtime</span><span class="p">()[</span><span class="mi">3</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">hour_angle</span> <span class="o">=</span> <span class="p">(</span><span class="n">h</span> <span class="o">%</span> <span class="mi">12</span><span class="p">)</span> <span class="o">*</span> <span class="mi">30</span> <span class="o">+</span> <span class="n">m</span> <span class="o">*</span> <span class="mf">0.5</span>
+<span class="n">min_angle</span> <span class="o">=</span> <span class="n">m</span> <span class="o">*</span> <span class="mi">6</span> <span class="o">+</span> <span class="n">s</span> <span class="o">*</span> <span class="mf">0.1</span>
+<span class="n">sec_angle</span> <span class="o">=</span> <span class="n">s</span> <span class="o">*</span> <span class="mi">6</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"hour tip:"</span><span class="p">,</span> <span class="n">tip</span><span class="p">(</span><span class="n">hour_angle</span><span class="p">,</span> <span class="n">radius</span> <span class="o">*</span> <span class="mf">0.50</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"min tip: "</span><span class="p">,</span> <span class="n">tip</span><span class="p">(</span><span class="n">min_angle</span><span class="p">,</span> <span class="n">radius</span> <span class="o">*</span> <span class="mf">0.75</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"sec tip: "</span><span class="p">,</span> <span class="n">tip</span><span class="p">(</span><span class="n">sec_angle</span><span class="p">,</span> <span class="n">radius</span> <span class="o">*</span> <span class="mf">0.90</span><span class="p">))</span>
+</code></pre></div></td></tr></table></div>
+<p>Each printed pair is where the far end of a hand should be. In Chapter 12, you will hand these pairs to a line-drawing function.</p>
+<h2 id="tick-mark-geometry">Tick Mark Geometry</h2>
+<p><strong>Tick marks</strong> are the small lines around the edge of the face that mark minutes and hours. There are 60 of them, one every 6 degrees, and every fifth one (every 30 degrees) is longer to mark an hour. Each tick is a short line from an outer radius to an inner radius along the same angle, so you compute two points with the same formula from before and connect them:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">60</span><span class="p">):</span>
+    <span class="n">angle</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">6</span>
+    <span class="n">inner</span> <span class="o">=</span> <span class="n">radius</span> <span class="o">-</span> <span class="p">(</span><span class="mi">12</span> <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">6</span><span class="p">)</span>     <span class="c1"># hour ticks are longer</span>
+    <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">tip</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="n">radius</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>                <span class="c1"># outer end</span>
+    <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">tip</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="n">inner</span><span class="p">)</span>                     <span class="c1"># inner end</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="rotation-math">Rotation Math</h2>
+<p>Sometimes a hand is a shape, such as a triangle, rather than a line. To point it in any direction, <strong>rotate</strong> each of its corner points around the center. For a point <span class="arithmatex">\( (x, y) \)</span> measured from the center, rotating by angle <span class="arithmatex">\( \theta \)</span> gives</p>
+<div class="arithmatex">\[ x' = x\cos\theta - y\sin\theta \qquad y' = x\sin\theta + y\cos\theta \]</div>
+<p>You compute the sine and cosine once, then apply those two lines to each corner. Because the screen's y-axis points down, a positive angle turns the shape clockwise on the display. This is the same idea as the polar conversion, applied to several points instead of one.</p>
+<h2 id="integer-math-tricks">Integer Math Tricks</h2>
+<p>The RP2040 has no floating-point hardware, so every <code>sin()</code> and <code>cos()</code> is done in software, which is relatively slow. Calling them for 60 tick marks each frame wastes time. A few <strong>integer math tricks</strong> avoid floats:</p>
+<ul>
+<li>Use <code>//</code> instead of <code>/</code> for whole-number division.</li>
+<li>Use <code>&gt;&gt; n</code> to divide by <span class="arithmatex">\( 2^n \)</span> and <code>&lt;&lt; n</code> to multiply by <span class="arithmatex">\( 2^n \)</span>, for instance <code>x &gt;&gt; 1</code> is <code>x // 2</code>.</li>
+<li>Do arithmetic in whole numbers first and convert to floats only at the end, if at all.</li>
+<li>Precompute values that never change, such as the tick-mark positions, once at startup.</li>
+</ul>
+<h2 id="fixed-point-arithmetic">Fixed Point Arithmetic</h2>
+<p><strong>Fixed-point arithmetic</strong> stores fractions as integers by multiplying by a fixed <strong>scale factor</strong>, typically a power of two such as 256. To represent 0.5 you store 128. To get the real value back you divide (or shift right) by the scale.</p>
+<p>Here is the payoff for clock faces. Sine and cosine only need to be computed for the 60 angles that occur, and their results can be stored once as scaled integers in a <strong>lookup table</strong>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="n">SCALE</span> <span class="o">=</span> <span class="mi">256</span>
+<span class="n">SIN</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="mi">6</span><span class="p">))</span> <span class="o">*</span> <span class="n">SCALE</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">60</span><span class="p">)]</span>
+<span class="n">COS</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="mi">6</span><span class="p">))</span> <span class="o">*</span> <span class="n">SCALE</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">60</span><span class="p">)]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">tip_fast</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">length</span><span class="p">):</span>           <span class="c1"># i is 0..59 for seconds or minutes</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">cx</span> <span class="o">+</span> <span class="p">((</span><span class="n">length</span> <span class="o">*</span> <span class="n">SIN</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">)</span>     <span class="c1"># &gt;&gt; 8 divides by 256</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">cy</span> <span class="o">-</span> <span class="p">((</span><span class="n">length</span> <span class="o">*</span> <span class="n">COS</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+</code></pre></div></td></tr></table></div>
+<p>The tables cost a moment at startup, and every frame afterward uses only integer multiplication and shifts. The rounding error is at most <span class="arithmatex">\( 1/256 \)</span> of the length, less than half a pixel for a 120-pixel hand.</p>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Precompute Once, Draw Forever</p>
+<p><img alt="Chrono with a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+If a calculation gives the same answer every time, such as where the minute ticks go, do it once when the program starts and reuse the results. It makes redraws faster and frees the Pico to do other work.</p>
+</div>
+<h2 id="putting-it-together">Putting It Together</h2>
+<table>
+<thead>
+<tr>
+<th>To place...</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The center</td>
+<td><span class="arithmatex">\( c_x = W//2,\ c_y = H//2 \)</span></td>
+</tr>
+<tr>
+<td>Any point at distance <span class="arithmatex">\( r \)</span>, clock angle <span class="arithmatex">\( \theta \)</span></td>
+<td><span class="arithmatex">\( x = c_x + r\sin\theta,\ y = c_y - r\cos\theta \)</span></td>
+</tr>
+<tr>
+<td>Second hand angle</td>
+<td><span class="arithmatex">\( 6s \)</span></td>
+</tr>
+<tr>
+<td>Minute hand angle</td>
+<td><span class="arithmatex">\( 6m + 0.1s \)</span></td>
+</tr>
+<tr>
+<td>Hour hand angle</td>
+<td><span class="arithmatex">\( 30(h \bmod 12) + 0.5m \)</span></td>
+</tr>
+<tr>
+<td>A fast version</td>
+<td>Lookup tables with fixed-point scale 256</td>
+</tr>
+</tbody>
+</table>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li>Screen coordinates start at the top-left, and y increases downward.</li>
+<li>Angles for <code>math.sin()</code> and <code>math.cos()</code> must be in radians; use <code>math.radians()</code>.</li>
+<li>For clock angles measured clockwise from 12: <span class="arithmatex">\( x = c_x + r\sin\theta \)</span> and <span class="arithmatex">\( y = c_y - r\cos\theta \)</span>.</li>
+<li>Hands turn 6° per second, 6° per minute, and 30° per hour, plus small extra terms for smooth motion.</li>
+<li>Express hand lengths as fractions of the radius so the face scales.</li>
+<li>Lookup tables and fixed-point arithmetic keep drawing fast on a Pico with no floating-point hardware.</li>
+</ul>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Geometry Unlocked</p>
+<p><img alt="Chrono celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+You can now convert any time into hand angles, turn angles into pixel positions, and speed it all up with lookup tables. You have every equation needed for an analog watch face. Every second counts!</p>
+</div>
+<h2 id="practice-questions">Practice Questions</h2>
+<ol>
+<li>On a 320 by 240 screen, what is the center point? Which direction is y increasing?</li>
+<li>Convert 45 degrees to radians. Leave your answer in terms of <span class="arithmatex">\( \pi \)</span> and as a decimal.</li>
+<li>Compute the three hand angles at 9:15:00 and the pixel position of the minute hand tip on a 240 by 240 display with length 90.</li>
+<li>Why do we add <span class="arithmatex">\( 0.5m \)</span> to the hour hand angle?</li>
+<li>A lookup table uses SCALE = 256. What integer represents the sine of 30 degrees, and what is the maximum error in a hand of length 120?</li>
+</ol>
 
 
 
 
 
 
+
+  
+  
 
 
 

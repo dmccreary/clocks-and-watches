@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking.">
+        <meta name="description" content="Push buttons, debouncing, interrupts, state machines, mode cycling, and rotary encoders for setting the time.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -29,7 +29,7 @@
     
     
       
-        <title>7. Buttons, Interrupts, and State Machines - Clocks and Watches with AI</title>
+        <title>Buttons, Interrupts, and State Machines - Clocks and Watches with AI</title>
       
     
     
@@ -77,16 +77,16 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="7. Buttons, Interrupts, and State Machines - Clocks and Watches with AI" />
-<meta property="og:description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." />
+<meta property="og:title" content="Buttons, Interrupts, and State Machines - Clocks and Watches with AI" />
+<meta property="og:description" content="Push buttons, debouncing, interrupts, state machines, mode cycling, and rotary encoders for setting the time." />
 <meta property="og:image" content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/chapters/07-buttons-state-machines/index.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://dmccreary.github.io/clocks-and-watches/chapters/07-buttons-state-machines/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="7. Buttons, Interrupts, and State Machines - Clocks and Watches with AI" />
-<meta property="twitter:description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." />
+<meta property="twitter:title" content="Buttons, Interrupts, and State Machines - Clocks and Watches with AI" />
+<meta property="twitter:description" content="Push buttons, debouncing, interrupts, state machines, mode cycling, and rotary encoders for setting the time." />
 <meta property="twitter:image" content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/chapters/07-buttons-state-machines/index.png" />
 </head>
   
@@ -140,7 +140,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              7. Buttons, Interrupts, and State Machines
+              Buttons, Interrupts, and State Machines
             
           </span>
         </div>
@@ -770,6 +770,256 @@
     <span class="md-ellipsis">
       
         Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#letting-people-talk-to-the-clock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Letting People Talk to the Clock
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#momentary-push-button" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Momentary Push Button
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#button-wiring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Button Wiring
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#button-debouncing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Button Debouncing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Button Debouncing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-button-bounce-oscilloscope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Button Bounce Oscilloscope
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware-debounce" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware Debounce
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#software-debounce" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Software Debounce
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interrupt-handlers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interrupt Handlers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Interrupt Handlers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#irq-falling-edge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IRQ Falling Edge
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#callback-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Callback Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#state-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        State Machine
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="State Machine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-clock-mode-state-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Clock Mode State Machine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mode-cycling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mode Cycling
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rotary-encoder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rotary Encoder
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Rotary Encoder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#encoder-direction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Encoder Direction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Encoder Direction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-quadrature-encoder-simulator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Quadrature Encoder Simulator
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoder-acceleration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Encoder Acceleration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Putting It Together
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice Questions
       
     </span>
   </a>
@@ -1754,6 +2004,256 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#letting-people-talk-to-the-clock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Letting People Talk to the Clock
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#momentary-push-button" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Momentary Push Button
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#button-wiring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Button Wiring
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#button-debouncing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Button Debouncing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Button Debouncing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-button-bounce-oscilloscope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Button Bounce Oscilloscope
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware-debounce" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware Debounce
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#software-debounce" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Software Debounce
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interrupt-handlers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interrupt Handlers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Interrupt Handlers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#irq-falling-edge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IRQ Falling Edge
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#callback-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Callback Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#state-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        State Machine
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="State Machine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-clock-mode-state-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Clock Mode State Machine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mode-cycling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mode Cycling
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rotary-encoder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rotary Encoder
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Rotary Encoder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#encoder-direction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Encoder Direction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Encoder Direction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-quadrature-encoder-simulator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Quadrature Encoder Simulator
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encoder-acceleration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Encoder Acceleration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Putting It Together
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1900,13 +2400,519 @@
 <li><a href="../06-getting-time/">Chapter 6: Getting the Time in MicroPython</a></li>
 </ul>
 <hr />
-<p>TODO: Generate Chapter Content</p>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Give Your Clock Some Buttons</p>
+<p><img alt="Chrono waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+A clock that can't be set is just a fancy paperweight. In this chapter you'll add buttons, tame their jittery signals, and build the mode-cycling logic that lets anyone set the hour and minute. Let's make time tick!</p>
+</div>
+<h2 id="letting-people-talk-to-the-clock">Letting People Talk to the Clock</h2>
+<p>So far your programs have only <em>output</em> information. To set the time or an alarm, a person must send information <em>in</em>. The simplest input device is a push button, and this chapter takes you from one wire on a breadboard to a complete "run / set hour / set minute" menu. Along the way you will meet the two hard problems of buttons, <strong>bounce</strong> and <strong>timing</strong>, and the tools for solving them: debouncing, interrupts, and state machines. The chapter ends with the rotary encoder, a knob that makes setting the time faster.</p>
+<h2 id="momentary-push-button">Momentary Push Button</h2>
+<p>A <strong>momentary push button</strong> is a switch that connects its terminals only while you hold it down and disconnects when you let go. "Momentary" is the opposite of a light switch that stays in position. The small square buttons in your kit are called <strong>tactile switches</strong> and have four legs.</p>
+<p>The four legs are connected in two pairs inside the case. Legs on the same side are always joined, and pressing the button joins the two pairs. So the button acts as a single switch connected between <em>either</em> leg of one pair and <em>either</em> leg of the other. If you wire two legs on the same side, the button will never seem to work.</p>
+<p>Because it has no memory and no power of its own, a button is a <strong>sensor</strong> in the sense of Chapter 1: it reports "pressed" or "not pressed" and nothing more.</p>
+<h2 id="button-wiring">Button Wiring</h2>
+<p>Wire the button between a GPIO pin and ground and let the internal pull-up from Chapter 5 do the rest:</p>
+<ol>
+<li>Place the button across the center gap of the breadboard so its two pairs of legs land in different strips.</li>
+<li>Connect one leg to the GPIO pin (for example GP14).</li>
+<li>Connect the opposite-side leg to a ground rail.</li>
+<li>In code, configure the pin with <code>Pin.PULL_UP</code>.</li>
+</ol>
+<p>The standard kits use GP14 for the <strong>mode</strong> button and GP15 for the <strong>cycle</strong> button, in the lower-left corner of the Pico. The pin reads 1 when idle and 0 when pressed (active low). You need no external resistor, and no 3.3 V wire.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+<span class="n">mode_button</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">PULL_UP</span><span class="p">)</span>
+<span class="n">cycle_button</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">PULL_UP</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="button-debouncing">Button Debouncing</h2>
+<p>A mechanical switch is not a clean on/off device. When the metal contacts collide, they spring apart and touch again several times, sending a burst of rapid on/off pulses before settling. This is called <strong>contact bounce</strong>, and it typically lasts a few milliseconds up to about 20 ms.</p>
+<p>A human sees one press. The Pico is fast enough to see the burst as <strong>ten presses</strong>. <strong>Debouncing</strong> is any technique that ignores the bounce so one physical press counts as exactly one event.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">One Press, Ten Counts</p>
+<p><img alt="Chrono warning" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+If your counter jumps by 3 or 7 when you press a button once, that's bounce, not a bug in your wiring. It happens because real contacts chatter as they close. The fix is to ignore any change that arrives within about 50 ms of the last one.</p>
+</div>
+<h4 id="diagram-button-bounce-oscilloscope">Diagram: Button Bounce Oscilloscope</h4>
+<details>
+<summary>Button Bounce Oscilloscope</summary>
+<p>Type: MicroSim
+<strong>sim-id:</strong> button-bounce-scope<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p><strong>Learning objective:</strong> Students will <em>analyze</em> how bounce creates false presses and <em>evaluate</em> the effect of a debounce delay (Bloom: Analyzing, Evaluating).</p>
+<p><strong>Visual elements:</strong> A scrolling oscilloscope-style trace of the pin voltage (3.3 V high, 0 V low). Below it, a counter shows the number of presses counted.</p>
+<p><strong>Controls:</strong></p>
+<ul>
+<li>"Press button" generates a realistic bounce burst (random 3 to 12 transitions over 1 to 15 ms).</li>
+<li>Slider "Debounce window (ms)": 0 to 100, default 0.</li>
+<li>Toggle "Hardware filter (0.1 µF)" that smooths the trace.</li>
+</ul>
+<p><strong>Behavior:</strong> With the window at 0, one press increments the counter several times. As the window grows past the bounce length the counter increments once.</p>
+<p><strong>Responsive design:</strong> The trace fills the container width.</p>
+<p>Implementation: p5.js with a timestamped event list.</p>
+</details>
+<h3 id="hardware-debounce">Hardware Debounce</h3>
+<p><strong>Hardware debouncing</strong> filters the bounce in the circuit itself. The simple version places a <strong>0.1 µF capacitor</strong> across the button, between the GPIO pin and ground. The capacitor smooths out the rapid changes because it charges and discharges slowly through the pull-up resistor. With the internal pull-up of about 50 kΩ, the time constant is</p>
+<div class="arithmatex">\[ \tau = R \times C = 50{,}000 \times 0.0000001 = 5\ \text{ms} \]</div>
+<p>which is on the order of the bounce time. It costs one small part and no code. In practice, software debouncing is more common in this course because it needs no extra parts.</p>
+<h3 id="software-debounce">Software Debounce</h3>
+<p><strong>Software debouncing</strong> ignores extra events in code. The most reliable method is a time window: remember when you last accepted a press, and reject any new one that arrives too soon.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">ticks_ms</span><span class="p">,</span> <span class="n">ticks_diff</span>
+
+<span class="n">last_press</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">DEBOUNCE_MS</span> <span class="o">=</span> <span class="mi">50</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">accept_press</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">last_press</span>
+    <span class="n">now</span> <span class="o">=</span> <span class="n">ticks_ms</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">ticks_diff</span><span class="p">(</span><span class="n">now</span><span class="p">,</span> <span class="n">last_press</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">DEBOUNCE_MS</span><span class="p">:</span>
+        <span class="n">last_press</span> <span class="o">=</span> <span class="n">now</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="kc">False</span>
+</code></pre></div></td></tr></table></div>
+<p>A window of 20 to 50 ms stops bounce but still feels instant. Larger values, like the 200 ms sometimes used in examples, also work, but make fast repeated presses feel sluggish.</p>
+<h2 id="interrupt-handlers">Interrupt Handlers</h2>
+<p>Reading a button in a loop is called <strong>polling</strong>: you keep asking "pressed yet?" It works, but if your loop is busy redrawing the display, a short press can slip by unnoticed. An <strong>interrupt</strong> is a different approach. The hardware watches the pin and, the moment it changes, pauses your main code and runs a special function called an <strong>interrupt handler</strong> (also called an interrupt service routine or ISR). When the handler finishes, your main code resumes.</p>
+<p>You attach a handler with the pin's <code>irq()</code> method:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">on_press</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"pressed"</span><span class="p">,</span> <span class="n">pin</span><span class="p">)</span>
+
+<span class="n">button</span><span class="o">.</span><span class="n">irq</span><span class="p">(</span><span class="n">trigger</span><span class="o">=</span><span class="n">Pin</span><span class="o">.</span><span class="n">IRQ_FALLING</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="n">on_press</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>The handler receives one argument: the pin that triggered it. Interrupts make sure a press is never missed, even when the main loop is busy.</p>
+<h3 id="irq-falling-edge">IRQ Falling Edge</h3>
+<p>An <strong>edge</strong> is the moment a signal changes level. A <strong>falling edge</strong> is the change from high (1) to low (0), and a <strong>rising edge</strong> is low to high. The <code>trigger</code> argument chooses which edge starts the handler.</p>
+<table>
+<thead>
+<tr>
+<th>Trigger</th>
+<th>Fires when</th>
+<th>With a pull-up button</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Pin.IRQ_FALLING</code></td>
+<td>Signal goes 1 to 0</td>
+<td>The instant the button is pressed</td>
+</tr>
+<tr>
+<td><code>Pin.IRQ_RISING</code></td>
+<td>Signal goes 0 to 1</td>
+<td>The instant the button is released</td>
+</tr>
+<tr>
+<td>Both constants combined</td>
+<td>Either change</td>
+<td>Press and release</td>
+</tr>
+</tbody>
+</table>
+<p>To listen for both edges, combine the two constants with the <code>|</code> operator. Because a pull-up button is active low, <code>IRQ_FALLING</code> is the right trigger for "the user pressed the button."</p>
+<h3 id="callback-functions">Callback Functions</h3>
+<p>A <strong>callback function</strong> is a function you give to some other code, so that code can call it back later when something happens. The handler above is a callback: you do not call <code>on_press()</code> yourself; you hand it to <code>irq()</code>, and the hardware calls it. Callbacks appear whenever your code must react to events instead of running in a fixed order.</p>
+<p>The rules for a good interrupt callback are simple:</p>
+<ul>
+<li>Keep it <strong>short and fast</strong>. Do not draw on the display or use long <code>sleep()</code> calls inside it.</li>
+<li>Do only the minimum: set a <strong>flag</strong> (a variable) or increment a counter.</li>
+<li>Let the main loop notice the flag and do the real work.</li>
+</ul>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Flag It and Leave</p>
+<p><img alt="Chrono with a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+Inside an interrupt handler, just set <code>pressed = True</code> and return. Your main loop checks the flag, clears it, and does the heavy work. Handlers stay fast and your display code stays out of trouble.</p>
+</div>
+<p>Here is the complete pattern, combining an interrupt, a debounce window, and a flag. The handler needs the <code>global</code> keyword from Chapter 4 to change variables outside itself.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">NAME</span> <span class="o">=</span> <span class="s2">"07-button-irq.py"</span>
+<span class="n">VERSION</span> <span class="o">=</span> <span class="s2">"1.0"</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{}</span><span class="s2"> v</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">NAME</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">))</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">ticks_ms</span><span class="p">,</span> <span class="n">ticks_diff</span><span class="p">,</span> <span class="n">sleep</span>
+
+<span class="n">button</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">PULL_UP</span><span class="p">)</span>
+<span class="n">pressed</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">last</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">on_press</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">pressed</span><span class="p">,</span> <span class="n">last</span>
+    <span class="n">now</span> <span class="o">=</span> <span class="n">ticks_ms</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">ticks_diff</span><span class="p">(</span><span class="n">now</span><span class="p">,</span> <span class="n">last</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">:</span>    <span class="c1"># ignore bounce</span>
+        <span class="n">last</span> <span class="o">=</span> <span class="n">now</span>
+        <span class="n">pressed</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="n">button</span><span class="o">.</span><span class="n">irq</span><span class="p">(</span><span class="n">trigger</span><span class="o">=</span><span class="n">Pin</span><span class="o">.</span><span class="n">IRQ_FALLING</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="n">on_press</span><span class="p">)</span>
+
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">pressed</span><span class="p">:</span>
+        <span class="n">pressed</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"presses:"</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="state-machine">State Machine</h2>
+<p>A <strong>state machine</strong> is a way of organizing a program around a small set of named <strong>states</strong>, where each state defines what the program does and which events cause a change to a different state. A traffic light is a state machine: green, yellow, and red are states, and a timer is the event that moves it along.</p>
+<p>For a clock, the states are the modes the user is in, and the event is a button press. Consider a simple three-state design:</p>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>What the display shows</th>
+<th>Mode button press goes to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RUN</td>
+<td>The current time</td>
+<td>SET_HOUR</td>
+</tr>
+<tr>
+<td>SET_HOUR</td>
+<td>The hour, flashing</td>
+<td>SET_MINUTE</td>
+</tr>
+<tr>
+<td>SET_MINUTE</td>
+<td>The minute, flashing</td>
+<td>RUN</td>
+</tr>
+</tbody>
+</table>
+<p>A drawing of the same idea, with circles for states and arrows for transitions, makes the logic obvious at a glance and is a good way to plan before coding.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Ask 'What State Am I In?'</p>
+<p><img alt="Chrono thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+A state machine turns a mess of <code>if</code> statements into one question: what state am I in, and what does this event do <em>there</em>? The same button press can mean different things in different states, and that is exactly how a two-button clock does so much.</p>
+</div>
+<h4 id="diagram-clock-mode-state-machine">Diagram: Clock Mode State Machine</h4>
+<details>
+<summary>Clock Mode State Machine</summary>
+<p>Type: interactive diagram
+<strong>sim-id:</strong> clock-mode-state-machine<br/>
+<strong>Library:</strong> vis-network<br/>
+<strong>Status:</strong> Specified</p>
+<p><strong>Learning objective:</strong> Students will <em>apply</em> a state machine to predict what a button press does in each mode (Bloom: Applying).</p>
+<p><strong>Layout:</strong> Circles for RUN, SET_HOUR, SET_MINUTE (and optionally SET_ALARM_HOUR, SET_ALARM_MINUTE). Arrows are labeled "Mode press."</p>
+<p><strong>Interactions:</strong></p>
+<ul>
+<li>Two on-screen buttons, "Mode" and "Cycle." Pressing Mode moves the highlighted state along the arrows; pressing Cycle changes the value shown in a mock clock face beside the diagram (hour +1 in SET_HOUR, minute +1 in SET_MINUTE, no effect in RUN).</li>
+<li>Clicking a state opens an infobox describing what the display shows and what each button does there.</li>
+<li>A "Predict" toggle asks the student to name the next state before it moves.</li>
+</ul>
+<p><strong>Responsive design:</strong> The canvas fills the container and calls <code>network.fit()</code> on resize.</p>
+<p>Implementation: vis-network with three nodes and scripted highlighting.</p>
+</details>
+<h3 id="mode-cycling">Mode Cycling</h3>
+<p><strong>Mode cycling</strong> is stepping through the states in a loop, one press at a time, wrapping from the last mode back to the first. It uses the modulo trick from Chapter 4:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">MODES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"RUN"</span><span class="p">,</span> <span class="s2">"SET_HOUR"</span><span class="p">,</span> <span class="s2">"SET_MINUTE"</span><span class="p">]</span>
+<span class="n">mode</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">next_mode</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">mode</span>
+    <span class="n">mode</span> <span class="o">=</span> <span class="p">(</span><span class="n">mode</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">MODES</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>After three presses you are back to RUN. The second button, the <strong>cycle</strong> button, changes the value that belongs to the current mode, again with a wrap: hours go through 0 to 23 (<code>% 24</code>) and minutes 0 to 59 (<code>% 60</code>).</p>
+<p>Combining the flag pattern, the mode list, and the wrap-around gives a complete time-setting program that prints instead of drawing:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">NAME</span> <span class="o">=</span> <span class="s2">"07-set-time.py"</span>
+<span class="n">VERSION</span> <span class="o">=</span> <span class="s2">"1.0"</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{}</span><span class="s2"> v</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">NAME</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">))</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">ticks_ms</span><span class="p">,</span> <span class="n">ticks_diff</span><span class="p">,</span> <span class="n">sleep</span>
+
+<span class="n">MODES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"RUN"</span><span class="p">,</span> <span class="s2">"SET_HOUR"</span><span class="p">,</span> <span class="s2">"SET_MINUTE"</span><span class="p">]</span>
+<span class="n">mode_btn</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">PULL_UP</span><span class="p">)</span>
+<span class="n">cycle_btn</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">PULL_UP</span><span class="p">)</span>
+
+<span class="n">mode</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">hour</span><span class="p">,</span> <span class="n">minute</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">0</span>
+<span class="n">mode_flag</span> <span class="o">=</span> <span class="n">cycle_flag</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">last_mode</span> <span class="o">=</span> <span class="n">last_cycle</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">mode_isr</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">mode_flag</span><span class="p">,</span> <span class="n">last_mode</span>
+    <span class="n">now</span> <span class="o">=</span> <span class="n">ticks_ms</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">ticks_diff</span><span class="p">(</span><span class="n">now</span><span class="p">,</span> <span class="n">last_mode</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">:</span>
+        <span class="n">last_mode</span> <span class="o">=</span> <span class="n">now</span>
+        <span class="n">mode_flag</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">cycle_isr</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">cycle_flag</span><span class="p">,</span> <span class="n">last_cycle</span>
+    <span class="n">now</span> <span class="o">=</span> <span class="n">ticks_ms</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">ticks_diff</span><span class="p">(</span><span class="n">now</span><span class="p">,</span> <span class="n">last_cycle</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">:</span>
+        <span class="n">last_cycle</span> <span class="o">=</span> <span class="n">now</span>
+        <span class="n">cycle_flag</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="n">mode_btn</span><span class="o">.</span><span class="n">irq</span><span class="p">(</span><span class="n">trigger</span><span class="o">=</span><span class="n">Pin</span><span class="o">.</span><span class="n">IRQ_FALLING</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="n">mode_isr</span><span class="p">)</span>
+<span class="n">cycle_btn</span><span class="o">.</span><span class="n">irq</span><span class="p">(</span><span class="n">trigger</span><span class="o">=</span><span class="n">Pin</span><span class="o">.</span><span class="n">IRQ_FALLING</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="n">cycle_isr</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">mode_flag</span><span class="p">:</span>
+        <span class="n">mode_flag</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">mode</span> <span class="o">=</span> <span class="p">(</span><span class="n">mode</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">MODES</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Mode:"</span><span class="p">,</span> <span class="n">MODES</span><span class="p">[</span><span class="n">mode</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">cycle_flag</span><span class="p">:</span>
+        <span class="n">cycle_flag</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">MODES</span><span class="p">[</span><span class="n">mode</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"SET_HOUR"</span><span class="p">:</span>
+            <span class="n">hour</span> <span class="o">=</span> <span class="p">(</span><span class="n">hour</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">24</span>
+        <span class="k">elif</span> <span class="n">MODES</span><span class="p">[</span><span class="n">mode</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"SET_MINUTE"</span><span class="p">:</span>
+            <span class="n">minute</span> <span class="o">=</span> <span class="p">(</span><span class="n">minute</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">60</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">hour</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">minute</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Note that when the user enters a setting mode, the value they change should start from the <em>current</em> time, not from zero. The program starts at 12:00 here only to keep the example short.</p>
+<h2 id="rotary-encoder">Rotary Encoder</h2>
+<p>A <strong>rotary encoder</strong> is a knob that turns endlessly and reports each small step of rotation, along with the direction. Unlike a potentiometer, it has no stops and no fixed position. It is a nicer way to set a time because turning one knob is faster than pressing a button 40 times.</p>
+<p>A typical encoder module has five pins: <strong>GND</strong>, <strong>+</strong> (3.3 V), <strong>CLK</strong> (also called A), <strong>DT</strong> (also called B), and <strong>SW</strong> (a push button built into the knob). CLK and DT are two switches that open and close as you turn, and the important thing is the <em>order</em> in which they change.</p>
+<h3 id="encoder-direction">Encoder Direction</h3>
+<p>Both switches produce a pattern called <strong>quadrature</strong>: A and B change in a fixed sequence, offset by a quarter of a cycle. Turning clockwise gives one sequence, and counterclockwise gives the reverse.</p>
+<table>
+<thead>
+<tr>
+<th>Turn</th>
+<th>A and B (in order)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clockwise</td>
+<td>00, 10, 11, 01</td>
+</tr>
+<tr>
+<td>Counterclockwise</td>
+<td>00, 01, 11, 10</td>
+</tr>
+</tbody>
+</table>
+<p>The simplest decoding method uses only one edge. When A has a falling edge, look at B at that moment. If B is 1, the knob is turning one way, and if B is 0 it is turning the other way. (Swap the two directions if your knob feels backward.)</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">PULL_UP</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">PULL_UP</span><span class="p">)</span>
+<span class="n">value</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">on_turn</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">value</span>
+    <span class="k">if</span> <span class="n">b</span><span class="o">.</span><span class="n">value</span><span class="p">():</span>
+        <span class="n">value</span> <span class="o">+=</span> <span class="mi">1</span>      <span class="c1"># one direction</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">value</span> <span class="o">-=</span> <span class="mi">1</span>      <span class="c1"># the other</span>
+
+<span class="n">a</span><span class="o">.</span><span class="n">irq</span><span class="p">(</span><span class="n">trigger</span><span class="o">=</span><span class="n">Pin</span><span class="o">.</span><span class="n">IRQ_FALLING</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="n">on_turn</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition mascot-encourage">
+<p class="admonition-title">Quadrature Takes a Minute</p>
+<p><img alt="Chrono encouraging" class="mascot-admonition-img" src="../../img/mascot/encouraging.png" />
+Two signals that change in a sequence can feel confusing at first. Try it on paper: write A and B for each click of a clockwise turn, then read the sequence backward for counterclockwise. Once you see the pattern, the code is only three lines.</p>
+</div>
+<h4 id="diagram-quadrature-encoder-simulator">Diagram: Quadrature Encoder Simulator</h4>
+<details>
+<summary>Quadrature Encoder Simulator</summary>
+<p>Type: MicroSim
+<strong>sim-id:</strong> quadrature-encoder-sim<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p><strong>Learning objective:</strong> Students will <em>understand</em> how the A and B signals encode rotation direction (Bloom: Understanding).</p>
+<p><strong>Visual elements:</strong> A draggable knob on the left. On the right, two square-wave traces for A and B scrolling in time, with a vertical line at each falling edge of A showing the value of B at that instant. A counter shows the running value.</p>
+<p><strong>Controls:</strong> Drag the knob clockwise or counterclockwise, or use "Step CW" and "Step CCW" buttons; a "Show table" toggle displays the state sequence.</p>
+<p><strong>Responsive design:</strong> Knob and traces scale with the container.</p>
+<p>Implementation: p5.js with angle-to-signal mapping.</p>
+</details>
+<h3 id="encoder-acceleration">Encoder Acceleration</h3>
+<p><strong>Encoder acceleration</strong> makes the value change faster when the user turns the knob faster. Moving from minute 0 to minute 45 one click at a time is tedious, but a quick spin should jump by larger steps. The trick is to measure the time between clicks with <code>ticks_ms()</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">last</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">step_size</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">last</span>
+    <span class="n">now</span> <span class="o">=</span> <span class="n">ticks_ms</span><span class="p">()</span>
+    <span class="n">gap</span> <span class="o">=</span> <span class="n">ticks_diff</span><span class="p">(</span><span class="n">now</span><span class="p">,</span> <span class="n">last</span><span class="p">)</span>
+    <span class="n">last</span> <span class="o">=</span> <span class="n">now</span>
+    <span class="k">if</span> <span class="n">gap</span> <span class="o">&lt;</span> <span class="mi">30</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">10</span>       <span class="c1"># very fast turning</span>
+    <span class="k">elif</span> <span class="n">gap</span> <span class="o">&lt;</span> <span class="mi">80</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">5</span>
+    <span class="k">return</span> <span class="mi">1</span>            <span class="c1"># slow: precise control</span>
+</code></pre></div></td></tr></table></div>
+<p>Multiply the direction (+1 or -1) by <code>step_size()</code> to get the change. Slow turns still give one-at-a-time precision, so the user can fine-tune the last few minutes.</p>
+<h2 id="putting-it-together">Putting It Together</h2>
+<table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Which pin for a button?</td>
+<td>Any GPIO with <code>Pin.PULL_UP</code>, wired to ground</td>
+</tr>
+<tr>
+<td>One press counts many times</td>
+<td>Debounce with a 20 to 50 ms window</td>
+</tr>
+<tr>
+<td>Presses are missed</td>
+<td>Use <code>irq()</code> with <code>IRQ_FALLING</code></td>
+</tr>
+<tr>
+<td>What do the buttons mean now?</td>
+<td>A state machine with mode cycling</td>
+</tr>
+<tr>
+<td>Setting the time is slow</td>
+<td>Rotary encoder with acceleration</td>
+</tr>
+</tbody>
+</table>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li>A push button wired between a pin and ground, with <code>Pin.PULL_UP</code>, reads 0 when pressed.</li>
+<li>Contact bounce makes one press look like many; debounce with a short time window or a small capacitor.</li>
+<li>Interrupt handlers catch presses immediately; keep them short and set a flag.</li>
+<li>A state machine plus <code>(mode + 1) % n</code> implements mode cycling.</li>
+<li>A rotary encoder reports direction using quadrature signals, and timing between clicks enables acceleration.</li>
+</ul>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Your Clock Listens Now</p>
+<p><img alt="Chrono celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+You can now debounce a button, catch presses with interrupts, and cycle through set-hour and set-minute modes using a state machine. That is a fully settable clock interface. Every second counts!</p>
+</div>
+<h2 id="practice-questions">Practice Questions</h2>
+<ol>
+<li>Why does a button wired to ground use <code>Pin.PULL_UP</code>, and what does <code>value()</code> return while it is pressed?</li>
+<li>A counter increases by 5 when you press once. Name the problem and give two ways to fix it.</li>
+<li>Why should an interrupt handler set a flag instead of drawing on the display?</li>
+<li>Draw the state machine for a clock with modes RUN, SET_HOUR, SET_MINUTE, SET_ALARM_HOUR, and SET_ALARM_MINUTE.</li>
+<li>Write <code>step_size()</code> thresholds so that turning the encoder very fast changes the minute by 10 per click.</li>
+</ol>
 
 
 
 
 
 
+
+  
+  
 
 
 

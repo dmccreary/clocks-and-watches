@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking.">
+        <meta name="description" content="Drawing lines, shapes, and text on framebuffer displays, plus custom fonts, scaled digits, animation, and partial updates.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -29,7 +29,7 @@
     
     
       
-        <title>12. Drawing Shapes, Text, and Animation - Clocks and Watches with AI</title>
+        <title>Drawing Shapes, Text, and Animation - Clocks and Watches with AI</title>
       
     
     
@@ -77,16 +77,16 @@
     
   
 <meta property="og:type" content="website" />
-<meta property="og:title" content="12. Drawing Shapes, Text, and Animation - Clocks and Watches with AI" />
-<meta property="og:description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." />
+<meta property="og:title" content="Drawing Shapes, Text, and Animation - Clocks and Watches with AI" />
+<meta property="og:description" content="Drawing lines, shapes, and text on framebuffer displays, plus custom fonts, scaled digits, animation, and partial updates." />
 <meta property="og:image" content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/chapters/12-drawing-text-animation/index.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://dmccreary.github.io/clocks-and-watches/chapters/12-drawing-text-animation/" />
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="12. Drawing Shapes, Text, and Animation - Clocks and Watches with AI" />
-<meta property="twitter:description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." />
+<meta property="twitter:title" content="Drawing Shapes, Text, and Animation - Clocks and Watches with AI" />
+<meta property="twitter:description" content="Drawing lines, shapes, and text on framebuffer displays, plus custom fonts, scaled digits, animation, and partial updates." />
 <meta property="twitter:image" content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/chapters/12-drawing-text-animation/index.png" />
 </head>
   
@@ -140,7 +140,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              12. Drawing Shapes, Text, and Animation
+              Drawing Shapes, Text, and Animation
             
           </span>
         </div>
@@ -910,6 +910,334 @@
     <span class="md-ellipsis">
       
         Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#drawing-with-real-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Drawing With Real Tools
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#display-coordinates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Display Coordinates
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#text-rendering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Text Rendering
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scaled-digits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scaled Digits
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scaled Digits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-digit-scaling-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Digit Scaling Explorer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#font-loading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Font Loading
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Font Loading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-fonts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom Fonts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#font-to-py-converter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Font to Py Converter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-font-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multiple Font Support
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multiple Font Support">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-font-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Font Pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#line-drawing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Line Drawing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rectangle-drawing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rectangle Drawing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#circle-drawing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Circle Drawing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#polygon-drawing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Polygon Drawing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Polygon Drawing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#triangle-drawing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Triangle Drawing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arc-drawing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arc Drawing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#animation-technique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Animation Technique
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Animation Technique">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#double-buffering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Double Buffering
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scroll-marquee" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scroll Marquee
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#partial-screen-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partial Screen Update
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Partial Screen Update">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bounding-box" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bounding Box
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clipping-region" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clipping Region
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Clipping Region">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-bounding-box-and-partial-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Bounding Box and Partial Update
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-together-an-analog-oled-clock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Putting It Together: An Analog OLED Clock
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice Questions
       
     </span>
   </a>
@@ -1754,6 +2082,334 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#drawing-with-real-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Drawing With Real Tools
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#display-coordinates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Display Coordinates
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#text-rendering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Text Rendering
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scaled-digits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scaled Digits
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scaled Digits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-digit-scaling-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Digit Scaling Explorer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#font-loading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Font Loading
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Font Loading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-fonts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom Fonts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#font-to-py-converter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Font to Py Converter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-font-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multiple Font Support
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multiple Font Support">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-font-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Font Pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#line-drawing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Line Drawing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rectangle-drawing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rectangle Drawing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#circle-drawing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Circle Drawing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#polygon-drawing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Polygon Drawing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Polygon Drawing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#triangle-drawing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Triangle Drawing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arc-drawing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arc Drawing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#animation-technique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Animation Technique
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Animation Technique">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#double-buffering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Double Buffering
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scroll-marquee" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scroll Marquee
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#partial-screen-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partial Screen Update
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Partial Screen Update">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bounding-box" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bounding Box
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clipping-region" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clipping Region
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Clipping Region">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-bounding-box-and-partial-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Bounding Box and Partial Update
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-together-an-analog-oled-clock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Putting It Together: An Analog OLED Clock
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1923,13 +2579,436 @@
 <li><a href="../11-oled-framebuffers/">Chapter 11: OLED Displays and Framebuffers</a></li>
 </ul>
 <hr />
-<p>TODO: Generate Chapter Content</p>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">From Pixels to Pictures</p>
+<p><img alt="Chrono waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+Setting one pixel at a time is like painting with a single grain of sand. In this chapter you'll get real brushes: lines, circles, big digits, and smooth motion. By the end you'll draw a complete analog clock face. Let's make time tick!</p>
+</div>
+<h2 id="drawing-with-real-tools">Drawing With Real Tools</h2>
+<p>You now know how the framebuffer works and how to set a single pixel. Drawing whole pictures pixel by pixel would be slow and tedious, so MicroPython's <code>framebuf</code> module provides ready-made shapes. This chapter covers the shape tools, text and fonts, and the techniques that make screens update smoothly and efficiently. All the examples use the <code>oled</code> object from Chapter 11.</p>
+<h2 id="display-coordinates">Display Coordinates</h2>
+<p>Every drawing call needs positions, and each call interprets its numbers a little differently. The coordinate system is the one from Chapter 10: the origin (0, 0) is at the <strong>top-left</strong>, x grows to the right, and y grows downward. What changes from call to call is what the numbers <em>mean</em>.</p>
+<table>
+<thead>
+<tr>
+<th>Call</th>
+<th>Arguments</th>
+<th>What (x, y) means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pixel(x, y, c)</code></td>
+<td>position, color</td>
+<td>The pixel itself</td>
+</tr>
+<tr>
+<td><code>line(x1, y1, x2, y2, c)</code></td>
+<td>two end points</td>
+<td>Start and end of the line</td>
+</tr>
+<tr>
+<td><code>rect(x, y, w, h, c)</code></td>
+<td>corner, size</td>
+<td><strong>Top-left corner</strong>, then width and height</td>
+</tr>
+<tr>
+<td><code>ellipse(x, y, xr, yr, c)</code></td>
+<td>center, radii</td>
+<td><strong>Center</strong> of the shape</td>
+</tr>
+<tr>
+<td><code>text(s, x, y, c)</code></td>
+<td>string, corner</td>
+<td><strong>Top-left</strong> of the first character</td>
+</tr>
+<tr>
+<td><code>poly(x, y, coords, c)</code></td>
+<td>offset, points</td>
+<td>Offset added to every point</td>
+</tr>
+</tbody>
+</table>
+<p>Two of these trip people up. A rectangle takes a width and height, not a second corner, and an ellipse takes its <strong>center</strong>, not its corner. On the 128 by 64 OLED, valid x values run from 0 to 127 and y values from 0 to 63.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Size, Not Corner</p>
+<p><img alt="Chrono warning" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+<code>rect(10, 10, 50, 30, 1)</code> draws a box 50 wide and 30 tall, ending at (59, 39), not at (50, 30). Mixing up "width and height" with "second corner" is the most common shape bug, and the giveaway is a rectangle that is too big or too small by exactly the starting offset.</p>
+</div>
+<h2 id="text-rendering">Text Rendering</h2>
+<p><strong>Text rendering</strong> is drawing characters on the screen. The built-in <code>text()</code> method uses a fixed <strong>8 by 8 pixel</strong> font, so every character occupies an 8-pixel cell:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"12:34"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>      <span class="c1"># string, x, y, color (1 = on)</span>
+</code></pre></div></td></tr></table></div>
+<p>Because each character is 8 pixels wide, you can predict text width exactly: <code>width = 8 * len(string)</code>. On the 128-pixel-wide OLED, 16 characters fit on a line, and with 8-pixel rows, 8 lines fit in 64 pixels. To center a string horizontally:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">msg</span> <span class="o">=</span> <span class="s2">"12:34"</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="mi">128</span> <span class="o">-</span> <span class="mi">8</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">msg</span><span class="p">))</span> <span class="o">//</span> <span class="mi">2</span>       <span class="c1"># 44</span>
+<span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>The built-in font supports basic ASCII letters, digits, and symbols, but it cannot be resized and has no accented characters. The next sections show how to overcome that.</p>
+<h2 id="scaled-digits">Scaled Digits</h2>
+<p>A clock should be readable across a room, and 8-pixel digits are tiny. <strong>Scaled digits</strong> enlarge the built-in font by drawing each font pixel as a block of several screen pixels. The idea is to render the character into a small scratch buffer, then copy each lit pixel as a <code>scale</code> by <code>scale</code> square.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">framebuf</span>
+
+<span class="n">scratch</span> <span class="o">=</span> <span class="n">framebuf</span><span class="o">.</span><span class="n">FrameBuffer</span><span class="p">(</span><span class="nb">bytearray</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">framebuf</span><span class="o">.</span><span class="n">MONO_HLSB</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">big_char</span><span class="p">(</span><span class="n">oled</span><span class="p">,</span> <span class="n">ch</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">scale</span><span class="p">):</span>
+    <span class="n">scratch</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">scratch</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>                 <span class="c1"># draw the character at 8x8</span>
+    <span class="k">for</span> <span class="n">py</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">px</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">scratch</span><span class="o">.</span><span class="n">pixel</span><span class="p">(</span><span class="n">px</span><span class="p">,</span> <span class="n">py</span><span class="p">):</span>
+                <span class="n">oled</span><span class="o">.</span><span class="n">fill_rect</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">px</span> <span class="o">*</span> <span class="n">scale</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">py</span> <span class="o">*</span> <span class="n">scale</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>With <code>scale = 3</code>, each digit is 24 by 24 pixels, so <code>12:34</code> needs <span class="arithmatex">\( 5 \times 24 = 120 \)</span> pixels and fits across the 128-pixel screen. The <code>MONO_HLSB</code> format is a horizontal layout that suits a scratch buffer, and it does not need to match the display's own layout because you copy pixel by pixel.</p>
+<h4 id="diagram-digit-scaling-explorer">Diagram: Digit Scaling Explorer</h4>
+<details>
+<summary>Digit Scaling Explorer</summary>
+<p>Type: MicroSim
+<strong>sim-id:</strong> digit-scaling-explorer<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p><strong>Learning objective:</strong> Students will <em>apply</em> scaling to make digits fit the screen and <em>analyze</em> the width tradeoff (Bloom: Applying, Analyzing).</p>
+<p><strong>Visual elements:</strong> A 128 by 64 OLED preview showing a time string, with the 8 by 8 source glyph shown enlarged beside it.</p>
+<p><strong>Controls:</strong> Text input for the time string, a scale slider (1 to 6), and a readout "Width = 8 × scale × characters" that turns red when it exceeds 128. A checkbox shows the grid of scaled blocks.</p>
+<p><strong>Responsive design:</strong> The preview scales to the container width.</p>
+<p>Implementation: p5.js with a stored 8 by 8 bitmap font for digits and colon.</p>
+</details>
+<h2 id="font-loading">Font Loading</h2>
+<p>A <strong>font</strong> is a set of bitmap pictures, one for each character. To use a font other than the built-in one, you <strong>load</strong> it from a Python file and use a helper called a writer to draw text with it. The commonly used tool is Peter Hinch's <code>writer.py</code>, together with font modules generated by his converter.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">writer</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">freesans32</span>             <span class="c1"># a font module copied to the Pico</span>
+
+<span class="n">wri</span> <span class="o">=</span> <span class="n">writer</span><span class="o">.</span><span class="n">Writer</span><span class="p">(</span><span class="n">oled</span><span class="p">,</span> <span class="n">freesans32</span><span class="p">)</span>
+<span class="n">writer</span><span class="o">.</span><span class="n">Writer</span><span class="o">.</span><span class="n">set_textpos</span><span class="p">(</span><span class="n">oled</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>     <span class="c1"># row, column</span>
+<span class="n">wri</span><span class="o">.</span><span class="n">printstring</span><span class="p">(</span><span class="s2">"12:34"</span><span class="p">)</span>
+<span class="n">oled</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<p>A loaded font is stored as Python data, so it takes up flash space and RAM when imported. Big fonts with many characters can use tens of kilobytes. That matters on a Pico with 264 KB of RAM, so import only the fonts you need.</p>
+<h3 id="custom-fonts">Custom Fonts</h3>
+<p>A <strong>custom font</strong> is one you make yourself in exactly the size and style you want, from any TrueType (<code>.ttf</code>) or OpenType (<code>.otf</code>) font file. This is how you get large, clean clock digits that the 8 by 8 font cannot give you.</p>
+<h3 id="font-to-py-converter">Font to Py Converter</h3>
+<p>The <strong>font-to-py converter</strong> is a program that runs on your computer, not on the Pico, and turns a font file into a Python module at a chosen pixel height. The basic pattern is:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>python<span class="w"> </span>font_to_py.py<span class="w"> </span>FreeSans.ttf<span class="w"> </span><span class="m">32</span><span class="w"> </span>freesans32.py<span class="w"> </span>-c<span class="w"> </span><span class="m">0123456789</span>:
+</code></pre></div></td></tr></table></div>
+<p>The number 32 is the font height in pixels. The <code>-c</code> option lists the characters to include. Here we include only the digits and the colon, so the output file stays small. Copy the resulting <code>freesans32.py</code> to the Pico and import it, as shown above. The <a href="../../lessons/50-multiple-fonts/font-to-py/">Font to Py lesson</a> walks through the whole process.</p>
+<h3 id="multiple-font-support">Multiple Font Support</h3>
+<p>Some layouts need more than one font, such as big digits for the time and a small font for the date. Create one <code>Writer</code> for each font module and use whichever suits the text:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">big</span> <span class="o">=</span> <span class="n">writer</span><span class="o">.</span><span class="n">Writer</span><span class="p">(</span><span class="n">oled</span><span class="p">,</span> <span class="n">freesans32</span><span class="p">)</span>
+<span class="n">small</span> <span class="o">=</span> <span class="n">writer</span><span class="o">.</span><span class="n">Writer</span><span class="p">(</span><span class="n">oled</span><span class="p">,</span> <span class="n">freesans14</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Each font takes memory, so limit yourself to what the screen actually needs. Two or three fonts is a practical ceiling on the Pico.</p>
+<h4 id="diagram-font-pipeline">Diagram: Font Pipeline</h4>
+<details>
+<summary>Font Pipeline</summary>
+<p>Type: workflow diagram
+<strong>sim-id:</strong> font-pipeline<br/>
+<strong>Library:</strong> Mermaid<br/>
+<strong>Status:</strong> Specified</p>
+<p><strong>Learning objective:</strong> Students will <em>understand</em> the steps from a font file to text on the OLED (Bloom: Understanding).</p>
+<p><strong>Nodes:</strong> TrueType font file on your computer, <code>font_to_py.py</code> (with height and character list), generated <code>.py</code> module, copy to Pico, <code>import</code> on the Pico, <code>Writer</code>, text on screen.</p>
+<p><strong>Interactions:</strong> Every node has a Mermaid <code>click</code> directive that opens an infobox with the command or a description. A second view estimates the module's memory size from height and number of characters.</p>
+<p><strong>Responsive design:</strong> The diagram scales to container width.</p>
+<p>Implementation: Mermaid flowchart with click callbacks.</p>
+</details>
+<h2 id="line-drawing">Line Drawing</h2>
+<p>The <strong><code>line(x1, y1, x2, y2, c)</code></strong> method draws a straight line of one-pixel thickness between two points. It also has two faster special cases for horizontal and vertical lines: <code>hline(x, y, w, c)</code> and <code>vline(x, y, h, c)</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">oled</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">127</span><span class="p">,</span> <span class="mi">63</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>     <span class="c1"># diagonal across the screen</span>
+<span class="n">oled</span><span class="o">.</span><span class="n">hline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>       <span class="c1"># horizontal line across the middle</span>
+</code></pre></div></td></tr></table></div>
+<p>Lines are the natural tool for clock hands. Using the hand-tip calculation from Chapter 10, a hand is a line from the center to the tip:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">cx</span><span class="p">,</span> <span class="n">cy</span> <span class="o">=</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">32</span>                  <span class="c1"># center of the 128 x 64 screen</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">tip</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span> <span class="n">length</span><span class="p">)</span>        <span class="c1"># from Chapter 10</span>
+<span class="n">oled</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="n">cy</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="rectangle-drawing">Rectangle Drawing</h2>
+<p>The <strong><code>rect(x, y, w, h, c)</code></strong> method draws a rectangle outline. Add a fifth argument <code>True</code> (or use <code>fill_rect()</code>) to fill it. Rectangles make borders, progress bars, and thick lines:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">oled</span><span class="o">.</span><span class="n">rect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>              <span class="c1"># border around the whole screen</span>
+<span class="n">oled</span><span class="o">.</span><span class="n">fill_rect</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>         <span class="c1"># filled bar</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="circle-drawing">Circle Drawing</h2>
+<p>The <code>framebuf</code> module has no <code>circle()</code>, but it has <strong><code>ellipse(x, y, xr, yr, c)</code></strong>, and an ellipse with equal radii is a circle. The position is the center:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">oled</span><span class="o">.</span><span class="n">ellipse</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>          <span class="c1"># circle, radius 31, fits the 64 px height</span>
+<span class="n">oled</span><span class="o">.</span><span class="n">ellipse</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>      <span class="c1"># small filled dot at the center</span>
+</code></pre></div></td></tr></table></div>
+<p>The <code>ellipse</code> method was added in MicroPython 1.19, so on older firmware you must draw circles by plotting points with the polar formula from Chapter 10.</p>
+<h2 id="polygon-drawing">Polygon Drawing</h2>
+<p>A <strong>polygon</strong> is a closed shape with straight sides. The <strong><code>poly(x, y, coords, c)</code></strong> method takes an array of x, y pairs. The coordinates are relative to the offset <code>(x, y)</code>, so you can draw the same shape at different places. The array must be a 16-bit array from the <code>array</code> module:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">array</span>
+<span class="n">diamond</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s1">'h'</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span>  <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>   <span class="c1"># 4 points</span>
+<span class="n">oled</span><span class="o">.</span><span class="n">poly</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="n">diamond</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>      <span class="c1"># filled diamond at the center</span>
+</code></pre></div></td></tr></table></div>
+<p>This is a good shape for an hour hand, because it is wide near the center and pointed at the end. Rotating its points with the rotation formula from Chapter 10 aims it at the right hour.</p>
+<h3 id="triangle-drawing">Triangle Drawing</h3>
+<p>A <strong>triangle</strong> is the simplest polygon: three points. Triangles make arrows, play buttons, and alarm icons.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">tri</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s1">'h'</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>   <span class="c1"># points right</span>
+<span class="n">oled</span><span class="o">.</span><span class="n">poly</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">tri</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="arc-drawing">Arc Drawing</h3>
+<p>An <strong>arc</strong> is part of a circle. There is no built-in arc call, so you draw one by plotting points along the circle using the polar formula. This is perfect for a progress ring that grows as the seconds pass:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">arc</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="n">cy</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">start_deg</span><span class="p">,</span> <span class="n">end_deg</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start_deg</span><span class="p">,</span> <span class="n">end_deg</span><span class="p">,</span> <span class="n">step</span><span class="p">):</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">tip</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>                 <span class="c1"># from Chapter 10</span>
+        <span class="n">oled</span><span class="o">.</span><span class="n">pixel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">arc</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">seconds</span> <span class="o">*</span> <span class="mi">6</span><span class="p">)</span>         <span class="c1"># ring grows with the second</span>
+</code></pre></div></td></tr></table></div>
+<p>A smaller <code>step</code> gives a smoother line but takes longer to draw.</p>
+<h2 id="animation-technique">Animation Technique</h2>
+<p><strong>Animation</strong> is the illusion of motion made by showing a series of slightly different pictures quickly. Each picture is called a <strong>frame</strong>. Every animation loop follows the same recipe: clear, draw the objects at their current positions, show, then change the positions for the next frame.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">NAME</span> <span class="o">=</span> <span class="s2">"12-bounce.py"</span>
+<span class="n">VERSION</span> <span class="o">=</span> <span class="s2">"1.0"</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{}</span><span class="s2"> v</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">NAME</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">))</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep_ms</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ssd1306</span>
+
+<span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sda</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">scl</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">400000</span><span class="p">)</span>
+<span class="n">oled</span> <span class="o">=</span> <span class="n">ssd1306</span><span class="o">.</span><span class="n">SSD1306_I2C</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">i2c</span><span class="p">)</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">dx</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span>                       <span class="c1"># position and speed (pixels per frame)</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">oled</span><span class="o">.</span><span class="n">ellipse</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">oled</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">x</span> <span class="o">+=</span> <span class="n">dx</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">122</span> <span class="ow">or</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>            <span class="c1"># bounce off the edges</span>
+        <span class="n">dx</span> <span class="o">=</span> <span class="o">-</span><span class="n">dx</span>
+    <span class="n">sleep_ms</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>The speed of the animation is set by how far the object moves each frame and how long the frame takes. For smooth motion aim for 20 or more frames per second, meaning the drawing plus <code>show()</code> should take under about 50 ms. Chapter 11 showed how to measure that.</p>
+<h3 id="double-buffering">Double Buffering</h3>
+<p><strong>Double buffering</strong> uses two buffers: one that is visible and one you draw into. The framebuffer you already use is a simple form, because you build the picture in RAM before revealing it. A more useful version keeps a <strong>second buffer</strong> that holds the parts that never change, such as the tick marks of a clock face. Each frame, you copy the face into the main buffer with <code>blit()</code> and add only the moving hands.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">framebuf</span>
+<span class="n">face_buf</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="mi">128</span> <span class="o">*</span> <span class="mi">64</span> <span class="o">//</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">face</span> <span class="o">=</span> <span class="n">framebuf</span><span class="o">.</span><span class="n">FrameBuffer</span><span class="p">(</span><span class="n">face_buf</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">framebuf</span><span class="o">.</span><span class="n">MONO_VLSB</span><span class="p">)</span>
+<span class="c1"># ... draw the tick marks into face once ...</span>
+
+<span class="c1"># every frame:</span>
+<span class="n">oled</span><span class="o">.</span><span class="n">blit</span><span class="p">(</span><span class="n">face</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>        <span class="c1"># copy the ready-made face</span>
+<span class="c1"># ... draw hands on top ...</span>
+<span class="n">oled</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<p>This saves the time of redrawing 60 ticks every second.</p>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Draw the Static Stuff Once</p>
+<p><img alt="Chrono with a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+Anything that never changes, like the clock face outline and tick marks, only needs to be drawn one time into a second buffer. Copy it in each frame with <code>blit()</code> and spend your drawing time only on the hands.</p>
+</div>
+<h3 id="scroll-marquee">Scroll Marquee</h3>
+<p>A <strong>scroll marquee</strong> slides text across the screen, like a news ticker. The simplest reliable method redraws the text at a changing x position each frame, starting off the right edge and moving left until it leaves:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">msg</span> <span class="o">=</span> <span class="s2">"Let's make time tick!   "</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="o">-</span><span class="mi">8</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">msg</span><span class="p">),</span> <span class="o">-</span><span class="mi">2</span><span class="p">):</span>
+    <span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">oled</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="partial-screen-update">Partial Screen Update</h2>
+<p>A <strong>partial screen update</strong> redraws only the region that changed instead of the entire screen. When only the seconds digits change each second, the hours, minutes, and date need not be touched. Clear just that rectangle, then draw the new value:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">oled</span><span class="o">.</span><span class="n">fill_rect</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>      <span class="c1"># erase only the old seconds</span>
+<span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">s</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="mi">88</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>      <span class="c1"># draw the new seconds</span>
+<span class="n">oled</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<p>Be clear about what this saves. With the OLED's framebuffer, <code>show()</code> still sends the <em>entire</em> 1,024 bytes over the bus, so the bus time does not shrink, but you save drawing time. On larger color displays whose drivers can send just a window of pixels, a partial update also cuts the bus time dramatically, which becomes essential in later chapters.</p>
+<h3 id="bounding-box">Bounding Box</h3>
+<p>A <strong>bounding box</strong> is the smallest rectangle that completely encloses an object. It is written as <code>(x, y, w, h)</code>. For 8 by 8 text the bounding box is easy to compute:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">text_box</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">8</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">msg</span><span class="p">),</span> <span class="mi">8</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>The bounding box gives you two useful powers. You can <strong>erase</strong> an old object exactly, with <code>fill_rect(*box, 0)</code>, and you can test whether two objects <strong>overlap</strong> by comparing their boxes. Erasing the old bounding box before drawing the new one is the core of a partial update.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Every Object Lives in a Box</p>
+<p><img alt="Chrono thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Whatever you draw, picture the smallest rectangle around it. That one idea gives you a way to erase, move, and protect any item on the screen without touching its neighbors.</p>
+</div>
+<h3 id="clipping-region">Clipping Region</h3>
+<p>A <strong>clipping region</strong> is a rectangle outside of which drawing is ignored. It keeps a scrolling message from spilling onto other parts of the screen. <code>framebuf</code> clips only at the edges of the whole buffer, so to clip to a smaller area, draw into a small buffer the size of the region and then <code>blit()</code> it into place. Anything that falls outside the small buffer is discarded automatically.</p>
+<h4 id="diagram-bounding-box-and-partial-update">Diagram: Bounding Box and Partial Update</h4>
+<details>
+<summary>Bounding Box and Partial Update</summary>
+<p>Type: MicroSim
+<strong>sim-id:</strong> bounding-box-partial-update<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p><strong>Learning objective:</strong> Students will <em>analyze</em> how erasing a bounding box lets part of the screen update without disturbing the rest (Bloom: Analyzing).</p>
+<p><strong>Visual elements:</strong> A 128 by 64 OLED preview with a clock display: hours, minutes, seconds, and a date line. Each item's bounding box can be shown as a colored outline.</p>
+<p><strong>Controls:</strong> Toggle "Show bounding boxes"; button "Advance one second." A "Update mode" selector switches between <em>Full redraw</em> (all pixels flash red as they are redrawn) and <em>Partial update</em> (only the seconds box flashes). A counter shows pixels redrawn per frame in each mode.</p>
+<p><strong>Responsive design:</strong> The preview and counter stack below 600 px.</p>
+<p>Implementation: p5.js with per-item rectangles and a redraw counter.</p>
+</details>
+<h2 id="putting-it-together-an-analog-oled-clock">Putting It Together: An Analog OLED Clock</h2>
+<p>This program uses lines, an ellipse, ticks, and the angle math from Chapter 10 to draw a complete analog clock face on the 128 by 64 OLED. The face has radius 31 so it fits the 64-pixel height.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">NAME</span> <span class="o">=</span> <span class="s2">"12-analog-oled.py"</span>
+<span class="n">VERSION</span> <span class="o">=</span> <span class="s2">"1.0"</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{}</span><span class="s2"> v</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">NAME</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">))</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">localtime</span><span class="p">,</span> <span class="n">sleep</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ssd1306</span>
+
+<span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sda</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">scl</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">400000</span><span class="p">)</span>
+<span class="n">oled</span> <span class="o">=</span> <span class="n">ssd1306</span><span class="o">.</span><span class="n">SSD1306_I2C</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">i2c</span><span class="p">)</span>
+
+<span class="n">cx</span><span class="p">,</span> <span class="n">cy</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">31</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">tip</span><span class="p">(</span><span class="n">deg</span><span class="p">,</span> <span class="n">length</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">deg</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">cx</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">length</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)),</span> <span class="n">cy</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">length</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">draw_face</span><span class="p">():</span>
+    <span class="n">oled</span><span class="o">.</span><span class="n">ellipse</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="n">cy</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">):</span>                       <span class="c1"># 12 hour ticks</span>
+        <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">tip</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="mi">30</span><span class="p">,</span> <span class="n">R</span> <span class="o">-</span> <span class="mi">4</span><span class="p">)</span>
+        <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">tip</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="mi">30</span><span class="p">,</span> <span class="n">R</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">oled</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">h</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">localtime</span><span class="p">()[</span><span class="mi">3</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>
+    <span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">draw_face</span><span class="p">()</span>
+    <span class="n">hx</span><span class="p">,</span> <span class="n">hy</span> <span class="o">=</span> <span class="n">tip</span><span class="p">((</span><span class="n">h</span> <span class="o">%</span> <span class="mi">12</span><span class="p">)</span> <span class="o">*</span> <span class="mi">30</span> <span class="o">+</span> <span class="n">m</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">R</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">mx</span><span class="p">,</span> <span class="n">my</span> <span class="o">=</span> <span class="n">tip</span><span class="p">(</span><span class="n">m</span> <span class="o">*</span> <span class="mi">6</span> <span class="o">+</span> <span class="n">s</span> <span class="o">*</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">R</span> <span class="o">*</span> <span class="mf">0.75</span><span class="p">)</span>
+    <span class="n">sx</span><span class="p">,</span> <span class="n">sy</span> <span class="o">=</span> <span class="n">tip</span><span class="p">(</span><span class="n">s</span> <span class="o">*</span> <span class="mi">6</span><span class="p">,</span> <span class="n">R</span> <span class="o">*</span> <span class="mf">0.9</span><span class="p">)</span>
+    <span class="n">oled</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="n">cy</span><span class="p">,</span> <span class="n">hx</span><span class="p">,</span> <span class="n">hy</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>              <span class="c1"># hour hand</span>
+    <span class="n">oled</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="n">cy</span><span class="p">,</span> <span class="n">mx</span><span class="p">,</span> <span class="n">my</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>              <span class="c1"># minute hand</span>
+    <span class="n">oled</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="n">cy</span><span class="p">,</span> <span class="n">sx</span><span class="p">,</span> <span class="n">sy</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>              <span class="c1"># second hand</span>
+    <span class="n">oled</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li>Every drawing call interprets (x, y) differently; <code>rect</code> takes width and height, and <code>ellipse</code> takes a center.</li>
+<li>The built-in font is 8 × 8, so text width is <code>8 * len(text)</code>; scale it or load a custom font for large digits.</li>
+<li><code>font_to_py.py</code> converts a TrueType file to a Python font module; include only the characters you need.</li>
+<li><code>line</code>, <code>rect</code>, <code>ellipse</code>, and <code>poly</code> cover almost every clock shape; arcs are made by plotting points.</li>
+<li>Animation is clear, draw, show, and move, repeated; a second buffer holds the static parts.</li>
+<li>Bounding boxes let you erase and update just part of the screen.</li>
+</ul>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">A Face Worth Drawing</p>
+<p><img alt="Chrono celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+You can now draw lines, circles, and polygons, scale digits, load fonts, and animate hands on an OLED. You built a full analog clock face from math and pixels. Every second counts!</p>
+</div>
+<h2 id="practice-questions">Practice Questions</h2>
+<ol>
+<li>Write the call that draws a filled rectangle 40 wide and 10 tall with its top-left corner at (20, 30).</li>
+<li>How wide in pixels is the string <code>"09:45"</code> at scale 1, and at scale 3? Does it fit on a 128-pixel screen?</li>
+<li>Explain why <code>ellipse(64, 32, 31, 31, 1)</code> draws a circle centered on the screen.</li>
+<li>What is the benefit of drawing the clock face into a second buffer and using <code>blit()</code>?</li>
+<li>Describe how you would update only the seconds on a display without redrawing the hours and minutes.</li>
+</ol>
 
 
 
 
 
 
+
+  
+  
 
 
 
