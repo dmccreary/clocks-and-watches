@@ -110,4 +110,9 @@ that goes dark gets redrawn, so the ring never flickers.
     3. Change `WARNING_MS = 10_000` to `30_000`. When do the numbers turn
        red now? (1,000 ms is one second.)
 
+!!! mascot-celebration "Time's Up, and You Did It!"
+    ![Chrono celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
+    You built a state machine with six states and a countdown that doesn't
+    drift. Next comes the big finish: all five watch faces in one watch.
+
 **Next:** [Lab 12: One Watch, Five Modes](12-main-template.md)

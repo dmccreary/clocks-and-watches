@@ -88,4 +88,10 @@ would make it **flicker**: blink black for a moment each time.
     2. Take out the `%02d` and use `%d` instead. What happens at 10:05:03?
     3. Change the ring's color from `config.BLUE` to your favorite color.
 
+!!! mascot-celebration "It's a Real Clock!"
+    ![Chrono celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
+    You turned 24-hour time into AM and PM, padded numbers with zeros, and
+    learned to redraw only what changed. Next, you'll teach your clock to
+    ask the internet for the time, so it can set itself.
+
 **Next:** [Lab 04: Ask the Internet What Time It Is](04-wifi-sync-time.md)

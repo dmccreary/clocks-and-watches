@@ -100,4 +100,10 @@ There's no built-in lettering on this display, so the kit brings two
 - **`ImportError: no module named 'gc9b72'`.** The `lib` folder with the
   display driver isn't on the Pico yet.
 
+!!! mascot-celebration "Hello, Screen!"
+    ![Chrono celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
+    You can now start the display, write text in two sizes, and place
+    anything on the screen by its x and y coordinates. Next, you'll use
+    those skills to turn the kit into a real clock.
+
 **Next:** [Lab 03: A Digital Clock](03-digital-clock.md)

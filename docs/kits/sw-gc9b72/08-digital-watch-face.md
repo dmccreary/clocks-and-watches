@@ -97,4 +97,10 @@ second, this watch sends only 333 pixels to the display, out of 129,600.
     4. What digit is `0b1100110`? (Hint: bits are read from the right: a,
        b, c, d, e, f, g.)
 
+!!! mascot-celebration "Giant Digits Done!"
+    ![Chrono celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
+    You stored a whole digit in seven bits and used XOR to repaint only the
+    segments that changed. Next, your watch learns to read the weather
+    forecast.
+
 **Next:** [Lab 09: The Weather Clock](09-weather-clock.md)

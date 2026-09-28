@@ -89,4 +89,10 @@ will show your new time, too, as long as the Pico stays plugged in.
     3. Make the highlight color green instead of yellow. Look for
        `HIGHLIGHT_BG` near the top of the program.
 
+!!! mascot-celebration "Set It Yourself!"
+    ![Chrono celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
+    You tamed bouncing buttons, made them repeat when held, and wrote a new
+    time into the Pico's clock. Next, you'll build a digital watch face with
+    giant numbers.
+
 **Next:** [Lab 08: A Digital Watch Face](08-digital-watch-face.md)

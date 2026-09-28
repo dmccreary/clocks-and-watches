@@ -116,4 +116,9 @@ blue are swapped, the display needs a different color setting.
   network name in `secrets.py`. Also, the Pico only works with 2.4 GHz
   WiFi, not 5 GHz.
 
+!!! mascot-celebration "Checkup Complete!"
+    ![Chrono celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
+    You can now read a hardware report and explain the difference between
+    RAM and flash. Next, you'll put your first words on the round screen.
+
 **Next:** [Lab 02: Hello, World!](02-hello.md)

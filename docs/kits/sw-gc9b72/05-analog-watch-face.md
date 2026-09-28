@@ -89,4 +89,10 @@ When the Pico is powered on, it automatically runs a file named `main.py`
 if there is one. Save a copy of this lab to the Pico as `main.py`, and
 your watch starts on its own, even with no computer attached.
 
+!!! mascot-celebration "Your Watch Has Hands!"
+    ![Chrono celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
+    You aimed a hand at any angle with sine and cosine, and you moved it
+    without flicker by erasing, repairing, and redrawing. Next, you'll test
+    the three buttons so your watch can take orders.
+
 **Next:** [Lab 06: Test the Buttons](06-button-test.md)

@@ -121,4 +121,10 @@ tries again 5 minutes later.
   Look in Thonny's shell for a line that says `Forecast failed`, and check
   your WiFi settings in `secrets.py`.
 
+!!! mascot-celebration "Forecast Received!"
+    ![Chrono celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
+    You asked a web service a question, read its JSON answer, and turned
+    weather codes into pictures. Next, you'll build a stopwatch that times
+    laps to a hundredth of a second.
+
 **Next:** [Lab 10: A Stopwatch with Lap Times](10-stopwatch.md)

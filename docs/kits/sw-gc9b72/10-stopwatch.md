@@ -79,4 +79,10 @@ which is about 1.83.
     3. The list shows 3 laps. Find `LAP_ROWS` near the top of the program.
        What happens if you change it to 2?
 
+!!! mascot-celebration "Lap Times Unlocked!"
+    ![Chrono celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
+    You built a stopwatch that doesn't drift, and you used `min()` and an
+    average to find the best lap. Next, you'll flip it around and count
+    down to an alarm.
+
 **Next:** [Lab 11: A Countdown Timer](11-countdown-timer.md)

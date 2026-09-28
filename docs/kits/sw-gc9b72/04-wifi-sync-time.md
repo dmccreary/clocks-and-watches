@@ -106,4 +106,10 @@ you live in Arizona or Hawaii, where clocks don't change, set
 - **The time is off by exactly one hour.** Check `TIMEZONE_HOURS` and
   `USE_US_DST` in `config.py`.
 
+!!! mascot-celebration "Your Watch Is Online!"
+    ![Chrono celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
+    You joined a WiFi network, asked a time server for the exact time, and
+    kept your password out of your code. Next, you'll put that time on a
+    watch face with real moving hands.
+
 **Next:** [Lab 05: An Analog Watch Face](05-analog-watch-face.md)

@@ -77,4 +77,10 @@ Let's read it line by line:
   wrong version of MicroPython. It needs the one with WiFi that matches
   the board: **Pico W** or **Pico 2 W**.
 
+!!! mascot-celebration "Your First Program Runs!"
+    ![Chrono celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
+    You just ran a `while True:` loop that controls real hardware. Every
+    watch face in this kit runs inside a loop just like that one. Next,
+    you'll give the whole kit a checkup.
+
 **Next:** [Lab 01: Give the Kit a Checkup](01-probe.md)

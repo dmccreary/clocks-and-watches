@@ -88,4 +88,10 @@ drew and only redraw what changed*, in almost every lab from now on.
   connected straight to ground. Check for a wire in the wrong row of the
   breadboard.
 
+!!! mascot-celebration "Buttons Tested!"
+    ![Chrono celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
+    You now know why a pressed button reads 0, and how to redraw only when
+    something changes. Next, you'll use these buttons to set the time by
+    hand.
+
 **Next:** [Lab 07: Set the Time with the Buttons](07-set-time.md)

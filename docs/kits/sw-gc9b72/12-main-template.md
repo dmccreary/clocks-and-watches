@@ -114,4 +114,10 @@ five-mode smartwatch, even with no computer attached.
     4. Take `mode_analog` out of the `MODES` list. How many dots are there
        now?
 
+!!! mascot-celebration "You Built a Smartwatch!"
+    ![Chrono celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
+    You combined five watch faces into one program that loads only what it
+    needs and keeps timers running in the background. That's how real
+    smartwatch software is built. Now it's your turn to design a sixth mode!
+
 **Back to:** [the kit's main page](index.md)
