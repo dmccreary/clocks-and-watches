@@ -1,0 +1,3050 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="How to think about a clock as a system of sensors, a controller, and actuators, and how the Raspberry Pi Pico brings that system to life.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/clocks-and-watches/chapters/01-foundations/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../02-electronics-fundamentals/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Computational Thinking and Physical Computing - Clocks and Watches with AI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-EKTEBLZ2KP"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-EKTEBLZ2KP",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-EKTEBLZ2KP",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Computational Thinking and Physical Computing - Clocks and Watches with AI" />
+<meta property="og:description" content="How to think about a clock as a system of sensors, a controller, and actuators, and how the Raspberry Pi Pico brings that system to life." />
+<meta property="og:image" content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/chapters/01-foundations/index.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:url" content="https://dmccreary.github.io/clocks-and-watches/chapters/01-foundations/" />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content="Computational Thinking and Physical Computing - Clocks and Watches with AI" />
+<meta property="twitter:description" content="How to think about a clock as a system of sensors, a controller, and actuators, and how the Raspberry Pi Pico brings that system to life." />
+<meta property="twitter:image" content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/chapters/01-foundations/index.png" />
+</head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#642580" data-md-color-accent="#41BAC1">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#computational-thinking-and-physical-computing" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Clocks and Watches with AI" class="md-header__button md-logo" aria-label="Clocks and Watches with AI" data-md-component="logo">
+      
+  <img src="../../img/logo-180x180.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Clocks and Watches with AI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Computational Thinking and Physical Computing
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/clocks-and-watches" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Clocks and Watches with AI" class="md-nav__button md-logo" aria-label="Clocks and Watches with AI" data-md-component="logo">
+      
+  <img src="../../img/logo-180x180.png" alt="logo">
+
+    </a>
+    Clocks and Watches with AI
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/clocks-and-watches" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Description
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../setup/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapters
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapters
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Computational Thinking and Physical Computing
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Computational Thinking and Physical Computing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concepts Covered
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-start-with-thinking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Start With Thinking?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#physical-computing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Physical Computing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#computational-thinking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Computational Thinking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Computational Thinking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#decomposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decomposition
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Decomposition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-clock-decomposition-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Clock Decomposition Explorer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-recognition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pattern Recognition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abstraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abstraction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#algorithmic-thinking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Algorithmic Thinking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Algorithmic Thinking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-seconds-to-clock-flowchart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Seconds-to-Clock Flowchart
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-microcontroller" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Microcontroller
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sensors-and-actuators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sensors and Actuators
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sensors and Actuators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-sense-think-act-infographic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Sense-Think-Act Infographic
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-crystal-oscillator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Crystal Oscillator
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Crystal Oscillator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-crystal-divider-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Crystal Divider MicroSim
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-rp2040-chip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The RP2040 Chip
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The RP2040 Chip">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dual-core-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dual Core Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-raspberry-pi-pico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Raspberry Pi Pico
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Raspberry Pi Pico">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-pico-board-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Pico Board Explorer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-all-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Putting It All Together
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-electronics-fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Electronics Fundamentals and Breadboard Wiring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-micropython-basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. MicroPython Basics: Variables and Data Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-control-flow-functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Control Flow, Functions, and Modules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-pico-platform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. The Pico Platform: Pins, Files, and Firmware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-getting-time/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Getting the Time in MicroPython
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-buttons-state-machines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Buttons, Interrupts, and State Machines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-communication-buses/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Communication Buses: I2C, SPI, and UART
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-led-displays/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. LED Displays and the First Digital Clock
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-clock-math/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Coordinates, Trigonometry, and Clock Geometry
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-oled-framebuffers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. OLED Displays and Framebuffers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-drawing-text-animation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Drawing Shapes, Text, and Animation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-real-time-clocks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Real-Time Clocks and the DS3231
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-wifi-ntp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. WiFi, NTP, and Time Accuracy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-color-displays/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Color Displays and Smartwatch Faces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-neopixels-shift-registers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. NeoPixels and Shift Register Clocks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-sound-alarms-timers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. Sound, Alarms, and Timers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-sensors-power/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. Sensors, Power, and Low-Power Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-epaper-weather/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. E-Paper and Weather Displays
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-design-testing-ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. Design, Testing, and AI-Assisted Development
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../lessons/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lessons
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../kits/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kits
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Graph
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MicroSims
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../prompts/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prompts
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contact
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concepts Covered
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-start-with-thinking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Start With Thinking?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#physical-computing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Physical Computing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#computational-thinking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Computational Thinking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Computational Thinking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#decomposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decomposition
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Decomposition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-clock-decomposition-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Clock Decomposition Explorer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-recognition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pattern Recognition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abstraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abstraction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#algorithmic-thinking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Algorithmic Thinking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Algorithmic Thinking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-seconds-to-clock-flowchart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Seconds-to-Clock Flowchart
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-microcontroller" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Microcontroller
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sensors-and-actuators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sensors and Actuators
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sensors and Actuators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-sense-think-act-infographic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Sense-Think-Act Infographic
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-crystal-oscillator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Crystal Oscillator
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Crystal Oscillator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-crystal-divider-microsim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Crystal Divider MicroSim
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-rp2040-chip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The RP2040 Chip
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The RP2040 Chip">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dual-core-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dual Core Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-raspberry-pi-pico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Raspberry Pi Pico
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Raspberry Pi Pico">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-pico-board-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagram: Pico Board Explorer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-all-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Putting It All Together
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice Questions
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="computational-thinking-and-physical-computing">Computational Thinking and Physical Computing</h1>
+<h2 id="summary">Summary</h2>
+<p>Students learn the four core computational thinking skills and how a clock is built from sensors, a microcontroller, and actuators. They meet the Raspberry Pi Pico and its RP2040 chip. After this chapter they can break a clock into parts and describe what each part does.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 13 concepts from the learning graph:</p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Concept Impact Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Computational Thinking</td>
+<td>161</td>
+</tr>
+<tr>
+<td>Microcontroller</td>
+<td>1509</td>
+</tr>
+<tr>
+<td>Decomposition</td>
+<td>67</td>
+</tr>
+<tr>
+<td>Pattern Recognition</td>
+<td>27</td>
+</tr>
+<tr>
+<td>Raspberry Pi Pico</td>
+<td>956</td>
+</tr>
+<tr>
+<td>Sensors</td>
+<td>74</td>
+</tr>
+<tr>
+<td>Actuators</td>
+<td>245</td>
+</tr>
+<tr>
+<td>Crystal Oscillator</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Abstraction</td>
+<td>17</td>
+</tr>
+<tr>
+<td>Algorithmic Thinking</td>
+<td>25</td>
+</tr>
+<tr>
+<td>RP2040 Chip</td>
+<td>89</td>
+</tr>
+<tr>
+<td>Physical Computing</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Dual Core Architecture</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter assumes only the prerequisites listed in the <a href="../../course-description/">course description</a>.</p>
+<hr />
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Hi, I'm Chrono!</p>
+<p><img alt="Chrono waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+Hi! I'm Chrono, a small robot with a smartwatch for a head, and I love figuring out how things tick. I'll pop up throughout this book in six ways:</p>
+<ol>
+<li><strong>Welcome:</strong> I tell you why a chapter is worth your time.</li>
+<li><strong>Thinking:</strong> I flag an idea that changes how you see a problem.</li>
+<li><strong>Tip:</strong> I hand you a shortcut that saves effort.</li>
+<li><strong>Warning:</strong> I point out a trap before you fall in it.</li>
+<li><strong>Encourage:</strong> I remind you that hard parts are normal.</li>
+<li><strong>Celebrate:</strong> I name what you just mastered.</li>
+</ol>
+<p>If I'm not doing one of those six things, I'm not in the chapter. Let's make time tick!</p>
+</div>
+<h2 id="why-start-with-thinking">Why Start With Thinking?</h2>
+<p>By the end of this course you will have built clocks that show the time on LED digits, a tiny OLED screen, a round smartwatch display, and even a strip of glowing NeoPixels. Before you touch a single wire, it helps to learn <em>how to think</em> about building such a device. That is what this chapter is for.</p>
+<p>The chapter has two halves. The first half covers four thinking skills that programmers use every day. The second half meets the hardware: the microcontroller, its sensors and actuators, and the Raspberry Pi Pico board you will use for every project.</p>
+<h2 id="physical-computing">Physical Computing</h2>
+<p><strong>Physical computing</strong> means building systems that sense the real world, make a decision with a computer, and then change something in the real world. A regular program on a laptop lives inside the screen. A physical computing program reaches out: it reads a button press, measures light, spins a motor, or lights an LED.</p>
+<p>A clock is a perfect first physical computing project. It has to <em>keep</em> time (a real-world process), <em>decide</em> what to show, and <em>display</em> the result where a person can see it. Every clock in this book follows that same pattern, and you will see it again in the section on sensors and actuators.</p>
+<h2 id="computational-thinking">Computational Thinking</h2>
+<p><strong>Computational thinking</strong> is a way of solving problems so that a computer (or a person following clear steps) can carry out the solution. It is not the same as programming. You can think computationally with a pencil and paper before you write any code, and doing so makes the code much easier to write.</p>
+<p>Computational thinking has four core skills:</p>
+<ul>
+<li><strong>Decomposition:</strong> break a big problem into smaller, manageable pieces.</li>
+<li><strong>Pattern recognition:</strong> notice what repeats or what is similar between pieces.</li>
+<li><strong>Abstraction:</strong> focus on what matters and hide the details that do not.</li>
+<li><strong>Algorithmic thinking:</strong> write the steps in a clear, ordered list that always works.</li>
+</ul>
+<p>These skills are not a checklist you run through once. They work together. In practice you might decompose a clock, spot a pattern in the pieces, hide a messy detail behind a simple name, and then write out the steps. The next four sections take them one at a time, using a digital clock as the running example.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">One Big Idea</p>
+<p><img alt="Chrono thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Think of these four skills as a toolbox, not a recipe. When a problem feels too big to start, ask which tool fits: can I split it, spot a pattern, hide a detail, or list the steps?</p>
+</div>
+<h3 id="decomposition">Decomposition</h3>
+<p><strong>Decomposition</strong> is the skill of breaking a large problem into smaller problems that are each easy enough to solve on their own. If someone says "build a clock," you have no idea where to start. If you break it up, every piece becomes a task you can finish in an afternoon.</p>
+<p>Here is one way to decompose a digital clock. Notice that each piece has a single job and can be tested by itself.</p>
+<table>
+<thead>
+<tr>
+<th>Piece</th>
+<th>Job</th>
+<th>Example question it answers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Keep time</td>
+<td>Know what time it is right now</td>
+<td>How many seconds have passed since midnight?</td>
+</tr>
+<tr>
+<td>Split time</td>
+<td>Turn the time into hours, minutes, seconds</td>
+<td>What is the hour digit?</td>
+</tr>
+<tr>
+<td>Format time</td>
+<td>Choose 12-hour or 24-hour style</td>
+<td>Should 15:05 show as 3:05 PM?</td>
+</tr>
+<tr>
+<td>Draw time</td>
+<td>Show the digits on the display</td>
+<td>Which segments light up for a 7?</td>
+</tr>
+<tr>
+<td>Handle input</td>
+<td>React to button presses</td>
+<td>Did the user press "set hour"?</td>
+</tr>
+</tbody>
+</table>
+<p>Decomposition has a big payoff when something breaks. If the clock shows the wrong hour, you do not have to search the whole program. You check "keep time," then "split time," then "format time," and the bug has nowhere to hide. Professional engineers decompose for exactly this reason.</p>
+<p><strong>Worked example.</strong> Suppose the display shows <code>3:05</code> when it should show <code>15:05</code>. Using the table, start with the piece closest to the symptom. "Draw time" is probably fine because it drew what it was told. "Format time" is the suspect: it may be converting to 12-hour style when the setting says 24-hour. You have narrowed a whole clock down to one small piece in two questions.</p>
+<p>The interactive diagram below lets you explore the decomposition of a clock yourself.</p>
+<h4 id="diagram-clock-decomposition-explorer">Diagram: Clock Decomposition Explorer</h4>
+<details>
+<summary>Clock Decomposition Explorer</summary>
+<p>Type: interactive diagram
+<strong>sim-id:</strong> clock-decomposition-explorer<br/>
+<strong>Library:</strong> vis-network<br/>
+<strong>Status:</strong> Specified</p>
+<p><strong>Learning objective:</strong> Students will <em>analyze</em> a digital clock by breaking it into sub-problems and identify which sub-problem a given symptom belongs to (Bloom: Analyzing).</p>
+<p><strong>Layout:</strong> A top-down tree. The root node is "Digital Clock" (large, purple). The second level has five child nodes: Keep Time, Split Time, Format Time, Draw Time, Handle Input (teal). Under each child, two to three grandchild nodes show smaller tasks (for example, under Draw Time: "Draw digits," "Flash the colon," "Set brightness").</p>
+<p><strong>Interactions:</strong></p>
+<ul>
+<li>Clicking any node opens an infobox on the right with a one-sentence definition and a "Test it alone" hint.</li>
+<li>Hovering a node highlights its parent path back to the root.</li>
+<li>A dropdown labeled "Symptom" offers four bugs ("Wrong hour," "Colon does not flash," "Buttons ignored," "Clock runs slow"). Selecting one pulses the node most likely to contain the bug.</li>
+</ul>
+<p><strong>Responsive design:</strong> The canvas fills the container width, height 450 px, and redraws with <code>network.fit()</code> on window resize.</p>
+<p>Implementation: vis-network hierarchical layout, direction "UD", with a small JavaScript object mapping node IDs to infobox text.</p>
+</details>
+<h3 id="pattern-recognition">Pattern Recognition</h3>
+<p><strong>Pattern recognition</strong> means noticing similarities, repetitions, and regularities so you can solve a family of problems with one idea instead of many. Once you spot a pattern, you stop reinventing the wheel.</p>
+<p>A clock is full of patterns. Minutes and seconds both count from 0 to 59 and then wrap back to 0. Hours wrap at 12 or 24. Every digit on a display is drawn from the same small set of shapes. A stopwatch, a countdown timer, and an alarm all do the same thing at heart: compare a number to a target as time passes.</p>
+<p>The table below summarizes patterns you will meet again and again in this book.</p>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Where it shows up</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Count up and wrap around</td>
+<td>Seconds, minutes, hours, days of the week</td>
+</tr>
+<tr>
+<td>Repeat a step many times</td>
+<td>Blinking a colon, scanning display digits</td>
+</tr>
+<tr>
+<td>Compare a value to a limit</td>
+<td>Alarms, timers, auto-brightness</td>
+</tr>
+<tr>
+<td>Same shape, different size</td>
+<td>Digit drawing at several scales</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Try it.</strong> Look at the numbers 0, 1, 2, ... 59. What happens after 59? Now look at the hours 1, 2, ... 12. What happens after 12? Both sequences "wrap," but one wraps to 0 and the other wraps to 1. Spotting that small difference early prevents a classic clock bug where midnight shows <code>0:00 PM</code>.</p>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Pattern Spotting Shortcut</p>
+<p><img alt="Chrono with a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+When you write the same thing twice, stop and ask what is different between the two copies. Whatever stays the same is the pattern, and it usually becomes a single reusable piece of code.</p>
+</div>
+<h3 id="abstraction">Abstraction</h3>
+<p><strong>Abstraction</strong> means hiding the complicated details of something behind a simple description, so you can use it without knowing how it works inside. You use abstraction every time you drive a car: you press the pedal and the car goes faster, and you do not think about the fuel injectors.</p>
+<p>In a clock program, abstraction lets you write <code>show_time(hour, minute)</code> and trust that the digits will appear. Whether the display is a four-digit LED module or a round smartwatch screen is a detail hidden inside that one name. You can swap displays later and the rest of your program stays the same.</p>
+<p>Abstraction always trades detail for simplicity. The table shows the same clock described at three levels.</p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Description</th>
+<th>Who cares</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Top</td>
+<td>"It shows the time."</td>
+<td>A user</td>
+</tr>
+<tr>
+<td>Middle</td>
+<td>"It reads the time, then draws digits."</td>
+<td>A programmer</td>
+</tr>
+<tr>
+<td>Bottom</td>
+<td>"It sends bytes over the bus to the display chip."</td>
+<td>A driver author</td>
+</tr>
+</tbody>
+</table>
+<p>Good engineers move between levels on purpose. They work at the top level while designing and drop down to the bottom level only when something breaks. Later chapters on modules and display drivers depend on this idea, so it is worth getting comfortable with it now.</p>
+<h3 id="algorithmic-thinking">Algorithmic Thinking</h3>
+<p><strong>Algorithmic thinking</strong> is the skill of writing a clear, ordered list of steps that solves a problem and always finishes. That list of steps is called an <strong>algorithm</strong>. A recipe is an algorithm. So is a set of directions to a friend's house.</p>
+<p>A good algorithm is precise (each step has one meaning), ordered (steps happen in a fixed sequence), and finite (it ends). Here is an algorithm for turning a count of seconds since midnight into a clock reading, written in plain English before any code:</p>
+<ol>
+<li>Start with the total seconds since midnight.</li>
+<li>Divide by 3600 and keep the whole number. That is the hour.</li>
+<li>Take what is left over and divide by 60. That is the minute.</li>
+<li>Whatever is left after that is the second.</li>
+</ol>
+<p><strong>Worked example.</strong> Take 45,296 seconds. Step 2: 45,296 divided by 3600 is 12 with a remainder of 2,096, so the hour is 12. Step 3: 2,096 divided by 60 is 34 with a remainder of 56, so the minute is 34. Step 4: the second is 56. The time is 12:34:56. Writing the steps first, then checking them by hand on a real number, catches mistakes long before you type any code.</p>
+<p>The clickable flowchart below shows the same algorithm as a diagram.</p>
+<h4 id="diagram-seconds-to-clock-flowchart">Diagram: Seconds-to-Clock Flowchart</h4>
+<details>
+<summary>Seconds-to-Clock Flowchart</summary>
+<p>Type: workflow diagram
+<strong>sim-id:</strong> seconds-to-clock-flowchart<br/>
+<strong>Library:</strong> Mermaid<br/>
+<strong>Status:</strong> Specified</p>
+<p><strong>Learning objective:</strong> Students will <em>apply</em> an algorithm by tracing a number of seconds through each step (Bloom: Applying).</p>
+<p><strong>Nodes (top to bottom):</strong> "Start: total seconds," "hours = seconds // 3600," "left = seconds % 3600," "minutes = left // 60," "seconds = left % 60," "Show hours:minutes:seconds."</p>
+<p><strong>Interactions:</strong></p>
+<ul>
+<li>Every node has a Mermaid <code>click</code> directive that opens an infobox explaining the step in one sentence.</li>
+<li>A number input labeled "Seconds since midnight" (default 45296, range 0 to 86399) runs the algorithm. Each node shows the intermediate value it produces, and the current node is highlighted as the user presses "Next step."</li>
+</ul>
+<p><strong>Responsive design:</strong> The diagram scales to container width; the input panel stacks under the diagram on screens narrower than 600 px.</p>
+<p>Implementation: Mermaid flowchart plus a small JavaScript stepper that updates node labels.</p>
+</details>
+<p>The <code>//</code> and <code>%</code> symbols in that diagram are MicroPython operators you will study in Chapter 3. For now, read <code>//</code> as "divide and keep the whole number" and <code>%</code> as "the remainder."</p>
+<h2 id="the-microcontroller">The Microcontroller</h2>
+<p>Now for the hardware. A <strong>microcontroller</strong> is a tiny computer on a single chip that is designed to control something. It contains a processor, memory, and input/output connections all together. That is different from the computer in a laptop, which needs separate parts for each of those jobs.</p>
+<p>Microcontrollers are everywhere. One runs your microwave, another runs a TV remote, and another runs the anti-lock brakes in a car. They are cheap (often under a dollar), they use very little power, and they start running your program the moment power arrives.</p>
+<p>The table compares a microcontroller with a laptop computer.</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Microcontroller</th>
+<th>Laptop</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Purpose</td>
+<td>Control one device</td>
+<td>Do many general tasks</td>
+</tr>
+<tr>
+<td>Memory</td>
+<td>Kilobytes to a few megabytes</td>
+<td>Gigabytes</td>
+</tr>
+<tr>
+<td>Operating system</td>
+<td>Often none</td>
+<td>Windows, macOS, Linux</td>
+</tr>
+<tr>
+<td>Power</td>
+<td>Milliwatts</td>
+<td>Tens of watts</td>
+</tr>
+<tr>
+<td>Typical cost</td>
+<td>$1 to $10</td>
+<td>Hundreds of dollars</td>
+</tr>
+</tbody>
+</table>
+<p>The small memory is not a weakness for clocks. Telling time takes very little computing, so a microcontroller is exactly the right size.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Small on Purpose</p>
+<p><img alt="Chrono thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+A microcontroller is not a weak laptop. It is a tool sized for one job, which is why a clock can run for months on a small battery.</p>
+</div>
+<h2 id="sensors-and-actuators">Sensors and Actuators</h2>
+<p>A microcontroller by itself cannot see, hear, or move. It needs help from two kinds of parts that connect it to the world.</p>
+<p>A <strong>sensor</strong> is a component that measures something in the real world and turns it into an electrical signal the microcontroller can read. A button is a sensor: it reports "pressed" or "not pressed." A light sensor reports how bright the room is. A real-time clock chip reports the current time.</p>
+<p>An <strong>actuator</strong> is a component that turns an electrical signal from the microcontroller into a real-world effect. An LED that lights up, a buzzer that beeps, a motor that turns, and a display that shows digits are all actuators.</p>
+<p>Together these form the pattern behind every device in this book: <strong>sense, think, act</strong>. The sensor gathers information, the microcontroller decides what to do, and the actuator makes it happen.</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Role</th>
+<th>Clock examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sensor</td>
+<td>Input: measures the world</td>
+<td>Push button, light sensor, real-time clock, temperature sensor</td>
+</tr>
+<tr>
+<td>Microcontroller</td>
+<td>Thinks: runs your program</td>
+<td>Raspberry Pi Pico</td>
+</tr>
+<tr>
+<td>Actuator</td>
+<td>Output: changes the world</td>
+<td>LED display, OLED screen, buzzer, NeoPixel strip</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Worked example.</strong> Follow one auto-dimming clock through the cycle. The light sensor reports "the room is dark" (sense). The program compares that reading to a limit and decides the display is too bright (think). It tells the display to lower its brightness (act). One second later the loop repeats.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Which Side Is It?</p>
+<p><img alt="Chrono warning" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+A display can look like both an input and an output because it "shows" the time, but it only receives signals from the Pico, so it is an actuator. Ask "does information flow toward the microcontroller or away from it?" to sort any part correctly.</p>
+</div>
+<h4 id="diagram-sense-think-act-infographic">Diagram: Sense-Think-Act Infographic</h4>
+<details>
+<summary>Sense-Think-Act Infographic</summary>
+<p>Type: interactive infographic
+<strong>sim-id:</strong> sense-think-act-clock<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p><strong>Learning objective:</strong> Students will <em>classify</em> clock components as sensors, controller, or actuators and <em>explain</em> the flow of information among them (Bloom: Understanding).</p>
+<p><strong>Layout:</strong> Three columns on a 700 x 400 canvas: Sensors (left), Microcontroller (center), Actuators (right). Arrows point left to right.</p>
+<p><strong>Interactions:</strong></p>
+<ul>
+<li>A tray of eight draggable component cards (button, light sensor, DS3231 RTC, Pico, LED display, OLED, buzzer, NeoPixel strip) sits at the bottom. The student drags each card into a column.</li>
+<li>A correct drop snaps into place with a green outline and an infobox; an incorrect drop bounces back with a hint ("Does this part send data to the Pico or receive it?").</li>
+<li>Hovering any placed card shows a one-line tooltip consistent with the glossary.</li>
+<li>When all eight are placed correctly, an animated dot travels along the arrows to show sense, think, act.</li>
+</ul>
+<p><strong>Responsive design:</strong> Canvas width follows the container; card sizes scale with <code>windowWidth</code>.</p>
+<p>Implementation: p5.js with mouse events for drag and drop and a small array of card objects.</p>
+</details>
+<h2 id="the-crystal-oscillator">The Crystal Oscillator</h2>
+<p>A clock needs a steady beat, and that beat has to come from something extremely regular. A <strong>crystal oscillator</strong> is an electronic part that uses a tiny slice of quartz crystal to make a very steady repeating signal. When you apply electricity to quartz, it vibrates at a precise frequency, much like a tuning fork rings at one pitch.</p>
+<p>Frequency is how many times something repeats each second, measured in <strong>hertz (Hz)</strong>. One kilohertz (kHz) is 1,000 Hz and one megahertz (MHz) is 1,000,000 Hz. The Raspberry Pi Pico has a 12 MHz crystal, so its signal ticks 12 million times every second. The chip multiplies that up internally to run at 125 MHz by default.</p>
+<p>Watch and clock chips often use a different crystal that vibrates at 32,768 Hz. That number is <span class="arithmatex">\(2^{15}\)</span>, which is convenient because a chain of 15 "divide by two" steps turns it into exactly one tick per second:</p>
+<div class="arithmatex">\[ \frac{32{,}768\ \text{Hz}}{2^{15}} = 1\ \text{Hz} \]</div>
+<p><strong>Worked example: how wrong can a crystal be?</strong> Crystals are precise but not perfect. A typical low-cost crystal is accurate to about 30 parts per million (ppm), which means it may be off by 30 ticks in every million. Over one day (86,400 seconds):</p>
+<div class="arithmatex">\[ 86{,}400 \times \frac{30}{1{,}000{,}000} \approx 2.6\ \text{seconds} \]</div>
+<p>So a crystal-driven clock might drift about 2.6 seconds per day, or roughly a minute a month. That is why later chapters add real-time clock chips and internet time sync to correct the drift.</p>
+<h4 id="diagram-crystal-divider-microsim">Diagram: Crystal Divider MicroSim</h4>
+<details>
+<summary>Crystal Divider MicroSim</summary>
+<p>Type: MicroSim
+<strong>sim-id:</strong> crystal-divider<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p><strong>Learning objective:</strong> Students will <em>apply</em> frequency division to see how a fast crystal signal becomes a one-second tick, and <em>calculate</em> daily drift from a ppm error (Bloom: Applying).</p>
+<p><strong>Visual elements:</strong> A row of 15 small boxes, each labeled with a frequency starting at 32,768 Hz and halving each box down to 1 Hz. A pulse animation runs through the chain; each box flashes at its own rate.</p>
+<p><strong>Controls:</strong></p>
+<ul>
+<li>Slider "Crystal error (ppm)," range 0 to 100, default 30.</li>
+<li>Button "Run one day" that displays the computed drift in seconds.</li>
+<li>Toggle "Slow motion" that slows the animation so the fast boxes are visible.</li>
+</ul>
+<p><strong>Behavior:</strong> Changing the ppm slider updates a readout, "Drift per day: X seconds." The last box, at 1 Hz, flashes once per second and a digital clock beside it counts up, gaining or losing time visibly when ppm is high.</p>
+<p><strong>Responsive design:</strong> Boxes shrink to fit the container width; the layout stacks vertically under 600 px.</p>
+<p>Implementation: p5.js with <code>frameRate</code> control and a simple accumulator per box.</p>
+</details>
+<h2 id="the-rp2040-chip">The RP2040 Chip</h2>
+<p>The <strong>RP2040</strong> is the microcontroller chip designed by the Raspberry Pi Foundation that powers the Raspberry Pi Pico. It is the "brain" of every project in this book. Here are its key facts:</p>
+<ul>
+<li><strong>Processor:</strong> two Arm Cortex-M0+ cores that run at up to 133 MHz.</li>
+<li><strong>Memory:</strong> 264 kilobytes of fast working memory (RAM).</li>
+<li><strong>Inputs and outputs:</strong> 30 general-purpose pins on the chip, of which 26 are available on the Pico board.</li>
+<li><strong>Built-in helpers:</strong> hardware for the I2C, SPI, and UART communication buses, PWM (used for sound and dimming), and analog-to-digital conversion.</li>
+<li><strong>Logic level:</strong> it works at 3.3 volts, so its signals are 3.3 V, not 5 V.</li>
+</ul>
+<p>To put 264 KB in perspective, a single photo from a phone is several megabytes, so the whole RAM of the RP2040 is smaller than one small photo. Your clock programs still fit easily because text and small numbers take very little space.</p>
+<div class="admonition mascot-encourage">
+<p class="admonition-title">Lots of New Words?</p>
+<p><img alt="Chrono encouraging" class="mascot-admonition-img" src="../../img/mascot/encouraging.png" />
+Terms like "Cortex-M0+" and "PWM" can feel like a wall of jargon. You do not need to memorize them now; you'll meet each one again in a lab, and using it once makes it stick far better than reading it.</p>
+</div>
+<h3 id="dual-core-architecture">Dual Core Architecture</h3>
+<p>A <strong>dual core architecture</strong> means a chip has two independent processors, called cores, that can each run instructions at the same time. The RP2040 has two cores, named core 0 and core 1.</p>
+<p>Think of two cooks in one kitchen. One can chop while the other stirs, and together they finish faster than one cook alone. In a clock, one core could keep time while the other draws animations.</p>
+<p>Most beginner MicroPython programs run on core 0 only, and that is plenty for a clock. Later, in the Pico platform chapter, you will see how to start work on the second core if you ever need it.</p>
+<h2 id="the-raspberry-pi-pico">The Raspberry Pi Pico</h2>
+<p>The <strong>Raspberry Pi Pico</strong> is a small, low-cost circuit board built around the RP2040 chip. It adds everything the chip needs to be useful: a USB connector for power and programming, a voltage regulator, flash memory to store your programs, and 40 pins along the edges where you attach wires, sensors, and displays.</p>
+<p>It is a very different product from the "Raspberry Pi" computers that run Linux. The Pico has no operating system, no desktop, and no video port. It runs one program at a time, starts in a fraction of a second, and is designed to be plugged into other electronics.</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Raspberry Pi Pico</th>
+<th>Raspberry Pi Pico W</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chip</td>
+<td>RP2040</td>
+<td>RP2040</td>
+</tr>
+<tr>
+<td>Flash memory</td>
+<td>2 MB</td>
+<td>2 MB</td>
+</tr>
+<tr>
+<td>Wireless</td>
+<td>None</td>
+<td>WiFi and Bluetooth</td>
+</tr>
+<tr>
+<td>Typical price</td>
+<td>about $4</td>
+<td>about $6</td>
+</tr>
+<tr>
+<td>Used for</td>
+<td>LED, OLED, button clocks</td>
+<td>Same, plus internet time sync</td>
+</tr>
+</tbody>
+</table>
+<p>This course uses the <strong>Pico W</strong> for any project that needs WiFi, such as setting the clock from the internet.</p>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Check the Label</p>
+<p><img alt="Chrono with a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+Pico and Pico W look almost identical, so read the tiny text printed on the board before you plug it in. A plain Pico cannot connect to WiFi, no matter what the code says.</p>
+</div>
+<p><strong>Your first program.</strong> Before you run code, here is what it does: it makes the Pico's built-in LED turn on and off once per second. The line <code>Pin("LED", Pin.OUT)</code> gives the on-board LED a name and tells the Pico to use that pin as an <strong>output</strong> (a pin that sends a signal out). The <code>toggle()</code> method flips the LED to the opposite state, and <code>sleep(0.5)</code> waits half a second. Together they make one full blink each second.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">NAME</span> <span class="o">=</span> <span class="s2">"01-blink.py"</span>
+<span class="n">VERSION</span> <span class="o">=</span> <span class="s2">"1.0"</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{}</span><span class="s2"> v</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">NAME</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">))</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="n">led</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="s2">"LED"</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>   <span class="c1"># the LED soldered on the Pico W board</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">led</span><span class="o">.</span><span class="n">toggle</span><span class="p">()</span>            <span class="c1"># flip: off becomes on, on becomes off</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>              <span class="c1"># wait half a second</span>
+</code></pre></div></td></tr></table></div>
+<p>This tiny program is a full sense-think-act loop with no sensor: the loop is the "think," and the LED is the actuator. Notice how it also uses the four thinking skills from earlier in the chapter. The blink was decomposed into "flip the LED" and "wait." The repeated flip is a pattern. <code>Pin("LED", Pin.OUT)</code> is an abstraction that hides which chip pin drives the LED. And the loop is a tiny algorithm.</p>
+<div class="admonition note">
+<p class="admonition-title">Setup Comes Next</p>
+<p>You will install Thonny and run this program in Chapter 3. For now, just read it and predict what it will do. On a plain Pico (not W), the LED pin is <code>Pin(25, Pin.OUT)</code> instead.</p>
+</div>
+<h4 id="diagram-pico-board-explorer">Diagram: Pico Board Explorer</h4>
+<details>
+<summary>Pico Board Explorer</summary>
+<p>Type: interactive infographic
+<strong>sim-id:</strong> pico-board-explorer<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p><strong>Learning objective:</strong> Students will <em>identify</em> the main parts of the Raspberry Pi Pico and <em>recall</em> the purpose of each (Bloom: Remembering).</p>
+<p><strong>Visual elements:</strong> A top-down drawing of the Pico W on a 600 x 450 canvas, with hotspots on the RP2040 chip, USB connector, BOOTSEL button, on-board LED, wireless module, and the two rows of 20 pins.</p>
+<p><strong>Interactions:</strong></p>
+<ul>
+<li>Hovering a hotspot shows a tooltip with the part name.</li>
+<li>Clicking a hotspot opens an infobox with a two-sentence description and a "Used in this book for..." line.</li>
+<li>A "Quiz me" button hides all labels and asks the student to click a named part; the score is shown and the sim tracks which parts were missed.</li>
+</ul>
+<p><strong>Responsive design:</strong> The board image scales to canvas width and hotspots reposition proportionally on resize.</p>
+<p>Implementation: p5.js with an array of hotspot rectangles in normalized coordinates.</p>
+</details>
+<h2 id="putting-it-all-together">Putting It All Together</h2>
+<p>You now have the two toolkits you need for the rest of the course. The thinking toolkit (decomposition, pattern recognition, abstraction, and algorithms) tells you <em>how to plan</em>. The hardware toolkit (microcontroller, sensors, actuators, crystal, RP2040, Pico) tells you <em>what to build with</em>.</p>
+<p>The table below connects each idea from this chapter to a piece of your first clock.</p>
+<table>
+<thead>
+<tr>
+<th>Idea</th>
+<th>Where it appears in a clock</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Decomposition</td>
+<td>Splitting the clock into keep, split, format, draw, and input</td>
+</tr>
+<tr>
+<td>Pattern recognition</td>
+<td>Every counter wraps around</td>
+</tr>
+<tr>
+<td>Abstraction</td>
+<td><code>show_time()</code> hides the display details</td>
+</tr>
+<tr>
+<td>Algorithmic thinking</td>
+<td>Turning seconds into hours, minutes, seconds</td>
+</tr>
+<tr>
+<td>Sensor</td>
+<td>Buttons, real-time clock, light sensor</td>
+</tr>
+<tr>
+<td>Actuator</td>
+<td>LED digits, OLED, buzzer</td>
+</tr>
+<tr>
+<td>Crystal oscillator</td>
+<td>The steady beat behind all timekeeping</td>
+</tr>
+<tr>
+<td>RP2040 and Pico</td>
+<td>The brain that runs your program</td>
+</tr>
+</tbody>
+</table>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li>Physical computing systems sense, think, and act.</li>
+<li>The four computational thinking skills are decomposition, pattern recognition, abstraction, and algorithmic thinking.</li>
+<li>A microcontroller is a small computer on one chip, sized for a single job.</li>
+<li>Sensors send information in; actuators turn signals into real-world effects.</li>
+<li>A crystal oscillator provides the precise beat clocks depend on, but even a good crystal drifts a few seconds a day.</li>
+<li>The RP2040 has two cores, 264 KB of RAM, and 26 usable pins, and the Pico board packages it for easy use.</li>
+</ul>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Foundation Built</p>
+<p><img alt="Chrono celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+You can now break a clock into parts, tell a sensor from an actuator, and explain why a crystal keeps time. That is the foundation every later chapter stands on. Every second counts!</p>
+</div>
+<h2 id="practice-questions">Practice Questions</h2>
+<ol>
+<li>Decompose a <strong>kitchen timer</strong> into at least four pieces, and name one sensor and one actuator it needs.</li>
+<li>A clock shows <code>12:00 AM</code> twice in one day. Which computational thinking skill would you use to look for the bug, and why?</li>
+<li>Calculate the drift per day of a crystal that is accurate to 20 ppm.</li>
+<li>Explain in your own words why a microcontroller with 264 KB of RAM is enough for a clock.</li>
+<li>In the blink program, which line is the sensor, which is the actuator, and which is the "think" part? (Hint: one of these does not exist.)</li>
+</ol>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: List of Chapters">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                List of Chapters
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../02-electronics-fundamentals/" class="md-footer__link md-footer__link--next" aria-label="Next: 2. Electronics Fundamentals and Breadboard Wiring">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                2. Electronics Fundamentals and Breadboard Wiring
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M247.1 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L179.2 256 41.9 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
