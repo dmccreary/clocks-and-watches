@@ -6,6 +6,12 @@ The Pico forgets the time whenever it loses power. Real smartwatches never
 seem to have this problem. They ask the internet for the correct time.
 In this lab, your watch will do the same.
 
+!!! mascot-welcome "Welcome to Lab 04"
+    ![Chrono waving welcome](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
+    This is the lab where your watch goes online. After this, it can set
+    its own clock anywhere there's WiFi, the same way a phone does.
+    Let's make time tick!
+
 ## What You Will Learn
 
 - how the Pico joins a WiFi network

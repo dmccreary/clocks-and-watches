@@ -206,6 +206,7 @@ nav:
     - Graph Quality Analysis: learning-graph/quality-metrics.md
     - Concept Taxonomy: learning-graph/concept-taxonomy.md
     - Taxonomy Distribution Report: learning-graph/taxonomy-distribution.md
+    - Mascot Test: learning-graph/mascot-test.md
   - MicroSims:
     - List of MicroSims: sims/index.md
     - Binary Number: sims/binary-number/index.md
@@ -290,6 +291,7 @@ markdown_extensions:
       generic: true
 extra_css:
   - css/extra.css
+  - css/mascot.css
 extra_javascript:
   - js/extra.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js

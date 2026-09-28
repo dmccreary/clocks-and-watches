@@ -16,6 +16,12 @@ kit. It tests everything a program *can* test:
 Run this lab whenever something isn't working. It usually tells you
 exactly what's wrong.
 
+!!! mascot-welcome "Welcome to Lab 01"
+    ![Chrono waving welcome](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
+    I like checkups. They're how a robot like me finds a loose wire before
+    it turns into a mystery. After this lab, you'll have a tool that finds
+    most kit problems for you. Let's make time tick!
+
 ## What You Will Learn
 
 - the difference between **RAM** and **flash** memory

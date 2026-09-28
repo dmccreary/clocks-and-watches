@@ -6,6 +6,12 @@ This watch face has **giant** numbers, 114 pixels tall, big enough to read
 from across the room. The date sits underneath, and a ring of 60 tick
 marks around the edge fills up as the seconds go by.
 
+!!! mascot-welcome "Welcome to Lab 08"
+    ![Chrono waving welcome](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
+    This is the watch face people notice from across the room. Build it,
+    and you'll know the secret behind the numbers on scoreboards, gas
+    pumps, and alarm clocks. Let's make time tick!
+
 ## What You Will Learn
 
 - how every digit from 0 to 9 is made of just seven bars

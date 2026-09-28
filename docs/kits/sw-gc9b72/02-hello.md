@@ -6,6 +6,13 @@ Programmers have a tradition: the first program in a new language, or on
 a new gadget, says "Hello, World!" This lab puts it on your round screen,
 along with a red ring around the edge.
 
+!!! mascot-welcome "Welcome to Lab 02"
+    ![Chrono waving welcome](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
+    This is the lab where the screen wakes up, and it's my favorite,
+    because that screen is my face! Once you can put words and shapes
+    anywhere you want, you can draw any watch face you can imagine.
+    Let's make time tick!
+
 ## What You Will Learn
 
 - how to start the display

@@ -6,6 +6,12 @@ Now the kit becomes a real clock. This program shows the time (hours,
 minutes, and seconds), the day of the week, and the date, and it updates
 every second.
 
+!!! mascot-welcome "Welcome to Lab 03"
+    ![Chrono waving welcome](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
+    This is the lab where your kit stops being a gadget and becomes a clock.
+    You'll also learn the trick that keeps a screen from flickering, and
+    you'll use it in every lab after this one. Let's make time tick!
+
 ## What You Will Learn
 
 - where the Pico gets the time from

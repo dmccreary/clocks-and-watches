@@ -10,6 +10,12 @@ It doesn't use the screen at all. That's on purpose: if this lab works,
 you know the Pico, the USB cable, and MicroPython are all fine. If
 something goes wrong in a later lab, it must be something else.
 
+!!! mascot-welcome "Welcome to Lab 00"
+    ![Chrono waving welcome](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
+    Every watch in this kit starts right here, with one tiny blinking light.
+    In a few minutes, code you ran will be controlling a real computer chip.
+    Let's make time tick!
+
 ## What You Will Learn
 
 - how to run a program on the Pico from Thonny
@@ -52,7 +58,7 @@ Let's read it line by line:
 - `led.toggle()` flips the light: on if it was off, off if it was on.
 - `sleep(0.5)` waits half a second before the loop goes around again.
 
-!!! note "Why \"LED\" and not a number?"
+!!! note "Why "LED" and not a number?"
     On a plain Pico, the light is on pin number 25. On a Pico **W** or
     Pico 2 **W**, it's wired to the WiFi chip instead. Using the name `"LED"` works on
     both boards, so that's what this kit uses.

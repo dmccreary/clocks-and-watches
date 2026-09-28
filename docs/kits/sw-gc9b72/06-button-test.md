@@ -7,6 +7,12 @@ write programs that use them, this lab checks that each one is wired
 correctly. Each circle on the screen lights up while you hold its button
 down.
 
+!!! mascot-welcome "Welcome to Lab 06"
+    ![Chrono waving welcome](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
+    Up to now, your watch has only talked. With buttons, it can listen!
+    Every lab after this one uses them, so a quick test now saves a lot of
+    head-scratching later. Let's make time tick!
+
 ## What You Will Learn
 
 - how the Pico reads a button

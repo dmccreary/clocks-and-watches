@@ -15,6 +15,12 @@ The part you're changing is highlighted in yellow. Hold UP or DOWN and
 the number keeps changing by itself, so you don't have to press 45 times
 to get to 45 minutes.
 
+!!! mascot-welcome "Welcome to Lab 07"
+    ![Chrono waving welcome](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
+    After this lab, your watch can be set anywhere, even with no WiFi, just
+    like a store-bought watch. You'll also fix a sneaky problem hiding
+    inside every button. Let's make time tick!
+
 ## What You Will Learn
 
 - why a single press can count as three (and how to fix it)

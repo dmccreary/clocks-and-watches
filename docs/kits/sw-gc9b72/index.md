@@ -27,6 +27,22 @@ You will build it one small step at a time. There are 13 labs, numbered
 00 to 12. Each lab is one program. Start at lab 00, and each lab teaches
 one new idea you will use in the labs after it.
 
+!!! mascot-welcome "Meet Chrono"
+    ![Chrono waving welcome](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
+    Hi, I'm Chrono! I'm a robot, and my head is the same kind of round
+    screen you're about to program, so these labs are a little personal
+    for me. I'll pop up in the labs to do six jobs:
+
+    1. **Welcome** you to each lab and tell you what you'll be able to build.
+    2. **Think** out loud when a big idea shows up.
+    3. **Tip** you off to a shortcut that saves you time.
+    4. **Warn** you about a mistake that trips up a lot of people.
+    5. **Encourage** you when a part gets hard.
+    6. **Celebrate** with you when you finish a lab.
+
+    If I'm not doing one of those six things, I'm not on the page.
+    Let's make time tick!
+
 ## What's in the Kit
 
 ![](./img/smart-clock-rear.jpg)<br/>

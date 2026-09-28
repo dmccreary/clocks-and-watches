@@ -7,6 +7,12 @@ great for cooking, homework breaks, or board games. Set the minutes and
 seconds with the buttons, press start, and watch the ring around the edge
 empty as time runs out.
 
+!!! mascot-welcome "Welcome to Lab 11"
+    ![Chrono waving welcome](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
+    By the end of this lab, one button will do three different jobs, and
+    you'll know how to design a program like that yourself. It's one of the
+    most useful ideas in all of programming. Let's make time tick!
+
 ## What You Will Learn
 
 - how to set a number with buttons

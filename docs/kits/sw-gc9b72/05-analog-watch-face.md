@@ -7,6 +7,12 @@ a complete watch face: 60 tick marks, the numbers 1 to 12, and hour,
 minute, and second hands that move. It even sets its own time from the
 internet when it starts.
 
+!!! mascot-welcome "Welcome to Lab 05"
+    ![Chrono waving welcome](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
+    Now your kit starts to look like a real watch. The math that swings
+    these hands around is the same math that turns and aims characters in
+    video games. Let's make time tick!
+
 ## What You Will Learn
 
 - how to point a hand at any angle around a circle

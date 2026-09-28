@@ -7,6 +7,12 @@ around the track. This stopwatch shows minutes, seconds, and hundredths of
 a second. It also keeps **lap times**: press a button each time you pass
 the starting line, and it tells you how long each lap took.
 
+!!! mascot-welcome "Welcome to Lab 10"
+    ![Chrono waving welcome](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
+    Ready, set, go! This stopwatch keeps lap times the way a coach's
+    stopwatch does, and it hides a clever timing trick that real
+    stopwatches use. Let's make time tick!
+
 ## What You Will Learn
 
 - how a stopwatch keeps time (it's not what you'd guess)

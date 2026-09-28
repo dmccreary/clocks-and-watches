@@ -10,6 +10,13 @@ This is the big one. Everything you've built so far comes together into
 A row of five dots at the bottom of the screen shows which mode you're
 in. The bright dot is the one you're on.
 
+!!! mascot-welcome "Welcome to Lab 12"
+    ![Chrono waving welcome](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
+    Look how far you've come: from one blinking light to five watch faces.
+    In this lab, you'll learn how real apps juggle many screens without
+    running out of memory, and you'll finish with a watch that's truly
+    yours. Let's make time tick!
+
 ## What You Will Learn
 
 - how one program can run five different watch faces

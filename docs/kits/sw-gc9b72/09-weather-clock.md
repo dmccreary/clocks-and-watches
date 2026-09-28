@@ -6,6 +6,12 @@ Now your watch knows more than the time. It gets the weather forecast
 from the internet and shows today's and tomorrow's high and low
 temperatures, with a little picture of the weather.
 
+!!! mascot-welcome "Welcome to Lab 09"
+    ![Chrono waving welcome](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
+    This is where your watch gets smart. The trick it learns here, asking a
+    web service for data, is how phone apps get news, sports scores, and
+    maps too. Let's make time tick!
+
 ## What You Will Learn
 
 - what a **web service** is, and how a program asks one a question
