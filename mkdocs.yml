@@ -19,6 +19,28 @@ nav:
     - Sound and Speakers: setup/07-sound.md
     - Button Test: setup/05-button-print-test.md
     - AI in the Classroom: setup/05-ai-in-the-classroom.md
+  - Chapters:
+    - List of Chapters: chapters/index.md
+    - "1. Computational Thinking and Physical Computing": chapters/01-foundations/index.md
+    - "2. Electronics Fundamentals and Breadboard Wiring": chapters/02-electronics-fundamentals/index.md
+    - "3. MicroPython Basics: Variables and Data Types": chapters/03-micropython-basics/index.md
+    - "4. Control Flow, Functions, and Modules": chapters/04-control-flow-functions/index.md
+    - "5. The Pico Platform: Pins, Files, and Firmware": chapters/05-pico-platform/index.md
+    - "6. Getting the Time in MicroPython": chapters/06-getting-time/index.md
+    - "7. Buttons, Interrupts, and State Machines": chapters/07-buttons-state-machines/index.md
+    - "8. Communication Buses: I2C, SPI, and UART": chapters/08-communication-buses/index.md
+    - "9. LED Displays and the First Digital Clock": chapters/09-led-displays/index.md
+    - "10. Coordinates, Trigonometry, and Clock Geometry": chapters/10-clock-math/index.md
+    - "11. OLED Displays and Framebuffers": chapters/11-oled-framebuffers/index.md
+    - "12. Drawing Shapes, Text, and Animation": chapters/12-drawing-text-animation/index.md
+    - "13. Real-Time Clocks and the DS3231": chapters/13-real-time-clocks/index.md
+    - "14. WiFi, NTP, and Time Accuracy": chapters/14-wifi-ntp/index.md
+    - "15. Color Displays and Smartwatch Faces": chapters/15-color-displays/index.md
+    - "16. NeoPixels and Shift Register Clocks": chapters/16-neopixels-shift-registers/index.md
+    - "17. Sound, Alarms, and Timers": chapters/17-sound-alarms-timers/index.md
+    - "18. Sensors, Power, and Low-Power Design": chapters/18-sensors-power/index.md
+    - "19. E-Paper and Weather Displays": chapters/19-epaper-weather/index.md
+    - "20. Design, Testing, and AI-Assisted Development": chapters/20-design-testing-ai/index.md
   - Lessons:
     - Introduction: lessons/index.md
     - Timekeeping Architecture: lessons/01-timekeeping-architecture.md
