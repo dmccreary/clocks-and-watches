@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Program a round-screen smartwatch with a Raspberry Pi Pico W - clock faces, a weather forecast, a stopwatch, and a timer, in 13 labs for students.">
+        <meta name="description" content="Build and program a round-screen smart clock with a Raspberry Pi Pico W. It sets its own time from the internet, shows the weather, and works as a stopwatch and a timer. 13 labs, under $20 in parts, no soldering.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -78,7 +78,7 @@
   
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Chrono Smart Clock Kit - Clocks and Watches with AI" />
-<meta property="og:description" content="Program a round-screen smartwatch with a Raspberry Pi Pico W - clock faces, a weather forecast, a stopwatch, and a timer, in 13 labs for students." />
+<meta property="og:description" content="Build and program a round-screen smart clock with a Raspberry Pi Pico W. It sets its own time from the internet, shows the weather, and works as a stopwatch and a timer. 13 labs, under $20 in parts, no soldering." />
 <meta property="og:image" content="https://dmccreary.github.io/clocks-and-watches/kits/sw-gc9b72/img/social-card.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200" />
@@ -86,7 +86,7 @@
 <meta property="og:url" content="https://dmccreary.github.io/clocks-and-watches/kits/sw-gc9b72/" />
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:title" content="Chrono Smart Clock Kit - Clocks and Watches with AI" />
-<meta property="twitter:description" content="Program a round-screen smartwatch with a Raspberry Pi Pico W - clock faces, a weather forecast, a stopwatch, and a timer, in 13 labs for students." />
+<meta property="twitter:description" content="Build and program a round-screen smart clock with a Raspberry Pi Pico W. It sets its own time from the internet, shows the weather, and works as a stopwatch and a timer. 13 labs, under $20 in parts, no soldering." />
 <meta property="twitter:image" content="https://dmccreary.github.io/clocks-and-watches/kits/sw-gc9b72/img/social-card.jpg">
 </head>
   
@@ -2683,6 +2683,61 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#what-your-clock-will-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Your Clock Will Do
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-kids-and-grown-ups-like-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Kids (and Grown-Ups) Like It
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#for-parents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        For Parents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#for-teachers-mentors-and-volunteers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        For Teachers, Mentors, and Volunteers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#whats-in-the-kit" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2835,39 +2890,89 @@
 
 
 <h1 id="chrono-smart-clock-kit">Chrono Smart Clock Kit</h1>
+<p><strong>Build a clock that sets itself, shows the weather, and does whatever you
+program it to do.</strong></p>
 <p><img alt="The Chrono Smart Clock Kit showing the weather clock: 7:49 PM, cloudy today, rain tomorrow" src="large-smartwatch-clock.jpg" /></p>
-<p>This kit turns a tiny computer and a round color screen into a watch that
-<strong>you</strong> program. By the end, your watch will:</p>
+<p>Most clocks just sit there. This one is a tiny computer with a bright round
+screen, and <strong>you</strong> write every line of its code. Along the way you learn
+real Python, the same language used by scientists and game makers, and you
+finish with a clock you can put on your desk and show off.</p>
+<p><strong>Ages 10 and up. No soldering. No experience needed. Under $20 in parts.</strong></p>
+<h2 id="what-your-clock-will-do">What Your Clock Will Do</h2>
 <ul>
-<li>show the time with big, bright numbers or with an old-style clock face</li>
-<li>set its own clock by asking the internet what time it is</li>
-<li>show today's and tomorrow's weather, with little pictures of sun, clouds,
-  rain, and snow</li>
-<li>work as a stopwatch that times laps, and as a countdown timer with an
-  alarm</li>
-<li>switch between all of these with the press of a button</li>
+<li><strong>Set its own time.</strong> It asks the internet what time it is, so it is never
+  wrong.</li>
+<li><strong>Show the time your way.</strong> Pick giant digital numbers or an old-style
+  clock face with moving hands. Then design your own.</li>
+<li><strong>Tell you the weather.</strong> Today's and tomorrow's forecast appear with
+  little pictures of sun, clouds, rain, and snow.</li>
+<li><strong>Time laps and count down.</strong> It works as a stopwatch that records laps
+  and as a countdown timer with a flashing alarm.</li>
+<li><strong>Switch with one button.</strong> Press MODE to step through all five faces.</li>
 </ul>
 <p><img alt="Five watch faces you will build: analog, digital, weather, stopwatch, and timer" src="img/kit-banner.png" /></p>
-<p>You will build it one small step at a time. There are 13 labs, numbered
-00 to 12. Each lab is one program. Start at lab 00, and each lab teaches
-one new idea you will use in the labs after it.</p>
 <div class="admonition mascot-welcome">
 <p class="admonition-title">Meet Chrono</p>
 <p><img alt="Chrono waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
 Hi, I'm Chrono! I'm a robot, and my head is the same kind of round
 screen you're about to program, so these labs are a little personal
-for me. I'll pop up in the labs to do six jobs:</p>
-<ol>
-<li><strong>Welcome</strong> you to each lab and tell you what you'll be able to build.</li>
-<li><strong>Think</strong> out loud when a big idea shows up.</li>
-<li><strong>Tip</strong> you off to a shortcut that saves you time.</li>
-<li><strong>Warn</strong> you about a mistake that trips up a lot of people.</li>
-<li><strong>Encourage</strong> you when a part gets hard.</li>
-<li><strong>Celebrate</strong> with you when you finish a lab.</li>
-</ol>
-<p>If I'm not doing one of those six things, I'm not on the page.
-Let's make time tick!</p>
+for me. By the end, you'll have a clock that you built and that runs
+your code. I'll pop up in the labs to give you tips, warn you about
+traps, and cheer when you finish. Let's make time tick!</p>
 </div>
+<h2 id="how-it-works">How It Works</h2>
+<p>There are 13 short labs, numbered 00 to 12. Each lab is one program, and
+each one teaches a single new idea that you use in the labs after it.</p>
+<ol>
+<li><strong>Wake it up (labs 00–02).</strong> Blink a light, check the kit, and say
+   hello on the screen. You'll see your own words glow in about an hour.</li>
+<li><strong>Make it a clock (labs 03–05).</strong> Show the time, set it from the
+   internet, and build a clock face with moving hands.</li>
+<li><strong>Make it yours (labs 06–08).</strong> Read the buttons, set the time by hand,
+   and build a giant-number digital face.</li>
+<li><strong>Make it smart (labs 09–12).</strong> Fetch the weather, add a stopwatch and
+   a timer, and put it all together into one clock with five modes.</li>
+</ol>
+<h2 id="why-kids-and-grown-ups-like-it">Why Kids (and Grown-Ups) Like It</h2>
+<ul>
+<li><strong>You see results fast.</strong> Every lab ends with something new on the
+  screen, not just text in a window.</li>
+<li><strong>It is a real computer.</strong> The Raspberry Pi Pico W is the same kind of
+  chip found in appliances, toys, and instruments.</li>
+<li><strong>It is yours to change.</strong> Every color, size, word, and layout is
+  something you can edit. No two finished clocks look the same.</li>
+<li><strong>Mistakes are cheap and safe.</strong> Nothing you type can break the kit. The
+  only thing to watch is one wire, and the kit tells you which.</li>
+</ul>
+<h2 id="for-parents">For Parents</h2>
+<ul>
+<li><strong>What your child learns:</strong> Python programming, how a computer reads
+  buttons and draws to a screen, how a clock keeps time, and how a device
+  gets data from the internet.</li>
+<li><strong>How much help they need:</strong> Most 10–12 year olds do the labs on their
+  own once the kit is set up. An adult helps most with the first-time setup
+  (about 30 minutes).</li>
+<li><strong>Privacy and safety:</strong> The clock has <strong>no microphone and no camera</strong>. It
+  connects to your home WiFi only to get the time and a public weather
+  forecast, and it stores nothing about your family. It runs on a 5-volt USB
+  cable, so there is no mains wiring.</li>
+<li><strong>What it costs:</strong> Under $20 in parts (a $5 Pico and a $6 display are the big two), and no subscription. See
+  <a href="teacher-notes/#sourcing-parts">Notes for Teachers</a> for where to buy.</li>
+</ul>
+<h2 id="for-teachers-mentors-and-volunteers">For Teachers, Mentors, and Volunteers</h2>
+<ul>
+<li><strong>Fits a class period.</strong> Each lab is a self-contained 30–45 minute session
+  with a working result at the end. Labs 00–03 make a good first meeting.</li>
+<li><strong>No soldering, no special tools.</strong> Everything plugs into a breadboard.</li>
+<li><strong>Low cost.</strong> At under $20 a kit, a class of 30 costs less than $600.</li>
+<li><strong>Runs on what you have.</strong> Any computer that runs Thonny (Windows, Mac,
+  Chromebook, Linux) works.</li>
+<li><strong>Every picture is real.</strong> The screen images come from the labs' own code
+  running on the display, so what students see in the book is what they get.</li>
+<li><strong>You don't need to be an expert.</strong> The
+  <a href="teacher-notes/">Notes for Teachers</a> give the sourcing guide, timings,
+  and a troubleshooting table for the problems that come up most.</li>
+</ul>
 <h2 id="whats-in-the-kit">What's in the Kit</h2>
 <p><img alt="" src="img/smart-clock-rear.jpg" /><br/>
 <em>A rear view of the Smart Clock kit showing the breadboard, buttons and a 20cm Dupont cable with hot glue
