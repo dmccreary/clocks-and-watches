@@ -398,9 +398,9 @@ while True:
     sleep_ms(50)
 ```
 
-Comparing `pressed` with `was_pressed` detects the moment of the press, so holding the button does not toggle repeatedly. The smartwatch kit's [stopwatch lab](../../kits/sw-gc9b72/10-stopwatch.md) shows the same design with a color display.
+Comparing `pressed` with `was_pressed` detects the moment of the press, so holding the button does not toggle repeatedly. The Chrono Smart Clock Kit's [stopwatch lab](../../kits/sw-gc9b72/10-stopwatch.md) shows the same design with a color display.
 
-![The smartwatch kit stopwatch](../../kits/sw-gc9b72/img/10-stopwatch.png){ width="300" }
+![The Chrono Smart Clock Kit stopwatch](../../kits/sw-gc9b72/img/10-stopwatch.png){ width="300" }
 
 #### Diagram: Stopwatch
 
@@ -436,7 +436,7 @@ if remaining <= 0:
     ringing = True
 ```
 
-`ticks_add()` adds a number of milliseconds to a tick value while handling wrap-around. Pausing works like the stopwatch: remember how much is left, and compute a fresh end time on resume. The smartwatch kit's [countdown timer lab](../../kits/sw-gc9b72/11-countdown-timer.md) does this with an alarm that flashes the screen.
+`ticks_add()` adds a number of milliseconds to a tick value while handling wrap-around. Pausing works like the stopwatch: remember how much is left, and compute a fresh end time on resume. The Chrono Smart Clock Kit's [countdown timer lab](../../kits/sw-gc9b72/11-countdown-timer.md) does this with an alarm that flashes the screen.
 
 ### Pomodoro Timer
 

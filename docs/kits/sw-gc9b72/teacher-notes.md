@@ -1,7 +1,7 @@
 # Notes for Teachers
 
 These notes are for teachers, parents, and anyone who wants the technical
-story behind the [GC9B72 Smartwatch Kit](index.md): where to buy the
+story behind the [Chrono Smart Clock Kit](index.md): where to buy the
 parts, where the driver came from, how fast the hardware really is, and
 how each watch face keeps flicker to a minimum. The lab pages themselves are written for students
 around 11 years old.

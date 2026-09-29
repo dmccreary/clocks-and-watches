@@ -151,7 +151,7 @@ GRAY = color565(110, 110, 110)     # tick marks
 ACCENT = color565(0, 200, 255)     # numerals
 ```
 
-Changing `ACCENT` once restyles every screen. The smartwatch kit's `config.py` uses exactly this approach with `config.BLACK`, `config.WHITE`, `config.RED`, and `config.GRAY`.
+Changing `ACCENT` once restyles every screen. The Chrono Smart Clock Kit's `config.py` uses exactly this approach with `config.BLACK`, `config.WHITE`, `config.RED`, and `config.GRAY`.
 
 #### Diagram: RGB565 Color Mixer
 
@@ -205,9 +205,9 @@ The **ST7735** drives the small 160 by 128 screens, at the lowest price of the c
 
 The **GC9A01** drives a round 240 by 240 display about 1.28 inches across, the size of a small watch. The visible area is a circle, so the corners of the 240 by 240 grid are hidden under the bezel. This driver is the one used in the earlier smartwatch kit, and its constructor takes the SPI object, the pin numbers, and a rotation setting.
 
-### The GC9B72 Smartwatch Kit
+### The Chrono Smart Clock Kit (GC9B72)
 
-The 2.1 inch **GC9B72** in the smartwatch kit is a larger round display at 360 by 360 pixels. The kit uses a Pico 2 W, which has the same pin layout as the Pico W, and its `config.py` describes every wire (SCL to GP2, SDA to GP3, RST to GP4, DC to GP5, CS to GP6, and BL to GP7). A real detail from that file is worth remembering: the SPI clock you *ask for* is not always the clock you *get*. The Pico can only make certain speeds, and it rounds down. Asking for 20 MHz actually gives 12 MHz, and 24 MHz is the ceiling. Print the SPI object to see the real rate.
+The 2.1 inch **GC9B72** in the Chrono Smart Clock Kit is a larger round display at 360 by 360 pixels. The kit uses a Pico 2 W, which has the same pin layout as the Pico W, and its `config.py` describes every wire (SCL to GP2, SDA to GP3, RST to GP4, DC to GP5, CS to GP6, and BL to GP7). A real detail from that file is worth remembering: the SPI clock you *ask for* is not always the clock you *get*. The Pico can only make certain speeds, and it rounds down. Asking for 20 MHz actually gives 12 MHz, and 24 MHz is the ceiling. Print the SPI object to see the real rate.
 
 ## Round Display
 
@@ -227,7 +227,7 @@ The **safe radius** leaves a margin for the bezel that covers the outermost pixe
 
 **Worked example.** A line of text 100 pixels above the center with a safe radius of 168 has \( w = 2\sqrt{168^2 - 100^2} = 2 \times 135 = 270 \) pixels available, much less than the full 360.
 
-![The smartwatch kit's digital watch face on the GC9B72 display](../../kits/sw-gc9b72/img/08-digital-watch-face.png){ width="300" }
+![The Chrono Smart Clock Kit's digital watch face on the GC9B72 display](../../kits/sw-gc9b72/img/08-digital-watch-face.png){ width="300" }
 
 ### Smartwatch Display
 
@@ -293,7 +293,7 @@ Notice three design decisions. The time is formatted to a **constant width** (ze
 
 An **analog clock face** shows the time with hands sweeping over a dial. It draws on everything from the math chapter, using the geometry from Chapter 10 with the display's center and safe radius. Its parts, from the outside in, are the **tick marks**, the **numerals**, and the **hands**.
 
-![The smartwatch kit's analog watch face](../../kits/sw-gc9b72/img/05-analog-watch-face.png){ width="300" }
+![The Chrono Smart Clock Kit's analog watch face](../../kits/sw-gc9b72/img/05-analog-watch-face.png){ width="300" }
 
 ### Clock Tick Marks
 

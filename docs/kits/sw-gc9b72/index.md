@@ -1,14 +1,14 @@
 ---
-title: GC9B72 Smartwatch Clock Kit
+title: Chrono Smart Clock Kit
 description: Program a round-screen smartwatch with a Raspberry Pi Pico W - clock faces, a weather forecast, a stopwatch, and a timer, in 13 labs for students.
 image: /kits/sw-gc9b72/img/social-card.jpg
 og:image: /kits/sw-gc9b72/img/social-card.jpg
 twitter:image: /kits/sw-gc9b72/img/social-card.jpg
 ---
 
-# GC9B72 Smartwatch Clock Kit
+# Chrono Smart Clock Kit
 
-![The smartwatch kit showing the weather clock: 7:49 PM, cloudy today, rain tomorrow](large-smartwatch-clock.jpg)
+![The Chrono Smart Clock Kit showing the weather clock: 7:49 PM, cloudy today, rain tomorrow](large-smartwatch-clock.jpg)
 
 This kit turns a tiny computer and a round color screen into a watch that
 **you** program. By the end, your watch will:

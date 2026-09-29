@@ -232,9 +232,9 @@ A horizontal bar makes a good humidity display. Draw an outline rectangle, then 
 
 A **weather station display** combines the time, indoor sensor readings, and the outdoor forecast on one screen. It is a good capstone project because it uses almost every skill so far: WiFi (Chapter 14), fetching data, drawing (Chapters 12 and 15), and refresh discipline (this chapter).
 
-The forecast comes from a web service. The smartwatch kit uses **Open-Meteo**, a free service that needs no account or key. Your program requests a small block of data describing the coming days as **JSON**, a plain text format of names and values, and the `response.json()` call turns it into ordinary Python dictionaries and lists. The kit's `forecast.py` returns a list of (high, low, weather code) for today and tomorrow. The **weather code** is a number defined by the World Meteorological Organization, and a function maps it to an icon name and a short word such as "Sunny" or "Rain."
+The forecast comes from a web service. The Chrono Smart Clock Kit uses **Open-Meteo**, a free service that needs no account or key. Your program requests a small block of data describing the coming days as **JSON**, a plain text format of names and values, and the `response.json()` call turns it into ordinary Python dictionaries and lists. The kit's `forecast.py` returns a list of (high, low, weather code) for today and tomorrow. The **weather code** is a number defined by the World Meteorological Organization, and a function maps it to an icon name and a short word such as "Sunny" or "Rain."
 
-![The smartwatch kit's weather clock](../../kits/sw-gc9b72/img/09-weather-clock.png){ width="300" }
+![The Chrono Smart Clock Kit's weather clock](../../kits/sw-gc9b72/img/09-weather-clock.png){ width="300" }
 
 See the kit's [weather clock lab](../../kits/sw-gc9b72/09-weather-clock.md) for the full program. The most important design idea is that **each piece of data has its own update schedule**, matched to how fast it changes:
 

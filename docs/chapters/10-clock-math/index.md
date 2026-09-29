@@ -84,7 +84,7 @@ cy = HEIGHT // 2     # 120
 radius = min(cx, cy) # 120: distance from the center to the nearest edge
 ```
 
-For the 360 by 360 round display used in the smartwatch kit, the center is (180, 180) and the radius is 180. Compute these from `WIDTH` and `HEIGHT` instead of typing numbers, and the same program will work on any screen.
+For the 360 by 360 round display used in the Chrono Smart Clock Kit, the center is (180, 180) and the radius is 180. Compute these from `WIDTH` and `HEIGHT` instead of typing numbers, and the same program will work on any screen.
 
 ## Radians vs Degrees
 

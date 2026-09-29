@@ -184,7 +184,7 @@ nav:
       - Watch Face: kits/gc9a01/09-watch-face.md
       - Draw 12 Digits: kits/gc9a01/07-draw-12-digits.md
       - Draw Filled Triangle: kits/gc9a01/08-draw-filled-triangle.md
-    - GC9B72 Smartwatch (Pico 2 W):
+    - Chrono Smart Clock Kit (GC9B72, Pico 2 W):
       - Introduction: kits/sw-gc9b72/index.md
       - 00 Blink the LED: kits/sw-gc9b72/00-blink-onboard-led.md
       - 01 Kit Checkup: kits/sw-gc9b72/01-probe.md
