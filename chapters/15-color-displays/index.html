@@ -1180,10 +1180,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#the-gc9b72-smartwatch-kit" class="md-nav__link">
+  <a href="#the-chrono-smart-clock-kit-gc9b72" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The GC9B72 Smartwatch Kit
+        The Chrono Smart Clock Kit (GC9B72)
       
     </span>
   </a>
@@ -2290,10 +2290,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#the-gc9b72-smartwatch-kit" class="md-nav__link">
+  <a href="#the-chrono-smart-clock-kit-gc9b72" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The GC9B72 Smartwatch Kit
+        The Chrono Smart Clock Kit (GC9B72)
       
     </span>
   </a>
@@ -2793,7 +2793,7 @@ If your reds appear blue and blues appear red, the display expects the color cha
 <span class="n">GRAY</span> <span class="o">=</span> <span class="n">color565</span><span class="p">(</span><span class="mi">110</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="mi">110</span><span class="p">)</span>     <span class="c1"># tick marks</span>
 <span class="n">ACCENT</span> <span class="o">=</span> <span class="n">color565</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>     <span class="c1"># numerals</span>
 </code></pre></div></td></tr></table></div>
-<p>Changing <code>ACCENT</code> once restyles every screen. The smartwatch kit's <code>config.py</code> uses exactly this approach with <code>config.BLACK</code>, <code>config.WHITE</code>, <code>config.RED</code>, and <code>config.GRAY</code>.</p>
+<p>Changing <code>ACCENT</code> once restyles every screen. The Chrono Smart Clock Kit's <code>config.py</code> uses exactly this approach with <code>config.BLACK</code>, <code>config.WHITE</code>, <code>config.RED</code>, and <code>config.GRAY</code>.</p>
 <h4 id="diagram-rgb565-color-mixer">Diagram: RGB565 Color Mixer</h4>
 <details>
 <summary>RGB565 Color Mixer</summary>
@@ -2826,8 +2826,8 @@ If your reds appear blue and blues appear red, the display expects the color cha
 <p>The <strong>ST7735</strong> drives the small 160 by 128 screens, at the lowest price of the color options. Its small size means a small framebuffer and fast updates, which makes it a good first color display. Some ST7735 modules need a small offset setting so the image lines up with the glass. If a colored line appears along one edge, that is the reason.</p>
 <h3 id="gc9a01-driver">GC9A01 Driver</h3>
 <p>The <strong>GC9A01</strong> drives a round 240 by 240 display about 1.28 inches across, the size of a small watch. The visible area is a circle, so the corners of the 240 by 240 grid are hidden under the bezel. This driver is the one used in the earlier smartwatch kit, and its constructor takes the SPI object, the pin numbers, and a rotation setting.</p>
-<h3 id="the-gc9b72-smartwatch-kit">The GC9B72 Smartwatch Kit</h3>
-<p>The 2.1 inch <strong>GC9B72</strong> in the smartwatch kit is a larger round display at 360 by 360 pixels. The kit uses a Pico 2 W, which has the same pin layout as the Pico W, and its <code>config.py</code> describes every wire (SCL to GP2, SDA to GP3, RST to GP4, DC to GP5, CS to GP6, and BL to GP7). A real detail from that file is worth remembering: the SPI clock you <em>ask for</em> is not always the clock you <em>get</em>. The Pico can only make certain speeds, and it rounds down. Asking for 20 MHz actually gives 12 MHz, and 24 MHz is the ceiling. Print the SPI object to see the real rate.</p>
+<h3 id="the-chrono-smart-clock-kit-gc9b72">The Chrono Smart Clock Kit (GC9B72)</h3>
+<p>The 2.1 inch <strong>GC9B72</strong> in the Chrono Smart Clock Kit is a larger round display at 360 by 360 pixels. The kit uses a Pico 2 W, which has the same pin layout as the Pico W, and its <code>config.py</code> describes every wire (SCL to GP2, SDA to GP3, RST to GP4, DC to GP5, CS to GP6, and BL to GP7). A real detail from that file is worth remembering: the SPI clock you <em>ask for</em> is not always the clock you <em>get</em>. The Pico can only make certain speeds, and it rounds down. Asking for 20 MHz actually gives 12 MHz, and 24 MHz is the ceiling. Print the SPI object to see the real rate.</p>
 <h2 id="round-display">Round Display</h2>
 <p>A <strong>round display</strong> has a circular visible area, even though the controller addresses a square grid of pixels. Anything drawn in the corners is under the bezel and never seen, so drawing there wastes time on every update.</p>
 <p>Three numbers describe the geometry, and you met the first two in Chapter 10:</p>
@@ -2860,7 +2860,7 @@ If your reds appear blue and blues appear red, the display expects the color cha
 <p>The <strong>safe radius</strong> leaves a margin for the bezel that covers the outermost pixels. Keep all important content inside it. For text, the width available depends on how far the row is from the center. At a vertical distance <span class="arithmatex">\( d \)</span> from the center, the available width is the chord of the circle:</p>
 <div class="arithmatex">\[ w = 2\sqrt{R^2 - d^2} \]</div>
 <p><strong>Worked example.</strong> A line of text 100 pixels above the center with a safe radius of 168 has <span class="arithmatex">\( w = 2\sqrt{168^2 - 100^2} = 2 \times 135 = 270 \)</span> pixels available, much less than the full 360.</p>
-<p><img alt="The smartwatch kit's digital watch face on the GC9B72 display" src="../../kits/sw-gc9b72/img/08-digital-watch-face.png" width="300" /></p>
+<p><img alt="The Chrono Smart Clock Kit's digital watch face on the GC9B72 display" src="../../kits/sw-gc9b72/img/08-digital-watch-face.png" width="300" /></p>
 <h3 id="smartwatch-display">Smartwatch Display</h3>
 <p>A <strong>smartwatch display</strong> is a small, round or square screen designed to be worn. The design constraints are unlike a wall clock. The screen is small, so text must be large and few. It must be readable at an angle. It runs on a small battery, so the backlight and update rate should be modest. The round shape dictates the safe radius and the chord rule above, and a wrist watch is glanced at for one or two seconds, so the time must stand out at once.</p>
 <h3 id="display-rotation">Display Rotation</h3>
@@ -2944,7 +2944,7 @@ A framebuffer lets you paint behind a curtain and reveal the finished picture. A
 <p>Notice three design decisions. The time is formatted to a <strong>constant width</strong> (zero-padded), so a new value always covers the old one exactly. The x position is computed to <strong>center</strong> the text using the character width. And the background color is passed to <code>text()</code> so the screen never needs clearing.</p>
 <h2 id="analog-clock-face">Analog Clock Face</h2>
 <p>An <strong>analog clock face</strong> shows the time with hands sweeping over a dial. It draws on everything from the math chapter, using the geometry from Chapter 10 with the display's center and safe radius. Its parts, from the outside in, are the <strong>tick marks</strong>, the <strong>numerals</strong>, and the <strong>hands</strong>.</p>
-<p><img alt="The smartwatch kit's analog watch face" src="../../kits/sw-gc9b72/img/05-analog-watch-face.png" width="300" /></p>
+<p><img alt="The Chrono Smart Clock Kit's analog watch face" src="../../kits/sw-gc9b72/img/05-analog-watch-face.png" width="300" /></p>
 <h3 id="clock-tick-marks">Clock Tick Marks</h3>
 <p><strong>Tick marks</strong> ring the outer edge. There are 60 small ticks for the minutes and 12 wider or longer marks for the hours. They are computed with the same formula as before:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>

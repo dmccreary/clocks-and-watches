@@ -2943,8 +2943,8 @@ An alarm that freezes the whole clock while it beeps is a bad alarm, since you c
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">total</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="mi">60000</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="p">(</span><span class="n">total</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="mi">1000</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">60</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="p">(</span><span class="n">total</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="n">sleep_ms</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p>Comparing <code>pressed</code> with <code>was_pressed</code> detects the moment of the press, so holding the button does not toggle repeatedly. The smartwatch kit's <a href="../../kits/sw-gc9b72/10-stopwatch/">stopwatch lab</a> shows the same design with a color display.</p>
-<p><img alt="The smartwatch kit stopwatch" src="../../kits/sw-gc9b72/img/10-stopwatch.png" width="300" /></p>
+<p>Comparing <code>pressed</code> with <code>was_pressed</code> detects the moment of the press, so holding the button does not toggle repeatedly. The Chrono Smart Clock Kit's <a href="../../kits/sw-gc9b72/10-stopwatch/">stopwatch lab</a> shows the same design with a color display.</p>
+<p><img alt="The Chrono Smart Clock Kit stopwatch" src="../../kits/sw-gc9b72/img/10-stopwatch.png" width="300" /></p>
 <h4 id="diagram-stopwatch">Diagram: Stopwatch</h4>
 <iframe src="../../sims/stopwatch/main.html" width="370" height="300" scrolling="no"></iframe>
 
@@ -2974,7 +2974,7 @@ An alarm that freezes the whole clock while it beeps is a bad alarm, since you c
 <span class="k">if</span> <span class="n">remaining</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
     <span class="n">ringing</span> <span class="o">=</span> <span class="kc">True</span>
 </code></pre></div></td></tr></table></div>
-<p><code>ticks_add()</code> adds a number of milliseconds to a tick value while handling wrap-around. Pausing works like the stopwatch: remember how much is left, and compute a fresh end time on resume. The smartwatch kit's <a href="../../kits/sw-gc9b72/11-countdown-timer/">countdown timer lab</a> does this with an alarm that flashes the screen.</p>
+<p><code>ticks_add()</code> adds a number of milliseconds to a tick value while handling wrap-around. Pausing works like the stopwatch: remember how much is left, and compute a fresh end time on resume. The Chrono Smart Clock Kit's <a href="../../kits/sw-gc9b72/11-countdown-timer/">countdown timer lab</a> does this with an alarm that flashes the screen.</p>
 <h3 id="pomodoro-timer">Pomodoro Timer</h3>
 <p>A <strong>Pomodoro timer</strong> applies the countdown timer to a study technique: work for 25 minutes, take a 5-minute break, and repeat. After four work periods, take a longer break of 15 to 30 minutes. It is a small state machine with WORK, SHORT_BREAK, and LONG_BREAK states, and the alarm tone changes to tell you which one is starting.</p>
 <table>
