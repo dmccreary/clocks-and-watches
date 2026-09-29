@@ -1,6 +1,6 @@
 ---
 title: Chrono Smart Clock Kit
-description: Program a round-screen smartwatch with a Raspberry Pi Pico W - clock faces, a weather forecast, a stopwatch, and a timer, in 13 labs for students.
+description: Build and program a round-screen smart clock with a Raspberry Pi Pico W. It sets its own time from the internet, shows the weather, and works as a stopwatch and a timer. 13 labs, under $20 in parts, no soldering.
 image: /kits/sw-gc9b72/img/social-card.jpg
 og:image: /kits/sw-gc9b72/img/social-card.jpg
 twitter:image: /kits/sw-gc9b72/img/social-card.jpg
@@ -8,40 +8,93 @@ twitter:image: /kits/sw-gc9b72/img/social-card.jpg
 
 # Chrono Smart Clock Kit
 
+**Build a clock that sets itself, shows the weather, and does whatever you
+program it to do.**
+
 ![The Chrono Smart Clock Kit showing the weather clock: 7:49 PM, cloudy today, rain tomorrow](large-smartwatch-clock.jpg)
 
-This kit turns a tiny computer and a round color screen into a watch that
-**you** program. By the end, your watch will:
+Most clocks just sit there. This one is a tiny computer with a bright round
+screen, and **you** write every line of its code. Along the way you learn
+real Python, the same language used by scientists and game makers, and you
+finish with a clock you can put on your desk and show off.
 
-- show the time with big, bright numbers or with an old-style clock face
-- set its own clock by asking the internet what time it is
-- show today's and tomorrow's weather, with little pictures of sun, clouds,
-  rain, and snow
-- work as a stopwatch that times laps, and as a countdown timer with an
-  alarm
-- switch between all of these with the press of a button
+**Ages 10 and up. No soldering. No experience needed. Under $20 in parts.**
+
+## What Your Clock Will Do
+
+- **Set its own time.** It asks the internet what time it is, so it is never
+  wrong.
+- **Show the time your way.** Pick giant digital numbers or an old-style
+  clock face with moving hands. Then design your own.
+- **Tell you the weather.** Today's and tomorrow's forecast appear with
+  little pictures of sun, clouds, rain, and snow.
+- **Time laps and count down.** It works as a stopwatch that records laps
+  and as a countdown timer with a flashing alarm.
+- **Switch with one button.** Press MODE to step through all five faces.
 
 ![Five watch faces you will build: analog, digital, weather, stopwatch, and timer](img/kit-banner.png)
-
-You will build it one small step at a time. There are 13 labs, numbered
-00 to 12. Each lab is one program. Start at lab 00, and each lab teaches
-one new idea you will use in the labs after it.
 
 !!! mascot-welcome "Meet Chrono"
     ![Chrono waving welcome](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
     Hi, I'm Chrono! I'm a robot, and my head is the same kind of round
     screen you're about to program, so these labs are a little personal
-    for me. I'll pop up in the labs to do six jobs:
+    for me. By the end, you'll have a clock that you built and that runs
+    your code. I'll pop up in the labs to give you tips, warn you about
+    traps, and cheer when you finish. Let's make time tick!
 
-    1. **Welcome** you to each lab and tell you what you'll be able to build.
-    2. **Think** out loud when a big idea shows up.
-    3. **Tip** you off to a shortcut that saves you time.
-    4. **Warn** you about a mistake that trips up a lot of people.
-    5. **Encourage** you when a part gets hard.
-    6. **Celebrate** with you when you finish a lab.
+## How It Works
 
-    If I'm not doing one of those six things, I'm not on the page.
-    Let's make time tick!
+There are 13 short labs, numbered 00 to 12. Each lab is one program, and
+each one teaches a single new idea that you use in the labs after it.
+
+1. **Wake it up (labs 00–02).** Blink a light, check the kit, and say
+   hello on the screen. You'll see your own words glow in about an hour.
+2. **Make it a clock (labs 03–05).** Show the time, set it from the
+   internet, and build a clock face with moving hands.
+3. **Make it yours (labs 06–08).** Read the buttons, set the time by hand,
+   and build a giant-number digital face.
+4. **Make it smart (labs 09–12).** Fetch the weather, add a stopwatch and
+   a timer, and put it all together into one clock with five modes.
+
+## Why Kids (and Grown-Ups) Like It
+
+- **You see results fast.** Every lab ends with something new on the
+  screen, not just text in a window.
+- **It is a real computer.** The Raspberry Pi Pico W is the same kind of
+  chip found in appliances, toys, and instruments.
+- **It is yours to change.** Every color, size, word, and layout is
+  something you can edit. No two finished clocks look the same.
+- **Mistakes are cheap and safe.** Nothing you type can break the kit. The
+  only thing to watch is one wire, and the kit tells you which.
+
+## For Parents
+
+- **What your child learns:** Python programming, how a computer reads
+  buttons and draws to a screen, how a clock keeps time, and how a device
+  gets data from the internet.
+- **How much help they need:** Most 10–12 year olds do the labs on their
+  own once the kit is set up. An adult helps most with the first-time setup
+  (about 30 minutes).
+- **Privacy and safety:** The clock has **no microphone and no camera**. It
+  connects to your home WiFi only to get the time and a public weather
+  forecast, and it stores nothing about your family. It runs on a 5-volt USB
+  cable, so there is no mains wiring.
+- **What it costs:** Under $20 in parts (a $5 Pico and a $6 display are the big two), and no subscription. See
+  [Notes for Teachers](teacher-notes.md#sourcing-parts) for where to buy.
+
+## For Teachers, Mentors, and Volunteers
+
+- **Fits a class period.** Each lab is a self-contained 30–45 minute session
+  with a working result at the end. Labs 00–03 make a good first meeting.
+- **No soldering, no special tools.** Everything plugs into a breadboard.
+- **Low cost.** At under $20 a kit, a class of 30 costs less than $600.
+- **Runs on what you have.** Any computer that runs Thonny (Windows, Mac,
+  Chromebook, Linux) works.
+- **Every picture is real.** The screen images come from the labs' own code
+  running on the display, so what students see in the book is what they get.
+- **You don't need to be an expert.** The
+  [Notes for Teachers](teacher-notes.md) give the sourcing guide, timings,
+  and a troubleshooting table for the problems that come up most.
 
 ## What's in the Kit
 
