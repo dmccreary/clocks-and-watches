@@ -129,6 +129,23 @@ Pico, like this:
 | CS | GP6 | purple | "Hey display, I'm talking to you!" |
 | BL | GP7 | gray | The backlight that makes the screen glow |
 
+!!! note "The two unused pins: SDO and TE"
+    The last two pins on the row, **SDO** and **TE**, stay unconnected.
+
+    - **SDO** (serial data out) sends information *from* the display
+      back to the Pico. The watch only ever sends pictures *to* the
+      display, so it never needs this wire.
+    - **TE** (tearing effect) pulses each time the display finishes
+      drawing a frame. It helps very fast animations avoid a visible
+      "tear" line across the screen. The watch labs are not fast enough
+      to need it.
+
+    The **BL** wire is worth a note too. On this display the backlight
+    seems to glow whenever the board has power, whether or not the Pico
+    drives GP7. So don't be surprised if the screen lights up before your
+    program runs. The BL wire is still connected, so a lab can turn the
+    backlight on and off itself if the board supports it.
+
 !!! mascot-warning "Use 3V3, not 5 volts"
     ![Chrono warning](../../img/mascot/warning.png){ class="mascot-admonition-img" }
     The display's VCC wire must go to the Pico's **3V3** pin. The display
