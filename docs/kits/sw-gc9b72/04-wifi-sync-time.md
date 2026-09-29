@@ -35,7 +35,8 @@ wifi_pass = "your-network-password"
 
 4. Save `secrets.py` to the Pico.
 
-!!! warning "Keep secrets secret"
+!!! mascot-warning "Keep secrets secret"
+    ![Chrono warning](../../img/mascot/warning.png){ class="mascot-admonition-img" }
     Never put a password right inside a program, because programs get
     shared. Keeping it in its own file, `secrets.py`, means you can share
     all your programs without sharing your password. This kit's

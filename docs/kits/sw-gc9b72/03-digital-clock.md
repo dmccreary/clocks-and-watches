@@ -37,7 +37,8 @@ year, month, day, hour, minute, second, weekday, _ = time.localtime()
 When Thonny connects to the Pico, it quietly sets the Pico's clock from
 your computer's clock. That's why the time is right.
 
-!!! warning "The Pico forgets the time"
+!!! mascot-warning "The Pico forgets the time"
+    ![Chrono warning](../../img/mascot/warning.png){ class="mascot-admonition-img" }
     The Pico has no battery for its clock. If you unplug it and plug it
     into a wall charger instead of your computer, the clock starts over
     from a date in the past. [Lab 04](04-wifi-sync-time.md) fixes this by

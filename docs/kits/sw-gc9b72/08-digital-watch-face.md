@@ -72,6 +72,14 @@ digit 7, which lights segments a, b, and c:
 The `0b` means "this number is written in binary." Reading from the
 right, the first three bits are for a, b, and c, and they're 1.
 
+!!! mascot-encourage "Binary Takes Practice"
+    ![Chrono giving a thumbs-up](../../img/mascot/encouraging.png){ class="mascot-admonition-img" }
+    If `0b0000111` looks like a secret code, you're not alone, because
+    binary trips up almost everyone at first. You already know which
+    segments light up for each digit from the table above, and each bit is
+    just one of those segments. Try writing the bits for the digit 1 on
+    paper before you read on.
+
 ## Change Only What Changes
 
 When the time goes from 12:59 to 1:00, which segments need redrawing?

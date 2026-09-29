@@ -67,6 +67,13 @@ Pico's memory. When you press MODE, the watch:
 However many times you press MODE, the watch always has about 380 KB of
 memory free.
 
+!!! mascot-thinking "Remember Heap Free?"
+    ![Chrono thinking](../../img/mascot/thinking.png){ class="mascot-admonition-img" }
+    Think back to the `heap free` line in the [lab 01](01-probe.md)
+    checkup. That number is the empty space on the Pico's RAM whiteboard,
+    and loading one mode at a time is what keeps the whiteboard from
+    filling up.
+
 ## Modes That Keep Going
 
 What happens to a stopwatch that's running when you switch to the

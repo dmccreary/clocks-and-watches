@@ -57,6 +57,12 @@ It's like writing down "the race started at 3:15" instead of counting
 holds time from before you stopped it, so starting again picks up where
 you left off.
 
+!!! mascot-thinking "Remember a Moment"
+    ![Chrono thinking](../../img/mascot/thinking.png){ class="mascot-admonition-img" }
+    This idea works far beyond stopwatches. Whenever a program needs to
+    measure time, ask yourself: which moment should I remember? In the next
+    lab, the countdown timer remembers the moment it will *end*.
+
 ## Fastest and Average Laps
 
 The newest lap shows on top in yellow. Once you have two laps or more,

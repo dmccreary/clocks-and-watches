@@ -76,9 +76,12 @@ Pico, like this:
 | CS | GP6 | purple | "Hey display, I'm talking to you!" |
 | BL | GP7 | gray | The backlight that makes the screen glow |
 
-!!! warning "Use 3V3, not 5 volts"
+!!! mascot-warning "Use 3V3, not 5 volts"
+    ![Chrono warning](../../img/mascot/warning.png){ class="mascot-admonition-img" }
     The display's VCC wire must go to the Pico's **3V3** pin. The display
-    is built for 3.3 volts, and 5 volts can damage it.
+    is built for 3.3 volts, and 5 volts can damage it. Just a few pins
+    away are **VSYS** and **VBUS**, which carry about 5 volts from the USB
+    cable, so double-check the label before you plug in.
 
 Each button has two legs. One leg goes to a Pico pin, and the other goes
 to GND:
@@ -134,7 +137,8 @@ Click a picture to open that lab.
 | [11](11-countdown-timer.md) | [![Timer](img/11-timer-running.png){ width="110" }](11-countdown-timer.md) | Make a countdown timer with an alarm |
 | [12](12-main-template.md) | [![Five modes](img/12-mode-weather.png){ width="110" }](12-main-template.md) | Put it all together into one watch with five modes |
 
-!!! tip "Which program is running?"
+!!! mascot-tip "Which program is running?"
+    ![Chrono giving a tip](../../img/mascot/tip.png){ class="mascot-admonition-img" }
     Every lab prints its name and version number in Thonny's shell when it
     starts, like `05-analog-watch-face.py v1.0`. If the screen isn't doing
     what you expect, check that line first. It tells you which program the

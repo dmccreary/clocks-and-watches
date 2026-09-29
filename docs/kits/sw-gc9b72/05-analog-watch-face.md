@@ -26,7 +26,8 @@ screen says "Setting clock" while it asks the internet for the time, as
 in [lab 04](04-wifi-sync-time.md). Then the watch face appears and the
 second hand starts ticking.
 
-!!! tip "No WiFi?"
+!!! mascot-tip "No WiFi?"
+    ![Chrono giving a tip](../../img/mascot/tip.png){ class="mascot-admonition-img" }
     Near the top of the program, change `SYNC_WITH_WIFI = True` to
     `SYNC_WITH_WIFI = False`. The watch will then use the time Thonny set.
 
@@ -51,6 +52,14 @@ every hand and tick mark uses. Why the minus sign? Remember from
 [lab 02](02-hello.md) that on a screen,
 y gets bigger as you go **down**. The minus flips it, so the 12 is at the
 top.
+
+!!! mascot-encourage "Strange-Looking Math?"
+    ![Chrono giving a thumbs-up](../../img/mascot/encouraging.png){ class="mascot-admonition-img" }
+    If sine and cosine look strange, that's normal, since most people don't
+    meet them until high school. You already placed things by x and y in
+    [lab 02](02-hello.md), and these two tools just turn an angle into an x
+    and a y. The `point()` function does the math for you, so all you pick
+    is an angle and a length.
 
 ## Moving Without Flicker
 

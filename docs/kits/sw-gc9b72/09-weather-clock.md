@@ -99,6 +99,12 @@ piece. So it draws each one on "scrap paper" first: a small patch of
 memory called a **frame buffer**, 64 × 64 pixels. When the icon is
 finished, the whole thing is sent to the screen in one quick step.
 
+!!! mascot-thinking "Draw First, Show Later"
+    ![Chrono thinking](../../img/mascot/thinking.png){ class="mascot-admonition-img" }
+    Notice the big idea here: build the whole picture where nobody can see
+    it, then show it all at once. Video games and movies use the same trick,
+    finishing each frame before it reaches the screen.
+
 ## Keeping the Forecast Fresh
 
 The watch gets a new forecast every 30 minutes, at half past and on the

@@ -78,6 +78,13 @@ machines all the time: a character might be *standing*, *running*,
 *jumping*, or *falling*, and pressing the jump button only works in some
 of those states.
 
+!!! mascot-thinking "State Machines Are Everywhere"
+    ![Chrono thinking](../../img/mascot/thinking.png){ class="mascot-admonition-img" }
+    Think about a microwave: on many models, pressing Start while it's
+    already running adds 30 seconds instead of starting over. That's a state machine
+    too. The next time a button surprises you on any gadget, look for the
+    states hiding inside.
+
 ## Counting Down Without Drifting
 
 Like the [stopwatch](10-stopwatch.md), the timer doesn't subtract a little
