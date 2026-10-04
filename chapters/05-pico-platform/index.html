@@ -21,11 +21,8 @@
         <link rel="next" href="../06-getting-time/">
       
       
-        
-      
-      
       <link rel="icon" href="../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
     
     
       
@@ -33,10 +30,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -75,20 +72,34 @@
 
     
     
-  
-<meta property="og:type" content="website" />
-<meta property="og:title" content="5. The Pico Platform: Pins, Files, and Firmware - Clocks and Watches with AI" />
-<meta property="og:description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." />
-<meta property="og:image" content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/chapters/05-pico-platform/index.png" />
-<meta property="og:image:type" content="image/png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://dmccreary.github.io/clocks-and-watches/chapters/05-pico-platform/" />
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="5. The Pico Platform: Pins, Files, and Firmware - Clocks and Watches with AI" />
-<meta property="twitter:description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." />
-<meta property="twitter:image" content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/chapters/05-pico-platform/index.png" />
-</head>
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="5. The Pico Platform: Pins, Files, and Firmware - Clocks and Watches with AI" >
+      
+        <meta  property="og:description"  content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/chapters/05-pico-platform/index.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/clocks-and-watches/chapters/05-pico-platform/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="5. The Pico Platform: Pins, Files, and Firmware - Clocks and Watches with AI" >
+      
+        <meta  name="twitter:description"  content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/chapters/05-pico-platform/index.png" >
+      
+    
+    
+  </head>
   
   
     
@@ -152,13 +163,11 @@
     
     
     
-      
-      
-        <label class="md-header__button md-icon" for="__search">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-        </label>
-        <div class="md-search" data-md-component="search" role="dialog">
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
@@ -167,7 +176,7 @@
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
@@ -190,14 +199,13 @@
     </div>
   </div>
 </div>
-      
     
     
       <div class="md-header__source">
         <a href="https://github.com/dmccreary/clocks-and-watches" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -242,7 +250,7 @@
       <a href="https://github.com/dmccreary/clocks-and-watches" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -262,16 +270,9 @@
       <a href="../.." class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     Home
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -289,16 +290,9 @@
       <a href="../../about/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     About
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -316,16 +310,9 @@
       <a href="../../course-description/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     Course Description
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -365,7 +352,6 @@
     
     
     
-    
       
         
         
@@ -376,20 +362,12 @@
         
   
   
-  
     <a href="../../setup/" class="md-nav__link">
       
   
-  
   <span class="md-ellipsis">
-    
-  
     Setup
-  
-
-    
   </span>
-  
   
 
       
@@ -419,46 +397,85 @@
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
-    
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
     
     
     
@@ -471,20 +488,14 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
+          
           <div class="md-nav__link md-nav__container">
             <a href="../" class="md-nav__link ">
               
   
-  
   <span class="md-ellipsis">
-    
-  
     Chapters
-  
-
-    
   </span>
-  
   
 
             </a>
@@ -499,11 +510,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
-            
-  
-    Chapters
-  
-
+            Chapters
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -519,16 +526,9 @@
       <a href="../01-foundations/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     1. Computational Thinking and Physical Computing
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -547,16 +547,9 @@
       <a href="../02-electronics-fundamentals/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     2. Electronics Fundamentals and Breadboard Wiring
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -575,16 +568,9 @@
       <a href="../03-micropython-basics/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     3. MicroPython Basics: Variables and Data Types
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -603,16 +589,9 @@
       <a href="../04-control-flow-functions/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     4. Control Flow, Functions, and Modules
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -640,16 +619,9 @@
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
-  
   <span class="md-ellipsis">
-    
-  
     5. The Pico Platform: Pins, Files, and Firmware
-  
-
-    
   </span>
-  
   
 
           <span class="md-nav__icon md-icon"></span>
@@ -658,16 +630,9 @@
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     5. The Pico Platform: Pins, Files, and Firmware
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -690,9 +655,7 @@
         <li class="md-nav__item">
   <a href="#summary" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Summary
-      
+      Summary
     </span>
   </a>
   
@@ -701,9 +664,7 @@
         <li class="md-nav__item">
   <a href="#concepts-covered" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Concepts Covered
-      
+      Concepts Covered
     </span>
   </a>
   
@@ -712,9 +673,7 @@
         <li class="md-nav__item">
   <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Prerequisites
-      
+      Prerequisites
     </span>
   </a>
   
@@ -723,9 +682,7 @@
         <li class="md-nav__item">
   <a href="#getting-to-know-the-platform" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Getting to Know the Platform
-      
+      Getting to Know the Platform
     </span>
   </a>
   
@@ -734,9 +691,7 @@
         <li class="md-nav__item">
   <a href="#gpio-pins" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        GPIO Pins
-      
+      GPIO Pins
     </span>
   </a>
   
@@ -746,9 +701,7 @@
           <li class="md-nav__item">
   <a href="#diagram-pico-pinout-explorer" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Diagram: Pico Pinout Explorer
-      
+      Diagram: Pico Pinout Explorer
     </span>
   </a>
   
@@ -762,9 +715,7 @@
         <li class="md-nav__item">
   <a href="#pin-configuration" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Pin Configuration
-      
+      Pin Configuration
     </span>
   </a>
   
@@ -773,9 +724,7 @@
         <li class="md-nav__item">
   <a href="#pull-up-resistors" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Pull-Up Resistors
-      
+      Pull-Up Resistors
     </span>
   </a>
   
@@ -785,9 +734,7 @@
           <li class="md-nav__item">
   <a href="#internal-pull-up" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Internal Pull-Up
-      
+      Internal Pull-Up
     </span>
   </a>
   
@@ -797,9 +744,7 @@
           <li class="md-nav__item">
   <a href="#diagram-pull-up-button-lab" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Diagram: Pull-Up Button Lab
-      
+      Diagram: Pull-Up Button Lab
     </span>
   </a>
   
@@ -818,9 +763,7 @@
         <li class="md-nav__item">
   <a href="#pico-w" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Pico W
-      
+      Pico W
     </span>
   </a>
   
@@ -829,9 +772,7 @@
         <li class="md-nav__item">
   <a href="#flash-memory" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Flash Memory
-      
+      Flash Memory
     </span>
   </a>
   
@@ -840,9 +781,7 @@
         <li class="md-nav__item">
   <a href="#file-system-on-pico" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        File System on Pico
-      
+      File System on Pico
     </span>
   </a>
   
@@ -851,9 +790,7 @@
         <li class="md-nav__item">
   <a href="#boot-and-main-files" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Boot and Main Files
-      
+      Boot and Main Files
     </span>
   </a>
   
@@ -863,9 +800,7 @@
           <li class="md-nav__item">
   <a href="#diagram-pico-startup-sequence" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Diagram: Pico Startup Sequence
-      
+      Diagram: Pico Startup Sequence
     </span>
   </a>
   
@@ -879,9 +814,7 @@
         <li class="md-nav__item">
   <a href="#config-file-pattern" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Config File Pattern
-      
+      Config File Pattern
     </span>
   </a>
   
@@ -890,9 +823,7 @@
         <li class="md-nav__item">
   <a href="#firmware-versions" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Firmware Versions
-      
+      Firmware Versions
     </span>
   </a>
   
@@ -902,9 +833,7 @@
           <li class="md-nav__item">
   <a href="#firmware-flashing" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Firmware Flashing
-      
+      Firmware Flashing
     </span>
   </a>
   
@@ -918,9 +847,7 @@
         <li class="md-nav__item">
   <a href="#interpreter-selection" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Interpreter Selection
-      
+      Interpreter Selection
     </span>
   </a>
   
@@ -929,9 +856,7 @@
         <li class="md-nav__item">
   <a href="#file-transfer-to-pico" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        File Transfer to Pico
-      
+      File Transfer to Pico
     </span>
   </a>
   
@@ -940,9 +865,7 @@
         <li class="md-nav__item">
   <a href="#code-upload-process" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Code Upload Process
-      
+      Code Upload Process
     </span>
   </a>
   
@@ -951,9 +874,7 @@
         <li class="md-nav__item">
   <a href="#serial-monitor" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Serial Monitor
-      
+      Serial Monitor
     </span>
   </a>
   
@@ -962,9 +883,7 @@
         <li class="md-nav__item">
   <a href="#version-control-basics" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Version Control Basics
-      
+      Version Control Basics
     </span>
   </a>
   
@@ -973,9 +892,7 @@
         <li class="md-nav__item">
   <a href="#memory-management" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Memory Management
-      
+      Memory Management
     </span>
   </a>
   
@@ -985,9 +902,7 @@
           <li class="md-nav__item">
   <a href="#garbage-collection" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Garbage Collection
-      
+      Garbage Collection
     </span>
   </a>
   
@@ -1001,9 +916,7 @@
         <li class="md-nav__item">
   <a href="#dual-core-usage" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Dual Core Usage
-      
+      Dual Core Usage
     </span>
   </a>
   
@@ -1012,9 +925,7 @@
         <li class="md-nav__item">
   <a href="#putting-it-together" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Putting It Together
-      
+      Putting It Together
     </span>
   </a>
   
@@ -1023,9 +934,7 @@
         <li class="md-nav__item">
   <a href="#key-takeaways" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Key Takeaways
-      
+      Key Takeaways
     </span>
   </a>
   
@@ -1034,9 +943,7 @@
         <li class="md-nav__item">
   <a href="#practice-questions" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Practice Questions
-      
+      Practice Questions
     </span>
   </a>
   
@@ -1061,16 +968,9 @@
       <a href="../06-getting-time/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     6. Getting the Time in MicroPython
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -1089,16 +989,9 @@
       <a href="../07-buttons-state-machines/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     7. Buttons, Interrupts, and State Machines
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -1117,16 +1010,9 @@
       <a href="../08-communication-buses/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     8. Communication Buses: I2C, SPI, and UART
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -1145,16 +1031,9 @@
       <a href="../09-led-displays/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     9. LED Displays and the First Digital Clock
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -1173,16 +1052,9 @@
       <a href="../10-clock-math/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     10. Coordinates, Trigonometry, and Clock Geometry
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -1201,16 +1073,9 @@
       <a href="../11-oled-framebuffers/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     11. OLED Displays and Framebuffers
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -1229,16 +1094,9 @@
       <a href="../12-drawing-text-animation/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     12. Drawing Shapes, Text, and Animation
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -1257,16 +1115,9 @@
       <a href="../13-real-time-clocks/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     13. Real-Time Clocks and the DS3231
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -1285,16 +1136,9 @@
       <a href="../14-wifi-ntp/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     14. WiFi, NTP, and Time Accuracy
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -1313,16 +1157,9 @@
       <a href="../15-color-displays/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     15. Color Displays and Smartwatch Faces
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -1341,16 +1178,9 @@
       <a href="../16-neopixels-shift-registers/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     16. NeoPixels and Shift Register Clocks
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -1369,16 +1199,9 @@
       <a href="../17-sound-alarms-timers/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     17. Sound, Alarms, and Timers
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -1397,16 +1220,9 @@
       <a href="../18-sensors-power/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     18. Sensors, Power, and Low-Power Design
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -1425,16 +1241,9 @@
       <a href="../19-epaper-weather/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     19. E-Paper and Weather Displays
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -1453,16 +1262,9 @@
       <a href="../20-design-testing-ai/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     20. Design, Testing, and AI-Assisted Development
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -1518,14 +1320,17 @@
         
       
         
+          
+        
       
+        
+          
         
       
         
       
         
       
-    
     
     
     
@@ -1537,22 +1342,14 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-  
   
   
     <a href="../../lessons/" class="md-nav__link">
       
   
-  
   <span class="md-ellipsis">
-    
-  
     Lessons
-  
-
-    
   </span>
-  
   
 
       
@@ -1594,7 +1391,15 @@
         
       
         
+          
+        
       
+        
+          
+        
+      
+        
+          
         
       
         
@@ -1614,7 +1419,7 @@
         
       
         
-      
+          
         
       
         
@@ -1623,7 +1428,10 @@
       
         
       
-    
+        
+          
+        
+      
     
     
     
@@ -1635,22 +1443,14 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-  
   
   
     <a href="../../kits/" class="md-nav__link">
       
   
-  
   <span class="md-ellipsis">
-    
-  
     Kits
-  
-
-    
   </span>
-  
   
 
       
@@ -1692,7 +1492,6 @@
     
     
     
-    
       
         
         
@@ -1701,22 +1500,14 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-  
   
   
     <a href="../../learning-graph/" class="md-nav__link">
       
   
-  
   <span class="md-ellipsis">
-    
-  
     Learning Graph
-  
-
-    
   </span>
-  
   
 
       
@@ -1744,32 +1535,57 @@
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
+          
+        
       
-    
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
     
     
     
@@ -1781,22 +1597,14 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-  
   
   
     <a href="../../sims/" class="md-nav__link">
       
   
-  
   <span class="md-ellipsis">
-    
-  
     MicroSims
-  
-
-    
   </span>
-  
   
 
       
@@ -1844,7 +1652,6 @@
     
     
     
-    
       
         
         
@@ -1855,20 +1662,12 @@
         
   
   
-  
     <a href="../../prompts/" class="md-nav__link">
       
   
-  
   <span class="md-ellipsis">
-    
-  
     Prompts
-  
-
-    
   </span>
-  
   
 
       
@@ -1892,16 +1691,9 @@
       <a href="../../glossary/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     Glossary
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -1919,16 +1711,9 @@
       <a href="../../faq/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     FAQ
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -1946,16 +1731,9 @@
       <a href="../../references/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     References
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -1973,16 +1751,9 @@
       <a href="../../contact/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     Contact
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -2000,16 +1771,9 @@
       <a href="../../faq/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     FAQ
-  
-
-    
   </span>
-  
   
 
       </a>
@@ -2046,9 +1810,7 @@
         <li class="md-nav__item">
   <a href="#summary" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Summary
-      
+      Summary
     </span>
   </a>
   
@@ -2057,9 +1819,7 @@
         <li class="md-nav__item">
   <a href="#concepts-covered" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Concepts Covered
-      
+      Concepts Covered
     </span>
   </a>
   
@@ -2068,9 +1828,7 @@
         <li class="md-nav__item">
   <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Prerequisites
-      
+      Prerequisites
     </span>
   </a>
   
@@ -2079,9 +1837,7 @@
         <li class="md-nav__item">
   <a href="#getting-to-know-the-platform" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Getting to Know the Platform
-      
+      Getting to Know the Platform
     </span>
   </a>
   
@@ -2090,9 +1846,7 @@
         <li class="md-nav__item">
   <a href="#gpio-pins" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        GPIO Pins
-      
+      GPIO Pins
     </span>
   </a>
   
@@ -2102,9 +1856,7 @@
           <li class="md-nav__item">
   <a href="#diagram-pico-pinout-explorer" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Diagram: Pico Pinout Explorer
-      
+      Diagram: Pico Pinout Explorer
     </span>
   </a>
   
@@ -2118,9 +1870,7 @@
         <li class="md-nav__item">
   <a href="#pin-configuration" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Pin Configuration
-      
+      Pin Configuration
     </span>
   </a>
   
@@ -2129,9 +1879,7 @@
         <li class="md-nav__item">
   <a href="#pull-up-resistors" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Pull-Up Resistors
-      
+      Pull-Up Resistors
     </span>
   </a>
   
@@ -2141,9 +1889,7 @@
           <li class="md-nav__item">
   <a href="#internal-pull-up" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Internal Pull-Up
-      
+      Internal Pull-Up
     </span>
   </a>
   
@@ -2153,9 +1899,7 @@
           <li class="md-nav__item">
   <a href="#diagram-pull-up-button-lab" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Diagram: Pull-Up Button Lab
-      
+      Diagram: Pull-Up Button Lab
     </span>
   </a>
   
@@ -2174,9 +1918,7 @@
         <li class="md-nav__item">
   <a href="#pico-w" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Pico W
-      
+      Pico W
     </span>
   </a>
   
@@ -2185,9 +1927,7 @@
         <li class="md-nav__item">
   <a href="#flash-memory" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Flash Memory
-      
+      Flash Memory
     </span>
   </a>
   
@@ -2196,9 +1936,7 @@
         <li class="md-nav__item">
   <a href="#file-system-on-pico" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        File System on Pico
-      
+      File System on Pico
     </span>
   </a>
   
@@ -2207,9 +1945,7 @@
         <li class="md-nav__item">
   <a href="#boot-and-main-files" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Boot and Main Files
-      
+      Boot and Main Files
     </span>
   </a>
   
@@ -2219,9 +1955,7 @@
           <li class="md-nav__item">
   <a href="#diagram-pico-startup-sequence" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Diagram: Pico Startup Sequence
-      
+      Diagram: Pico Startup Sequence
     </span>
   </a>
   
@@ -2235,9 +1969,7 @@
         <li class="md-nav__item">
   <a href="#config-file-pattern" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Config File Pattern
-      
+      Config File Pattern
     </span>
   </a>
   
@@ -2246,9 +1978,7 @@
         <li class="md-nav__item">
   <a href="#firmware-versions" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Firmware Versions
-      
+      Firmware Versions
     </span>
   </a>
   
@@ -2258,9 +1988,7 @@
           <li class="md-nav__item">
   <a href="#firmware-flashing" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Firmware Flashing
-      
+      Firmware Flashing
     </span>
   </a>
   
@@ -2274,9 +2002,7 @@
         <li class="md-nav__item">
   <a href="#interpreter-selection" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Interpreter Selection
-      
+      Interpreter Selection
     </span>
   </a>
   
@@ -2285,9 +2011,7 @@
         <li class="md-nav__item">
   <a href="#file-transfer-to-pico" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        File Transfer to Pico
-      
+      File Transfer to Pico
     </span>
   </a>
   
@@ -2296,9 +2020,7 @@
         <li class="md-nav__item">
   <a href="#code-upload-process" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Code Upload Process
-      
+      Code Upload Process
     </span>
   </a>
   
@@ -2307,9 +2029,7 @@
         <li class="md-nav__item">
   <a href="#serial-monitor" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Serial Monitor
-      
+      Serial Monitor
     </span>
   </a>
   
@@ -2318,9 +2038,7 @@
         <li class="md-nav__item">
   <a href="#version-control-basics" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Version Control Basics
-      
+      Version Control Basics
     </span>
   </a>
   
@@ -2329,9 +2047,7 @@
         <li class="md-nav__item">
   <a href="#memory-management" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Memory Management
-      
+      Memory Management
     </span>
   </a>
   
@@ -2341,9 +2057,7 @@
           <li class="md-nav__item">
   <a href="#garbage-collection" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Garbage Collection
-      
+      Garbage Collection
     </span>
   </a>
   
@@ -2357,9 +2071,7 @@
         <li class="md-nav__item">
   <a href="#dual-core-usage" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Dual Core Usage
-      
+      Dual Core Usage
     </span>
   </a>
   
@@ -2368,9 +2080,7 @@
         <li class="md-nav__item">
   <a href="#putting-it-together" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Putting It Together
-      
+      Putting It Together
     </span>
   </a>
   
@@ -2379,9 +2089,7 @@
         <li class="md-nav__item">
   <a href="#key-takeaways" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Key Takeaways
-      
+      Key Takeaways
     </span>
   </a>
   
@@ -2390,9 +2098,7 @@
         <li class="md-nav__item">
   <a href="#practice-questions" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Practice Questions
-      
+      Practice Questions
     </span>
   </a>
   
@@ -2408,59 +2114,9 @@
           
           
             <div class="md-content" data-md-component="content">
-              
-                
-
-
-
-  
-
-
-  <nav class="md-path" aria-label="Navigation" >
-    <ol class="md-path__list">
-      
-        
-  
-  
-    <li class="md-path__item">
-      <a href="../.." class="md-path__link">
-        
-  <span class="md-ellipsis">
-    Home
-  </span>
-
-      </a>
-    </li>
-  
-
-      
-      
-        
-  
-  
-    
-    
-      <li class="md-path__item">
-        <a href="../" class="md-path__link">
-          
-  <span class="md-ellipsis">
-    Chapters
-  </span>
-
-        </a>
-      </li>
-    
-  
-
-      
-    </ol>
-  </nav>
-
-              
               <article class="md-content__inner md-typeset">
                 
                   
-
 
   
   
@@ -3023,6 +2679,9 @@ You can now pick the right pin, wire a button with a pull-up, save a <code>main.
 
 
 
+  
+  
+
 
 
   
@@ -3056,7 +2715,7 @@ You can now pick the right pin, wire a button with a pull-up, save a <code>main.
           <a href="../04-control-flow-functions/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 4. Control Flow, Functions, and Modules">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
@@ -3081,7 +2740,7 @@ You can now pick the right pin, wire a button with a pull-up, save a <code>main.
             </div>
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M247.1 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L179.2 256 41.9 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
             </div>
           </a>
         
@@ -3109,13 +2768,10 @@ You can now pick the right pin, wire a button with a pull-up, save a <code>main.
     </div>
     
     
-    
-      
-      
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
         <script src="../../js/extra.js"></script>
       

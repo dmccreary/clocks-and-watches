@@ -1,0 +1,3083 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/clocks-and-watches/kits/study-buddy/02-features/">
+      
+      
+        <link rel="prev" href="../01-architecture/">
+      
+      
+        <link rel="next" href="../03-pack-formats/">
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Features - Clocks and Watches with AI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-EKTEBLZ2KP"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-EKTEBLZ2KP",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-EKTEBLZ2KP",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Features - Clocks and Watches with AI" >
+      
+        <meta  property="og:description"  content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/kits/study-buddy/02-features.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/clocks-and-watches/kits/study-buddy/02-features/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Features - Clocks and Watches with AI" >
+      
+        <meta  name="twitter:description"  content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/kits/study-buddy/02-features.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#642580" data-md-color-accent="#41BAC1">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#features" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Clocks and Watches with AI" class="md-header__button md-logo" aria-label="Clocks and Watches with AI" data-md-component="logo">
+      
+  <img src="../../../img/logo-180x180.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Clocks and Watches with AI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Features
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/clocks-and-watches" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Clocks and Watches with AI" class="md-nav__button md-logo" aria-label="Clocks and Watches with AI" data-md-component="logo">
+      
+  <img src="../../../img/logo-180x180.png" alt="logo">
+
+    </a>
+    Clocks and Watches with AI
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/clocks-and-watches" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../setup/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Setup
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../chapters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../lessons/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Lessons
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Kits
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Kits
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gallery/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gallery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../tm1637/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    TM1637 LED Kit
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../led-displays/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    LED Displays
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../neopixel/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    NeoPixel Clocks
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../char-lcd-clock/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Character LCD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../ssd1306-i2c/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    SSD1306 I2C
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../oled-large/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Large OLED
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stopwatch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Stopwatch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oled-wireless/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wireless OLED
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sh1106/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SH1106 OLED
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../st7735/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ST7735
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../ili9341/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ILI9341
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../gc9a01/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    GC9A01
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sw-gc9b72/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Chrono Smart Clock Kit (GC9B72, Pico 2 W)
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_16" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Study Buddy (Spec)
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_16" id="__nav_7_16_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_16_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7_16">
+            <span class="md-nav__icon md-icon"></span>
+            Study Buddy (Spec)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Features
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Features
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#button-conventions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Button Conventions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-quiz-mode_reminder" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Quiz (mode_reminder)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Next Quiz (mode_reminder)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-screen" class="md-nav__link">
+    <span class="md-ellipsis">
+      The screen
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-it-chimes" class="md-nav__link">
+    <span class="md-ellipsis">
+      When it chimes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rules
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getting-events-on" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting events on
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flash-quiz-mode_quiz" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flash Quiz (mode_quiz)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Flash Quiz (mode_quiz)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-round" class="md-nav__link">
+    <span class="md-ellipsis">
+      A round
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#choices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Choices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remembering-what-you-miss" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remembering what you miss
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#math-facts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math Facts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#daily-quote-mode_quote" class="md-nav__link">
+    <span class="md-ellipsis">
+      Daily Quote (mode_quote)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Daily Quote (mode_quote)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      Layout
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#study-timer-mode_study" class="md-nav__link">
+    <span class="md-ellipsis">
+      Study Timer (mode_study)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#library-mode_library" class="md-nav__link">
+    <span class="md-ellipsis">
+      Library (mode_library)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#later-ideas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Later Ideas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#round-screen-layout-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Round-Screen Layout Rules
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-pack-formats/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pack Formats
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-audio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Audio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-roadmap/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Roadmap and Risks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../lilygo/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    LILYGO SY7789
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../portable-watch-kits/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Portable SmartWatch Kits
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../waveshare-lcd/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Waveshare
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../max7219/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MAX7219
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../e-paper/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    E-Paper Clock
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../waveshare-e-paper/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Waveshare E-Paper
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../alarm-clock/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Alarm Clock
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tm1650-led-clock/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TM1650 Clock
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../prompts/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#button-conventions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Button Conventions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-quiz-mode_reminder" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Quiz (mode_reminder)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Next Quiz (mode_reminder)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-screen" class="md-nav__link">
+    <span class="md-ellipsis">
+      The screen
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-it-chimes" class="md-nav__link">
+    <span class="md-ellipsis">
+      When it chimes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rules
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getting-events-on" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting events on
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flash-quiz-mode_quiz" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flash Quiz (mode_quiz)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Flash Quiz (mode_quiz)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-round" class="md-nav__link">
+    <span class="md-ellipsis">
+      A round
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#choices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Choices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remembering-what-you-miss" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remembering what you miss
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#math-facts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math Facts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#daily-quote-mode_quote" class="md-nav__link">
+    <span class="md-ellipsis">
+      Daily Quote (mode_quote)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Daily Quote (mode_quote)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      Layout
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#study-timer-mode_study" class="md-nav__link">
+    <span class="md-ellipsis">
+      Study Timer (mode_study)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#library-mode_library" class="md-nav__link">
+    <span class="md-ellipsis">
+      Library (mode_library)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#later-ideas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Later Ideas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#round-screen-layout-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Round-Screen Layout Rules
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="features">Features</h1>
+<p>Each feature is one mode. Screens are described for the round 360×360
+display, where the usable area is the circle of radius <code>SAFE_RADIUS</code>
+(168 px), narrower near the top and bottom. See
+<a href="#round-screen-layout-rules">Round-Screen Layout Rules</a> at the end.</p>
+<h2 id="button-conventions">Button Conventions</h2>
+<p>Every study mode uses the buttons the same way, so students learn them
+once:</p>
+<table>
+<thead>
+<tr>
+<th>Button</th>
+<th>Usual job in a study mode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>UP</strong></td>
+<td>Move up, or the main action (start, next)</td>
+</tr>
+<tr>
+<td><strong>DOWN</strong></td>
+<td>Move down, or the secondary action (skip, back)</td>
+</tr>
+<tr>
+<td><strong>MODE, short</strong></td>
+<td>Switch to the next pinned mode. When a mode is in the middle of a task (an open question, a setting screen), it keeps MODE and uses it as <strong>confirm</strong>.</td>
+</tr>
+<tr>
+<td><strong>MODE, long (1 s)</strong></td>
+<td>Leave the task. Ends a quiz round, or backs out of a setting screen.</td>
+</tr>
+</tbody>
+</table>
+<p>This is the timer's rule from <a href="../../sw-gc9b72/12-main-template/#the-buttons-changed-a-little">Lab 12</a>,
+applied everywhere.</p>
+<hr />
+<h2 id="next-quiz-mode_reminder">Next Quiz (<code>mode_reminder</code>)</h2>
+<p><strong>Goal:</strong> "Remind me when my next algebra quiz is."</p>
+<h3 id="the-screen">The screen</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>        NEXT QUIZ
+      Algebra quiz
+        2 days
+        4 hours
+   Fri Oct 9  9:15 AM
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>The subject and kind use the big font, centered, in the event's color.</li>
+<li>The countdown shows the two largest units that are not zero: <em>2 days 4
+  hours</em>, <em>3 hours 20 min</em>, <em>45 min</em>. Under an hour, it counts down in
+  minutes and seconds.</li>
+<li>The date and time of the event sit below in the small font.</li>
+<li>UP and DOWN step through the next few upcoming events. A small
+  "Event 1 of 4" line shows where you are. It sits above the template's
+  dot strip, never in it.</li>
+<li>With no events, it shows "No events. Add some at: <address>" (see
+  <a href="#getting-events-on">Getting Events On</a>).</li>
+</ul>
+<h3 id="when-it-chimes">When it chimes</h3>
+<p>Each event has up to three reminders. The default is all three:</p>
+<table>
+<thead>
+<tr>
+<th>Reminder</th>
+<th>When</th>
+<th>Message on screen</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>night_before</code></td>
+<td>7:00 PM the day before</td>
+<td>"Tomorrow: Algebra quiz"</td>
+</tr>
+<tr>
+<td><code>morning_of</code></td>
+<td>7:00 AM that day</td>
+<td>"Today: Algebra quiz"</td>
+</tr>
+<tr>
+<td><code>hour_before</code></td>
+<td>60 minutes before</td>
+<td>"In 1 hour: Algebra quiz"</td>
+</tr>
+</tbody>
+</table>
+<p>A reminder is skipped if its time has already passed when the event is
+added, and if the Study Buddy is off when a reminder is due, the <strong>most
+recent</strong> missed reminder shows at power-up as a banner on the first screen.
+Events more than 24 hours past are dropped from the list.</p>
+<p>When a reminder fires, the template switches to this mode and plays a chime
+(see <a href="../04-audio/">Audio</a>). Pressing any button stops the chime and shows
+the event, and a second press returns to the previous mode.</p>
+<h3 id="rules">Rules</h3>
+<ul>
+<li>Event times are local. The RTC already holds local time, so reminders
+  use <code>time.mktime(time.localtime())</code> and need no time zone math.</li>
+<li>Reminders compare wall-clock seconds, never <code>ticks_ms()</code>. See
+  <a href="../01-architecture/#the-reminder-check">the reminder check</a>.</li>
+<li>A reminder never interrupts a quiz question or a timer being set. The
+  template waits up to 30 seconds.</li>
+<li>Up to 50 events are loaded. Extra events are ignored, and the Pico
+  prints a warning.</li>
+</ul>
+<h3 id="getting-events-on">Getting events on</h3>
+<p>Three stages, each usable on its own:</p>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>How</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>v1: file</strong></td>
+<td>The student edits <code>user/events.json</code> in Thonny.</td>
+<td>Free, but needs a computer.</td>
+</tr>
+<tr>
+<td><strong>v2: phone form</strong></td>
+<td>Holding MODE in this mode opens a setup screen that starts a tiny web server on the Pico. The screen shows its address (and <code>studybuddy.local</code> if mDNS works <strong>(verify)</strong>). The student opens it on a phone, fills in a form (subject, kind, date, time), and the Pico writes <code>user/events.json</code>.</td>
+<td>Needs a small <code>microdot</code>-style server in the Pico's RAM. Only runs while the student is in this screen.</td>
+</tr>
+<tr>
+<td><strong>v3: calendar feed</strong></td>
+<td><code>secrets.py</code> holds a private <code>.ics</code> calendar address (Google Calendar, Canvas, and Google Classroom can all publish one). The Pico fetches it once a day, <strong>streams</strong> it a chunk at a time (never loading the whole file), and keeps events whose title contains <em>quiz</em>, <em>test</em>, or <em>exam</em>.</td>
+<td>Calendar files can be hundreds of KB, so parsing must be streaming. The address is a secret and must never be printed or shown.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">The calendar address is a password</p>
+<p>A private <code>.ics</code> address lets anyone who has it read the whole
+calendar. It goes in <code>secrets.py</code> (which is never shared) and is never
+printed in the Thonny shell.</p>
+</div>
+<hr />
+<h2 id="flash-quiz-mode_quiz">Flash Quiz (<code>mode_quiz</code>)</h2>
+<p><strong>Goal:</strong> "Help quiz me on state capitals."</p>
+<p>The same engine plays any <strong>pairs deck</strong>: state and capital, Spanish and
+English, element and symbol, word and definition. See
+<a href="../03-pack-formats/#pairs-deck">Pack Formats</a>.</p>
+<h3 id="a-round">A round</h3>
+<ol>
+<li><strong>Pick a deck.</strong> UP and DOWN choose among installed decks. MODE starts.</li>
+<li><strong>Ten questions</strong> per round. Each shows a prompt and four choices:
+   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>     Capital of
+       Ohio?
+
+    &gt; Columbus
+      Cleveland
+      Cincinnati
+      Dayton
+</code></pre></div></td></tr></table></div></li>
+<li><strong>Choose.</strong> UP and DOWN move the <code>&gt;</code> marker. <strong>MODE confirms.</strong></li>
+<li><strong>Feedback.</strong> Right: the answer turns green, with a rising two-note
+   jingle. Wrong: the picked answer turns red, the right one turns green,
+   and a short low buzz plays. The screen waits for any button.</li>
+<li><strong>Results.</strong> "8 of 10", a bar of ten dots (green or red), and a
+   message from the encouragement list (see <a href="#daily-quote-mode_quote">Daily Quote</a>).
+   MODE moves on, UP starts another round.</li>
+</ol>
+<p>Holding MODE during a question ends the round and shows the results so far.</p>
+<h3 id="choices">Choices</h3>
+<p>The engine builds the wrong answers itself, so a deck only needs pairs:</p>
+<ul>
+<li>Take the other pairs' answers in the <strong>same deck</strong>.</li>
+<li>If an item has a <code>group</code> tag (for example <code>"region": "Midwest"</code>),
+  prefer wrong answers from the same group. This makes the questions
+  harder and more sensible.</li>
+<li>Never offer the right answer twice, and never offer two identical
+  choices.</li>
+<li>A deck with fewer than 4 pairs offers as many choices as it has.</li>
+<li><strong>Direction.</strong> Each round is <em>a→b</em> or <em>b→a</em>, chosen by the student before
+  the round. Default is the deck's own <code>default_direction</code>.</li>
+</ul>
+<h3 id="remembering-what-you-miss">Remembering what you miss</h3>
+<p>The quiz keeps a simple three-box (Leitner) record per item:</p>
+<table>
+<thead>
+<tr>
+<th>Box</th>
+<th>Meaning</th>
+<th>Chance of being asked</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>New, or missed recently</td>
+<td>weight 5</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Got right once</td>
+<td>weight 2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Got right twice in a row</td>
+<td>weight 1</td>
+</tr>
+</tbody>
+</table>
+<p>Right moves an item up one box (to a maximum of 3), wrong sends it back to
+box 1. Questions are chosen by weight, and never the same item twice
+in a row. Records live in <code>user/progress.json</code> and are written at the end
+of each round, not after every question, to avoid wearing out the flash.</p>
+<p>The deck-picking screen shows how many items are in box 3, such as
+"US Capitals 31/50".</p>
+<h3 id="math-facts">Math Facts</h3>
+<p><code>mode_mathfacts</code> uses the same screens with questions generated on the
+Pico, so no deck file is needed: times tables (2 to 12 chosen by the
+student), plus addition, subtraction, and division. Wrong answers are near
+misses (the answer ±1, ±2, or a neighboring table value), which is how
+real mistakes happen. Progress is kept per table.</p>
+<hr />
+<h2 id="daily-quote-mode_quote">Daily Quote (<code>mode_quote</code>)</h2>
+<p><strong>Goal:</strong> "Give me encouraging and inspirational quotes about education."</p>
+<ul>
+<li>Shows one quote at a time, centered, with the speaker's name beneath it
+  in a different color.</li>
+<li><strong>Quote of the day:</strong> a quote chosen from the date alone, so the Study
+  Buddy shows the same one all day and a different one tomorrow, with no
+  need to store anything.</li>
+<li><strong>UP</strong> shows another quote (random, not repeating until the whole deck
+  has been shown). <strong>DOWN</strong> goes back one.</li>
+<li>A soft chime plays when the day's quote first appears.</li>
+<li>Quotes also feed the quiz's results screen and the "you've missed three
+  in a row" message, using an optional <code>tags</code> list (<code>"encourage"</code>,
+  <code>"persist"</code>, <code>"curious"</code>).</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Check every attribution</p>
+<p>Quotes are the easiest content to get wrong, because many famous
+lines are credited to people who never said them. Each quote in a
+shipped deck needs a <code>source</code> note, and a quote with no verified
+source is attributed to "Unknown" or left out. Making students check
+one quote's source is a good lab in itself.</p>
+</div>
+<h3 id="layout">Layout</h3>
+<p>Text is wrapped by a <strong>circle-aware</strong> word-wrap: the number of characters
+per line depends on how wide the circle is at that row. In the big font,
+the middle rows hold about 20 characters and rows near the top and bottom
+hold about 12. A quote that cannot fit in 9 lines in the big font uses the
+small font instead.</p>
+<hr />
+<h2 id="study-timer-mode_study">Study Timer (<code>mode_study</code>)</h2>
+<p>A countdown timer with two phases, built from
+<a href="../../sw-gc9b72/11-countdown-timer/"><code>mode_timer.py</code></a>:</p>
+<ul>
+<li><strong>Focus</strong> (default 25 minutes), then <strong>Break</strong> (default 5 minutes), then
+  repeat. A long break (15 minutes) follows every fourth focus session.</li>
+<li>The ring and the digits are the timer's. The ring is <strong>blue</strong> for focus
+  and <strong>green</strong> for break.</li>
+<li>A chime marks each change of phase. Because the timer already hands the
+  template a <code>wake_at</code>, it chimes in any mode.</li>
+<li>A hold of MODE sets the lengths, exactly like Lab 12's timer.</li>
+<li><strong>Study minutes today</strong> (completed focus sessions only) add up and are
+  shown on the idle screen as a ring that fills toward a daily goal.
+  This reuses <code>TickRing</code> from <code>watchparts.py</code>.</li>
+</ul>
+<hr />
+<h2 id="library-mode_library">Library (<code>mode_library</code>)</h2>
+<p>See <a href="../01-architecture/#the-library-mode">Architecture</a>.</p>
+<hr />
+<h2 id="later-ideas">Later Ideas</h2>
+<p>Not in the first version, listed so they are not forgotten:</p>
+<ul>
+<li><strong>Homework checklist.</strong> UP and DOWN scroll, MODE ticks an item. Items
+  come from the phone form.</li>
+<li><strong>Brain break.</strong> A slow breathing animation with soft tones, started by
+  a long press.</li>
+<li><strong>Spelling with sound.</strong> Say the word through the speaker, then show
+  four spellings. This needs a pack with audio files.</li>
+<li><strong>Spaced reminders for quiz prep.</strong> If a quiz is in 3 days, the Study
+  Buddy suggests a round of the matching deck.</li>
+</ul>
+<h2 id="round-screen-layout-rules">Round-Screen Layout Rules</h2>
+<p>The glass is a circle of radius 180, with <code>SAFE_RADIUS</code> 168 for anything
+that must not be cut off. At a distance <code>d</code> from the center row, the safe
+half-width is <code>sqrt(168² − d²)</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Row distance from center</th>
+<th>Safe width</th>
+<th>Big font (16 px)</th>
+<th>Small font (8 px)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>336 px</td>
+<td>21 characters</td>
+<td>42 characters</td>
+</tr>
+<tr>
+<td>60</td>
+<td>314 px</td>
+<td>19</td>
+<td>39</td>
+</tr>
+<tr>
+<td>100</td>
+<td>270 px</td>
+<td>16</td>
+<td>33</td>
+</tr>
+<tr>
+<td>140</td>
+<td>186 px</td>
+<td>11</td>
+<td>23</td>
+</tr>
+</tbody>
+</table>
+<p>Rules for every study mode:</p>
+<ol>
+<li>Place short text (titles, one-word answers) near the top and bottom.
+   Place long text in the middle rows.</li>
+<li>A choice that does not fit in the big font drops to the small font
+   instead of being cut off.</li>
+<li>The bottom dot strip (y = 316 to 328) is the template's. Do not draw
+   there.</li>
+<li>Redraw only what changed, as every watch face does, and avoid
+   full-screen fills while audio plays.</li>
+</ol>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../01-architecture/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Architecture">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Architecture
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../03-pack-formats/" class="md-footer__link md-footer__link--next" aria-label="Next: Pack Formats">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Pack Formats
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../js/extra.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
