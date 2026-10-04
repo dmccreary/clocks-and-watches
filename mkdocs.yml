@@ -200,6 +200,13 @@ nav:
       - 11 Countdown Timer: kits/sw-gc9b72/11-countdown-timer.md
       - 12 Five Modes: kits/sw-gc9b72/12-main-template.md
       - Notes for Teachers: kits/sw-gc9b72/teacher-notes.md
+    - Study Buddy (Spec):
+      - Introduction: kits/study-buddy/index.md
+      - Architecture: kits/study-buddy/01-architecture.md
+      - Features: kits/study-buddy/02-features.md
+      - Pack Formats: kits/study-buddy/03-pack-formats.md
+      - Audio: kits/study-buddy/04-audio.md
+      - Roadmap and Risks: kits/study-buddy/05-roadmap.md
     - LILYGO SY7789:
       - Introduction: kits/lilygo/index.md
     - Portable SmartWatch Kits:
