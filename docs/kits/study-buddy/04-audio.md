@@ -158,11 +158,26 @@ one long call (`max(range(1_000_000))`, about 1.2 s):
 | 20 forced garbage collections | 133 ms | 0 | 248 ms |
 | WiFi connect and NTP time sync | 9451 ms | 0 | 252 ms |
 
+**Reproduced by the lab itself.** Dan ran `03-sound-test.py` on his own
+board on 2026-10-06 and sent back what it printed. The numbers match the
+test scripts above to within a few milliseconds:
+
+| Part of the lab | Result printed by the lab |
+|---|---|
+| Part 4, core 0 in charge | core 0 frozen 1164 ms, 1 dropout, reserve fell to -867 of 256 ms, longest wait 1182 ms |
+| Part 4, core 1 in charge | core 0 frozen 1284 ms, 0 dropouts, reserve fell to 254 of 256 ms, longest wait 64 ms |
+| Part 5, drawing | 17 full-screen fills, 0 dropouts, reserve fell to 252 of 256 ms |
+
+So the result holds on a second run, on the board a student would use, with
+the program a student would run.
+
 Two limits on those numbers. They measure whether the audio *supply*
 stalled, and cannot see whether the I2S hardware itself ran dry, so they
 are backed by listening (a steady tone should stay steady through all of
-it). And the flash write was small: a long write, such as a Library
-download, still needs listening to before we rely on it.
+it). Dan reported that the sounds in lab 03 worked, but has not yet said
+whether the one-second gap with core 0 in charge was audible, so that
+part is not confirmed by ear. And the flash write was small: a long write,
+such as a Library download, still needs listening to before we rely on it.
 
 ### Rules for modes
 
