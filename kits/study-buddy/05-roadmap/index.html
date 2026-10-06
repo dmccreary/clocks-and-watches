@@ -2480,28 +2480,28 @@ speaker can do. The study features start at Lab 09.</p>
 </tr>
 <tr>
 <td><strong>05: Five Voices</strong></td>
-<td>Written. Screens checked in the simulator</td>
+<td>Done. Run on the board by Dan on 2026-10-06 and works as expected</td>
 <td><code>05-waveforms.py</code>: sine, triangle, square, saw, and noise, with the wave drawn on the screen.</td>
 <td>Lab 03</td>
 <td>Timbre: why the same note sounds different.</td>
 </tr>
 <tr>
 <td><strong>06: Sound Effects Gallery</strong></td>
-<td>Written. Screens checked in the simulator</td>
+<td>Done. Run on the board by Dan on 2026-10-06 and all the effects work</td>
 <td><code>06-sound-effects.py</code>: 21 effects from <code>sfx.py</code>, each with its recipe.</td>
 <td>Lab 03</td>
 <td>Sound effects built from slides, waves, and noise.</td>
 </tr>
 <tr>
 <td><strong>07: Ringtones</strong></td>
-<td>Written. Screens checked in the simulator</td>
+<td>Done. Run on the board by Dan on 2026-10-06 and works fine</td>
 <td><code>07-ringtones.py</code>: four traditional tunes stored as RTTTL text, with the current note on screen.</td>
 <td>Lab 03</td>
 <td>A whole song in one line of text.</td>
 </tr>
 <tr>
 <td><strong>08: Button Theremin</strong></td>
-<td>Written. Screens checked in the simulator</td>
+<td>Done. Run on the board by Dan on 2026-10-06 and works</td>
 <td><code>08-button-theremin.py</code>: hold UP or DOWN to slide the pitch, with the nearest note and how far off it is.</td>
 <td>Lab 03</td>
 <td>A playable instrument with smooth pitch.</td>
@@ -2560,16 +2560,21 @@ speaker can do. The study features start at Lab 09.</p>
 <p>Lab 09 is the next real milestone. It proves the study-mode button
 conventions, and everything after it builds on those.</p>
 <div class="admonition note">
-<p class="admonition-title">What has and hasn't been tried</p>
-<p><strong>Labs 03 and 04 have been run on the board.</strong> Lab 03's sounds worked
-and it reproduced the two-core results. Lab 04 ran three sweeps in a row
-with no errors, which also exercises <code>link</code> and 44.1 kHz audio. Labs 05
-to 08 have been compiled, and their screens have been drawn through the
-display simulator with a stand-in for the sound module (the simulator
-cannot run the real compiled synthesizer). They have not yet been run
-on the board. Pieces of <code>sound.py</code> that only they use (the held note
-with <code>pitch()</code>, and <code>rtttl_notes()</code>) are still to be checked by running
-and listening.</p>
+<p class="admonition-title">What has been tried</p>
+<p><strong>Labs 01 to 08 have all been run on the board</strong> (2026-10-04 to
+2026-10-06) and work. Lab 03's sounds worked and it reproduced the
+two-core results. Lab 04 ran three sweeps in a row with no errors, which
+also exercises <code>link</code> and 44.1 kHz audio. Lab 05 worked as expected: all
+five waves, noise included, and the pictures of them. In lab 06 all the
+effects worked. Lab 07's ringtones work fine, which exercises
+<code>rtttl_notes()</code>, the tune parser. Lab 08 works, which exercises the held
+note with <code>pitch()</code>, <code>hold()</code>, and <code>release()</code>.</p>
+<p>Before they were run, labs 05 to 08 had their screens drawn through the
+display simulator with a stand-in for the sound module. The simulator
+cannot run the real compiled synthesizer, so the board runs are the
+real test.</p>
+<p>Still to check: a long flash write while a sound plays, and whether
+the core-0 gap in lab 03 is audible by ear (the counters show it).</p>
 </div>
 <h3 id="what-the-first-kit-run-showed">What the first kit run showed</h3>
 <p>Labs 01 and 02 were run on a real Pico 2 W with the Study Buddy wiring on
