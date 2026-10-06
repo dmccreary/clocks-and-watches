@@ -159,4 +159,5 @@ VOLUME = 40           # 0-100
 | [Features](02-features.md) | Each feature: screens, buttons, behavior, and edge cases. |
 | [Pack Formats](03-pack-formats.md) | The file formats for decks, quotes, events, the manifest, and saved progress. |
 | [Audio](04-audio.md) | The sound module, how the buddy "speaks", and the flash budget. |
+| [Multicore Guide](06-multicore-guide.md) | How the two cores, the PIO, DMA, and the I2S bus share the work so the display, WiFi, and sound run smoothly together. Every measurement so far, what MicroPython's source says, and what is still unproven. |
 | [Roadmap and Risks](05-roadmap.md) | Labs 01 to 10 in build order (01 and 02 are done), known risks, and open questions. |

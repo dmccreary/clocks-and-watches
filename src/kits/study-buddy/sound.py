@@ -42,6 +42,12 @@
 # connect, a secure web request, a long drawing job -- and the sound does
 # not notice, because core 1 is not the one frozen.
 #
+# ONE EXCEPTION: WRITING FLASH. While MicroPython erases or writes the
+# Pico's flash (saving a file, for example) it pauses core 1 AND turns off
+# interrupts, and the I2S hardware depends on an interrupt about every 2 ms
+# to stay fed. So a file write makes a short click or gap, on either core
+# (heard on the kit, 2026-10-06). Do not save files while a sound is playing.
+#
 # init(core=0) uses the older way instead: the I2S driver interrupts core
 # 0 each time it needs a chunk. That works well while the program keeps
 # looking up, but it cannot play through a freeze on core 0. Lab 03 plays
@@ -321,8 +327,10 @@ def _irq(_):
 
 
 def _thread_main():
-    """The core-1 loop. write() waits whenever the reserve is full, so this
-    loop never spins: it sleeps inside write() almost all the time."""
+    """The core-1 loop. In blocking mode write() BUSY-WAITS in C while the
+    reserve is full (it does not sleep), so core 1 is always at full speed.
+    That is harmless but not free: it keeps reading shared memory. See
+    docs/kits/study-buddy/06-multicore-guide.md."""
     global _thread_alive, _run
     _thread_alive = True
     try:

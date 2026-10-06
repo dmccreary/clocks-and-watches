@@ -44,18 +44,16 @@
     "timeline"
   ],
   "learningObjectives": [
-    "Understand the key concepts of shift register",
-    "Explore shift register through interactive visualization",
-    "Apply knowledge of shift register to solve problems",
-    "Experiment with parameters to observe their effects on shift register"
+    "Trace how each clock pulse shifts every bit one position and loads the new data bit into position 0 of the 74HC594's 8-bit shift register",
+    "Distinguish the internal shift register from the output register, and explain why the latch signal is required to update the output pins",
+    "Predict the register contents after a given sequence of data and clock inputs, such as loading the pattern 10101010",
+    "Explain how serial-to-parallel conversion lets a microcontroller drive eight outputs using only data, clock, and latch pins",
+    "Calculate how many clock pulses are required to completely load an 8-bit pattern into the register"
   ],
   "bloomsTaxonomy": [
-    "Remember",
     "Understand",
     "Apply",
-    "Analyze",
-    "Evaluate",
-    "Create"
+    "Analyze"
   ],
   "pedagogical": {
     "pattern": "assessment",

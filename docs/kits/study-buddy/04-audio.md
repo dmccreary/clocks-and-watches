@@ -181,17 +181,35 @@ such as a Library download, still needs listening to before we rely on it.
 
 ### Rules for modes
 
-1. **A mode may draw, save files, and fetch over WiFi while a sound plays.**
-   The full-screen-fill rule from the first draft is no longer needed on
-   core 1. It still applies if `init(core=0)` is used.
-2. **Never write a loop on core 1 that spins without waiting.** The audio
-   loop is safe because `write()` sleeps whenever the reserve is full.
-3. **Talk to the sound through its functions** (`tone()`, `stop()`, and so
+1. **A mode may draw and fetch over WiFi while a sound plays.** The
+   full-screen-fill rule from the first draft is no longer needed on core
+   1. It still applies if `init(core=0)` is used.
+2. **A mode must not write or delete files while a sound plays.** Flash
+   erases and writes turn off interrupts and pause core 1, and the I2S
+   hardware depends on an interrupt about every 2 ms. A file write causes a
+   click or a gap, whichever core feeds the sound: **confirmed by ear** for
+   small writes, a 200 KB write, and a mixed load. Wait for `sound.busy()` to
+   be false first. This is the one known exception to "core 0 can freeze as
+   long as it likes". Whether a write during *silence* is clean is still
+   untested (experiment E10). See the
+   [multicore guide](06-multicore-guide.md#flash-the-exception).
+3. **Do not start any other thread.** The RP2 port has only core 1 to give,
+   and the audio loop uses it. (The loop is not idle, either: in blocking
+   mode `write()` busy-waits in C while the reserve is full, so core 1 is
+   always at full speed. This is harmless, but earlier text on this page said
+   it slept, which was wrong.)
+4. **Talk to the sound through its functions** (`tone()`, `stop()`, and so
    on), which take the lock. Do not touch its queue directly.
 
 ### Still to measure
 
-- A long flash write (a 200 KB download) while a sound plays, by ear.
+The [multicore guide](06-multicore-guide.md#experiments-to-run) lists nine
+experiments. The script `multicore-stress-test.py` covers the first five.
+
+- A flash write during silence (E10): does it pop? This decides whether the
+  rule "do not write while a sound plays" is enough.
+- Fixing the flash glitch itself. The options are in the guide's "Ideas
+  That Would Offload More".
 - The click when I2S starts and stops. If it clicks, the amplifier stays
   running with silence between sounds.
 - Whether full volume on 5 V disturbs the WiFi chip.

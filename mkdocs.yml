@@ -206,6 +206,7 @@ nav:
       - Features: kits/study-buddy/02-features.md
       - Pack Formats: kits/study-buddy/03-pack-formats.md
       - Audio: kits/study-buddy/04-audio.md
+      - Multicore Guide: kits/study-buddy/06-multicore-guide.md
       - Roadmap and Risks: kits/study-buddy/05-roadmap.md
     - LILYGO SY7789:
       - Introduction: kits/lilygo/index.md

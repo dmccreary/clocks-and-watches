@@ -14,7 +14,10 @@
 # The Pico 2 W has two cores that run at the same time. Core 0 runs your
 # program. Core 1 usually has nothing to do, so sound.py gives it a job:
 # calculate the sound and feed the amplifier, over and over. Then core 0 can
-# be as busy, or as stuck, as it likes. Part 4 proves it:
+# be as busy, or as stuck, as it likes. (One exception: writing a file.
+# Flash writes turn off interrupts, which the sound hardware needs, so they
+# can still cause a click. See docs/kits/study-buddy/06-multicore-guide.md.)
+# Part 4 proves it:
 #
 #   core 0 in charge:  the freeze stops the sound too -> a gap you can hear
 #   core 1 in charge:  the freeze never reaches the sound -> no gap
