@@ -1,0 +1,4531 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="How the Study Buddy's two processor cores, its PIO and DMA hardware, and the I2S bus work together so the display, WiFi, and sound run smoothly side by side. Includes every measurement taken so far, what MicroPython's source says, and what is still unproven.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/clocks-and-watches/kits/study-buddy/06-multicore-guide/">
+      
+      
+        <link rel="prev" href="../04-audio/">
+      
+      
+        <link rel="next" href="../05-roadmap/">
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Guide to Multicore Processing on the Study Buddy - Clocks and Watches with AI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-EKTEBLZ2KP"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-EKTEBLZ2KP",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-EKTEBLZ2KP",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Guide to Multicore Processing on the Study Buddy - Clocks and Watches with AI" >
+      
+        <meta  property="og:description"  content="How the Study Buddy's two processor cores, its PIO and DMA hardware, and the I2S bus work together so the display, WiFi, and sound run smoothly side by side. Includes every measurement taken so far, what MicroPython's source says, and what is still unproven." >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/kits/study-buddy/06-multicore-guide.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/clocks-and-watches/kits/study-buddy/06-multicore-guide/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Guide to Multicore Processing on the Study Buddy - Clocks and Watches with AI" >
+      
+        <meta  name="twitter:description"  content="How the Study Buddy's two processor cores, its PIO and DMA hardware, and the I2S bus work together so the display, WiFi, and sound run smoothly side by side. Includes every measurement taken so far, what MicroPython's source says, and what is still unproven." >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/kits/study-buddy/06-multicore-guide.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#642580" data-md-color-accent="#41BAC1">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#guide-to-multicore-processing-on-the-study-buddy" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Clocks and Watches with AI" class="md-header__button md-logo" aria-label="Clocks and Watches with AI" data-md-component="logo">
+      
+  <img src="../../../img/logo-180x180.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Clocks and Watches with AI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Guide to Multicore Processing on the Study Buddy
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/clocks-and-watches" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Clocks and Watches with AI" class="md-nav__button md-logo" aria-label="Clocks and Watches with AI" data-md-component="logo">
+      
+  <img src="../../../img/logo-180x180.png" alt="logo">
+
+    </a>
+    Clocks and Watches with AI
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/clocks-and-watches" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../setup/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Setup
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../chapters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../lessons/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Lessons
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Kits
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Kits
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gallery/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gallery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../tm1637/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    TM1637 LED Kit
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../led-displays/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    LED Displays
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../neopixel/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    NeoPixel Clocks
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../char-lcd-clock/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Character LCD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../ssd1306-i2c/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    SSD1306 I2C
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../oled-large/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Large OLED
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stopwatch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Stopwatch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oled-wireless/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wireless OLED
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sh1106/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SH1106 OLED
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../st7735/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ST7735
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../ili9341/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ILI9341
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../gc9a01/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    GC9A01
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sw-gc9b72/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Chrono Smart Clock Kit (GC9B72, Pico 2 W)
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_16" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Study Buddy (Spec)
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7_16" id="__nav_7_16_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_16_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7_16">
+            <span class="md-nav__icon md-icon"></span>
+            Study Buddy (Spec)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Features
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-pack-formats/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pack Formats
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-audio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Audio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Multicore Guide
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Multicore Guide
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-short-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Short Version
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-three-workloads" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Three Workloads
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Three Workloads">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-deadline-ladder-for-sound" class="md-nav__link">
+    <span class="md-ellipsis">
+      The deadline ladder for sound
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-hardware-you-have" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Hardware You Have
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-the-i2s-bus-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      How the I2S Bus Works
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How the I2S Bus Works">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#one-frame" class="md-nav__link">
+    <span class="md-ellipsis">
+      One frame
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-lrc-must-be-the-pin-after-bclk" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why LRC must be the pin after BCLK
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-micropython-moves-sound-on-the-pico" class="md-nav__link">
+    <span class="md-ellipsis">
+      How MicroPython Moves Sound on the Pico
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How MicroPython Moves Sound on the Pico">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-numbers-behind-the-picture" class="md-nav__link">
+    <span class="md-ellipsis">
+      The numbers behind the picture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-happens-when-the-ring-buffer-runs-dry" class="md-nav__link">
+    <span class="md-ellipsis">
+      What happens when the ring buffer runs dry
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blocking-write-is-a-busy-wait" class="md-nav__link">
+    <span class="md-ellipsis">
+      Blocking write() is a busy-wait
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-pio-what-it-is-and-what-it-does-here" class="md-nav__link">
+    <span class="md-ellipsis">
+      The PIO: What It Is and What It Does Here
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The PIO: What It Is and What It Does Here">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-i2s-program-in-words" class="md-nav__link">
+    <span class="md-ellipsis">
+      The I2S program, in words
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#who-does-what" class="md-nav__link">
+    <span class="md-ellipsis">
+      Who does what
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flash-the-exception" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flash: the Exception
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Flash: the Exception">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-to-do-about-it-now" class="md-nav__link">
+    <span class="md-ellipsis">
+      What to do about it now
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-we-measured" class="md-nav__link">
+    <span class="md-ellipsis">
+      What We Measured
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What We Measured">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#method-and-a-mistake-worth-recording" class="md-nav__link">
+    <span class="md-ellipsis">
+      Method, and a mistake worth recording
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#result-1-the-cores-run-in-parallel-measured" class="md-nav__link">
+    <span class="md-ellipsis">
+      Result 1: the cores run in parallel (Measured)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#result-2-a-freeze-on-core-0-measured-reproduced-by-lab-03" class="md-nav__link">
+    <span class="md-ellipsis">
+      Result 2: a freeze on core 0 (Measured, reproduced by lab 03)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#result-3-real-jobs-with-sound-on-core-1-measured" class="md-nav__link">
+    <span class="md-ellipsis">
+      Result 3: real jobs, with sound on core 1 (Measured)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#result-4-drawing-measured" class="md-nav__link">
+    <span class="md-ellipsis">
+      Result 4: drawing (Measured)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#result-5-the-stress-test-by-ear-measured" class="md-nav__link">
+    <span class="md-ellipsis">
+      Result 5: the stress test, by ear (Measured)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#result-6-what-the-sound-costs-core-0-measured" class="md-nav__link">
+    <span class="md-ellipsis">
+      Result 6: what the sound costs core 0 (Measured)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-the-numbers-cannot-see" class="md-nav__link">
+    <span class="md-ellipsis">
+      What the numbers cannot see
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#making-the-display-wifi-and-sound-work-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      Making the Display, WiFi, and Sound Work Together
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Making the Display, WiFi, and Sound Work Together">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-each-one-affects-the-sound" class="md-nav__link">
+    <span class="md-ellipsis">
+      How each one affects the sound
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rules-for-a-program-that-does-all-three" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rules for a program that does all three
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#display-and-wifi-without-sound-untested" class="md-nav__link">
+    <span class="md-ellipsis">
+      Display and WiFi without sound (untested)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ideas-that-would-offload-more" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ideas That Would Offload More
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#experiments-to-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      Experiments to Run
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Experiments to Run">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-stress-test-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      The stress-test script
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-soundpy-does-for-you" class="md-nav__link">
+    <span class="md-ellipsis">
+      What sound.py does for you
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#glossary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Glossary
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sources
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-roadmap/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Roadmap and Risks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../lilygo/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    LILYGO SY7789
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../portable-watch-kits/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Portable SmartWatch Kits
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../waveshare-lcd/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Waveshare
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../max7219/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MAX7219
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../e-paper/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    E-Paper Clock
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../waveshare-e-paper/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Waveshare E-Paper
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../alarm-clock/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Alarm Clock
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tm1650-led-clock/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TM1650 Clock
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../prompts/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-short-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Short Version
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-three-workloads" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Three Workloads
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Three Workloads">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-deadline-ladder-for-sound" class="md-nav__link">
+    <span class="md-ellipsis">
+      The deadline ladder for sound
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-hardware-you-have" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Hardware You Have
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-the-i2s-bus-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      How the I2S Bus Works
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How the I2S Bus Works">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#one-frame" class="md-nav__link">
+    <span class="md-ellipsis">
+      One frame
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-lrc-must-be-the-pin-after-bclk" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why LRC must be the pin after BCLK
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-micropython-moves-sound-on-the-pico" class="md-nav__link">
+    <span class="md-ellipsis">
+      How MicroPython Moves Sound on the Pico
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How MicroPython Moves Sound on the Pico">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-numbers-behind-the-picture" class="md-nav__link">
+    <span class="md-ellipsis">
+      The numbers behind the picture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-happens-when-the-ring-buffer-runs-dry" class="md-nav__link">
+    <span class="md-ellipsis">
+      What happens when the ring buffer runs dry
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blocking-write-is-a-busy-wait" class="md-nav__link">
+    <span class="md-ellipsis">
+      Blocking write() is a busy-wait
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-pio-what-it-is-and-what-it-does-here" class="md-nav__link">
+    <span class="md-ellipsis">
+      The PIO: What It Is and What It Does Here
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The PIO: What It Is and What It Does Here">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-i2s-program-in-words" class="md-nav__link">
+    <span class="md-ellipsis">
+      The I2S program, in words
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#who-does-what" class="md-nav__link">
+    <span class="md-ellipsis">
+      Who does what
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flash-the-exception" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flash: the Exception
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Flash: the Exception">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-to-do-about-it-now" class="md-nav__link">
+    <span class="md-ellipsis">
+      What to do about it now
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-we-measured" class="md-nav__link">
+    <span class="md-ellipsis">
+      What We Measured
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What We Measured">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#method-and-a-mistake-worth-recording" class="md-nav__link">
+    <span class="md-ellipsis">
+      Method, and a mistake worth recording
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#result-1-the-cores-run-in-parallel-measured" class="md-nav__link">
+    <span class="md-ellipsis">
+      Result 1: the cores run in parallel (Measured)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#result-2-a-freeze-on-core-0-measured-reproduced-by-lab-03" class="md-nav__link">
+    <span class="md-ellipsis">
+      Result 2: a freeze on core 0 (Measured, reproduced by lab 03)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#result-3-real-jobs-with-sound-on-core-1-measured" class="md-nav__link">
+    <span class="md-ellipsis">
+      Result 3: real jobs, with sound on core 1 (Measured)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#result-4-drawing-measured" class="md-nav__link">
+    <span class="md-ellipsis">
+      Result 4: drawing (Measured)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#result-5-the-stress-test-by-ear-measured" class="md-nav__link">
+    <span class="md-ellipsis">
+      Result 5: the stress test, by ear (Measured)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#result-6-what-the-sound-costs-core-0-measured" class="md-nav__link">
+    <span class="md-ellipsis">
+      Result 6: what the sound costs core 0 (Measured)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-the-numbers-cannot-see" class="md-nav__link">
+    <span class="md-ellipsis">
+      What the numbers cannot see
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#making-the-display-wifi-and-sound-work-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      Making the Display, WiFi, and Sound Work Together
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Making the Display, WiFi, and Sound Work Together">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-each-one-affects-the-sound" class="md-nav__link">
+    <span class="md-ellipsis">
+      How each one affects the sound
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rules-for-a-program-that-does-all-three" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rules for a program that does all three
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#display-and-wifi-without-sound-untested" class="md-nav__link">
+    <span class="md-ellipsis">
+      Display and WiFi without sound (untested)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ideas-that-would-offload-more" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ideas That Would Offload More
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#experiments-to-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      Experiments to Run
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Experiments to Run">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-stress-test-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      The stress-test script
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-soundpy-does-for-you" class="md-nav__link">
+    <span class="md-ellipsis">
+      What sound.py does for you
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#glossary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Glossary
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sources
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="guide-to-multicore-processing-on-the-study-buddy">Guide to Multicore Processing on the Study Buddy</h1>
+<p>The Study Buddy has to do three demanding things at once: <strong>draw on the
+screen</strong>, <strong>talk over WiFi</strong>, and <strong>play sound without a single click</strong>. This
+guide explains how the Pico 2 W's two processor cores, its PIO state
+machines, and its DMA controller can share that work, what we have measured
+so far, and what is still unproven.</p>
+<div class="admonition note">
+<p class="admonition-title">How to read the labels in this guide</p>
+<p>Every claim carries one of four labels, because they are not equally
+trustworthy:</p>
+<ul>
+<li><strong>Measured</strong>: run on the real kit (Pico 2 W, MicroPython 1.29.0,
+  2026-10-04 to 2026-10-06), with the numbers shown.</li>
+<li><strong>Source</strong>: read in the MicroPython v1.29.0 source files named in
+  <a href="#sources">Sources</a>. I read them through a tool that fetches a file and
+  answers questions about it, so these are summaries, not line-by-line
+  reads. The function and macro names are worth confirming in the files
+  before any design decision rests on a single detail.</li>
+<li><strong>Datasheet</strong>: from my memory of the RP2350 and flash datasheets.
+  Check before relying on a number.</li>
+<li><strong>Hypothesis</strong>: reasoning, not yet tested. Each one has an experiment
+  in <a href="#experiments-to-run">Experiments to run</a>.</li>
+</ul>
+<p>This guide is for teachers and developers. It is not student-facing.</p>
+</div>
+<h2 id="the-short-version">The Short Version</h2>
+<ol>
+<li><strong>Both cores run in parallel.</strong> The same loop took 1014 ms on core 0
+   alone and 1024 ms on core 1 alone; with both running at once each took
+   1121 ms. The RP2 port builds MicroPython with the global interpreter lock
+   turned off. (Measured, Source)</li>
+<li><strong>Sound fed from core 1 survives anything that freezes core 0 in
+   ordinary or long C code</strong>: a 1.2 s freeze, 20 garbage collections, a
+   9.5 s WiFi connect, and 17 to 21 full-screen repaints all left at least
+   248 of 256 ms in reserve. The same freeze made the core-0 version run dry.
+   (Measured)</li>
+<li><strong>There is one exception, and it is the important one: flash writes.</strong>
+   While MicroPython erases or programs flash it disables interrupts and
+   pauses core 1. The I2S driver depends on a CPU interrupt that fires about
+   every 2 ms to keep a tiny hardware buffer full, so a flash write cuts the
+   sound <em>no matter which core feeds it</em>. <strong>Confirmed by ear</strong>: a listener
+   heard a click or gap in all three phases that wrote flash (5 small
+   writes, one 200 KB write, and a mixed load), and in none of the other six.
+   In those phases the ring buffer never ran dry (its low point was 27 to
+   168 ms), so the glitch happened <em>after</em> the ring, at the interrupt-fed DMA
+   buffer, exactly where the source said the weak link was.
+   (Measured, Source)</li>
+<li><strong>PIO and DMA already do most of the work of moving sound to the
+   speaker, but not all of it.</strong> The PIO makes the I2S clocks and shifts out
+   the bits, and DMA moves words into the PIO. A CPU interrupt still refills
+   the DMA buffer, and that last step is the weak link. (Source)</li>
+<li><strong>The display, WiFi, and sound work smoothly together, with the flash
+   exception.</strong> In <code>multicore-stress-test.py</code> a steady tone stayed clean, by
+   ear and by counter, through 23 full-screen repaints, three WiFi scans, a
+   5.8 s WiFi connect with time sync, a web request, and 20 garbage
+   collections. (Measured)</li>
+<li><strong>The sound is not free for core 0.</strong> With the audio loop running, a
+   150,000-step loop on core 0 took <strong>6.4% longer</strong> with silence playing,
+   <strong>7.1%</strong> with a 16 kHz tone, and <strong>9.8%</strong> with a 44.1 kHz tone. Most of it
+   is core 1 busy-waiting on shared memory. (Measured)</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Two corrections to things I said earlier</p>
+<ul>
+<li>I wrote that the core-1 audio loop "sleeps inside <code>write()</code>". It does
+  not: in blocking mode <code>write()</code> <strong>busy-waits</strong> in a C loop until there
+  is room. It is harmless, but the loop keeps core 1 100% busy. The code
+  comment and the audio page have been fixed. (Source)</li>
+<li>I told you the reserve protects the sound through a flash write. It
+  does not: see <a href="#flash-the-exception">Flash: the exception</a>.</li>
+</ul>
+</div>
+<h2 id="the-three-workloads">The Three Workloads</h2>
+<table>
+<thead>
+<tr>
+<th>Workload</th>
+<th>What it does to the processor</th>
+<th>What it needs from the processor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Display</strong></td>
+<td>A full-screen fill sends 259,200 bytes over SPI. It takes about <strong>130 ms</strong>, and core 0 spends it waiting.</td>
+<td>Core 0, in blocks of up to 130 ms. (Measured)</td>
+</tr>
+<tr>
+<td><strong>WiFi</strong></td>
+<td>A connect plus time sync took <strong>9.45 s</strong> on core 0. The wireless chip is run by interrupts and a PIO-driven link.</td>
+<td>Core 0, in blocks of seconds. (Measured, Datasheet)</td>
+</tr>
+<tr>
+<td><strong>Sound</strong></td>
+<td>Needs a fresh sample every 62.5 µs at 16 kHz, or 22.7 µs at 44.1 kHz, forever.</td>
+<td>A refill every <strong>~2 ms</strong> (hardware level) and a new chunk every 64 ms (software level). (Source, Measured)</td>
+</tr>
+</tbody>
+</table>
+<p>The sound is the strictest tenant. It has the hardest deadline, and it
+shares a chip with two others that freeze the main core for tens to
+thousands of milliseconds. That is why it does not run on core 0.</p>
+<h3 id="the-deadline-ladder-for-sound">The deadline ladder for sound</h3>
+<p>There are three buffers between your program and the speaker, and each has
+its own deadline. This ladder is the key to everything that follows.</p>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Where it lives</th>
+<th>How long it can run dry</th>
+<th>Who feeds it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Our chunk</strong></td>
+<td><code>sound.py</code>'s 1024-sample buffer</td>
+<td>64 ms at 16 kHz</td>
+<td>Core 1 (our loop)</td>
+</tr>
+<tr>
+<td><strong>The ring buffer</strong> (<code>ibuf</code>)</td>
+<td>RAM, 8192 bytes by default</td>
+<td><strong>256 ms</strong> at 16 kHz</td>
+<td>Core 1, by <code>write()</code></td>
+</tr>
+<tr>
+<td><strong>The DMA buffer</strong></td>
+<td>RAM, 256 bytes in two halves of 128</td>
+<td><strong>2.0 ms</strong> at 16 kHz, 0.73 ms at 44.1 kHz</td>
+<td><strong>A CPU interrupt, on core 0</strong></td>
+</tr>
+<tr>
+<td><strong>The PIO FIFO</strong></td>
+<td>Inside the PIO</td>
+<td>a few samples</td>
+<td>DMA, in hardware</td>
+</tr>
+</tbody>
+</table>
+<p>Everything we measured so far tested the top two rungs. The third rung, the
+2 ms one, is where a flash write bites.</p>
+<h2 id="the-hardware-you-have">The Hardware You Have</h2>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>What the Pico 2 W has</th>
+<th>Used by the Study Buddy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cores</strong></td>
+<td>2 Arm Cortex-M33 at 150 MHz (Measured: <code>machine.freq()</code>)</td>
+<td>Core 0: program, display, WiFi, files. Core 1: the audio loop.</td>
+</tr>
+<tr>
+<td><strong>SRAM</strong></td>
+<td>520 KB; MicroPython's heap is about 436 KB (Measured)</td>
+<td>One shared heap for both cores</td>
+</tr>
+<tr>
+<td><strong>PIO</strong></td>
+<td>3 blocks of 4 state machines (Datasheet)</td>
+<td>The WiFi chip link, and I2S</td>
+</tr>
+<tr>
+<td><strong>DMA</strong></td>
+<td>16 channels (Datasheet)</td>
+<td>The display's SPI writes, I2S (2 channels), and WiFi</td>
+</tr>
+<tr>
+<td><strong>SPI0</strong></td>
+<td>Hardware SPI on GP2 and GP3</td>
+<td>The display</td>
+</tr>
+<tr>
+<td><strong>Flash</strong></td>
+<td>4 MB (Measured); the code and files live here and are read through a cache called XIP</td>
+<td>Everything, including the filesystem</td>
+</tr>
+</tbody>
+</table>
+<p>Three facts about this hardware explain most of what you will see:</p>
+<ul>
+<li><strong>The two cores share the same memory and the same heap.</strong> There is no
+  fence between them. (Source: <code>mpthreadport.c</code> guards shared state with a
+  recursive mutex while core 1 is active.)</li>
+<li><strong>The PIO, DMA, and cores all run at the same time.</strong> A PIO state machine
+  keeps running while both cores are busy, and DMA keeps copying while the
+  CPU is stuck. This is the whole basis of the "offload" idea.</li>
+<li><strong>Code runs out of flash.</strong> While flash is being written, nothing can run
+  from it, so the chip must stop both cores and turn off interrupts. This is
+  the cause of the flash problem.</li>
+</ul>
+<h2 id="how-the-i2s-bus-works">How the I2S Bus Works</h2>
+<p>I2S (say "I-squared-S") is a three-wire way to send digital audio from one
+chip to another. It was designed for exactly this job: a processor handing
+sound to a DAC or an amplifier. Our MAX98357A amplifier has the DAC and the
+speaker driver in one chip, so the only wires are:</p>
+<table>
+<thead>
+<tr>
+<th>Wire</th>
+<th>Pico pin</th>
+<th>Name on the amp</th>
+<th>What it carries</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>BCLK</strong></td>
+<td>GP20</td>
+<td>BCLK</td>
+<td><strong>Bit clock.</strong> One tick for every bit of audio.</td>
+</tr>
+<tr>
+<td><strong>WS</strong></td>
+<td>GP21</td>
+<td>LRC</td>
+<td><strong>Word select.</strong> Says which channel the bits are for: low is left, high is right.</td>
+</tr>
+<tr>
+<td><strong>SD</strong></td>
+<td>GP19</td>
+<td>DIN</td>
+<td><strong>Serial data.</strong> The sample bits themselves, most significant bit first.</td>
+</tr>
+</tbody>
+</table>
+<p>A <strong>sample</strong> is one number that says how far the speaker cone should be
+pushed at one instant. At 16,000 samples a second the Pico sends 16,000 of
+them every second, one for each tick of the sample clock.</p>
+<h3 id="one-frame">One frame</h3>
+<p>I2S always sends two channels, left then right, even for mono sound. One
+<strong>frame</strong> is one left sample plus one right sample, 16 bits each:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code>           |&lt;-------------- one frame: 32 BCLK ticks --------------&gt;|
+
+ BCLK    _|‾|_|‾|_|‾|_|‾|_|‾|_|‾|_ ... one tick for every bit ... |‾|_|‾|_
+
+ WS      ____________________________                 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+         |&lt;------ LEFT (low) ------&gt;|&lt;----- RIGHT (high) -------&gt;|&lt;- next LEFT
+
+ SD      --&lt; b15 b14 b13 ... b1 b0 &gt;--&lt; b15 b14 b13 ... b1 b0 &gt;--&lt;
+              16 bits, MSB first          16 bits, MSB first
+</code></pre></div></td></tr></table></div>
+<p>The details that matter:</p>
+<ul>
+<li><strong>WS changes one tick <em>before</em> the first bit</strong> of its channel. The data line
+  changes on the falling edge of BCLK and the amplifier reads it on the
+  rising edge. This is the "Philips" I2S format.</li>
+<li><strong>The bit clock is not a free-running number. It is 32 times the sample
+  rate</strong>, because each frame has 32 bits:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Sample rate</th>
+<th>BCLK</th>
+<th>Frames per second</th>
+<th>One frame lasts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>16,000 Hz</td>
+<td>512 kHz</td>
+<td>16,000</td>
+<td>62.5 µs</td>
+</tr>
+<tr>
+<td>22,050 Hz</td>
+<td>705.6 kHz</td>
+<td>22,050</td>
+<td>45.4 µs</td>
+</tr>
+<tr>
+<td>44,100 Hz</td>
+<td>1.4112 MHz</td>
+<td>44,100</td>
+<td>22.7 µs</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>The amplifier needs no master clock.</strong> The MAX98357A works out its
+  timing from BCLK and WS, which is why only three signal wires are needed.</li>
+<li><strong>Mono is sent twice.</strong> MicroPython's mono format copies each sample into
+  both slots. The amplifier averages left and right (the SD pin is left
+  unconnected), so the result is the same sound at full level. (Source)</li>
+</ul>
+<h3 id="why-lrc-must-be-the-pin-after-bclk">Why LRC must be the pin after BCLK</h3>
+<p>MicroPython drives BCLK and WS from a <strong>single instruction</strong> using the PIO's
+"side-set" feature, which sets a group of <strong>adjacent</strong> pins at once. So the
+two pins must be neighbors, with WS one higher than BCLK. The MicroPython
+code checks this directly and raises an error if <code>ws != sck + 1</code>.
+(Source: <code>machine_i2s.c</code>, and the MicroPython docs: "The <code>ws</code> pin number
+must be one greater than the <code>sck</code> pin number".) Your wiring (BCLK on GP20,
+LRC on GP21) follows the rule, and lab 02 checks it.</p>
+<h2 id="how-micropython-moves-sound-on-the-pico">How MicroPython Moves Sound on the Pico</h2>
+<p>This is the real path a sound takes. Read it from the top:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span></pre></div></td><td class="code"><div><pre><span></span><code>  core 1                          core 0                       hardware
+ ┌─────────────────────┐
+ │ sound.py loop       │
+ │  _fill(): synthesize│
+ │   1024 samples with │
+ │   viper machine code│
+ │  _audio.write(buf)  │──┐
+ └─────────────────────┘  │
+                          ▼
+              ┌───────────────────────┐
+              │ RING BUFFER (ibuf)    │  8192 bytes in RAM
+              │ 256 ms at 16 kHz      │  one writer, one reader
+              └───────────────────────┘
+                          │  every ~2 ms
+                          ▼
+              ┌───────────────────────┐
+              │ DMA IRQ HANDLER       │  runs on CORE 0 (the core
+              │ feed_dma(): copy 32   │  that created the I2S object)
+              │ frames, duplicate     │
+              │ mono into both slots  │
+              └───────────────────────┘
+                          │
+                          ▼
+              ┌───────────────────────┐
+              │ DMA BUFFER 2 x 128 B  │  two DMA channels, chained:
+              │ ping-pong             │  when one finishes the other starts
+              └───────────────────────┘
+                          │ DMA, no CPU
+                          ▼
+              ┌───────────────────────┐
+              │ PIO TX FIFO           │
+              └───────────────────────┘
+                          │
+                          ▼
+              ┌───────────────────────┐
+              │ PIO state machine     │  8 instructions; makes BCLK and WS
+              │ (the I2S program)     │  and shifts the bits out on SD
+              └───────────────────────┘
+                          │  three wires
+                          ▼
+                   MAX98357A  →  speaker
+</code></pre></div></td></tr></table></div>
+<p>(Source: <code>ports/rp2/machine_i2s.c</code> and <code>extmod/machine_i2s.c</code>, v1.29.0.)</p>
+<h3 id="the-numbers-behind-the-picture">The numbers behind the picture</h3>
+<table>
+<thead>
+<tr>
+<th>Sample rate</th>
+<th>PIO clock needed</th>
+<th>Divider from 150 MHz</th>
+<th>DMA refills per second</th>
+<th>Time between refills</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>16,000 Hz</td>
+<td>1.024 MHz</td>
+<td>146.5</td>
+<td>500</td>
+<td><strong>2.0 ms</strong></td>
+</tr>
+<tr>
+<td>22,050 Hz</td>
+<td>1.411 MHz</td>
+<td>106.3</td>
+<td>689</td>
+<td>1.45 ms</td>
+</tr>
+<tr>
+<td>44,100 Hz</td>
+<td>2.822 MHz</td>
+<td>53.1</td>
+<td>1378</td>
+<td><strong>0.73 ms</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The PIO clock is <code>rate × 2 channels × 16 bits × 2 PIO instructions per bit</code>,
+because the program takes two instructions per bit (one with the clock low,
+one with it high). Each DMA half-buffer holds 32 frames, so a refill is due
+every <code>32 / rate</code> seconds. (Source for the formula; the table is arithmetic.)</p>
+<div class="admonition tip">
+<p class="admonition-title">Why this matters for the display and WiFi</p>
+<p>A 44.1 kHz sound asks core 0 to service an interrupt <strong>1378 times a
+second</strong>, each one copying 32 frames. That is a steady, small tax on
+core 0 that we have <em>not</em> measured (see experiment E4). It is paid on
+core 0 even when core 1 is the one making the sound.</p>
+</div>
+<h3 id="what-happens-when-the-ring-buffer-runs-dry">What happens when the ring buffer runs dry</h3>
+<p>If the DMA interrupt finds the ring buffer empty, MicroPython fills the DMA
+buffer with <strong>zeros</strong>, so the speaker gets silence, not a repeat of the old
+sound. (Source: <code>memset</code> in the TX path.) That is the "underrun" the stats
+counters watch for at the <em>ring</em> level. If the DMA interrupt does not run
+at all, the DMA buffer empties and the PIO <strong>stalls</strong> waiting for data:
+BCLK and WS stop. The amplifier hears the clocks vanish, which is a harder
+failure than a few zeros. (Source for the stall behavior: a <code>pull</code> blocks on
+an empty FIFO; Hypothesis for what the amplifier does about it.)</p>
+<h3 id="blocking-write-is-a-busy-wait">Blocking <code>write()</code> is a busy-wait</h3>
+<p>In blocking mode (no <code>irq</code> handler set, which is how core 1 uses it),
+<code>write()</code> copies bytes into the ring buffer one at a time, and when the ring
+is full it simply loops: <code>while ringbuf_push(...) == false {;}</code>. There is no
+timeout, no sleep, and no call into the scheduler. (Source:
+<code>extmod/machine_i2s.c</code>.) Two consequences:</p>
+<ul>
+<li><strong>Core 1 is always at 100%.</strong> It does a little synthesis, then spins until
+  the DMA interrupt on core 0 drains enough of the ring. It cannot be
+  interrupted by Ctrl-C and cannot run scheduled callbacks. (Source)</li>
+<li><strong>It reads shared memory constantly.</strong> Spinning on the ring buffer's
+  indices competes with core 0 for the memory bus. We have not measured the
+  cost (experiment E3).</li>
+</ul>
+<p>The ring buffer is safe between the two cores because it is built as
+<strong>single producer, single consumer</strong>: core 1 only writes, the interrupt only
+reads, and neither touches the other's index. (Source: the header comment in
+the ring buffer code.)</p>
+<h2 id="the-pio-what-it-is-and-what-it-does-here">The PIO: What It Is and What It Does Here</h2>
+<p>The <strong>PIO</strong> (Programmable I/O) is a set of tiny processors, called state
+machines, built for one job: wiggling pins with exact timing. Each has:</p>
+<ul>
+<li>a handful of instructions (<code>pull</code>, <code>out</code>, <code>set</code>, <code>jmp</code>, <code>wait</code>, <code>nop</code>) and
+  a shared 32-instruction memory,</li>
+<li><strong>FIFOs</strong> (small queues) to exchange words with the CPU or DMA,</li>
+<li>a <strong>clock divider</strong>, so it runs at whatever speed the protocol needs,</li>
+<li><strong>side-set</strong>: extra pins that change <em>during</em> any instruction at no cost,
+  which is how BCLK and WS are made at the same moment the data bit is
+  shifted.</li>
+</ul>
+<p>A state machine runs <strong>by itself</strong>. It does not need either core, does not
+read flash, and does not care about interrupts being disabled. That is why
+PIO is the right tool for I2S, SPI, and WS2812 LEDs.</p>
+<h3 id="the-i2s-program-in-words">The I2S program, in words</h3>
+<p>MicroPython's 16-bit I2S program is 8 instructions long. Reading it as a
+loop, for each bit of the frame it does the following, with BCLK low for one
+instruction and high for the next:</p>
+<ol>
+<li>take the next bit from the shift register and put it on SD,</li>
+<li>drive BCLK low and WS (set for the right channel) in the same
+   instruction, using side-set,</li>
+<li>drive BCLK high,</li>
+<li>when 16 bits have gone out, <code>pull</code> the next 32-bit word from the FIFO
+   (which holds a left and right sample together).</li>
+</ol>
+<p>(Source for the length and side-set; the instruction-by-instruction story is
+my reading of how such a program works, not a transcription.)</p>
+<h3 id="who-does-what">Who does what</h3>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Who does it</th>
+<th>CPU cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Make BCLK at 32 × the sample rate</td>
+<td><strong>PIO</strong></td>
+<td>none</td>
+</tr>
+<tr>
+<td>Make WS in step with the data</td>
+<td><strong>PIO</strong> (side-set)</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Shift each sample out, bit by bit</td>
+<td><strong>PIO</strong></td>
+<td>none</td>
+</tr>
+<tr>
+<td>Copy words from RAM into the PIO FIFO</td>
+<td><strong>DMA</strong></td>
+<td>none</td>
+</tr>
+<tr>
+<td>Swap between the two DMA halves</td>
+<td><strong>DMA</strong> (chained channels)</td>
+<td>none</td>
+</tr>
+<tr>
+<td><strong>Refill the DMA half-buffer from the ring</strong></td>
+<td><strong>CPU interrupt, core 0</strong></td>
+<td>~500 to 1400 a second</td>
+</tr>
+<tr>
+<td>Put new samples in the ring</td>
+<td>CPU, core 1 (<code>write()</code>)</td>
+<td>busy-waits</td>
+</tr>
+<tr>
+<td><strong>Calculate the samples</strong></td>
+<td>CPU, core 1 (viper)</td>
+<td>small (E4)</td>
+</tr>
+<tr>
+<td>Keep the amplifier configured (GAIN)</td>
+<td>none (a GPIO level)</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<p>So the hope is <strong>mostly</strong> realized: the bit-level work and the transfer into
+the FIFO are fully offloaded. The weak link is the sixth row: a CPU
+interrupt, with a 2 ms deadline, that stands between the large ring buffer
+and the tiny DMA buffer.</p>
+<h2 id="flash-the-exception">Flash: the Exception</h2>
+<p>Code runs from flash. To erase or write flash the chip must stop reading it,
+so the MicroPython flash driver does this for every erase and write:</p>
+<ol>
+<li>pause core 1 (<code>multicore_lockout_start_blocking()</code>),</li>
+<li>disable interrupts on the calling core (<code>save_and_disable_interrupts()</code>),</li>
+<li>call the ROM erase or program routine,</li>
+<li>restore both.</li>
+</ol>
+<p>(Source: <code>begin_critical_flash_section()</code> in <code>ports/rp2/rp2_flash.c</code>.) Core 1
+is registered as a lockout "victim" so this works. (Source: <code>mpthreadport.c</code>.)</p>
+<p>Put that next to the deadline ladder:</p>
+<table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Lasts</th>
+<th>The DMA interrupt can run?</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>One flash <strong>page program</strong> (256 bytes)</td>
+<td>roughly 0.5 ms (Datasheet)</td>
+<td>no</td>
+<td>tight, but inside 2 ms at 16 kHz and not inside 0.73 ms at 44.1 kHz</td>
+</tr>
+<tr>
+<td>One flash <strong>sector erase</strong> (4096 bytes)</td>
+<td>tens of ms (Datasheet; each of ours was less than 139 ms, the whole 40 KB write)</td>
+<td><strong>no</strong></td>
+<td>the DMA buffer empties in 2 ms, so <strong>silence, and the PIO stalls</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The reserve in the ring buffer does not help here, because the ring is not
+the problem: the sound sits in it, safe, but the interrupt that carries it
+across to the DMA buffer is the thing that cannot run. And core 1 is paused
+as well, so it would not even keep the ring topped up.</p>
+<p><strong>What we measured, in two steps.</strong></p>
+<p><em>Step 1, on 2026-10-05 (counters only).</em> A 40 KB write and delete took 139 ms
+while a tone played on core 1, with 0 underruns and a reserve that never fell
+below 250 ms. Nobody was listening. I called that "consistent with a glitch we
+did not detect", which turned out to be right.</p>
+<p><em>Step 2, on 2026-10-06 (counters and ears).</em> <code>multicore-stress-test.py</code>
+played a steady tone and asked the listener, after each phase, whether they
+heard a click or gap:</p>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Took</th>
+<th>Reserve at its lowest</th>
+<th>Longest wait for core 1</th>
+<th>Heard a problem?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5 small writes (4 KB each)</td>
+<td>2745 ms</td>
+<td>168 ms</td>
+<td>121 ms</td>
+<td><strong>yes</strong></td>
+</tr>
+<tr>
+<td>one 200 KB write</td>
+<td>695 ms</td>
+<td>56 ms</td>
+<td>148 ms</td>
+<td><strong>yes</strong></td>
+</tr>
+<tr>
+<td>everything in turn</td>
+<td>5830 ms</td>
+<td>27 ms</td>
+<td>92 ms</td>
+<td><strong>yes</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Two things in that table matter.</p>
+<ul>
+<li><strong>The counters did notice something this time.</strong> Core 1 was paused by the
+  lockout, so its supply fell behind: the reserve dropped to 56 ms and 27 ms,
+  and the longest wait stretched to 148 ms. In the earlier step the write was
+  smaller and nothing showed. How long a write blocks depends on whether the
+  filesystem has to erase a block first, so it varies from write to write.</li>
+<li><strong>The ring buffer never ran dry, and the listener heard it anyway.</strong>
+  Underruns stayed at 0 and the reserve never reached 0. A glitch with sound
+  still in the ring can only have happened <em>after</em> the ring: in the DMA
+  buffer that the stalled interrupt could not refill. That is the mechanism
+  the source pointed to, and it is why a bigger ring would not fix it.</li>
+</ul>
+<p><strong>Conclusion.</strong> Every flash write while a sound plays is audible, on either
+core. Progress saves, a Library download, and a log file would each do it.</p>
+<p><strong>One thing still unknown: does a flash write during silence pop?</strong> The audio
+loop feeds zeros when nothing is playing, so the DMA buffer and the PIO are
+still running. If the interrupt is blocked, the PIO stalls and the clocks
+stop, which might make the amplifier pop even though the sound is silent.
+The rule "do not write while a sound plays" only works if that is clean.
+Experiment E10 tests it.</p>
+<h3 id="what-to-do-about-it-now">What to do about it now</h3>
+<ul>
+<li><strong>Do not write flash while a sound is playing.</strong> (Confirmed necessary.) Wait for <code>sound.busy()</code>
+  to be false, then write. Save the quiz progress at the end of a round,
+  which is already the plan, and keep downloads away from sounds.</li>
+<li><strong>Play the "done" chime after a download, not during.</strong></li>
+<li>If E1 confirms a glitch, <code>sound.py</code> should offer a call that quiets the
+  speaker (ramps to silence, writes, ramps back) so a short glitch is a
+  smooth dip instead of a click. (Proposal)</li>
+</ul>
+<h2 id="what-we-measured">What We Measured</h2>
+<h3 id="method-and-a-mistake-worth-recording">Method, and a mistake worth recording</h3>
+<p>Every test that touches the board runs under a hard timeout, and each one
+does a <em>bounded</em> amount of work. That rule came from a mistake. My first
+two-core test used <code>sum(range(12_000_000))</code> as a way to keep core 0 busy. On
+MicroPython the running total outgrows small integers after about 46,000
+terms, and every addition then allocates on the heap, so it took <strong>66
+seconds</strong> (measured at 9 million terms). The board looked dead, I killed the
+tool talking to it, and I wrongly suspected that a busy second core had
+starved the first. The board was just busy. The fix was a freeze that does
+not allocate: <code>max(range(1_000_000))</code> takes about 1.2 s and does nothing but
+loop in C.</p>
+<h3 id="result-1-the-cores-run-in-parallel-measured">Result 1: the cores run in parallel (Measured)</h3>
+<p>150,000 iterations of <code>x += i</code> on each core:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Core 0 alone</td>
+<td>1014 ms</td>
+</tr>
+<tr>
+<td>Core 1 alone</td>
+<td>1024 ms</td>
+</tr>
+<tr>
+<td>Both at once</td>
+<td>core 0: <strong>1121 ms</strong>, core 1: <strong>1121 ms</strong></td>
+</tr>
+</tbody>
+</table>
+<p>If the cores took turns, each would take about 2000 ms. About <strong>10% slower</strong>
+when both run is the cost of sharing the memory bus and the heap. The RP2
+build sets <code>MICROPY_PY_THREAD_GIL</code> to 0, so there is no interpreter lock.
+(Source)</p>
+<h3 id="result-2-a-freeze-on-core-0-measured-reproduced-by-lab-03">Result 2: a freeze on core 0 (Measured, reproduced by lab 03)</h3>
+<p>A steady tone plays while core 0 sits inside <code>max(range(1_000_000))</code>. Core 0
+cannot run Python, scheduled callbacks, or anything else for about 1.2 s.</p>
+<table>
+<thead>
+<tr>
+<th>Audio fed by</th>
+<th>Core 0 frozen</th>
+<th>Underruns</th>
+<th>Reserve at its lowest</th>
+<th>Longest wait between chunks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>core 0 (interrupt callback)</td>
+<td>1163 ms</td>
+<td><strong>1</strong></td>
+<td><strong>-878 ms</strong></td>
+<td>1192 ms</td>
+</tr>
+<tr>
+<td>core 1 (thread)</td>
+<td>1284 ms</td>
+<td><strong>0</strong></td>
+<td><strong>254 of 256 ms</strong></td>
+<td>64 ms</td>
+</tr>
+<tr>
+<td>core 0, in lab 03 on Dan's board</td>
+<td>1164 ms</td>
+<td>1</td>
+<td>-867 ms</td>
+<td>1182 ms</td>
+</tr>
+<tr>
+<td>core 1, in lab 03 on Dan's board</td>
+<td>1284 ms</td>
+<td>0</td>
+<td>254 ms</td>
+<td>64 ms</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why core 0 ran dry.</strong> The old design used I2S's non-blocking mode, where a
+<em>callback</em> refills the ring. The callback is scheduled with
+<code>mp_sched_schedule()</code>, and the scheduler only runs between MicroPython
+operations. A long C call has none, so the callback waited 1.2 s, the ring
+(256 ms) emptied, and the DMA interrupt, which kept running, played silence.
+(Source for the scheduling; Measured for the result.)</p>
+<p><strong>Why core 1 did not.</strong> The producer is on a different core, so core 0
+being frozen does not touch it. The DMA interrupt still runs on core 0,
+because a hardware interrupt can fire in the middle of a long C call. That
+is the reason the ring got to the DMA buffer even while core 0 was frozen.</p>
+<h3 id="result-3-real-jobs-with-sound-on-core-1-measured">Result 3: real jobs, with sound on core 1 (Measured)</h3>
+<p>A 9-second tone, with these jobs run on core 0:</p>
+<table>
+<thead>
+<tr>
+<th>Job</th>
+<th>Took</th>
+<th>Underruns</th>
+<th>Reserve at its lowest</th>
+<th>What it exercises</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>40 KB flash write and delete</td>
+<td>139 ms</td>
+<td>0</td>
+<td>250 ms</td>
+<td>flash lockout. <strong>See the caveat above.</strong></td>
+</tr>
+<tr>
+<td>20 × (allocate 8 KB, <code>gc.collect()</code>)</td>
+<td>133 ms</td>
+<td>0</td>
+<td>248 ms</td>
+<td>the shared heap and garbage collection</td>
+</tr>
+<tr>
+<td>WiFi connect and NTP time sync</td>
+<td><strong>9451 ms</strong></td>
+<td>0</td>
+<td>252 ms</td>
+<td>the wireless chip's interrupts and PIO link</td>
+</tr>
+</tbody>
+</table>
+<h3 id="result-4-drawing-measured">Result 4: drawing (Measured)</h3>
+<table>
+<thead>
+<tr>
+<th>Audio fed by</th>
+<th>Repaints</th>
+<th>Underruns</th>
+<th>Reserve at its lowest</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>core 0 (interrupt callback)</td>
+<td>21 full-screen fills</td>
+<td>0</td>
+<td>252 ms</td>
+</tr>
+<tr>
+<td>core 1</td>
+<td>17 full-screen fills (lab 03)</td>
+<td>0</td>
+<td>252 ms</td>
+</tr>
+</tbody>
+</table>
+<p>Drawing alone never needed core 1. The display driver makes many short SPI
+writes, and the scheduler runs between them. For writes of 32 bytes or more
+the SPI driver hands the bytes to <strong>DMA</strong> and waits for it to finish, with no
+scheduler call during the wait; for shorter writes it calls the SDK's
+blocking write. (Source: <code>machine_spi.c</code>.) So a repaint costs core 0 a lot
+of <em>waiting</em>, but it is waiting that interrupts and the DMA both ignore.</p>
+<h3 id="result-5-the-stress-test-by-ear-measured">Result 5: the stress test, by ear (Measured)</h3>
+<p><code>multicore-stress-test.py</code>, run on Dan's board on 2026-10-06. A steady
+440 Hz tone on core 1 at 16 kHz with a 256 ms reserve; core 0 did one kind
+of load per phase; the listener pressed UP for "heard a click or gap" or DOWN
+for "clean".</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Phase</th>
+<th>Took</th>
+<th>Underruns</th>
+<th>Reserve at its lowest</th>
+<th>Longest wait</th>
+<th>Heard a problem?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>baseline (nothing)</td>
+<td>3000 ms</td>
+<td>0</td>
+<td>254 ms</td>
+<td>64 ms</td>
+<td>no</td>
+</tr>
+<tr>
+<td>1</td>
+<td>23 full-screen repaints</td>
+<td>3017 ms</td>
+<td>0</td>
+<td>254 ms</td>
+<td>64 ms</td>
+<td>no</td>
+</tr>
+<tr>
+<td>2</td>
+<td>three WiFi scans</td>
+<td>3200 ms</td>
+<td>0</td>
+<td>254 ms</td>
+<td>64 ms</td>
+<td>no</td>
+</tr>
+<tr>
+<td>3</td>
+<td>WiFi connect and time sync</td>
+<td>5783 ms</td>
+<td>0</td>
+<td>254 ms</td>
+<td>64 ms</td>
+<td>no</td>
+</tr>
+<tr>
+<td>4</td>
+<td>web request (296 bytes)</td>
+<td>5658 ms</td>
+<td>0</td>
+<td>254 ms</td>
+<td>64 ms</td>
+<td>no</td>
+</tr>
+<tr>
+<td>5</td>
+<td>20 garbage collections</td>
+<td>188 ms</td>
+<td>0</td>
+<td>245 ms</td>
+<td>70 ms</td>
+<td>no</td>
+</tr>
+<tr>
+<td>6</td>
+<td>5 small flash writes</td>
+<td>2745 ms</td>
+<td>0</td>
+<td>168 ms</td>
+<td>121 ms</td>
+<td><strong>YES</strong></td>
+</tr>
+<tr>
+<td>7</td>
+<td>one 200 KB flash write</td>
+<td>695 ms</td>
+<td>0</td>
+<td>56 ms</td>
+<td>148 ms</td>
+<td><strong>YES</strong></td>
+</tr>
+<tr>
+<td>8</td>
+<td>everything in turn</td>
+<td>5830 ms</td>
+<td>0</td>
+<td>27 ms</td>
+<td>92 ms</td>
+<td><strong>YES</strong></td>
+</tr>
+</tbody>
+</table>
+<p>What it shows:</p>
+<ul>
+<li><strong>Phases 0 to 5 are the good news.</strong> The display, WiFi (scanning,
+  connecting, and fetching), and the garbage collector never disturbed the
+  sound, by ear or by counter. The reserve sat at 254 of 256 ms, and the
+  longest wait was the normal 64 ms chunk cadence. This is the main answer to
+  "do display, WiFi, and sound work smoothly together": <strong>yes, except for
+  flash.</strong></li>
+<li><strong>Phases 6 to 8 are the one problem.</strong> See <a href="#flash-the-exception">Flash: the
+  Exception</a>.</li>
+<li><strong>Phase 8 is close to the edge.</strong> With a flash lockout, scans, a repaint,
+  and a collection all in turn, the reserve fell to 27 ms. That is still above
+  zero, but it shows that a heavy mix of loads can bring even the ring
+  buffer close to running dry. A bigger ring (<code>ibuf=16384</code> doubles it to
+  512 ms) is cheap insurance for that, though it would not fix the flash
+  glitch.</li>
+<li><strong>WiFi time varies.</strong> The same connect and sync took 5.8 s here and 9.45 s
+  the day before, so plan on up to ten seconds.</li>
+</ul>
+<h3 id="result-6-what-the-sound-costs-core-0-measured">Result 6: what the sound costs core 0 (Measured)</h3>
+<p>The same 150,000-step loop on core 0:</p>
+<table>
+<thead>
+<tr>
+<th>Audio state</th>
+<th>Time</th>
+<th>Slower by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>no audio at all</td>
+<td>1040 ms</td>
+<td></td>
+</tr>
+<tr>
+<td>audio loop running, playing silence</td>
+<td>1107 ms</td>
+<td><strong>6.4%</strong></td>
+</tr>
+<tr>
+<td>16 kHz tone</td>
+<td>1114 ms</td>
+<td><strong>7.1%</strong></td>
+</tr>
+<tr>
+<td>44.1 kHz tone</td>
+<td>1142 ms</td>
+<td><strong>9.8%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>This is a single run, so treat differences of a percent or so as noise.
+Reading it:</p>
+<ul>
+<li><strong>Most of the cost is simply having the audio loop on.</strong> Silence alone
+  costs 6.4%. That is core 1 busy-waiting in <code>write()</code> and polling the ring
+  buffer, and the DMA interrupts running on core 0, both reading and writing
+  shared memory.</li>
+<li><strong>Going from 16 kHz to 44.1 kHz adds about 2.7 percentage points.</strong> That
+  is 878 more DMA interrupts a second. If all of it were the interrupts, each
+  would cost about 28 µs, which would put the interrupts at roughly 1.5% of
+  core 0 at 16 kHz and 4% at 44.1 kHz. That split is my arithmetic, not a
+  measurement.</li>
+<li><strong>It matches the 10% found earlier</strong> for two Python loops running at once
+  (1014 ms alone, 1121 ms together), so the bus is the common cause.</li>
+<li><strong>It is small but real.</strong> Over a 130 ms repaint it is under 10 ms. It would
+  matter if core 0 ever needed to be as fast as it can go. Idea C (pace the
+  producer instead of busy-waiting) is the obvious way to claw back most of
+  the 6.4%.</li>
+</ul>
+<h3 id="what-the-numbers-cannot-see">What the numbers cannot see</h3>
+<ul>
+<li><strong>They count supply, not sound.</strong> The counters know when core 1 was late
+  with the ring. They cannot see the DMA interrupt being late, a PIO stall,
+  or a click from the amplifier. The stress test proved the point: the
+  listener heard a problem in three phases where the ring never ran dry.
+  Listening, or the PIO meter of idea E, is how to see the part the counters
+  cannot.</li>
+<li><strong>Only one listener, one speaker, and one run</strong> so far. A repeat with a
+  second listener would show how many of the flash glitches are audible to
+  other ears, and the "everything" phase's 27 ms low point shows the ring
+  itself is not far from running dry under a heavy mix.</li>
+</ul>
+<h2 id="making-the-display-wifi-and-sound-work-together">Making the Display, WiFi, and Sound Work Together</h2>
+<h3 id="how-each-one-affects-the-sound">How each one affects the sound</h3>
+<table>
+<thead>
+<tr>
+<th>Neighbor</th>
+<th>Effect on sound on core 1</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Display repaint</strong></td>
+<td>None, by counter or ear</td>
+<td>Measured, 17 to 23 fills</td>
+</tr>
+<tr>
+<td><strong>WiFi connect and sync</strong></td>
+<td>None, by counter or ear</td>
+<td>Measured, 5.8 s and 9.45 s</td>
+</tr>
+<tr>
+<td><strong>WiFi scans and a web request</strong></td>
+<td>None, by counter or ear</td>
+<td>Measured</td>
+</tr>
+<tr>
+<td><strong>WiFi traffic while the screen animates</strong></td>
+<td>Unknown</td>
+<td>Not tested</td>
+</tr>
+<tr>
+<td><strong>Garbage collection</strong></td>
+<td>None seen</td>
+<td>Measured, 20 collections</td>
+</tr>
+<tr>
+<td><strong>Flash write</strong></td>
+<td><strong>Click or gap, every time tested</strong></td>
+<td>Measured by ear (3 phases)</td>
+</tr>
+<tr>
+<td><strong>Buttons</strong> (pin interrupts)</td>
+<td>Expected none</td>
+<td>Not tested; their handlers are short</td>
+</tr>
+<tr>
+<td><strong>DMA interrupt latency from other interrupts</strong></td>
+<td>Possible: the WiFi chip's interrupt could hold the DMA one off</td>
+<td>Hypothesis (E5)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="rules-for-a-program-that-does-all-three">Rules for a program that does all three</h3>
+<ol>
+<li><strong>One extra thread exists: the sound loop.</strong> The RP2 port has only core 1
+   to give. Do not start another thread.</li>
+<li><strong>Run everything but the sound on core 0:</strong> buttons, display, WiFi, and
+   files. The WiFi driver and <code>network</code> module were written for the main
+   core; running them on core 1 has not been tried and I would not.</li>
+<li><strong>Never write a file while a sound plays.</strong> Wait for <code>sound.busy()</code> to be
+   false.</li>
+<li><strong>Never run a long download while a sound plays.</strong> The writes are the
+   problem, not the radio.</li>
+<li><strong>Show a "connecting" screen before any WiFi call, and expect core 0 to be
+   blocked for up to ten seconds.</strong> Draw the screen first. Buttons still
+   register short taps because <code>watchparts.Button</code> uses a pin interrupt, but
+   nothing responds until the call returns.</li>
+<li><strong>Keep the screen updates small.</strong> A full-screen fill (130 ms) is fine, but
+   drawing only what changed is faster and is the habit the whole kit uses.</li>
+<li><strong>Keep the core-1 loop light.</strong> Its stack is the default 4096 bytes, and
+   anything that allocates on core 1 can trigger a garbage collection. Do not
+   add work to <code>_fill()</code> without measuring.</li>
+<li><strong>Use <code>sound.latency_ms()</code></strong> when the screen should match what is heard.</li>
+<li><strong>Watch <code>sound.stats()</code> during development.</strong> If <code>min_headroom_ms</code> ever
+   falls under about 100 ms, something is competing with core 1: find it.</li>
+<li><strong>Reminders must sound even when WiFi is busy.</strong> Sound on core 1 does
+    that, except during a flash write (rule 3).</li>
+</ol>
+<h3 id="display-and-wifi-without-sound-untested">Display and WiFi without sound (untested)</h3>
+<p>These two compete for core 0. A WiFi call blocks the main program, so an
+animation freezes until it returns. The wireless chip's interrupts also run
+on core 0 and could delay the display's short writes. We do not know how
+much. Experiment E5 draws an animation during a fetch and counts the frames
+that stall.</p>
+<h2 id="ideas-that-would-offload-more">Ideas That Would Offload More</h2>
+<p>None of these has been tried. They are listed in order of how much they
+would help, and each has an experiment.</p>
+<table>
+<thead>
+<tr>
+<th>Idea</th>
+<th>What it would change</th>
+<th>Why it might work</th>
+<th>Risk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A. A big DMA ring with no refill interrupt</strong></td>
+<td>The refill step moves from a 2 ms interrupt to a 256 ms deadline</td>
+<td>Build our own I2S from <code>rp2.StateMachine</code> and <code>rp2.DMA</code>: DMA reads a large RAM buffer in a loop (the RP2350 DMA can wrap a read address or retrigger itself), and the CPU just writes ahead of it. DMA keeps streaming from RAM while flash is erased, since RAM does not depend on flash.</td>
+<td>We would own the I2S code: the PIO program, the pins, and the buffer alignment. Substantial.</td>
+</tr>
+<tr>
+<td><strong>B. Create the I2S object on core 1</strong></td>
+<td>The DMA interrupt moves to core 1, away from core 0's WiFi and display work</td>
+<td>An interrupt is enabled on the core that registers it, which is the core that created the I2S object. Core 1 has nothing else to do.</td>
+<td>Flash still pauses core 1 and blocks its interrupts. The code that creates I2S would need to run on core 1 first.</td>
+</tr>
+<tr>
+<td><strong>C. Pace the producer instead of busy-waiting</strong></td>
+<td>Core 1 sleeps instead of spinning, which frees the memory bus</td>
+<td><code>_feed()</code> already knows the reserve (<code>headroom</code>), so it can sleep until the ring has room, and sleep with a normal <code>sleep_ms()</code></td>
+<td>The pacing is only as accurate as the clock estimate.</td>
+</tr>
+<tr>
+<td><strong>D. Offload the display's SPI wait</strong></td>
+<td>Core 0 would do other work during a 130 ms repaint</td>
+<td>The SPI driver already uses DMA for the bytes. A non-blocking DMA call plus a second frame buffer would let core 0 prepare the next frame while the screen is being filled.</td>
+<td>Needs a <code>rp2.DMA</code>-based driver, and the display is currently all blocking.</td>
+</tr>
+<tr>
+<td><strong>E. PIO as a built-in logic analyzer</strong></td>
+<td>A way to <em>measure</em> underruns at the pins, not at the ring</td>
+<td>A second state machine watches the WS pin and records the time between WS edges. A gap longer than one frame means I2S stalled. This is a software tool, and it uses a PIO the way PIO is meant to be used.</td>
+<td>Needs a short PIO program in MicroPython assembly.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Why E comes first</p>
+<p>Every idea above, and the flash question itself, can only be judged by
+watching what the I2S pins actually do. Right now our only instrument is
+an ear. A PIO that times WS edges would give a number for every
+experiment, with no listening and no extra wires.</p>
+</div>
+<h2 id="experiments-to-run">Experiments to Run</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Question</th>
+<th>How</th>
+<th>Result so far</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>E1</strong></td>
+<td>Does a flash write make a dropout?</td>
+<td><code>multicore-stress-test.py</code>, phases 6 to 8; the listener votes</td>
+<td><strong>Done: yes.</strong> Heard in all three flash phases.</td>
+</tr>
+<tr>
+<td><strong>E2</strong></td>
+<td>Does a WiFi connect make a dropout you can hear?</td>
+<td>Same script, phases 2 to 4</td>
+<td><strong>Done: no.</strong> Clean by ear and counter.</td>
+</tr>
+<tr>
+<td><strong>E3</strong></td>
+<td>How much slower does core 0 run when core 1 is playing sound?</td>
+<td>Same script, speed test</td>
+<td><strong>Done: +6.4% (silence), +7.1% (16 kHz), +9.8% (44.1 kHz).</strong></td>
+</tr>
+<tr>
+<td><strong>E4</strong></td>
+<td>How much CPU does the DMA interrupt and the synthesis use?</td>
+<td>Time <code>_fill()</code>; vary the sample rate</td>
+<td><strong>Partly done:</strong> the 16 to 44.1 kHz step costs about 2.7 points, which would be about 28 µs per interrupt if all of it is the interrupt. Synthesis time itself is not measured.</td>
+</tr>
+<tr>
+<td><strong>E5</strong></td>
+<td>Does WiFi traffic make the display stall, or the sound click?</td>
+<td>Draw an animation while fetching a web page</td>
+<td><strong>Not done.</strong> Phase 8 interleaves them but does not animate during a fetch.</td>
+</tr>
+<tr>
+<td><strong>E6</strong></td>
+<td>Does the DMA interrupt ever run late?</td>
+<td>Idea E: a PIO state machine timing WS edges</td>
+<td><strong>Not started.</strong> The most useful next instrument.</td>
+</tr>
+<tr>
+<td><strong>E7</strong></td>
+<td>Does creating I2S on core 1 move the interrupt?</td>
+<td>Idea B, repeating the WiFi phase</td>
+<td><strong>Not started.</strong></td>
+</tr>
+<tr>
+<td><strong>E8</strong></td>
+<td>Does a paced producer lower core 0's slowdown?</td>
+<td>Idea C, repeating E3</td>
+<td><strong>Not started.</strong></td>
+</tr>
+<tr>
+<td><strong>E9</strong></td>
+<td>Can our own DMA-ring I2S survive a flash write?</td>
+<td>Idea A, repeating E1</td>
+<td><strong>Not started.</strong> The real fix for flash.</td>
+</tr>
+<tr>
+<td><strong>E10</strong></td>
+<td>Does a flash write during <em>silence</em> pop?</td>
+<td>New phase: a large write with no tone playing</td>
+<td><strong>Not done. Decides whether "don't write while a sound plays" is enough.</strong> Added to the script as phase 9.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="the-stress-test-script">The stress-test script</h3>
+<p><code>src/kits/study-buddy/multicore-stress-test.py</code> plays a steady 440 Hz tone
+on core 1 for several seconds per phase, runs one kind of load on core 0
+during each phase, and then asks the listener to press <strong>UP</strong> if they heard
+a click or gap, or <strong>DOWN</strong> if the tone stayed clean. It prints the
+supply-level counters and the vote for each phase, plus the "speed" phase
+for E3. Run it in Thonny and paste the output back. It has been run once
+(see <a href="#result-5-the-stress-test-by-ear-measured">Result 5</a>).</p>
+<p>The phases are: baseline, screen repaints, WiFi scans, WiFi connect and time
+sync, a web request, garbage collection, small flash writes, a large flash
+write, everything in turn, and (new) a large flash write during silence. If the board is on its own, Thonny can run
+it. If a computer is attached to the board, <strong>quit Thonny first</strong> when
+asking me to run it, because only one program can hold the serial port.</p>
+<h2 id="reference">Reference</h2>
+<h3 id="what-soundpy-does-for-you">What <code>sound.py</code> does for you</h3>
+<table>
+<thead>
+<tr>
+<th>You call</th>
+<th>What runs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sound.init()</code></td>
+<td>Starts the I2S hardware (PIO, DMA, ring buffer) on core 0, then the audio loop on core 1</td>
+</tr>
+<tr>
+<td><code>sound.tone(...)</code></td>
+<td>Adds a note to the queue, under a lock</td>
+</tr>
+<tr>
+<td>the core-1 loop</td>
+<td><code>_fill()</code> makes 1024 samples with viper machine code, <code>write()</code> puts them in the ring</td>
+</tr>
+<tr>
+<td><code>sound.stats()</code></td>
+<td>The supply counters: underruns, smallest reserve, longest gap</td>
+</tr>
+<tr>
+<td><code>sound.deinit()</code></td>
+<td>Tells the loop to leave, waits, then frees the I2S hardware</td>
+</tr>
+</tbody>
+</table>
+<h3 id="glossary">Glossary</h3>
+<table>
+<thead>
+<tr>
+<th>Word</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Core</strong></td>
+<td>A processor that runs instructions. The Pico 2 W has two.</td>
+</tr>
+<tr>
+<td><strong>GIL</strong></td>
+<td>Global Interpreter Lock: a rule that lets only one thread run Python at a time. This build turns it off.</td>
+</tr>
+<tr>
+<td><strong>PIO</strong></td>
+<td>Programmable I/O: small state machines that make pin signals with exact timing, on their own.</td>
+</tr>
+<tr>
+<td><strong>DMA</strong></td>
+<td>Direct Memory Access: hardware that copies data between memory and devices without the CPU.</td>
+</tr>
+<tr>
+<td><strong>Interrupt (IRQ)</strong></td>
+<td>A signal that makes a core drop what it is doing and run a short handler.</td>
+</tr>
+<tr>
+<td><strong>Ring buffer</strong></td>
+<td>A fixed block of memory used as a queue, with a write position and a read position that wrap around.</td>
+</tr>
+<tr>
+<td><strong>Underrun</strong></td>
+<td>The reader needs data and the buffer is empty. For sound, this is silence or a click.</td>
+</tr>
+<tr>
+<td><strong>Reserve</strong></td>
+<td>How much sound is stored in the ring ahead of the speaker, in milliseconds.</td>
+</tr>
+<tr>
+<td><strong>Lockout</strong></td>
+<td>The flash driver pausing the other core while it erases or writes flash.</td>
+</tr>
+<tr>
+<td><strong>XIP</strong></td>
+<td>Execute In Place: code runs straight from flash through a cache. It is unavailable while flash is erased or written.</td>
+</tr>
+<tr>
+<td><strong>Viper</strong></td>
+<td>A MicroPython code emitter that compiles a function to fast machine code.</td>
+</tr>
+<tr>
+<td><strong>Side-set</strong></td>
+<td>A PIO feature that sets pins during an instruction, at no extra cost.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sources">Sources</h3>
+<ul>
+<li>MicroPython v1.29.0 (the firmware on the board), <code>ports/rp2/machine_i2s.c</code>:
+  PIO programs, side-set and the <code>ws == sck + 1</code> check, the clock formula, the
+  two chained DMA channels and 256-byte buffer, the DMA interrupt handler
+  and <code>feed_dma()</code>, silence on underrun, and mono duplication.</li>
+<li><code>extmod/machine_i2s.c</code>: blocking <code>write()</code> as a busy-wait, the
+  non-blocking callback scheduled by <code>mp_sched_schedule()</code>, and the
+  single-producer single-consumer ring buffer.</li>
+<li><code>ports/rp2/mpthreadport.c</code>: core 1 start-up, the 4096-byte default stack,
+  the recursive mutex used while core 1 is active, the lockout victim
+  registration, and <code>mp_thread_gc_others()</code>.</li>
+<li><code>ports/rp2/mpconfigport.h</code>: <code>MICROPY_PY_THREAD_GIL (0)</code>.</li>
+<li><code>ports/rp2/rp2_flash.c</code>: <code>begin_critical_flash_section()</code> with lockout and
+  interrupts disabled around every erase and program.</li>
+<li><code>ports/rp2/machine_spi.c</code>: DMA for writes of 32 bytes or more, blocking
+  writes below that, no scheduler call during the wait.</li>
+<li>Adafruit's MAX98357A breakout page, for the GAIN pin and SD pin behavior.</li>
+<li>Kit measurements: <code>src/kits/study-buddy/03-sound-test.py</code> and the test
+  scripts described under <a href="#what-we-measured">What We Measured</a>.</li>
+</ul>
+<p><strong>Next:</strong> <a href="../05-roadmap/">Roadmap and Risks</a></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../04-audio/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Audio">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Audio
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../05-roadmap/" class="md-footer__link md-footer__link--next" aria-label="Next: Roadmap and Risks">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Roadmap and Risks
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../js/extra.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

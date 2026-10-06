@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://dmccreary.github.io/clocks-and-watches/kits/study-buddy/05-roadmap/">
       
       
-        <link rel="prev" href="../04-audio/">
+        <link rel="prev" href="../06-multicore-guide/">
       
       
         <link rel="next" href="../../lilygo/">
@@ -1399,6 +1399,8 @@
       
         
       
+        
+      
     
     
     
@@ -1514,6 +1516,27 @@
   
   <span class="md-ellipsis">
     Audio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-multicore-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multicore Guide
   </span>
   
 
@@ -2717,9 +2740,9 @@ Already done: <code>config.py</code> has the I2S pins, the gain pin, <code>GAIN_
 <td>Teacher-controlled HTTPS address only, hash check, confirm screen, and a <code>modes.json</code> fallback so a broken mode cannot stop the watch from starting. Packs carry no code.</td>
 </tr>
 <tr>
-<td><strong>Audio dropouts during drawing or freezes</strong></td>
-<td>The display blocks the Pico for up to 232 ms, and a WiFi connect blocked it for 9.5 s.</td>
-<td>Fixed by running the sound on core 1 with a 256 ms reserve. Measured: no underruns through a 1.2 s freeze, a flash write, garbage collection, or a WiFi connect (see <a href="../04-audio/#playback-must-survive-drawing-and-freezing">Audio</a>). Still to check: a long flash write, by ear.</td>
+<td><strong>Audio dropouts during drawing, freezes, or flash writes</strong></td>
+<td>The display blocks the Pico for up to 232 ms, a WiFi connect blocked it for 9.5 s, and flash erases turn off interrupts.</td>
+<td>Sound runs on core 1 with a 256 ms reserve. <strong>Measured:</strong> no underruns through a 1.2 s freeze, garbage collection, a 9.5 s WiFi connect, or 17 to 21 repaints. <strong>Not solved:</strong> a flash write. MicroPython disables interrupts and pauses core 1 during every erase, and the I2S hardware needs an interrupt about every 2 ms, so a dropout is expected whichever core feeds the sound. <strong>Confirmed by ear on 2026-10-06:</strong> small writes, a 200 KB write, and a mixed load all glitched while the counters stayed above zero. No mode may write files while a sound plays; whether a write during silence is clean is untested (E10). See the <a href="../06-multicore-guide/#flash-the-exception">multicore guide</a>.</td>
 </tr>
 <tr>
 <td><strong>Tick counter wraps</strong></td>
@@ -2865,7 +2888,7 @@ Already done: <code>config.py</code> has the I2S pins, the gain pin, <code>GAIN_
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../04-audio/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Audio">
+          <a href="../06-multicore-guide/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Multicore Guide">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
@@ -2875,7 +2898,7 @@ Already done: <code>config.py</code> has the I2S pins, the gain pin, <code>GAIN_
                 Previous
               </span>
               <div class="md-ellipsis">
-                Audio
+                Multicore Guide
               </div>
             </div>
           </a>
