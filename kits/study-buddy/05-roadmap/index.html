@@ -2417,7 +2417,10 @@
 own, so the kit is useful after any of them.</p>
 <p>"The template" below means the five-mode program from the smartwatch kit's
 <a href="../../sw-gc9b72/12-main-template/">Lab 12</a>. It is copied into the Study
-Buddy folder in Lab 04, when the first mode needs it.</p>
+Buddy folder in Lab 09, when the first mode needs it.</p>
+<p>Labs 03 to 08 are the <strong>sound labs</strong>. Lab 03 builds and proves the sound
+module, and labs 04 to 08 are short, fun programs that show what the
+speaker can do. The study features start at Lab 09.</p>
 <table>
 <thead>
 <tr>
@@ -2431,79 +2434,124 @@ Buddy folder in Lab 04, when the first mode needs it.</p>
 <tbody>
 <tr>
 <td><strong>01: Blink the Onboard LED</strong></td>
-<td>Done</td>
+<td>Done, run on the board</td>
 <td><code>01-blink-onboard-led.py</code></td>
 <td>The Pico</td>
 <td>The board and firmware work.</td>
 </tr>
 <tr>
 <td><strong>02: Kit Checkup (Probe)</strong></td>
-<td>Done</td>
+<td>Done, run on the board</td>
 <td><code>02-probe.py</code>: the watch kit's checkup plus a speaker section (pin rule, gain pin, three beeps).</td>
 <td>Lab 01</td>
 <td>A report on the board, files, WiFi, buttons, SPI, speaker, and display.</td>
 </tr>
 <tr>
 <td><strong>03: Speaker Test</strong></td>
-<td>Next</td>
-<td><code>sound.py</code> with tones, named sounds, and non-blocking playback. Gives the timer a real alarm.</td>
+<td>Done. Run on the board by Dan on 2026-10-06, and the sounds all worked</td>
+<td><code>03-sound-test.py</code>, <code>sound.py</code>, <code>sfx.py</code>. Tones, a scale, named sounds, then the one-core-versus-two-cores experiment.</td>
 <td>The amplifier and speaker</td>
-<td>Beeps and melodies without freezing the screen.</td>
+<td>Beeps and melodies that keep playing while the Pico freezes.</td>
 </tr>
 <tr>
-<td><strong>04: Study Timer</strong></td>
+<td><strong>04: Hear the Range</strong></td>
+<td>Written. Screens checked in the simulator</td>
+<td><code>04-hear-the-range.py</code>: a 20 Hz to 20 kHz sweep. Press UP when you first hear it and when it vanishes.</td>
+<td>Lab 03</td>
+<td>Each student finds their own hearing range, and where the speaker stops making bass.</td>
+</tr>
+<tr>
+<td><strong>05: Five Voices</strong></td>
+<td>Written. Screens checked in the simulator</td>
+<td><code>05-waveforms.py</code>: sine, triangle, square, saw, and noise, with the wave drawn on the screen.</td>
+<td>Lab 03</td>
+<td>Timbre: why the same note sounds different.</td>
+</tr>
+<tr>
+<td><strong>06: Sound Effects Gallery</strong></td>
+<td>Written. Screens checked in the simulator</td>
+<td><code>06-sound-effects.py</code>: 21 effects from <code>sfx.py</code>, each with its recipe.</td>
+<td>Lab 03</td>
+<td>Sound effects built from slides, waves, and noise.</td>
+</tr>
+<tr>
+<td><strong>07: Ringtones</strong></td>
+<td>Written. Screens checked in the simulator</td>
+<td><code>07-ringtones.py</code>: four traditional tunes stored as RTTTL text, with the current note on screen.</td>
+<td>Lab 03</td>
+<td>A whole song in one line of text.</td>
+</tr>
+<tr>
+<td><strong>08: Button Theremin</strong></td>
+<td>Written. Screens checked in the simulator</td>
+<td><code>08-button-theremin.py</code>: hold UP or DOWN to slide the pitch, with the nearest note and how far off it is.</td>
+<td>Lab 03</td>
+<td>A playable instrument with smooth pitch.</td>
+</tr>
+<tr>
+<td><strong>09: Study Timer</strong></td>
 <td></td>
 <td><code>mode_study.py</code>: focus and break phases, with chimes and a daily minutes ring. Copies in the template and <code>mode_timer.py</code>.</td>
 <td>Lab 03</td>
 <td>A Pomodoro timer. The first useful study feature, and almost free.</td>
 </tr>
 <tr>
-<td><strong>05: Quote of the Day</strong></td>
+<td><strong>10: Quote of the Day</strong></td>
 <td></td>
 <td><code>mode_quote.py</code>, <code>packs.py</code>, and the circle-aware word-wrap.</td>
-<td>Lab 04</td>
+<td>Lab 09</td>
 <td>Quotes that fit the round screen.</td>
 </tr>
 <tr>
-<td><strong>06: Flash Quiz</strong></td>
+<td><strong>11: Flash Quiz</strong></td>
 <td></td>
 <td><code>mode_quiz.py</code> and <code>mode_mathfacts.py</code>, with the choice builder, the three-box memory, and <code>progress.json</code>.</td>
-<td>Labs 03 and 05</td>
+<td>Labs 03 and 10</td>
 <td>A working drill, with generated math facts.</td>
 </tr>
 <tr>
-<td><strong>07: A Deck of Your Own</strong></td>
+<td><strong>12: A Deck of Your Own</strong></td>
 <td></td>
 <td>The pairs deck format, and a CSV-to-deck script. Students make a <em>US Capitals</em> deck and one of their own.</td>
-<td>Lab 06</td>
+<td>Lab 11</td>
 <td>Students author content.</td>
 </tr>
 <tr>
-<td><strong>08: Next Quiz</strong></td>
+<td><strong>13: Next Quiz</strong></td>
 <td></td>
 <td><code>mode_reminder.py</code>, <code>reminders.py</code>, and the wall-clock check in the main loop.</td>
-<td>Labs 03 and 04</td>
+<td>Labs 03 and 09</td>
 <td>Chimes for a quiz that is days away.</td>
 </tr>
 <tr>
-<td><strong>09: The Library</strong></td>
+<td><strong>14: The Library</strong></td>
 <td></td>
 <td><code>mode_library.py</code> with Browse and Installed tabs, free-space display, remove, and pinning. The manifest, hashing, <code>modes.json</code> replacing the <code>MODES</code> tuple, and the teacher's <code>tools/make_manifest.py</code>.</td>
-<td>Labs 04 and 06</td>
+<td>Labs 09 and 11</td>
 <td>Students and teachers can add and remove modes and decks without a computer.</td>
 </tr>
 <tr>
-<td><strong>10: Add Events From Your Phone</strong></td>
+<td><strong>15: Add Events From Your Phone</strong></td>
 <td></td>
 <td>A small web server on the Pico and a form. Later, the calendar feed.</td>
-<td>Lab 08</td>
+<td>Lab 13</td>
 <td>No computer needed to add a quiz.</td>
 </tr>
 </tbody>
 </table>
-<p>Lab 03 and Lab 04 come first. Between them they prove the audio rules
-and the study-mode button conventions, and everything else builds on
-those.</p>
+<p>Lab 09 is the next real milestone. It proves the study-mode button
+conventions, and everything after it builds on those.</p>
+<div class="admonition note">
+<p class="admonition-title">What has and hasn't been tried</p>
+<p><strong>Lab 03 has been run on the board</strong>, and its sounds worked. That covers
+<code>sound.py</code>'s tones, scale, named sounds, and both core modes. Labs 04 to
+08 have been compiled, and their screens have been drawn through the
+display simulator with a stand-in for the sound module (the simulator
+cannot run the real compiled synthesizer). They have not yet been run
+on the board. Pieces of <code>sound.py</code> that only they use (<code>link</code>, the held
+note with <code>pitch()</code>, and <code>rtttl_notes()</code>) are still to be checked by
+running and listening.</p>
+</div>
 <h3 id="what-the-first-kit-run-showed">What the first kit run showed</h3>
 <p>Labs 01 and 02 were run on a real Pico 2 W with the Study Buddy wiring on
 2026-10-04:</p>
@@ -2562,7 +2610,7 @@ Already done: <code>config.py</code> has the I2S pins, the gain pin, <code>GAIN_
 </thead>
 <tbody>
 <tr>
-<td><code>12-main-template.py</code> (copied in Lab 04)</td>
+<td><code>12-main-template.py</code> (copied in Lab 09)</td>
 <td>Read <code>modes.json</code>. Pin up to 8 modes. Import <code>sound</code> and <code>reminders</code> before the module snapshot. Add the wall-clock reminder check. Wait for a mode's <code>busy</code> flag before switching for a reminder.</td>
 </tr>
 <tr>
@@ -2570,7 +2618,7 @@ Already done: <code>config.py</code> has the I2S pins, the gain pin, <code>GAIN_
 <td>Add <code>QUIET_START_HOUR</code> and <code>QUIET_END_HOUR</code>, and the <code>LIBRARIES</code> list (each with a <code>name</code>, a <code>url</code>, and a <code>modes</code> flag).</td>
 </tr>
 <tr>
-<td><code>mode_timer.py</code> (copied in Lab 04)</td>
+<td><code>mode_timer.py</code> (copied in Lab 09)</td>
 <td>Use <code>sound.play("done")</code> instead of the optional piezo buzzer.</td>
 </tr>
 <tr>
@@ -2599,9 +2647,9 @@ Already done: <code>config.py</code> has the I2S pins, the gain pin, <code>GAIN_
 <td>Teacher-controlled HTTPS address only, hash check, confirm screen, and a <code>modes.json</code> fallback so a broken mode cannot stop the watch from starting. Packs carry no code.</td>
 </tr>
 <tr>
-<td><strong>Audio dropouts during drawing</strong></td>
-<td>The display blocks the Pico for up to 232 ms.</td>
-<td>16 KB ring buffer, no full fills while playing, and measure early in Lab 03.</td>
+<td><strong>Audio dropouts during drawing or freezes</strong></td>
+<td>The display blocks the Pico for up to 232 ms, and a WiFi connect blocked it for 9.5 s.</td>
+<td>Fixed by running the sound on core 1 with a 256 ms reserve. Measured: no underruns through a 1.2 s freeze, a flash write, garbage collection, or a WiFi connect (see <a href="../04-audio/#playback-must-survive-drawing-and-freezing">Audio</a>). Still to check: a long flash write, by ear.</td>
 </tr>
 <tr>
 <td><strong>Tick counter wraps</strong></td>
@@ -2651,7 +2699,7 @@ Already done: <code>config.py</code> has the I2S pins, the gain pin, <code>GAIN_
 <tr>
 <td><strong>TLS to the Library host</strong></td>
 <td>Some hosts are hard for a small board to reach over HTTPS.</td>
-<td>Test GitHub Pages on a real Pico in Lab 09. Fall back to a school server.</td>
+<td>Test GitHub Pages on a real Pico in Lab 14. Fall back to a school server.</td>
 </tr>
 </tbody>
 </table>
@@ -2688,6 +2736,10 @@ Already done: <code>config.py</code> has the I2S pins, the gain pin, <code>GAIN_
 <tr>
 <td>The speaker is on GP18 to GP21, not GP10 to GP12 as first drafted: LRC on GP21, BCLK on GP20, DIN on GP19, and the amplifier's GAIN pin on GP18, so software can pick 6, 9, or 12 dB. The I2S pin rule (LRC is BCLK plus one) holds. This leaves GP8 to GP12 free for a micro-SD card on hardware SPI1.</td>
 <td>2026-10-04</td>
+</tr>
+<tr>
+<td>The kit's speaker is the <strong>8 ohm, 2 W</strong> version. It had no markings, so its DC resistance was measured with a multimeter at 7.4 ohms.</td>
+<td>2026-10-06</td>
 </tr>
 <tr>
 <td>The Study Buddy has its own lab numbers: 01 is Blink the Onboard LED and 02 is the Probe. The speaker test and everything after move to 03 and up.</td>

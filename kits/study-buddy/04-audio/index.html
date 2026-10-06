@@ -1606,11 +1606,53 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#playback-must-survive-drawing" class="md-nav__link">
+  <a href="#playback-must-survive-drawing-and-freezing" class="md-nav__link">
     <span class="md-ellipsis">
-      Playback Must Survive Drawing
+      Playback Must Survive Drawing and Freezing
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Playback Must Survive Drawing and Freezing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-sound-runs-on-the-second-core" class="md-nav__link">
+    <span class="md-ellipsis">
+      The sound runs on the second core
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-was-measured" class="md-nav__link">
+    <span class="md-ellipsis">
+      What was measured
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rules-for-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rules for modes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#still-to-measure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Still to measure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2393,11 +2435,53 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#playback-must-survive-drawing" class="md-nav__link">
+  <a href="#playback-must-survive-drawing-and-freezing" class="md-nav__link">
     <span class="md-ellipsis">
-      Playback Must Survive Drawing
+      Playback Must Survive Drawing and Freezing
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Playback Must Survive Drawing and Freezing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-sound-runs-on-the-second-core" class="md-nav__link">
+    <span class="md-ellipsis">
+      The sound runs on the second core
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-was-measured" class="md-nav__link">
+    <span class="md-ellipsis">
+      What was measured
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rules-for-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rules for modes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#still-to-measure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Still to measure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2436,6 +2520,7 @@ so the device is useful with just a speaker and the first level.</p>
 power-up, and it stays loaded in every mode (see
 <a href="../01-architecture/#changes-to-the-main-template">Architecture</a>). It owns
 the one I2S object, so no mode ever creates its own.</p>
+<p>The module is written (<code>src/kits/study-buddy/sound.py</code>). What it has today:</p>
 <table>
 <thead>
 <tr>
@@ -2445,43 +2530,57 @@ the one I2S object, so no mode ever creates its own.</p>
 </thead>
 <tbody>
 <tr>
-<td><code>init()</code></td>
-<td>Sets up I2S from <code>config.py</code> and a 16 KB ring buffer.</td>
+<td><code>init(rate=16000, ibuf=8192, volume=None, core=1)</code></td>
+<td>Starts I2S from <code>config.py</code> and the loop that feeds it. <code>rate</code> is samples per second (44100 for the full range of hearing). <code>ibuf</code> is the reserve in bytes, which is 256 ms at the defaults. <code>core</code> is 1 (second core) or 0.</td>
 </tr>
 <tr>
-<td><code>tone(freq, ms)</code></td>
-<td>Plays a tone, with a short fade-in and fade-out so it doesn't click.</td>
+<td><code>tone(freq, ms, wave, to, level, attack, release)</code></td>
+<td>Queues a note. <code>to</code> makes the pitch glide. <code>wave</code> is sine, square, triangle, saw, or noise. Short fades keep it from clicking.</td>
+</tr>
+<tr>
+<td><code>rest(ms)</code></td>
+<td>Queues silence.</td>
+</tr>
+<tr>
+<td><code>hold(freq, wave)</code>, <code>pitch(freq)</code>, <code>release()</code></td>
+<td>A note that keeps playing while the pitch is steered (for the button theremin).</td>
 </tr>
 <tr>
 <td><code>play(name)</code></td>
-<td>Plays a named sound: <code>"right"</code>, <code>"wrong"</code>, <code>"chime"</code>, <code>"reminder"</code>, <code>"done"</code>, <code>"start"</code>.</td>
+<td>Queues a named sound from <code>sfx.py</code>, such as <code>"right"</code>, <code>"wrong"</code>, <code>"chime"</code>, <code>"reminder"</code>, <code>"done"</code>, <code>"start"</code>, <code>"coin"</code>, or <code>"laser"</code>.</td>
 </tr>
 <tr>
-<td><code>melody(notes)</code></td>
-<td>Plays a list of <code>(note, ms)</code> pairs.</td>
+<td><code>rtttl(text)</code></td>
+<td>Queues a tune written as an old-phone ringtone string.</td>
 </tr>
 <tr>
-<td><code>wav(path)</code></td>
-<td>Streams a 16-bit mono WAV file from flash.</td>
-</tr>
-<tr>
-<td><code>say(parts)</code></td>
-<td>Plays a list of WAV clips one after the other (see level 2).</td>
+<td><code>note_freq("A4")</code>, <code>note_name(440)</code></td>
+<td>Note names to hertz and back.</td>
 </tr>
 <tr>
 <td><code>stop()</code></td>
-<td>Stops everything at once.</td>
+<td>Empties the queue. Sound already in the reserve still plays, up to 256 ms at the defaults.</td>
 </tr>
 <tr>
-<td><code>busy()</code></td>
-<td><code>True</code> while anything is playing.</td>
+<td><code>busy()</code>, <code>wait()</code></td>
+<td>Is anything still playing, and wait until it is done.</td>
 </tr>
 <tr>
 <td><code>volume(n)</code></td>
-<td>0 to 100. Applied in software by scaling samples.</td>
+<td>0 to 100, applied in software.</td>
+</tr>
+<tr>
+<td><code>stats()</code>, <code>reset_stats()</code></td>
+<td>Underruns, the smallest reserve seen, and the longest wait between chunks. Lab 03 reads these.</td>
+</tr>
+<tr>
+<td><code>deinit()</code></td>
+<td>Stops the loop and frees the I2S hardware.</td>
 </tr>
 </tbody>
 </table>
+<p>Not written yet: <code>wav(path)</code> to stream a 16-bit mono WAV file from flash,
+and <code>say(parts)</code> to play a list of clips one after another (see level 2).</p>
 <p>Every playing function returns immediately. Playback continues on its own,
 and a mode only needs to call <code>busy()</code> if it wants to wait.</p>
 <h3 id="level-1-tones">Level 1: tones</h3>
@@ -2594,31 +2693,109 @@ to WAV on the computer with a converter script (still to be written).
 The player checks the WAV header, so a wrong format is rejected with
 a message and never played as noise.</p>
 </div>
-<h2 id="playback-must-survive-drawing">Playback Must Survive Drawing</h2>
+<h2 id="playback-must-survive-drawing-and-freezing">Playback Must Survive Drawing and Freezing</h2>
 <p>Updating the display blocks the Pico. A full-screen fill takes 131 ms, the
-analog face's redraw takes up to 232 ms, and a WiFi fetch takes a second
-or two. If the audio buffer runs dry during one of these, the speaker
-makes a click or a stutter.</p>
-<p>The design handles this with three rules:</p>
+analog face's redraw takes up to 232 ms, and a WiFi connect took <strong>9.5
+seconds</strong> on the real kit. If the audio buffer runs dry during one of
+these, the speaker clicks or stutters.</p>
+<h3 id="the-sound-runs-on-the-second-core">The sound runs on the second core</h3>
+<p>The Pico 2 W has two cores that run at the same time. <code>sound.init()</code>
+starts a small loop on <strong>core 1</strong> that does one job: calculate a chunk of
+sound, hand it to the amplifier, repeat. The rest of the program, on
+core 0, can freeze for as long as it likes and the sound does not notice.
+The note queue is shared between the cores, so a lock guards it.</p>
+<p><code>init(core=0)</code> is still there. It has the I2S driver interrupt core 0 each
+time it needs a chunk, which is simpler but cannot play through a freeze.</p>
+<h3 id="what-was-measured">What was measured</h3>
+<p>All on the real kit (Pico 2 W, MicroPython 1.29.0, 16 kHz, 256 ms reserve).</p>
+<p><strong>Does core 1 run in parallel?</strong> Yes. The same 150,000-step loop took
+1014 ms on core 0 alone and 1024 ms on core 1 alone. With both running at
+once, each took 1121 ms, about 10% slower and not twice as slow, so there
+is no interpreter lock making the cores take turns. (The 10% is probably
+the two cores sharing the memory bus and heap.)</p>
+<p><strong>Does it survive a freeze?</strong> A steady tone played while core 0 sat inside
+one long call (<code>max(range(1_000_000))</code>, about 1.2 s):</p>
+<table>
+<thead>
+<tr>
+<th>Audio fed by</th>
+<th>Core 0 frozen for</th>
+<th>Underruns</th>
+<th>Reserve at its lowest</th>
+<th>Longest wait between chunks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>core 0 (interrupts)</td>
+<td>1163 ms</td>
+<td>1</td>
+<td>-878 ms (ran dry)</td>
+<td>1192 ms</td>
+</tr>
+<tr>
+<td>core 1 (thread)</td>
+<td>1284 ms</td>
+<td>0</td>
+<td>254 of 256 ms</td>
+<td>64 ms (normal)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Does it survive real jobs?</strong> On core 1, with a 9-second tone playing:</p>
+<table>
+<thead>
+<tr>
+<th>Job on core 0</th>
+<th>Took</th>
+<th>Underruns</th>
+<th>Reserve at its lowest</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>40 KB flash write and delete</td>
+<td>139 ms</td>
+<td>0</td>
+<td>250 ms</td>
+</tr>
+<tr>
+<td>20 forced garbage collections</td>
+<td>133 ms</td>
+<td>0</td>
+<td>248 ms</td>
+</tr>
+<tr>
+<td>WiFi connect and NTP time sync</td>
+<td>9451 ms</td>
+<td>0</td>
+<td>252 ms</td>
+</tr>
+</tbody>
+</table>
+<p>Two limits on those numbers. They measure whether the audio <em>supply</em>
+stalled, and cannot see whether the I2S hardware itself ran dry, so they
+are backed by listening (a steady tone should stay steady through all of
+it). And the flash write was small: a long write, such as a Library
+download, still needs listening to before we rely on it.</p>
+<h3 id="rules-for-modes">Rules for modes</h3>
 <ol>
-<li><strong>Use I2S in non-blocking mode</strong> with a callback that refills the ring
-   buffer from the file or the note generator. The callback is scheduled
-   by MicroPython between bytecodes, so it <strong>does not run in the middle of
-   a long C call</strong> such as a screen fill <strong>(verify on the bench)</strong>.</li>
-<li><strong>A 16 KB buffer.</strong> At 16 kHz that is about 500 ms of audio, which is
-   longer than any normal redraw.</li>
-<li><strong>Modes must not make a full-screen fill while a sound is playing.</strong>
-   Only the analog face and the template's start-up do, and neither plays
-   audio.</li>
+<li><strong>A mode may draw, save files, and fetch over WiFi while a sound plays.</strong>
+   The full-screen-fill rule from the first draft is no longer needed on
+   core 1. It still applies if <code>init(core=0)</code> is used.</li>
+<li><strong>Never write a loop on core 1 that spins without waiting.</strong> The audio
+   loop is safe because <code>write()</code> sleeps whenever the reserve is full.</li>
+<li><strong>Talk to the sound through its functions</strong> (<code>tone()</code>, <code>stop()</code>, and so
+   on), which take the lock. Do not touch its queue directly.</li>
 </ol>
-<p>Things to measure early, on the real kit:</p>
+<h3 id="still-to-measure">Still to measure</h3>
 <ul>
-<li>The longest gap in the buffer's refilling while a screen fill runs.</li>
-<li>Whether a WiFi fetch (Library, calendar) causes dropouts. If it does,
-  the Study Buddy plays nothing while it fetches.</li>
+<li>A long flash write (a 200 KB download) while a sound plays, by ear.</li>
 <li>The click when I2S starts and stops. If it clicks, the amplifier stays
   running with silence between sounds.</li>
 <li>Whether full volume on 5 V disturbs the WiFi chip.</li>
+<li>What happens to the core-1 loop when a program stops with Thonny's Stop
+  button instead of calling <code>sound.deinit()</code>.</li>
 </ul>
 <h2 id="volume-and-quiet-hours">Volume and Quiet Hours</h2>
 <ul>

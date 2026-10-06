@@ -2841,7 +2841,7 @@ modes on the devices ahead of time.</p>
 </tbody>
 </table>
 <p>The manifest script is <code>tools/make_manifest.py</code> in the kit's folder
-(written in Lab 09).</p>
+(written in Lab 14).</p>
 <p><code>hashlib.sha256</code> is available in MicroPython's rp2 builds <strong>(verify on the
 firmware version the kit ships)</strong>. Downloads use HTTPS. Whether the Pico
 2 W's TLS stack can reach GitHub Pages reliably is a <strong>verify</strong> item; if
@@ -2855,8 +2855,9 @@ point a device at it with one entry in <code>LIBRARIES</code>.</p>
 <ul>
 <li>Do not draw in the dot strip at the bottom.</li>
 <li>Do not clear the screen except in <code>start()</code>.</li>
-<li><strong>Do not make a full-screen fill (131 ms) while a sound is playing.</strong>
-  See <a href="../04-audio/#playback-must-survive-drawing">Audio</a>.</li>
+<li><strong>Sound plays on core 1, so drawing and saving files do not interrupt
+  it.</strong> Never write a loop on core 1 that spins without waiting. See
+  <a href="../04-audio/#playback-must-survive-drawing-and-freezing">Audio</a>.</li>
 <li>Set <code>busy = True</code> while the student is in the middle of something that
   must not be interrupted by a reminder.</li>
 <li>Read packs through the helper in <code>packs.py</code>, which enforces size limits,
