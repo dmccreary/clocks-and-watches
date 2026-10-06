@@ -2773,11 +2773,40 @@ one long call (<code>max(range(1_000_000))</code>, about 1.2 s):</p>
 </tr>
 </tbody>
 </table>
+<p><strong>Reproduced by the lab itself.</strong> Dan ran <code>03-sound-test.py</code> on his own
+board on 2026-10-06 and sent back what it printed. The numbers match the
+test scripts above to within a few milliseconds:</p>
+<table>
+<thead>
+<tr>
+<th>Part of the lab</th>
+<th>Result printed by the lab</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Part 4, core 0 in charge</td>
+<td>core 0 frozen 1164 ms, 1 dropout, reserve fell to -867 of 256 ms, longest wait 1182 ms</td>
+</tr>
+<tr>
+<td>Part 4, core 1 in charge</td>
+<td>core 0 frozen 1284 ms, 0 dropouts, reserve fell to 254 of 256 ms, longest wait 64 ms</td>
+</tr>
+<tr>
+<td>Part 5, drawing</td>
+<td>17 full-screen fills, 0 dropouts, reserve fell to 252 of 256 ms</td>
+</tr>
+</tbody>
+</table>
+<p>So the result holds on a second run, on the board a student would use, with
+the program a student would run.</p>
 <p>Two limits on those numbers. They measure whether the audio <em>supply</em>
 stalled, and cannot see whether the I2S hardware itself ran dry, so they
 are backed by listening (a steady tone should stay steady through all of
-it). And the flash write was small: a long write, such as a Library
-download, still needs listening to before we rely on it.</p>
+it). Dan reported that the sounds in lab 03 worked, but has not yet said
+whether the one-second gap with core 0 in charge was audible, so that
+part is not confirmed by ear. And the flash write was small: a long write,
+such as a Library download, still needs listening to before we rely on it.</p>
 <h3 id="rules-for-modes">Rules for modes</h3>
 <ol>
 <li><strong>A mode may draw, save files, and fetch over WiFi while a sound plays.</strong>
