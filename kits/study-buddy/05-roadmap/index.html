@@ -1595,6 +1595,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#lab-04-results-three-sweeps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab 04 results: three sweeps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#changes-still-to-make-to-the-copied-files" class="md-nav__link">
     <span class="md-ellipsis">
       Changes still to make to the copied files
@@ -2352,6 +2361,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#lab-04-results-three-sweeps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab 04 results: three sweeps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#changes-still-to-make-to-the-copied-files" class="md-nav__link">
     <span class="md-ellipsis">
       Changes still to make to the copied files
@@ -2455,10 +2473,10 @@ speaker can do. The study features start at Lab 09.</p>
 </tr>
 <tr>
 <td><strong>04: Hear the Range</strong></td>
-<td>Written. Screens checked in the simulator</td>
+<td>Done. Run on the board three times on 2026-10-06</td>
 <td><code>04-hear-the-range.py</code>: a 20 Hz to 20 kHz sweep. Press UP when you first hear it and when it vanishes.</td>
 <td>Lab 03</td>
-<td>Each student finds their own hearing range, and where the speaker stops making bass.</td>
+<td>Each student finds their own hearing range, and sees how a small speaker behaves down low.</td>
 </tr>
 <tr>
 <td><strong>05: Five Voices</strong></td>
@@ -2543,14 +2561,15 @@ speaker can do. The study features start at Lab 09.</p>
 conventions, and everything after it builds on those.</p>
 <div class="admonition note">
 <p class="admonition-title">What has and hasn't been tried</p>
-<p><strong>Lab 03 has been run on the board</strong>, and its sounds worked. That covers
-<code>sound.py</code>'s tones, scale, named sounds, and both core modes. Labs 04 to
-08 have been compiled, and their screens have been drawn through the
+<p><strong>Labs 03 and 04 have been run on the board.</strong> Lab 03's sounds worked
+and it reproduced the two-core results. Lab 04 ran three sweeps in a row
+with no errors, which also exercises <code>link</code> and 44.1 kHz audio. Labs 05
+to 08 have been compiled, and their screens have been drawn through the
 display simulator with a stand-in for the sound module (the simulator
 cannot run the real compiled synthesizer). They have not yet been run
-on the board. Pieces of <code>sound.py</code> that only they use (<code>link</code>, the held
-note with <code>pitch()</code>, and <code>rtttl_notes()</code>) are still to be checked by
-running and listening.</p>
+on the board. Pieces of <code>sound.py</code> that only they use (the held note
+with <code>pitch()</code>, and <code>rtttl_notes()</code>) are still to be checked by running
+and listening.</p>
 </div>
 <h3 id="what-the-first-kit-run-showed">What the first kit run showed</h3>
 <p>Labs 01 and 02 were run on a real Pico 2 W with the Study Buddy wiring on
@@ -2597,6 +2616,52 @@ running and listening.</p>
 </tr>
 </tbody>
 </table>
+<h3 id="lab-04-results-three-sweeps">Lab 04 results: three sweeps</h3>
+<p>One adult tester ran the hearing-range sweep three times on the real kit
+(speaker volume capped at 30), pressing UP when the tone was first heard
+and again when it vanished:</p>
+<table>
+<thead>
+<tr>
+<th>Run</th>
+<th>First heard</th>
+<th>Stopped hearing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>73 Hz</td>
+<td>11,068 Hz</td>
+</tr>
+<tr>
+<td>2</td>
+<td>107 Hz</td>
+<td>11,122 Hz</td>
+</tr>
+<tr>
+<td>3</td>
+<td>57 Hz</td>
+<td>10,171 Hz</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>The high end was steady</strong>: about 10 to 11 kHz, with a spread of about
+  9%, which is about what button-press reaction time produces (the sweep
+  climbs roughly 11% in the 250 ms a press takes). It is where the tone
+  faded out <em>for this listener, on this speaker, at this volume</em>. It is
+  not a hearing test: a small speaker also loses output at the top of its
+  range, and the answer moves with the volume.</li>
+<li><strong>The low end was a surprise.</strong> The speaker is too small to make much
+  true bass, yet something was heard from 57 to 107 Hz. That is probably
+  not the pure tone but distortion (extra notes at two and three times the
+  frequency) or a buzz from loose wiring. The wide spread fits a listener
+  judging where a buzz begins. The test is to repeat at a lower volume: if
+  the first-heard number jumps up, it was distortion. The lab's result
+  screen and comments were reworded to say this instead of claiming the
+  speaker is silent down low.</li>
+</ul>
 <h3 id="changes-still-to-make-to-the-copied-files">Changes still to make to the copied files</h3>
 <p>The Study Buddy folder started as a copy of the watch kit's shared files.
 Already done: <code>config.py</code> has the I2S pins, the gain pin, <code>GAIN_DB</code>,
