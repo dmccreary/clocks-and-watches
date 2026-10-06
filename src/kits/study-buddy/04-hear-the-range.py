@@ -11,12 +11,16 @@
 # about 20 Hz up to about 20,000 Hz.
 #
 # TWO LIMITS, AND THEY ARE NOT THE SAME
-#   * The speaker. A speaker this small cannot move enough air to make deep
-#     bass, so the low end is silent (or just clicks) up to somewhere in the
-#     low hundreds of hertz. That tells you about the SPEAKER.
-#   * Your ears. The high end is where YOUR hearing stops. Children often
-#     hear nearly 20,000 Hz. Most adults stop between about 15,000 and
-#     17,000, and it keeps falling with age. Try it on your teacher.
+#   * The speaker. A speaker this small cannot move enough air to make much
+#     true deep bass. Down low it mostly makes buzz and distortion: extra,
+#     higher notes (at 2 and 3 times the frequency) that are easy to hear. So
+#     the "first heard" number is often where the BUZZ begins, not where the
+#     pure tone does. On the first kit tested, a listener first heard
+#     something between about 57 and 107 Hz. That tells you about the SPEAKER.
+#   * Your ears. The high end is where YOUR hearing stops, at this volume, on
+#     this speaker. Children often hear nearly 20,000 Hz. Adults vary a lot:
+#     somewhere between about 10,000 and 17,000 is common, and it falls with
+#     age. Try it on your teacher.
 #
 # The sweep goes up in quarter-octaves. An octave is a doubling of the
 # frequency (220 Hz, 440 Hz, 880 Hz sound like "the same note" higher up),
@@ -187,8 +191,8 @@ def result(low, high):
         else:
             put("stopped hearing at", 158, SMALL, DIM)
             put(hz_text(high), 180, BIG, config.YELLOW, 16)
-    put("A small speaker can't make deep bass.", 232, SMALL, DIM)
-    put("Most adults stop near 15,000-17,000.", 252, SMALL, DIM)
+    put("Down low, small speakers mostly buzz.", 232, SMALL, DIM)
+    put("Adults often stop at 10,000-17,000.", 252, SMALL, DIM)
     put("UP: again", 284, SMALL, DIM)
     print("heard from {} to {} Hz".format(
         None if low is None else round(low),
@@ -206,9 +210,9 @@ finally:
     sound.deinit()
 
 # Try This
-#   1. Find the lowest frequency where YOUR speaker makes a clear tone, not
-#      just clicking. Is it above 100 Hz? 300? Why can't a speaker this
-#      small go lower?
+#   1. Is what you hear at the low end a clean tone, or a buzz? Find out:
+#      change min(config.VOLUME, 30) to 10 and run it again. If the "first
+#      heard" number jumps up a lot, what you heard was distortion.
 #   2. Ask a parent and a friend to do the same. Who hears the highest?
 #   3. Change STEPS to 12. Now the sweep moves in single notes of the
 #      piano (12 notes to an octave) and the pitch rises more smoothly.

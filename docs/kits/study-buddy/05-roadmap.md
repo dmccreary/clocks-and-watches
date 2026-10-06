@@ -19,7 +19,7 @@ speaker can do. The study features start at Lab 09.
 | **01: Blink the Onboard LED** | Done, run on the board | `01-blink-onboard-led.py` | The Pico | The board and firmware work. |
 | **02: Kit Checkup (Probe)** | Done, run on the board | `02-probe.py`: the watch kit's checkup plus a speaker section (pin rule, gain pin, three beeps). | Lab 01 | A report on the board, files, WiFi, buttons, SPI, speaker, and display. |
 | **03: Speaker Test** | Done. Run on the board by Dan on 2026-10-06, and the sounds all worked | `03-sound-test.py`, `sound.py`, `sfx.py`. Tones, a scale, named sounds, then the one-core-versus-two-cores experiment. | The amplifier and speaker | Beeps and melodies that keep playing while the Pico freezes. |
-| **04: Hear the Range** | Written. Screens checked in the simulator | `04-hear-the-range.py`: a 20 Hz to 20 kHz sweep. Press UP when you first hear it and when it vanishes. | Lab 03 | Each student finds their own hearing range, and where the speaker stops making bass. |
+| **04: Hear the Range** | Done. Run on the board three times on 2026-10-06 | `04-hear-the-range.py`: a 20 Hz to 20 kHz sweep. Press UP when you first hear it and when it vanishes. | Lab 03 | Each student finds their own hearing range, and sees how a small speaker behaves down low. |
 | **05: Five Voices** | Written. Screens checked in the simulator | `05-waveforms.py`: sine, triangle, square, saw, and noise, with the wave drawn on the screen. | Lab 03 | Timbre: why the same note sounds different. |
 | **06: Sound Effects Gallery** | Written. Screens checked in the simulator | `06-sound-effects.py`: 21 effects from `sfx.py`, each with its recipe. | Lab 03 | Sound effects built from slides, waves, and noise. |
 | **07: Ringtones** | Written. Screens checked in the simulator | `07-ringtones.py`: four traditional tunes stored as RTTTL text, with the current note on screen. | Lab 03 | A whole song in one line of text. |
@@ -36,14 +36,15 @@ Lab 09 is the next real milestone. It proves the study-mode button
 conventions, and everything after it builds on those.
 
 !!! note "What has and hasn't been tried"
-    **Lab 03 has been run on the board**, and its sounds worked. That covers
-    `sound.py`'s tones, scale, named sounds, and both core modes. Labs 04 to
-    08 have been compiled, and their screens have been drawn through the
+    **Labs 03 and 04 have been run on the board.** Lab 03's sounds worked
+    and it reproduced the two-core results. Lab 04 ran three sweeps in a row
+    with no errors, which also exercises `link` and 44.1 kHz audio. Labs 05
+    to 08 have been compiled, and their screens have been drawn through the
     display simulator with a stand-in for the sound module (the simulator
     cannot run the real compiled synthesizer). They have not yet been run
-    on the board. Pieces of `sound.py` that only they use (`link`, the held
-    note with `pitch()`, and `rtttl_notes()`) are still to be checked by
-    running and listening.
+    on the board. Pieces of `sound.py` that only they use (the held note
+    with `pitch()`, and `rtttl_notes()`) are still to be checked by running
+    and listening.
 
 ### What the first kit run showed
 
@@ -60,6 +61,33 @@ Labs 01 and 02 were run on a real Pico 2 W with the Study Buddy wiring on
 | Sound | Heard (three rising beeps) |
 | Display | Four color bars shown, full fill 130 ms, same as the watch kit |
 | WiFi | The home network is visible but weak, about -72 dBm, and a single scan sometimes misses it, so the probe rescans twice before it warns |
+
+### Lab 04 results: three sweeps
+
+One adult tester ran the hearing-range sweep three times on the real kit
+(speaker volume capped at 30), pressing UP when the tone was first heard
+and again when it vanished:
+
+| Run | First heard | Stopped hearing |
+|---|---|---|
+| 1 | 73 Hz | 11,068 Hz |
+| 2 | 107 Hz | 11,122 Hz |
+| 3 | 57 Hz | 10,171 Hz |
+
+- **The high end was steady**: about 10 to 11 kHz, with a spread of about
+  9%, which is about what button-press reaction time produces (the sweep
+  climbs roughly 11% in the 250 ms a press takes). It is where the tone
+  faded out *for this listener, on this speaker, at this volume*. It is
+  not a hearing test: a small speaker also loses output at the top of its
+  range, and the answer moves with the volume.
+- **The low end was a surprise.** The speaker is too small to make much
+  true bass, yet something was heard from 57 to 107 Hz. That is probably
+  not the pure tone but distortion (extra notes at two and three times the
+  frequency) or a buzz from loose wiring. The wide spread fits a listener
+  judging where a buzz begins. The test is to repeat at a lower volume: if
+  the first-heard number jumps up, it was distortion. The lab's result
+  screen and comments were reworded to say this instead of claiming the
+  speaker is silent down low.
 
 ### Changes still to make to the copied files
 

@@ -79,10 +79,13 @@ What that means for the labs:
 
 - **It is a small, clear speaker, not a full-range one.** A speaker this
   size is usually good from the low hundreds of hertz up into the high
-  treble. It cannot make deep bass, because moving that much air takes a
-  big cone or a big box. The "20KHz" is the top of what the speaker is
-  *listed* for, and is not a promise that it is loud or even there. Lab 04
-  has you find out where **this** speaker starts and stops, by ear.
+  treble. It cannot make much true deep bass, because moving that much
+  air takes a big cone or a big box. Down low it mostly buzzes and
+  distorts, and the extra higher notes that distortion adds are easy to
+  hear. The "20KHz" is the top of what the speaker is *listed* for, and is
+  not a promise that it is loud or even there. Lab 04 has you find out
+  where **this** speaker starts and stops, by ear. See the
+  [first results](05-roadmap.md#lab-04-results-three-sweeps).
 - **Power is not the limit.** The MAX98357A makes about 3 W into 4 ohms at
   5 V, and less at 3.3 V or into 8 ohms. At the default volume of 40 the
   speaker is nowhere near its 2 W rating.
