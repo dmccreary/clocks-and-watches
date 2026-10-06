@@ -46,6 +46,15 @@ All the pin numbers are in `config.py`.
 |---|---|---|
 | 01 | `01-blink-onboard-led.py` | Blinks the LED on the Pico. Checks the board and firmware. |
 | 02 | `02-probe.py` | Checks the board, files, WiFi, buttons, SPI, speaker, and display. Plays three beeps (set `PLAY_BEEPS = False` for silence). |
+| 03 | `03-sound-test.py` | Tones, a scale, and the Study Buddy's named sounds. Then the experiment that shows why the sound comes from the Pico's second core. |
+| 04 | `04-hear-the-range.py` | A sweep from 20 Hz to 20 kHz. Press UP when you first hear it and when it vanishes. Finds your hearing range. |
+| 05 | `05-waveforms.py` | Sine, triangle, square, saw, and noise, with the wave drawn on the screen. UP/DOWN to change, MODE to replay. |
+| 06 | `06-sound-effects.py` | A gallery of 21 sound effects, each with its recipe. UP/DOWN to browse, MODE to play. |
+| 07 | `07-ringtones.py` | Four traditional tunes stored as one line of text each. UP/DOWN to choose, MODE to play. |
+| 08 | `08-button-theremin.py` | Hold UP or DOWN to slide the pitch. MODE turns the sound on and off, and holding MODE changes the voice. |
+
+Labs 03 to 08 need `sound.py` and `sfx.py` on the Pico, which
+`upload-code.sh` copies along with everything else.
 
 More labs are planned in the
 [roadmap](../../../docs/kits/study-buddy/05-roadmap.md).
@@ -57,6 +66,8 @@ More labs are planned in the
 | `config.py` | Every pin number and setting. The labs import it. |
 | `lib/` | The GC9B72 driver, two fonts, shapes, and `watchparts.py`. Copied from `sw-gc9b72`. |
 | `wifi_time.py` | Sets the clock over WiFi. Copied from `sw-gc9b72`. |
+| `sound.py` | The sound module: a synthesizer that feeds the amplifier from core 1. |
+| `sfx.py` | The named sound effects, as plain data. |
 | `secrets-template.py` | A template for your WiFi settings. |
 | `upload-code.sh` | Copies the kit to the Pico with `mpremote`. |
 

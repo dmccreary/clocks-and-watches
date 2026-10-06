@@ -213,7 +213,7 @@ modes on the devices ahead of time.
 | Pre-install for a class | Put the files on the Pico with `upload-code.sh`, so a student's first run needs no WiFi. |
 
 The manifest script is `tools/make_manifest.py` in the kit's folder
-(written in Lab 09).
+(written in Lab 14).
 
 `hashlib.sha256` is available in MicroPython's rp2 builds **(verify on the
 firmware version the kit ships)**. Downloads use HTTPS. Whether the Pico
@@ -232,8 +232,9 @@ All the watch kit's rules still apply, plus three new ones:
 
 - Do not draw in the dot strip at the bottom.
 - Do not clear the screen except in `start()`.
-- **Do not make a full-screen fill (131 ms) while a sound is playing.**
-  See [Audio](04-audio.md#playback-must-survive-drawing).
+- **Sound plays on core 1, so drawing and saving files do not interrupt
+  it.** Never write a loop on core 1 that spins without waiting. See
+  [Audio](04-audio.md#playback-must-survive-drawing-and-freezing).
 - Set `busy = True` while the student is in the middle of something that
   must not be interrupted by a reminder.
 - Read packs through the helper in `packs.py`, which enforces size limits,

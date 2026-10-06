@@ -85,10 +85,15 @@ What that means for the labs:
   has you find out where **this** speaker starts and stops, by ear.
 - **Power is not the limit.** The MAX98357A makes about 3 W into 4 ohms at
   5 V, and less at 3.3 V or into 8 ohms. At the default volume of 40 the
-  speaker is nowhere near its rating.
-- **We do not yet know which impedance you have.** The listing's selected
-  option reads "8 ohms 2W". Neither the amplifier nor `sound.py` cares, but
-  the volume is a little lower into 8 ohms than into 4.
+  speaker is nowhere near its 2 W rating.
+- **It is the 8 ohm, 2 W version.** The same listing sells a 4 ohm 3 W
+  speaker and an 8 ohm 2 W one, and the speaker has no markings. Dan
+  measured its DC resistance with a multimeter at **7.4 ohms**. A 4 ohm
+  speaker reads about 3 to 3.5, and an 8 ohm one about 6 to 7.5, so this
+  is the 8 ohm one. Into 8 ohms the amplifier is a little quieter than
+  into 4, and the most it can deliver at 5 V is, as I remember the
+  datasheet, a bit under the speaker's 2 W rating. At the default volume of
+  40 it is nowhere near.
 
 ## Wiring Added
 

@@ -33,6 +33,23 @@
 # new note, stop()) is heard one reserve later. Lab 08 uses a small reserve
 # so the pitch follows your fingers; lab 03 measures how big it must be.
 #
+# TWO CORES: WHY THE SOUND LIVES ON CORE 1
+#
+# The Pico 2 W has two processor cores that run at the same time. By
+# default init() starts a small loop on the SECOND core (core 1) whose
+# only job is: calculate a chunk, hand it to the amplifier, repeat. Your
+# program on core 0 can then freeze for as long as it likes -- a WiFi
+# connect, a secure web request, a long drawing job -- and the sound does
+# not notice, because core 1 is not the one frozen.
+#
+# init(core=0) uses the older way instead: the I2S driver interrupts core
+# 0 each time it needs a chunk. That works well while the program keeps
+# looking up, but it cannot play through a freeze on core 0. Lab 03 plays
+# the same sound both ways during a freeze so you can hear the difference.
+#
+# Two cores share one set of variables, so the note queue is guarded by a
+# lock: only one core touches it at a time.
+#
 # THE SYNTHESIZER
 #
 # _render() is a "viper" function: MicroPython compiles it to real machine
@@ -53,6 +70,11 @@ import time
 
 import micropython
 from machine import Pin, I2S
+
+try:
+    import _thread                  # runs code on core 1
+except ImportError:
+    _thread = None
 
 import config
 
@@ -117,8 +139,10 @@ def _render(out: ptr16, off: int, count: int, table: ptr16, wave: int,
 class _Note:
     """One note waiting to play, or playing now."""
 
-    def __init__(self, f0, f1, ms, wave, level, attack, release, hold):
+    def __init__(self, f0, f1, ms, wave, level, attack, release, hold,
+                 link=False):
         rate = _rate
+        self.link = link                    # continue the last note's wave
         self.wave = wave
         self.level = level
         self.hold = hold                    # True: plays until release()
@@ -150,7 +174,24 @@ _buf_mv = memoryview(_buf)
 _zeros = memoryview(bytes(CHUNK * 2))
 _audible_until = 0
 _playing = False                 # True from the first note until the last
+_last_phase = 0                  # where the wave was when the last note ended
 _stats = {}
+_core = 0                        # which core feeds the amplifier (0 or 1)
+_run = False                     # tells the core-1 loop to keep going
+_thread_alive = False
+
+
+class _NoLock:
+    """Stands in for a lock when only one core is involved."""
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *args):
+        return False
+
+
+_lock = _NoLock()
 
 
 def _vgain():
@@ -180,7 +221,7 @@ def _reset_stats():
 
 def _fill():
     """Calculate one chunk of samples into _buf."""
-    global _cur, _audible_until, _playing
+    global _cur, _audible_until, _playing, _last_phase
     off = 0
     while off < CHUNK:
         note = _cur
@@ -188,6 +229,8 @@ def _fill():
             if _queue:
                 note = _cur = _queue.pop(0)
                 _playing = True
+                if note.link:
+                    note.phase = _last_phase
             else:
                 # Nothing to play: fill the rest with silence.
                 _buf_mv[off * 2:CHUNK * 2] = _zeros[:(CHUNK - off) * 2]
@@ -231,10 +274,12 @@ def _fill():
             note.step += note.dstep * n
             note.release -= n
         else:
+            _last_phase = note.phase
             _cur = None
             continue
         off += n
         if note.attack <= 0 and note.body <= 0 and note.release <= 0:
+            _last_phase = note.phase
             _cur = None
 
 
@@ -264,8 +309,9 @@ def _feed():
             st["t0"] = now                  # start counting again
             st["accepted"] = 0
     st["last"] = now
-    _fill()
-    _audio.write(_buf)
+    with _lock:
+        _fill()
+    _audio.write(_buf)              # core 1: waits here until there is room
     st["accepted"] += CHUNK
     st["chunks"] += 1
 
@@ -274,14 +320,31 @@ def _irq(_):
     _feed()
 
 
+def _thread_main():
+    """The core-1 loop. write() waits whenever the reserve is full, so this
+    loop never spins: it sleeps inside write() almost all the time."""
+    global _thread_alive, _run
+    _thread_alive = True
+    try:
+        while _run:
+            _feed()
+    except Exception as error:
+        _run = False
+        print("sound: core-1 loop stopped:", error)
+    _thread_alive = False
+
+
 # --- the public functions ---------------------------------------------------
-def init(rate=16000, ibuf=8192, volume=None):
+def init(rate=16000, ibuf=8192, volume=None, core=1):
     """Start the amplifier. rate is samples per second (16000 is plenty for
     beeps and tunes, 44100 for the full range of hearing), and ibuf is the
     reserve described at the top of this file, in bytes.
 
+    core is which processor core feeds the amplifier: 1 (the default) or 0.
+    See "TWO CORES" at the top of this file.
+
     Calling it again with different settings restarts the audio."""
-    global _audio, _rate, _ibuf, _volume, _cur
+    global _audio, _rate, _ibuf, _volume, _cur, _core, _run, _lock
     deinit()
     _rate = rate
     _ibuf = ibuf
@@ -292,13 +355,30 @@ def init(rate=16000, ibuf=8192, volume=None):
                  sd=Pin(config.I2S_DIN_PIN), mode=I2S.TX, bits=16,
                  format=I2S.MONO, rate=rate, ibuf=ibuf)
     _reset_stats()
-    _audio.irq(_irq)
-    _feed()                         # the first chunk starts the chain
+    _core = 0
+    if core == 1 and _thread is not None:
+        _lock = _thread.allocate_lock()
+        _run = True
+        try:
+            _thread.start_new_thread(_thread_main, ())
+            _core = 1
+        except Exception as error:
+            print("sound: no second core, using core 0:", error)
+            _run = False
+    if _core == 0:
+        _lock = _NoLock()
+        _audio.irq(_irq)
+        _feed()                     # the first chunk starts the chain
 
 
 def deinit():
     """Stop the amplifier and free the I2S hardware."""
-    global _audio, _cur
+    global _audio, _cur, _run
+    _run = False
+    waited = 0
+    while _thread_alive and waited < 100:       # let the core-1 loop leave
+        time.sleep_ms(10)
+        waited += 1
     if _audio is not None:
         _audio.deinit()
         _audio = None
@@ -314,7 +394,8 @@ def volume(level=None):
     return _volume
 
 
-def tone(freq, ms, wave=SINE, to=None, level=1.0, attack=5, release=10):
+def tone(freq, ms, wave=SINE, to=None, level=1.0, attack=5, release=10,
+         link=False):
     """Queue one note: freq Hz for ms milliseconds.
 
     to      a second frequency. The pitch glides from freq to it.
@@ -322,10 +403,16 @@ def tone(freq, ms, wave=SINE, to=None, level=1.0, attack=5, release=10):
     attack  milliseconds to fade in (stops a click at the start).
     release milliseconds to fade out (stops a click at the end, and gives
             notes a little space between them).
+    link    True to carry on from exactly where the last note's wave ended,
+            for a smooth slide built from several notes (use attack=0 and
+            release=0 on the joins too). Otherwise every note starts its
+            wave from zero.
     A freq of 0 is a rest."""
-    if len(_queue) < MAX_QUEUE:
-        _queue.append(_Note(freq, freq if to is None else to, ms, wave,
-                            level, attack, release, False))
+    note = _Note(freq, freq if to is None else to, ms, wave,
+                 level, attack, release, False, link)
+    with _lock:
+        if len(_queue) < MAX_QUEUE:
+            _queue.append(note)
 
 
 def rest(ms):
@@ -337,40 +424,44 @@ def hold(freq, wave=SINE, level=1.0):
     """Start a note that keeps playing until release(). Change its pitch
     with pitch(). It plays after anything already queued, and jumps the
     queue if there is none."""
-    global _cur
     release()
-    _queue.append(_Note(freq, freq, 0, wave, level, 15, 40, True))
+    note = _Note(freq, freq, 0, wave, level, 15, 40, True)
+    with _lock:
+        _queue.append(note)
 
 
 def pitch(freq):
     """Steer a held note toward freq Hz. The change is smooth."""
-    if _cur is not None and _cur.hold:
-        _cur.target = _step_for(freq)
-    elif _queue and _queue[-1].hold:
-        _queue[-1].target = _step_for(freq)
-        _queue[-1].step = _queue[-1].target
+    with _lock:
+        if _cur is not None and _cur.hold:
+            _cur.target = _step_for(freq)
+        elif _queue and _queue[-1].hold:
+            _queue[-1].target = _step_for(freq)
+            _queue[-1].step = _queue[-1].target
 
 
 def release():
     """Let a held note fade out."""
-    n = _cur
-    if n is not None and n.hold:
-        n.hold = False
-        n.body = 0
-        n.release = n.release_total
-    for q in _queue:
-        if q.hold:
-            q.hold = False
-            q.body = 0
-            q.release = 0
+    with _lock:
+        n = _cur
+        if n is not None and n.hold:
+            n.hold = False
+            n.body = 0
+            n.release = n.release_total
+        for q in _queue:
+            if q.hold:
+                q.hold = False
+                q.body = 0
+                q.release = 0
 
 
 def stop():
     """Stop everything, now. Sound already in the reserve still plays, up
     to one reserve's worth (see the top of this file)."""
     global _cur
-    _queue.clear()
-    _cur = None
+    with _lock:
+        _queue.clear()
+        _cur = None
 
 
 def busy():
@@ -395,7 +486,7 @@ def stats():
             "min_headroom_ms": _stats["min_headroom_ms"],
             "max_gap_ms": _stats["max_gap_ms"],
             "reserve_ms": _ibuf * 1000 // (_rate * 2),
-            "rate": _rate}
+            "rate": _rate, "core": _core}
 
 
 def reset_stats():
@@ -404,6 +495,13 @@ def reset_stats():
     st["underruns"] = 0
     st["min_headroom_ms"] = 10 ** 6
     st["max_gap_ms"] = 0
+
+
+def latency_ms():
+    """How long after you queue a note you hear it: the reserve, in
+    milliseconds. A program that shows something on the screen for each note
+    sleeps this long first, so the picture and the sound line up."""
+    return _ibuf * 1000 // (_rate * 2)
 
 
 # --- notes, tunes, and named sounds -----------------------------------------
@@ -436,16 +534,18 @@ def note_name(freq):
     return "{}{}".format(names[midi % 12], midi // 12 - 1)
 
 
-def rtttl(text, wave=SQUARE, level=0.8):
-    """Queue a tune written as an RTTTL ringtone, the text format old
-    phones used:
+def rtttl_notes(text):
+    """Read an RTTTL ringtone, the text format old phones used:
 
         "name:d=4,o=5,b=100:8c,8d,e,p,g.6"
 
     d, o, and b are the default note length, octave, and beats per
     minute. Each note is [length] letter [#] [.] [octave], and p is a
-    pause. A length of 4 is a quarter note, 8 an eighth, and so on."""
-    name, defaults, notes = text.split(":")
+    pause. A length of 4 is a quarter note, 8 an eighth, and so on.
+
+    Returns (name, notes) where notes is a list of (frequency_hz, ms)
+    pairs, with a frequency of 0 for a pause."""
+    name, defaults, body = text.split(":")
     d, o, b = 4, 5, 63
     for item in defaults.split(","):
         key, value = item.split("=")
@@ -456,7 +556,8 @@ def rtttl(text, wave=SQUARE, level=0.8):
         elif key == "b":
             b = int(value)
     whole_ms = 240000 // b
-    for item in notes.split(","):
+    notes = []
+    for item in body.split(","):
         item = item.strip().lower()
         if not item:
             continue
@@ -475,11 +576,23 @@ def rtttl(text, wave=SQUARE, level=0.8):
         if dotted:
             ms = ms * 3 // 2
         if letter == "p":
+            notes.append((0, ms))
+        else:
+            notes.append((note_freq("{}{}{}".format(
+                letter.upper(), "#" if sharp else "", octave)), ms))
+    return name, notes
+
+
+def rtttl(text, wave=SQUARE, level=0.8):
+    """Queue a tune written as an RTTTL ringtone (see rtttl_notes()).
+    Returns the tune's name."""
+    name, notes = rtttl_notes(text)
+    for freq, ms in notes:
+        if freq == 0:
             rest(ms)
         else:
-            tone(note_freq("{}{}{}".format(
-                letter.upper(), "#" if sharp else "", octave)),
-                ms, wave, level=level, attack=3, release=min(25, ms // 3))
+            tone(freq, ms, wave, level=level, attack=3,
+                 release=min(25, ms // 3))
     return name
 
 

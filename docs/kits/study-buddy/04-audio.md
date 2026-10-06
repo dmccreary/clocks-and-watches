@@ -10,17 +10,25 @@ power-up, and it stays loaded in every mode (see
 [Architecture](01-architecture.md#changes-to-the-main-template)). It owns
 the one I2S object, so no mode ever creates its own.
 
+The module is written (`src/kits/study-buddy/sound.py`). What it has today:
+
 | Function | What it does |
 |---|---|
-| `init()` | Sets up I2S from `config.py` and a 16 KB ring buffer. |
-| `tone(freq, ms)` | Plays a tone, with a short fade-in and fade-out so it doesn't click. |
-| `play(name)` | Plays a named sound: `"right"`, `"wrong"`, `"chime"`, `"reminder"`, `"done"`, `"start"`. |
-| `melody(notes)` | Plays a list of `(note, ms)` pairs. |
-| `wav(path)` | Streams a 16-bit mono WAV file from flash. |
-| `say(parts)` | Plays a list of WAV clips one after the other (see level 2). |
-| `stop()` | Stops everything at once. |
-| `busy()` | `True` while anything is playing. |
-| `volume(n)` | 0 to 100. Applied in software by scaling samples. |
+| `init(rate=16000, ibuf=8192, volume=None, core=1)` | Starts I2S from `config.py` and the loop that feeds it. `rate` is samples per second (44100 for the full range of hearing). `ibuf` is the reserve in bytes, which is 256 ms at the defaults. `core` is 1 (second core) or 0. |
+| `tone(freq, ms, wave, to, level, attack, release)` | Queues a note. `to` makes the pitch glide. `wave` is sine, square, triangle, saw, or noise. Short fades keep it from clicking. |
+| `rest(ms)` | Queues silence. |
+| `hold(freq, wave)`, `pitch(freq)`, `release()` | A note that keeps playing while the pitch is steered (for the button theremin). |
+| `play(name)` | Queues a named sound from `sfx.py`, such as `"right"`, `"wrong"`, `"chime"`, `"reminder"`, `"done"`, `"start"`, `"coin"`, or `"laser"`. |
+| `rtttl(text)` | Queues a tune written as an old-phone ringtone string. |
+| `note_freq("A4")`, `note_name(440)` | Note names to hertz and back. |
+| `stop()` | Empties the queue. Sound already in the reserve still plays, up to 256 ms at the defaults. |
+| `busy()`, `wait()` | Is anything still playing, and wait until it is done. |
+| `volume(n)` | 0 to 100, applied in software. |
+| `stats()`, `reset_stats()` | Underruns, the smallest reserve seen, and the longest wait between chunks. Lab 03 reads these. |
+| `deinit()` | Stops the loop and frees the I2S hardware. |
+
+Not written yet: `wav(path)` to stream a 16-bit mono WAV file from flash,
+and `say(parts)` to play a list of clips one after another (see level 2).
 
 Every playing function returns immediately. Playback continues on its own,
 and a mode only needs to call `busy()` if it wants to wait.
@@ -106,33 +114,74 @@ Three ways to get more room, from cheapest to most expensive:
     The player checks the WAV header, so a wrong format is rejected with
     a message and never played as noise.
 
-## Playback Must Survive Drawing
+## Playback Must Survive Drawing and Freezing
 
 Updating the display blocks the Pico. A full-screen fill takes 131 ms, the
-analog face's redraw takes up to 232 ms, and a WiFi fetch takes a second
-or two. If the audio buffer runs dry during one of these, the speaker
-makes a click or a stutter.
+analog face's redraw takes up to 232 ms, and a WiFi connect took **9.5
+seconds** on the real kit. If the audio buffer runs dry during one of
+these, the speaker clicks or stutters.
 
-The design handles this with three rules:
+### The sound runs on the second core
 
-1. **Use I2S in non-blocking mode** with a callback that refills the ring
-   buffer from the file or the note generator. The callback is scheduled
-   by MicroPython between bytecodes, so it **does not run in the middle of
-   a long C call** such as a screen fill **(verify on the bench)**.
-2. **A 16 KB buffer.** At 16 kHz that is about 500 ms of audio, which is
-   longer than any normal redraw.
-3. **Modes must not make a full-screen fill while a sound is playing.**
-   Only the analog face and the template's start-up do, and neither plays
-   audio.
+The Pico 2 W has two cores that run at the same time. `sound.init()`
+starts a small loop on **core 1** that does one job: calculate a chunk of
+sound, hand it to the amplifier, repeat. The rest of the program, on
+core 0, can freeze for as long as it likes and the sound does not notice.
+The note queue is shared between the cores, so a lock guards it.
 
-Things to measure early, on the real kit:
+`init(core=0)` is still there. It has the I2S driver interrupt core 0 each
+time it needs a chunk, which is simpler but cannot play through a freeze.
 
-- The longest gap in the buffer's refilling while a screen fill runs.
-- Whether a WiFi fetch (Library, calendar) causes dropouts. If it does,
-  the Study Buddy plays nothing while it fetches.
+### What was measured
+
+All on the real kit (Pico 2 W, MicroPython 1.29.0, 16 kHz, 256 ms reserve).
+
+**Does core 1 run in parallel?** Yes. The same 150,000-step loop took
+1014 ms on core 0 alone and 1024 ms on core 1 alone. With both running at
+once, each took 1121 ms, about 10% slower and not twice as slow, so there
+is no interpreter lock making the cores take turns. (The 10% is probably
+the two cores sharing the memory bus and heap.)
+
+**Does it survive a freeze?** A steady tone played while core 0 sat inside
+one long call (`max(range(1_000_000))`, about 1.2 s):
+
+| Audio fed by | Core 0 frozen for | Underruns | Reserve at its lowest | Longest wait between chunks |
+|---|---|---|---|---|
+| core 0 (interrupts) | 1163 ms | 1 | -878 ms (ran dry) | 1192 ms |
+| core 1 (thread) | 1284 ms | 0 | 254 of 256 ms | 64 ms (normal) |
+
+**Does it survive real jobs?** On core 1, with a 9-second tone playing:
+
+| Job on core 0 | Took | Underruns | Reserve at its lowest |
+|---|---|---|---|
+| 40 KB flash write and delete | 139 ms | 0 | 250 ms |
+| 20 forced garbage collections | 133 ms | 0 | 248 ms |
+| WiFi connect and NTP time sync | 9451 ms | 0 | 252 ms |
+
+Two limits on those numbers. They measure whether the audio *supply*
+stalled, and cannot see whether the I2S hardware itself ran dry, so they
+are backed by listening (a steady tone should stay steady through all of
+it). And the flash write was small: a long write, such as a Library
+download, still needs listening to before we rely on it.
+
+### Rules for modes
+
+1. **A mode may draw, save files, and fetch over WiFi while a sound plays.**
+   The full-screen-fill rule from the first draft is no longer needed on
+   core 1. It still applies if `init(core=0)` is used.
+2. **Never write a loop on core 1 that spins without waiting.** The audio
+   loop is safe because `write()` sleeps whenever the reserve is full.
+3. **Talk to the sound through its functions** (`tone()`, `stop()`, and so
+   on), which take the lock. Do not touch its queue directly.
+
+### Still to measure
+
+- A long flash write (a 200 KB download) while a sound plays, by ear.
 - The click when I2S starts and stops. If it clicks, the amplifier stays
   running with silence between sounds.
 - Whether full volume on 5 V disturbs the WiFi chip.
+- What happens to the core-1 loop when a program stops with Thonny's Stop
+  button instead of calling `sound.deinit()`.
 
 ## Volume and Quiet Hours
 
