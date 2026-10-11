@@ -4003,8 +4003,8 @@ one <code>blit_buffer()</code> call, and the screen goes straight from the old i
 to the new one.</p>
 <p>One catch: <code>framebuf</code> stores each RGB565 pixel low byte first, and the
 GC9B72 wants the high byte first. Every color drawn into the frame buffer
-goes through <code>swapped()</code> to fix that. Without it, red comes out as a murky
-green.</p>
+goes through <code>swapped()</code> to fix that. Without it, red (<code>0xF800</code>) is sent
+as <code>0x00F8</code>, a shade of blue, and the yellow sun comes out blue too.</p>
 <h3 id="how-often-it-updates">How often it updates</h3>
 <p>The forecast refreshes at :00:30 and :30:30 every hour. The one just after
 midnight moves Tomorrow over to Today. If the WiFi or the service does not
