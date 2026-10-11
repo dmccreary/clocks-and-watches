@@ -44,10 +44,10 @@
     "network"
   ],
   "learningObjectives": [
-    "Sequence the ten zoom levels that progressively reveal the clock system's components, from a single Clock block to dual cores and PIO inside the microcontroller",
-    "Identify which components communicate over the SPI bus (display) versus the I2C bus (real-time clock)",
-    "Describe the role of each major subsystem revealed by the zoom slider: display, microcontroller, RTC, buttons, power system, and speaker",
-    "Analyze how hierarchical decomposition lets a complex embedded system be understood one abstraction level at a time"
+    "Understand the key concepts of architectural levels zoom",
+    "Explore architectural levels zoom through interactive visualization",
+    "Apply knowledge of architectural levels zoom to solve problems",
+    "Experiment with parameters to observe their effects on architectural levels zoom"
   ],
   "bloomsTaxonomy": [
     "Remember",

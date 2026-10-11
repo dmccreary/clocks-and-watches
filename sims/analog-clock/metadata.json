@@ -43,11 +43,10 @@
     "simulation"
   ],
   "learningObjectives": [
-    "Calculate the (x, y) position of a clock hand's tip from a time value using cos() and sin() after mapping the value to radians",
-    "Explain why the angle mapping subtracts HALF_PI so that 12 o'clock points straight up instead of to the right",
-    "Convert seconds (0-59), minutes (0-59), and hours (0-11) into angles around the clock face using proportional mapping to TWO_PI",
-    "Compare automatic mode, which reads the system time, with manual mode, which sets the hands from the hour, minute, and second sliders",
-    "Predict where each hand will point for a slider-chosen time before switching to manual mode to verify"
+    "Understand the key concepts of analog clock",
+    "Explore analog clock through interactive visualization",
+    "Apply knowledge of analog clock to solve problems",
+    "Experiment with parameters to observe their effects on analog clock"
   ],
   "bloomsTaxonomy": [
     "Understand",

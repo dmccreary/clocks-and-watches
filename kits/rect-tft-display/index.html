@@ -1,0 +1,3685 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Build and program a desk clock with a color screen and a knob, using a Raspberry Pi Pico 2 W. It sets its own time from the internet, shows the weather, and works as a stopwatch and a timer. 17 step-by-step labs for people new to Python.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/clocks-and-watches/kits/rect-tft-display/">
+      
+      
+        <link rel="prev" href="../sw-gc9b72/teacher-notes/">
+      
+      
+        <link rel="next" href="01-blink-onboard-led/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Knob Clock Kit - Clocks and Watches with AI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-EKTEBLZ2KP"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-EKTEBLZ2KP",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-EKTEBLZ2KP",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Knob Clock Kit - Clocks and Watches with AI" />
+<meta property="og:description" content="Build and program a desk clock with a color screen and a knob, using a Raspberry Pi Pico 2 W. It sets its own time from the internet, shows the weather, and works as a stopwatch and a timer. 17 step-by-step labs for people new to Python." />
+<meta property="og:image" content="https://dmccreary.github.io/clocks-and-watches/kits/rect-tft-display/img/social-card.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:url" content="https://dmccreary.github.io/clocks-and-watches/kits/rect-tft-display/" />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content="Knob Clock Kit - Clocks and Watches with AI" />
+<meta property="twitter:description" content="Build and program a desk clock with a color screen and a knob, using a Raspberry Pi Pico 2 W. It sets its own time from the internet, shows the weather, and works as a stopwatch and a timer. 17 step-by-step labs for people new to Python." />
+<meta property="twitter:image" content="https://dmccreary.github.io/clocks-and-watches/kits/rect-tft-display/img/social-card.jpg">
+</head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#642580" data-md-color-accent="#41BAC1">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#knob-clock-kit" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Clocks and Watches with AI" class="md-header__button md-logo" aria-label="Clocks and Watches with AI" data-md-component="logo">
+      
+  <img src="../../img/logo-180x180.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Clocks and Watches with AI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Knob Clock Kit
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/clocks-and-watches" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Clocks and Watches with AI" class="md-nav__button md-logo" aria-label="Clocks and Watches with AI" data-md-component="logo">
+      
+  <img src="../../img/logo-180x180.png" alt="logo">
+
+    </a>
+    Clocks and Watches with AI
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/clocks-and-watches" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Course Description
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../setup/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../chapters/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapters
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../lessons/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lessons
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kits
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Kits
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gallery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gallery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../tm1637/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TM1637 LED Kit
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../led-displays/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LED Displays
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../neopixel/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NeoPixel Clocks
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../char-lcd-clock/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Character LCD
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../ssd1306-i2c/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SSD1306 I2C
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../oled-large/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Large OLED
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stopwatch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stopwatch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../oled-wireless/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wireless OLED
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sh1106/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SH1106 OLED
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../st7735/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ST7735
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../ili9341/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ILI9341
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../gc9a01/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GC9A01
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../sw-gc9b72/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chrono Smart Clock Kit (GC9B72, Pico 2 W)
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_16" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="./" class="md-nav__link md-nav__link--active">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knob Clock Kit (ST7735S, Pico 2 W)
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link md-nav__link--active" for="__nav_7_16" id="__nav_7_16_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_16_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Knob Clock Kit (ST7735S, Pico 2 W)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-blink-onboard-led/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 Blink the LED
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-probe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 Kit Checkup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-hello-world/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 Hello World
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-button-test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 Button Test
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-encoder-push-test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 Knob Press Test
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-encoder-rotation-test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 Knob Turn Test
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-controls-display-test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 Controls on the Screen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-backlight-test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 Backlight Test
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-digital-clock/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 Digital Clock
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10-wifi-sync-time/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 WiFi Time
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11-analog-clock-face/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 Analog Clock Face
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12-set-time/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 Set the Time
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13-digital-clock-face/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 Digital Clock Face
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="14-weather-clock/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 Weather Clock
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="15-stopwatch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 Stopwatch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="16-countdown-timer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 Countdown Timer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="17-main-template/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17 Five Modes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="teacher-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notes for Teachers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../lilygo/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LILYGO SY7789
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../portable-watch-kits/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Portable SmartWatch Kits
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../waveshare-lcd/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Waveshare
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../max7219/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MAX7219
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../e-paper/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    E-Paper Clock
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../waveshare-e-paper/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Waveshare E-Paper
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../alarm-clock/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Alarm Clock
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tm1650-led-clock/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TM1650 Clock
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Graph
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MicroSims
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../prompts/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prompts
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contact
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-your-clock-will-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Your Clock Will Do
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-you-should-know-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What You Should Know First
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-in-the-kit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What's in the Kit
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-the-controls-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How the Controls Work
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-is-wired" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Is Wired
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#before-you-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before You Start
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-labs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Labs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#words-to-know" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Words to Know
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#for-parents-and-teachers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        For Parents and Teachers
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Kits
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="./" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Knob Clock Kit (ST7735S, Pico 2 W)
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="knob-clock-kit">Knob Clock Kit</h1>
+<p><strong>Build a desk clock with a color screen and a knob, and write every line
+of its code yourself.</strong></p>
+<p><img alt="The Knob Clock Kit on a breadboard: a Raspberry Pi Pico 2 W joined by a rainbow ribbon cable to a small rectangular color screen. The screen shows the weather clock: 1:47 PM, Sunday, October 11, 2026, cloudy today with a high of 87 and a low of 66, cloudy tomorrow with 81 and 57, and a row of five dots along the bottom. A round black knob and a square push button sit to the right of the screen." src="rect-tft-clock-kit.jpg" width="640" /></p>
+<p><em>The real kit, running the five-mode clock from lab 17. This is its
+weather mode.</em></p>
+<p>This clock is a tiny computer with a bright color screen. It has one knob
+that you can turn <strong>and</strong> press, and one push button. You write the
+programs that make it tick. You start by blinking a light, and you finish
+with a clock that has five different faces.</p>
+<p><strong>Ages 10 and up. You only need to know a little Python.</strong></p>
+<h2 id="what-your-clock-will-do">What Your Clock Will Do</h2>
+<ul>
+<li><strong>Set its own time.</strong> It asks the internet what time it is.</li>
+<li><strong>Show the time your way.</strong> Choose big digital numbers, or a clock face
+  with moving hands.</li>
+<li><strong>Tell you the weather.</strong> Today's and tomorrow's forecast appear with
+  little pictures of sun, clouds, rain, and snow.</li>
+<li><strong>Time laps and count down.</strong> It works as a stopwatch that records
+  laps. It is also a countdown timer with a flashing alarm.</li>
+<li><strong>Switch with a turn of the knob.</strong> Turn the knob to step through all
+  five faces.</li>
+</ul>
+<p><img alt="Five clock faces you will build, side by side: an analog face with hands, a digital face reading 10:09, a weather clock with today and tomorrow, a stopwatch with lap times, and a countdown timer reading 03:29" src="img/kit-banner.png" /></p>
+<p><em>These five pictures were drawn by running the labs' real code in a
+simulator of the screen. So were the screen pictures in every lab.</em></p>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Meet Chrono</p>
+<p><img alt="Chrono waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+Hi, I'm Chrono, a robot whose head is a screen a lot like the one
+you're about to program. By the end of these labs you'll have a clock
+that you built, running code that you understand. I'll pop up with
+tips, warnings about traps, and a cheer when you finish. Let's make
+time tick!</p>
+</div>
+<h2 id="how-it-works">How It Works</h2>
+<p>There are 17 short labs, numbered 01 to 17. Each lab is one program. Each
+one teaches a new idea that you use in the labs after it.</p>
+<ol>
+<li><strong>Wake it up (labs 01–03).</strong> Blink a light, give the kit a checkup,
+   and say hello on the screen.</li>
+<li><strong>Meet the controls (labs 04–08).</strong> Test the button, the knob, and the
+   screen's light, one part at a time.</li>
+<li><strong>Make it a clock (labs 09–13).</strong> Show the time and set it from the
+   internet. Build a face with moving hands, and set the time with the
+   knob.</li>
+<li><strong>Make it smart (labs 14–17).</strong> Fetch the weather, and add a stopwatch
+   and a timer. Then put it all together into one clock with five modes.</li>
+</ol>
+<p>Do the labs in order. Each one ends with something new on the screen or
+in the shell.</p>
+<h2 id="what-you-should-know-first">What You Should Know First</h2>
+<p>These labs are for people who are new to Python but have made a start.
+You are ready if you have finished one of these free courses:</p>
+<ul>
+<li><a href="https://dmccreary.github.io/learning-python/">Learning Python</a>, where
+  you write Python in a web browser.</li>
+<li><a href="https://dmccreary.github.io/learning-micropython/">Learning MicroPython</a>,
+  where you program a Pico and wire up parts on a breadboard.</li>
+</ul>
+<p>Here are the ideas the labs lean on most. If one feels rusty, the link
+takes you back to where it was taught.</p>
+<table>
+<thead>
+<tr>
+<th>Idea</th>
+<th>Where to review it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Variables and numbers</td>
+<td><a href="https://dmccreary.github.io/learning-python/chapters/03-variables-and-numbers/">Learning Python, chapter 3</a></td>
+</tr>
+<tr>
+<td><code>if</code> and <code>else</code></td>
+<td><a href="https://dmccreary.github.io/learning-python/chapters/09-decisions-if-else/">Learning Python, chapter 9</a></td>
+</tr>
+<tr>
+<td><code>while</code> loops</td>
+<td><a href="https://dmccreary.github.io/learning-python/chapters/10-while-loops-and-animation/">Learning Python, chapter 10</a></td>
+</tr>
+<tr>
+<td>Functions</td>
+<td><a href="https://dmccreary.github.io/learning-python/chapters/11-functions-parameters-scope/">Learning Python, chapter 11</a></td>
+</tr>
+<tr>
+<td><code>import</code> and modules</td>
+<td><a href="https://dmccreary.github.io/learning-python/chapters/17-modules-and-random/">Learning Python, chapter 17</a></td>
+</tr>
+<tr>
+<td>Blinking a light on a Pico</td>
+<td><a href="https://dmccreary.github.io/learning-micropython/basics/01-blink/">Learning MicroPython: Blink</a></td>
+</tr>
+<tr>
+<td>Reading a button</td>
+<td><a href="https://dmccreary.github.io/learning-micropython/basics/03-button/">Learning MicroPython: Buttons</a></td>
+</tr>
+<tr>
+<td>Using a breadboard</td>
+<td><a href="https://dmccreary.github.io/learning-micropython/hands-on-labs/05-electronics-fundamentals/breadboards/">Learning MicroPython: Breadboards</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="whats-in-the-kit">What's in the Kit</h2>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Raspberry Pi Pico 2 W</strong></td>
+<td>The brain of the clock. It is a <strong>microcontroller</strong>, a tiny computer on a board about the size of a stick of gum. The <strong>W</strong> means it has WiFi, so it can talk to the internet.</td>
+</tr>
+<tr>
+<td><strong>Display board</strong></td>
+<td>The clock's face, with its controls built in. The board is labeled "1.8 TFT + EC11".</td>
+</tr>
+<tr>
+<td><strong>Color screen</strong></td>
+<td>Part of the display board. It is 1.8 inches from corner to corner and has 160 × 128 tiny dots of light called <strong>pixels</strong>. A chip called the <strong>ST7735S</strong> turns the Pico's messages into pictures.</td>
+</tr>
+<tr>
+<td><strong>Knob</strong></td>
+<td>Part of the display board. You can turn it either way, and you can press it like a button. Its proper name is a <strong>rotary encoder</strong>.</td>
+</tr>
+<tr>
+<td><strong>K0 button</strong></td>
+<td>Part of the display board. A square push button below the knob.</td>
+</tr>
+<tr>
+<td><strong>Breadboard and wires</strong></td>
+<td>Connect the Pico to the display board.</td>
+</tr>
+<tr>
+<td><strong>USB cable</strong></td>
+<td>Gives the Pico power, and lets your computer send it programs.</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="The front of the display board: a row of 12 pins down the left edge, the screen in the middle, and the round knob and square K0 button on the right" src="display-front.jpg" width="480" /></p>
+<p><img alt="The back of the display board. White printing reads: 1.8 TFT + EC11, 128*160 RGB, TFT Drive IC ST7735S, TFT Interface 4-SPI, EC11 interface A, B, PUSH, START KEY K0, VCC 3.3V/5V" src="display-back.jpg" width="480" /></p>
+<h2 id="how-the-controls-work">How the Controls Work</h2>
+<p>Every lab uses the three controls the same way, so you only learn it
+once.</p>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>What it usually does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>K0</strong> (the square button)</td>
+<td>Starts and stops things</td>
+</tr>
+<tr>
+<td><strong>Press the knob</strong></td>
+<td>The second job: record a lap, reset, or move to the next number</td>
+</tr>
+<tr>
+<td><strong>Turn the knob</strong></td>
+<td>Makes a number go up or down. In lab 17, it changes the clock's face</td>
+</tr>
+</tbody>
+</table>
+<p>In the programs, pressing the knob is called <strong>PUSH</strong>.</p>
+<h2 id="how-it-is-wired">How It Is Wired</h2>
+<p>The display board has a row of 12 pins along one edge. Hold the board
+with the knob on the right. Reading from the bottom pin up to the top
+pin, the labels are: <strong>GND VCC SCL SDA RES DC CS BLK A B PUSH K0</strong>.</p>
+<p><img alt="A close-up of the 12 ribbon cable wires plugged onto the display board's pins, with the labels K0, PUSH, B, A, BLK, CS, DC, RES, SDA, SCL, VCC, GND printed below them" src="ribbon-cable-on-display.jpg" width="480" /></p>
+<p>Each pin connects to one pin on the Pico. The wire colors below are the
+ones in the photos. Your colors may be different, and that is fine. What
+matters is where each wire goes.</p>
+<table>
+<thead>
+<tr>
+<th>Display pin</th>
+<th>Pico pin</th>
+<th>Wire color in the photos</th>
+<th>What it carries</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GND</td>
+<td>GND</td>
+<td>brown</td>
+<td>Ground, the "minus" side of the power</td>
+</tr>
+<tr>
+<td>VCC</td>
+<td>3V3</td>
+<td>red</td>
+<td>Power, 3.3 volts</td>
+</tr>
+<tr>
+<td>SCL</td>
+<td>GP2</td>
+<td>orange</td>
+<td>The clock beat that keeps the Pico and screen in step</td>
+</tr>
+<tr>
+<td>SDA</td>
+<td>GP3</td>
+<td>yellow</td>
+<td>The data: the colors of the pixels</td>
+</tr>
+<tr>
+<td>RES</td>
+<td>GP4</td>
+<td>green</td>
+<td>Reset: tells the screen to start fresh</td>
+</tr>
+<tr>
+<td>DC</td>
+<td>GP5</td>
+<td>blue</td>
+<td>Says whether the next data is a command or a picture</td>
+</tr>
+<tr>
+<td>CS</td>
+<td>GP6</td>
+<td>purple</td>
+<td>"Hey screen, I'm talking to you!"</td>
+</tr>
+<tr>
+<td>BLK</td>
+<td>GP7</td>
+<td>gray</td>
+<td>The backlight that makes the screen glow</td>
+</tr>
+<tr>
+<td>A</td>
+<td>GP8</td>
+<td>white</td>
+<td>One of the knob's two turning signals</td>
+</tr>
+<tr>
+<td>B</td>
+<td>GP9</td>
+<td>green</td>
+<td>The knob's other turning signal</td>
+</tr>
+<tr>
+<td>PUSH</td>
+<td>GP10</td>
+<td>blue</td>
+<td>The switch you close by pressing the knob</td>
+</tr>
+<tr>
+<td>K0</td>
+<td>GP11</td>
+<td>purple</td>
+<td>The square push button</td>
+</tr>
+</tbody>
+</table>
+<p>Follow these steps to wire it. Unplug the USB cable first.</p>
+<ol>
+<li>Push the Pico into the breadboard so that it sits across the gap down
+   the middle.</li>
+<li>Find the Pico pin labeled <strong>3V3</strong>. Connect it to the display's <strong>VCC</strong>
+   pin.</li>
+<li>Connect any Pico pin labeled <strong>GND</strong> to the display's <strong>GND</strong> pin.</li>
+<li>Connect <strong>SCL</strong>, <strong>SDA</strong>, <strong>RES</strong>, and <strong>DC</strong> to <strong>GP2</strong>, <strong>GP3</strong>,
+   <strong>GP4</strong>, and <strong>GP5</strong>. These four Pico pins are next to each other.</li>
+<li>Skip the next Pico pin. It is a ground pin, not GP6.</li>
+<li>Connect <strong>CS</strong>, <strong>BLK</strong>, <strong>A</strong>, and <strong>B</strong> to <strong>GP6</strong>, <strong>GP7</strong>, <strong>GP8</strong>,
+   and <strong>GP9</strong>.</li>
+<li>Skip the next Pico pin. It is another ground pin.</li>
+<li>Connect <strong>PUSH</strong> and <strong>K0</strong> to <strong>GP10</strong> and <strong>GP11</strong>.</li>
+<li>Check every wire against the table before you plug in the USB cable.</li>
+</ol>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Use 3V3, not 5 volts</p>
+<p><img alt="Chrono warning" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+The display's VCC wire must go to the Pico's <strong>3V3</strong> pin, never to
+<strong>VSYS</strong> or <strong>VBUS</strong>. Those two carry about 5 volts, which can damage
+the Pico through this board. Read the label twice before you plug
+in.</p>
+</div>
+<p>The Pico's pin names are printed on the bottom of the board. A pinout
+picture helps too. Learning MicroPython has
+<a href="https://dmccreary.github.io/learning-micropython/hands-on-labs/04-microcontrollers-hardware/pi-pico/">a page about the Pico</a>
+that shows every pin.</p>
+<h2 id="before-you-start">Before You Start</h2>
+<p>You only need to do these steps once.</p>
+<ol>
+<li><strong>Put MicroPython on the Pico.</strong> MicroPython is the version of the
+   Python language that runs on small boards like the Pico. Use the
+   version made for the
+   <a href="https://micropython.org/download/RPI_PICO2_W/">Pico 2 W</a>. The version
+   for the plain Pico 2 has no WiFi.</li>
+<li><strong>Install Thonny.</strong> <a href="https://thonny.org">Thonny</a> is the program you
+   use to write code and send it to the Pico.</li>
+<li><strong>Copy the kit's files onto the Pico.</strong> The labs need helper files in
+   a folder called <code>lib</code> on the Pico. They also need a settings file
+   called <code>config.py</code>. Your teacher may have done this for you. If not,
+   the kit folder has a script called <code>upload-code.sh</code> that copies
+   everything at once.</li>
+<li><strong>Tell the clock about your WiFi.</strong> Copy the file
+   <code>secrets-template.py</code> to a new file called <code>secrets.py</code>. Type in your
+   WiFi network's name and password. Labs 10, 11, 13, 14, and 17 use it.
+   The file <code>secrets.py</code> is kept private: it never gets shared online.</li>
+<li><strong>Tell the clock your time zone.</strong> Open <code>config.py</code> and find
+   <code>TIMEZONE_HOURS</code>. Use -5 for Eastern time, -6 for Central, -7 for
+   Mountain, or -8 for Pacific.</li>
+</ol>
+<h2 id="the-labs">The Labs</h2>
+<p>Click a lab number or a picture to open that lab.</p>
+<table>
+<thead>
+<tr>
+<th>Lab</th>
+<th></th>
+<th>What you will do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="01-blink-onboard-led/">01</a></td>
+<td><a href="01-blink-onboard-led/"><img alt="A blinking light on a Pico" src="../../img/blink-on-board-led.gif" width="110" /></a></td>
+<td>Make a tiny light on the Pico blink, to check that the Pico works</td>
+</tr>
+<tr>
+<td><a href="02-probe/">02</a></td>
+<td><a href="02-probe/"><img alt="The checkup screen saying Probe OK" src="img/02-probe.png" width="110" /></a></td>
+<td>Give the whole kit a checkup, like a doctor's visit</td>
+</tr>
+<tr>
+<td><a href="03-hello-world/">03</a></td>
+<td><a href="03-hello-world/"><img alt="Hello World on the screen" src="img/03-hello-world.png" width="110" /></a></td>
+<td>Say hello on the screen</td>
+</tr>
+<tr>
+<td><a href="04-button-test/">04</a></td>
+<td>prints to the shell</td>
+<td>Test the K0 button</td>
+</tr>
+<tr>
+<td><a href="05-encoder-push-test/">05</a></td>
+<td>prints to the shell</td>
+<td>Test pressing the knob</td>
+</tr>
+<tr>
+<td><a href="06-encoder-rotation-test/">06</a></td>
+<td>prints to the shell</td>
+<td>Test turning the knob, and learn how a knob knows which way it turned</td>
+</tr>
+<tr>
+<td><a href="07-controls-display-test/">07</a></td>
+<td><a href="07-controls-display-test/"><img alt="The controls test screen" src="img/07-controls-display-test.png" width="110" /></a></td>
+<td>See the button and the knob on the screen</td>
+</tr>
+<tr>
+<td><a href="08-backlight-test/">08</a></td>
+<td><a href="08-backlight-test/"><img alt="The backlight test screen" src="img/08-backlight-test.png" width="110" /></a></td>
+<td>Switch the screen's light off and on</td>
+</tr>
+<tr>
+<td><a href="09-digital-clock/">09</a></td>
+<td><a href="09-digital-clock/"><img alt="A digital clock" src="img/09-digital-clock.png" width="110" /></a></td>
+<td>Show the time, day, and date in big digits</td>
+</tr>
+<tr>
+<td><a href="10-wifi-sync-time/">10</a></td>
+<td><a href="10-wifi-sync-time/"><img alt="The clock being set over WiFi" src="img/10-wifi-sync-time.png" width="110" /></a></td>
+<td>Ask the internet what time it is</td>
+</tr>
+<tr>
+<td><a href="11-analog-clock-face/">11</a></td>
+<td><a href="11-analog-clock-face/"><img alt="An analog clock face" src="img/11-analog-clock-face.png" width="110" /></a></td>
+<td>Build a clock face with moving hands</td>
+</tr>
+<tr>
+<td><a href="12-set-time/">12</a></td>
+<td><a href="12-set-time/"><img alt="Setting the hour" src="img/12-set-time.png" width="110" /></a></td>
+<td>Set the time with the knob</td>
+</tr>
+<tr>
+<td><a href="13-digital-clock-face/">13</a></td>
+<td><a href="13-digital-clock-face/"><img alt="A digital clock face" src="img/13-digital-clock-face.png" width="110" /></a></td>
+<td>Build a digital face that repaints only what changes</td>
+</tr>
+<tr>
+<td><a href="14-weather-clock/">14</a></td>
+<td><a href="14-weather-clock/"><img alt="A weather clock" src="img/14-weather-clock.png" width="110" /></a></td>
+<td>Add the weather forecast</td>
+</tr>
+<tr>
+<td><a href="15-stopwatch/">15</a></td>
+<td><a href="15-stopwatch/"><img alt="A stopwatch" src="img/15-stopwatch.png" width="110" /></a></td>
+<td>Make a stopwatch that times laps</td>
+</tr>
+<tr>
+<td><a href="16-countdown-timer/">16</a></td>
+<td><a href="16-countdown-timer/"><img alt="A countdown timer" src="img/16-timer-running.png" width="110" /></a></td>
+<td>Make a countdown timer with an alarm</td>
+</tr>
+<tr>
+<td><a href="17-main-template/">17</a></td>
+<td><a href="17-main-template/"><img alt="The weather mode with five dots below it" src="img/17-mode-weather.png" width="110" /></a></td>
+<td>Put it all together into one clock with five modes</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Which program is running?</p>
+<p><img alt="Chrono giving a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+Every lab prints its name and version number in Thonny's shell when
+it starts, like <code>11-analog-clock-face.py v1.0</code>. If the screen isn't
+doing what you expect, check that line first. It tells you which
+program the Pico is really running.</p>
+</div>
+<h2 id="words-to-know">Words to Know</h2>
+<table>
+<thead>
+<tr>
+<th>Word</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pixel</strong></td>
+<td>One tiny dot of light on the screen. This screen has 160 × 128 = 20,480 of them.</td>
+</tr>
+<tr>
+<td><strong>Microcontroller</strong></td>
+<td>A small computer built to control one thing, like a clock, a toy, or a microwave.</td>
+</tr>
+<tr>
+<td><strong>Program</strong></td>
+<td>A list of instructions for a computer, written in a language like Python.</td>
+</tr>
+<tr>
+<td><strong>Loop</strong></td>
+<td>Part of a program that repeats over and over. A clock's program runs in a loop forever.</td>
+</tr>
+<tr>
+<td><strong>Variable</strong></td>
+<td>A name that holds a value, like <code>second = 42</code>.</td>
+</tr>
+<tr>
+<td><strong>Function</strong></td>
+<td>A named set of instructions you can use again and again, like <code>draw_digit()</code>.</td>
+</tr>
+<tr>
+<td><strong>Module</strong></td>
+<td>A file of Python code that other programs can borrow from with <code>import</code>.</td>
+</tr>
+<tr>
+<td><strong>Rotary encoder</strong></td>
+<td>A knob that tells the computer which way it turned, and how far.</td>
+</tr>
+<tr>
+<td><strong>Shell</strong></td>
+<td>The box at the bottom of Thonny where a program's printed messages appear.</td>
+</tr>
+<tr>
+<td><strong>WiFi</strong></td>
+<td>A way for devices to connect to the internet without wires.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="for-parents-and-teachers">For Parents and Teachers</h2>
+<ul>
+<li><strong>What a student learns:</strong> Python programming, how a computer reads a
+  knob and draws to a screen, how a clock keeps time, and how a device
+  gets data from the internet.</li>
+<li><strong>One-time setup by an adult:</strong> the display board's 12 pins come as a
+  loose strip and must be soldered on once. After that, everything plugs
+  together with wires.</li>
+<li><strong>Privacy:</strong> the clock has no microphone and no camera. It connects to
+  WiFi only to get the time and a public weather forecast.</li>
+<li><strong>What it costs:</strong> the display board, with its knob and button, was
+  $5.53 on AliExpress in October 2026. You also need a Pico 2 W, a
+  breadboard, twelve jumper wires, and a USB cable.</li>
+</ul>
+<p>The <a href="teacher-notes/">Notes for Teachers</a> page has the details. It
+covers where to buy the parts, the screen's driver, how fast the
+hardware really is, and how each clock face avoids flicker. It also says
+what was tested on a real kit, and it has a troubleshooting table.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../sw-gc9b72/teacher-notes/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Notes for Teachers">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Notes for Teachers
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="01-blink-onboard-led/" class="md-footer__link md-footer__link--next" aria-label="Next: 01 Blink the LED">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                01 Blink the LED
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M247.1 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L179.2 256 41.9 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

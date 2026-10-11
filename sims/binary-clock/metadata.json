@@ -41,10 +41,10 @@
     "simulation"
   ],
   "learningObjectives": [
-    "Convert a column of lit LEDs to its decimal digit by adding the place values 2^0, 2^1, 2^2, and 2^3 from bottom to top",
-    "Read the current time in HH:MM:SS format by decoding each vertical binary LED column",
-    "Explain why four LEDs per column are sufficient to represent any decimal digit from 0 to 9",
-    "Distinguish lit LEDs (binary 1) from unlit LEDs (binary 0) when translating between binary and decimal representations"
+    "Understand the key concepts of binary clock",
+    "Explore binary clock through interactive visualization",
+    "Apply knowledge of binary clock to solve problems",
+    "Test understanding of binary clock through interactive exercises"
   ],
   "bloomsTaxonomy": [
     "Remember",
