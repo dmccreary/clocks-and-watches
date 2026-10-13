@@ -1,0 +1,676 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Knob Clock Kit Animation</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&amp;family=VT323&amp;display=swap">
+<style>
+body{margin:0;background:#0b0e13}
+
+/* ---------- stage + chrome ---------- */
+.stage{position:absolute;left:0;top:0;width:1280px;height:720px;overflow:hidden;background:radial-gradient(900px 540px at 60% 50%,#18222f 0%,#0b0e13 72%);font-family:'Rubik',system-ui,sans-serif;color:#e8edf5}
+.pause-input{position:absolute;left:1172px;top:650px;width:44px;height:44px;margin:0;opacity:0;z-index:30;cursor:pointer}
+.pause-btn{position:absolute;left:1172px;top:650px;width:44px;height:44px;box-sizing:border-box;border-radius:50%;border:1.5px solid #3a4659;background:#10151d;display:flex;align-items:center;justify-content:center;z-index:25}
+.pause-input:focus-visible ~ .pause-btn{outline:2px solid #2fd8f0;outline-offset:3px}
+.ico-play{display:none}
+.pause-input:checked ~ .pause-btn .ico-pause{display:none}
+.pause-input:checked ~ .pause-btn .ico-play{display:block}
+.pause-input:checked ~ .stage *{animation-play-state:paused !important}
+
+.cover{position:absolute;left:0;top:0;width:1280px;height:720px;background:#0b0e13;z-index:10;pointer-events:none;animation:cover 30s linear infinite both}
+.cap{position:absolute;left:64px;top:30px;width:1152px;opacity:0}
+.kick{font-size:15px;font-weight:500;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:#2fd8f0}
+.head{font-size:44px;font-weight:700;line-height:1.1;margin-top:10px;color:#fff}
+.cap0{animation:cap0 30s ease-out infinite both}
+.cap1{animation:cap1 30s ease-out infinite both}
+.cap2{animation:cap2 30s ease-out infinite both}
+.cap3{animation:cap3 30s ease-out infinite both}
+.cap4{animation:cap4 30s ease-out infinite both}
+
+.prog-track{position:absolute;left:64px;top:704px;width:1152px;height:4px;border-radius:2px;background:#1d2633}
+.prog-fill{position:absolute;left:64px;top:704px;width:1152px;height:4px;border-radius:2px;background:#2fd8f0;transform-origin:0 50%;animation:prog 30s linear infinite both}
+.prog-tick{position:absolute;top:700px;width:2px;height:12px;background:#3a4659}
+
+.pills{position:absolute;left:0;top:650px;width:1280px;display:flex;justify-content:center;gap:12px;opacity:0;animation:pillsRow 30s linear infinite both}
+.pill{--off:transparent;--offc:#9fb0c6;--offb:#3a4659;--on:#2fd8f0;--onc:#04222b;padding:10px 20px;border-radius:999px;border:1.5px solid #3a4659;font-size:17px;font-weight:500;line-height:1.2}
+.pill0{animation:act0 30s linear infinite both}
+.pill1{animation:act1 30s linear infinite both}
+.pill2{animation:act2 30s linear infinite both}
+.pill3{animation:act3 30s linear infinite both}
+.pill4{animation:act4 30s linear infinite both}
+
+.chips{position:absolute;left:0;top:650px;width:1280px;display:flex;justify-content:center;gap:8px;opacity:0;animation:chipsRow 30s linear infinite both}
+.chip{width:40px;height:40px;box-sizing:border-box;border:1.5px solid #3a4659;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:500;color:#7e8aa0;animation:chipOn 30s linear infinite both}
+
+/* ---------- rig (camera) ---------- */
+.rig{position:absolute;left:0;top:0;width:1500px;height:620px;transform-origin:0 0;animation:cam 30s ease-in-out infinite both}
+.rise{animation:rise 30s ease-out infinite both}
+.bb{background-color:#c0352d;background-image:radial-gradient(circle,#6b100d 1.6px,transparent 2.2px);background-size:16px 16px;border-radius:12px;box-shadow:inset 0 0 0 3px #8e231e,0 24px 40px rgba(0,0,0,.45)}
+.pad{background:repeating-linear-gradient(to bottom,#e6c35c 0 8px,transparent 8px 20px)}
+.led{animation:ledOn 30s linear infinite both}
+.usb-pulse{animation:usbPulse 30s linear infinite both}
+.wires-vis{animation:wiresVis 30s linear infinite both}
+.w{fill:none;stroke-width:5;stroke-linecap:round;stroke-dasharray:600;animation:draw 30s linear infinite both}
+.hole{position:absolute;width:22px;height:22px;border-radius:50%;background:#0d1b4a;box-shadow:0 0 0 4px #e9edf5}
+.smd{position:absolute;width:24px;height:10px;border-radius:2px;background:#161b26;box-shadow:inset 0 0 0 1px #3a4768}
+
+.tag{position:absolute;padding:6px 14px;border:1.5px solid #2fd8f0;border-radius:999px;background:#0b0e13;color:#e8edf5;font-size:16px;font-weight:500;line-height:1.2;white-space:nowrap;opacity:0}
+.tag-amber{border-color:#ff9b2e;color:#ffd9a8}
+.tag-intro{animation:tagIntro 30s linear infinite both}
+.tag-vcc{animation:tagVcc 30s linear infinite both}
+.tag-turn{animation:tagTurn 30s linear infinite both}
+.tag-push{animation:tagPush 30s linear infinite both}
+.tag-k0{animation:tagK0 30s linear infinite both}
+
+.knob-turn{transform-origin:50% 50%;animation:knobTurn 30s cubic-bezier(.25,.8,.35,1.15) infinite both}
+.knob-press{animation:knobPress 30s ease-out infinite both}
+.k0-press{animation:k0Press 30s ease-out infinite both}
+.ripple{animation:ripple 30s ease-out infinite both}
+
+/* ---------- screen (160 x 128 pixels, drawn 2.75x) ---------- */
+.screen{position:absolute;overflow:hidden;background:#000;border-radius:2px}
+.px{position:absolute;left:0;top:0;width:160px;height:128px;transform:scale(2.75);transform-origin:0 0;font-family:'VT323','Courier New',monospace;color:#fff}
+.face{position:absolute;left:0;top:0;width:160px;height:128px;opacity:0}
+.t{position:absolute;left:0;width:160px;text-align:center;line-height:1;white-space:nowrap}
+.f-boot{animation:fBoot 30s linear infinite both}
+.f-weather{animation:fWeather 30s linear infinite both}
+.f-analog{animation:fAnalog 30s linear infinite both}
+.f-digital{animation:fDigital 30s linear infinite both}
+.f-stop{animation:fStop 30s linear infinite both}
+.f-timer{animation:fTimer 30s linear infinite both}
+.screen-off{position:absolute;left:0;top:0;width:100%;height:100%;background:linear-gradient(135deg,#1a2230,#090c11);animation:screenOff 30s linear infinite both}
+.fc{animation:fcast 30s linear infinite both}
+.dots{position:absolute;left:49px;top:118px;width:62px;height:8px;opacity:0;animation:dotsOn 30s linear infinite both}
+.dot{--off:#3a4252;--on:#eaf1fa;position:absolute;top:1px;width:6px;height:6px;border-radius:2px}
+.dot0{left:0;animation:act0 30s linear infinite both}
+.dot1{left:14px;animation:act1 30s linear infinite both}
+.dot2{left:28px;animation:act2 30s linear infinite both}
+.dot3{left:42px;animation:act3 30s linear infinite both}
+.dot4{left:56px;animation:act4 30s linear infinite both}
+.arc{fill:none;stroke:#2fd8f0;stroke-width:3;stroke-linecap:round;animation:wifiPulse 1.2s ease-in-out infinite}
+.blink{animation:blink 1s linear infinite}
+.sec-hand{transform-origin:80px 58px;animation:secHand 30s linear infinite both}
+.sw-a{animation:swA 30s linear infinite both}
+.sw-b{animation:swB 30s linear infinite both}
+.sw-strip{animation:swStrip 30s steps(16,end) infinite both}
+.sl{height:26px;line-height:26px;text-align:center;white-space:nowrap}
+.sb{font-size:36px;color:#fff}
+.ss{font-size:18px;color:#fff}
+.lap-a1{animation:lapA1 30s linear infinite both}
+.lap-b{animation:lapB 30s linear infinite both}
+.tm-a{animation:tmA 30s linear infinite both}
+.tm-b{animation:tmB 30s linear infinite both}
+.tm-strip{animation:tmStrip 30s linear infinite both}
+.tl{height:46px;line-height:46px;text-align:center;font-size:60px;color:#fff;white-space:nowrap}
+
+/* ---------- keyframes: 30 s master loop (1 s = 3.333 %) ---------- */
+@keyframes cover {
+  0%,2% {opacity:1}
+  5.333%,97.333% {opacity:0}
+  100% {opacity:1}
+}
+@keyframes cam {
+  0%,26.667% {transform:translate(40px,100px) scale(.85)}
+  30.667%,86.667% {transform:translate(-475.5px,18.5px) scale(1.15)}
+  91.333%,100% {transform:translate(40px,100px) scale(.85)}
+}
+@keyframes rise {
+  0%,2% {opacity:0;transform:translateY(28px)}
+  7%,100% {opacity:1;transform:translateY(0)}
+}
+@keyframes cap0 {
+  0%,2.667% {opacity:0;transform:translateY(10px)}
+  4%,9% {opacity:1;transform:translateY(0)}
+  10%,100% {opacity:0;transform:translateY(-8px)}
+}
+@keyframes cap1 {
+  0%,10.333% {opacity:0;transform:translateY(10px)}
+  11.667%,25.667% {opacity:1;transform:translateY(0)}
+  26.667%,100% {opacity:0;transform:translateY(-8px)}
+}
+@keyframes cap2 {
+  0%,27% {opacity:0;transform:translateY(10px)}
+  28.333%,39% {opacity:1;transform:translateY(0)}
+  40%,100% {opacity:0;transform:translateY(-8px)}
+}
+@keyframes cap3 {
+  0%,40.333% {opacity:0;transform:translateY(10px)}
+  41.667%,85.667% {opacity:1;transform:translateY(0)}
+  86.667%,100% {opacity:0;transform:translateY(-8px)}
+}
+@keyframes cap4 {
+  0%,87% {opacity:0;transform:translateY(10px)}
+  88.333%,96.667% {opacity:1;transform:translateY(0)}
+  98%,100% {opacity:0;transform:translateY(-8px)}
+}
+@keyframes prog {
+  0% {transform:scaleX(0)}
+  100% {transform:scaleX(1)}
+}
+@keyframes wiresVis {
+  0%,10% {opacity:0}
+  10.333%,97.5% {opacity:1}
+  98.667%,100% {opacity:0}
+}
+@keyframes draw {
+  0%,10.667% {stroke-dashoffset:600}
+  15%,100% {stroke-dashoffset:0}
+}
+@keyframes tagIntro {
+  0%,3.667% {opacity:0}
+  5%,24.667% {opacity:1}
+  25.333%,100% {opacity:0}
+}
+@keyframes tagVcc {
+  0%,18% {opacity:0}
+  19.333%,24.667% {opacity:1}
+  25.333%,100% {opacity:0}
+}
+@keyframes usbPulse {
+  0%,23.3% {opacity:0;transform:translateY(170px)}
+  23.4% {opacity:1;transform:translateY(170px)}
+  25.3% {opacity:1;transform:translateY(0)}
+  25.8%,100% {opacity:0;transform:translateY(0)}
+}
+@keyframes ledOn {
+  0%,25.2% {background-color:#14532d;box-shadow:0 0 0 rgba(74,222,128,0)}
+  25.333%,100% {background-color:#4ade80;box-shadow:0 0 10px #4ade80}
+}
+@keyframes screenOff {
+  0%,26.667% {opacity:1}
+  27.333%,100% {opacity:0}
+}
+@keyframes fBoot {
+  0%,26.6% {opacity:0}
+  26.667%,34.6% {opacity:1}
+  34.667%,100% {opacity:0}
+}
+@keyframes fWeather {
+  0%,34.6% {opacity:0}
+  34.667%,47.98% {opacity:1}
+  48%,86.6% {opacity:0}
+  86.667%,100% {opacity:1}
+}
+@keyframes fAnalog {
+  0%,47.98% {opacity:0}
+  48%,56.65% {opacity:1}
+  56.667%,100% {opacity:0}
+}
+@keyframes fDigital {
+  0%,56.65% {opacity:0}
+  56.667%,65.31% {opacity:1}
+  65.333%,100% {opacity:0}
+}
+@keyframes fStop {
+  0%,65.31% {opacity:0}
+  65.333%,77.31% {opacity:1}
+  77.333%,100% {opacity:0}
+}
+@keyframes fTimer {
+  0%,77.31% {opacity:0}
+  77.333%,86.65% {opacity:1}
+  86.667%,100% {opacity:0}
+}
+@keyframes dotsOn {
+  0%,34.6% {opacity:0}
+  34.667%,100% {opacity:1}
+}
+@keyframes fcast {
+  0%,37.2% {opacity:0}
+  37.5%,100% {opacity:1}
+}
+@keyframes act0 {
+  0%,34.6% {background-color:var(--off);color:var(--offc);border-color:var(--offb)}
+  34.667%,47.98% {background-color:var(--on);color:var(--onc);border-color:var(--on)}
+  48%,86.6% {background-color:var(--off);color:var(--offc);border-color:var(--offb)}
+  86.667%,100% {background-color:var(--on);color:var(--onc);border-color:var(--on)}
+}
+@keyframes act1 {
+  0%,47.98% {background-color:var(--off);color:var(--offc);border-color:var(--offb)}
+  48%,56.65% {background-color:var(--on);color:var(--onc);border-color:var(--on)}
+  56.667%,100% {background-color:var(--off);color:var(--offc);border-color:var(--offb)}
+}
+@keyframes act2 {
+  0%,56.65% {background-color:var(--off);color:var(--offc);border-color:var(--offb)}
+  56.667%,65.31% {background-color:var(--on);color:var(--onc);border-color:var(--on)}
+  65.333%,100% {background-color:var(--off);color:var(--offc);border-color:var(--offb)}
+}
+@keyframes act3 {
+  0%,65.31% {background-color:var(--off);color:var(--offc);border-color:var(--offb)}
+  65.333%,77.31% {background-color:var(--on);color:var(--onc);border-color:var(--on)}
+  77.333%,100% {background-color:var(--off);color:var(--offc);border-color:var(--offb)}
+}
+@keyframes act4 {
+  0%,77.31% {background-color:var(--off);color:var(--offc);border-color:var(--offb)}
+  77.333%,86.65% {background-color:var(--on);color:var(--onc);border-color:var(--on)}
+  86.667%,100% {background-color:var(--off);color:var(--offc);border-color:var(--offb)}
+}
+@keyframes pillsRow {
+  0%,40.3% {opacity:0}
+  41.667%,85.667% {opacity:1}
+  86.667%,100% {opacity:0}
+}
+@keyframes chipsRow {
+  0%,86.9% {opacity:0}
+  88%,97.333% {opacity:1}
+  98.667%,100% {opacity:0}
+}
+@keyframes chipOn {
+  0%,88.6% {background-color:transparent;color:#7e8aa0;border-color:#3a4659}
+  89.4%,100% {background-color:#2fd8f0;color:#04222b;border-color:#2fd8f0}
+}
+@keyframes knobTurn {
+  0%,48% {transform:rotate(0deg)}
+  49.167%,56.667% {transform:rotate(72deg)}
+  57.833%,65.333% {transform:rotate(144deg)}
+  66.5%,77.333% {transform:rotate(216deg)}
+  78.5%,86.667% {transform:rotate(288deg)}
+  87.833%,100% {transform:rotate(360deg)}
+}
+@keyframes knobPress {
+  0%,71.333% {transform:scale(1)}
+  71.9% {transform:scale(.9)}
+  72.9%,75.333% {transform:scale(1)}
+  75.9% {transform:scale(.9)}
+  76.9%,100% {transform:scale(1)}
+}
+@keyframes k0Press {
+  0%,66.667% {transform:scale(1)}
+  67.3% {transform:scale(.82)}
+  68.3%,79.333% {transform:scale(1)}
+  79.9% {transform:scale(.82)}
+  80.9%,100% {transform:scale(1)}
+}
+@keyframes ripple {
+  0%,47.97% {opacity:0;transform:scale(1)}
+  48% {opacity:.9;transform:scale(1)}
+  49.667% {opacity:0;transform:scale(1.6)}
+  49.7%,56.64% {opacity:0;transform:scale(1)}
+  56.667% {opacity:.9;transform:scale(1)}
+  58.333% {opacity:0;transform:scale(1.6)}
+  58.37%,65.3% {opacity:0;transform:scale(1)}
+  65.333% {opacity:.9;transform:scale(1)}
+  67% {opacity:0;transform:scale(1.6)}
+  67.04%,77.3% {opacity:0;transform:scale(1)}
+  77.333% {opacity:.9;transform:scale(1)}
+  79% {opacity:0;transform:scale(1.6)}
+  79.04%,86.63% {opacity:0;transform:scale(1)}
+  86.667% {opacity:.9;transform:scale(1)}
+  88.333% {opacity:0;transform:scale(1.6)}
+  88.37%,100% {opacity:0;transform:scale(1)}
+}
+@keyframes tagTurn {
+  0%,40.3% {opacity:0}
+  41.5%,64.5% {opacity:1}
+  65.333%,100% {opacity:0}
+}
+@keyframes tagPush {
+  0%,69.3% {opacity:0}
+  70.3%,76.4% {opacity:1}
+  77.2%,100% {opacity:0}
+}
+@keyframes tagK0 {
+  0%,64.5% {opacity:0}
+  66%,85.6% {opacity:1}
+  86.667%,100% {opacity:0}
+}
+@keyframes wifiPulse {
+  0%,100% {opacity:.2}
+  40%,60% {opacity:1}
+}
+@keyframes blink {
+  0%,100% {opacity:0}
+  50% {opacity:1}
+}
+@keyframes secHand {
+  0%,48% {transform:rotate(120deg)}
+  56.667%,100% {transform:rotate(136deg)}
+}
+@keyframes swA {
+  0%,66.6% {opacity:1}
+  66.667%,100% {opacity:0}
+}
+@keyframes swB {
+  0%,66.6% {opacity:0}
+  66.667%,100% {opacity:1}
+}
+@keyframes swStrip {
+  0%,66.667% {transform:translateY(0)}
+  77.333%,100% {transform:translateY(-416px)}
+}
+@keyframes lapA1 {
+  0%,71.3% {opacity:0}
+  71.333%,75.3% {opacity:1}
+  75.333%,100% {opacity:0}
+}
+@keyframes lapB {
+  0%,75.3% {opacity:0}
+  75.333%,100% {opacity:1}
+}
+@keyframes tmA {
+  0%,79.3% {opacity:1}
+  79.333%,100% {opacity:0}
+}
+@keyframes tmB {
+  0%,79.3% {opacity:0}
+  79.333%,100% {opacity:1}
+}
+@keyframes tmStrip {
+  0%,79.3% {transform:translateY(0)}
+  79.35%,82.6% {transform:translateY(-46px)}
+  82.65%,85.95% {transform:translateY(-92px)}
+  86%,100% {transform:translateY(-138px)}
+}
+</style>
+<meta name="viewport" content="width=1280">
+</head>
+<body>
+
+<div style="position:relative;width:1280px;height:720px;overflow:hidden;background:#0b0e13">
+
+  <input type="checkbox" id="pause" class="pause-input" aria-label="Pause animation">
+  <label for="pause" class="pause-btn" aria-hidden="true">
+    <svg class="ico-pause" width="16" height="16" viewBox="0 0 16 16"><rect x="3" y="2" width="3.5" height="12" rx="1" fill="#e8edf5"></rect><rect x="9.5" y="2" width="3.5" height="12" rx="1" fill="#e8edf5"></rect></svg>
+    <svg class="ico-play" width="16" height="16" viewBox="0 0 16 16"><path d="M4 2 L13 8 L4 14 Z" fill="#e8edf5"></path></svg>
+  </label>
+
+  <div class="stage" role="img" aria-label="A 30-second animation of the Knob Clock Kit. A Raspberry Pi Pico 2 W is wired to a color display board with a knob and a button. The clock sets its own time over WiFi, then turning the knob steps through five faces: weather, analog, digital, stopwatch and timer. The kit comes with 17 labs.">
+
+    <!-- captions -->
+    <div class="cap cap0">
+      <div class="kick">A desk clock you build and code yourself</div>
+      <div class="head">Meet the Knob Clock Kit</div>
+    </div>
+    <div class="cap cap1">
+      <div class="kick">Step 1 · Wire it</div>
+      <div class="head">12 wires join the Pico to the screen</div>
+    </div>
+    <div class="cap cap2">
+      <div class="kick">Step 2 · Power it on</div>
+      <div class="head">It sets its own time over WiFi</div>
+    </div>
+    <div class="cap cap3">
+      <div class="kick">Step 3 · Use it</div>
+      <div class="head">Turn the knob to change the face</div>
+    </div>
+    <div class="cap cap4">
+      <div class="kick">17 labs · ages 10 and up</div>
+      <div class="head">Build it. Code it. Make time tick.</div>
+    </div>
+
+    <!-- camera rig -->
+    <div class="rig">
+
+      <!-- breadboard + Pico -->
+      <div class="rise" style="position:absolute;left:0;top:0;width:500px;height:620px">
+        <div class="bb" style="position:absolute;left:30px;top:70px;width:330px;height:520px"></div>
+        <div style="position:absolute;left:187px;top:70px;width:16px;height:520px;background:#7a1e19"></div>
+
+        <!-- USB cable -->
+        <div style="position:absolute;left:183px;top:405px;width:24px;height:215px;border-radius:0 0 4px 4px;background:linear-gradient(#f8fafc,#cbd5e1)"></div>
+        <div class="usb-pulse" style="position:absolute;left:183px;top:420px;width:24px;height:40px;background:linear-gradient(rgba(47,216,240,0),rgba(47,216,240,.85),rgba(47,216,240,0))"></div>
+
+        <!-- Pico 2 W -->
+        <div style="position:absolute;left:140px;top:130px;width:110px;height:270px;border-radius:10px;background:#1b7a46;box-shadow:0 10px 24px rgba(0,0,0,.5),inset 0 0 0 2px #14613a">
+          <div class="pad" style="position:absolute;left:0;top:26px;width:6px;height:240px"></div>
+          <div class="pad" style="position:absolute;left:104px;top:26px;width:6px;height:240px"></div>
+          <div style="position:absolute;left:22px;top:20px;width:66px;height:40px;border-radius:3px;background:#c9ced6;box-shadow:inset 0 0 0 3px #9aa1ad"></div>
+          <div style="position:absolute;left:34px;top:104px;width:42px;height:42px;border-radius:3px;background:#101216;box-shadow:inset 0 0 0 2px #2a2f38"></div>
+          <div style="position:absolute;left:70px;top:178px;width:24px;height:24px;border-radius:5px;background:#f1f5f9;box-shadow:inset 0 0 0 3px #cbd5e1"></div>
+          <div class="led" style="position:absolute;left:16px;top:236px;width:10px;height:10px;border-radius:50%"></div>
+          <div style="position:absolute;left:30px;top:252px;width:50px;height:30px;border-radius:4px;background:#d5d9df;box-shadow:inset 0 0 0 3px #a3aab6"></div>
+        </div>
+      </div>
+
+      <!-- 12 wires -->
+      <svg style="position:absolute;left:0;top:0" width="1500" height="620" viewBox="0 0 1500 620">
+        <g class="wires-vis">
+          <path class="w" style="stroke:#8b5a2b;animation-delay:0s" d="M250 380 C400 380 450 480 590 480"></path>
+          <path class="w" style="stroke:#e53935;animation-delay:.15s" d="M250 360 C400 360 450 449 590 449"></path>
+          <path class="w" style="stroke:#fb8c00;animation-delay:.3s" d="M250 340 C400 340 450 418 590 418"></path>
+          <path class="w" style="stroke:#fdd835;animation-delay:.45s" d="M250 320 C400 320 450 387 590 387"></path>
+          <path class="w" style="stroke:#43a047;animation-delay:.6s" d="M250 300 C400 300 450 356 590 356"></path>
+          <path class="w" style="stroke:#1e88e5;animation-delay:.75s" d="M250 280 C400 280 450 325 590 325"></path>
+          <path class="w" style="stroke:#8e24aa;animation-delay:.9s" d="M250 260 C400 260 450 294 590 294"></path>
+          <path class="w" style="stroke:#9e9e9e;animation-delay:1.05s" d="M250 240 C400 240 450 263 590 263"></path>
+          <path class="w" style="stroke:#f5f5f5;animation-delay:1.2s" d="M250 220 C400 220 450 232 590 232"></path>
+          <path class="w" style="stroke:#66bb6a;animation-delay:1.35s" d="M250 200 C400 200 450 201 590 201"></path>
+          <path class="w" style="stroke:#42a5f5;animation-delay:1.5s" d="M250 180 C400 180 450 170 590 170"></path>
+          <path class="w" style="stroke:#ab47bc;animation-delay:1.65s" d="M250 160 C400 160 450 139 590 139"></path>
+        </g>
+      </svg>
+
+      <!-- display board -->
+      <div class="rise" style="position:absolute;left:560px;top:90px;width:820px;height:440px;animation-delay:.25s">
+        <div style="position:absolute;left:0;top:0;width:820px;height:440px;border-radius:16px;background:linear-gradient(160deg,#2350c0,#183c9c 55%,#122f80);box-shadow:0 30px 60px rgba(0,0,0,.55),inset 0 0 0 2px rgba(255,255,255,.08)"></div>
+
+        <div class="hole" style="left:12px;top:12px"></div>
+        <div class="hole" style="left:786px;top:12px"></div>
+        <div class="hole" style="left:12px;top:406px"></div>
+        <div class="hole" style="left:786px;top:406px"></div>
+
+        <!-- 12-pin header, bottom to top: GND ... K0 -->
+        <svg style="position:absolute;left:0;top:0" width="80" height="440" viewBox="0 0 80 440">
+          <circle cx="30" cy="390" r="7" fill="#e6c35c"></circle><text x="44" y="394" font-size="11" font-weight="500" fill="#d7e4ff" style="font-family:'Rubik',sans-serif">GND</text>
+          <circle cx="30" cy="359" r="7" fill="#e6c35c"></circle><text x="44" y="363" font-size="11" font-weight="500" fill="#d7e4ff" style="font-family:'Rubik',sans-serif">VCC</text>
+          <circle cx="30" cy="328" r="7" fill="#e6c35c"></circle><text x="44" y="332" font-size="11" font-weight="500" fill="#d7e4ff" style="font-family:'Rubik',sans-serif">SCL</text>
+          <circle cx="30" cy="297" r="7" fill="#e6c35c"></circle><text x="44" y="301" font-size="11" font-weight="500" fill="#d7e4ff" style="font-family:'Rubik',sans-serif">SDA</text>
+          <circle cx="30" cy="266" r="7" fill="#e6c35c"></circle><text x="44" y="270" font-size="11" font-weight="500" fill="#d7e4ff" style="font-family:'Rubik',sans-serif">RES</text>
+          <circle cx="30" cy="235" r="7" fill="#e6c35c"></circle><text x="44" y="239" font-size="11" font-weight="500" fill="#d7e4ff" style="font-family:'Rubik',sans-serif">DC</text>
+          <circle cx="30" cy="204" r="7" fill="#e6c35c"></circle><text x="44" y="208" font-size="11" font-weight="500" fill="#d7e4ff" style="font-family:'Rubik',sans-serif">CS</text>
+          <circle cx="30" cy="173" r="7" fill="#e6c35c"></circle><text x="44" y="177" font-size="11" font-weight="500" fill="#d7e4ff" style="font-family:'Rubik',sans-serif">BLK</text>
+          <circle cx="30" cy="142" r="7" fill="#e6c35c"></circle><text x="44" y="146" font-size="11" font-weight="500" fill="#d7e4ff" style="font-family:'Rubik',sans-serif">A</text>
+          <circle cx="30" cy="111" r="7" fill="#e6c35c"></circle><text x="44" y="115" font-size="11" font-weight="500" fill="#d7e4ff" style="font-family:'Rubik',sans-serif">B</text>
+          <circle cx="30" cy="80" r="7" fill="#e6c35c"></circle><text x="44" y="84" font-size="11" font-weight="500" fill="#d7e4ff" style="font-family:'Rubik',sans-serif">PUSH</text>
+          <circle cx="30" cy="49" r="7" fill="#e6c35c"></circle><text x="44" y="53" font-size="11" font-weight="500" fill="#d7e4ff" style="font-family:'Rubik',sans-serif">K0</text>
+        </svg>
+
+        <!-- small board details -->
+        <div style="position:absolute;left:540px;top:90px;width:14px;height:230px;background:repeating-linear-gradient(90deg,#c88a2c 0 2px,#e8b04a 2px 4px);border-radius:2px"></div>
+        <div class="smd" style="left:566px;top:34px"></div>
+        <div class="smd" style="left:566px;top:56px"></div>
+        <div class="smd" style="left:566px;top:78px"></div>
+        <div class="smd" style="left:566px;top:100px"></div>
+        <div style="position:absolute;left:644px;top:400px;font-size:12px;font-weight:500;color:#d7e4ff">K0</div>
+
+        <!-- screen: bezel, glass, 160x128 pixel grid -->
+        <div style="position:absolute;left:80px;top:44px;width:456px;height:368px;border-radius:10px;background:#f1f5f9;box-shadow:0 4px 10px rgba(0,0,0,.4)"></div>
+        <div class="screen" style="left:88px;top:52px;width:440px;height:352px">
+          <div class="px">
+
+            <!-- boot: Setting clock -->
+            <div class="face f-boot">
+              <svg width="40" height="30" viewBox="0 0 40 30" style="position:absolute;left:60px;top:20px">
+                <path class="arc" style="animation-delay:.4s" d="M4.44 10.44 A22 22 0 0 1 35.56 10.44"></path>
+                <path class="arc" style="animation-delay:.2s" d="M9.4 15.4 A15 15 0 0 1 30.6 15.4"></path>
+                <path class="arc" d="M14.34 20.34 A8 8 0 0 1 25.66 20.34"></path>
+                <circle cx="20" cy="26" r="2.4" fill="#2fd8f0"></circle>
+              </svg>
+              <div class="t" style="top:60px;font-size:22px;color:#fff">Setting clock<span class="blink">.</span><span class="blink" style="animation-delay:.2s">.</span><span class="blink" style="animation-delay:.4s">.</span></div>
+              <div class="t" style="top:86px;font-size:15px;color:#8b97ab">asking the internet</div>
+            </div>
+
+            <!-- weather mode -->
+            <div class="face f-weather">
+              <div class="t" style="top:-3px;font-size:54px;line-height:44px;color:#2fd8f0">1:47<span style="font-size:15px;margin-left:3px">PM</span></div>
+              <div class="t" style="top:42px;font-size:16px;color:#d7ee3a">Sun, Oct 11, 2026</div>
+              <div style="position:absolute;left:6px;top:61px;width:148px;height:1px;background:#3b5a8a"></div>
+              <div class="fc" style="position:absolute;left:0;top:0;width:160px;height:128px">
+                <div style="position:absolute;left:80px;top:64px;width:1px;height:50px;background:#3b5a8a"></div>
+
+                <div class="t" style="left:4px;width:74px;top:63px;font-size:14px;color:#5aa9ff">Today</div>
+                <svg width="32" height="22" viewBox="0 0 32 22" style="position:absolute;left:8px;top:80px"><circle cx="9" cy="13" r="6" fill="#3cc0f0"></circle><circle cx="17" cy="9" r="7.5" fill="#3cc0f0"></circle><circle cx="25" cy="13.5" r="5.5" fill="#3cc0f0"></circle><rect x="9" y="13" width="16" height="6.5" fill="#3cc0f0"></rect></svg>
+                <div class="t" style="left:44px;width:34px;text-align:left;top:76px;font-size:17px;color:#ff9b2e">87°</div>
+                <div class="t" style="left:44px;width:34px;text-align:left;top:89px;font-size:17px;color:#4aa8ff">66°</div>
+                <div class="t" style="left:4px;width:74px;top:103px;font-size:15px;color:#d7ee3a">Cloudy</div>
+
+                <div class="t" style="left:82px;width:74px;top:63px;font-size:14px;color:#5aa9ff">Tomorrow</div>
+                <svg width="32" height="22" viewBox="0 0 32 22" style="position:absolute;left:86px;top:80px"><circle cx="9" cy="13" r="6" fill="#3cc0f0"></circle><circle cx="17" cy="9" r="7.5" fill="#3cc0f0"></circle><circle cx="25" cy="13.5" r="5.5" fill="#3cc0f0"></circle><rect x="9" y="13" width="16" height="6.5" fill="#3cc0f0"></rect></svg>
+                <div class="t" style="left:122px;width:34px;text-align:left;top:76px;font-size:17px;color:#ff9b2e">81°</div>
+                <div class="t" style="left:122px;width:34px;text-align:left;top:89px;font-size:17px;color:#4aa8ff">57°</div>
+                <div class="t" style="left:82px;width:74px;top:103px;font-size:15px;color:#d7ee3a">Cloudy</div>
+              </div>
+            </div>
+
+            <!-- analog mode -->
+            <div class="face f-analog">
+              <svg width="160" height="128" viewBox="0 0 160 128" style="position:absolute;left:0;top:0">
+                <circle cx="80" cy="58" r="51.5" fill="none" stroke="#e8edf5" stroke-width="3" stroke-dasharray="0.8 4.5938" stroke-dashoffset="0.4" transform="rotate(-90 80 58)"></circle>
+                <circle cx="80" cy="58" r="49" fill="none" stroke="#ffffff" stroke-width="7" stroke-dasharray="2.2 23.46" stroke-dashoffset="1.1" transform="rotate(-90 80 58)"></circle>
+                <text x="80" y="23.5" text-anchor="middle" font-size="11" fill="#fff" style="font-family:'VT323','Courier New',monospace">12</text>
+                <text x="99" y="28.6" text-anchor="middle" font-size="11" fill="#fff" style="font-family:'VT323','Courier New',monospace">1</text>
+                <text x="112.9" y="42.5" text-anchor="middle" font-size="11" fill="#fff" style="font-family:'VT323','Courier New',monospace">2</text>
+                <text x="118" y="61.5" text-anchor="middle" font-size="11" fill="#fff" style="font-family:'VT323','Courier New',monospace">3</text>
+                <text x="112.9" y="80.5" text-anchor="middle" font-size="11" fill="#fff" style="font-family:'VT323','Courier New',monospace">4</text>
+                <text x="99" y="94.4" text-anchor="middle" font-size="11" fill="#fff" style="font-family:'VT323','Courier New',monospace">5</text>
+                <text x="80" y="99.5" text-anchor="middle" font-size="11" fill="#fff" style="font-family:'VT323','Courier New',monospace">6</text>
+                <text x="61" y="94.4" text-anchor="middle" font-size="11" fill="#fff" style="font-family:'VT323','Courier New',monospace">7</text>
+                <text x="47.1" y="80.5" text-anchor="middle" font-size="11" fill="#fff" style="font-family:'VT323','Courier New',monospace">8</text>
+                <text x="42" y="61.5" text-anchor="middle" font-size="11" fill="#fff" style="font-family:'VT323','Courier New',monospace">9</text>
+                <text x="47.1" y="42.5" text-anchor="middle" font-size="11" fill="#fff" style="font-family:'VT323','Courier New',monospace">10</text>
+                <text x="61" y="28.6" text-anchor="middle" font-size="11" fill="#fff" style="font-family:'VT323','Courier New',monospace">11</text>
+                <polygon points="77,60 80,34 83,60" fill="#ffffff" style="transform-origin:80px 58px;transform:rotate(53.5deg)"></polygon>
+                <polygon points="78,60 80,18 82,60" fill="#ffffff" style="transform-origin:80px 58px;transform:rotate(282deg)"></polygon>
+                <g class="sec-hand"><line x1="80" y1="68" x2="80" y2="13" stroke="#ff3b3b" stroke-width="1.4"></line></g>
+                <circle cx="80" cy="58" r="3" fill="#ff3b3b"></circle>
+              </svg>
+            </div>
+
+            <!-- digital mode -->
+            <div class="face f-digital">
+              <div style="position:absolute;left:2px;top:2px;width:152px;height:110px;border:2px dashed #19d9e8"></div>
+              <div class="t" style="top:8px;font-size:15px;color:#2fd8f0">PM</div>
+              <div class="t" style="top:20px;font-size:76px;line-height:64px;color:#fff">1:47</div>
+              <div class="t" style="top:92px;font-size:16px;color:#ffe14a">Sun, Oct 11, 2026</div>
+            </div>
+
+            <!-- stopwatch mode -->
+            <div class="face f-stop">
+              <div class="t sw-a" style="top:3px;font-size:15px;color:#3fe05a">K0 start</div>
+              <div class="t sw-b" style="top:3px;font-size:15px;color:#3fe05a">K0 stop&nbsp;&nbsp;&nbsp;PUSH lap</div>
+              <div style="position:absolute;left:0;top:18px;width:160px;height:26px;overflow:hidden">
+                <div class="sw-strip">
+                  <div class="sl"><span class="sb">00:00</span><span class="ss">.00</span></div>
+                  <div class="sl"><span class="sb">00:00</span><span class="ss">.21</span></div>
+                  <div class="sl"><span class="sb">00:00</span><span class="ss">.42</span></div>
+                  <div class="sl"><span class="sb">00:00</span><span class="ss">.63</span></div>
+                  <div class="sl"><span class="sb">00:00</span><span class="ss">.84</span></div>
+                  <div class="sl"><span class="sb">00:01</span><span class="ss">.05</span></div>
+                  <div class="sl"><span class="sb">00:01</span><span class="ss">.26</span></div>
+                  <div class="sl"><span class="sb">00:01</span><span class="ss">.47</span></div>
+                  <div class="sl"><span class="sb">00:01</span><span class="ss">.68</span></div>
+                  <div class="sl"><span class="sb">00:01</span><span class="ss">.89</span></div>
+                  <div class="sl"><span class="sb">00:02</span><span class="ss">.10</span></div>
+                  <div class="sl"><span class="sb">00:02</span><span class="ss">.31</span></div>
+                  <div class="sl"><span class="sb">00:02</span><span class="ss">.52</span></div>
+                  <div class="sl"><span class="sb">00:02</span><span class="ss">.73</span></div>
+                  <div class="sl"><span class="sb">00:02</span><span class="ss">.94</span></div>
+                  <div class="sl"><span class="sb">00:03</span><span class="ss">.15</span></div>
+                </div>
+              </div>
+              <div class="t lap-a1" style="top:52px;font-size:15px;color:#3fe05a">Lap 1&nbsp;&nbsp;00:01.47</div>
+              <div class="t lap-b" style="top:52px;font-size:15px;color:#ffe14a">Lap 2&nbsp;&nbsp;00:01.26</div>
+              <div class="t lap-b" style="top:67px;font-size:15px;color:#3fe05a">Lap 1&nbsp;&nbsp;00:01.47</div>
+              <div class="t lap-b" style="top:86px;font-size:14px;color:#2fd8f0">Best&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;00:01.26</div>
+              <div class="t lap-b" style="top:99px;font-size:14px;color:#2fd8f0">Average&nbsp;&nbsp;00:01.37</div>
+            </div>
+
+            <!-- timer mode -->
+            <div class="face f-timer">
+              <div style="position:absolute;left:2px;top:2px;width:152px;height:110px;border:2px dashed #19d9e8"></div>
+              <div class="t tm-a" style="top:8px;font-size:15px;color:#9aa3b2">K0 start</div>
+              <div class="t tm-b" style="top:8px;font-size:15px;color:#9aa3b2">K0 pause</div>
+              <div class="t tm-a" style="top:22px;font-size:18px;color:#2fd8f0">READY</div>
+              <div class="t tm-b" style="top:22px;font-size:18px;color:#3fe05a">RUNNING</div>
+              <div style="position:absolute;left:0;top:38px;width:160px;height:46px;overflow:hidden">
+                <div class="tm-strip">
+                  <div class="tl">05:00</div>
+                  <div class="tl">04:59</div>
+                  <div class="tl">04:58</div>
+                  <div class="tl">04:57</div>
+                </div>
+              </div>
+              <div class="t" style="top:92px;font-size:15px;color:#9aa3b2">Set to 05:00</div>
+            </div>
+
+            <!-- five mode dots -->
+            <div class="dots">
+              <div class="dot dot0"></div>
+              <div class="dot dot1"></div>
+              <div class="dot dot2"></div>
+              <div class="dot dot3"></div>
+              <div class="dot dot4"></div>
+            </div>
+
+          </div>
+          <div class="screen-off"></div>
+          <div style="position:absolute;left:0;top:0;width:100%;height:100%;background:linear-gradient(120deg,rgba(255,255,255,.08),rgba(255,255,255,0) 38%);pointer-events:none"></div>
+        </div>
+
+        <!-- knob (EC11): turn + push -->
+        <div style="position:absolute;left:616px;top:126px;width:148px;height:148px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#dfe3ea,#8d949f 60%,#5b616b);box-shadow:0 8px 16px rgba(0,0,0,.5)"></div>
+        <div class="ripple" style="position:absolute;left:616px;top:126px;width:148px;height:148px;box-sizing:border-box;border-radius:50%;border:3px solid #2fd8f0;opacity:0"></div>
+        <div class="knob-press" style="position:absolute;left:628px;top:138px;width:124px;height:124px">
+          <div class="knob-turn" style="position:absolute;left:0;top:0;width:124px;height:124px">
+            <div style="position:absolute;left:0;top:0;width:124px;height:124px;border-radius:50%;background:repeating-conic-gradient(#2a303a 0 4deg,#0c0e12 4deg 8deg);box-shadow:0 8px 16px rgba(0,0,0,.5)"></div>
+            <div style="position:absolute;left:12px;top:12px;width:100px;height:100px;border-radius:50%;background:radial-gradient(circle at 35% 28%,#454b56,#14171c 70%)"></div>
+            <div style="position:absolute;left:59px;top:8px;width:6px;height:30px;border-radius:3px;background:#ffffff"></div>
+          </div>
+        </div>
+
+        <!-- K0 push button -->
+        <div style="position:absolute;left:626px;top:330px;width:64px;height:64px;border-radius:8px;background:#c9ced6;box-shadow:inset 0 0 0 3px #aab1bd,0 4px 8px rgba(0,0,0,.4)"></div>
+        <div class="k0-press" style="position:absolute;left:639px;top:343px;width:38px;height:38px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#3a3f48,#0d0f13)"></div>
+      </div>
+
+      <!-- callouts -->
+      <div class="tag tag-intro" style="left:30px;top:28px">Pico 2 W · the brain</div>
+      <div class="tag tag-intro" style="left:640px;top:38px">Display board · screen + knob + K0</div>
+      <div class="tag tag-amber tag-vcc" style="left:360px;top:520px">VCC to 3V3 · never 5 V</div>
+      <div class="tag tag-turn" style="left:1160px;top:178px">Turn: next face</div>
+      <div class="tag tag-push" style="left:1178px;top:178px">Push: lap</div>
+      <div class="tag tag-k0" style="left:1133px;top:492px">K0: start / stop</div>
+    </div>
+
+    <!-- bottom band: face names, then the 17 labs -->
+    <div class="pills">
+      <div class="pill pill0">Weather</div>
+      <div class="pill pill1">Analog</div>
+      <div class="pill pill2">Digital</div>
+      <div class="pill pill3">Stopwatch</div>
+      <div class="pill pill4">Timer</div>
+    </div>
+    <div class="chips">
+      <div class="chip" style="animation-delay:0s">01</div>
+      <div class="chip" style="animation-delay:.14s">02</div>
+      <div class="chip" style="animation-delay:.28s">03</div>
+      <div class="chip" style="animation-delay:.42s">04</div>
+      <div class="chip" style="animation-delay:.56s">05</div>
+      <div class="chip" style="animation-delay:.7s">06</div>
+      <div class="chip" style="animation-delay:.84s">07</div>
+      <div class="chip" style="animation-delay:.98s">08</div>
+      <div class="chip" style="animation-delay:1.12s">09</div>
+      <div class="chip" style="animation-delay:1.26s">10</div>
+      <div class="chip" style="animation-delay:1.4s">11</div>
+      <div class="chip" style="animation-delay:1.54s">12</div>
+      <div class="chip" style="animation-delay:1.68s">13</div>
+      <div class="chip" style="animation-delay:1.82s">14</div>
+      <div class="chip" style="animation-delay:1.96s">15</div>
+      <div class="chip" style="animation-delay:2.1s">16</div>
+      <div class="chip" style="animation-delay:2.24s">17</div>
+    </div>
+
+    <div class="prog-track"></div>
+    <div class="prog-fill"></div>
+    <div class="prog-tick" style="left:179px"></div>
+    <div class="prog-tick" style="left:371px"></div>
+    <div class="prog-tick" style="left:525px"></div>
+    <div class="prog-tick" style="left:1062px"></div>
+
+    <div class="cover"></div>
+  </div>
+</div>
+
+</body>
+</html>

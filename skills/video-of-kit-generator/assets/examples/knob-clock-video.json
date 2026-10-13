@@ -1,0 +1,61 @@
+{
+  "slug": "rect-tft-display",
+  "title": "Knob Clock Kit",
+  "kit_docs": "docs/kits/rect-tft-display/index.md",
+  "duration": 30,
+  "fps": 30,
+  "width": 1280,
+  "height": 720,
+  "scale": 1.5,
+  "animation": "animation.html",
+  "output": { "name": "rect-tft-display-30s" },
+
+  "storyboard": [
+    { "from": 0.0,  "to": 3.0,  "scene": "Meet the kit",       "caption": "Meet the Knob Clock Kit" },
+    { "from": 3.0,  "to": 8.0,  "scene": "Wire it",            "caption": "12 wires join the Pico to the screen" },
+    { "from": 8.0,  "to": 12.0, "scene": "Power on, set time", "caption": "It sets its own time over WiFi" },
+    { "from": 12.0, "to": 26.0, "scene": "Five faces",         "caption": "Turn the knob to change the face" },
+    { "from": 26.0, "to": 30.0, "scene": "17 labs",            "caption": "Build it. Code it. Make time tick." }
+  ],
+
+  "music": {
+    "seed": 7,
+    "bpm": 120,
+    "transpose": 0,
+    "progression": ["C", "G", "Am", "F"],
+    "final_chord": "C",
+    "final_at": 29.0,
+    "fade_in": 1.2,
+    "fade_out": 1.1,
+    "limiter_drive": 1.6,
+    "peak": 0.78,
+    "layers": {
+      "arp":   { "from": 0.0,  "gain": 0.10, "gain_full": 0.13, "full_from": 8.0 },
+      "bass":  { "from": 4.0,  "gain": 0.30 },
+      "hats":  { "from": 3.0,  "soft_gain": 0.08, "full_from": 12.0 },
+      "kick":  { "from": 8.0,  "gain": 0.85 },
+      "snare": { "from": 12.0, "gain": 0.45 },
+      "lead":  { "from": 12.0, "to": 26.0, "gain": 0.17 },
+      "riser": { "from": 6.0,  "dur": 1.55 }
+    },
+    "accents": [
+      { "type": "scale", "t": 4.4,   "step": 0.15, "preset": "pentatonic12", "dur": 0.22, "gain": 0.14 },
+      { "type": "bell",  "t": 7.55,  "midi": 72, "dur": 0.2, "gain": 0.22 },
+      { "type": "bell",  "t": 7.65,  "midi": 76, "dur": 0.2, "gain": 0.22 },
+      { "type": "bell",  "t": 7.75,  "midi": 79, "dur": 0.2, "gain": 0.22 },
+      { "type": "bell",  "t": 7.85,  "midi": 84, "dur": 0.6, "gain": 0.26 },
+      { "type": "bell",  "t": 10.4,  "midi": 88, "dur": 0.5, "gain": 0.2 },
+      { "type": "click", "t": 14.4 },
+      { "type": "click", "t": 17.0 },
+      { "type": "click", "t": 19.6 },
+      { "type": "click", "t": 23.2 },
+      { "type": "click", "t": 26.0 },
+      { "type": "boop",  "t": 20.0 },
+      { "type": "boop",  "t": 23.8 },
+      { "type": "bell",  "t": 21.4,  "hz": 1500, "dur": 0.12, "gain": 0.16, "pan": 0.6 },
+      { "type": "bell",  "t": 22.6,  "hz": 1250, "dur": 0.12, "gain": 0.16, "pan": 0.6 },
+      { "type": "scale", "t": 26.65, "step": 0.14, "preset": "major17", "dur": 0.16, "gain": 0.17 },
+      { "type": "stab",  "t": 29.0,  "notes": [60, 64, 67, 72, 76], "bass": 36 }
+    ]
+  }
+}

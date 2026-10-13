@@ -56,6 +56,23 @@ All the pin numbers are in `config.py`.
 Labs 03 to 08 need `sound.py` and `sfx.py` on the Pico, which
 `upload-code.sh` copies along with everything else.
 
+## One program, all the sound demos
+
+`main-template.py` runs labs 04 to 08 as five demos in one program. **Hold MODE
+for one second** to go to the next demo (the dots at the bottom show which one
+you are in). A short MODE press is that demo's action (start, play, replay),
+and UP/DOWN change its parameter (the voice, the sound, the tune, the pitch).
+
+To make it the program the board runs at power-up, copy it to the Pico as
+`main.py`:
+
+```bash
+mpremote cp main-template.py :main.py
+```
+
+The upload script copies it as `main-template.py`, so it does nothing until you
+do this, or run it from Thonny.
+
 More labs are planned in the
 [roadmap](../../../docs/kits/study-buddy/05-roadmap.md).
 
@@ -66,6 +83,7 @@ More labs are planned in the
 | `config.py` | Every pin number and setting. The labs import it. |
 | `lib/` | The GC9B72 driver, two fonts, shapes, and `watchparts.py`. Copied from `sw-gc9b72`. |
 | `wifi_time.py` | Sets the clock over WiFi. Copied from `sw-gc9b72`. |
+| `main-template.py` | Labs 04 to 08 as five demos in one program. Hold MODE to step through them. |
 | `sound.py` | The sound module: a synthesizer that feeds the amplifier from core 1. |
 | `sfx.py` | The named sound effects, as plain data. |
 | `secrets-template.py` | A template for your WiFi settings. |

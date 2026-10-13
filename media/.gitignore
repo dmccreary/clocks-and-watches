@@ -1,0 +1,15 @@
+# Rendered media never goes in this repo. Videos live in ~/Movies.
+# Only the recipe (video.json, animation.html, build.sh, README.md) is committed,
+# under media/kits/{SLUG}/.
+*.mp4
+*.mov
+*.m4v
+*.webm
+*.avi
+*.mkv
+*.wav
+*.mp3
+*.m4a
+*.aac
+*.gif
+frames/
