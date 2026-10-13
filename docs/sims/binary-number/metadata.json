@@ -41,10 +41,10 @@
     "simulation"
   ],
   "learningObjectives": [
-    "Understand the key concepts of binary number",
-    "Explore binary number through interactive visualization",
-    "Apply knowledge of binary number to solve problems",
-    "Test understanding of binary number through interactive exercises"
+    "Calculate the decimal value of a 4-bit binary number by summing the place values 1, 2, 4, and 8 of the bits that are set",
+    "Predict the new decimal value before toggling a single bit, then verify the prediction against the real-time display",
+    "Explain why each binary place value doubles, allowing four bits to represent every integer from 0 to 15",
+    "Construct a target decimal number such as 13 by choosing which of the four bit buttons to turn on"
   ],
   "bloomsTaxonomy": [
     "Understand",

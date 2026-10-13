@@ -36,18 +36,15 @@
     "simulation"
   ],
   "learningObjectives": [
-    "Understand the key concepts of stopwatch",
-    "Explore stopwatch through interactive visualization",
-    "Apply knowledge of stopwatch to solve problems",
-    "Experiment with parameters to observe their effects on stopwatch"
+    "Explain how a stopwatch computes elapsed time by subtracting a stored start timestamp from the current system time",
+    "Trace the transitions between the running and stopped states as the Start/Stop button toggles the timer, including how elapsed time is preserved across a pause",
+    "Convert a raw millisecond count into a formatted MM:SS.mmm display string using division and remainder operations",
+    "Explain why debounce protection is needed so a single button press does not register as multiple start/stop events"
   ],
   "bloomsTaxonomy": [
-    "Remember",
     "Understand",
     "Apply",
-    "Analyze",
-    "Evaluate",
-    "Create"
+    "Analyze"
   ],
   "pedagogical": {
     "pattern": "demonstration",

@@ -39,10 +39,10 @@
     "simulation"
   ],
   "learningObjectives": [
-    "Understand the key concepts of four-digit digital clock",
-    "Explore four-digit digital clock through interactive visualization",
-    "Apply knowledge of four-digit digital clock to solve problems",
-    "Experiment with parameters to observe their effects on four-digit digital clock"
+    "Identify which of the seven segments must light up to render each digit from 0 to 9",
+    "Explain how a binary segment map encodes the on/off state of every segment for a given digit",
+    "Describe how the simulation converts device time to a 12-hour display with an AM/PM indicator and leading-zero suppression",
+    "Trace how the blinking colon and once-per-minute updates are driven by the p5.js draw loop reading the system clock"
   ],
   "bloomsTaxonomy": [
     "Remember",
