@@ -36,9 +36,10 @@ Open `07-set-time.py` in Thonny and click **Run**. Then:
 3. Press **MODE** again. Now the minutes are yellow.
 4. Change them, then press **MODE** once more to get back to running.
 
-Setting the minutes also sets the seconds to zero. That way you can match
-another clock exactly: set the minutes one ahead, then press MODE right
-when the other clock gets there.
+Each time UP or DOWN changes the minutes, the seconds go back to zero.
+That way you can match another clock exactly. Set the minutes to what
+that clock shows now, one press short of its next minute. Then press UP
+one last time right when that clock gets there.
 
 ## Problem 1: Bouncing Buttons
 

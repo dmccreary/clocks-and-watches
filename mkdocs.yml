@@ -200,6 +200,26 @@ nav:
       - 11 Countdown Timer: kits/sw-gc9b72/11-countdown-timer.md
       - 12 Five Modes: kits/sw-gc9b72/12-main-template.md
       - Notes for Teachers: kits/sw-gc9b72/teacher-notes.md
+    - Knob Clock Kit (ST7735S, Pico 2 W):
+      - Introduction: kits/rect-tft-display/index.md
+      - 01 Blink the LED: kits/rect-tft-display/01-blink-onboard-led.md
+      - 02 Kit Checkup: kits/rect-tft-display/02-probe.md
+      - 03 Hello World: kits/rect-tft-display/03-hello-world.md
+      - 04 Button Test: kits/rect-tft-display/04-button-test.md
+      - 05 Knob Press Test: kits/rect-tft-display/05-encoder-push-test.md
+      - 06 Knob Turn Test: kits/rect-tft-display/06-encoder-rotation-test.md
+      - 07 Controls on the Screen: kits/rect-tft-display/07-controls-display-test.md
+      - 08 Backlight Test: kits/rect-tft-display/08-backlight-test.md
+      - 09 Digital Clock: kits/rect-tft-display/09-digital-clock.md
+      - 10 WiFi Time: kits/rect-tft-display/10-wifi-sync-time.md
+      - 11 Analog Clock Face: kits/rect-tft-display/11-analog-clock-face.md
+      - 12 Set the Time: kits/rect-tft-display/12-set-time.md
+      - 13 Digital Clock Face: kits/rect-tft-display/13-digital-clock-face.md
+      - 14 Weather Clock: kits/rect-tft-display/14-weather-clock.md
+      - 15 Stopwatch: kits/rect-tft-display/15-stopwatch.md
+      - 16 Countdown Timer: kits/rect-tft-display/16-countdown-timer.md
+      - 17 Five Modes: kits/rect-tft-display/17-main-template.md
+      - Notes for Teachers: kits/rect-tft-display/teacher-notes.md
     - LILYGO SY7789:
       - Introduction: kits/lilygo/index.md
     - Portable SmartWatch Kits:

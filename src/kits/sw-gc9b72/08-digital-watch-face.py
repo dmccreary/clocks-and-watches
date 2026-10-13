@@ -20,7 +20,7 @@
 #   - The date is padded with spaces to a fixed width, so every character
 #     has a fixed spot. When the date changes, only the characters that
 #     differ are repainted -- "Fri, Sep 25" to "Sat, Sep 26" redraws
-#     five of them.
+#     four of them.
 #
 # In a normal second this face sends two small colon squares and one
 # seconds tick -- a few hundred pixels out of the 129,600 on the screen.

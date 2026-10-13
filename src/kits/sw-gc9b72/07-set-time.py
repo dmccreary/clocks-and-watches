@@ -6,9 +6,9 @@
 #   DOWN  (GP15)  subtracts one
 #
 # Hold UP or DOWN and the number keeps changing, faster than you could
-# press. Setting the minute also zeroes the seconds, so you can match
-# another clock: set the minute one ahead, then press MODE the moment
-# the other clock reaches it.
+# press. Every press that changes the minute also zeroes the seconds, so
+# you can match another clock: stop one press short of the next minute,
+# then make that last UP press the moment the other clock reaches it.
 #
 # The time is written straight into the Pico's real-time clock (RTC), so
 # lab 03 and lab 05 pick it up after a soft reset -- as long as the Pico

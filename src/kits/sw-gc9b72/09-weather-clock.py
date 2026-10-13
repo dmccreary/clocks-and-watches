@@ -16,8 +16,8 @@
 #
 # One catch: framebuf stores each RGB565 pixel low byte first, and the
 # GC9B72 wants the high byte first. So every color drawn into the frame
-# buffer goes through swapped() first. Forget it, and red comes out as
-# a murky green.
+# buffer goes through swapped() first. Forget it, and red comes out
+# blue -- and so does the yellow sun.
 #
 # Getting the forecast takes a second or two, and the clock stands still
 # while it does -- the seconds catch up when it finishes.

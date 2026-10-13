@@ -349,8 +349,8 @@ to the new one.
 
 One catch: `framebuf` stores each RGB565 pixel low byte first, and the
 GC9B72 wants the high byte first. Every color drawn into the frame buffer
-goes through `swapped()` to fix that. Without it, red comes out as a murky
-green.
+goes through `swapped()` to fix that. Without it, red (`0xF800`) is sent
+as `0x00F8`, a shade of blue, and the yellow sun comes out blue too.
 
 ### How often it updates
 
