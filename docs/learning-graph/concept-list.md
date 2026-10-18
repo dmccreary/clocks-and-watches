@@ -1,6 +1,6 @@
 # Concept List
 
-350 concepts for the "Building Clocks and Watches with MicroPython" course.
+351 concepts for the "Building Clocks and Watches with MicroPython" course.
 
 1. Computational Thinking
 2. Decomposition
@@ -352,3 +352,4 @@
 348. Bistable Display
 349. E-Paper Ghosting
 350. Partial E-Paper Refresh
+351. Display Shapes

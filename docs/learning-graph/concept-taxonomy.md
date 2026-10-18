@@ -1,6 +1,6 @@
 # Concept Taxonomy
 
-12 categories for organizing the 350 concepts in "Building Clocks and Watches with MicroPython".
+12 categories for organizing the 351 concepts in "Building Clocks and Watches with MicroPython".
 
 ## Categories
 
@@ -28,7 +28,7 @@ I2C and SPI bus protocols, pin assignments, device addressing, bus speed, baudra
 
 Time acquisition and management: localtime(), time tuples, formatting, 12/24-hour conversion, real-time clocks (DS3231), RTC registers, battery backup, NTP, WiFi sync, UTC, timezone conversion, clock drift, and calibration.
 
-### DISP - Displays and Drawing
+### DISP - Display Graphics
 
 Display hardware (LED, OLED, TFT, e-paper, NeoPixel), display drivers (SSD1306, ILI9341, ST7735, GC9A01, SH1106), framebuffers, drawing primitives, text rendering, fonts, color encoding, resolution, and animation.
 

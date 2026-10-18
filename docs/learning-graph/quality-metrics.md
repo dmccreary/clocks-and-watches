@@ -2,11 +2,11 @@
 
 ## Overview
 
-- **Total Concepts**: 350
+- **Total Concepts**: 351
 - **Foundational Concepts** (no prerequisites, other concepts depend on them): 5
 - **Terminal Nodes** (nothing depends on them, but have prerequisites): 122
 - **Orphaned Nodes** (completely disconnected, no edges): 0
-- **Concepts with Dependencies**: 345
+- **Concepts with Dependencies**: 346
 - **Average Dependencies per Concept**: 1.90
 
 ## Graph Structure Validation
@@ -27,30 +27,32 @@ These concepts have no prerequisites:
 
 ## Dependency Chain Analysis
 
-- **Maximum Dependency Chain Length**: 14
+- **Maximum Dependency Chain Length**: 16
 
 ### Longest Learning Path:
 
-1. **Python Syntax** (ID: 7)
-2. **Variables** (ID: 8)
-3. **Data Types** (ID: 9)
-4. **Lists** (ID: 14)
-5. **Tuples** (ID: 15)
-6. **Time Tuple** (ID: 86)
-7. **Localtime Function** (ID: 85)
-8. **Utime Module** (ID: 247)
-9. **Ticks Ms Function** (ID: 249)
-10. **Ticks Diff Function** (ID: 250)
-11. **Elapsed Time Tracking** (ID: 194)
-12. **Timer** (ID: 193)
-13. **Countdown Timer** (ID: 302)
-14. **Pomodoro Timer** (ID: 303)
+1. **Ohms Law** (ID: 264)
+2. **Voltage Levels** (ID: 53)
+3. **LED Basics** (ID: 269)
+4. **LED Display** (ID: 123)
+5. **Display Resolution** (ID: 279)
+6. **OLED Display** (ID: 133)
+7. **Framebuffer** (ID: 138)
+8. **Pixel Drawing** (ID: 141)
+9. **Line Drawing** (ID: 142)
+10. **Rectangle Drawing** (ID: 143)
+11. **Bounding Box** (ID: 289)
+12. **Clipping Region** (ID: 290)
+13. **Round Display** (ID: 162)
+14. **GC9A01 Driver** (ID: 157)
+15. **Smartwatch Display** (ID: 163)
+16. **Watch Band Integration** (ID: 347)
 
 ## Terminal Nodes Analysis
 
 Terminal nodes are concepts that nothing else depends on but have prerequisites. They represent natural endpoints of learning paths — culminating or specialized concepts.
 
-- **Total Terminal Nodes**: 122 (34.9% of all concepts)
+- **Total Terminal Nodes**: 122 (34.8% of all concepts)
 - **Healthy Range**: 5-40% of total concepts
 
 Concepts at the end of learning paths:
@@ -116,13 +118,14 @@ Top 10 concepts that are prerequisites for the most other concepts:
 | 0 | 5 |
 | 1 | 103 |
 | 2 | 179 |
-| 3 | 57 |
+| 3 | 58 |
 | 4 | 6 |
 
 ## Recommendations
 
-- ✅ **Terminal node percentage** (34.9%): Within healthy range (5-40%)
+- ✅ **Terminal node percentage** (34.8%): Within healthy range (5-40%)
 - ✅ **DAG structure verified**: Graph supports valid learning progressions
+- ℹ️ **Long dependency chains** (16): Ensure students can follow extended learning paths
 
 ---
 
