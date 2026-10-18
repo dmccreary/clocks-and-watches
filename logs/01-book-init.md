@@ -42,7 +42,8 @@ did not see the session. Credentials and personal details are deliberately left 
 8. **Changed the learning graph**: renamed the DISP taxonomy to "Display Graphics",
    added concept 351 "Display Shapes", kept "Round Display", and made Round Display
    depend on the existing "Clipping Region" concept (#290).
-9. **Published** five times. The learning-graph changes are **not yet committed**.
+9. **Published** six times. The sixth (`1a2ab47e`, 2026-10-18) carried the learning-graph
+   changes and the first version of this log.
 
 ## 2. Timeline
 
@@ -321,11 +322,14 @@ did not see the session. Credentials and personal details are deliberately left 
 | `mkdocs.yml` | "Study Buddy (Spec)" nav section, later with the multicore guide |
 | `docs/learning-graph/` (8 files) | the rename and concept 351 (see phase 7) |
 
-### Not committed yet
+### Committed last (publish 6, `1a2ab47e`)
 
-The eight learning-graph files: `concept-list.md`, `concept-taxonomy.md`,
+The eight learning-graph files (`concept-list.md`, `concept-taxonomy.md`,
 `learning-graph.csv`, `learning-graph.json`, `quality-metrics.md`,
-`taxonomy-distribution.md`, `taxonomy-mapping.py`, `taxonomy-names.json`.
+`taxonomy-distribution.md`, `taxonomy-mapping.py`, `taxonomy-names.json`) and this log.
+Nothing from this session is left uncommitted. The other modified files in Dan's working
+tree at that point (the video-of-kit skill, the rect-tft media, `.vscode`, and a `.uf2`
+firmware file) belong to other work and were left out.
 
 ### Changes by others during the window
 
@@ -496,10 +500,12 @@ Surprises worth remembering:
 | 3 | `d00a5fdd` | 10-06 | lab 03's on-board reproduction | `856bc0ff` |
 | 4 | `73e5e710` | 10-06 | lab 04 rewording and results | `528598a6` |
 | 5 | `c6cc8c1a` | 10-06 | labs 01 to 08 marked as run | `e712345b` |
+| 6 | `1a2ab47e` | 10-18 | learning-graph rename, Display Shapes, Round Display to Clipping Region, and this log | `06812549` |
 
 Each publish followed Dan's `CLAUDE.md` routine: add the files, commit, push, then
 `mkdocs gh-deploy`. Every commit ended with the Claude co-author line. The ten dirty
-`docs/sims/*/metadata.json` files were left out each time.
+`docs/sims/*/metadata.json` files were left out of publishes 1 to 5, and the other
+unrelated modified files (listed above) were left out of publish 6.
 
 ## 11. Tools and methods
 
@@ -517,7 +523,6 @@ Each publish followed Dan's `CLAUDE.md` routine: add the files, commit, push, th
 
 | Item | Notes |
 |---|---|
-| **Commit and publish the learning-graph changes** | Eight files, uncommitted. Dan has not yet said to publish them |
 | **E10: does a flash write during silence pop?** | Added as phase 9 of the stress script; not run. Decides whether "no writes while a sound plays" is enough |
 | **Fix the flash glitch itself** | Ideas A to E in the guide: our own I2S with a large DMA ring (the real fix), I2S on core 1, a paced producer, DMA for the display's SPI wait, and a PIO state machine that times the WS edges as a meter |
 | **E5** | Animate the display during a web fetch and watch for stalls |
