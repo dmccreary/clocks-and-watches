@@ -7,9 +7,13 @@ are produced by setting animation.currentTime directly, so every animation is sa
 at an exact moment, independent of how fast the machine renders.
 
 usage:
-  render_frames.py PAGE.html --out DIR [--fps 30] [--secs 30] [--scale 1.5]
-                   [--width 1280] [--height 720] [--workers 4] [--times 2,5,9.5]
+  render_frames.py PAGE.html --out DIR [--format landscape|portrait] [--fps 30] [--secs 30]
+                   [--scale 1.5] [--width W] [--height H] [--workers 4] [--times 2,5,9.5]
 
+  --format  layout to render. It is written to the page as <html data-format="...">, and the
+            page's CSS switches layout on that attribute. Unless --width/--height are given,
+            the stage is 1280x720 for landscape and 720x1280 for portrait (build_video.sh passes
+            both from video.json "formats"). Default: landscape.
   --times   comma-separated seconds: render only those moments (t_SS.SS.png), for
             contact sheets while iterating on the storyboard.
 
@@ -42,7 +46,7 @@ async () => {
 """
 
 
-def prepare(page_path: pathlib.Path, out_dir: pathlib.Path) -> pathlib.Path:
+def prepare(page_path: pathlib.Path, out_dir: pathlib.Path, fmt: str) -> pathlib.Path:
     src = page_path.read_text(encoding="utf-8")
     src = src.replace('<script src="./support.js"></script>', "")
     src = re.sub(r"</?x-dc>", "", src)
@@ -53,6 +57,9 @@ def prepare(page_path: pathlib.Path, out_dir: pathlib.Path) -> pathlib.Path:
         src = src.replace("<head>", "<head>" + inject, 1)
     else:
         src = inject + src
+    # tell the page which layout to use (replaces any data-format already on <html>)
+    src = re.sub(r"(<html\b[^>]*?)\sdata-format=\"[^\"]*\"", r"\1", src, count=1)
+    src = re.sub(r"<html\b", f'<html data-format="{fmt}"', src, count=1)
     dst = out_dir / "_page.html"
     dst.write_text(src, encoding="utf-8")
     return dst
@@ -72,6 +79,10 @@ async def run_worker(ctx, url, frames, out_dir, info):
     info["animations"] = await page.evaluate(
         "document.getAnimations().forEach(a => a.pause()) || document.getAnimations().length"
     )
+    # a page whose layout is not built for this size spills past the viewport
+    info["overflow"] = await page.evaluate(
+        "[document.documentElement.scrollWidth, document.documentElement.scrollHeight]"
+    )
     for name, t in frames:
         await page.evaluate(
             "ms => document.getAnimations().forEach(a => { a.currentTime = ms; })", t * 1000
@@ -83,7 +94,7 @@ async def run_worker(ctx, url, frames, out_dir, info):
 async def main(args):
     out_dir = pathlib.Path(args.out)
     out_dir.mkdir(parents=True, exist_ok=True)
-    page_file = prepare(pathlib.Path(args.page), out_dir)
+    page_file = prepare(pathlib.Path(args.page), out_dir, args.format)
     frames = frame_list(args)
     workers = max(1, min(args.workers, len(frames)))
     infos = [{} for _ in range(workers)]
@@ -103,9 +114,15 @@ async def main(args):
         await browser.close()
 
     info = infos[0]
-    print(f"fonts loaded: {info.get('fonts')}  animations seeked: {info.get('animations')}")
+    print(f"format: {args.format} ({args.width}x{args.height} x{args.scale})  "
+          f"fonts loaded: {info.get('fonts')}  animations seeked: {info.get('animations')}")
     if not info.get("animations"):
         print("WARNING: the page has no CSS animations; every frame will be identical.", file=sys.stderr)
+    sw, sh = info.get("overflow") or (0, 0)
+    if sw > args.width or sh > args.height:
+        print(f"WARNING: the page is {sw}x{sh}, larger than the {args.width}x{args.height} "
+              f"{args.format} frame. It probably has no {args.format} layout "
+              f"(see references/animation-guide.md, 'Two formats').", file=sys.stderr)
     print(f"frames: {len(frames)} -> {out_dir}")
 
 
@@ -113,11 +130,16 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("page")
     ap.add_argument("--out", required=True)
+    ap.add_argument("--format", default="landscape", choices=["landscape", "portrait"])
     ap.add_argument("--fps", type=int, default=30)
     ap.add_argument("--secs", type=float, default=30)
     ap.add_argument("--scale", type=float, default=1.5)
-    ap.add_argument("--width", type=int, default=1280)
-    ap.add_argument("--height", type=int, default=720)
+    ap.add_argument("--width", type=int, default=None)
+    ap.add_argument("--height", type=int, default=None)
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--times", default="")
-    asyncio.run(main(ap.parse_args()))
+    args = ap.parse_args()
+    default_w, default_h = (720, 1280) if args.format == "portrait" else (1280, 720)
+    args.width = args.width or default_w
+    args.height = args.height or default_h
+    asyncio.run(main(args))

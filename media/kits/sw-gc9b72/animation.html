@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Chrono Smart Clock Kit Animation</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&amp;family=VT323&amp;display=swap">
+<style>
+/* Layout tokens: landscape is the base; the PORTRAIT block at the end overrides them. */
+:root{
+  --W:1280px; --H:720px;
+  --stage-bg:radial-gradient(900px 540px at 60% 50%,#18222f 0%,#0b0e13 72%);
+  --cap-l:64px; --cap-t:30px; --cap-w:1152px; --kick-fs:15px; --kick-ls:.14em; --head-fs:44px; --head-mt:10px;
+  --band-t:650px;
+  --prog-l:64px; --prog-t:704px; --prog-w:1152px;
+  --pills-l:0px; --pills-w:1280px; --pill-fs:17px; --pill-pad:10px 20px; --pill-gap:12px;
+  --chips-l:0px; --chips-w:1280px; --chip-sz:40px; --chip-fs:15px; --chip-gap:8px;
+  --tag-fs:17px; --tag-pad:6px 14px;
+  --cam-wide:translate(55px,120px) scale(.85);
+  --cam-mid:translate(55px,120px) scale(.85);
+  --cam-close:translate(-350px,110px) scale(1);
+}
+body{margin:0;background:#0b0e13}
+.stage{position:absolute;left:0;top:0;width:var(--W);height:var(--H);overflow:hidden;background:var(--stage-bg);font-family:'Rubik',system-ui,sans-serif;color:#e8edf5}
+.pause-input{position:absolute;left:calc(var(--W) - 108px);top:var(--band-t);width:44px;height:44px;margin:0;opacity:0;z-index:30;cursor:pointer}
+.pause-btn{position:absolute;left:calc(var(--W) - 108px);top:var(--band-t);width:44px;height:44px;box-sizing:border-box;border-radius:50%;border:1.5px solid #3a4659;background:#10151d;display:flex;align-items:center;justify-content:center;z-index:25;color:#e8edf5;font-size:14px}
+.ico-play{display:none}
+.pause-input:checked ~ .pause-btn .ico-pause{display:none}
+.pause-input:checked ~ .pause-btn .ico-play{display:block}
+.pause-input:checked ~ .stage *{animation-play-state:paused !important}
+.cover{position:absolute;left:0;top:0;width:var(--W);height:var(--H);background:#0b0e13;z-index:10;animation:cover 30s linear infinite both}
+.cap{position:absolute;left:var(--cap-l);top:var(--cap-t);width:var(--cap-w);opacity:0}
+.kick{font-size:var(--kick-fs);font-weight:500;line-height:1;letter-spacing:var(--kick-ls);text-transform:uppercase;color:#2fd8f0}
+.head{font-size:var(--head-fs);font-weight:700;line-height:1.1;margin-top:var(--head-mt);color:#fff;white-space:nowrap}
+.prog-track{position:absolute;left:var(--prog-l);top:var(--prog-t);width:var(--prog-w);height:4px;border-radius:2px;background:#1d2633}
+.prog-fill{position:absolute;left:var(--prog-l);top:var(--prog-t);width:var(--prog-w);height:4px;border-radius:2px;background:#2fd8f0;transform-origin:0 50%;animation:prog 30s linear infinite both}
+.prog-tick{position:absolute;top:calc(var(--prog-t) - 4px);left:calc(var(--prog-l) + var(--prog-w) * var(--f));width:2px;height:12px;background:#3a4659}
+.pills{position:absolute;left:var(--pills-l);top:var(--band-t);width:var(--pills-w);display:flex;flex-wrap:wrap;justify-content:center;gap:var(--pill-gap);opacity:0;animation:pillsRow 30s linear infinite both}
+.pill{--off:transparent;--offc:#9fb0c6;--offb:#3a4659;--on:#2fd8f0;--onc:#04222b;padding:var(--pill-pad);border-radius:999px;border:1.5px solid #3a4659;font-size:var(--pill-fs);font-weight:500;line-height:1.2}
+.chips{position:absolute;left:var(--chips-l);top:var(--band-t);width:var(--chips-w);display:flex;flex-wrap:wrap;justify-content:center;gap:var(--chip-gap);opacity:0;animation:chipsRow 30s linear infinite both}
+.chip{width:var(--chip-sz);height:var(--chip-sz);box-sizing:border-box;border:1.5px solid #3a4659;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:var(--chip-fs);font-weight:500;color:#7e8aa0;animation:chipOn 30s linear infinite both}
+.rig{position:absolute;left:0;top:0;width:1400px;height:620px;transform-origin:0 0;animation:cam 30s ease-in-out infinite both}
+.rise{position:absolute;left:0;top:0;width:1400px;height:620px;animation:rise 30s ease-out infinite both}
+.bb{position:absolute;left:20px;top:200px;width:820px;height:330px;background:#eef0f2;background-image:radial-gradient(circle,#9aa1ab 2px,transparent 2.6px);background-size:18px 18px;border-radius:12px;box-shadow:inset 0 0 0 3px #c9ced6,0 24px 40px rgba(0,0,0,.45)}
+.pico{position:absolute;left:90px;top:250px;width:440px;height:120px;background:#127a3a;border-radius:8px;box-shadow:inset 0 0 0 2px #0b5a2a,0 8px 16px rgba(0,0,0,.4)}
+.ppin{position:absolute;width:12px;height:12px;border-radius:50%;background:#d9b44a;box-shadow:0 0 0 2px #0b5a2a}
+.pclab{position:absolute;top:334px;width:44px;text-align:center;font-size:12px;font-weight:500;color:#e8fff0}
+.chipic{position:absolute;left:260px;top:262px;width:62px;height:58px;background:#1b1e24;border-radius:4px}
+.wifi{position:absolute;left:410px;top:262px;width:90px;height:56px;background:#c9ced6;border-radius:3px;box-shadow:inset 0 0 0 2px #9aa1ab}
+.usbport{position:absolute;left:78px;top:292px;width:34px;height:36px;background:#b7bdc6;border-radius:3px}
+.usb{position:absolute;left:-60px;top:296px;width:140px;height:28px;animation:usbIn 30s ease-out infinite both}
+.led{position:absolute;left:130px;top:340px;width:12px;height:12px;border-radius:3px;animation:ledOn 30s linear infinite both}
+.pname{position:absolute;left:130px;top:266px;font-size:16px;font-weight:700;color:#d6f5e0;letter-spacing:.06em}
+.wires{position:absolute;left:0;top:0;animation:wiresVis 30s linear infinite both}
+.w{fill:none;stroke-width:6;stroke-linecap:round;stroke-dasharray:1400;animation:draw 30s linear infinite both}
+.dboard{position:absolute;left:940px;top:0px;width:420px;height:470px;background:#0f3d6e;border-radius:200px 200px 24px 24px;box-shadow:inset 0 0 0 3px #0a2c52,0 24px 40px rgba(0,0,0,.45)}
+.screen{position:absolute;left:950px;top:10px;width:400px;height:400px;border-radius:50%;overflow:hidden;background:#000}
+.face{position:absolute;left:0;top:0;width:400px;height:400px;opacity:0}
+.screen-off{position:absolute;left:0;top:0;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#2a3240,#090c11 70%);box-shadow:inset 0 0 0 26px #1c1f24;animation:screenOff 30s linear infinite both}
+.pin{position:absolute;top:434px;width:12px;height:16px;background:#d9b44a;border-radius:2px}
+.plab{position:absolute;top:413px;width:40px;text-align:center;font-family:'VT323',monospace;font-size:15px;color:#cfe3ff}
+.btn{position:absolute;width:64px;height:64px;border-radius:8px;background:#20242b;box-shadow:inset 0 0 0 3px #3a404b,0 4px 8px rgba(0,0,0,.4)}
+.cap-b{position:absolute;left:13px;top:13px;width:38px;height:38px;border-radius:50%}
+.blab{position:absolute;top:72px;width:64px;text-align:center;font-size:15px;font-weight:700;color:#334}
+.rip{position:absolute;left:-12px;top:-12px;width:88px;height:88px;box-sizing:border-box;border-radius:50%;border:3px solid #2fd8f0;opacity:0}
+.tag{position:absolute;padding:var(--tag-pad);border:1.5px solid #2fd8f0;border-radius:999px;background:#0b0e13;color:#e8edf5;font-size:var(--tag-fs);font-weight:500;line-height:1.2;white-space:nowrap;opacity:0}
+.tag-amber{border-color:#ff9b2e;color:#ffd9a8}
+@keyframes cover {
+  0%,2% {opacity:1}
+  5.333%,97.333% {opacity:0}
+  100% {opacity:1}
+}
+@keyframes cam {
+  0%,10% {transform:var(--cam-wide)}
+  13.333%,26.667% {transform:var(--cam-mid)}
+  30.667%,86.667% {transform:var(--cam-close)}
+  91.333%,100% {transform:var(--cam-wide)}
+}
+@keyframes rise {
+  0%,2% {opacity:0;transform:translateY(28px)}
+  7%,100% {opacity:1;transform:translateY(0)}
+}
+@keyframes prog { 0% {transform:scaleX(0)} 100% {transform:scaleX(1)} }
+@keyframes wiresVis { 0%,11% {opacity:0} 11.2%,97.5% {opacity:1} 98.667%,100% {opacity:0} }
+@keyframes ledOn {
+  0%,25.15% {background-color:#14532d;box-shadow:0 0 0 rgba(74,222,128,0)}
+  25.167%,100% {background-color:#4ade80;box-shadow:0 0 12px #4ade80}
+}
+@keyframes usbIn {
+  0%,21% {transform:translateX(-150px);opacity:0}
+  22% {opacity:1}
+  23.333%,97% {transform:translateX(0);opacity:1}
+  98%,100% {transform:translateX(0);opacity:0}
+}
+@keyframes screenOff { 0%,26.6% {opacity:1} 27.333%,100% {opacity:0} }
+@keyframes pillsRow { 0%,39.333% {opacity:0} 40.667%,85.667% {opacity:1} 86.667%,100% {opacity:0} }
+@keyframes chipsRow { 0%,86.667% {opacity:0} 87.667%,97% {opacity:1} 98.667%,100% {opacity:0} }
+@keyframes chipOn {
+  0%,88.8% {background:transparent;color:#7e8aa0;border-color:#3a4659}
+  88.84%,100% {background:#2fd8f0;color:#04222b;border-color:#2fd8f0}
+}
+@keyframes blink { 0%,49% {opacity:1} 50%,100% {opacity:.35} }
+@keyframes cap0 {
+  0%,2.667% {opacity:0;transform:translateY(10px)}
+  4%,9% {opacity:1;transform:translateY(0)}
+  10%,100% {opacity:0;transform:translateY(-8px)}
+}
+@keyframes cap1 {
+  0%,10% {opacity:0;transform:translateY(10px)}
+  11.333%,25.667% {opacity:1;transform:translateY(0)}
+  26.667%,100% {opacity:0;transform:translateY(-8px)}
+}
+@keyframes cap2 {
+  0%,26.667% {opacity:0;transform:translateY(10px)}
+  28%,39% {opacity:1;transform:translateY(0)}
+  40%,100% {opacity:0;transform:translateY(-8px)}
+}
+@keyframes cap3 {
+  0%,40% {opacity:0;transform:translateY(10px)}
+  41.333%,85.667% {opacity:1;transform:translateY(0)}
+  86.667%,100% {opacity:0;transform:translateY(-8px)}
+}
+@keyframes cap4 {
+  0%,86.667% {opacity:0;transform:translateY(10px)}
+  88%,97% {opacity:1;transform:translateY(0)}
+  98%,100% {opacity:0;transform:translateY(-8px)}
+}
+@keyframes draw {
+  0%,11.333% {stroke-dashoffset:1400}
+  13%,100% {stroke-dashoffset:0}
+}
+@keyframes f_boot {
+  0%,26.647% {opacity:0}
+  26.667%,34.647% {opacity:1}
+  34.667%,100% {opacity:0}
+}
+@keyframes f_wx {
+  0%,34.647% {opacity:0}
+  34.667%,46.647% {opacity:1}
+  46.687%,86.647% {opacity:0}
+  86.667%,99.98% {opacity:1}
+}
+@keyframes f_ana {
+  0%,46.647% {opacity:0}
+  46.667%,55.98% {opacity:1}
+  56%,100% {opacity:0}
+}
+@keyframes f_dig {
+  0%,55.98% {opacity:0}
+  56%,65.313% {opacity:1}
+  65.333%,100% {opacity:0}
+}
+@keyframes f_sw0 {
+  0%,65.313% {opacity:0}
+  65.333%,67.98% {opacity:1}
+  68%,100% {opacity:0}
+}
+@keyframes f_sw1 {
+  0%,67.98% {opacity:0}
+  68%,75.98% {opacity:1}
+  76%,100% {opacity:0}
+}
+@keyframes f_tm0 {
+  0%,75.98% {opacity:0}
+  76%,78.647% {opacity:1}
+  78.667%,100% {opacity:0}
+}
+@keyframes f_tm1 {
+  0%,78.647% {opacity:0}
+  78.667%,86.647% {opacity:1}
+  86.667%,100% {opacity:0}
+}
+@keyframes act0 {
+  0%,34.647% {background:var(--off);color:var(--offc);border-color:var(--offb)}
+  34.667%,46.647% {background:var(--on);color:var(--onc);border-color:var(--on)}
+  46.667%,100% {background:var(--off);color:var(--offc);border-color:var(--offb)}
+}
+@keyframes act1 {
+  0%,46.647% {background:var(--off);color:var(--offc);border-color:var(--offb)}
+  46.667%,55.98% {background:var(--on);color:var(--onc);border-color:var(--on)}
+  56%,100% {background:var(--off);color:var(--offc);border-color:var(--offb)}
+}
+@keyframes act2 {
+  0%,55.98% {background:var(--off);color:var(--offc);border-color:var(--offb)}
+  56%,65.313% {background:var(--on);color:var(--onc);border-color:var(--on)}
+  65.333%,100% {background:var(--off);color:var(--offc);border-color:var(--offb)}
+}
+@keyframes act3 {
+  0%,65.313% {background:var(--off);color:var(--offc);border-color:var(--offb)}
+  65.333%,75.98% {background:var(--on);color:var(--onc);border-color:var(--on)}
+  76%,100% {background:var(--off);color:var(--offc);border-color:var(--offb)}
+}
+@keyframes act4 {
+  0%,75.98% {background:var(--off);color:var(--offc);border-color:var(--offb)}
+  76%,86.647% {background:var(--on);color:var(--onc);border-color:var(--on)}
+  86.667%,100% {background:var(--off);color:var(--offc);border-color:var(--offb)}
+}
+@keyframes pMode {
+  0% {transform:scale(1)}
+  46.6% {transform:scale(1)}
+  46.867% {transform:scale(0.82)}
+  47.667% {transform:scale(1)}
+  55.933% {transform:scale(1)}
+  56.2% {transform:scale(0.82)}
+  57% {transform:scale(1)}
+  65.267% {transform:scale(1)}
+  65.533% {transform:scale(0.82)}
+  66.333% {transform:scale(1)}
+  75.933% {transform:scale(1)}
+  76.2% {transform:scale(0.82)}
+  77% {transform:scale(1)}
+  86.6% {transform:scale(1)}
+  86.867% {transform:scale(0.82)}
+  87.667% {transform:scale(1)}
+  100% {transform:scale(1)}
+}
+@keyframes rMode {
+  0% {opacity:0;transform:scale(.6)}
+  46.6% {opacity:0;transform:scale(.6)}
+  46.733% {opacity:1;transform:scale(.7)}
+  48.333% {opacity:0;transform:scale(1.5)}
+  55.933% {opacity:0;transform:scale(.6)}
+  56.067% {opacity:1;transform:scale(.7)}
+  57.667% {opacity:0;transform:scale(1.5)}
+  65.267% {opacity:0;transform:scale(.6)}
+  65.4% {opacity:1;transform:scale(.7)}
+  67% {opacity:0;transform:scale(1.5)}
+  75.933% {opacity:0;transform:scale(.6)}
+  76.067% {opacity:1;transform:scale(.7)}
+  77.667% {opacity:0;transform:scale(1.5)}
+  86.6% {opacity:0;transform:scale(.6)}
+  86.733% {opacity:1;transform:scale(.7)}
+  88.333% {opacity:0;transform:scale(1.5)}
+  100% {opacity:0;transform:scale(1.5)}
+}
+@keyframes pUp {
+  0% {transform:scale(1)}
+  67.933% {transform:scale(1)}
+  68.2% {transform:scale(0.82)}
+  69% {transform:scale(1)}
+  78.6% {transform:scale(1)}
+  78.867% {transform:scale(0.82)}
+  79.667% {transform:scale(1)}
+  100% {transform:scale(1)}
+}
+@keyframes rUp {
+  0% {opacity:0;transform:scale(.6)}
+  67.933% {opacity:0;transform:scale(.6)}
+  68.067% {opacity:1;transform:scale(.7)}
+  69.667% {opacity:0;transform:scale(1.5)}
+  78.6% {opacity:0;transform:scale(.6)}
+  78.733% {opacity:1;transform:scale(.7)}
+  80.333% {opacity:0;transform:scale(1.5)}
+  100% {opacity:0;transform:scale(1.5)}
+}
+@keyframes tagIntro {
+  0%,5.333% {opacity:0}
+  6.667%,24.333% {opacity:1}
+  25.333%,100% {opacity:0}
+}
+@keyframes tagVcc {
+  0%,19.333% {opacity:0}
+  20.667%,25.333% {opacity:1}
+  26.333%,100% {opacity:0}
+}
+@keyframes tagMode {
+  0%,45.667% {opacity:0}
+  47%,63.667% {opacity:1}
+  64.667%,100% {opacity:0}
+}
+@keyframes tagUp {
+  0%,67% {opacity:0}
+  68.333%,85% {opacity:1}
+  86%,100% {opacity:0}
+}
+@keyframes tagUsb {
+  0%,23% {opacity:0}
+  24.333%,25.333% {opacity:1}
+  26.333%,100% {opacity:0}
+}
+.tag-pico{left:150px;top:150px;animation:tagIntro 30s linear infinite both}
+.tag-board{left:640px;top:90px;animation:tagIntro 30s linear infinite both}
+.tag-btns{left:600px;top:430px;animation:tagIntro 30s linear infinite both}
+.tag-vcc{left:560px;top:250px;animation:tagVcc 30s linear infinite both}
+.tag-usb{left:40px;top:395px;animation:tagUsb 30s linear infinite both}
+.tag-mode{left:560px;top:260px;animation:tagMode 30s linear infinite both}
+.tag-up{left:660px;top:260px;animation:tagUp 30s linear infinite both}
+@keyframes tagIntroP {
+  0%,5.333% {opacity:0}
+  6%,9.333% {opacity:1}
+  10%,100% {opacity:0}
+}
+
+/* ---------- PORTRAIT: 720 x 1280 stage, x1.5 = 1080 x 1920 (YouTube Shorts) ----------
+   Safe box x 40..640, y 165..1025. Caption 170-340 | rig 360-880 | pills/chips 905-1000 | progress 1014.
+   Camera: wide (whole kit) -> mid (Pico + breadboard) -> close (screen + buttons) -> wide. */
+:root[data-format=portrait]{
+  --W:720px; --H:1280px;
+  --stage-bg:radial-gradient(760px 760px at 50% 48%,#18222f 0%,#0b0e13 72%);
+  --cap-l:40px; --cap-t:170px; --cap-w:580px; --kick-fs:18px; --kick-ls:.08em; --head-fs:52px; --head-mt:14px;
+  --band-t:905px;
+  --prog-l:40px; --prog-t:1014px; --prog-w:580px;
+  --pills-l:110px; --pills-w:460px; --pill-fs:22px; --pill-pad:9px 18px; --pill-gap:10px;
+  --chips-l:150px; --chips-w:380px; --chip-sz:46px; --chip-fs:18px; --chip-gap:8px;
+  --tag-fs:30px; --tag-pad:8px 16px;
+  --cam-wide:translate(29.5px,498.5px) scale(.45);
+  --cam-mid:translate(30px,354px) scale(.72);
+  --cam-close:translate(-448px,436px) scale(.8);
+}
+:root[data-format=portrait] .head{white-space:normal;text-wrap:balance}
+:root[data-format=portrait] .tag-intro{animation-name:tagIntroP}
+:root[data-format=portrait] .tag-pico{left:60px;top:120px}
+:root[data-format=portrait] .tag-board{left:560px;top:-40px}
+:root[data-format=portrait] .tag-btns{left:470px;top:440px}
+:root[data-format=portrait] .tag-vcc{left:300px;top:130px}
+:root[data-format=portrait] .tag-usb{left:20px;top:400px}
+:root[data-format=portrait] .tag-mode,
+:root[data-format=portrait] .tag-up{left:600px;top:236px}
+</style>
+</head>
+<body>
+<input class="pause-input no-video" type="checkbox" id="pause" aria-label="Pause animation">
+<label class="pause-btn no-video" for="pause"><span class="ico-pause">II</span><span class="ico-play">&#9654;</span></label>
+<div class="stage" role="img" aria-label="A 30-second animation of the Chrono Smart Clock Kit. A Raspberry Pi Pico W on a breadboard is joined to a round 360 by 360 color display by eight colored wires, with a reminder that VCC goes to 3V3, not 5 volts. A USB cable plugs in, the clock sets its time over WiFi and shows the weather. Pressing the MODE button steps through five faces: weather, analog, digital, stopwatch and timer, and the UP button starts the stopwatch and the timer. The kit has 13 labs, for ages 10 and up, with no soldering.">
+  <div class="cap" style="animation:cap0 30s ease-out infinite both"><div class="kick">Ages 10 and up · no soldering</div><div class="head">Meet the Chrono Smart Clock Kit</div></div><div class="cap" style="animation:cap1 30s ease-out infinite both"><div class="kick">Step 1 · Wire it</div><div class="head">8 wires join the Pico&nbsp;W to the screen</div></div><div class="cap" style="animation:cap2 30s ease-out infinite both"><div class="kick">Step 2 · Power on</div><div class="head">It sets its own time from the internet</div></div><div class="cap" style="animation:cap3 30s ease-out infinite both"><div class="kick">Step 3 · Five modes</div><div class="head">Press MODE to step through the faces</div></div><div class="cap" style="animation:cap4 30s ease-out infinite both"><div class="kick">13 labs · under $20 in parts</div><div class="head">Build it. Code it. Make it yours.</div></div>
+  <div class="rig">
+    <div class="rise">
+      <div class="bb"></div>
+      <div class="pico"></div>
+      <div class="ppin" style="left:98px;top:356px"></div><div class="ppin" style="left:121px;top:356px"></div><div class="ppin" style="left:167px;top:356px"></div><div class="ppin" style="left:213px;top:356px"></div><div class="ppin" style="left:259px;top:356px"></div><div class="ppin" style="left:305px;top:356px"></div><div class="ppin" style="left:351px;top:356px"></div><div class="ppin" style="left:397px;top:356px"></div><div class="ppin" style="left:443px;top:356px"></div><div class="ppin" style="left:489px;top:356px"></div><div class="ppin" style="left:512px;top:356px"></div><div class="ppin" style="left:144px;top:356px"></div><div class="ppin" style="left:190px;top:356px"></div><div class="ppin" style="left:236px;top:356px"></div><div class="ppin" style="left:282px;top:356px"></div><div class="ppin" style="left:328px;top:356px"></div><div class="ppin" style="left:374px;top:356px"></div><div class="ppin" style="left:420px;top:356px"></div><div class="ppin" style="left:466px;top:356px"></div>
+      <div class="pclab" style="left:128px">GND</div><div class="pclab" style="left:174px">3V3</div><div class="pclab" style="left:220px">GP2</div><div class="pclab" style="left:266px">GP3</div><div class="pclab" style="left:312px">GP4</div><div class="pclab" style="left:358px">GP5</div><div class="pclab" style="left:404px">GP6</div><div class="pclab" style="left:450px">GP7</div>
+      <div class="usbport"></div>
+      <div class="chipic"></div>
+      <div class="wifi"></div>
+      <div class="led"></div>
+      <div class="pname">PICO W</div>
+      <div class="usb"><div style="position:absolute;left:0;top:9px;width:90px;height:10px;background:#2b2f36;border-radius:5px"></div><div style="position:absolute;left:80px;top:0;width:60px;height:28px;background:#555b66;border-radius:4px"></div></div>
+      <div class="dboard"></div>
+      <div class="screen"><img class="face" style="animation:f_boot 30s linear infinite both" src="../../../docs/kits/sw-gc9b72/img/04-wifi-sync-time.png" alt=""><img class="face" style="animation:f_wx 30s linear infinite both" src="../../../docs/kits/sw-gc9b72/img/12-mode-weather.png" alt=""><img class="face" style="animation:f_ana 30s linear infinite both" src="../../../docs/kits/sw-gc9b72/img/12-mode-analog.png" alt=""><img class="face" style="animation:f_dig 30s linear infinite both" src="../../../docs/kits/sw-gc9b72/img/12-mode-digital.png" alt=""><img class="face" style="animation:f_sw0 30s linear infinite both" src="../../../docs/kits/sw-gc9b72/img/12-mode-stopwatch.png" alt=""><img class="face" style="animation:f_sw1 30s linear infinite both" src="../../../docs/kits/sw-gc9b72/img/10-stopwatch.png" alt=""><img class="face" style="animation:f_tm0 30s linear infinite both" src="../../../docs/kits/sw-gc9b72/img/12-mode-timer.png" alt=""><img class="face" style="animation:f_tm1 30s linear infinite both" src="../../../docs/kits/sw-gc9b72/img/11-timer-running.png" alt=""><div class="screen-off"></div></div>
+      <div class="pin" style="left:976px"></div><div class="plab" style="left:962px">GND</div><div class="pin" style="left:1010px"></div><div class="plab" style="left:996px">VCC</div><div class="pin" style="left:1044px"></div><div class="plab" style="left:1030px">SCL</div><div class="pin" style="left:1078px"></div><div class="plab" style="left:1064px">SDA</div><div class="pin" style="left:1112px"></div><div class="plab" style="left:1098px">RST</div><div class="pin" style="left:1146px"></div><div class="plab" style="left:1132px">DC</div><div class="pin" style="left:1180px"></div><div class="plab" style="left:1166px">CS</div><div class="pin" style="left:1214px"></div><div class="plab" style="left:1200px">BL</div><div class="pin" style="left:1248px"></div><div class="plab" style="left:1234px">SDO</div><div class="pin" style="left:1282px"></div><div class="plab" style="left:1268px">TE</div>
+      <div class="btn" style="left:620px;top:330px"><div class="rip" style="animation:rMode 30s ease-out infinite both"></div><div class="cap-b" style="background:#e53935;animation:pMode 30s ease-out infinite both"></div><div class="blab">MODE</div></div>
+      <div class="btn" style="left:700px;top:330px"><div class="rip" style="animation:rUp 30s ease-out infinite both"></div><div class="cap-b" style="background:#43a047;animation:pUp 30s ease-out infinite both"></div><div class="blab">UP</div></div>
+      <div class="btn" style="left:780px;top:330px"><div class="cap-b" style="background:#1e88e5"></div><div class="blab">DOWN</div></div>
+      <svg class="wires" width="1400" height="620" viewBox="0 0 1400 620"><path class="w" style="stroke:#3a3a3a;animation-delay:0.00s" d="M150,362 V514 Q150,530 166,530 H966 Q982,530 982,514 V448"/>
+<path class="w" style="stroke:#e53935;animation-delay:0.30s" d="M196,362 V508 Q196,524 212,524 H1000 Q1016,524 1016,508 V448"/>
+<path class="w" style="stroke:#fb8c00;animation-delay:0.60s" d="M242,362 V502 Q242,518 258,518 H1034 Q1050,518 1050,502 V448"/>
+<path class="w" style="stroke:#fdd835;animation-delay:0.90s" d="M288,362 V496 Q288,512 304,512 H1068 Q1084,512 1084,496 V448"/>
+<path class="w" style="stroke:#43a047;animation-delay:1.20s" d="M334,362 V490 Q334,506 350,506 H1102 Q1118,506 1118,490 V448"/>
+<path class="w" style="stroke:#1e88e5;animation-delay:1.50s" d="M380,362 V484 Q380,500 396,500 H1136 Q1152,500 1152,484 V448"/>
+<path class="w" style="stroke:#8e24aa;animation-delay:1.80s" d="M426,362 V478 Q426,494 442,494 H1170 Q1186,494 1186,478 V448"/>
+<path class="w" style="stroke:#9e9e9e;animation-delay:2.10s" d="M472,362 V472 Q472,488 488,488 H1204 Q1220,488 1220,472 V448"/>
+</svg>
+    </div>
+    <div class="tag tag-pico tag-intro">Pico W · the brain, with WiFi</div>
+    <div class="tag tag-board tag-intro">Round screen · 360 × 360 pixels</div>
+    <div class="tag tag-btns tag-intro">3 buttons: MODE · UP · DOWN</div>
+    <div class="tag tag-amber tag-vcc">VCC to 3V3 · not 5 volts</div>
+    <div class="tag tag-usb">USB power</div>
+    <div class="tag tag-mode">MODE: next face</div>
+    <div class="tag tag-up">UP: start</div>
+  </div>
+  <div class="pills">
+    <div class="pill" style="animation:act0 30s linear infinite both">Weather</div>
+    <div class="pill" style="animation:act1 30s linear infinite both">Analog</div>
+    <div class="pill" style="animation:act2 30s linear infinite both">Digital</div>
+    <div class="pill" style="animation:act3 30s linear infinite both">Stopwatch</div>
+    <div class="pill" style="animation:act4 30s linear infinite both">Timer</div>
+  </div>
+  <div class="chips"><div class="chip" style="animation-delay:0.00s">00</div><div class="chip" style="animation-delay:0.14s">01</div><div class="chip" style="animation-delay:0.28s">02</div><div class="chip" style="animation-delay:0.42s">03</div><div class="chip" style="animation-delay:0.56s">04</div><div class="chip" style="animation-delay:0.70s">05</div><div class="chip" style="animation-delay:0.84s">06</div><div class="chip" style="animation-delay:0.98s">07</div><div class="chip" style="animation-delay:1.12s">08</div><div class="chip" style="animation-delay:1.26s">09</div><div class="chip" style="animation-delay:1.40s">10</div><div class="chip" style="animation-delay:1.54s">11</div><div class="chip" style="animation-delay:1.68s">12</div></div>
+  <div class="prog-track"></div><div class="prog-fill"></div><div class="prog-tick" style="--f:0.1"></div><div class="prog-tick" style="--f:0.2667"></div><div class="prog-tick" style="--f:0.4"></div><div class="prog-tick" style="--f:0.8667"></div>
+  <div class="cover"></div>
+</div>
+</body>
+</html>

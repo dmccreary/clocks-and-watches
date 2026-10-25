@@ -44,6 +44,18 @@ Each scene has a **kicker** (small caps line) and a **headline** (one line).
 - Headline: at most 40 characters at 44 px bold; action verbs: "Turn the knob to change the face".
 - Plain words for the reading level in the kit's "Ages" line. No jargon the kit does not teach.
 - The closing line is the only place for a slogan.
+- **Both formats share the caption text.** Landscape shows the headline on one line; portrait
+  (a 580 px wide column at 52 px) wraps it to two lines, so a 40-character headline is the
+  ceiling and 34 or fewer is comfortable. Write it so it breaks well at a phrase boundary
+  ("Turn the knob / to change the face"); the page balances the two lines.
+- A kicker must fit one line in portrait (580 px at 18 px caps is about 40 characters).
+
+## 3a. Labels that need a shorter portrait wording
+
+Callout tags sit on the hardware and are larger in portrait, so a long label may not fit. Plan a
+short form for each tag: "Display board" instead of "Display board · screen + knob + K0". Mark
+the dropped tail with `class="l-only"` in the page. Tags near the right edge of the board must
+end inside the safe box at the close camera pose.
 
 ## 4. Mode / face pills and the lab chips
 
@@ -75,7 +87,8 @@ words (what the parts are, what the kit does, how many labs). Write it from the 
 
 ## 7. Checklist before authoring
 
-- [ ] five scenes with captions, each headline fits on one line
+- [ ] five scenes with captions, each headline at most 40 characters (one line landscape, two portrait)
+- [ ] a short portrait wording for every long callout tag
 - [ ] mode list and the sample values used on every screen
 - [ ] event list with seconds
 - [ ] chosen BPM so scene boundaries fall on bar lines (see soundtrack guide)
