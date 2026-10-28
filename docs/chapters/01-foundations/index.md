@@ -439,3 +439,5 @@ The table below connects each idea from this chapter to a piece of your first cl
 3. Calculate the drift per day of a crystal that is accurate to 20 ppm.
 4. Explain in your own words why a microcontroller with 264 KB of RAM is enough for a clock.
 5. In the blink program, which line is the sensor, which is the actuator, and which is the "think" part? (Hint: one of these does not exist.)
+
+[See Annotated References](./references.md)

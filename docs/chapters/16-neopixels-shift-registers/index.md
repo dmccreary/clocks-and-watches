@@ -528,3 +528,5 @@ This MicroSim is already part of this book. Learning objective: students will *u
 3. Write the hue values for 12 pixels spaced evenly around a color wheel.
 4. Explain the job of the latch pin and what would happen without it.
 5. Show the pixels lit in a binary clock for the minute value 45.
+
+[See Annotated References](./references.md)

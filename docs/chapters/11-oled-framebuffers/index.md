@@ -385,3 +385,5 @@ The safe choice matters because a setup that works on your desk can fail with lo
 3. Why does a changing number look smudged if you forget `fill(0)`?
 4. Find the byte index and bit for pixel (30, 45) on a 128-wide `MONO_VLSB` buffer.
 5. An I2C OLED at 400 kHz needs 23 ms per `show()`. What is the maximum frame rate, and is that enough for a once-per-second clock?
+
+[See Annotated References](./references.md)

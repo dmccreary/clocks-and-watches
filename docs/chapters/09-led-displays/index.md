@@ -302,3 +302,5 @@ The table you saw for the TM1637 is that companion table. When a project does no
 3. A TM1637 is wired to GP2 and GP3, but an I2C scan finds nothing. Is the module broken? Explain.
 4. Write the line that turns the colon on only during even seconds.
 5. Draw a wiring diagram and pin table for a TM1637 using GP10 for CLK and GP11 for DIO.
+
+[See Annotated References](./references.md)

@@ -451,3 +451,5 @@ while True:
 3. Convert these 24-hour times to 12-hour with AM or PM: 0:15, 12:00, 18:45.
 4. Why should you use `ticks_diff()` instead of subtracting two `ticks_ms()` values with `-`?
 5. A web service sends the Unix timestamp 1,800,000,000. What value would the Pico's `time.localtime()` need to be given for the same moment?
+
+[See Annotated References](./references.md)

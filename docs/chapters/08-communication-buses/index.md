@@ -446,3 +446,5 @@ The display cable harness in this course reduces crosstalk by placing ground wir
 3. Write code to set bit 5 of a byte named `x` and to test whether bit 5 is set.
 4. Send `0xC1` on the wire in MSB-first order, then in LSB-first order.
 5. A 128 by 64 OLED on I2C at 100 kHz needs how long to receive 1,024 bytes? Use 9 clock cycles per byte.
+
+[See Annotated References](./references.md)

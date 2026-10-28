@@ -447,3 +447,5 @@ while True:
 3. Explain why `ellipse(64, 32, 31, 31, 1)` draws a circle centered on the screen.
 4. What is the benefit of drawing the clock face into a second buffer and using `blit()`?
 5. Describe how you would update only the seconds on a display without redrawing the hours and minutes.
+
+[See Annotated References](./references.md)

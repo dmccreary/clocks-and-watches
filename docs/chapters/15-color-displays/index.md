@@ -409,3 +409,5 @@ Implementation: p5.js with polar geometry and an overlap test on bounding circle
 3. A 320 by 240 display uses 2 bytes per pixel. How many bytes does a full framebuffer need? Will it fit in 264 KB of RAM?
 4. On the 360 px display with a safe radius of 168, how wide is the usable row 120 pixels above center?
 5. Explain why a direct write display draws the tick marks once instead of every second.
+
+[See Annotated References](./references.md)

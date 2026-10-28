@@ -494,3 +494,5 @@ Put `is_dst_us()` above `local_now()` in your file, then add your display code i
 3. A Pico crystal drifts 30 ppm. How often must you resync to stay within 0.5 seconds?
 4. Explain why the time on your Pico can be hours off after unplugging from Thonny, even though it looked right before.
 5. Choose a time source for a wall clock with no WiFi that must stay within one minute a year, and justify it.
+
+[See Annotated References](./references.md)

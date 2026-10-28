@@ -438,3 +438,5 @@ The main program continues on core 0 at the same time. Use this feature carefull
 3. Explain in your own words why flash and RAM are both needed.
 4. Your program works from Thonny's Run button but does nothing after you unplug and replug the Pico. What is the most likely cause?
 5. Write a `config.py` with three constants for a clock kit and show how to use one of them in another file.
+
+[See Annotated References](./references.md)

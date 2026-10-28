@@ -497,3 +497,5 @@ Half-hour zones like Mumbai work because the offset is converted to seconds. Eac
 3. At a 22,050 Hz sampling rate, what is the highest pitch that can be reproduced, and how many bytes per second does 16-bit mono audio need?
 4. Write code that computes the time of a 9-minute snooze after an alarm at 23:55.
 5. Explain why a countdown timer should compute an end tick once instead of subtracting one from a counter each loop.
+
+[See Annotated References](./references.md)

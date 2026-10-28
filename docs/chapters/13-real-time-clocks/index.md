@@ -396,3 +396,5 @@ Implementation: p5.js with Gaussian random dots.
 3. Write `dec_to_bcd(38)` by hand and give the result in hex.
 4. Compute the drift in one year for a ±20 ppm crystal (31,536,000 seconds).
 5. Explain the difference between an accurate clock and a precise clock with an example.
+
+[See Annotated References](./references.md)

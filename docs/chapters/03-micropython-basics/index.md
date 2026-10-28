@@ -562,3 +562,5 @@ print(f"{days[weekday]} {hour12}:{minute:02d}")   # Wed 3:07
 3. What does `(0 + 11) % 12 + 1` produce, and why is the formula useful?
 4. Explain the difference between a list and a tuple, and give one example of when you would prefer each.
 5. A program prints `9:5` for 9:05. Change the print statement so it displays `09:05`.
+
+[See Annotated References](./references.md)

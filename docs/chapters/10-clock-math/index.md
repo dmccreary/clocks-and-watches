@@ -373,3 +373,5 @@ The tables cost a moment at startup, and every frame afterward uses only integer
 3. Compute the three hand angles at 9:15:00 and the pixel position of the minute hand tip on a 240 by 240 display with length 90.
 4. Why do we add \( 0.5m \) to the hour hand angle?
 5. A lookup table uses SCALE = 256. What integer represents the sine of 30 degrees, and what is the maximum error in a hand of length 120?
+
+[See Annotated References](./references.md)

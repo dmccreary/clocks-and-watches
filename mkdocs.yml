@@ -21,26 +21,86 @@ nav:
     - AI in the Classroom: setup/05-ai-in-the-classroom.md
   - Chapters:
     - List of Chapters: chapters/index.md
-    - "1. Computational Thinking and Physical Computing": chapters/01-foundations/index.md
-    - "2. Electronics Fundamentals and Breadboard Wiring": chapters/02-electronics-fundamentals/index.md
-    - "3. MicroPython Basics: Variables and Data Types": chapters/03-micropython-basics/index.md
-    - "4. Control Flow, Functions, and Modules": chapters/04-control-flow-functions/index.md
-    - "5. The Pico Platform: Pins, Files, and Firmware": chapters/05-pico-platform/index.md
-    - "6. Getting the Time in MicroPython": chapters/06-getting-time/index.md
-    - "7. Buttons, Interrupts, and State Machines": chapters/07-buttons-state-machines/index.md
-    - "8. Communication Buses: I2C, SPI, and UART": chapters/08-communication-buses/index.md
-    - "9. LED Displays and the First Digital Clock": chapters/09-led-displays/index.md
-    - "10. Coordinates, Trigonometry, and Clock Geometry": chapters/10-clock-math/index.md
-    - "11. OLED Displays and Framebuffers": chapters/11-oled-framebuffers/index.md
-    - "12. Drawing Shapes, Text, and Animation": chapters/12-drawing-text-animation/index.md
-    - "13. Real-Time Clocks and the DS3231": chapters/13-real-time-clocks/index.md
-    - "14. WiFi, NTP, and Time Accuracy": chapters/14-wifi-ntp/index.md
-    - "15. Color Displays and Smartwatch Faces": chapters/15-color-displays/index.md
-    - "16. NeoPixels and Shift Register Clocks": chapters/16-neopixels-shift-registers/index.md
-    - "17. Sound, Alarms, and Timers": chapters/17-sound-alarms-timers/index.md
-    - "18. Sensors, Power, and Low-Power Design": chapters/18-sensors-power/index.md
-    - "19. E-Paper and Weather Displays": chapters/19-epaper-weather/index.md
-    - "20. Design, Testing, and AI-Assisted Development": chapters/20-design-testing-ai/index.md
+    - "1. Computational Thinking and Physical Computing":
+      - Content: chapters/01-foundations/index.md
+      - Quiz: chapters/01-foundations/quiz.md
+      - Annotated References: chapters/01-foundations/references.md
+    - "2. Electronics Fundamentals and Breadboard Wiring":
+      - Content: chapters/02-electronics-fundamentals/index.md
+      - Quiz: chapters/02-electronics-fundamentals/quiz.md
+      - Annotated References: chapters/02-electronics-fundamentals/references.md
+    - "3. MicroPython Basics: Variables and Data Types":
+      - Content: chapters/03-micropython-basics/index.md
+      - Quiz: chapters/03-micropython-basics/quiz.md
+      - Annotated References: chapters/03-micropython-basics/references.md
+    - "4. Control Flow, Functions, and Modules":
+      - Content: chapters/04-control-flow-functions/index.md
+      - Quiz: chapters/04-control-flow-functions/quiz.md
+      - Annotated References: chapters/04-control-flow-functions/references.md
+    - "5. The Pico Platform: Pins, Files, and Firmware":
+      - Content: chapters/05-pico-platform/index.md
+      - Quiz: chapters/05-pico-platform/quiz.md
+      - Annotated References: chapters/05-pico-platform/references.md
+    - "6. Getting the Time in MicroPython":
+      - Content: chapters/06-getting-time/index.md
+      - Quiz: chapters/06-getting-time/quiz.md
+      - Annotated References: chapters/06-getting-time/references.md
+    - "7. Buttons, Interrupts, and State Machines":
+      - Content: chapters/07-buttons-state-machines/index.md
+      - Quiz: chapters/07-buttons-state-machines/quiz.md
+      - Annotated References: chapters/07-buttons-state-machines/references.md
+    - "8. Communication Buses: I2C, SPI, and UART":
+      - Content: chapters/08-communication-buses/index.md
+      - Quiz: chapters/08-communication-buses/quiz.md
+      - Annotated References: chapters/08-communication-buses/references.md
+    - "9. LED Displays and the First Digital Clock":
+      - Content: chapters/09-led-displays/index.md
+      - Quiz: chapters/09-led-displays/quiz.md
+      - Annotated References: chapters/09-led-displays/references.md
+    - "10. Coordinates, Trigonometry, and Clock Geometry":
+      - Content: chapters/10-clock-math/index.md
+      - Quiz: chapters/10-clock-math/quiz.md
+      - Annotated References: chapters/10-clock-math/references.md
+    - "11. OLED Displays and Framebuffers":
+      - Content: chapters/11-oled-framebuffers/index.md
+      - Quiz: chapters/11-oled-framebuffers/quiz.md
+      - Annotated References: chapters/11-oled-framebuffers/references.md
+    - "12. Drawing Shapes, Text, and Animation":
+      - Content: chapters/12-drawing-text-animation/index.md
+      - Quiz: chapters/12-drawing-text-animation/quiz.md
+      - Annotated References: chapters/12-drawing-text-animation/references.md
+    - "13. Real-Time Clocks and the DS3231":
+      - Content: chapters/13-real-time-clocks/index.md
+      - Quiz: chapters/13-real-time-clocks/quiz.md
+      - Annotated References: chapters/13-real-time-clocks/references.md
+    - "14. WiFi, NTP, and Time Accuracy":
+      - Content: chapters/14-wifi-ntp/index.md
+      - Quiz: chapters/14-wifi-ntp/quiz.md
+      - Annotated References: chapters/14-wifi-ntp/references.md
+    - "15. Color Displays and Smartwatch Faces":
+      - Content: chapters/15-color-displays/index.md
+      - Quiz: chapters/15-color-displays/quiz.md
+      - Annotated References: chapters/15-color-displays/references.md
+    - "16. NeoPixels and Shift Register Clocks":
+      - Content: chapters/16-neopixels-shift-registers/index.md
+      - Quiz: chapters/16-neopixels-shift-registers/quiz.md
+      - Annotated References: chapters/16-neopixels-shift-registers/references.md
+    - "17. Sound, Alarms, and Timers":
+      - Content: chapters/17-sound-alarms-timers/index.md
+      - Quiz: chapters/17-sound-alarms-timers/quiz.md
+      - Annotated References: chapters/17-sound-alarms-timers/references.md
+    - "18. Sensors, Power, and Low-Power Design":
+      - Content: chapters/18-sensors-power/index.md
+      - Quiz: chapters/18-sensors-power/quiz.md
+      - Annotated References: chapters/18-sensors-power/references.md
+    - "19. E-Paper and Weather Displays":
+      - Content: chapters/19-epaper-weather/index.md
+      - Quiz: chapters/19-epaper-weather/quiz.md
+      - Annotated References: chapters/19-epaper-weather/references.md
+    - "20. Design, Testing, and AI-Assisted Development":
+      - Content: chapters/20-design-testing-ai/index.md
+      - Quiz: chapters/20-design-testing-ai/quiz.md
+      - Annotated References: chapters/20-design-testing-ai/references.md
   - Lessons:
     - Introduction: lessons/index.md
     - Timekeeping Architecture: lessons/01-timekeeping-architecture.md
@@ -256,6 +316,7 @@ nav:
     - Graph Quality Analysis: learning-graph/quality-metrics.md
     - Concept Taxonomy: learning-graph/concept-taxonomy.md
     - Taxonomy Distribution Report: learning-graph/taxonomy-distribution.md
+    - Quiz Generation Report: learning-graph/quiz-generation-report.md
     - Mascot Test: learning-graph/mascot-test.md
   - MicroSims:
     - List of MicroSims: sims/index.md

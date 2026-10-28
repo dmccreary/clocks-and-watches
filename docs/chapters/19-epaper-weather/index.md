@@ -325,3 +325,5 @@ You have now met nearly every display in this course. The right one depends on w
 3. What is ghosting, and what fixes it?
 4. Convert 22 °C to Fahrenheit.
 5. A weather display fetches the forecast every hour but reads the indoor sensor every 5 minutes. Why are the two intervals different?
+
+[See Annotated References](./references.md)

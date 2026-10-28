@@ -434,3 +434,5 @@ Multiply the direction (+1 or -1) by `step_size()` to get the change. Slow turns
 3. Why should an interrupt handler set a flag instead of drawing on the display?
 4. Draw the state machine for a clock with modes RUN, SET_HOUR, SET_MINUTE, SET_ALARM_HOUR, and SET_ALARM_MINUTE.
 5. Write `step_size()` thresholds so that turning the encoder very fast changes the minute by 10 per click.
+
+[See Annotated References](./references.md)

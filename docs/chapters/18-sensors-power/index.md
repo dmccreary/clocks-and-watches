@@ -453,3 +453,5 @@ The **Waveshare RP2040 boards**, such as the round LCD models, combine the RP204
 3. A clock draws 40 mA on average. How long will a 1,000 mAh battery run it, using the 0.8 factor?
 4. Why is a 4 × AA alkaline pack unsuitable for the VSYS pin?
 5. List three things you would do to make a smartwatch last longer on its battery.
+
+[See Annotated References](./references.md)

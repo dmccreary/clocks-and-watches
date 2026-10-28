@@ -581,3 +581,5 @@ You now have the electrical toolkit for every lab that follows.
 3. A resistor has the bands red, violet, brown, gold. What is its value?
 4. A sensor outputs 5 V. Design a divider using 1 kΩ and 2 kΩ resistors and state the output voltage.
 5. Your LED circuit is wired correctly but stays dark. List three things you would check with a multimeter.
+
+[See Annotated References](./references.md)

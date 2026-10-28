@@ -446,3 +446,5 @@ Presenters are judged on the whole process, not only on the finished object. A c
 3. Make a bill of materials for a TM1637 clock with an RTC, including a 15 percent spares allowance.
 4. Your clock shows the wrong date after midnight on December 31. Describe a systematic debugging plan, starting with how you reproduce it quickly.
 5. An AI gives you a program that calls `time.strftime()`. What is the problem, and what would you do?
+
+[See Annotated References](./references.md)

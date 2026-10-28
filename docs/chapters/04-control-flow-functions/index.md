@@ -495,3 +495,5 @@ Watch what happens after 11:59 PM: the minute wraps to 0, the hour wraps to 0, a
 3. Explain why `(0 - 1) % 60` is useful for a "minute down" button.
 4. Write a function `pad(n)` that returns a two-digit string, so `pad(7)` returns `"07"`.
 5. What is the difference between a function and a method? Give one example of each from code you have seen.
+
+[See Annotated References](./references.md)
