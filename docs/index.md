@@ -1,6 +1,11 @@
+---
+title: Clocks and Watches with MicroPython and AI
+description: Teach computational thinking by designing and building digital clocks and smart watches with a $4 Raspberry Pi Pico, low-cost displays, MicroPython and AI. For grades 6-12.
+image: img/cover.png
+---
 # Designing and Building Clocks and Watches with MicroPython and AI
 
-![Banner](./img/banner.png)
+![Banner](./img/cover.png)
 
 Welcome to the Clocks and Watches website!
 
