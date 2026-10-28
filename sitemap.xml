@@ -41,7 +41,23 @@
          <lastmod>2026-10-28</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/01-foundations/quiz/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/01-foundations/references/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/clocks-and-watches/chapters/02-electronics-fundamentals/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/02-electronics-fundamentals/quiz/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/02-electronics-fundamentals/references/</loc>
          <lastmod>2026-10-28</lastmod>
     </url>
     <url>
@@ -49,7 +65,23 @@
          <lastmod>2026-10-28</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/03-micropython-basics/quiz/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/03-micropython-basics/references/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/clocks-and-watches/chapters/04-control-flow-functions/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/04-control-flow-functions/quiz/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/04-control-flow-functions/references/</loc>
          <lastmod>2026-10-28</lastmod>
     </url>
     <url>
@@ -57,7 +89,23 @@
          <lastmod>2026-10-28</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/05-pico-platform/quiz/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/05-pico-platform/references/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/clocks-and-watches/chapters/06-getting-time/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/06-getting-time/quiz/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/06-getting-time/references/</loc>
          <lastmod>2026-10-28</lastmod>
     </url>
     <url>
@@ -65,7 +113,23 @@
          <lastmod>2026-10-28</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/07-buttons-state-machines/quiz/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/07-buttons-state-machines/references/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/clocks-and-watches/chapters/08-communication-buses/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/08-communication-buses/quiz/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/08-communication-buses/references/</loc>
          <lastmod>2026-10-28</lastmod>
     </url>
     <url>
@@ -73,7 +137,23 @@
          <lastmod>2026-10-28</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/09-led-displays/quiz/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/09-led-displays/references/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/clocks-and-watches/chapters/10-clock-math/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/10-clock-math/quiz/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/10-clock-math/references/</loc>
          <lastmod>2026-10-28</lastmod>
     </url>
     <url>
@@ -81,7 +161,23 @@
          <lastmod>2026-10-28</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/11-oled-framebuffers/quiz/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/11-oled-framebuffers/references/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/clocks-and-watches/chapters/12-drawing-text-animation/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/12-drawing-text-animation/quiz/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/12-drawing-text-animation/references/</loc>
          <lastmod>2026-10-28</lastmod>
     </url>
     <url>
@@ -89,7 +185,23 @@
          <lastmod>2026-10-28</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/13-real-time-clocks/quiz/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/13-real-time-clocks/references/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/clocks-and-watches/chapters/14-wifi-ntp/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/14-wifi-ntp/quiz/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/14-wifi-ntp/references/</loc>
          <lastmod>2026-10-28</lastmod>
     </url>
     <url>
@@ -97,7 +209,23 @@
          <lastmod>2026-10-28</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/15-color-displays/quiz/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/15-color-displays/references/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/clocks-and-watches/chapters/16-neopixels-shift-registers/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/16-neopixels-shift-registers/quiz/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/16-neopixels-shift-registers/references/</loc>
          <lastmod>2026-10-28</lastmod>
     </url>
     <url>
@@ -105,7 +233,23 @@
          <lastmod>2026-10-28</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/17-sound-alarms-timers/quiz/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/17-sound-alarms-timers/references/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/clocks-and-watches/chapters/18-sensors-power/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/18-sensors-power/quiz/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/18-sensors-power/references/</loc>
          <lastmod>2026-10-28</lastmod>
     </url>
     <url>
@@ -113,7 +257,23 @@
          <lastmod>2026-10-28</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/19-epaper-weather/quiz/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/19-epaper-weather/references/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/clocks-and-watches/chapters/20-design-testing-ai/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/20-design-testing-ai/quiz/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/chapters/20-design-testing-ai/references/</loc>
          <lastmod>2026-10-28</lastmod>
     </url>
     <url>
@@ -702,6 +862,10 @@
     </url>
     <url>
          <loc>https://dmccreary.github.io/clocks-and-watches/learning-graph/quality-metrics/</loc>
+         <lastmod>2026-10-28</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/learning-graph/quiz-generation-report/</loc>
          <lastmod>2026-10-28</lastmod>
     </url>
     <url>

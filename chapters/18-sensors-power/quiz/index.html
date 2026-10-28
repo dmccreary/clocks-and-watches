@@ -1,0 +1,2583 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/clocks-and-watches/chapters/18-sensors-power/quiz/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../references/">
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Quiz - Clocks and Watches with AI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-EKTEBLZ2KP"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-EKTEBLZ2KP",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-EKTEBLZ2KP",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Quiz - Clocks and Watches with AI" >
+      
+        <meta  property="og:description"  content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/chapters/18-sensors-power/quiz.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/clocks-and-watches/chapters/18-sensors-power/quiz/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Quiz - Clocks and Watches with AI" >
+      
+        <meta  name="twitter:description"  content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/chapters/18-sensors-power/quiz.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#642580" data-md-color-accent="#41BAC1">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#quiz-sensors-power-and-low-power-design" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Clocks and Watches with AI" class="md-header__button md-logo" aria-label="Clocks and Watches with AI" data-md-component="logo">
+      
+  <img src="../../../img/logo-180x180.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Clocks and Watches with AI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Quiz
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/clocks-and-watches" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Clocks and Watches with AI" class="md-nav__button md-logo" aria-label="Clocks and Watches with AI" data-md-component="logo">
+      
+  <img src="../../../img/logo-180x180.png" alt="logo">
+
+    </a>
+    Clocks and Watches with AI
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/clocks-and-watches" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../setup/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Setup
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../01-foundations/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    1. Computational Thinking and Physical Computing
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../02-electronics-fundamentals/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    2. Electronics Fundamentals and Breadboard Wiring
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../03-micropython-basics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    3. MicroPython Basics: Variables and Data Types
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../04-control-flow-functions/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    4. Control Flow, Functions, and Modules
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../05-pico-platform/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    5. The Pico Platform: Pins, Files, and Firmware
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../06-getting-time/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    6. Getting the Time in MicroPython
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../07-buttons-state-machines/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    7. Buttons, Interrupts, and State Machines
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../08-communication-buses/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    8. Communication Buses: I2C, SPI, and UART
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../09-led-displays/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    9. LED Displays and the First Digital Clock
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../10-clock-math/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    10. Coordinates, Trigonometry, and Clock Geometry
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../11-oled-framebuffers/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    11. OLED Displays and Framebuffers
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../12-drawing-text-animation/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    12. Drawing Shapes, Text, and Animation
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../13-real-time-clocks/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    13. Real-Time Clocks and the DS3231
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../14-wifi-ntp/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    14. WiFi, NTP, and Time Accuracy
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../15-color-displays/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    15. Color Displays and Smartwatch Faces
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../16-neopixels-shift-registers/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    16. NeoPixels and Shift Register Clocks
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../17-sound-alarms-timers/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    17. Sound, Alarms, and Timers
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_19" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    18. Sensors, Power, and Low-Power Design
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_19" id="__nav_5_19_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_19_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_19">
+            <span class="md-nav__icon md-icon"></span>
+            18. Sensors, Power, and Low-Power Design
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Quiz
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Quiz
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-which-pico-pins-can-be-used-as-analog-adc-inputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Which Pico pins can be used as analog (ADC) inputs?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-the-rp2040-adc-has-12-bits-of-resolution-yet-read_u16-returns-values-from-0-to-65535-why" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. The RP2040 ADC has 12 bits of resolution, yet read_u16() returns values from 0 to 65,535. Why?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-how-does-hysteresis-stop-a-display-from-flickering-when-the-room-light-hovers-near-a-threshold" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. How does hysteresis stop a display from flickering when the room light hovers near a threshold?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-an-ldr-is-wired-in-a-divider-with-a-10-k-fixed-resistor-between-the-adc-pin-and-ground-and-33-v-on-the-ldr-side-what-is-vout-when-the-ldr-is-5-k" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. An LDR is wired in a divider with a 10 kΩ fixed resistor between the ADC pin and ground, and 3.3 V on the LDR side. What is Vout when the LDR is 5 kΩ?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-a-clock-draws-an-average-of-50-ma-from-a-2000-mah-battery-using-the-08-factor-about-how-long-will-it-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. A clock draws an average of 50 mA from a 2,000 mAh battery. Using the 0.8 factor, about how long will it run?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-which-of-these-power-sources-should-not-be-connected-to-the-picos-vsys-pin-whose-limit-is-55-v" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Which of these power sources should NOT be connected to the Pico's VSYS pin, whose limit is 5.5 V?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-a-lipo-battery-is-wired-to-a-watch-board-that-has-no-protection-circuit-why-is-it-risky-to-connect-the-connector-with-reversed-polarity" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. A LiPo battery is wired to a watch board that has no protection circuit. Why is it risky to connect the connector with reversed polarity?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-a-battery-powered-pico-runs-fine-until-the-wifi-sync-starts-and-then-it-resets-the-battery-is-nearly-empty-what-is-the-most-likely-cause" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. A battery-powered Pico runs fine until the WiFi sync starts, and then it resets. The battery is nearly empty. What is the most likely cause?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-a-student-integrates-a-gyroscopes-rotation-rate-to-estimate-an-angle-after-a-minute-with-the-board-sitting-still-the-angle-has-slowly-wandered-what-explains-this-and-what-is-a-good-remedy" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. A student integrates a gyroscope's rotation rate to estimate an angle. After a minute with the board sitting still, the angle has slowly wandered. What explains this, and what is a good remedy?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-a-smartwatch-draws-about-85-ma-and-its-backlight-alone-uses-about-60-ma-which-change-would-save-the-most-battery-life" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. A smartwatch draws about 85 mA, and its backlight alone uses about 60 mA. Which change would save the most battery life?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Annotated References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../19-epaper-weather/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    19. E-Paper and Weather Displays
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../20-design-testing-ai/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    20. Design, Testing, and AI-Assisted Development
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../lessons/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Lessons
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../kits/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Kits
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../prompts/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-which-pico-pins-can-be-used-as-analog-adc-inputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Which Pico pins can be used as analog (ADC) inputs?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-the-rp2040-adc-has-12-bits-of-resolution-yet-read_u16-returns-values-from-0-to-65535-why" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. The RP2040 ADC has 12 bits of resolution, yet read_u16() returns values from 0 to 65,535. Why?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-how-does-hysteresis-stop-a-display-from-flickering-when-the-room-light-hovers-near-a-threshold" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. How does hysteresis stop a display from flickering when the room light hovers near a threshold?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-an-ldr-is-wired-in-a-divider-with-a-10-k-fixed-resistor-between-the-adc-pin-and-ground-and-33-v-on-the-ldr-side-what-is-vout-when-the-ldr-is-5-k" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. An LDR is wired in a divider with a 10 kΩ fixed resistor between the ADC pin and ground, and 3.3 V on the LDR side. What is Vout when the LDR is 5 kΩ?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-a-clock-draws-an-average-of-50-ma-from-a-2000-mah-battery-using-the-08-factor-about-how-long-will-it-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. A clock draws an average of 50 mA from a 2,000 mAh battery. Using the 0.8 factor, about how long will it run?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-which-of-these-power-sources-should-not-be-connected-to-the-picos-vsys-pin-whose-limit-is-55-v" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Which of these power sources should NOT be connected to the Pico's VSYS pin, whose limit is 5.5 V?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-a-lipo-battery-is-wired-to-a-watch-board-that-has-no-protection-circuit-why-is-it-risky-to-connect-the-connector-with-reversed-polarity" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. A LiPo battery is wired to a watch board that has no protection circuit. Why is it risky to connect the connector with reversed polarity?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-a-battery-powered-pico-runs-fine-until-the-wifi-sync-starts-and-then-it-resets-the-battery-is-nearly-empty-what-is-the-most-likely-cause" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. A battery-powered Pico runs fine until the WiFi sync starts, and then it resets. The battery is nearly empty. What is the most likely cause?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-a-student-integrates-a-gyroscopes-rotation-rate-to-estimate-an-angle-after-a-minute-with-the-board-sitting-still-the-angle-has-slowly-wandered-what-explains-this-and-what-is-a-good-remedy" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. A student integrates a gyroscope's rotation rate to estimate an angle. After a minute with the board sitting still, the angle has slowly wandered. What explains this, and what is a good remedy?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-a-smartwatch-draws-about-85-ma-and-its-backlight-alone-uses-about-60-ma-which-change-would-save-the-most-battery-life" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. A smartwatch draws about 85 mA, and its backlight alone uses about 60 mA. Which change would save the most battery life?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="quiz-sensors-power-and-low-power-design">Quiz: Sensors, Power, and Low-Power Design</h1>
+<p>Test your understanding of ADC readings, light and motion sensors, hysteresis, batteries, and low-power design with these review questions.</p>
+<hr />
+<h4 id="1-which-pico-pins-can-be-used-as-analog-adc-inputs">1. Which Pico pins can be used as analog (ADC) inputs?</h4>
+<div class="upper-alpha">
+<ol>
+<li>GP0, GP1, and GP2</li>
+<li>GP26, GP27, and GP28</li>
+<li>GP14, GP15, and GP16</li>
+<li>Any GPIO pin on the board</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. The Pico's ADC has three usable inputs on GP26, GP27, and GP28, which are channels ADC0, ADC1, and ADC2. They measure voltages from 0 V to 3.3 V. The other pins can only tell 0 from 1. Because ADC readings jitter a little even when nothing changes, it helps to read the pin 8 or 16 times and use the average.</p>
+<p><strong>Concept Tested:</strong> ADC Reading</p>
+<p><strong>See:</strong> <a href="../#adc-reading">ADC Reading</a></p>
+</details>
+<hr />
+<h4 id="2-the-rp2040-adc-has-12-bits-of-resolution-yet-read_u16-returns-values-from-0-to-65535-why">2. The RP2040 ADC has 12 bits of resolution, yet <code>read_u16()</code> returns values from 0 to 65,535. Why?</h4>
+<div class="upper-alpha">
+<ol>
+<li>The RP2040 hardware contains a separate 16-bit converter for each pin</li>
+<li>The value is the voltage in millivolts, which can reach 65,535</li>
+<li>The reading counts the number of times the pin was sampled each second</li>
+<li>MicroPython scales the 12-bit result up to 16 bits so the range is always the same</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>D</strong>. The hardware gives 2^12 = 4,096 levels, and MicroPython scales the result to a 16-bit range, so the value runs from 0 to 65,535 no matter how many bits the hardware has. To convert to volts, multiply by 3.3 and divide by 65,535. A reading of 32,768 is about half of full scale, or 1.65 V.</p>
+<p><strong>Concept Tested:</strong> ADC Reading</p>
+<p><strong>See:</strong> <a href="../#adc-reading">ADC Reading</a></p>
+</details>
+<hr />
+<h4 id="3-how-does-hysteresis-stop-a-display-from-flickering-when-the-room-light-hovers-near-a-threshold">3. How does hysteresis stop a display from flickering when the room light hovers near a threshold?</h4>
+<div class="upper-alpha">
+<ol>
+<li>It uses two thresholds with a dead zone, so noise near the line does not toggle the output</li>
+<li>It averages 16 readings so the sensor value never changes at all</li>
+<li>It slows the PWM frequency of the backlight below 1 kHz</li>
+<li>It rounds the light reading to the nearest whole brightness level</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. With one threshold, noise near the line makes the output chatter. Hysteresis uses a higher threshold to switch up and a lower one to switch back down. The gap between them is a dead zone where nothing changes, so small noise falls inside it. This is the same idea as debouncing a button in Chapter 7, and thermostats use it so a furnace does not switch on and off every few seconds.</p>
+<p><strong>Concept Tested:</strong> Hysteresis</p>
+<p><strong>See:</strong> <a href="../#hysteresis">Hysteresis</a></p>
+</details>
+<hr />
+<h4 id="4-an-ldr-is-wired-in-a-divider-with-a-10-k-fixed-resistor-between-the-adc-pin-and-ground-and-33-v-on-the-ldr-side-what-is-vout-when-the-ldr-is-5-k">4. An LDR is wired in a divider with a 10 kΩ fixed resistor between the ADC pin and ground, and 3.3 V on the LDR side. What is Vout when the LDR is 5 kΩ?</h4>
+<div class="upper-alpha">
+<ol>
+<li>1.1 V</li>
+<li>3.3 V</li>
+<li>2.2 V</li>
+<li>0.55 V</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. The formula is Vout = 3.3 × R_fixed / (R_LDR + R_fixed), which gives 3.3 × 10 / (5 + 10) = 2.2 V. With this wiring a brighter room lowers the LDR's resistance and raises Vout, so a bigger ADC reading means brighter light. The value 0.55 V is the output for a dim room, where the LDR is about 50 kΩ.</p>
+<p><strong>Concept Tested:</strong> Light Dependent Resistor</p>
+<p><strong>See:</strong> <a href="../#light-dependent-resistor">Light-Dependent Resistor</a></p>
+</details>
+<hr />
+<h4 id="5-a-clock-draws-an-average-of-50-ma-from-a-2000-mah-battery-using-the-08-factor-about-how-long-will-it-run">5. A clock draws an average of 50 mA from a 2,000 mAh battery. Using the 0.8 factor, about how long will it run?</h4>
+<div class="upper-alpha">
+<ol>
+<li>About 40 hours</li>
+<li>About 32 hours</li>
+<li>About 25 hours</li>
+<li>About 16 hours</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. The runtime formula is capacity × 0.8 divided by average current, so 2,000 × 0.8 / 50 = 32 hours. The 0.8 factor allows for the fact that batteries never deliver their full labeled capacity. Leaving it out would give 40 hours, which is too optimistic. Measure your own current by placing a multimeter in series with the power wire.</p>
+<p><strong>Concept Tested:</strong> Current Draw Calculation</p>
+<p><strong>See:</strong> <a href="../#battery-power">Battery Power</a></p>
+</details>
+<hr />
+<h4 id="6-which-of-these-power-sources-should-not-be-connected-to-the-picos-vsys-pin-whose-limit-is-55-v">6. Which of these power sources should NOT be connected to the Pico's VSYS pin, whose limit is 5.5 V?</h4>
+<div class="upper-alpha">
+<ol>
+<li>A 2 × AA pack at 3.0 V</li>
+<li>A 3 × AA pack at 4.5 V</li>
+<li>A single LiPo cell at 3.7 V</li>
+<li>A 4 × AA alkaline pack at 6.0 V</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>D</strong>. The VSYS pin accepts 1.8 V to 5.5 V, and the board's regulator converts that to 3.3 V. Four alkaline AA cells give 6.0 V, which exceeds the limit. A 3 × AA pack at 4.5 V is the recommended choice, and the 2 × AA pack and the LiPo cell are both inside the allowed range.</p>
+<p><strong>Concept Tested:</strong> AA Battery Pack</p>
+<p><strong>See:</strong> <a href="../#aa-battery-pack">AA Battery Pack</a></p>
+</details>
+<hr />
+<h4 id="7-a-lipo-battery-is-wired-to-a-watch-board-that-has-no-protection-circuit-why-is-it-risky-to-connect-the-connector-with-reversed-polarity">7. A LiPo battery is wired to a watch board that has no protection circuit. Why is it risky to connect the connector with reversed polarity?</h4>
+<div class="upper-alpha">
+<ol>
+<li>Reversed polarity can destroy the board or even start a fire</li>
+<li>Reversed polarity only makes the battery charge more slowly</li>
+<li>Reversed polarity makes the display show colors in the wrong order</li>
+<li>Reversed polarity is harmless because LiPo cells are 3.7 V</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. LiPo connectors are not always standardized, and reversing the polarity can destroy a board or start a fire. LiPo cells also need a charging circuit designed for lithium cells, ideally with a protection circuit against over-discharge and short circuits. Never discharge one below about 3.0 V, puncture or crush it, or charge one that is swollen.</p>
+<p><strong>Concept Tested:</strong> LiPo Battery</p>
+<p><strong>See:</strong> <a href="../#lipo-battery">LiPo Battery</a></p>
+</details>
+<hr />
+<h4 id="8-a-battery-powered-pico-runs-fine-until-the-wifi-sync-starts-and-then-it-resets-the-battery-is-nearly-empty-what-is-the-most-likely-cause">8. A battery-powered Pico runs fine until the WiFi sync starts, and then it resets. The battery is nearly empty. What is the most likely cause?</h4>
+<div class="upper-alpha">
+<ol>
+<li>The hysteresis thresholds are set too close together</li>
+<li>The ADC reading has overflowed its 16-bit range</li>
+<li>A brownout: the WiFi surge makes the weak battery sag below what the chip needs</li>
+<li>The LDR divider has a fixed resistor that is too small</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. A brownout is when the supply voltage sags below what the chip needs, but not all the way to zero. It often happens when a load surges, such as WiFi transmission, a backlight, or NeoPixels turning on, and the battery or a thin wire cannot deliver the current. Print <code>machine.reset_cause()</code> at startup to see if resets are power problems. Fixes include a fresher battery and a capacitor near the power pins.</p>
+<p><strong>Concept Tested:</strong> Brownout Detection</p>
+<p><strong>See:</strong> <a href="../#brownout-detection">Brownout Detection</a></p>
+</details>
+<hr />
+<h4 id="9-a-student-integrates-a-gyroscopes-rotation-rate-to-estimate-an-angle-after-a-minute-with-the-board-sitting-still-the-angle-has-slowly-wandered-what-explains-this-and-what-is-a-good-remedy">9. A student integrates a gyroscope's rotation rate to estimate an angle. After a minute with the board sitting still, the angle has slowly wandered. What explains this, and what is a good remedy?</h4>
+<div class="upper-alpha">
+<ol>
+<li>The gyroscope measures gravity, so it cannot ever be still</li>
+<li>Tiny errors add up as the rate is integrated, so combine it with the accelerometer's stable tilt</li>
+<li>The I2C address conflicts with the DS3231, so the gyroscope returns random values</li>
+<li>The ADC noise adds to the rate, so the reading should be averaged 16 times</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. A gyroscope reports how fast the board is rotating, not which way is down. Adding up (integrating) the rate gives an angle, but tiny errors accumulate, so the angle drifts. An accelerometer gives a stable but noisy tilt from gravity. The two sensors complement each other: the gyroscope is smooth but drifts, and the accelerometer is stable but noisy.</p>
+<p><strong>Concept Tested:</strong> Gyroscope Basics</p>
+<p><strong>See:</strong> <a href="../#gyroscope-basics">Gyroscope Basics</a></p>
+</details>
+<hr />
+<h4 id="10-a-smartwatch-draws-about-85-ma-and-its-backlight-alone-uses-about-60-ma-which-change-would-save-the-most-battery-life">10. A smartwatch draws about 85 mA, and its backlight alone uses about 60 mA. Which change would save the most battery life?</h4>
+<div class="upper-alpha">
+<ol>
+<li>Replace the DS3231 with a different RTC chip</li>
+<li>Use shorter wires between the display and the Pico</li>
+<li>Raise the CPU speed so that the program finishes sooner</li>
+<li>Dim the backlight and sleep between updates</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>D</strong>. The display is the biggest target for savings. In the chapter's example, dimming the backlight from 60 mA to 20 mA cuts the total from 85 mA to about 45 mA and roughly doubles the runtime. Sleeping between updates with a timer or RTC alarm as the wake source saves still more. The DS3231 uses under 1 mA, so replacing it would save almost nothing.</p>
+<p><strong>Concept Tested:</strong> Low Power Mode</p>
+<p><strong>See:</strong> <a href="../#low-power-mode">Low Power Mode</a></p>
+</details>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Content">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Content
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../references/" class="md-footer__link md-footer__link--next" aria-label="Next: Annotated References">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Annotated References
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../js/extra.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

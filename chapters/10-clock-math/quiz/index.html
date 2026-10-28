@@ -1,0 +1,2583 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/clocks-and-watches/chapters/10-clock-math/quiz/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../references/">
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Quiz - Clocks and Watches with AI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-EKTEBLZ2KP"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-EKTEBLZ2KP",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-EKTEBLZ2KP",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Quiz - Clocks and Watches with AI" >
+      
+        <meta  property="og:description"  content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/chapters/10-clock-math/quiz.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/clocks-and-watches/chapters/10-clock-math/quiz/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Quiz - Clocks and Watches with AI" >
+      
+        <meta  name="twitter:description"  content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/chapters/10-clock-math/quiz.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#642580" data-md-color-accent="#41BAC1">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#quiz-coordinates-trigonometry-and-clock-geometry" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Clocks and Watches with AI" class="md-header__button md-logo" aria-label="Clocks and Watches with AI" data-md-component="logo">
+      
+  <img src="../../../img/logo-180x180.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Clocks and Watches with AI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Quiz
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/clocks-and-watches" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Clocks and Watches with AI" class="md-nav__button md-logo" aria-label="Clocks and Watches with AI" data-md-component="logo">
+      
+  <img src="../../../img/logo-180x180.png" alt="logo">
+
+    </a>
+    Clocks and Watches with AI
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/clocks-and-watches" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../setup/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Setup
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../01-foundations/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    1. Computational Thinking and Physical Computing
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../02-electronics-fundamentals/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    2. Electronics Fundamentals and Breadboard Wiring
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../03-micropython-basics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    3. MicroPython Basics: Variables and Data Types
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../04-control-flow-functions/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    4. Control Flow, Functions, and Modules
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../05-pico-platform/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    5. The Pico Platform: Pins, Files, and Firmware
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../06-getting-time/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    6. Getting the Time in MicroPython
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../07-buttons-state-machines/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    7. Buttons, Interrupts, and State Machines
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../08-communication-buses/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    8. Communication Buses: I2C, SPI, and UART
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../09-led-displays/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    9. LED Displays and the First Digital Clock
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_11" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    10. Coordinates, Trigonometry, and Clock Geometry
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_11" id="__nav_5_11_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_11_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_11">
+            <span class="md-nav__icon md-icon"></span>
+            10. Coordinates, Trigonometry, and Clock Geometry
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Quiz
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Quiz
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-where-is-the-origin-0-0-on-a-displays-coordinate-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Where is the origin (0, 0) on a display's coordinate system?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-what-unit-of-angle-do-micropythons-mathsin-and-mathcos-expect" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. What unit of angle do MicroPython's math.sin() and math.cos() expect?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-why-does-the-formula-for-the-screen-position-of-a-clock-hand-tip-subtract-the-cosine-term-as-in-y-cy-r-cos" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Why does the formula for the screen position of a clock hand tip subtract the cosine term, as in y = cy - r * cos(θ)?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-why-does-the-hour-hand-angle-formula-include-the-extra-term-05-m" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Why does the hour hand angle formula include the extra term 0.5 * m?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-why-is-it-better-to-write-each-hand-length-as-a-fraction-of-the-face-radius-than-as-a-fixed-number-of-pixels" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Why is it better to write each hand length as a fraction of the face radius than as a fixed number of pixels?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-what-is-the-angle-of-the-hour-hand-at-91500-using-30-h-12-05-m" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. What is the angle of the hour hand at 9:15:00, using 30 * (h % 12) + 0.5 * m?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-a-hand-of-length-100-starts-at-the-center-120-120-and-points-at-6-oclock-which-is-180-degrees-where-is-its-tip" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. A hand of length 100 starts at the center (120, 120) and points at 6 o'clock, which is 180 degrees. Where is its tip?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-a-fixed-point-lookup-table-uses-scale-256-which-integer-is-stored-for-the-sine-of-30-degrees" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. A fixed-point lookup table uses SCALE = 256. Which integer is stored for the sine of 30 degrees?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-a-students-clock-draws-the-hand-pointing-straight-down-at-1200-and-straight-up-at-600-what-is-the-most-likely-cause" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. A student's clock draws the hand pointing straight down at 12:00, and straight up at 6:00. What is the most likely cause?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-why-does-a-lookup-table-with-fixed-point-integers-speed-up-drawing-an-analog-face-on-the-rp2040" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Why does a lookup table with fixed-point integers speed up drawing an analog face on the RP2040?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Annotated References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../11-oled-framebuffers/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    11. OLED Displays and Framebuffers
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../12-drawing-text-animation/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    12. Drawing Shapes, Text, and Animation
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../13-real-time-clocks/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    13. Real-Time Clocks and the DS3231
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../14-wifi-ntp/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    14. WiFi, NTP, and Time Accuracy
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../15-color-displays/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    15. Color Displays and Smartwatch Faces
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../16-neopixels-shift-registers/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    16. NeoPixels and Shift Register Clocks
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../17-sound-alarms-timers/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    17. Sound, Alarms, and Timers
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../18-sensors-power/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    18. Sensors, Power, and Low-Power Design
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../19-epaper-weather/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    19. E-Paper and Weather Displays
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../20-design-testing-ai/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    20. Design, Testing, and AI-Assisted Development
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../lessons/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Lessons
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../kits/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Kits
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../prompts/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-where-is-the-origin-0-0-on-a-displays-coordinate-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Where is the origin (0, 0) on a display's coordinate system?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-what-unit-of-angle-do-micropythons-mathsin-and-mathcos-expect" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. What unit of angle do MicroPython's math.sin() and math.cos() expect?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-why-does-the-formula-for-the-screen-position-of-a-clock-hand-tip-subtract-the-cosine-term-as-in-y-cy-r-cos" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Why does the formula for the screen position of a clock hand tip subtract the cosine term, as in y = cy - r * cos(θ)?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-why-does-the-hour-hand-angle-formula-include-the-extra-term-05-m" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Why does the hour hand angle formula include the extra term 0.5 * m?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-why-is-it-better-to-write-each-hand-length-as-a-fraction-of-the-face-radius-than-as-a-fixed-number-of-pixels" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Why is it better to write each hand length as a fraction of the face radius than as a fixed number of pixels?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-what-is-the-angle-of-the-hour-hand-at-91500-using-30-h-12-05-m" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. What is the angle of the hour hand at 9:15:00, using 30 * (h % 12) + 0.5 * m?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-a-hand-of-length-100-starts-at-the-center-120-120-and-points-at-6-oclock-which-is-180-degrees-where-is-its-tip" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. A hand of length 100 starts at the center (120, 120) and points at 6 o'clock, which is 180 degrees. Where is its tip?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-a-fixed-point-lookup-table-uses-scale-256-which-integer-is-stored-for-the-sine-of-30-degrees" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. A fixed-point lookup table uses SCALE = 256. Which integer is stored for the sine of 30 degrees?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-a-students-clock-draws-the-hand-pointing-straight-down-at-1200-and-straight-up-at-600-what-is-the-most-likely-cause" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. A student's clock draws the hand pointing straight down at 12:00, and straight up at 6:00. What is the most likely cause?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-why-does-a-lookup-table-with-fixed-point-integers-speed-up-drawing-an-analog-face-on-the-rp2040" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Why does a lookup table with fixed-point integers speed up drawing an analog face on the RP2040?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="quiz-coordinates-trigonometry-and-clock-geometry">Quiz: Coordinates, Trigonometry, and Clock Geometry</h1>
+<p>Test your understanding of screen coordinates, radians, sine and cosine, and clock hand geometry with these review questions.</p>
+<hr />
+<h4 id="1-where-is-the-origin-0-0-on-a-displays-coordinate-system">1. Where is the origin (0, 0) on a display's coordinate system?</h4>
+<div class="upper-alpha">
+<ol>
+<li>At the bottom-left corner of the screen</li>
+<li>At the center of the screen</li>
+<li>At the top-left corner of the screen</li>
+<li>At the top-right corner of the screen</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. On a display, x is the column counted from the left and y is the row counted from the top, so the origin is the top-left pixel. On a 240 by 240 screen the bottom-right pixel is (239, 239). This differs from a math class graph, where the origin is at the bottom-left and y increases upward. A point that looks higher on the screen has a smaller y.</p>
+<p><strong>Concept Tested:</strong> X Y Coordinate System</p>
+<p><strong>See:</strong> <a href="../#x-y-coordinate-system">X Y Coordinate System</a></p>
+</details>
+<hr />
+<h4 id="2-what-unit-of-angle-do-micropythons-mathsin-and-mathcos-expect">2. What unit of angle do MicroPython's <code>math.sin()</code> and <code>math.cos()</code> expect?</h4>
+<div class="upper-alpha">
+<ol>
+<li>Radians</li>
+<li>Degrees</li>
+<li>Clock positions from 0 to 59</li>
+<li>Pixels along the arc</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. Like most programming languages, MicroPython's math functions work in radians, where a full circle is about 6.283. Use <code>math.radians()</code> to convert from degrees. Passing a degree value directly gives an answer, but the wrong one, which makes this a classic mistake. Degrees, which split a circle into 360 parts, are what people use when thinking about angles.</p>
+<p><strong>Concept Tested:</strong> Radians vs Degrees</p>
+<p><strong>See:</strong> <a href="../#radians-vs-degrees">Radians vs Degrees</a></p>
+</details>
+<hr />
+<h4 id="3-why-does-the-formula-for-the-screen-position-of-a-clock-hand-tip-subtract-the-cosine-term-as-in-y-cy-r-cos">3. Why does the formula for the screen position of a clock hand tip subtract the cosine term, as in <code>y = cy - r * cos(θ)</code>?</h4>
+<div class="upper-alpha">
+<ol>
+<li>Cosine always returns a negative number for clock angles</li>
+<li>Subtraction keeps the result inside the display's pixel range</li>
+<li>The hand length must be reduced as the angle increases</li>
+<li>The screen's y-axis points down, so moving up means a smaller y</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>D</strong>. Clock angles start at 12 o'clock and go clockwise. At 0 degrees the tip should be straight above the center, which on the screen means a smaller y value. Because screen y increases downward, the cosine term is subtracted. Sine goes with x, since at 3 o'clock the tip moves right by the full radius. This pair of lines places every hand, tick mark, and number on a round face.</p>
+<p><strong>Concept Tested:</strong> Polar Coordinates</p>
+<p><strong>See:</strong> <a href="../#polar-coordinates">Polar Coordinates</a></p>
+</details>
+<hr />
+<h4 id="4-why-does-the-hour-hand-angle-formula-include-the-extra-term-05-m">4. Why does the hour hand angle formula include the extra term <code>0.5 * m</code>?</h4>
+<div class="upper-alpha">
+<ol>
+<li>It converts the hour from 24-hour form to 12-hour form</li>
+<li>It lets the hand creep smoothly instead of jumping from one hour to the next</li>
+<li>It adds the angle of the second hand to the hour hand</li>
+<li>It keeps the hour hand shorter than the minute hand</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. The hour hand turns 30 degrees per hour, which is 0.5 degrees per minute. Adding <code>0.5 * m</code> moves it a little each minute. Without it, the hand would sit exactly on the 3 until it jumped to the 4 on the hour, which looks wrong at 3:59. The conversion from 24-hour form is done by <code>h % 12</code>, and hand length is a separate matter.</p>
+<p><strong>Concept Tested:</strong> Angle Calculation</p>
+<p><strong>See:</strong> <a href="../#angle-calculation">Angle Calculation</a></p>
+</details>
+<hr />
+<h4 id="5-why-is-it-better-to-write-each-hand-length-as-a-fraction-of-the-face-radius-than-as-a-fixed-number-of-pixels">5. Why is it better to write each hand length as a fraction of the face radius than as a fixed number of pixels?</h4>
+<div class="upper-alpha">
+<ol>
+<li>The design scales automatically to any display size</li>
+<li>The Pico can only draw lines whose length is less than one</li>
+<li>Fractions are drawn faster than whole numbers on the screen</li>
+<li>The hour, minute, and second hands must all have the same length</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. If the hour hand is 0.50 of the radius, the minute hand 0.75, and the second hand 0.90, the same program works on a 240 pixel face or a 360 pixel face with no changes. Fixed pixel lengths would need editing for every screen. The hands also have different lengths on purpose, so you can tell them apart at a glance.</p>
+<p><strong>Concept Tested:</strong> Clock Hand Length</p>
+<p><strong>See:</strong> <a href="../#clock-hand-length">Clock Hand Length</a></p>
+</details>
+<hr />
+<h4 id="6-what-is-the-angle-of-the-hour-hand-at-91500-using-30-h-12-05-m">6. What is the angle of the hour hand at 9:15:00, using <code>30 * (h % 12) + 0.5 * m</code>?</h4>
+<div class="upper-alpha">
+<ol>
+<li>270 degrees</li>
+<li>285 degrees</li>
+<li>277.5 degrees</li>
+<li>315 degrees</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. The hour part is 30 × 9 = 270 degrees, and the minute part is 0.5 × 15 = 7.5 degrees, for a total of 277.5. The hour hand has moved a quarter of the way from the 9 toward the 10. The minute hand at that time is at 6 × 15 = 90 degrees, pointing at the 3. A value of exactly 270 would ignore the minutes.</p>
+<p><strong>Concept Tested:</strong> Angle Calculation</p>
+<p><strong>See:</strong> <a href="../#angle-calculation">Angle Calculation</a></p>
+</details>
+<hr />
+<h4 id="7-a-hand-of-length-100-starts-at-the-center-120-120-and-points-at-6-oclock-which-is-180-degrees-where-is-its-tip">7. A hand of length 100 starts at the center (120, 120) and points at 6 o'clock, which is 180 degrees. Where is its tip?</h4>
+<div class="upper-alpha">
+<ol>
+<li>(220, 120)</li>
+<li>(120, 20)</li>
+<li>(20, 120)</li>
+<li>(120, 220)</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>D</strong>. At 180 degrees, sine is 0 and cosine is −1, so x = 120 + 100 × 0 = 120 and y = 120 − 100 × (−1) = 220. The tip is straight below the center, which is correct for 6 o'clock because y grows downward. Option A is the 3 o'clock position, option B is 12 o'clock, and option C is 9 o'clock.</p>
+<p><strong>Concept Tested:</strong> Cosine Function</p>
+<p><strong>See:</strong> <a href="../#polar-coordinates">Polar Coordinates</a></p>
+</details>
+<hr />
+<h4 id="8-a-fixed-point-lookup-table-uses-scale-256-which-integer-is-stored-for-the-sine-of-30-degrees">8. A fixed-point lookup table uses <code>SCALE = 256</code>. Which integer is stored for the sine of 30 degrees?</h4>
+<div class="upper-alpha">
+<ol>
+<li>64</li>
+<li>128</li>
+<li>256</li>
+<li>0</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>B</strong>. The sine of 30 degrees is 0.5, and multiplying by the scale factor of 256 gives 128. To get the real value back, you divide by 256 or shift right by 8. Storing sine and cosine for the 60 possible angles at startup means each frame needs only integer multiplication and shifts. A stored value of 256 would stand for a sine of 1, which happens at 90 degrees.</p>
+<p><strong>Concept Tested:</strong> Fixed Point Arithmetic</p>
+<p><strong>See:</strong> <a href="../#fixed-point-arithmetic">Fixed Point Arithmetic</a></p>
+</details>
+<hr />
+<h4 id="9-a-students-clock-draws-the-hand-pointing-straight-down-at-1200-and-straight-up-at-600-what-is-the-most-likely-cause">9. A student's clock draws the hand pointing straight down at 12:00, and straight up at 6:00. What is the most likely cause?</h4>
+<div class="upper-alpha">
+<ol>
+<li>The angle was left in degrees instead of being changed to radians</li>
+<li>The center point was calculated with <code>/</code> instead of <code>//</code></li>
+<li>The student added <code>r * cos(θ)</code> to <code>cy</code> instead of subtracting it</li>
+<li>The hand length was set larger than the radius of the face</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>C</strong>. Adding the cosine term instead of subtracting it flips the vertical direction, because the screen's y-axis points down. The hand then points in exactly the opposite vertical direction, as if the math-class convention had been used. A degree-versus-radian error would produce hands pointing in seemingly random directions, not a clean mirror image, and an oversized length would only make the hand too long.</p>
+<p><strong>Concept Tested:</strong> X Y Coordinate System</p>
+<p><strong>See:</strong> <a href="../#x-y-coordinate-system">X Y Coordinate System</a></p>
+</details>
+<hr />
+<h4 id="10-why-does-a-lookup-table-with-fixed-point-integers-speed-up-drawing-an-analog-face-on-the-rp2040">10. Why does a lookup table with fixed-point integers speed up drawing an analog face on the RP2040?</h4>
+<div class="upper-alpha">
+<ol>
+<li>The RP2040 has no floating-point hardware, so a precomputed table avoids slow software sine and cosine</li>
+<li>The table lets the Pico skip the drawing step for the tick marks entirely</li>
+<li>Integers use less flash memory than floats, so programs load faster</li>
+<li>The RP2040 can only perform sine and cosine on whole-number angles</li>
+</ol>
+</div>
+<details class="question">
+<summary>Show Answer</summary>
+<p>The correct answer is <strong>A</strong>. Every <code>sin()</code> and <code>cos()</code> call on the RP2040 runs in software, which is relatively slow, and calling them for 60 tick marks each frame wastes time. Computing the values once at startup and storing them as scaled integers means each frame needs only multiplication and bit shifts. The rounding error is at most 1/256 of the length, less than half a pixel for a 120-pixel hand.</p>
+<p><strong>Concept Tested:</strong> Integer Math Tricks</p>
+<p><strong>See:</strong> <a href="../#integer-math-tricks">Integer Math Tricks</a></p>
+</details>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Content">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Content
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../references/" class="md-footer__link md-footer__link--next" aria-label="Next: Annotated References">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Annotated References
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../js/extra.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
