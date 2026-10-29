@@ -1,0 +1,3524 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Build a Swiss-railway-style wall clock with a Raspberry Pi Pico W and a round color screen. Its red second hand glides around the dial, stops at the top, and waits while the minute hand hops ahead. 16 labs, no soldering.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/clocks-and-watches/kits/mondaine/">
+      
+      
+        <link rel="prev" href="../sw-gc9b72/teacher-notes/">
+      
+      
+        <link rel="next" href="00-blink-onboard-led/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Railway Clock Kit (Mondaine-Style) - Clocks and Watches with AI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-EKTEBLZ2KP"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-EKTEBLZ2KP",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-EKTEBLZ2KP",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Railway Clock Kit (Mondaine-Style) - Clocks and Watches with AI" >
+      
+        <meta  property="og:description"  content="Build a Swiss-railway-style wall clock with a Raspberry Pi Pico W and a round color screen. Its red second hand glides around the dial, stops at the top, and waits while the minute hand hops ahead. 16 labs, no soldering." >
+      
+        <meta property="og:image" content="https://dmccreary.github.io/clocks-and-watches/kits/mondaine/img/15-mondaine-clock.png">
+      
+        <meta property="og:image:type" content="image/png">
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/clocks-and-watches/kits/mondaine/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Railway Clock Kit (Mondaine-Style) - Clocks and Watches with AI" >
+      
+        <meta  name="twitter:description"  content="Build a Swiss-railway-style wall clock with a Raspberry Pi Pico W and a round color screen. Its red second hand glides around the dial, stops at the top, and waits while the minute hand hops ahead. 16 labs, no soldering." >
+      
+        <meta name="twitter:image" content="https://dmccreary.github.io/clocks-and-watches/kits/mondaine/img/15-mondaine-clock.png">
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#642580" data-md-color-accent="#41BAC1">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#railway-clock-kit-mondaine-style" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Clocks and Watches with AI" class="md-header__button md-logo" aria-label="Clocks and Watches with AI" data-md-component="logo">
+      
+  <img src="../../img/logo-180x180.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Clocks and Watches with AI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Railway Clock Kit (Mondaine-Style)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/clocks-and-watches" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Clocks and Watches with AI" class="md-nav__button md-logo" aria-label="Clocks and Watches with AI" data-md-component="logo">
+      
+  <img src="../../img/logo-180x180.png" alt="logo">
+
+    </a>
+    Clocks and Watches with AI
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/clocks-and-watches" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../setup/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Setup
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../chapters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../lessons/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Lessons
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Kits
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Kits
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gallery/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gallery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../tm1637/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    TM1637 LED Kit
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../led-displays/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    LED Displays
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../neopixel/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    NeoPixel Clocks
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../char-lcd-clock/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Character LCD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../ssd1306-i2c/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    SSD1306 I2C
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../oled-large/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Large OLED
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stopwatch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Stopwatch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../oled-wireless/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wireless OLED
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sh1106/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SH1106 OLED
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../st7735/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ST7735
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../ili9341/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ILI9341
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../gc9a01/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    GC9A01
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../sw-gc9b72/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Chrono Smart Clock Kit (GC9B72, Pico 2 W)
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_16" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="./" class="md-nav__link md-nav__link--active">
+              
+  
+  <span class="md-ellipsis">
+    Railway Clock Kit, Mondaine-Style (GC9B72, Pico W)
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link md-nav__link--active" for="__nav_7_16" id="__nav_7_16_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_16_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7_16">
+            <span class="md-nav__icon md-icon"></span>
+            Railway Clock Kit, Mondaine-Style (GC9B72, Pico W)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="00-blink-onboard-led/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    00 Blink the LED
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-hello-display/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01 Hello, Display
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-dial-dots/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02 Twelve Dots
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-hour-markers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03 Twelve Bars
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-minute-markers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    04 Sixty Bars
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-black-hands/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    05 Black Hands
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-red-second-hand/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    06 Red Second Hand
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-read-the-time/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07 Show the Real Time
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-wifi-sync-time/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    08 WiFi Time
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-tick-tock/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    09 Tick Tock
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10-smooth-sweep/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10 Smooth Sweep
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11-stop-at-twelve/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11 Stop at Twelve
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12-minute-jump/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12 The Minute Jump
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13-button-test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13 Button Test
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="14-set-time/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    14 Set the Time
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="15-mondaine-clock/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    15 The Railway Clock
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="teacher-notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Notes for Teachers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../rect-tft-display/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Knob Clock Kit (ST7735S, Pico 2 W)
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../study-buddy/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Study Buddy (Spec)
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../lilygo/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    LILYGO SY7789
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../portable-watch-kits/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Portable SmartWatch Kits
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../waveshare-lcd/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Waveshare
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../max7219/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MAX7219
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../e-paper/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    E-Paper Clock
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../waveshare-e-paper/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Waveshare E-Paper
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../alarm-clock/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Alarm Clock
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tm1650-led-clock/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TM1650 Clock
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../prompts/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-your-clock-will-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Your Clock Will Do
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      How It Works
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-kids-and-grown-ups-like-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Kids (and Grown-Ups) Like It
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#for-parents" class="md-nav__link">
+    <span class="md-ellipsis">
+      For Parents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#for-teachers-mentors-and-volunteers" class="md-nav__link">
+    <span class="md-ellipsis">
+      For Teachers, Mentors, and Volunteers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-in-the-kit" class="md-nav__link">
+    <span class="md-ellipsis">
+      What's in the Kit
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-is-wired" class="md-nav__link">
+    <span class="md-ellipsis">
+      How It Is Wired
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#before-you-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      Before You Start
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-labs" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Labs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#words-to-know" class="md-nav__link">
+    <span class="md-ellipsis">
+      Words to Know
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#about-the-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      About the Design
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#for-teachers" class="md-nav__link">
+    <span class="md-ellipsis">
+      For Teachers
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="railway-clock-kit-mondaine-style">Railway Clock Kit (Mondaine-Style)</h1>
+<p><strong>Build the clock from the Swiss railway station: a plain white face, bold
+black hands, and a red second hand that stops at the top of every minute
+while the minute hand hops.</strong></p>
+<p><img alt="The finished railway clock: a white dial with heavy black bars, black hour and minute hands, and a thin red second hand ending in a round disc" src="img/15-mondaine-clock.png" width="360" /></p>
+<p>Look closely at a Swiss station clock and you'll notice something odd. The
+red second hand glides around the dial, then <strong>stops at the top</strong> and
+waits for a moment. While it waits, the minute hand <strong>hops forward one
+minute</strong>. Then the red hand sets off again. It happens once every minute,
+and once you've seen it, you'll watch for it every time.</p>
+<p>Your clock does the same thing, on a bright round screen, and <strong>you write
+every line of its code.</strong> Along the way you learn real Python, the same
+language used by scientists and game makers.</p>
+<p><strong>Ages 10 and up. No soldering. No experience needed. Under $20 in parts.</strong></p>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Meet Chrono</p>
+<p><img alt="Chrono waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+Hi, I'm Chrono! I'm a robot, and my head is the same kind of round
+screen you're about to program. I'll pop up in the labs to give you
+tips, warn you about traps, and cheer when you finish. Let's make time
+tick!</p>
+</div>
+<h2 id="what-your-clock-will-do">What Your Clock Will Do</h2>
+<ul>
+<li><strong>Look like a station clock.</strong> A white dial, twelve heavy bars, 48 small
+  ones, tapered black hands, and a red hand with a round disc on its end.</li>
+<li><strong>Glide, stop, and hop.</strong> The red hand takes 58.5 seconds to circle the
+  dial and then waits 1.5 seconds at 12. The minute hand moves during the
+  wait, with a smooth start and a soft landing.</li>
+<li><strong>Set its own time.</strong> It asks the internet what time it is, so it is
+  never wrong.</li>
+<li><strong>Be set by hand.</strong> Three buttons set the hour and the minute when there
+  is no WiFi.</li>
+</ul>
+<p><img alt="Six pictures of the end of one minute: the red hand gliding, arriving at 12, the minute hand beginning to hop, mid-hop, landed, and the red hand setting off again" src="img/12-storyboard.png" /></p>
+<h2 id="how-it-works">How It Works</h2>
+<p>There are 16 short labs, numbered 00 to 15. Each lab is one program, and
+each one teaches a single new idea that you use in the labs after it.</p>
+<ol>
+<li><strong>Wake it up (labs 00-01).</strong> Blink a light and say hello on the screen.</li>
+<li><strong>Build the face (labs 02-06).</strong> Place dots, then bars, then hands, one
+   idea at a time, until the finished face appears on the screen.</li>
+<li><strong>Make it tell time (labs 07-09).</strong> Read the Pico's clock, set it from
+   the internet, and make the red hand tick.</li>
+<li><strong>Make it glide, stop, and hop (labs 10-12).</strong> The three labs that
+   make this clock special.</li>
+<li><strong>Make it yours (labs 13-15).</strong> Test the buttons, set the time by hand,
+   and put everything together.</li>
+</ol>
+<h2 id="why-kids-and-grown-ups-like-it">Why Kids (and Grown-Ups) Like It</h2>
+<ul>
+<li><strong>You see results fast.</strong> Every lab ends with something new on the
+  screen, not just text in a window.</li>
+<li><strong>A real design.</strong> The proportions come from one of the most famous clock
+  faces in the world, so you also learn why it looks the way it does.</li>
+<li><strong>It is a real computer.</strong> The Raspberry Pi Pico W is the same kind of
+  chip found in appliances, toys, and instruments.</li>
+<li><strong>Mistakes are cheap and safe.</strong> Nothing you type can break the kit. The
+  only thing to watch is one wire, and the kit tells you which.</li>
+</ul>
+<h2 id="for-parents">For Parents</h2>
+<ul>
+<li><strong>What your child learns:</strong> Python programming (variables, loops,
+  functions, classes), the math of angles, how a computer reads buttons and
+  draws to a screen, and how a clock keeps time.</li>
+<li><strong>How much help they need:</strong> Most 10-12 year olds do the labs on their
+  own once the kit is set up. An adult helps most with the first-time setup
+  (about 30 minutes).</li>
+<li><strong>Privacy and safety:</strong> The clock has <strong>no microphone and no camera</strong>. It
+  connects to your home WiFi only to get the time, and it stores nothing
+  about your family. It runs on a 5-volt USB cable, so there is no mains
+  wiring.</li>
+<li><strong>What it costs:</strong> Under $20 in parts (a $5 Pico and a $6 display are the
+  big two), and no subscription. The parts are the same ones as the
+  <a href="../sw-gc9b72/">Chrono Smart Clock Kit</a>, so a kit you already
+  have runs both. See <a href="teacher-notes/#sourcing-parts">Notes for Teachers</a>
+  for where to buy.</li>
+</ul>
+<h2 id="for-teachers-mentors-and-volunteers">For Teachers, Mentors, and Volunteers</h2>
+<ul>
+<li><strong>Fits a class period.</strong> Each lab is a self-contained 30-45 minute
+  session with a working result at the end. Labs 00-04 make a good first
+  meeting.</li>
+<li><strong>One new idea per lab.</strong> The concept list is in the
+  <a href="teacher-notes/#the-lab-sequence">Notes for Teachers</a>: loops, math,
+  functions, <code>%</code> and <code>if</code>, tuples, <code>while</code>, <code>if / else</code> phases, easing,
+  and classes.</li>
+<li><strong>No soldering, no special tools.</strong> Everything plugs into a breadboard.</li>
+<li><strong>Runs on what you have.</strong> Any computer that runs Thonny (Windows, Mac,
+  Chromebook, Linux) works.</li>
+<li><strong>Every picture is real.</strong> The screen images come from the labs' own code
+  running on a simulator of the display, so what students see in the book
+  is what the code draws.</li>
+</ul>
+<h2 id="whats-in-the-kit">What's in the Kit</h2>
+<p><img alt="" src="../sw-gc9b72/img/smart-clock-rear.jpg" /><br/>
+<em>A rear view of the kit showing the breadboard, buttons and a 20cm Dupont
+cable with hot glue to make it easy for the student to connect the
+display.</em></p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Raspberry Pi Pico W</strong></td>
+<td>The brain of the clock. It's a <em>microcontroller</em>, a tiny computer on a board about the size of a stick of gum. The <strong>W</strong> means it has WiFi, so it can talk to the internet. A Pico 2 W works too.</td>
+</tr>
+<tr>
+<td><strong>Round color display</strong></td>
+<td>The clock face. It is 2.1 inches across and has 360 × 360 tiny dots of light called <strong>pixels</strong>. A chip on the back called the <strong>GC9B72</strong> turns the Pico's messages into pictures.</td>
+</tr>
+<tr>
+<td><strong>Three push buttons</strong></td>
+<td>How you control the clock. They are called <strong>MODE</strong>, <strong>UP</strong>, and <strong>DOWN</strong>.</td>
+</tr>
+<tr>
+<td><strong>Breadboard and wires</strong></td>
+<td>Connect everything without soldering.</td>
+</tr>
+<tr>
+<td><strong>USB cable</strong></td>
+<td>Gives the Pico power, and lets your computer send it programs.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="how-it-is-wired">How It Is Wired</h2>
+<p>The display has a row of 10 connection points along its bottom edge.
+Reading from left to right, they are labeled:
+<strong>GND VCC SCL SDA RST DC CS BL SDO TE</strong>.
+Only the first eight are used. Each one connects to a numbered pin on the
+Pico, like this:</p>
+<table>
+<thead>
+<tr>
+<th>Display pin</th>
+<th>Pico pin</th>
+<th>Wire color</th>
+<th>What it carries</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GND</td>
+<td>GND</td>
+<td>black</td>
+<td>Ground, the "minus" side of the power</td>
+</tr>
+<tr>
+<td>VCC</td>
+<td>3V3</td>
+<td>red</td>
+<td>Power, 3.3 volts</td>
+</tr>
+<tr>
+<td>SCL</td>
+<td>GP2</td>
+<td>orange</td>
+<td>The clock beat that keeps the Pico and display in step</td>
+</tr>
+<tr>
+<td>SDA</td>
+<td>GP3</td>
+<td>yellow</td>
+<td>The data: the actual colors of the pixels</td>
+</tr>
+<tr>
+<td>RST</td>
+<td>GP4</td>
+<td>green</td>
+<td>Reset: tells the display to start fresh</td>
+</tr>
+<tr>
+<td>DC</td>
+<td>GP5</td>
+<td>blue</td>
+<td>Says whether the next data is a command or a picture</td>
+</tr>
+<tr>
+<td>CS</td>
+<td>GP6</td>
+<td>purple</td>
+<td>"Hey display, I'm talking to you!"</td>
+</tr>
+<tr>
+<td>BL</td>
+<td>GP7</td>
+<td>gray</td>
+<td>The backlight that makes the screen glow</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Use 3V3, Not 5 Volts</p>
+<p><img alt="Chrono warning" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+The display's VCC wire must go to the Pico's <strong>3V3</strong> pin. The display
+is built for 3.3 volts, and 5 volts can damage it. Just a few pins
+away are <strong>VSYS</strong> and <strong>VBUS</strong>, which carry about 5 volts from the USB
+cable, so double-check the label before you plug in.</p>
+</div>
+<p>The last two pins on the row, <strong>SDO</strong> and <strong>TE</strong>, stay unconnected. The
+clock only ever sends pictures <em>to</em> the display, so it never needs them.</p>
+<p>Each button has two legs. One leg goes to a Pico pin, and the other goes
+to GND:</p>
+<table>
+<thead>
+<tr>
+<th>Button</th>
+<th>Pico pin</th>
+<th>What it does in this kit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MODE</td>
+<td>GP13</td>
+<td>Steps through run, set hour, set minute. Hold it to set the clock from the internet.</td>
+</tr>
+<tr>
+<td>UP</td>
+<td>GP14</td>
+<td>Moves the hand being set forward</td>
+</tr>
+<tr>
+<td>DOWN</td>
+<td>GP15</td>
+<td>Moves the hand being set back</td>
+</tr>
+</tbody>
+</table>
+<h2 id="before-you-start">Before You Start</h2>
+<p>You only need to do these steps once.</p>
+<ol>
+<li><strong>Put MicroPython on the Pico.</strong> MicroPython is the version of the
+   Python language that runs on small boards like the Pico. Be sure to use
+   the version that matches your board, for the
+   <a href="https://micropython.org/download/RPI_PICO_W/">Pico W</a> or the
+   <a href="https://micropython.org/download/RPI_PICO2_W/">Pico 2 W</a>. The versions
+   for the plain Pico and Pico 2 have no WiFi.</li>
+<li><strong>Install Thonny.</strong> <a href="https://thonny.org">Thonny</a> is the program you
+   will use to write code and send it to the Pico.</li>
+<li><strong>Copy the kit's files onto the Pico.</strong> The labs need some helper files
+   that live in a folder called <code>lib</code> on the Pico, and a settings file
+   called <code>config.py</code>. Your teacher may have done this for you. If not, the
+   kit folder has a script called <code>upload-code.sh</code> that copies everything
+   at once.</li>
+<li><strong>Tell the clock about your WiFi.</strong> Copy the file <code>secrets-template.py</code>
+   to a new file called <code>secrets.py</code>, and type in your WiFi network's name
+   and password. Labs 08 and 15 use it. (<code>secrets.py</code> is kept private: it
+   never gets shared online.)</li>
+<li><strong>Tell the clock your time zone.</strong> Open <code>config.py</code> and find
+   <code>TIMEZONE_HOURS</code>. Use -5 for Eastern time, -6 for Central, -7 for
+   Mountain, or -8 for Pacific.</li>
+</ol>
+<h2 id="the-labs">The Labs</h2>
+<p>Click a picture to open that lab.</p>
+<table>
+<thead>
+<tr>
+<th>Lab</th>
+<th></th>
+<th>What you will do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="00-blink-onboard-led/">00</a></td>
+<td><a href="00-blink-onboard-led/"><img alt="Blinking LED" src="../../img/blink-on-board-led.gif" width="110" /></a></td>
+<td>Make a tiny light on the Pico blink, to check that everything works</td>
+</tr>
+<tr>
+<td><a href="01-hello-display/">01</a></td>
+<td><a href="01-hello-display/"><img alt="Hello" src="img/01-hello-display.png" width="110" /></a></td>
+<td>Say hello on the round screen</td>
+</tr>
+<tr>
+<td><a href="02-dial-dots/">02</a></td>
+<td><a href="02-dial-dots/"><img alt="Dots" src="img/02-dial-dots.png" width="110" /></a></td>
+<td>Place twelve dots in a circle with sine and cosine</td>
+</tr>
+<tr>
+<td><a href="03-hour-markers/">03</a></td>
+<td><a href="03-hour-markers/"><img alt="Hour bars" src="img/03-hour-markers.png" width="110" /></a></td>
+<td>Draw the twelve heavy hour bars with your own functions</td>
+</tr>
+<tr>
+<td><a href="04-minute-markers/">04</a></td>
+<td><a href="04-minute-markers/"><img alt="All bars" src="img/04-minute-markers.png" width="110" /></a></td>
+<td>Add the 48 small minute bars with <code>%</code> and <code>if</code></td>
+</tr>
+<tr>
+<td><a href="05-black-hands/">05</a></td>
+<td><a href="05-black-hands/"><img alt="Black hands" src="img/05-black-hands.png" width="110" /></a></td>
+<td>Turn a time into angles and draw the black hands</td>
+</tr>
+<tr>
+<td><a href="06-red-second-hand/">06</a></td>
+<td><a href="06-red-second-hand/"><img alt="Red hand" src="img/06-red-second-hand.png" width="110" /></a></td>
+<td>Add the red second hand, and finish the face</td>
+</tr>
+<tr>
+<td><a href="07-read-the-time/">07</a></td>
+<td><a href="07-read-the-time/"><img alt="Real time" src="img/07-read-the-time.png" width="110" /></a></td>
+<td>Show the Pico's real time on the face</td>
+</tr>
+<tr>
+<td><a href="08-wifi-sync-time/">08</a></td>
+<td><a href="08-wifi-sync-time/"><img alt="WiFi time" src="img/08-wifi-sync-time.png" width="110" /></a></td>
+<td>Ask the internet what time it is</td>
+</tr>
+<tr>
+<td><a href="09-tick-tock/">09</a></td>
+<td><a href="09-tick-tock/"><img alt="Tick tock" src="img/09-tick-tock.png" width="110" /></a></td>
+<td>Make the red hand tick once a second</td>
+</tr>
+<tr>
+<td><a href="10-smooth-sweep/">10</a></td>
+<td><a href="10-smooth-sweep/"><img alt="Sweep" src="img/10-smooth-sweep.png" width="110" /></a></td>
+<td>Make the red hand glide, in milliseconds</td>
+</tr>
+<tr>
+<td><a href="11-stop-at-twelve/">11</a></td>
+<td><a href="11-stop-at-twelve/"><img alt="Stop at 12" src="img/11-stop-at-twelve.png" width="110" /></a></td>
+<td>Make the red hand stop at 12 and wait</td>
+</tr>
+<tr>
+<td><a href="12-minute-jump/">12</a></td>
+<td><a href="12-minute-jump/"><img alt="Minute jump" src="img/12-minute-jump.png" width="110" /></a></td>
+<td>Hop the minute hand during the wait</td>
+</tr>
+<tr>
+<td><a href="13-button-test/">13</a></td>
+<td><a href="13-button-test/"><img alt="Buttons" src="img/13-button-test.png" width="110" /></a></td>
+<td>Test the three buttons</td>
+</tr>
+<tr>
+<td><a href="14-set-time/">14</a></td>
+<td><a href="14-set-time/"><img alt="Set time" src="img/14-set-time.png" width="110" /></a></td>
+<td>Set the time with the buttons</td>
+</tr>
+<tr>
+<td><a href="15-mondaine-clock/">15</a></td>
+<td><a href="15-mondaine-clock/"><img alt="The clock" src="img/15-mondaine-clock.png" width="110" /></a></td>
+<td>Put it all together into one finished clock</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Which Program Is Running?</p>
+<p><img alt="Chrono giving a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+Every lab prints its name and version number in Thonny's shell when it
+starts, like <code>12-minute-jump.py v1.0</code>. If the screen isn't doing what
+you expect, check that line first. It tells you which program the Pico
+is actually running.</p>
+</div>
+<h2 id="words-to-know">Words to Know</h2>
+<table>
+<thead>
+<tr>
+<th>Word</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pixel</strong></td>
+<td>One tiny dot of light on the screen. This screen has 360 × 360 = 129,600 of them.</td>
+</tr>
+<tr>
+<td><strong>Microcontroller</strong></td>
+<td>A small computer built to control one thing, like a clock, a toy, or a microwave.</td>
+</tr>
+<tr>
+<td><strong>Program</strong></td>
+<td>A list of instructions for a computer, written in a language like Python.</td>
+</tr>
+<tr>
+<td><strong>Loop</strong></td>
+<td>Part of a program that repeats over and over. A clock's program runs in a loop forever.</td>
+</tr>
+<tr>
+<td><strong>Variable</strong></td>
+<td>A name that holds a value, like <code>second = 42</code>.</td>
+</tr>
+<tr>
+<td><strong>Function</strong></td>
+<td>A named set of instructions you can use again and again, like <code>bar()</code>.</td>
+</tr>
+<tr>
+<td><strong>Module</strong></td>
+<td>A file of Python code that other programs can borrow from with <code>import</code>.</td>
+</tr>
+<tr>
+<td><strong>Millisecond</strong></td>
+<td>A thousandth of a second. The red hand is redrawn every 50 or so of them.</td>
+</tr>
+<tr>
+<td><strong>Easing</strong></td>
+<td>Making a move start slowly and end gently, instead of starting and stopping all at once.</td>
+</tr>
+<tr>
+<td><strong>WiFi</strong></td>
+<td>A way for devices to connect to the internet without wires.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="about-the-design">About the Design</h2>
+<p>The look of this clock follows the Swiss railway station clock, designed
+for the Swiss Federal Railways (SBB) in the 1940s. This kit is an
+independent project for learning. It is not made, sold, or endorsed by SBB
+or by Mondaine, and the face has no logo or brand name on it. "SBB" and
+"Mondaine" belong to their owners.</p>
+<h2 id="for-teachers">For Teachers</h2>
+<p>The <a href="teacher-notes/">Notes for Teachers</a> page has the technical details:
+the lab sequence and the idea each lab introduces, how the face is drawn
+without flicker, the timing of the stop-and-go, what has and hasn't been
+tested on real hardware, and a troubleshooting table. The screen pictures
+in these pages were made by running each lab's real code in a simulator of
+the display.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../sw-gc9b72/teacher-notes/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Notes for Teachers">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Notes for Teachers
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="00-blink-onboard-led/" class="md-footer__link md-footer__link--next" aria-label="Next: 00 Blink the LED">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                00 Blink the LED
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
