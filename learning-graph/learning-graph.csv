@@ -160,7 +160,7 @@ ConceptID,ConceptLabel,Dependencies,TaxonomyID
 159,Color565 Function,158|24,DISP
 160,Color Palette,14|269,DISP
 161,Colors File,160|29|159,DISP
-162,Round Display,153|279|290,DISP
+162,Round Display,153|279,DISP
 163,Smartwatch Display,162|157,DISP
 164,Display Rotation,138|46,DISP
 165,Analog Clock Face,144|166|167|233,DISP
@@ -349,4 +349,3 @@ ConceptID,ConceptLabel,Dependencies,TaxonomyID
 348,Bistable Display,123,DISP
 349,E-Paper Ghosting,230|348,DISP
 350,Partial E-Paper Refresh,230|286|348,DISP
-351,Display Shapes,279|288,DISP
