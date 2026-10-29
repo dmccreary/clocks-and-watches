@@ -235,6 +235,12 @@ Interactive MicroSims to help students learn how clocks and watches work, from b
 
     Read captured I2C and button waveforms on a logic analyzer, click each part to decode it, and diagnose a missing acknowledgment, weak pull-ups or contact bounce.
 
+-   **[Mondaine Swiss Railway Clock](./mondaine-railway-clock/index.md)**
+
+    ![Swiss railway clock with black hour and minute hands and a red paddle seconds hand](./mondaine-railway-clock/mondaine-railway-clock.png)
+
+    Explore a watch face inspired by the 1952 SBB/Moser-Baer dial standard. Watch the seconds hand glide around in 58 seconds, pause at twelve, and wait while the minute and hour hands advance. Adjust playback speed or replay the pause to inspect the sequence.
+
 -   **[NeoPixel Digit Layout](./neopixel-digit-layout/index.md)**
 
     ![NeoPixel Digit Layout](./neopixel-digit-layout/neopixel-digit-layout.png)
