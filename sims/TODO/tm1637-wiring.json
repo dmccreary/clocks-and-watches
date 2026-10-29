@@ -1,0 +1,15 @@
+{
+  "sim_id": "tm1637-wiring",
+  "diagram_name": "TM1637 Wiring Diagram",
+  "chapter_number": 9,
+  "chapter_title": "LED Displays and the First Digital Clock",
+  "chapter_dir": "09-led-displays",
+  "chapter_rel_dir": "chapters/09-led-displays",
+  "library": "p5.js",
+  "bloom_level": "Applying",
+  "bloom_verb": "apply",
+  "learning_objective": "Students will *apply* a wiring table by connecting the correct pins in a virtual build (Bloom: Applying).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: interactive diagram\n**sim-id:** tm1637-wiring<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *apply* a wiring table by connecting the correct pins in a virtual build (Bloom: Applying).\n\n**Visual elements:** A Pico pinout on the left and a TM1637 module on the right, with the four module pins (VCC, GND, CLK, DIO) highlighted.\n\n**Interactions:**\n\n- The student drags a wire from each module pin to a Pico pin. Correct connections lock in the wire color from the table; wrong ones show a hint such as \"VCC needs 3.3 V, not GND.\"\n- When all four are correct, the module display lights up `12:34` and the colon flashes.\n- A \"Show answer\" button draws the correct wires.\n\n**Responsive design:** Board and module scale to the canvas; touch drag is supported.\n\nImplementation: p5.js with pin hit-testing."
+}

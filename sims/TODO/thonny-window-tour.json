@@ -1,0 +1,15 @@
+{
+  "sim_id": "thonny-window-tour",
+  "diagram_name": "Thonny Window Tour",
+  "chapter_number": 3,
+  "chapter_title": "MicroPython Basics: Variables and Data Types",
+  "chapter_dir": "03-micropython-basics",
+  "chapter_rel_dir": "chapters/03-micropython-basics",
+  "library": "p5.js",
+  "bloom_level": "Remembering, Understanding",
+  "bloom_verb": "identify, explain",
+  "learning_objective": "Students will *identify* the parts of the Thonny window and *explain* what each is for (Bloom: Remembering, Understanding).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: interactive infographic\n**sim-id:** thonny-window-tour<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *identify* the parts of the Thonny window and *explain* what each is for (Bloom: Remembering, Understanding).\n\n**Visual elements:** A screenshot-style mockup of Thonny with numbered hotspots: interpreter selector, editor, Run button, Stop button, Shell, and file location tabs (\"This computer\" vs \"MicroPython device\").\n\n**Interactions:** Hovering a hotspot shows its name; clicking shows a two-sentence description and a \"Try this\" step. A \"Quiz me\" mode asks \"Where would you type a quick test line?\" and the student clicks the right region.\n\n**Responsive design:** Image scales to container; hotspot positions are stored as percentages.\n\nImplementation: p5.js with normalized hotspot rectangles."
+}

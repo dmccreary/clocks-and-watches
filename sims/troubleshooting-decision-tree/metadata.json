@@ -1,0 +1,84 @@
+{
+  "title": "Troubleshooting Decision Tree",
+  "creator": "Dan McCreary",
+  "subject": [
+    "Troubleshooting",
+    "Debugging",
+    "Decision Tree",
+    "Hardware Testing"
+  ],
+  "description": "Interactive Mermaid troubleshooting decision tree for Pico clocks. Students pick one of five symptom families, follow yes and no questions with the test to run at each step, and reach a suggested fix and the chapter to review, with a breadcrumb of their path.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Systematic troubleshooting of Pico clock projects",
+    "learningObjectives": [
+      "Analyze a symptom and select the most likely cause",
+      "Choose the next test that best splits the remaining possible causes",
+      "Explain why power and wiring are checked before code"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "duration": "15-20 minutes",
+    "prerequisites": [
+      "Troubleshooting and systematic debugging (Chapter 20)",
+      "I2C scan and tracebacks"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "Mermaid",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 600
+    },
+    "responsive": true,
+    "dependencies": [
+      "Mermaid 11.4.1"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Guided case studies through a decision tree",
+    "keyQuestions": [
+      "What is the cheapest test that rules out the most causes?",
+      "Why check power before code?",
+      "How does a whole-hour time error differ from drift?"
+    ],
+    "commonMisconceptions": [
+      "A blank screen always means broken code (power and wiring are more common causes)",
+      "Random resets are always hardware (a crash and restart looks the same)"
+    ],
+    "assessmentOpportunities": [
+      "Record the path and fix for written case studies",
+      "Design a new question and test for the tree"
+    ]
+  },
+  "chapter": "20-design-testing-ai",
+  "controls": [
+    {
+      "type": "diagram-click",
+      "label": "Click any box",
+      "description": "Selects that question or fix, highlights the path and shows the reasoning and test."
+    },
+    {
+      "type": "hover",
+      "label": "Hover any box",
+      "description": "Previews its details."
+    },
+    {
+      "type": "button",
+      "label": "Start over",
+      "description": "Returns to the symptom overview."
+    }
+  ]
+}

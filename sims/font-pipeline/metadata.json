@@ -1,0 +1,95 @@
+{
+  "title": "Font Pipeline",
+  "creator": "Dan McCreary",
+  "subject": [
+    "Custom Fonts",
+    "font_to_py",
+    "Writer",
+    "Memory"
+  ],
+  "description": "Follow the steps from a TrueType font on your computer to large text on the OLED, and estimate how much memory a font module needs.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Converting and loading custom fonts",
+    "learningObjectives": [
+      "Describe the steps from a font file to text on the OLED",
+      "Identify which steps run on the computer and which run on the Pico",
+      "Estimate how font height and character count affect memory use"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "duration": "13 minutes",
+    "prerequisites": [
+      "Text rendering with the built-in 8 by 8 font (Chapter 12)",
+      "Copying files to the Pico (Chapter 4)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "Mermaid",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 440
+    },
+    "responsive": true,
+    "dependencies": [
+      "Mermaid 11.4.1"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Step-through exploration with concrete values",
+    "keyQuestions": [
+      "Why can the Pico not use a .ttf file directly?",
+      "What does the -c option do?",
+      "Why does a taller font cost more than twice the memory?"
+    ],
+    "commonMisconceptions": [
+      "The Pico converts fonts itself (conversion happens on your computer)",
+      "A font takes the same memory no matter which characters it holds"
+    ],
+    "assessmentOpportunities": [
+      "The student explains that font_to_py.py runs on the computer, not the Pico.",
+      "The student explains why -c 0123456789: keeps the module small.",
+      "The student estimates that doubling the height roughly triples or quadruples the bitmap size."
+    ]
+  },
+  "chapter": "12-drawing-text-animation",
+  "controls": [
+    {
+      "type": "node click",
+      "label": "Any box",
+      "description": "Shows the step's command or description"
+    },
+    {
+      "type": "button",
+      "label": "Pipeline / Memory estimate",
+      "description": "Switches between the diagram and the memory estimate"
+    },
+    {
+      "type": "slider",
+      "label": "Font height",
+      "description": "8 to 64 pixels"
+    },
+    {
+      "type": "input",
+      "label": "Characters",
+      "description": "The characters to include in the font"
+    },
+    {
+      "type": "button",
+      "label": "Digits + colon / Full ASCII (95)",
+      "description": "Preset character lists"
+    }
+  ]
+}

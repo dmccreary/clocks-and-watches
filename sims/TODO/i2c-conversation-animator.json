@@ -1,0 +1,15 @@
+{
+  "sim_id": "i2c-conversation-animator",
+  "diagram_name": "I2C Conversation Animator",
+  "chapter_number": 8,
+  "chapter_title": "Communication Buses: I2C, SPI, and UART",
+  "chapter_dir": "08-communication-buses",
+  "chapter_rel_dir": "chapters/08-communication-buses",
+  "library": "p5.js",
+  "bloom_level": "Understanding",
+  "bloom_verb": "understand",
+  "learning_objective": "Students will *understand* the sequence of an I2C write transaction (Bloom: Understanding).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: MicroSim\n**sim-id:** i2c-conversation-animator<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *understand* the sequence of an I2C write transaction (Bloom: Understanding).\n\n**Visual elements:** A Pico on the left, three devices on the right (OLED 0x3C, RTC 0x68, sensor 0x76) all attached to two shared lines. Below, SDA and SCL waveform traces scroll.\n\n**Controls:** A dropdown selects the target device and a byte value. \"Send\" animates START, the 7-bit address with the write bit, the device's ACK, the data byte, ACK, and STOP. Only the addressed device lights up. A \"Wrong address\" option shows no ACK.\n\n**Behavior:** Steps are labeled on the waveform. A speed slider slows the animation.\n\n**Responsive design:** The layout compresses to a vertical stack below 600 px.\n\nImplementation: p5.js with a scripted timeline."
+}

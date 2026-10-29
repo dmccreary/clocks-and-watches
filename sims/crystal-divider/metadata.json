@@ -1,0 +1,93 @@
+{
+  "title": "Crystal Divider MicroSim",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "Watch a 32,768 Hz quartz crystal get divided by two fifteen times into a 1 Hz tick, then see how a parts-per-million error makes a clock drift each day.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Physical Computing",
+    "topic": "Crystal oscillators and frequency division",
+    "learningObjectives": [
+      "Apply repeated division by two to find the frequency at any stage of a 32,768 Hz divider chain.",
+      "Explain why 15 divide-by-two stages turn a 32,768 Hz crystal into a 1 Hz tick.",
+      "Calculate the daily drift of a clock from its crystal error in parts per million."
+    ],
+    "bloomsTaxonomy": "Apply",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Know that frequency is measured in hertz (repeats per second).",
+      "Be comfortable multiplying and dividing by powers of two."
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 480
+    },
+    "responsive": true,
+    "dependencies": [],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false,
+      "notes": "Screen-reader description provided; all controls are standard HTML elements."
+    },
+    "controls": [
+      {
+        "type": "button",
+        "label": "Start / Pause",
+        "description": "Starts or pauses time. The MicroSim opens paused, so the button first reads Start."
+      },
+      {
+        "type": "button",
+        "label": "Reset",
+        "description": "Sets both clocks to 00:00:00 and returns to the paused opening state."
+      },
+      {
+        "type": "button",
+        "label": "Run one day",
+        "description": "Fast-forwards 86,400 seconds in about 3 seconds and reports the drift."
+      },
+      {
+        "type": "checkbox",
+        "label": "Slow motion",
+        "description": "Runs time 4,096 times slower so the fast stages are visible."
+      },
+      {
+        "type": "slider",
+        "label": "Crystal error (ppm)",
+        "range": "0-100",
+        "default": 30,
+        "description": "How fast the crystal runs, in parts per million."
+      }
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Predict, observe, and calculate",
+    "keyQuestions": [
+      "What is the frequency after 8 divide-by-two stages?",
+      "Why does a 32,768 Hz crystal need exactly 15 stages to reach 1 Hz?",
+      "How much does a 30 ppm clock drift in a week?"
+    ],
+    "commonMisconceptions": [
+      "Thinking a crystal is perfectly accurate. Every crystal has a small error measured in ppm.",
+      "Thinking drift is random. A crystal that runs fast gains time steadily, so drift adds up day after day.",
+      "Thinking the divider chain changes accuracy. Dividing by two keeps the same ppm error at every stage."
+    ],
+    "assessmentOpportunities": [
+      "Students can state the frequency after any number of divide-by-two stages (for example, 32,768 Hz after 4 stages is 2,048 Hz).",
+      "Students can calculate drift per day from a ppm value, such as 20 ppm giving about 1.73 seconds per day.",
+      "Students can explain why 32,768 Hz was chosen: it is a power of two, so halving it 15 times lands exactly on 1 Hz."
+    ],
+    "interactionPattern": "Parameter exploration with a run/pause simulation"
+  },
+  "chapter": "01-foundations"
+}

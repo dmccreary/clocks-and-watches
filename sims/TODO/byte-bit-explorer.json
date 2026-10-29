@@ -1,0 +1,15 @@
+{
+  "sim_id": "byte-bit-explorer",
+  "diagram_name": "Byte Bit Explorer",
+  "chapter_number": 8,
+  "chapter_title": "Communication Buses: I2C, SPI, and UART",
+  "chapter_dir": "08-communication-buses",
+  "chapter_rel_dir": "chapters/08-communication-buses",
+  "library": "p5.js",
+  "bloom_level": "Applying",
+  "bloom_verb": "apply, predict",
+  "learning_objective": "Students will *apply* bit operations and *predict* how MSB-first and LSB-first ordering changes a transmission (Bloom: Applying).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: MicroSim\n**sim-id:** byte-bit-explorer<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *apply* bit operations and *predict* how MSB-first and LSB-first ordering changes a transmission (Bloom: Applying).\n\n**Visual elements:** Eight clickable bit boxes (labeled 128 down to 1) with a live decimal, hex, and binary readout. Below, a serial wire animation sends the byte bit by bit.\n\n**Controls:** Click bits to toggle them; buttons for \"Set bit,\" \"Clear bit,\" and \"Shift left/right\"; a toggle \"MSB first / LSB first\" reorders the animation; a \"Predict\" mode asks the student to type the resulting value after an operation.\n\n**Responsive design:** Bit boxes shrink to fit the container width.\n\nImplementation: p5.js with integer bit math."
+}

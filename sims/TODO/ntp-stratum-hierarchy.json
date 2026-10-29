@@ -1,0 +1,15 @@
+{
+  "sim_id": "ntp-stratum-hierarchy",
+  "diagram_name": "NTP Stratum Hierarchy",
+  "chapter_number": 14,
+  "chapter_title": "WiFi, NTP, and Time Accuracy",
+  "chapter_dir": "14-wifi-ntp",
+  "chapter_rel_dir": "chapters/14-wifi-ntp",
+  "library": "vis-network",
+  "bloom_level": "Understanding",
+  "bloom_verb": "understand",
+  "learning_objective": "Students will *understand* how time flows from atomic clocks down through NTP servers to a Pico (Bloom: Understanding).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: interactive diagram\n**sim-id:** ntp-stratum-hierarchy<br/>\n**Library:** vis-network<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *understand* how time flows from atomic clocks down through NTP servers to a Pico (Bloom: Understanding).\n\n**Layout:** A top-down tree. Top: \"Atomic clock / GPS (Stratum 0).\" Next: two stratum 1 servers. Below: four stratum 2 servers. At the bottom: \"Your Pico W (client).\"\n\n**Interactions:**\n\n- Clicking any node opens an infobox describing its role and typical accuracy.\n- A \"Send request\" button animates a packet from the Pico up to a chosen server and the reply back down, showing timestamps.\n- A slider \"Network delay (ms)\" changes the displayed error to show how delay limits accuracy.\n\n**Responsive design:** The canvas fills the container width and calls `network.fit()` on resize.\n\nImplementation: vis-network with hierarchical layout and an animated edge."
+}

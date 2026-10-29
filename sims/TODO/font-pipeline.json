@@ -1,0 +1,15 @@
+{
+  "sim_id": "font-pipeline",
+  "diagram_name": "Font Pipeline",
+  "chapter_number": 12,
+  "chapter_title": "Drawing Shapes, Text, and Animation",
+  "chapter_dir": "12-drawing-text-animation",
+  "chapter_rel_dir": "chapters/12-drawing-text-animation",
+  "library": "Mermaid",
+  "bloom_level": "Understanding",
+  "bloom_verb": "understand",
+  "learning_objective": "Students will *understand* the steps from a font file to text on the OLED (Bloom: Understanding).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: workflow diagram\n**sim-id:** font-pipeline<br/>\n**Library:** Mermaid<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *understand* the steps from a font file to text on the OLED (Bloom: Understanding).\n\n**Nodes:** TrueType font file on your computer, `font_to_py.py` (with height and character list), generated `.py` module, copy to Pico, `import` on the Pico, `Writer`, text on screen.\n\n**Interactions:** Every node has a Mermaid `click` directive that opens an infobox with the command or a description. A second view estimates the module's memory size from height and number of characters.\n\n**Responsive design:** The diagram scales to container width.\n\nImplementation: Mermaid flowchart with click callbacks."
+}

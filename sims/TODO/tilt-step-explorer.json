@@ -1,0 +1,15 @@
+{
+  "sim_id": "tilt-step-explorer",
+  "diagram_name": "Tilt and Step Explorer",
+  "chapter_number": 18,
+  "chapter_title": "Sensors, Power, and Low-Power Design",
+  "chapter_dir": "18-sensors-power",
+  "chapter_rel_dir": "chapters/18-sensors-power",
+  "library": "p5.js",
+  "bloom_level": "Applying, Analyzing",
+  "bloom_verb": "apply, analyze",
+  "learning_objective": "Students will *apply* accelerometer axes to detect tilt and *analyze* a step-counting threshold (Bloom: Applying, Analyzing).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: MicroSim\n**sim-id:** tilt-step-explorer<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *apply* accelerometer axes to detect tilt and *analyze* a step-counting threshold (Bloom: Applying, Analyzing).\n\n**Visual elements:** A 3D-style watch on the left that the student can drag to tilt, with the three g values shown as bars. On the right, a scrolling plot of acceleration magnitude with a threshold line and step markers.\n\n**Controls:** Drag to rotate the watch; a \"Walk\" button that generates a simulated walking signal; sliders for the step threshold and the minimum time between steps; a step count readout.\n\n**Responsive design:** The two panels stack below 600 px.\n\nImplementation: p5.js with simulated accelerometer vectors."
+}

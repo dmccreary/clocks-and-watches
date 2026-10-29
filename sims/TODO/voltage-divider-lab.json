@@ -1,0 +1,15 @@
+{
+  "sim_id": "voltage-divider-lab",
+  "diagram_name": "Voltage Divider Lab",
+  "chapter_number": 2,
+  "chapter_title": "Electronics Fundamentals and Breadboard Wiring",
+  "chapter_dir": "02-electronics-fundamentals",
+  "chapter_rel_dir": "chapters/02-electronics-fundamentals",
+  "library": "p5.js",
+  "bloom_level": "Evaluating",
+  "bloom_verb": "apply, evaluate",
+  "learning_objective": "Students will *apply* the divider formula and *evaluate* whether an output is safe for a 3.3 V input (Bloom: Evaluating).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: MicroSim\n**sim-id:** voltage-divider-lab<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *apply* the divider formula and *evaluate* whether an output is safe for a 3.3 V input (Bloom: Evaluating).\n\n**Visual elements:** Two resistors stacked between a top rail (Vin) and ground, with a probe wire at the midpoint and a voltmeter bar graph showing Vout. A colored zone on the bar graph turns red above 3.3 V.\n\n**Controls:** Sliders for Vin (0 to 5 V), R1 and R2 (100 Ω to 10 kΩ, log scale). A label reads \"Safe for Pico\" or \"Too high!\" based on Vout.\n\n**Responsive design:** Layout is a single column under 600 px.\n\nImplementation: p5.js drawing plus a computed readout."
+}

@@ -1,0 +1,96 @@
+{
+  "title": "Tilt and Step Explorer",
+  "creator": "Dan McCreary",
+  "subject": [
+    "Accelerometer",
+    "Tilt Detection",
+    "Step Counter",
+    "Thresholds"
+  ],
+  "description": "Interactive p5.js MicroSim with a draggable 3D watch that shows the accelerometer's x, y and z readings and tilt rules, plus a simulated walk where students tune a step-count threshold and minimum time between steps.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Accelerometer tilt detection and step counting",
+    "learningObjectives": [
+      "Apply the x, y and z readings of an accelerometer to decide whether a watch is face up or on a raised wrist",
+      "Analyze how the step threshold changes missed steps and extra steps",
+      "Explain why a minimum time between steps prevents one footstep from counting twice"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "duration": "15-20 minutes",
+    "prerequisites": [
+      "Accelerometer basics and units of g",
+      "Button debouncing (Chapter 7)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 545
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Direct manipulation and parameter tuning against a known answer",
+    "keyQuestions": [
+      "Why does the magnitude stay at 1 g when the watch is tilted?",
+      "What goes wrong when the threshold is too low or too high?",
+      "Why does a minimum time between steps fix double counting?"
+    ],
+    "commonMisconceptions": [
+      "An accelerometer at rest reads zero (it reads 1 g from gravity)",
+      "A lower threshold always catches more real steps (it also counts noise and second bumps)"
+    ],
+    "assessmentOpportunities": [
+      "Record axis readings for a tilt and check them against the chapter's rules",
+      "Find the threshold range where counted steps match real steps"
+    ]
+  },
+  "chapter": "18-sensors-power",
+  "controls": [
+    {
+      "type": "canvas-drag",
+      "label": "Drag the watch",
+      "description": "Tilts the watch (pitch and roll)."
+    },
+    {
+      "type": "button",
+      "label": "Walk / Stop",
+      "description": "Continues or pauses the simulated walk. Opens paused with 5 seconds already recorded."
+    },
+    {
+      "type": "button",
+      "label": "Reset",
+      "description": "Returns the watch to flat and reloads the original recording, paused."
+    },
+    {
+      "type": "slider",
+      "label": "Step threshold",
+      "range": "1.00-2.00 g",
+      "default": 1.2
+    },
+    {
+      "type": "slider",
+      "label": "Min time between steps",
+      "range": "0-600 ms",
+      "default": 250
+    }
+  ]
+}

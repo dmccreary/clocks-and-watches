@@ -1,0 +1,76 @@
+{
+  "title": "Analog Watch Face Builder",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "Design an analog face for a 360 by 360 round display by choosing radii and a palette, and use Erase mode to see which items an erased second hand damages.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Analog Watch Face Builder",
+    "learningObjectives": [
+      "Create an analog watch face layout by choosing radii and colors",
+      "Analyze which parts an erased hand damages on a direct write display"
+    ],
+    "bloomsTaxonomy": [
+      "Analyze",
+      "Create"
+    ],
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Polar coordinates (Chapter 10)",
+      "Round displays and direct write displays (Chapter 15)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 545
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Interactive exploration",
+    "keyQuestions": [
+      "How long can the second hand be without touching the numerals?",
+      "Why do repairs matter on a direct write display?"
+    ],
+    "commonMisconceptions": [
+      "Erasing a hand only affects the hand itself",
+      "Anything inside the 360 x 360 square is visible on a round display"
+    ],
+    "assessmentOpportunities": [
+      "Find the longest second hand that misses the hour marks",
+      "Explain why a framebuffer display needs no repairs"
+    ]
+  },
+  "chapter": "15-color-displays",
+  "canvasHeight": 545,
+  "userInterface": {
+    "controls": [
+      "Tick outer radius slider",
+      "Numeral radius slider",
+      "Minute hand length slider",
+      "Second hand length slider",
+      "Play/Pause button (opens paused)",
+      "Step +1 s button",
+      "Erase mode checkbox",
+      "Palette dropdown"
+    ]
+  }
+}

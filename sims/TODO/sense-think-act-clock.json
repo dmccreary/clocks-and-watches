@@ -1,0 +1,15 @@
+{
+  "sim_id": "sense-think-act-clock",
+  "diagram_name": "Sense-Think-Act Infographic",
+  "chapter_number": 1,
+  "chapter_title": "Computational Thinking and Physical Computing",
+  "chapter_dir": "01-foundations",
+  "chapter_rel_dir": "chapters/01-foundations",
+  "library": "p5.js",
+  "bloom_level": "Understanding",
+  "bloom_verb": "classify, explain",
+  "learning_objective": "Students will *classify* clock components as sensors, controller, or actuators and *explain* the flow of information among them (Bloom: Understanding).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: interactive infographic\n**sim-id:** sense-think-act-clock<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *classify* clock components as sensors, controller, or actuators and *explain* the flow of information among them (Bloom: Understanding).\n\n**Layout:** Three columns on a 700 x 400 canvas: Sensors (left), Microcontroller (center), Actuators (right). Arrows point left to right.\n\n**Interactions:**\n\n- A tray of eight draggable component cards (button, light sensor, DS3231 RTC, Pico, LED display, OLED, buzzer, NeoPixel strip) sits at the bottom. The student drags each card into a column.\n- A correct drop snaps into place with a green outline and an infobox; an incorrect drop bounces back with a hint (\"Does this part send data to the Pico or receive it?\").\n- Hovering any placed card shows a one-line tooltip consistent with the glossary.\n- When all eight are placed correctly, an animated dot travels along the arrows to show sense, think, act.\n\n**Responsive design:** Canvas width follows the container; card sizes scale with `windowWidth`.\n\nImplementation: p5.js with mouse events for drag and drop and a small array of card objects."
+}

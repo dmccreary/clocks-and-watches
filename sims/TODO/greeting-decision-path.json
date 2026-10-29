@@ -1,0 +1,15 @@
+{
+  "sim_id": "greeting-decision-path",
+  "diagram_name": "Greeting Decision Path",
+  "chapter_number": 4,
+  "chapter_title": "Control Flow, Functions, and Modules",
+  "chapter_dir": "04-control-flow-functions",
+  "chapter_rel_dir": "chapters/04-control-flow-functions",
+  "library": "p5.js",
+  "bloom_level": "Applying",
+  "bloom_verb": "trace",
+  "learning_objective": "Students will *trace* an if/elif/else chain to predict its result (Bloom: Applying).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: MicroSim\n**sim-id:** greeting-decision-path<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *trace* an if/elif/else chain to predict its result (Bloom: Applying).\n\n**Visual elements:** A vertical flowchart with four diamond tests (`hour < 6`, `< 12`, `< 18`, else) and four result boxes. A marker travels down the chain.\n\n**Controls:** A slider for `hour` (0 to 23) and a \"Step\" button. The path taken lights up green; skipped tests gray out. A toggle \"Reorder tests\" swaps the tests to show how order changes the answer.\n\n**Responsive design:** The flowchart scales to canvas width.\n\nImplementation: p5.js with a small array of test objects."
+}

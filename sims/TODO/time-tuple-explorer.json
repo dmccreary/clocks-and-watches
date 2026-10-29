@@ -1,0 +1,15 @@
+{
+  "sim_id": "time-tuple-explorer",
+  "diagram_name": "Time Tuple Explorer",
+  "chapter_number": 6,
+  "chapter_title": "Getting the Time in MicroPython",
+  "chapter_dir": "06-getting-time",
+  "chapter_rel_dir": "chapters/06-getting-time",
+  "library": "p5.js",
+  "bloom_level": "Remembering, Applying",
+  "bloom_verb": "identify, apply",
+  "learning_objective": "Students will *identify* each field of the time tuple and *apply* slicing to extract fields (Bloom: Remembering, Applying).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: interactive infographic\n**sim-id:** time-tuple-explorer<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *identify* each field of the time tuple and *apply* slicing to extract fields (Bloom: Remembering, Applying).\n\n**Visual elements:** The eight-field tuple drawn as eight labeled boxes with a live value from the browser's clock, and a small analog and digital clock alongside.\n\n**Interactions:**\n\n- Hovering a box shows its name and range; clicking shows the Python expression that extracts it, such as `now[3]`.\n- A \"Slice\" control lets the student drag a bracket over boxes to select `[3:6]`, and the sim shows the resulting tuple and the unpacking line.\n- A \"Quiz me\" mode asks for the index of the field named at random.\n\n**Responsive design:** Boxes wrap to two rows on narrow screens.\n\nImplementation: p5.js using JavaScript `Date` to fill values."
+}

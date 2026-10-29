@@ -1,0 +1,15 @@
+{
+  "sim_id": "clock-decomposition-explorer",
+  "diagram_name": "Clock Decomposition Explorer",
+  "chapter_number": 1,
+  "chapter_title": "Computational Thinking and Physical Computing",
+  "chapter_dir": "01-foundations",
+  "chapter_rel_dir": "chapters/01-foundations",
+  "library": "vis-network",
+  "bloom_level": "Analyzing",
+  "bloom_verb": "analyze",
+  "learning_objective": "Students will *analyze* a digital clock by breaking it into sub-problems and identify which sub-problem a given symptom belongs to (Bloom: Analyzing).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: interactive diagram\n**sim-id:** clock-decomposition-explorer<br/>\n**Library:** vis-network<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *analyze* a digital clock by breaking it into sub-problems and identify which sub-problem a given symptom belongs to (Bloom: Analyzing).\n\n**Layout:** A top-down tree. The root node is \"Digital Clock\" (large, purple). The second level has five child nodes: Keep Time, Split Time, Format Time, Draw Time, Handle Input (teal). Under each child, two to three grandchild nodes show smaller tasks (for example, under Draw Time: \"Draw digits,\" \"Flash the colon,\" \"Set brightness\").\n\n**Interactions:**\n\n- Clicking any node opens an infobox on the right with a one-sentence definition and a \"Test it alone\" hint.\n- Hovering a node highlights its parent path back to the root.\n- A dropdown labeled \"Symptom\" offers four bugs (\"Wrong hour,\" \"Colon does not flash,\" \"Buttons ignored,\" \"Clock runs slow\"). Selecting one pulses the node most likely to contain the bug.\n\n**Responsive design:** The canvas fills the container width, height 450 px, and redraws with `network.fit()` on window resize.\n\nImplementation: vis-network hierarchical layout, direction \"UD\", with a small JavaScript object mapping node IDs to infobox text."
+}

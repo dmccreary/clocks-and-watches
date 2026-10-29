@@ -1,0 +1,100 @@
+{
+  "title": "Ohm's Law Explorer",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "Change the voltage and resistance of a simple loop circuit to see Ohm's Law at work: live current and power readouts, moving dots that speed up with current, and a quiz that asks you to calculate the current.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Electronics",
+    "topic": "Ohm's Law and electric power",
+    "learningObjectives": [
+      "Apply Ohm's Law (I = V / R) to calculate the current from a voltage and a resistance.",
+      "Predict how the current changes when the voltage or the resistance is doubled or halved.",
+      "Calculate electric power with P = V × I."
+    ],
+    "bloomsTaxonomy": "Apply",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Read the Voltage, Current, and Resistance section of Chapter 2.",
+      "Convert amps to milliamps (1 A = 1,000 mA)."
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 495
+    },
+    "responsive": true,
+    "dependencies": [],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false,
+      "notes": "Screen-reader description provided; all controls are standard HTML elements."
+    },
+    "controls": [
+      {
+        "type": "button",
+        "label": "Start / Pause",
+        "description": "Starts or pauses the moving dots. The MicroSim opens paused."
+      },
+      {
+        "type": "button",
+        "label": "Quiz me",
+        "description": "Picks a new voltage and resistance and hides the current and power."
+      },
+      {
+        "type": "input",
+        "label": "Answer (mA)",
+        "description": "Your calculated current in milliamps (shown during a quiz)."
+      },
+      {
+        "type": "button",
+        "label": "Check",
+        "description": "Checks your answer and reveals the current."
+      },
+      {
+        "type": "slider",
+        "label": "Voltage",
+        "range": "0-5 V",
+        "default": 3.3,
+        "description": "Battery voltage."
+      },
+      {
+        "type": "slider",
+        "label": "Resistance",
+        "range": "10-1000 Ω",
+        "default": 330,
+        "description": "Resistor value."
+      }
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Predict, test, and practice calculation",
+    "keyQuestions": [
+      "What happens to the current when the resistance doubles?",
+      "Which setting gives the largest current, and why is that risky?",
+      "How much power does 5 V across 100 Ω use?"
+    ],
+    "commonMisconceptions": [
+      "Thinking current is used up as it goes around the loop. The same current flows everywhere in a single loop.",
+      "Thinking more resistance means more current.",
+      "Forgetting to convert amps to milliamps (0.010 A is 10 mA)."
+    ],
+    "assessmentOpportunities": [
+      "Students correctly calculate the current for any voltage and resistance shown.",
+      "Students explain that doubling the resistance halves the current and doubling the voltage doubles it.",
+      "Students calculate power in milliwatts from voltage and current."
+    ],
+    "interactionPattern": "Parameter exploration with live readouts and a calculation quiz"
+  },
+  "chapter": "02-electronics-fundamentals"
+}

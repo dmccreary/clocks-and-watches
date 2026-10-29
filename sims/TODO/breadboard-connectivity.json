@@ -1,0 +1,15 @@
+{
+  "sim_id": "breadboard-connectivity",
+  "diagram_name": "Breadboard Connectivity Explorer",
+  "chapter_number": 2,
+  "chapter_title": "Electronics Fundamentals and Breadboard Wiring",
+  "chapter_dir": "02-electronics-fundamentals",
+  "chapter_rel_dir": "chapters/02-electronics-fundamentals",
+  "library": "p5.js",
+  "bloom_level": "Analyzing",
+  "bloom_verb": "analyze",
+  "learning_objective": "Students will *analyze* which holes are electrically connected on a breadboard (Bloom: Analyzing).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: interactive infographic\n**sim-id:** breadboard-connectivity<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *analyze* which holes are electrically connected on a breadboard (Bloom: Analyzing).\n\n**Visual elements:** A top-down half-size breadboard with 30 columns, two center halves, and power rails. Hidden metal strips are shown as faint lines when \"X-ray\" is on.\n\n**Interactions:**\n\n- Hovering a hole highlights every hole it is connected to.\n- The student can click to place a jumper between two holes; the sim reports whether they are now connected.\n- A \"Challenge\" mode shows two holes and asks \"Connected: yes or no?\" and scores the answers.\n\n**Responsive design:** The board scales to container width and scrolls horizontally below 500 px if needed.\n\nImplementation: p5.js grid with a connectivity map for each strip and rail."
+}

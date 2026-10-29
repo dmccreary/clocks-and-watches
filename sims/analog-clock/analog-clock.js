@@ -1,4 +1,5 @@
 let canvasWidth = 400;
+// CANVAS_HEIGHT: 490
 let drawHeight = 400;
 let canvasHeight = 490;
 let hourHand, minuteHand, secondHand;

@@ -1,0 +1,73 @@
+{
+  "title": "NeoPixel Power Budget",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "Click pixels on a virtual NeoPixel strip and choose the color, length, and brightness while a gauge compares the total current with the 500 mA USB limit.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "NeoPixel Power Budget",
+    "learningObjectives": [
+      "Calculate the current a NeoPixel design draws",
+      "Evaluate whether a design needs an external 5 V supply"
+    ],
+    "bloomsTaxonomy": [
+      "Apply",
+      "Evaluate"
+    ],
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Current and USB power (Chapter 2)",
+      "NeoPixel colors (Chapter 16)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 515
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Interactive exploration",
+    "keyQuestions": [
+      "How much current does full white draw per pixel?",
+      "When does a strip need its own power supply?"
+    ],
+    "commonMisconceptions": [
+      "Any strip can run from USB",
+      "Color does not affect current"
+    ],
+    "assessmentOpportunities": [
+      "Compute the current of 30 white pixels at 50 percent",
+      "Decide whether a 450 mA design is safe on USB"
+    ]
+  },
+  "chapter": "16-neopixels-shift-registers",
+  "canvasHeight": 515,
+  "userInterface": {
+    "controls": [
+      "Click pixels to light them",
+      "Strip length dropdown (12, 30, 60, 144)",
+      "Color picker input",
+      "Light all / Clear all button",
+      "Brightness slider (0-100%)"
+    ]
+  }
+}

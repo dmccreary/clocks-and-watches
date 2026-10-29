@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
+    <title>Clock Architecture Explorer using vis-network</title>
+    <style>
+        * { box-sizing: border-box; }
+        html, body { margin: 0px; padding: 0px; font-family: Arial, Helvetica, sans-serif; }
+        #app {
+            height: 448px;
+            border: 1px solid silver;
+            background: aliceblue;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        #header {
+            height: 46px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 0 12px;
+        }
+        #title { font-size: 20px; font-weight: bold; white-space: nowrap; }
+        #picker { font-size: 15px; white-space: nowrap; }
+        #picker label { font-weight: bold; margin-right: 4px; }
+        #clockSelect { font-size: 15px; padding: 3px; }
+        #body { flex: 1 1 auto; display: flex; min-height: 0; }
+        #network { flex: 1 1 auto; min-width: 0; height: 100%; }
+        #panel {
+            flex: 0 0 240px;
+            background: white;
+            border-left: 1px solid silver;
+            padding: 10px 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-size: 15px;
+        }
+        .card {
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 8px 10px;
+            line-height: 1.4;
+        }
+        .card h4 { margin: 0 0 4px 0; font-size: 16px; color: #1a237e; }
+        .part { font-weight: bold; color: #4a148c; margin-bottom: 4px; }
+        .card a { color: #1565c0; }
+        .legend { font-size: 13px; line-height: 1.7; color: #333; }
+        .swatch { display: inline-block; width: 26px; height: 0; vertical-align: middle; margin-right: 6px; }
+        @media (max-width: 599px) {
+            #header { height: 64px; flex-direction: column; justify-content: center; align-items: flex-start; gap: 4px; }
+            #title { font-size: 16px; }
+            #picker, #clockSelect { font-size: 13px; }
+            #body { flex-direction: column; }
+            #network { height: auto; flex: 1 1 auto; min-height: 0; }
+            #panel { flex: 0 0 130px; border-left: none; border-top: 1px solid silver; padding: 6px 8px; font-size: 13px; }
+            .legend { display: none; }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vis-network@9.1.9/standalone/umd/vis-network.min.js"></script>
+    <script src="clock-architecture-explorer.js"></script>
+</head>
+<body>
+    <main>
+        <div id="app">
+            <div id="header">
+                <div id="title">The Five Blocks of a Clock</div>
+                <div id="picker">
+                    <label for="clockSelect">Choose a clock</label>
+                    <select id="clockSelect">
+                        <option value="generic">Any clock (block names)</option>
+                        <option value="led4">4-digit LED clock</option>
+                        <option value="oled">OLED clock with RTC</option>
+                        <option value="watch">Smartwatch</option>
+                    </select>
+                </div>
+            </div>
+            <div id="body">
+                <div id="network" aria-label="Block diagram of a clock: power supply, microcontroller, time source, display, and input"></div>
+                <div id="panel">
+                    <div id="info" class="card">
+                        <h4>Click a block</h4>
+                        Click any box to see its job and which chapter covers it. Choose a clock above to see the real parts.
+                    </div>
+                    <div class="legend">
+                        <div><span class="swatch" style="border-top:3px dashed #c62828"></span>power</div>
+                        <div><span class="swatch" style="border-top:3px solid #1565c0"></span>data</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <br/>
+    <a href=".">Back to Lesson Plan</a>
+</body>
+</html>

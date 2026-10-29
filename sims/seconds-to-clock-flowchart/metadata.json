@@ -1,0 +1,90 @@
+{
+  "title": "Seconds-to-Clock Flowchart",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "Step a number of seconds since midnight through a six-box flowchart that uses whole-number division and remainders to produce an hours:minutes:seconds clock reading.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Physical Computing",
+    "topic": "Algorithmic thinking: converting seconds since midnight to hours, minutes, and seconds",
+    "learningObjectives": [
+      "Apply the seconds-to-clock algorithm by tracing a number of seconds through each step.",
+      "Use whole-number division (//) and remainder (%) to split a total into larger and smaller units.",
+      "Predict the output of each step before running it, and check the prediction."
+    ],
+    "bloomsTaxonomy": "Apply",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Long division with a remainder.",
+      "Knowing that an hour has 3,600 seconds and a minute has 60 seconds."
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "Mermaid",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 540
+    },
+    "responsive": true,
+    "dependencies": [
+      "mermaid@10"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false,
+      "notes": "Screen-reader description provided; all controls are standard HTML elements."
+    },
+    "controls": [
+      {
+        "type": "input",
+        "label": "Seconds since midnight",
+        "range": "0-86399",
+        "default": 45296,
+        "description": "The number to trace through the algorithm."
+      },
+      {
+        "type": "button",
+        "label": "Next step",
+        "description": "Runs one box, shows its value, and highlights it."
+      },
+      {
+        "type": "button",
+        "label": "Reset",
+        "description": "Clears all values and returns to step 0."
+      },
+      {
+        "type": "click",
+        "label": "Flowchart boxes",
+        "description": "Clicking a box shows a one-sentence explanation of that step."
+      }
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Worked example with prediction at each step",
+    "keyQuestions": [
+      "Why do we compute the remainder before computing minutes?",
+      "What happens to the hours box if the input is less than 3,600?",
+      "Why is 86,399 the largest allowed input?"
+    ],
+    "commonMisconceptions": [
+      "Dividing the total seconds by 60 to get minutes, which gives total minutes (754) instead of minutes past the hour (34).",
+      "Forgetting to pad single digits, so 9:05:07 is shown as 9:5:7.",
+      "Confusing // (whole-number division) with / (division that keeps the decimal part)."
+    ],
+    "assessmentOpportunities": [
+      "Students can trace any input from 0 to 86,399 to the correct hh:mm:ss reading without the MicroSim.",
+      "Students can explain why the remainder step is needed before computing minutes.",
+      "Students can convert a clock reading back into seconds since midnight."
+    ],
+    "interactionPattern": "Step-through tracer"
+  },
+  "chapter": "01-foundations"
+}

@@ -389,78 +389,6 @@
          <lastmod>2026-10-29</lastmod>
     </url>
     <url>
-         <loc>https://dmccreary.github.io/clocks-and-watches/kits/mondaine/</loc>
-         <lastmod>2026-10-29</lastmod>
-    </url>
-    <url>
-         <loc>https://dmccreary.github.io/clocks-and-watches/kits/mondaine/00-blink-onboard-led/</loc>
-         <lastmod>2026-10-29</lastmod>
-    </url>
-    <url>
-         <loc>https://dmccreary.github.io/clocks-and-watches/kits/mondaine/01-hello-display/</loc>
-         <lastmod>2026-10-29</lastmod>
-    </url>
-    <url>
-         <loc>https://dmccreary.github.io/clocks-and-watches/kits/mondaine/02-dial-dots/</loc>
-         <lastmod>2026-10-29</lastmod>
-    </url>
-    <url>
-         <loc>https://dmccreary.github.io/clocks-and-watches/kits/mondaine/03-hour-markers/</loc>
-         <lastmod>2026-10-29</lastmod>
-    </url>
-    <url>
-         <loc>https://dmccreary.github.io/clocks-and-watches/kits/mondaine/04-minute-markers/</loc>
-         <lastmod>2026-10-29</lastmod>
-    </url>
-    <url>
-         <loc>https://dmccreary.github.io/clocks-and-watches/kits/mondaine/05-black-hands/</loc>
-         <lastmod>2026-10-29</lastmod>
-    </url>
-    <url>
-         <loc>https://dmccreary.github.io/clocks-and-watches/kits/mondaine/06-red-second-hand/</loc>
-         <lastmod>2026-10-29</lastmod>
-    </url>
-    <url>
-         <loc>https://dmccreary.github.io/clocks-and-watches/kits/mondaine/07-read-the-time/</loc>
-         <lastmod>2026-10-29</lastmod>
-    </url>
-    <url>
-         <loc>https://dmccreary.github.io/clocks-and-watches/kits/mondaine/08-wifi-sync-time/</loc>
-         <lastmod>2026-10-29</lastmod>
-    </url>
-    <url>
-         <loc>https://dmccreary.github.io/clocks-and-watches/kits/mondaine/09-tick-tock/</loc>
-         <lastmod>2026-10-29</lastmod>
-    </url>
-    <url>
-         <loc>https://dmccreary.github.io/clocks-and-watches/kits/mondaine/10-smooth-sweep/</loc>
-         <lastmod>2026-10-29</lastmod>
-    </url>
-    <url>
-         <loc>https://dmccreary.github.io/clocks-and-watches/kits/mondaine/11-stop-at-twelve/</loc>
-         <lastmod>2026-10-29</lastmod>
-    </url>
-    <url>
-         <loc>https://dmccreary.github.io/clocks-and-watches/kits/mondaine/12-minute-jump/</loc>
-         <lastmod>2026-10-29</lastmod>
-    </url>
-    <url>
-         <loc>https://dmccreary.github.io/clocks-and-watches/kits/mondaine/13-button-test/</loc>
-         <lastmod>2026-10-29</lastmod>
-    </url>
-    <url>
-         <loc>https://dmccreary.github.io/clocks-and-watches/kits/mondaine/14-set-time/</loc>
-         <lastmod>2026-10-29</lastmod>
-    </url>
-    <url>
-         <loc>https://dmccreary.github.io/clocks-and-watches/kits/mondaine/15-mondaine-clock/</loc>
-         <lastmod>2026-10-29</lastmod>
-    </url>
-    <url>
-         <loc>https://dmccreary.github.io/clocks-and-watches/kits/mondaine/teacher-notes/</loc>
-         <lastmod>2026-10-29</lastmod>
-    </url>
-    <url>
          <loc>https://dmccreary.github.io/clocks-and-watches/kits/neopixel/</loc>
          <lastmod>2026-10-29</lastmod>
     </url>
@@ -1193,11 +1121,31 @@
          <lastmod>2026-10-29</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/TODO/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/clocks-and-watches/sims/4-digits/</loc>
          <lastmod>2026-10-29</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/TODO/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/accuracy-vs-precision/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/alarm-state-machine/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/clocks-and-watches/sims/analog-clock/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/analog-watch-face-builder/</loc>
          <lastmod>2026-10-29</lastmod>
     </url>
     <url>
@@ -1209,6 +1157,14 @@
          <lastmod>2026-10-29</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/battery-life-calculator/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/bcd-converter/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/clocks-and-watches/sims/binary-clock/</loc>
          <lastmod>2026-10-29</lastmod>
     </url>
@@ -1217,11 +1173,191 @@
          <lastmod>2026-10-29</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/bounding-box-partial-update/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/breadboard-connectivity/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/bus-speed-race/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/button-bounce-scope/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/byte-bit-explorer/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/clock-architecture-explorer/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/clock-decomposition-explorer/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/clock-drift-calculator/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/clock-mode-state-machine/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/crystal-divider/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/data-type-sorter/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/design-decision-matrix/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/digit-scaling-explorer/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/ds3231-register-map/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/epaper-refresh-lab/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/font-pipeline/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/framebuffer-pipeline/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/function-machine/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/clocks-and-watches/sims/graph-viewer/</loc>
          <lastmod>2026-10-29</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/greeting-decision-path/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/hsv-color-wheel/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/hysteresis-demonstrator/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/i2c-conversation-animator/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/ldr-light-sensor-lab/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/clocks-and-watches/sims/learning-graph/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/led-resistor-calculator/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/logic-analyzer-trace-reader/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/neopixel-digit-layout/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/neopixel-power-budget/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/ntp-stratum-hierarchy/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/ntp-sync-flow/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/ohms-law-explorer/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/pico-board-explorer/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/pico-pinout-explorer/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/pico-startup-sequence/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/pixel-grid-sketchpad/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/polar-to-screen/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/pull-up-button-lab/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/pwm-tone-lab/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/quadrature-encoder-sim/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/resistor-color-decoder/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/resolution-memory-calculator/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/rgb565-color-mixer/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/sampling-rate-explorer/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/schematic-symbol-matcher/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/seconds-to-clock-flowchart/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/sense-think-act-clock/</loc>
          <lastmod>2026-10-29</lastmod>
     </url>
     <url>
@@ -1233,7 +1369,15 @@
          <lastmod>2026-10-29</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/sleep-vs-ticks/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/clocks-and-watches/sims/stopwatch/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/sync-interval-calculator/</loc>
          <lastmod>2026-10-29</lastmod>
     </url>
     <url>
@@ -1250,6 +1394,50 @@
     </url>
     <url>
          <loc>https://dmccreary.github.io/clocks-and-watches/sims/themes/TODO/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/thonny-window-tour/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/tilt-step-explorer/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/time-tuple-explorer/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/timezone-converter/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/tm1637-wiring/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/troubleshooting-decision-tree/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/unit-circle-explorer/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/variable-box-visualizer/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/voltage-divider-lab/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/weather-station-layout/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/clocks-and-watches/sims/wrap-around-dial/</loc>
          <lastmod>2026-10-29</lastmod>
     </url>
 </urlset>

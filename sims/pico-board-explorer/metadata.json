@@ -1,0 +1,80 @@
+{
+  "title": "Pico Board Explorer",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "Hover and click the main parts of a Raspberry Pi Pico W drawing to learn what each one does, then take a quiz that hides the labels and tracks the parts you missed.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Physical Computing",
+    "topic": "Parts of the Raspberry Pi Pico W board",
+    "learningObjectives": [
+      "Identify the RP2040 chip, USB connector, BOOTSEL button, on-board LED, wireless module, and pin rows on a Pico W.",
+      "Recall the purpose of each of those parts.",
+      "Recall which later projects in the book use each part."
+    ],
+    "bloomsTaxonomy": "Remember",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Read the Raspberry Pi Pico section of Chapter 1."
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 580
+    },
+    "responsive": true,
+    "dependencies": [],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false,
+      "notes": "Screen-reader description provided; all controls are standard HTML elements."
+    },
+    "controls": [
+      {
+        "type": "hover",
+        "label": "Board hotspots",
+        "description": "Shows the name of the part under the pointer (Explore mode only)."
+      },
+      {
+        "type": "click",
+        "label": "Board hotspots",
+        "description": "Explore mode: shows the part description. Quiz mode: answers the current question."
+      },
+      {
+        "type": "button",
+        "label": "Quiz me / Stop quiz / Explore",
+        "description": "Starts a six-question quiz with labels hidden, or returns to Explore mode."
+      }
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Labeled exploration followed by self-quiz with retrieval practice",
+    "keyQuestions": [
+      "Which button do you hold down while plugging in the Pico to install MicroPython?",
+      "Which part makes the Pico W different from a plain Pico?",
+      "Where do you connect a display to the Pico?"
+    ],
+    "commonMisconceptions": [
+      "Thinking the whole board is called the RP2040. The RP2040 is only the black chip; the board is the Pico.",
+      "Thinking the BOOTSEL button is a reset button. It selects USB-drive mode when pressed during power-up.",
+      "Thinking a plain Pico has WiFi. Only the Pico W has the wireless module."
+    ],
+    "assessmentOpportunities": [
+      "Students score 6 out of 6 on the built-in quiz.",
+      "Students can name the part needed for each task: installing firmware (BOOTSEL), WiFi time sync (wireless module), and wiring a display (pins).",
+      "Students can explain the difference between the RP2040 chip and the Pico W board."
+    ],
+    "interactionPattern": "Hotspot labeling and identification quiz"
+  },
+  "chapter": "01-foundations"
+}

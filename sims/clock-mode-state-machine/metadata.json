@@ -1,0 +1,95 @@
+{
+  "title": "Clock Mode State Machine",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "A three-state clock (RUN, SET_HOUR, SET_MINUTE) driven by Mode and Cycle buttons, with a mock display, clickable state descriptions and a predict-the-next-state mode.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Clock Mode State Machine",
+    "learningObjectives": [
+      "Apply a state machine to predict what a Mode press does in each state",
+      "Predict what a Cycle press does to the hour and minute in each state",
+      "Explain why the same button can mean different things in different states"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "The modulo wrap-around from Chapter 4",
+      "Buttons and interrupts from earlier in this chapter"
+    ],
+    "standards": [],
+    "bloomsLevels": [
+      "Understand",
+      "Apply"
+    ]
+  },
+  "technical": {
+    "framework": "vis-network",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 502
+    },
+    "responsive": true,
+    "dependencies": [
+      "vis-network 9.1.9 (jsDelivr CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true,
+      "notes": "Controls are standard HTML form elements"
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Interactive state diagram with prediction",
+    "keyQuestions": [
+      "How many Mode presses bring you back to RUN?",
+      "What does Cycle do in RUN, and why is that useful?",
+      "What line of code moves to the next state?"
+    ],
+    "commonMisconceptions": [
+      "Each button always does the same thing",
+      "Mode can go backward to the previous state",
+      "Pressing Cycle in SET_MINUTE also changes the hour when minutes wrap"
+    ],
+    "assessmentOpportunities": [
+      "Students predict the next state correctly every time in Predict mode.",
+      "Students set a requested time with the fewest presses.",
+      "Students extend the diagram to five states and change % 3 to % 5."
+    ]
+  },
+  "chapter": "07-buttons-state-machines",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "controls": [
+    {
+      "type": "button",
+      "label": "Mode",
+      "description": "Moves to the next state"
+    },
+    {
+      "type": "button",
+      "label": "Cycle",
+      "description": "Adds 1 to the hour or minute in a setting state"
+    },
+    {
+      "type": "checkbox",
+      "label": "Predict",
+      "description": "Asks for the next state before it moves"
+    },
+    {
+      "type": "diagram click",
+      "label": "State",
+      "description": "Shows what the state does"
+    }
+  ]
+}

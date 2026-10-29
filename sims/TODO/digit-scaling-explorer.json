@@ -1,0 +1,15 @@
+{
+  "sim_id": "digit-scaling-explorer",
+  "diagram_name": "Digit Scaling Explorer",
+  "chapter_number": 12,
+  "chapter_title": "Drawing Shapes, Text, and Animation",
+  "chapter_dir": "12-drawing-text-animation",
+  "chapter_rel_dir": "chapters/12-drawing-text-animation",
+  "library": "p5.js",
+  "bloom_level": "Applying, Analyzing",
+  "bloom_verb": "apply, analyze",
+  "learning_objective": "Students will *apply* scaling to make digits fit the screen and *analyze* the width tradeoff (Bloom: Applying, Analyzing).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: MicroSim\n**sim-id:** digit-scaling-explorer<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *apply* scaling to make digits fit the screen and *analyze* the width tradeoff (Bloom: Applying, Analyzing).\n\n**Visual elements:** A 128 by 64 OLED preview showing a time string, with the 8 by 8 source glyph shown enlarged beside it.\n\n**Controls:** Text input for the time string, a scale slider (1 to 6), and a readout \"Width = 8 × scale × characters\" that turns red when it exceeds 128. A checkbox shows the grid of scaled blocks.\n\n**Responsive design:** The preview scales to the container width.\n\nImplementation: p5.js with a stored 8 by 8 bitmap font for digits and colon."
+}

@@ -1,0 +1,15 @@
+{
+  "sim_id": "wrap-around-dial",
+  "diagram_name": "Wrap-Around Dial",
+  "chapter_number": 4,
+  "chapter_title": "Control Flow, Functions, and Modules",
+  "chapter_dir": "04-control-flow-functions",
+  "chapter_rel_dir": "chapters/04-control-flow-functions",
+  "library": "p5.js",
+  "bloom_level": "Applying",
+  "bloom_verb": "apply",
+  "learning_objective": "Students will *apply* the modulo operator to predict where a counter lands after adding or subtracting (Bloom: Applying).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: MicroSim\n**sim-id:** wrap-around-dial<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *apply* the modulo operator to predict where a counter lands after adding or subtracting (Bloom: Applying).\n\n**Visual elements:** A circular dial with a modulus set by a selector (12, 24, or 60). A pointer sits on the current value, and the equation `(x + step) % n` is shown live.\n\n**Controls:** \"+1\", \"-1\", and \"+10\" buttons, a modulus selector, and a \"Predict\" mode where the student types the resulting number before the pointer moves.\n\n**Responsive design:** The dial scales to canvas width.\n\nImplementation: p5.js with polar coordinates for tick placement."
+}

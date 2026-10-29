@@ -1,0 +1,15 @@
+{
+  "sim_id": "bus-speed-race",
+  "diagram_name": "Bus Speed Race",
+  "chapter_number": 8,
+  "chapter_title": "Communication Buses: I2C, SPI, and UART",
+  "chapter_dir": "08-communication-buses",
+  "chapter_rel_dir": "chapters/08-communication-buses",
+  "library": "Chart.js",
+  "bloom_level": "Analyzing, Evaluating",
+  "bloom_verb": "compare",
+  "learning_objective": "Students will *compare* the time UART, I2C, and SPI need to send a screen of data (Bloom: Analyzing, Evaluating).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: chart\n**sim-id:** bus-speed-race<br/>\n**Library:** Chart.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *compare* the time UART, I2C, and SPI need to send a screen of data (Bloom: Analyzing, Evaluating).\n\n**Visual elements:** A horizontal bar chart on a logarithmic axis showing seconds per frame for each bus and each chosen display size.\n\n**Controls:** A dropdown for the display (128x64 mono OLED, 240x240 color, 320x240 color), sliders for I2C frequency (100 kHz to 1 MHz) and SPI baudrate (1 to 62.5 MHz), and a readout \"Max frames per second.\"\n\n**Interactions:** Hovering a bar shows the exact time and the formula used. Bars turn green when the result reaches 20 frames per second or better.\n\n**Responsive design:** The chart resizes with the container and the axis labels shorten on narrow screens.\n\nImplementation: Chart.js with a computed dataset."
+}

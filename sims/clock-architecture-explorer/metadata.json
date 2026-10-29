@@ -1,0 +1,89 @@
+{
+  "title": "Clock Architecture Explorer",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "A block diagram of the five parts every clock needs (power supply, microcontroller, time source, display, and input) that relabels each block with real parts for three different clocks.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Electronics",
+    "topic": "Clock architecture: the five blocks every clock shares",
+    "learningObjectives": [
+      "Describe the job of each of the five blocks of a clock.",
+      "Compare how a 4-digit LED clock, an OLED clock with an RTC, and a smartwatch fill the same five blocks.",
+      "Explain the direction of power and data flow between the blocks."
+    ],
+    "bloomsTaxonomy": "Understand",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Read the Clock Architecture section of Chapter 2.",
+      "Know the difference between a sensor and an actuator (Chapter 1)."
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "vis-network",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 448
+    },
+    "responsive": true,
+    "dependencies": [
+      "vis-network@9.1.9"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true,
+      "notes": "Screen-reader description provided; all controls are standard HTML elements."
+    },
+    "controls": [
+      {
+        "type": "select",
+        "label": "Choose a clock",
+        "options": [
+          "Any clock (block names)",
+          "4-digit LED clock",
+          "OLED clock with RTC",
+          "Smartwatch"
+        ],
+        "description": "Relabels every block with the part that clock uses."
+      },
+      {
+        "type": "click",
+        "label": "Blocks",
+        "description": "Shows the block job, a part note, and a link to the chapter that covers it."
+      },
+      {
+        "type": "buttons",
+        "label": "Navigation buttons",
+        "description": "Pan and zoom on screens 600 px or wider without capturing page scrolling."
+      }
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Compare and contrast across three examples",
+    "keyQuestions": [
+      "Which block is the same in all three clocks?",
+      "Why does every block need an arrow from the power supply?",
+      "What would you put in the Time Source block of a clock that must keep time when unplugged?"
+    ],
+    "commonMisconceptions": [
+      "Thinking the display sends data to the microcontroller. Data only flows out to the display.",
+      "Thinking the microcontroller keeps perfect time by itself. The time source block exists because it does not.",
+      "Thinking a new clock needs a new architecture. The blocks stay the same; only the parts change."
+    ],
+    "assessmentOpportunities": [
+      "Students list the five blocks and the job of each.",
+      "Students explain why the Smartwatch time source can be more accurate than the 4-digit LED clock time source.",
+      "Students correctly fill all five blocks for a clock design they have not seen before."
+    ],
+    "interactionPattern": "Relabeling block diagram with infobox"
+  },
+  "chapter": "02-electronics-fundamentals"
+}

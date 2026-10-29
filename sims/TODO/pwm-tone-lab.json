@@ -1,0 +1,15 @@
+{
+  "sim_id": "pwm-tone-lab",
+  "diagram_name": "PWM Tone Lab",
+  "chapter_number": 17,
+  "chapter_title": "Sound, Alarms, and Timers",
+  "chapter_dir": "17-sound-alarms-timers",
+  "chapter_rel_dir": "chapters/17-sound-alarms-timers",
+  "library": "p5.js",
+  "bloom_level": "Understanding, Applying",
+  "bloom_verb": "understand",
+  "learning_objective": "Students will *understand* how frequency sets pitch and duty cycle shapes a square wave (Bloom: Understanding, Applying).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: MicroSim\n**sim-id:** pwm-tone-lab<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *understand* how frequency sets pitch and duty cycle shapes a square wave (Bloom: Understanding, Applying).\n\n**Visual elements:** A scrolling square-wave oscilloscope trace, a piano keyboard highlighting the nearest note, and a readout of frequency and period.\n\n**Controls:** Slider for frequency (100 to 4000 Hz), slider for duty cycle (0 to 100 percent), a \"Play\" button that produces the tone through the browser's audio, and a note dropdown that jumps to A4, C5, and so on. A \"Show formula\" toggle prints \\( f = 440 \\times 2^{n/12} \\) with the current note.\n\n**Responsive design:** The oscilloscope and keyboard stack on narrow screens.\n\nImplementation: p5.js with the Web Audio API `OscillatorNode` set to a square wave."
+}

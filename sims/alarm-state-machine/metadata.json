@@ -1,0 +1,100 @@
+{
+  "title": "Alarm State Machine",
+  "creator": "Dan McCreary",
+  "subject": [
+    "State Machines",
+    "Alarm Clock",
+    "Snooze",
+    "Events"
+  ],
+  "description": "Interactive vis-network state diagram of an alarm clock. Event buttons move the highlight between IDLE, ARMED, RINGING and SNOOZED, while a clock model and the alarm_on, ringing and fired variables update; events with no arrow are shown as ignored.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Alarm clock state machine",
+    "learningObjectives": [
+      "Apply a state diagram to predict the next state after a sequence of events",
+      "Explain why the fired flag stops the alarm from restarting during the same minute",
+      "Calculate the new ring time after one or more snoozes"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "duration": "15 minutes",
+    "prerequisites": [
+      "State machines and button events (Chapter 7)",
+      "Alarm and snooze code (Chapter 17)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "vis-network",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 500
+    },
+    "responsive": true,
+    "dependencies": [
+      "vis-network 9.1.9"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Predict-then-test with a state diagram",
+    "keyQuestions": [
+      "Which events can leave the RINGING state?",
+      "Why does pressing Time matches right after Stop not ring again?",
+      "What happens to the ring time after two snoozes?"
+    ],
+    "commonMisconceptions": [
+      "Every button does something in every state (events with no arrow are ignored)",
+      "Stop turns the alarm off (it returns to ARMED, so the alarm still rings tomorrow)"
+    ],
+    "assessmentOpportunities": [
+      "Trace a list of events to a final state",
+      "Explain the role of the fired flag",
+      "Compute snooze times"
+    ]
+  },
+  "chapter": "17-sound-alarms-timers",
+  "controls": [
+    {
+      "type": "button",
+      "label": "Toggle alarm",
+      "description": "Turns the alarm on (IDLE to ARMED) or off (ARMED or SNOOZED to IDLE)."
+    },
+    {
+      "type": "button",
+      "label": "Time matches",
+      "description": "Jumps the clock to the next ring time."
+    },
+    {
+      "type": "button",
+      "label": "Stop",
+      "description": "Stops a ringing alarm or cancels a snooze."
+    },
+    {
+      "type": "button",
+      "label": "Snooze",
+      "description": "Silences a ringing alarm for 9 minutes."
+    },
+    {
+      "type": "button",
+      "label": "60 seconds pass",
+      "description": "Advances the clock one minute; a ringing alarm gives up."
+    },
+    {
+      "type": "button",
+      "label": "Reset",
+      "description": "Returns to IDLE at 07:29."
+    }
+  ]
+}

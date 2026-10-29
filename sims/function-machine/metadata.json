@@ -1,0 +1,96 @@
+{
+  "title": "Function Machine",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "Functions drawn as machines: argument tokens enter chutes named after the parameters and the return value comes out, including a write-your-own lambda.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Function Machine",
+    "learningObjectives": [
+      "Explain a function as a machine that turns arguments into a return value",
+      "Match each argument to the parameter name it is assigned to",
+      "Create a one-line lambda function and test it with different arguments"
+    ],
+    "bloomsTaxonomy": "Create",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Arithmetic operators including // and %",
+      "Variables and assignment"
+    ],
+    "standards": [],
+    "bloomsLevels": [
+      "Understand",
+      "Apply",
+      "Create"
+    ]
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 450
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4 (jsDelivr CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false,
+      "notes": "Controls are standard HTML form elements; the canvas has a describe() text for screen readers"
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Concrete metaphor with input-output experimentation and creation",
+    "keyQuestions": [
+      "What is the difference between a parameter and an argument?",
+      "How can one function return three values?",
+      "When is a lambda a better choice than def?"
+    ],
+    "commonMisconceptions": [
+      "print() inside a function is the same as return",
+      "Parameters keep their values after the function ends",
+      "A lambda can hold several statements"
+    ],
+    "assessmentOpportunities": [
+      "Students predict `to_12_hour(0)` and `to_12_hour(12)` before running them.",
+      "Students write a working two-parameter lambda.",
+      "Students explain the difference between a parameter and an argument using the chute picture."
+    ]
+  },
+  "chapter": "04-control-flow-functions",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "controls": [
+    {
+      "type": "select",
+      "label": "Function",
+      "description": "Chooses to_12_hour, split_seconds, add or Write your own"
+    },
+    {
+      "type": "button",
+      "label": "Run",
+      "description": "Calls the function and animates the tokens"
+    },
+    {
+      "type": "input",
+      "label": "Arguments",
+      "description": "One box per parameter"
+    },
+    {
+      "type": "input",
+      "label": "Lambda",
+      "description": "A one-line lambda for Write your own"
+    }
+  ]
+}

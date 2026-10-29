@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
+    <title>Bus Speed Race using Chart.js</title>
+    <style>
+        body { margin: 0px; padding: 0px; font-family: Arial, Helvetica, sans-serif; }
+        main { background: aliceblue; border: 1px solid silver; padding: 8px 12px 6px 12px; box-sizing: border-box; }
+        h2 { margin: 0 0 6px 0; font-size: 20px; text-align: center; font-weight: normal; }
+        .controls { display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: center; font-size: 15px;
+                    background: white; border: 1px solid silver; border-radius: 6px; padding: 6px 10px; }
+        .controls label { display: flex; align-items: center; gap: 6px; }
+        .controls input[type=range] { width: 150px; }
+        .controls .val { display: inline-block; min-width: 64px; font-weight: bold; }
+        .chart-box { position: relative; height: 250px; margin-top: 6px; background: white;
+                     border: 1px solid silver; border-radius: 6px; }
+        .readout { margin-top: 6px; font-size: 15px; text-align: center; }
+        .legend { margin-top: 4px; font-size: 13px; text-align: center; color: #333; }
+        @media (max-width: 560px) {
+            h2 { font-size: 17px; }
+            .chart-box { height: 220px; }
+            .controls input[type=range] { width: 120px; }
+        }
+        .swatch { display: inline-block; width: 12px; height: 12px; border-radius: 2px; vertical-align: -1px; margin: 0 4px 0 10px; }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+    <script src="bus-speed-race.js"></script>
+</head>
+<body>
+    <main>
+        <h2>Bus Speed Race: Time to Send One Full Frame</h2>
+        <div class="controls">
+            <label>Display
+                <select id="display">
+                    <option value="oled">128x64 mono OLED (1,024 bytes)</option>
+                    <option value="gc9a01">240x240 color (115,200 bytes)</option>
+                    <option value="ili9341">320x240 color (153,600 bytes)</option>
+                </select>
+            </label>
+            <label>I2C clock <input type="range" id="i2c" min="100" max="1000" step="50" value="400"><span class="val" id="i2cVal"></span></label>
+            <label>SPI clock <input type="range" id="spi" min="1" max="62.5" step="0.5" value="40"><span class="val" id="spiVal"></span></label>
+        </div>
+        <div class="chart-box"><canvas id="chart"></canvas></div>
+        <div class="readout" id="readout"></div>
+        <div class="legend">
+            <span class="swatch" style="background:#2e8b57"></span>20 fps or better
+            <span class="swatch" style="background:#e69500"></span>1 to 20 fps
+            <span class="swatch" style="background:#c0392b"></span>slower than 1 fps
+        </div>
+    </main>
+    <br/>
+    <a href=".">Back to Lesson Plan</a>
+</body>
+</html>

@@ -1,0 +1,96 @@
+{
+  "title": "Pixel Grid Sketchpad",
+  "creator": "Dan McCreary",
+  "subject": [
+    "Framebuffer",
+    "OLED",
+    "Pixel Coordinates",
+    "Bit Operations",
+    "SSD1306"
+  ],
+  "description": "Draw on a 128 by 64 OLED pixel grid and see which of the 1,024 framebuffer bytes and which bit stores each pixel.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Framebuffer memory layout (MONO_VLSB)",
+    "learningObjectives": [
+      "Apply x and y coordinates to locate pixels on a 128 by 64 display",
+      "Calculate the byte index and bit for any pixel using index = x + (y // 8) * 128 and bit = y % 8",
+      "Analyze why one byte stores a vertical strip of 8 pixels"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "duration": "15 minutes",
+    "prerequisites": [
+      "Bits, bytes and shift operators (Chapter 8)",
+      "Screen coordinates with (0, 0) at the top-left (Chapter 10)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 670
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Practice with immediate feedback",
+    "keyQuestions": [
+      "Which byte holds pixel (0, 8)?",
+      "How many bytes does a 128-pixel horizontal line touch?",
+      "Why does the buffer need only 1,024 bytes for 8,192 pixels?"
+    ],
+    "commonMisconceptions": [
+      "Each pixel is one byte (each pixel is one bit)",
+      "Bytes run across rows like text (on the SSD1306 they run down 8-pixel columns)"
+    ],
+    "assessmentOpportunities": [
+      "The student calculates index and bit for a given pixel without the tool.",
+      "The student explains why a horizontal line touches 1 byte per column while a vertical 8-pixel strip fits in one byte.",
+      "The student reads (x, y) correctly with y growing downward."
+    ]
+  },
+  "chapter": "11-oled-framebuffers",
+  "controls": [
+    {
+      "type": "canvas",
+      "label": "Pixel grid",
+      "description": "Click or drag to toggle pixels; hover to see index and bit"
+    },
+    {
+      "type": "button",
+      "label": "Clear",
+      "description": "Turns every pixel off"
+    },
+    {
+      "type": "button",
+      "label": "Draw example",
+      "description": "Loads the border and diagonal from the chapter"
+    },
+    {
+      "type": "button",
+      "label": "Generate code",
+      "description": "Lists the oled.pixel() calls for the current drawing"
+    },
+    {
+      "type": "button",
+      "label": "Challenge",
+      "description": "Asks the student to click a given (x, y)"
+    }
+  ]
+}

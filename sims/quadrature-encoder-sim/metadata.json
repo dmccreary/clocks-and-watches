@@ -1,0 +1,94 @@
+{
+  "title": "Quadrature Encoder Simulator",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "Turn a rotary encoder knob one step at a time and watch the A and B signals, with each falling edge of A marked by the value of B that sets the direction.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Quadrature Encoder Simulator",
+    "learningObjectives": [
+      "Explain how the order of the A and B signals encodes the direction of rotation",
+      "Describe the clockwise (00, 10, 11, 01) and counterclockwise (00, 01, 11, 10) sequences",
+      "Explain why reading B at the falling edge of A is enough to decode direction"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Interrupts on a falling edge (Pin.IRQ_FALLING)",
+      "Binary signals that are either 0 or 1"
+    ],
+    "standards": [],
+    "bloomsLevels": [
+      "Understand"
+    ]
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 465
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4 (jsDelivr CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false,
+      "notes": "Controls are standard HTML form elements; the canvas has a describe() text for screen readers"
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Step-through signal visualization (state changes instead of real-time scrolling)",
+    "keyQuestions": [
+      "How many state changes happen in one click of the knob?",
+      "What is the value of B when A falls during a clockwise turn?",
+      "Why do A and B never change at the same moment?"
+    ],
+    "commonMisconceptions": [
+      "A alone tells you the direction",
+      "Each state change adds 1 to the counter",
+      "The encoder knows its absolute position like a potentiometer"
+    ],
+    "assessmentOpportunities": [
+      "Students write the clockwise sequence of A and B from memory.",
+      "Students predict the value of B at a falling edge of A for each direction.",
+      "Students explain what would happen if A and B were wired the other way round."
+    ]
+  },
+  "chapter": "07-buttons-state-machines",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "controls": [
+    {
+      "type": "button",
+      "label": "Step CCW / Step CW",
+      "description": "Turns the knob one click (four state changes)"
+    },
+    {
+      "type": "button",
+      "label": "Reset",
+      "description": "Clears the traces and the counter"
+    },
+    {
+      "type": "checkbox",
+      "label": "Show table",
+      "description": "Shows the clockwise and counterclockwise state sequences"
+    },
+    {
+      "type": "canvas drag",
+      "label": "Knob",
+      "description": "Turns the knob; every 4.5 degrees is one state change"
+    }
+  ]
+}

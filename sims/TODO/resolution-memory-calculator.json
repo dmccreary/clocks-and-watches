@@ -1,0 +1,15 @@
+{
+  "sim_id": "resolution-memory-calculator",
+  "diagram_name": "Resolution and Memory Calculator",
+  "chapter_number": 11,
+  "chapter_title": "OLED Displays and Framebuffers",
+  "chapter_dir": "11-oled-framebuffers",
+  "chapter_rel_dir": "chapters/11-oled-framebuffers",
+  "library": "Chart.js",
+  "bloom_level": "Applying, Evaluating",
+  "bloom_verb": "calculate, evaluate",
+  "learning_objective": "Students will *calculate* the memory a screen needs and *evaluate* whether it fits in the Pico's RAM (Bloom: Applying, Evaluating).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: chart\n**sim-id:** resolution-memory-calculator<br/>\n**Library:** Chart.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *calculate* the memory a screen needs and *evaluate* whether it fits in the Pico's RAM (Bloom: Applying, Evaluating).\n\n**Visual elements:** A bar chart of framebuffer size in KB for the five displays in the table, with a horizontal red line at 264 KB (total RAM) and a yellow line at 200 KB (a practical limit).\n\n**Controls:** Dropdown to choose bits per pixel (1, 8, 16); a custom \"width\" and \"height\" input pair that adds a sixth bar. The tooltip on each bar shows the formula with numbers substituted.\n\n**Responsive design:** The chart resizes to the container.\n\nImplementation: Chart.js bar chart with a computed dataset."
+}

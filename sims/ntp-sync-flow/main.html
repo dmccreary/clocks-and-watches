@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
+    <title>NTP Sync Flow using Mermaid</title>
+    <style>
+        * { box-sizing: border-box; }
+        html, body { margin: 0px; padding: 0px; font-family: Arial, Helvetica, sans-serif; overflow: hidden; }
+        main { display: flex; height: 690px; border: 1px solid silver; background: aliceblue; }
+        .diagram-panel { flex: 2; min-width: 0; display: flex; flex-direction: column; padding: 6px; overflow: visible; }
+        #title { text-align: center; font-size: 20px; margin: 2px 0 4px 0; }
+        #diagram { flex: 1; display: flex; justify-content: center; align-items: flex-start; min-height: 0; }
+        #diagram svg { max-width: 100%; max-height: 100%; height: auto; }
+        #diagram .node { cursor: pointer; }
+        .info-panel { flex: 1; min-width: 0; background: white; border-left: 1px solid silver; padding: 8px 10px;
+                      display: flex; flex-direction: column; gap: 8px; overflow: visible; }
+        .toggles { display: flex; flex-wrap: wrap; gap: 6px; }
+        .toggles button { font-size: 14px; padding: 4px 8px; border: 2px solid #999; border-radius: 6px; background: #f4f4f4; cursor: pointer; }
+        .toggles button.on { background: #ffe0cc; border-color: #d55e00; font-weight: bold; }
+        .legend { font-size: 13px; border: 1px solid #cbd5e1; border-radius: 4px; padding: 6px 8px; background: #fff; }
+        .legend-title { font-weight: bold; margin-bottom: 3px; }
+        .legend-item { display: flex; align-items: center; gap: 6px; margin: 2px 0; }
+        .legend-line { width: 26px; height: 4px; border-radius: 2px; }
+        #status { font-size: 14px; color: #333; }
+        #panel { background: #f8fafc; color: #334155; border: 1px solid #e2e8f0; border-radius: 6px; padding: 8px; font-size: 14px; }
+        #panel h3 { margin: 0 0 4px 0; font-size: 16px; color: #111; }
+        #panel pre { background: #1e293b; color: #e2e8f0; padding: 6px 8px; border-radius: 4px; font-size: 12px;
+                     white-space: pre-wrap; word-break: break-word; margin: 6px 0 0 0; }
+        @media (max-width: 640px) {
+            main { flex-direction: column; }
+            .diagram-panel { flex: none; height: 430px; }
+            .info-panel { border-left: none; border-top: 1px solid silver; gap: 5px; padding: 6px 8px; }
+            .legend { display: none; }
+            #panel { font-size: 12px; }
+            #panel pre { font-size: 11px; }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script src="ntp-sync-flow.js"></script>
+</head>
+<body>
+    <main>
+        <div class="diagram-panel">
+            <div id="title">NTP Sync Flow</div>
+            <div id="diagram"></div>
+        </div>
+        <div class="info-panel">
+            <div class="toggles">
+                <button id="wifi-fail" aria-pressed="false">WiFi fails</button>
+                <button id="ntp-fail" aria-pressed="false">NTP fails</button>
+            </div>
+            <div id="status"></div>
+            <div class="legend">
+                <div class="legend-title">Color Key</div>
+                <div class="legend-item"><div class="legend-line" style="background:#009e73"></div>Path taken when all goes well</div>
+                <div class="legend-item"><div class="legend-line" style="background:#d55e00"></div>Retry and fallback path</div>
+                <div class="legend-item"><div class="legend-line" style="background:#bbbbbb"></div>Path not taken</div>
+            </div>
+            <div id="panel"><h3>Click a step</h3>Click any box in the flowchart to see the MicroPython code for that step.</div>
+        </div>
+    </main>
+    <br/>
+    <a href=".">Back to Lesson Plan</a>
+</body>
+</html>

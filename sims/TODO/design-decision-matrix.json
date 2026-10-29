@@ -1,0 +1,15 @@
+{
+  "sim_id": "design-decision-matrix",
+  "diagram_name": "Design Decision Matrix",
+  "chapter_number": 20,
+  "chapter_title": "Design, Testing, and AI-Assisted Development",
+  "chapter_dir": "20-design-testing-ai",
+  "chapter_rel_dir": "chapters/20-design-testing-ai",
+  "library": "p5.js",
+  "bloom_level": "Evaluating",
+  "bloom_verb": "evaluate, justify",
+  "learning_objective": "Students will *evaluate* competing clock designs by weighting criteria and *justify* a choice (Bloom: Evaluating).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: MicroSim\n**sim-id:** design-decision-matrix<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *evaluate* competing clock designs by weighting criteria and *justify* a choice (Bloom: Evaluating).\n\n**Visual elements:** A table with criteria as rows and up to four designs as columns, with slider inputs for the weights and 1 to 5 score cells. A bar chart on the right shows each design's weighted total, with the winner highlighted.\n\n**Controls:** Sliders for each criterion's weight (0 to 5); editable scores; presets loading the worked example; a \"Sensitivity\" button that reports how much a weight must change before the winner flips.\n\n**Responsive design:** The table scrolls horizontally on narrow screens and the chart moves below it.\n\nImplementation: p5.js with a weighted sum."
+}

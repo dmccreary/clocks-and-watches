@@ -1,0 +1,85 @@
+{
+  "title": "Schematic Symbol Matcher",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "Click the hidden symbols in an LED circuit schematic to reveal each part, match drawings of real parts to their symbols, and trace the current from pin GP15 to ground.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Electronics",
+    "topic": "Schematic symbols and reading a simple LED circuit diagram",
+    "learningObjectives": [
+      "Recall the schematic symbols for a GPIO pin, a resistor, an LED, and ground.",
+      "Interpret a simple LED circuit diagram by tracing the path of the current.",
+      "Explain the job of each part in the circuit."
+    ],
+    "bloomsTaxonomy": "Understand",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Read the Schematic Symbols and LED Basics sections of Chapter 2."
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 470
+    },
+    "responsive": true,
+    "dependencies": [],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false,
+      "notes": "Screen-reader description provided; all controls are standard HTML elements."
+    },
+    "controls": [
+      {
+        "type": "click",
+        "label": "Schematic symbols",
+        "description": "Explore mode: reveals the name and shows the real part. Match mode: answers the question."
+      },
+      {
+        "type": "button",
+        "label": "Match mode / Explore",
+        "description": "Switches between exploring and the part-to-symbol quiz."
+      },
+      {
+        "type": "button",
+        "label": "Trace the current",
+        "description": "Moves a dot once along the current path from GP15 to ground."
+      },
+      {
+        "type": "button",
+        "label": "Hide labels",
+        "description": "Hides all revealed names (Explore mode only)."
+      }
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Reveal, trace, then retrieval practice",
+    "keyQuestions": [
+      "Which way does the LED triangle point, and why?",
+      "What would happen to the LED if the resistor were removed?",
+      "Why must the circuit end at ground?"
+    ],
+    "commonMisconceptions": [
+      "Thinking the schematic shows where parts physically sit on the breadboard.",
+      "Thinking an LED works in either direction.",
+      "Thinking current is used up by the LED and does not need to return to ground."
+    ],
+    "assessmentOpportunities": [
+      "Students correctly name all four symbols without help.",
+      "Students can explain why the LED symbol points from the resistor toward ground.",
+      "Students draw a correct schematic for an LED connected to a different GPIO pin."
+    ],
+    "interactionPattern": "Clickable diagram with matching quiz and one-shot trace"
+  },
+  "chapter": "02-electronics-fundamentals"
+}

@@ -1,0 +1,90 @@
+{
+  "title": "Thonny Window Tour",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "A clickable mockup of the Thonny IDE with numbered hotspots for the interpreter selector, editor, Run and Stop buttons, Shell, and the two Files panes, plus a quiz mode.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Thonny Window Tour",
+    "learningObjectives": [
+      "Identify the editor, Shell, Run button, Stop button, interpreter selector and Files panes in Thonny",
+      "Explain what each part of the Thonny window is used for",
+      "Distinguish files stored on \"This computer\" from files stored on the MicroPython device"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Thonny installed on the computer (see Desktop Setup)",
+      "A Raspberry Pi Pico connected with a data USB cable"
+    ],
+    "standards": [],
+    "bloomsLevels": [
+      "Remember",
+      "Understand"
+    ]
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 565
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4 (jsDelivr CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false,
+      "notes": "Controls are standard HTML form elements; the canvas has a describe() text for screen readers"
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Labeled diagram exploration followed by a click-to-answer quiz",
+    "keyQuestions": [
+      "Where do you type a single test line?",
+      "How do you get the >>> prompt back from a runaway loop?",
+      "Which files run when the Pico is unplugged from the computer?"
+    ],
+    "commonMisconceptions": [
+      "A program saved on the laptop will run on the Pico by itself",
+      "The Shell and the editor do the same job",
+      "Closing Thonny stops a main.py that is already running on the Pico"
+    ],
+    "assessmentOpportunities": [
+      "Students answer all seven quiz questions correctly.",
+      "Students explain the difference between saving to \"This computer\" and to the MicroPython device.",
+      "Students can stop a running program from Thonny without unplugging the Pico."
+    ]
+  },
+  "chapter": "03-micropython-basics",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "controls": [
+    {
+      "type": "checkbox",
+      "label": "Quiz me",
+      "description": "Switches between explore mode and quiz mode"
+    },
+    {
+      "type": "button",
+      "label": "Next question",
+      "description": "Shows the next quiz question"
+    },
+    {
+      "type": "canvas click",
+      "label": "Hotspot",
+      "description": "Hover to see a name, click to read the description or answer a quiz question"
+    }
+  ]
+}

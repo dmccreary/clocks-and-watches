@@ -1,0 +1,71 @@
+{
+  "title": "Sync Interval Calculator",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "A Chart.js sawtooth chart of clock error over three days that grows between NTP syncs and resets at each sync, with drift and sync interval sliders and clock presets.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Sync Interval Calculator",
+    "learningObjectives": [
+      "Calculate the worst-case error for a drift rate and sync interval",
+      "Calculate the sync interval needed for a 1 second accuracy goal"
+    ],
+    "bloomsTaxonomy": [
+      "Apply",
+      "Evaluate"
+    ],
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Clock drift in ppm (Chapter 13)",
+      "NTP sync (Chapter 14)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "Chart.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 500
+    },
+    "responsive": true,
+    "dependencies": [
+      "Chart.js 4.4.4"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Interactive exploration",
+    "keyQuestions": [
+      "When does the largest error occur?",
+      "How often must a 30 ppm clock sync to stay within 1 s?"
+    ],
+    "commonMisconceptions": [
+      "A WiFi clock must sync every few minutes to be accurate",
+      "Error keeps growing even after a sync"
+    ],
+    "assessmentOpportunities": [
+      "Compute the worst-case error of a 50 ppm clock synced every 12 hours",
+      "Find the interval that keeps a 20 ppm clock within 0.5 s"
+    ]
+  },
+  "chapter": "14-wifi-ntp",
+  "canvasHeight": 500,
+  "userInterface": {
+    "controls": [
+      "Clock source preset dropdown",
+      "Drift slider (1-100 ppm)",
+      "Sync interval slider (1-48 h)"
+    ]
+  }
+}

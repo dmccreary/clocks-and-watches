@@ -1,0 +1,85 @@
+{
+  "title": "TM1637 Wiring Diagram",
+  "creator": "Dan McCreary",
+  "subject": [
+    "TM1637",
+    "Wiring",
+    "Pico Pinout",
+    "Seven-Segment Display"
+  ],
+  "description": "Connect the four pins of a TM1637 display module to the correct Raspberry Pi Pico pins; correct wires lock in and the display lights up 12:34.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Wiring a TM1637 display to the Pico",
+    "learningObjectives": [
+      "Apply a wiring table by connecting each module pin to the correct Pico pin",
+      "Distinguish power, ground and GPIO pins on the Pico pinout",
+      "Explain why the module is powered from 3V3(OUT) instead of VBUS"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "duration": "15 minutes",
+    "prerequisites": [
+      "Pico pin names and physical pin numbers (Chapter 2)",
+      "Wire color conventions (Chapter 2)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 555
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Practice with immediate feedback",
+    "keyQuestions": [
+      "Why is any GND pin acceptable but only one power pin?",
+      "What would change in the code if CLK used GP6 instead of GP2?",
+      "Why is 3.3 V safer than 5 V for the Pico's signal pins?"
+    ],
+    "commonMisconceptions": [
+      "Pin 4 means GP4 (physical pin 4 is GP2)",
+      "VBUS and 3V3(OUT) are interchangeable power pins"
+    ],
+    "assessmentOpportunities": [
+      "The student wires all four pins correctly without Show answer.",
+      "The student explains why a signal pin must never go to power or ground.",
+      "The student explains that any GND pin works but VCC must use 3V3(OUT)."
+    ]
+  },
+  "chapter": "09-led-displays",
+  "controls": [
+    {
+      "type": "canvas",
+      "label": "Module pins",
+      "description": "Drag (or tap, then tap a Pico pin) to connect a wire"
+    },
+    {
+      "type": "button",
+      "label": "Show answer",
+      "description": "Draws the four correct wires"
+    },
+    {
+      "type": "button",
+      "label": "Reset",
+      "description": "Removes all wires"
+    }
+  ]
+}
