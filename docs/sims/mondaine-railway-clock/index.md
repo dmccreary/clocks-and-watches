@@ -2,8 +2,7 @@
 title: Mondaine Swiss Railway Clock
 description: Explore a Swiss railway watch face and its sweep, hold, and minute-step sequence.
 image: /sims/mondaine-railway-clock/mondaine-railway-clock.png
-social:
-  cards: false
+og:image: /sims/mondaine-railway-clock/mondaine-railway-clock.png
 ---
 # Mondaine Swiss Railway Clock
 
