@@ -260,6 +260,25 @@ nav:
       - 11 Countdown Timer: kits/sw-gc9b72/11-countdown-timer.md
       - 12 Five Modes: kits/sw-gc9b72/12-main-template.md
       - Notes for Teachers: kits/sw-gc9b72/teacher-notes.md
+    - Railway Clock Kit, Mondaine-Style (GC9B72, Pico W):
+      - Introduction: kits/mondaine/index.md
+      - 00 Blink the LED: kits/mondaine/00-blink-onboard-led.md
+      - 01 Hello, Display: kits/mondaine/01-hello-display.md
+      - 02 Twelve Dots: kits/mondaine/02-dial-dots.md
+      - 03 Twelve Bars: kits/mondaine/03-hour-markers.md
+      - 04 Sixty Bars: kits/mondaine/04-minute-markers.md
+      - 05 Black Hands: kits/mondaine/05-black-hands.md
+      - 06 Red Second Hand: kits/mondaine/06-red-second-hand.md
+      - 07 Show the Real Time: kits/mondaine/07-read-the-time.md
+      - 08 WiFi Time: kits/mondaine/08-wifi-sync-time.md
+      - 09 Tick Tock: kits/mondaine/09-tick-tock.md
+      - 10 Smooth Sweep: kits/mondaine/10-smooth-sweep.md
+      - 11 Stop at Twelve: kits/mondaine/11-stop-at-twelve.md
+      - 12 The Minute Jump: kits/mondaine/12-minute-jump.md
+      - 13 Button Test: kits/mondaine/13-button-test.md
+      - 14 Set the Time: kits/mondaine/14-set-time.md
+      - 15 The Railway Clock: kits/mondaine/15-mondaine-clock.md
+      - Notes for Teachers: kits/mondaine/teacher-notes.md
     - Knob Clock Kit (ST7735S, Pico 2 W):
       - Introduction: kits/rect-tft-display/index.md
       - 01 Blink the LED: kits/rect-tft-display/01-blink-onboard-led.md
