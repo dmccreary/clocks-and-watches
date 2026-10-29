@@ -1,0 +1,15 @@
+{
+  "sim_id": "pixel-grid-sketchpad",
+  "diagram_name": "Pixel Grid Sketchpad",
+  "chapter_number": 11,
+  "chapter_title": "OLED Displays and Framebuffers",
+  "chapter_dir": "11-oled-framebuffers",
+  "chapter_rel_dir": "chapters/11-oled-framebuffers",
+  "library": "p5.js",
+  "bloom_level": "Applying, Analyzing",
+  "bloom_verb": "apply",
+  "learning_objective": "Students will *apply* coordinates and the buffer layout by turning pixels on and off (Bloom: Applying, Analyzing).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: MicroSim\n**sim-id:** pixel-grid-sketchpad<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *apply* coordinates and the buffer layout by turning pixels on and off (Bloom: Applying, Analyzing).\n\n**Visual elements:** A 128 by 64 grid drawn at 6x scale. Beside it, a table of the 1,024 buffer bytes that highlights the byte containing the hovered pixel, with its index and bit.\n\n**Interactions:** Click a pixel to toggle it. Hovering shows `(x, y)`, the byte index using the formula in the text, and the bit. A \"Generate code\" button outputs the `pixel()` calls for the current drawing. A \"Challenge\" mode asks the student to click a given (x, y).\n\n**Responsive design:** The grid scales to the container width.\n\nImplementation: p5.js with an array of 1,024 bytes and bit operations."
+}

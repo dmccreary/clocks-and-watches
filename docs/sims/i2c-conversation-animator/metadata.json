@@ -1,0 +1,95 @@
+{
+  "title": "I2C Conversation Animator",
+  "creator": "Dan McCreary",
+  "subject": [
+    "I2C",
+    "Communication Buses",
+    "Device Addressing",
+    "Acknowledge Bit"
+  ],
+  "description": "Step through one I2C write transaction - START, address and write bit, ACK, data byte, ACK, STOP - and see the SDA and SCL waveforms for each part.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "I2C write transaction",
+    "learningObjectives": [
+      "Describe the order of an I2C write: START, address + W, ACK, data, ACK, STOP",
+      "Explain how the address lets only one device respond on a shared bus",
+      "Identify a missing ACK as the sign of a wrong address or a wiring fault"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "duration": "13 minutes",
+    "prerequisites": [
+      "Binary and hexadecimal numbers (Chapter 8)",
+      "The SDA and SCL lines and device addresses (Chapter 8)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 530
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Step-through exploration with concrete values",
+    "keyQuestions": [
+      "Why does SDA only change while SCL is low?",
+      "Who pulls SDA low during an ACK?",
+      "What does the controller do when no device answers?"
+    ],
+    "commonMisconceptions": [
+      "Every device answers every message (only the device with the matching address sends ACK)",
+      "The ACK is sent by the Pico (the receiving device sends it)"
+    ],
+    "assessmentOpportunities": [
+      "The student converts 0x68 to the seven bits 1101000 and finds them on the waveform.",
+      "The student explains that the device, not the Pico, drives the ACK bit.",
+      "The student links a NACK to an OSError and a wiring or address problem."
+    ]
+  },
+  "chapter": "08-communication-buses",
+  "controls": [
+    {
+      "type": "select",
+      "label": "Talk to",
+      "description": "Chooses the OLED (0x3C), RTC (0x68), sensor (0x76) or a wrong address (0x50)"
+    },
+    {
+      "type": "select",
+      "label": "data",
+      "description": "Chooses the data byte to send"
+    },
+    {
+      "type": "button",
+      "label": "Next step",
+      "description": "Adds the next part of the transaction to the waveform"
+    },
+    {
+      "type": "button",
+      "label": "Back",
+      "description": "Goes back one step"
+    },
+    {
+      "type": "button",
+      "label": "Reset",
+      "description": "Returns to the idle bus"
+    }
+  ]
+}

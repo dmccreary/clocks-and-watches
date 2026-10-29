@@ -1,0 +1,15 @@
+{
+  "sim_id": "neopixel-power-budget",
+  "diagram_name": "NeoPixel Power Budget",
+  "chapter_number": 16,
+  "chapter_title": "NeoPixels and Shift Register Clocks",
+  "chapter_dir": "16-neopixels-shift-registers",
+  "chapter_rel_dir": "chapters/16-neopixels-shift-registers",
+  "library": "p5.js",
+  "bloom_level": "Applying, Evaluating",
+  "bloom_verb": "calculate, evaluate",
+  "learning_objective": "Students will *calculate* the current a LED design draws and *evaluate* whether it needs an external supply (Bloom: Applying, Evaluating).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: MicroSim\n**sim-id:** neopixel-power-budget<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *calculate* the current a LED design draws and *evaluate* whether it needs an external supply (Bloom: Applying, Evaluating).\n\n**Visual elements:** A strip of pixels where the student clicks to light each one. A gauge shows total current in mA with a green zone below 400 mA, yellow to 500 mA, and red above 500 mA (the USB limit).\n\n**Controls:** A dropdown for strip length (12, 30, 60, 144), a color picker for the lit color, a brightness slider (0 to 100 percent), and a \"Light all\" button. The readout shows the formula with the numbers substituted.\n\n**Responsive design:** The strip wraps into rows on narrow screens.\n\nImplementation: p5.js with a per-pixel current estimate of R+G+B channel values times 20 mA per full channel."
+}

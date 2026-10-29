@@ -1,0 +1,100 @@
+{
+  "title": "Button Bounce Oscilloscope",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "A single-shot oscilloscope captures contact bounce on every press; adjust the debounce window and a 0.1 uF hardware filter until one press counts once.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Button Bounce Oscilloscope",
+    "learningObjectives": [
+      "Analyze how contact bounce turns one press into several falling edges",
+      "Evaluate how long a software debounce window must be to count each press once",
+      "Compare software debouncing with a hardware RC filter"
+    ],
+    "bloomsTaxonomy": "Evaluate",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Pull-up resistors and active-low buttons from Chapter 5",
+      "ticks_ms() and ticks_diff() from Chapter 6"
+    ],
+    "standards": [],
+    "bloomsLevels": [
+      "Analyze",
+      "Evaluate"
+    ]
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 545
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4 (jsDelivr CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false,
+      "notes": "Controls are standard HTML form elements; the canvas has a describe() text for screen readers"
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Measure-and-tune investigation (single-shot capture instead of a continuously scrolling trace)",
+    "keyQuestions": [
+      "Why does one press produce several falling edges?",
+      "What window length is long enough, and what is too long?",
+      "How does the capacitor stop the extra edges?"
+    ],
+    "commonMisconceptions": [
+      "A counter that jumps by 3 means the wiring is wrong",
+      "A longer debounce window is always better",
+      "Bounce lasts about a second"
+    ],
+    "assessmentOpportunities": [
+      "Students choose a window longer than the longest bounce and justify it with data from the scope.",
+      "Students explain why the hardware filter produces one falling edge.",
+      "Students relate the slider to `DEBOUNCE_MS` in the chapter's code."
+    ]
+  },
+  "chapter": "07-buttons-state-machines",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "controls": [
+    {
+      "type": "button",
+      "label": "Press button",
+      "description": "Captures a new random bounce burst"
+    },
+    {
+      "type": "button",
+      "label": "Reset count",
+      "description": "Clears the counters"
+    },
+    {
+      "type": "select",
+      "label": "Span",
+      "description": "Sets the scope time span to 20, 50 or 150 ms"
+    },
+    {
+      "type": "checkbox",
+      "label": "Hardware filter (0.1 uF capacitor)",
+      "description": "Smooths the trace with an RC filter"
+    },
+    {
+      "type": "slider",
+      "label": "Debounce window",
+      "description": "Software debounce window from 0 to 100 ms"
+    }
+  ]
+}

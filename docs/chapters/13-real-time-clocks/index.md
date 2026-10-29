@@ -151,6 +151,10 @@ Wait: the seconds byte says 48, but the actual time was 30 seconds. The numbers 
 
 #### Diagram: DS3231 Register Map
 
+<iframe src="../../sims/ds3231-register-map/main.html" height="612px" width="100%" scrolling="no"></iframe>
+
+[Run the DS3231 Register Map MicroSim Fullscreen](../../sims/ds3231-register-map/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>DS3231 Register Map</summary>
 Type: interactive infographic
@@ -204,6 +208,10 @@ print(hex(dec_to_bcd(59)))  # 0x59
     BCD looks strange the first time, since `0x45` means forty-five, not sixty-nine. Try decoding three bytes by hand with the high nibble times ten plus the low nibble. After that, the two functions above become obvious.
 
 #### Diagram: BCD Converter
+
+<iframe src="../../sims/bcd-converter/main.html" height="537px" width="100%" scrolling="no"></iframe>
+
+[Run the BCD Converter MicroSim Fullscreen](../../sims/bcd-converter/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>BCD Converter</summary>
@@ -311,6 +319,10 @@ The table shows why the DS3231 is the sweet spot for a clock that is not always 
 
 #### Diagram: Drift Calculator
 
+<iframe src="../../sims/clock-drift-calculator/main.html" height="532px" width="100%" scrolling="no"></iframe>
+
+[Run the Drift Calculator MicroSim Fullscreen](../../sims/clock-drift-calculator/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Drift Calculator</summary>
 Type: chart
@@ -347,6 +359,10 @@ A clock can be precise but inaccurate. Because the DS3231's drift is small and s
 | DS3231 | Yes | Yes |
 
 #### Diagram: Accuracy vs Precision Targets
+
+<iframe src="../../sims/accuracy-vs-precision/main.html" height="537px" width="100%" scrolling="no"></iframe>
+
+[Run the Accuracy vs Precision Targets MicroSim Fullscreen](../../sims/accuracy-vs-precision/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Accuracy vs Precision Targets</summary>

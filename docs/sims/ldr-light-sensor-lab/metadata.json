@@ -1,0 +1,86 @@
+{
+  "title": "LDR Light Sensor Lab",
+  "creator": "Dan McCreary",
+  "subject": [
+    "Light-Dependent Resistor",
+    "Voltage Divider",
+    "ADC",
+    "Photosensor"
+  ],
+  "description": "Interactive p5.js MicroSim of an LDR voltage divider: room brightness sets the LDR resistance, a fixed resistor slider changes the divider, and the schematic, worked formula and gauge show Vout and the 0-65535 ADC reading.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Reading an LDR with a voltage divider and the ADC",
+    "learningObjectives": [
+      "Apply the voltage divider formula to calculate Vout for a given LDR resistance",
+      "Convert Vout into the 16-bit ADC reading that read_u16() returns",
+      "Explain how the choice of fixed resistor changes the sensor's useful range"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "duration": "15-20 minutes",
+    "prerequisites": [
+      "Voltage dividers and Ohm's law",
+      "ADC readings from 0 to 65535"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 535
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Predict-then-reveal calculation practice",
+    "keyQuestions": [
+      "Why does brighter light give a bigger ADC reading with this wiring?",
+      "What happens to the reading if the LDR and fixed resistor swap places?",
+      "Which fixed resistor gives the most change between two light levels?"
+    ],
+    "commonMisconceptions": [
+      "The ADC measures resistance directly (it measures voltage)",
+      "Any fixed resistor works equally well (the best value is near the LDR resistance in the light range you care about)"
+    ],
+    "assessmentOpportunities": [
+      "Hand-calculate Vout and the ADC reading with answers hidden",
+      "Justify a fixed resistor value for an application"
+    ]
+  },
+  "chapter": "18-sensors-power",
+  "controls": [
+    {
+      "type": "slider",
+      "label": "Brightness",
+      "range": "Dark room to direct sunlight (LDR 1 Mohm to 500 ohm)",
+      "default": "Bright room (2.0 kohm)"
+    },
+    {
+      "type": "slider",
+      "label": "Fixed resistor",
+      "range": "1 kohm to 100 kohm (standard values)",
+      "default": "10 kohm"
+    },
+    {
+      "type": "checkbox",
+      "label": "Hide Vout and the ADC reading (predict first)",
+      "default": false
+    }
+  ]
+}

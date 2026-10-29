@@ -149,6 +149,10 @@ The module works from 3.3 V or 5 V. Powering it from 3.3 V keeps the signal leve
 
 #### Diagram: TM1637 Wiring Diagram
 
+<iframe src="../../sims/tm1637-wiring/main.html" height="557px" width="100%" scrolling="no"></iframe>
+
+[Run the TM1637 Wiring Diagram MicroSim Fullscreen](../../sims/tm1637-wiring/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>TM1637 Wiring Diagram</summary>
 Type: interactive diagram

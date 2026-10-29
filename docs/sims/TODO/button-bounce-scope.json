@@ -1,0 +1,15 @@
+{
+  "sim_id": "button-bounce-scope",
+  "diagram_name": "Button Bounce Oscilloscope",
+  "chapter_number": 7,
+  "chapter_title": "Buttons, Interrupts, and State Machines",
+  "chapter_dir": "07-buttons-state-machines",
+  "chapter_rel_dir": "chapters/07-buttons-state-machines",
+  "library": "p5.js",
+  "bloom_level": "Analyzing, Evaluating",
+  "bloom_verb": "analyze, evaluate",
+  "learning_objective": "Students will *analyze* how bounce creates false presses and *evaluate* the effect of a debounce delay (Bloom: Analyzing, Evaluating).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: MicroSim\n**sim-id:** button-bounce-scope<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *analyze* how bounce creates false presses and *evaluate* the effect of a debounce delay (Bloom: Analyzing, Evaluating).\n\n**Visual elements:** A scrolling oscilloscope-style trace of the pin voltage (3.3 V high, 0 V low). Below it, a counter shows the number of presses counted.\n\n**Controls:**\n\n- \"Press button\" generates a realistic bounce burst (random 3 to 12 transitions over 1 to 15 ms).\n- Slider \"Debounce window (ms)\": 0 to 100, default 0.\n- Toggle \"Hardware filter (0.1 µF)\" that smooths the trace.\n\n**Behavior:** With the window at 0, one press increments the counter several times. As the window grows past the bounce length the counter increments once.\n\n**Responsive design:** The trace fills the container width.\n\nImplementation: p5.js with a timestamped event list."
+}

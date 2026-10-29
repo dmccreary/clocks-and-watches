@@ -162,6 +162,10 @@ else:
 
 #### Diagram: Greeting Decision Path
 
+<iframe src="../../sims/greeting-decision-path/main.html" height="522px" width="100%" scrolling="no"></iframe>
+
+[Run the Greeting Decision Path MicroSim Fullscreen](../../sims/greeting-decision-path/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Greeting Decision Path</summary>
 Type: MicroSim
@@ -263,6 +267,10 @@ Going backward works too: `(0 - 1) % 60` gives 59 in Python, which is what you w
     Any time a value must go around like a dial (seconds, hours, menu choices), reach for `% limit` instead of writing an `if` to reset it. It is shorter and it also handles going backward.
 
 #### Diagram: Wrap-Around Dial
+
+<iframe src="../../sims/wrap-around-dial/main.html" height="512px" width="100%" scrolling="no"></iframe>
+
+[Run the Wrap-Around Dial MicroSim Fullscreen](../../sims/wrap-around-dial/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Wrap-Around Dial</summary>
@@ -372,6 +380,10 @@ A well-modularized clock might look like this:
 Two habits make modular code work. First, give each function one job and a name that says it. Second, never copy and paste code: if you need the same lines twice, make them a function. Keeping pin numbers in `config.py` also means switching to a different board changes one file, not fifty lines.
 
 #### Diagram: Function Machine
+
+<iframe src="../../sims/function-machine/main.html" height="452px" width="100%" scrolling="no"></iframe>
+
+[Run the Function Machine MicroSim Fullscreen](../../sims/function-machine/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Function Machine</summary>

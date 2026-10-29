@@ -1,0 +1,93 @@
+{
+  "title": "Clock Decomposition Explorer",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "Explore a tree that breaks a digital clock into five sub-problems and thirteen small tasks, then pick a bug symptom and see which task is the most likely suspect.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Physical Computing",
+    "topic": "Decomposition: breaking a digital clock into sub-problems",
+    "learningObjectives": [
+      "Analyze a digital clock by breaking it into sub-problems and smaller tasks.",
+      "Identify which sub-problem a given symptom most likely belongs to.",
+      "Describe how to test one small piece of a program by itself."
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Read the Decomposition section of Chapter 1."
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "vis-network",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 492
+    },
+    "responsive": true,
+    "dependencies": [
+      "vis-network@9.1.9"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true,
+      "notes": "Screen-reader description provided; all controls are standard HTML elements."
+    },
+    "controls": [
+      {
+        "type": "click",
+        "label": "Tree boxes",
+        "description": "Clicking a box shows its job and a \"Test it alone\" hint."
+      },
+      {
+        "type": "hover",
+        "label": "Tree boxes",
+        "description": "Hovering highlights the path back to the root."
+      },
+      {
+        "type": "select",
+        "label": "Symptom",
+        "options": [
+          "Wrong hour",
+          "Colon does not flash",
+          "Buttons ignored",
+          "Clock runs slow"
+        ],
+        "description": "Pulses the task most likely to contain the bug and explains why."
+      },
+      {
+        "type": "buttons",
+        "label": "Navigation buttons",
+        "description": "Pan and zoom the tree without capturing page scrolling."
+      }
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Guided exploration and diagnosis",
+    "keyQuestions": [
+      "Why does the \"wrong hour\" bug point to Format Time and not Keep Time?",
+      "Which small task would you test first if the display is completely blank?",
+      "Why is it easier to test \"Compute minutes\" alone than the whole clock?"
+    ],
+    "commonMisconceptions": [
+      "Starting the search at the top of the program instead of at the piece closest to the symptom.",
+      "Assuming a display problem must be in Draw Time, when the display may be drawing exactly what Format Time told it to.",
+      "Thinking decomposition is only for planning. It is just as useful for finding bugs."
+    ],
+    "assessmentOpportunities": [
+      "Given a symptom, students name the sub-problem and the small task most likely to contain the bug.",
+      "Students explain why the other sub-problems can be ruled out for that symptom.",
+      "Students write a test that checks one small task by itself."
+    ],
+    "interactionPattern": "Network explorer with symptom-to-cause lookup"
+  },
+  "chapter": "01-foundations"
+}

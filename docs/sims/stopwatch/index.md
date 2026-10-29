@@ -1,6 +1,6 @@
 ---
-title: Stopwatch
-description: Interactive p5.js stopwatch simulation with start/stop and reset controls, displaying time in MM:SS.mmm format
+title: "Stopwatch"
+description: "Interactive p5.js stopwatch simulation with start/stop and reset controls, displaying time in MM:SS.mmm format"
 quality_score: 72
 ---
 

@@ -75,6 +75,10 @@ Different projects swap parts inside these blocks. A simple LED clock uses a fou
 
 #### Diagram: Clock Architecture Explorer
 
+<iframe src="../../sims/clock-architecture-explorer/main.html" height="450px" width="100%" scrolling="no"></iframe>
+
+[Run the Clock Architecture Explorer MicroSim Fullscreen](../../sims/clock-architecture-explorer/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Clock Architecture Explorer</summary>
 Type: interactive diagram
@@ -147,6 +151,10 @@ Electric **power** is how fast energy is used, measured in **watts (W)**. It is 
     Three letters and one equation is all Ohm's Law is. If the rearranging feels shaky, cover the letter you want to find in the triangle V over I times R and read off the rest. You've solved harder puzzles than this.
 
 #### Diagram: Ohm's Law Explorer
+
+<iframe src="../../sims/ohms-law-explorer/main.html" height="497px" width="100%" scrolling="no"></iframe>
+
+[Run the Ohm's Law Explorer MicroSim Fullscreen](../../sims/ohms-law-explorer/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Ohm's Law Explorer</summary>
@@ -230,6 +238,10 @@ That is safe for a Pico pin. Voltage dividers also appear inside light sensors, 
 
 #### Diagram: Voltage Divider Lab
 
+<iframe src="../../sims/voltage-divider-lab/main.html" height="497px" width="100%" scrolling="no"></iframe>
+
+[Run the Voltage Divider Lab MicroSim Fullscreen](../../sims/voltage-divider-lab/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Voltage Divider Lab</summary>
 Type: MicroSim
@@ -278,6 +290,10 @@ The fourth band is tolerance: gold means the real value is within ±5% of the ma
 Resistors are sold only in standard values, such as 100, 150, 220, 330, 470, 680, and 1,000 Ω. When a calculation gives an odd answer, you pick the next standard value up, since a bit more resistance is safer than a bit less.
 
 #### Diagram: Resistor Color Code Decoder
+
+<iframe src="../../sims/resistor-color-decoder/main.html" height="422px" width="100%" scrolling="no"></iframe>
+
+[Run the Resistor Color Code Decoder MicroSim Fullscreen](../../sims/resistor-color-decoder/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Resistor Color Code Decoder</summary>
@@ -368,6 +384,10 @@ A strip of 30 NeoPixels at full white could ask for 1.8 A. That is more than a U
 
 #### Diagram: LED Resistor Calculator
 
+<iframe src="../../sims/led-resistor-calculator/main.html" height="452px" width="100%" scrolling="no"></iframe>
+
+[Run the LED Resistor Calculator MicroSim Fullscreen](../../sims/led-resistor-calculator/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>LED Resistor Calculator</summary>
 Type: MicroSim
@@ -399,6 +419,10 @@ Understanding what is connected to what is the whole skill. A breadboard has thr
 The half-size breadboards in the Large OLED Kit have about 400 connection points, plenty for a clock.
 
 #### Diagram: Breadboard Connectivity Explorer
+
+<iframe src="../../sims/breadboard-connectivity/main.html" height="542px" width="100%" scrolling="no"></iframe>
+
+[Run the Breadboard Connectivity Explorer MicroSim Fullscreen](../../sims/breadboard-connectivity/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Breadboard Connectivity Explorer</summary>
@@ -497,6 +521,10 @@ The symbols you will see most often:
 To read a schematic, start at the power source and follow the wire through each part until you reach ground.
 
 #### Diagram: Schematic Symbol Matcher
+
+<iframe src="../../sims/schematic-symbol-matcher/main.html" height="472px" width="100%" scrolling="no"></iframe>
+
+[Run the Schematic Symbol Matcher MicroSim Fullscreen](../../sims/schematic-symbol-matcher/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Schematic Symbol Matcher</summary>

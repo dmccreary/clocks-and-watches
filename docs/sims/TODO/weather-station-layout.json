@@ -1,0 +1,15 @@
+{
+  "sim_id": "weather-station-layout",
+  "diagram_name": "Weather Station Layout",
+  "chapter_number": 19,
+  "chapter_title": "E-Paper and Weather Displays",
+  "chapter_dir": "19-epaper-weather",
+  "chapter_rel_dir": "chapters/19-epaper-weather",
+  "library": "p5.js",
+  "bloom_level": "Creating, Evaluating",
+  "bloom_verb": "design, evaluate",
+  "learning_objective": "Students will *design* a weather display layout and *evaluate* the update schedule of each element (Bloom: Creating, Evaluating).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: interactive infographic\n**sim-id:** weather-station-layout<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *design* a weather display layout and *evaluate* the update schedule of each element (Bloom: Creating, Evaluating).\n\n**Visual elements:** A mock 152 by 152 e-paper screen with draggable panels: time, indoor temperature and humidity, today's forecast icon and high and low.\n\n**Interactions:** Students can drag panels around and resize them; hovering a panel shows its data source (DS3231, DHT22, Open-Meteo) and update interval. A \"Simulate day\" button runs a 24-hour timeline and counts the refreshes and WiFi connections each layout needs, showing an estimated battery life for a 500 mAh cell.\n\n**Responsive design:** The mock screen scales to container width.\n\nImplementation: p5.js with draggable rectangles and a simple energy model."
+}

@@ -1,0 +1,15 @@
+{
+  "sim_id": "clock-drift-calculator",
+  "diagram_name": "Drift Calculator",
+  "chapter_number": 13,
+  "chapter_title": "Real-Time Clocks and the DS3231",
+  "chapter_dir": "13-real-time-clocks",
+  "chapter_rel_dir": "chapters/13-real-time-clocks",
+  "library": "Chart.js",
+  "bloom_level": "Applying, Evaluating",
+  "bloom_verb": "calculate, compare",
+  "learning_objective": "Students will *calculate* and *compare* the accumulated drift of different clock sources (Bloom: Applying, Evaluating).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: chart\n**sim-id:** clock-drift-calculator<br/>\n**Library:** Chart.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *calculate* and *compare* the accumulated drift of different clock sources (Bloom: Applying, Evaluating).\n\n**Visual elements:** A line chart of accumulated drift (seconds) versus days, one line each for a Pico crystal (30 ppm), DS1307 (20 ppm), and DS3231 (2 ppm). A horizontal dotted line marks \"1 minute off.\"\n\n**Controls:** A slider for elapsed days (1 to 365), a custom ppm input that adds a fourth line, and a readout of \"Days until 1 minute off\" for each source.\n\n**Interactions:** Hover for exact values; click a legend entry to hide a line.\n\n**Responsive design:** The chart resizes to the container.\n\nImplementation: Chart.js line chart with linear datasets."
+}

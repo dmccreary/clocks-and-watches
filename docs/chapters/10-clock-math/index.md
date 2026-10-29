@@ -141,6 +141,10 @@ A handy way to picture this is the **unit circle**: a circle of radius 1. A poin
 
 #### Diagram: Unit Circle Explorer
 
+<iframe src="../../sims/unit-circle-explorer/main.html" height="492px" width="100%" scrolling="no"></iframe>
+
+[Run the Unit Circle Explorer MicroSim Fullscreen](../../sims/unit-circle-explorer/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Unit Circle Explorer</summary>
 Type: MicroSim
@@ -189,6 +193,10 @@ print(polar_to_xy(120, 120, 100, 180))   # (120, 220): 6 o'clock
     On a clock, angles start at 12 and go clockwise, which swaps the usual roles: sine goes with x, and cosine goes with y, negated because the screen's y points down. Once you memorize this pair, every hand, tick, and number on a round face uses the same two lines.
 
 #### Diagram: Polar to Screen Converter
+
+<iframe src="../../sims/polar-to-screen/main.html" height="632px" width="100%" scrolling="no"></iframe>
+
+[Run the Polar to Screen Converter MicroSim Fullscreen](../../sims/polar-to-screen/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Polar to Screen Converter</summary>

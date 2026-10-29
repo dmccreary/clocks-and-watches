@@ -1,0 +1,101 @@
+{
+  "title": "E-Paper Refresh Lab",
+  "creator": "Dan McCreary",
+  "subject": [
+    "E-Paper Display",
+    "Full Refresh",
+    "Partial Refresh",
+    "Ghosting"
+  ],
+  "description": "Interactive p5.js e-paper refresh lab: step minute by minute or run a whole day with always-full, always-partial or mixed refresh, and compare refresh counts, total refresh time, flashes and a ghost level meter.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "E-paper refresh strategies and ghosting",
+    "learningObjectives": [
+      "Analyze how full and partial refresh strategies trade speed and flashing against ghosting",
+      "Calculate the total refresh time for a day from the counts of each refresh type",
+      "Evaluate a value of N that keeps ghosting below the noticeable level with the fewest flashes"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "duration": "15 minutes",
+    "prerequisites": [
+      "Full and partial e-paper refresh",
+      "Counting partial refreshes in code"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 535
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Compare strategies by running the same day three ways",
+    "keyQuestions": [
+      "Why not always use a full refresh?",
+      "What happens to an e-paper clock that only uses partial refreshes?",
+      "How do you choose N?"
+    ],
+    "commonMisconceptions": [
+      "Ghosting is permanent damage (a full refresh clears it)",
+      "Partial refresh is always better because it is faster"
+    ],
+    "assessmentOpportunities": [
+      "Fill in a table comparing the three strategies",
+      "Verify the total refresh time by hand",
+      "Justify a choice of N"
+    ]
+  },
+  "chapter": "19-epaper-weather",
+  "controls": [
+    {
+      "type": "button",
+      "label": "Advance one minute",
+      "description": "Performs one refresh by the chosen rule."
+    },
+    {
+      "type": "button",
+      "label": "Run a day / Pause",
+      "description": "Fast-forwards 1,440 minutes. Opens paused."
+    },
+    {
+      "type": "button",
+      "label": "Reset",
+      "description": "Starts over at 07:00 with no ghosting."
+    },
+    {
+      "type": "select",
+      "label": "Refresh mode",
+      "options": [
+        "Always full refresh",
+        "Always partial refresh",
+        "Mixed: full every N partials"
+      ],
+      "default": "Mixed"
+    },
+    {
+      "type": "slider",
+      "label": "Full refresh after N partials",
+      "range": "2-60",
+      "default": 30
+    }
+  ]
+}

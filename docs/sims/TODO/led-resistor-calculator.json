@@ -1,0 +1,15 @@
+{
+  "sim_id": "led-resistor-calculator",
+  "diagram_name": "LED Resistor Calculator",
+  "chapter_number": 2,
+  "chapter_title": "Electronics Fundamentals and Breadboard Wiring",
+  "chapter_dir": "02-electronics-fundamentals",
+  "chapter_rel_dir": "chapters/02-electronics-fundamentals",
+  "library": "p5.js",
+  "bloom_level": "Applying, Analyzing",
+  "bloom_verb": "apply, analyze",
+  "learning_objective": "Students will *apply* the current-limiting formula and *analyze* how resistor choice changes brightness and current (Bloom: Applying, Analyzing).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: MicroSim\n**sim-id:** led-resistor-calculator<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *apply* the current-limiting formula and *analyze* how resistor choice changes brightness and current (Bloom: Applying, Analyzing).\n\n**Visual elements:** An LED circuit with battery, resistor, and LED. The LED glows more brightly with higher current and turns red with a warning icon above the safe maximum (20 mA).\n\n**Controls:** Dropdown for LED color (sets forward voltage), slider for supply voltage (3.3 or 5 V), and a resistor selector limited to standard values. A readout shows current in mA and the calculated resistor needed.\n\n**Responsive design:** The circuit scales to canvas width.\n\nImplementation: p5.js with brightness mapped to current."
+}

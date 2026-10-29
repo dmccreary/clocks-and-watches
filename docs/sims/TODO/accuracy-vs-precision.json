@@ -1,0 +1,15 @@
+{
+  "sim_id": "accuracy-vs-precision",
+  "diagram_name": "Accuracy vs Precision Targets",
+  "chapter_number": 13,
+  "chapter_title": "Real-Time Clocks and the DS3231",
+  "chapter_dir": "13-real-time-clocks",
+  "chapter_rel_dir": "chapters/13-real-time-clocks",
+  "library": "p5.js",
+  "bloom_level": "Understanding, Analyzing",
+  "bloom_verb": "differentiate",
+  "learning_objective": "Students will *differentiate* accuracy from precision using a clock-error analogy (Bloom: Understanding, Analyzing).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: MicroSim\n**sim-id:** accuracy-vs-precision<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *differentiate* accuracy from precision using a clock-error analogy (Bloom: Understanding, Analyzing).\n\n**Visual elements:** A dartboard-style target where the bullseye is the true time. Each \"reading\" is a dot.\n\n**Controls:** Two sliders: \"Bias (consistently off)\" and \"Spread (random error)\". A \"Take 20 readings\" button drops dots. A label reports the result: \"Accurate and precise,\" \"Precise but not accurate,\" \"Accurate on average but not precise,\" or \"Neither.\"\n\n**Responsive design:** The target scales to canvas width.\n\nImplementation: p5.js with Gaussian random dots."
+}

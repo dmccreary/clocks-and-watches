@@ -95,6 +95,10 @@ Each note is a fixed multiple of the note below it. Going up one **semitone** (o
 
 #### Diagram: PWM Tone Lab
 
+<iframe src="../../sims/pwm-tone-lab/main.html" height="562px" width="100%" scrolling="no"></iframe>
+
+[Run the PWM Tone Lab MicroSim Fullscreen](../../sims/pwm-tone-lab/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>PWM Tone Lab</summary>
 Type: MicroSim
@@ -206,6 +210,10 @@ Higher rates also cost memory and bus time, because each sample must be delivere
 **Worked example.** At 16 kHz, 16 bits, mono: \( 16{,}000 \times 2 \times 1 = 32{,}000 \) bytes per second. One second of sound needs 32 KB of RAM, so a long recording will not fit in the Pico's memory. It has to be generated on the fly or streamed from flash.
 
 #### Diagram: Sampling Rate Explorer
+
+<iframe src="../../sims/sampling-rate-explorer/main.html" height="547px" width="100%" scrolling="no"></iframe>
+
+[Run the Sampling Rate Explorer MicroSim Fullscreen](../../sims/sampling-rate-explorer/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Sampling Rate Explorer</summary>
@@ -322,6 +330,10 @@ def clear_alarm():
 It uses `dec_to_bcd()` from Chapter 13, and the register numbers come from the DS3231 register map.
 
 #### Diagram: Alarm State Machine
+
+<iframe src="../../sims/alarm-state-machine/main.html" height="502px" width="100%" scrolling="no"></iframe>
+
+[Run the Alarm State Machine MicroSim Fullscreen](../../sims/alarm-state-machine/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Alarm State Machine</summary>

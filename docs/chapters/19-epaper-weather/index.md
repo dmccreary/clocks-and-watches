@@ -166,6 +166,10 @@ Here `full_refresh` and `partial_refresh` stand for the driver calls of your par
 
 #### Diagram: E-Paper Refresh Lab
 
+<iframe src="../../sims/epaper-refresh-lab/main.html" height="537px" width="100%" scrolling="no"></iframe>
+
+[Run the E-Paper Refresh Lab MicroSim Fullscreen](../../sims/epaper-refresh-lab/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>E-Paper Refresh Lab</summary>
 Type: MicroSim
@@ -273,6 +277,10 @@ while True:
 The `due()` function is the non-blocking timer pattern from Chapter 6, one instance per data source.
 
 #### Diagram: Weather Station Layout
+
+<iframe src="../../sims/weather-station-layout/main.html" height="547px" width="100%" scrolling="no"></iframe>
+
+[Run the Weather Station Layout MicroSim Fullscreen](../../sims/weather-station-layout/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Weather Station Layout</summary>

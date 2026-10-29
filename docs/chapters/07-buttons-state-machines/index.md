@@ -90,6 +90,10 @@ A human sees one press. The Pico is fast enough to see the burst as **ten presse
 
 #### Diagram: Button Bounce Oscilloscope
 
+<iframe src="../../sims/button-bounce-scope/main.html" height="547px" width="100%" scrolling="no"></iframe>
+
+[Run the Button Bounce Oscilloscope MicroSim Fullscreen](../../sims/button-bounce-scope/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Button Bounce Oscilloscope</summary>
 Type: MicroSim
@@ -236,6 +240,10 @@ A drawing of the same idea, with circles for states and arrows for transitions, 
 
 #### Diagram: Clock Mode State Machine
 
+<iframe src="../../sims/clock-mode-state-machine/main.html" height="504px" width="100%" scrolling="no"></iframe>
+
+[Run the Clock Mode State Machine MicroSim Fullscreen](../../sims/clock-mode-state-machine/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Clock Mode State Machine</summary>
 Type: interactive diagram
@@ -365,6 +373,10 @@ a.irq(trigger=Pin.IRQ_FALLING, handler=on_turn)
     Two signals that change in a sequence can feel confusing at first. Try it on paper: write A and B for each click of a clockwise turn, then read the sequence backward for counterclockwise. Once you see the pattern, the code is only three lines.
 
 #### Diagram: Quadrature Encoder Simulator
+
+<iframe src="../../sims/quadrature-encoder-sim/main.html" height="467px" width="100%" scrolling="no"></iframe>
+
+[Run the Quadrature Encoder Simulator MicroSim Fullscreen](../../sims/quadrature-encoder-sim/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Quadrature Encoder Simulator</summary>

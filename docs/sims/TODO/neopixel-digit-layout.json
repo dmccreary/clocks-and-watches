@@ -1,0 +1,15 @@
+{
+  "sim_id": "neopixel-digit-layout",
+  "diagram_name": "NeoPixel Digit Layout",
+  "chapter_number": 16,
+  "chapter_title": "NeoPixels and Shift Register Clocks",
+  "chapter_dir": "16-neopixels-shift-registers",
+  "chapter_rel_dir": "chapters/16-neopixels-shift-registers",
+  "library": "p5.js",
+  "bloom_level": "Applying, Creating",
+  "bloom_verb": "design, apply",
+  "learning_objective": "Students will *design* a pixel-to-segment mapping and *apply* it to display a digit (Bloom: Applying, Creating).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: interactive diagram\n**sim-id:** neopixel-digit-layout<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *design* a pixel-to-segment mapping and *apply* it to display a digit (Bloom: Applying, Creating).\n\n**Visual elements:** A single digit drawn as seven segments, each showing its pixel numbers (0 to 13).\n\n**Interactions:** The student can click a segment to see which pixels it contains, choose a digit 0 to 9 to see which segments and pixel indices light, and toggle \"Show strip order\" to see how the strip snakes through the digit. A \"Copy `SEG_PIXELS`\" button outputs the mapping as Python.\n\n**Responsive design:** Digit scales to canvas size.\n\nImplementation: p5.js with segment polygons and a lookup table."
+}

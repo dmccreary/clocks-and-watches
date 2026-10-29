@@ -1,6 +1,6 @@
 ---
-title: Learning Graph Viewer
-description: Interactive vis-network visualization of the learning graph for Clocks and Watches with MicroPython course concepts
+title: "Learning Graph Viewer"
+description: "Interactive vis-network visualization of the learning graph for Clocks and Watches with MicroPython course concepts"
 quality_score: 68
 ---
 

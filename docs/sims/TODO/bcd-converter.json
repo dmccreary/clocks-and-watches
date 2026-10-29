@@ -1,0 +1,15 @@
+{
+  "sim_id": "bcd-converter",
+  "diagram_name": "BCD Converter",
+  "chapter_number": 13,
+  "chapter_title": "Real-Time Clocks and the DS3231",
+  "chapter_dir": "13-real-time-clocks",
+  "chapter_rel_dir": "chapters/13-real-time-clocks",
+  "library": "p5.js",
+  "bloom_level": "Applying, Analyzing",
+  "bloom_verb": "apply, compare",
+  "learning_objective": "Students will *apply* BCD encoding and decoding and *compare* it with ordinary binary (Bloom: Applying, Analyzing).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: MicroSim\n**sim-id:** bcd-converter<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *apply* BCD encoding and decoding and *compare* it with ordinary binary (Bloom: Applying, Analyzing).\n\n**Visual elements:** Two rows of eight bit-lights, one showing regular binary and one showing BCD for the same decimal number, with the high and low nibbles shaded separately.\n\n**Controls:** A number slider (0 to 59) and a hex input; a toggle \"Read BCD byte as integer\" that shows the wrong value; a \"Predict\" mode asking the student to type the BCD byte for a given number.\n\n**Responsive design:** Bit rows scale to container width.\n\nImplementation: p5.js using `>>`, `&`, and `<<` on integers."
+}

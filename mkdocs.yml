@@ -339,19 +339,84 @@ nav:
     - Mascot Test: learning-graph/mascot-test.md
   - MicroSims:
     - List of MicroSims: sims/index.md
-    - Binary Number: sims/binary-number/index.md
-    - Binary Clock: sims/binary-clock/index.md
-    - Templates: sims/templates/index.md
-    - Learning Graph: sims/learning-graph/index.md
-    - Graph Viewer: sims/graph-viewer/index.md
-    - Four Digit Display: sims/4-digits/index.md
-    - Analog Clock Face: sims/analog-clock/index.md
-    - Stopwatch: sims/stopwatch/index.md
-    - Seven Segment Display: sims/seven-segment-display/index.md
-    - Clock Face Themes: sims/themes/index.md
+    - Accuracy vs Precision Targets: sims/accuracy-vs-precision/index.md
+    - Alarm State Machine: sims/alarm-state-machine/index.md
+    - Analog Clock: sims/analog-clock/index.md
+    - Analog Watch Face Builder: sims/analog-watch-face-builder/index.md
+    - Architectural Levels Zoom: sims/architectural-levels/index.md
     - Battery Drain: sims/battery-drain/index.md
+    - Battery Life Calculator: sims/battery-life-calculator/index.md
+    - BCD Converter: sims/bcd-converter/index.md
+    - Binary Clock: sims/binary-clock/index.md
+    - Binary Number: sims/binary-number/index.md
+    - Bounding Box and Partial Update: sims/bounding-box-partial-update/index.md
+    - Breadboard Connectivity Explorer: sims/breadboard-connectivity/index.md
+    - Bus Speed Race: sims/bus-speed-race/index.md
+    - Button Bounce Oscilloscope: sims/button-bounce-scope/index.md
+    - Byte Bit Explorer: sims/byte-bit-explorer/index.md
+    - Clock Architecture Explorer: sims/clock-architecture-explorer/index.md
+    - Clock Decomposition Explorer: sims/clock-decomposition-explorer/index.md
+    - Clock Mode State Machine: sims/clock-mode-state-machine/index.md
+    - Crystal Divider MicroSim: sims/crystal-divider/index.md
+    - Data Type Sorter: sims/data-type-sorter/index.md
+    - Design Decision Matrix: sims/design-decision-matrix/index.md
+    - Digit Scaling Explorer: sims/digit-scaling-explorer/index.md
+    - Drift Calculator: sims/clock-drift-calculator/index.md
+    - DS3231 Register Map: sims/ds3231-register-map/index.md
+    - E-Paper Refresh Lab: sims/epaper-refresh-lab/index.md
+    - Font Pipeline: sims/font-pipeline/index.md
+    - Four-Digit Digital Clock: sims/4-digits/index.md
+    - Framebuffer Pipeline: sims/framebuffer-pipeline/index.md
+    - Function Machine: sims/function-machine/index.md
+    - Greeting Decision Path: sims/greeting-decision-path/index.md
+    - HSV Color Wheel: sims/hsv-color-wheel/index.md
+    - Hysteresis Demonstrator: sims/hysteresis-demonstrator/index.md
+    - I2C Conversation Animator: sims/i2c-conversation-animator/index.md
+    - LDR Light Sensor Lab: sims/ldr-light-sensor-lab/index.md
+    - Learning Graph Viewer: sims/graph-viewer/index.md
+    - Learning Graph Viewer: sims/learning-graph/index.md
+    - LED Resistor Calculator: sims/led-resistor-calculator/index.md
+    - Logic Analyzer Trace Reader: sims/logic-analyzer-trace-reader/index.md
+    - MicroSim Templates: sims/templates/index.md
+    - NeoPixel Digit Layout: sims/neopixel-digit-layout/index.md
+    - NeoPixel Power Budget: sims/neopixel-power-budget/index.md
+    - NTP Stratum Hierarchy: sims/ntp-stratum-hierarchy/index.md
+    - NTP Sync Flow: sims/ntp-sync-flow/index.md
+    - Ohm's Law Explorer: sims/ohms-law-explorer/index.md
+    - Pico Board Explorer: sims/pico-board-explorer/index.md
+    - Pico Pinout Explorer: sims/pico-pinout-explorer/index.md
+    - Pico Startup Sequence: sims/pico-startup-sequence/index.md
+    - Pixel Grid Sketchpad: sims/pixel-grid-sketchpad/index.md
+    - Polar to Screen Converter: sims/polar-to-screen/index.md
+    - Pull-Up Button Lab: sims/pull-up-button-lab/index.md
+    - PWM Tone Lab: sims/pwm-tone-lab/index.md
+    - Quadrature Encoder Simulator: sims/quadrature-encoder-sim/index.md
+    - Resistor Color Code Decoder: sims/resistor-color-decoder/index.md
+    - Resolution and Memory Calculator: sims/resolution-memory-calculator/index.md
+    - RGB565 Color Mixer: sims/rgb565-color-mixer/index.md
+    - Sampling Rate Explorer: sims/sampling-rate-explorer/index.md
+    - Schematic Symbol Matcher: sims/schematic-symbol-matcher/index.md
+    - Seconds-to-Clock Flowchart: sims/seconds-to-clock-flowchart/index.md
+    - Sense-Think-Act Clock Sorter: sims/sense-think-act-clock/index.md
+    - Seven-Segment Display: sims/seven-segment-display/index.md
     - Shift Register: sims/shift-register/index.md
-    - Architectural Levels: sims/architectural-levels/index.md
+    - Sleep vs Ticks Timeline: sims/sleep-vs-ticks/index.md
+    - Stopwatch: sims/stopwatch/index.md
+    - Sync Interval Calculator: sims/sync-interval-calculator/index.md
+    - Themes: sims/themes/index.md
+    - Thonny Window Tour: sims/thonny-window-tour/index.md
+    - Tilt and Step Explorer: sims/tilt-step-explorer/index.md
+    - Time Tuple Explorer: sims/time-tuple-explorer/index.md
+    - Timezone Converter: sims/timezone-converter/index.md
+    - TM1637 Wiring Diagram: sims/tm1637-wiring/index.md
+    - Troubleshooting Decision Tree: sims/troubleshooting-decision-tree/index.md
+    - Unit Circle Explorer: sims/unit-circle-explorer/index.md
+    - Variable Box Visualizer: sims/variable-box-visualizer/index.md
+    - Voltage Divider Lab: sims/voltage-divider-lab/index.md
+    - Weather Station Layout: sims/weather-station-layout/index.md
+    - Wrap-Around Dial: sims/wrap-around-dial/index.md
+
+
   - Prompts:
     - Introduction: prompts/index.md
     - Course Description: prompts/01-course-description.md

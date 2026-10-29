@@ -1,0 +1,107 @@
+{
+  "title": "Logic Analyzer Trace Reader",
+  "creator": "Dan McCreary",
+  "subject": [
+    "Logic Analyzer",
+    "I2C",
+    "Debugging",
+    "Signal Integrity",
+    "Button Bounce"
+  ],
+  "description": "Interactive p5.js logic analyzer trace reader with SCL and SDA traces and an I2C decode band. Students click parts of four captured waveforms (a good OLED write, a NACK, slow edges from weak pull-ups, and button bounce) and diagnose each fault with feedback.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Reading I2C waveforms with a logic analyzer",
+    "learningObjectives": [
+      "Interpret an I2C waveform, identifying the start, address, R/W bit, ACK, data and stop",
+      "Diagnose a missing acknowledgment from the ninth clock pulse",
+      "Distinguish a wiring fault (weak pull-ups) and contact bounce from a healthy signal"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "duration": "15-20 minutes",
+    "prerequisites": [
+      "I2C bus basics (Chapter 8)",
+      "Binary and hexadecimal",
+      "Button bounce (Chapter 7)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 525
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Diagnosis quiz on realistic captured data",
+    "keyQuestions": [
+      "What happens on the ninth clock pulse of every I2C byte?",
+      "How can you tell slow edges from a healthy signal?",
+      "Why does one button press count as several?"
+    ],
+    "commonMisconceptions": [
+      "The controller generates the ACK (the receiving device pulls SDA low)",
+      "If the bytes decode correctly the wiring must be fine (slow edges can still cause errors at higher speeds)"
+    ],
+    "assessmentOpportunities": [
+      "Decode an address and data bytes by hand",
+      "Diagnose each capture and name the fix"
+    ]
+  },
+  "chapter": "20-design-testing-ai",
+  "controls": [
+    {
+      "type": "select",
+      "label": "Capture",
+      "options": [
+        "Capture 1",
+        "Capture 2",
+        "Capture 3",
+        "Capture 4"
+      ]
+    },
+    {
+      "type": "canvas-click",
+      "label": "Click the waveform",
+      "description": "Names the clicked part of the signal."
+    },
+    {
+      "type": "select",
+      "label": "Diagnosis",
+      "options": [
+        "Everything worked",
+        "No ACK",
+        "Slow edges",
+        "Contact bounce",
+        "SDA and SCL swapped"
+      ]
+    },
+    {
+      "type": "button",
+      "label": "Check",
+      "description": "Gives feedback on the chosen diagnosis."
+    },
+    {
+      "type": "slider",
+      "label": "Scroll",
+      "description": "Pans along the trace when it is wider than the screen."
+    }
+  ]
+}

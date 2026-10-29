@@ -133,6 +133,10 @@ Thonny saves files in two places: your **computer** or the **MicroPython device*
 
 #### Diagram: Thonny Window Tour
 
+<iframe src="../../sims/thonny-window-tour/main.html" height="567px" width="100%" scrolling="no"></iframe>
+
+[Run the Thonny Window Tour MicroSim Fullscreen](../../sims/thonny-window-tour/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Thonny Window Tour</summary>
 Type: interactive infographic
@@ -238,6 +242,10 @@ Note that `=` means "store," not "is equal to." The `+=` shortcut is how a clock
 
 #### Diagram: Variable Box Visualizer
 
+<iframe src="../../sims/variable-box-visualizer/main.html" height="492px" width="100%" scrolling="no"></iframe>
+
+[Run the Variable Box Visualizer MicroSim Fullscreen](../../sims/variable-box-visualizer/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Variable Box Visualizer</summary>
 Type: MicroSim
@@ -281,6 +289,10 @@ The types in this chapter fall into two groups:
 Python decides the type automatically from the value you write. This is called **dynamic typing**. It makes code short, but it also means a mismatched type produces an error at run time, such as `TypeError`.
 
 #### Diagram: Data Type Sorter
+
+<iframe src="../../sims/data-type-sorter/main.html" height="467px" width="100%" scrolling="no"></iframe>
+
+[Run the Data Type Sorter MicroSim Fullscreen](../../sims/data-type-sorter/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Data Type Sorter</summary>

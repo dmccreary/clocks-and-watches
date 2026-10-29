@@ -1,0 +1,15 @@
+{
+  "sim_id": "schematic-symbol-matcher",
+  "diagram_name": "Schematic Symbol Matcher",
+  "chapter_number": 2,
+  "chapter_title": "Electronics Fundamentals and Breadboard Wiring",
+  "chapter_dir": "02-electronics-fundamentals",
+  "chapter_rel_dir": "chapters/02-electronics-fundamentals",
+  "library": "p5.js",
+  "bloom_level": "Remembering, Understanding",
+  "bloom_verb": "recall, interpret",
+  "learning_objective": "Students will *recall* schematic symbols and *interpret* a simple circuit diagram (Bloom: Remembering, Understanding).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: MicroSim\n**sim-id:** schematic-symbol-matcher<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *recall* schematic symbols and *interpret* a simple circuit diagram (Bloom: Remembering, Understanding).\n\n**Visual elements:** A schematic of the LED circuit with GP15, resistor, LED, and ground. Each symbol has a hidden label.\n\n**Interactions:** Clicking a symbol reveals its name and photo; a \"Match\" mode shows a part photo and asks the student to click its symbol; and a \"Trace the current\" button animates a dot from GP15 through each part to ground.\n\n**Responsive design:** Diagram scales to container width.\n\nImplementation: p5.js with SVG-like drawing helpers."
+}

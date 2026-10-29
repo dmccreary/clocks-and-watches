@@ -172,6 +172,10 @@ Each step down adds a little delay and error, but even stratum 2 or 3 servers ar
 
 #### Diagram: NTP Stratum Hierarchy
 
+<iframe src="../../sims/ntp-stratum-hierarchy/main.html" height="562px" width="100%" scrolling="no"></iframe>
+
+[Run the NTP Stratum Hierarchy MicroSim Fullscreen](../../sims/ntp-stratum-hierarchy/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>NTP Stratum Hierarchy</summary>
 Type: interactive diagram
@@ -229,6 +233,10 @@ Servers are shared by everyone, so be a polite client. Do not sync more than onc
 
 #### Diagram: NTP Sync Flow
 
+<iframe src="../../sims/ntp-sync-flow/main.html" height="692px" width="100%" scrolling="no"></iframe>
+
+[Run the NTP Sync Flow MicroSim Fullscreen](../../sims/ntp-sync-flow/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>NTP Sync Flow</summary>
 Type: workflow diagram
@@ -279,6 +287,10 @@ Some zones use half-hour offsets, as India does, so store the offset as a number
     Keep your clock's internal time in UTC, the same for everyone, and convert to local time only in the last step before drawing digits. Then moving your clock to another time zone, or handling daylight saving, changes one number in one place.
 
 #### Diagram: Timezone Converter
+
+<iframe src="../../sims/timezone-converter/main.html" height="527px" width="100%" scrolling="no"></iframe>
+
+[Run the Timezone Converter MicroSim Fullscreen](../../sims/timezone-converter/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Timezone Converter</summary>
@@ -370,6 +382,10 @@ For a Pico crystal at 30 ppm and a tolerance of 1 second, the interval is \( 1 /
 Calibration is rarely needed for a clock that syncs over WiFi, but it is the tool of choice for an offline DS3231 clock that must be very accurate.
 
 #### Diagram: Sync Interval Calculator
+
+<iframe src="../../sims/sync-interval-calculator/main.html" height="502px" width="100%" scrolling="no"></iframe>
+
+[Run the Sync Interval Calculator MicroSim Fullscreen](../../sims/sync-interval-calculator/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Sync Interval Calculator</summary>

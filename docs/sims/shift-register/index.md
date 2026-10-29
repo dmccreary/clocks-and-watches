@@ -1,6 +1,6 @@
 ---
-title: Shift Register
-description: Interactive p5.js simulation of a 74HC594 shift register demonstrating serial-to-parallel data conversion
+title: "Shift Register"
+description: "Interactive p5.js simulation of a 74HC594 shift register demonstrating serial-to-parallel data conversion"
 quality_score: 70
 ---
 

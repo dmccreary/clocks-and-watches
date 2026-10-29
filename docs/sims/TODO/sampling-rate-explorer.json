@@ -1,0 +1,15 @@
+{
+  "sim_id": "sampling-rate-explorer",
+  "diagram_name": "Sampling Rate Explorer",
+  "chapter_number": 17,
+  "chapter_title": "Sound, Alarms, and Timers",
+  "chapter_dir": "17-sound-alarms-timers",
+  "chapter_rel_dir": "chapters/17-sound-alarms-timers",
+  "library": "p5.js",
+  "bloom_level": "Analyzing",
+  "bloom_verb": "analyze",
+  "learning_objective": "Students will *analyze* how the sampling rate affects the fidelity and memory use of a digital sound wave (Bloom: Analyzing).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: MicroSim\n**sim-id:** sampling-rate-explorer<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *analyze* how the sampling rate affects the fidelity and memory use of a digital sound wave (Bloom: Analyzing).\n\n**Visual elements:** A smooth sine wave with dots at each sample position, and a reconstructed staircase wave. A bar shows bytes per second.\n\n**Controls:** Sliders for wave frequency (100 to 4000 Hz) and sampling rate (2,000 to 44,100 Hz); a bit-depth dropdown (8 or 16); a readout of the Nyquist limit and the data rate. When the frequency exceeds half the rate, the reconstructed wave visibly turns into a lower, wrong frequency (aliasing) and a warning appears.\n\n**Responsive design:** The wave display scales to container width.\n\nImplementation: p5.js sampling and reconstruction of a sine wave."
+}

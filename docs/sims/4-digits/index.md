@@ -1,6 +1,6 @@
 ---
-title: Four-Digit Digital Clock
-description: An interactive p5.js simulation displaying current time using four seven-segment digits with AM/PM indicator
+title: "Four-Digit Digital Clock"
+description: "An interactive p5.js simulation displaying current time using four seven-segment digits with AM/PM indicator"
 quality_score: 72
 ---
 

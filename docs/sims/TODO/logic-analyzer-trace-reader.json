@@ -1,0 +1,15 @@
+{
+  "sim_id": "logic-analyzer-trace-reader",
+  "diagram_name": "Logic Analyzer Trace Reader",
+  "chapter_number": 20,
+  "chapter_title": "Design, Testing, and AI-Assisted Development",
+  "chapter_dir": "20-design-testing-ai",
+  "chapter_rel_dir": "chapters/20-design-testing-ai",
+  "library": "p5.js",
+  "bloom_level": "Analyzing",
+  "bloom_verb": "interpret, diagnose",
+  "learning_objective": "Students will *interpret* a captured I2C waveform and *diagnose* a missing acknowledgment (Bloom: Analyzing).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: MicroSim\n**sim-id:** logic-analyzer-trace-reader<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *interpret* a captured I2C waveform and *diagnose* a missing acknowledgment (Bloom: Analyzing).\n\n**Visual elements:** Two stacked digital traces labeled SCL and SDA, with a time axis and an annotation layer that decodes start, address, read/write bit, ACK, data bytes, and stop.\n\n**Controls:** A dropdown chooses a scenario: *good write to 0x3C*, *wrong address (no ACK)*, *missing pull-ups (slow edges)*, and *button bounce on a GPIO*. Clicking any part of the waveform opens an infobox naming what it is. A \"Diagnose\" quiz asks what is wrong and gives feedback.\n\n**Responsive design:** The trace scrolls horizontally on narrow screens.\n\nImplementation: p5.js with pre-defined waveform arrays."
+}

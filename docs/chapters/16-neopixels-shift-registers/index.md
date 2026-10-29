@@ -186,6 +186,10 @@ NeoPixels come in several shapes, each suited to a different clock:
 
 #### Diagram: NeoPixel Power Budget
 
+<iframe src="../../sims/neopixel-power-budget/main.html" height="517px" width="100%" scrolling="no"></iframe>
+
+[Run the NeoPixel Power Budget MicroSim Fullscreen](../../sims/neopixel-power-budget/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>NeoPixel Power Budget</summary>
 Type: MicroSim
@@ -266,6 +270,10 @@ Because value stays at 30, the rainbow is easy on the eyes, and changing that on
 
 #### Diagram: HSV Color Wheel
 
+<iframe src="../../sims/hsv-color-wheel/main.html" height="602px" width="100%" scrolling="no"></iframe>
+
+[Run the HSV Color Wheel MicroSim Fullscreen](../../sims/hsv-color-wheel/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>HSV Color Wheel</summary>
 Type: MicroSim
@@ -334,6 +342,10 @@ def show_digit(np, first_pixel, digit, color):
 With two pixels per segment, a digit uses 14 pixels, and a four-digit clock with two colon pixels needs about 58. A single 60-pixel strip is enough to display the entire time, in any color, even changing color with the hour.
 
 #### Diagram: NeoPixel Digit Layout
+
+<iframe src="../../sims/neopixel-digit-layout/main.html" height="527px" width="100%" scrolling="no"></iframe>
+
+[Run the NeoPixel Digit Layout MicroSim Fullscreen](../../sims/neopixel-digit-layout/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>NeoPixel Digit Layout</summary>

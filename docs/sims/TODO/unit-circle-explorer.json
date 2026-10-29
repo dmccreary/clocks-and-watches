@@ -1,0 +1,15 @@
+{
+  "sim_id": "unit-circle-explorer",
+  "diagram_name": "Unit Circle Explorer",
+  "chapter_number": 10,
+  "chapter_title": "Coordinates, Trigonometry, and Clock Geometry",
+  "chapter_dir": "10-clock-math",
+  "chapter_rel_dir": "chapters/10-clock-math",
+  "library": "p5.js",
+  "bloom_level": "Understanding",
+  "bloom_verb": "understand",
+  "learning_objective": "Students will *understand* sine and cosine as the vertical and horizontal parts of a point on a circle (Bloom: Understanding).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: MicroSim\n**sim-id:** unit-circle-explorer<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *understand* sine and cosine as the vertical and horizontal parts of a point on a circle (Bloom: Understanding).\n\n**Visual elements:** A circle with a rotating radius and a colored point. A horizontal bar shows the cosine value and a vertical bar shows the sine value. Two small graphs to the right plot sine and cosine against angle.\n\n**Controls:** Slider \"Angle\" (0 to 360 degrees) with a toggle \"Degrees/Radians\"; a \"Play\" button that rotates continuously; checkboxes to show the right triangle and the values.\n\n**Responsive design:** Circle and graphs scale to container width; graphs move below the circle on narrow screens.\n\nImplementation: p5.js with `sin` and `cos` drawn from a single angle variable."
+}

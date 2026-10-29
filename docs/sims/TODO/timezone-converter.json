@@ -1,0 +1,15 @@
+{
+  "sim_id": "timezone-converter",
+  "diagram_name": "Timezone Converter",
+  "chapter_number": 14,
+  "chapter_title": "WiFi, NTP, and Time Accuracy",
+  "chapter_dir": "14-wifi-ntp",
+  "chapter_rel_dir": "chapters/14-wifi-ntp",
+  "library": "p5.js",
+  "bloom_level": "Applying",
+  "bloom_verb": "apply",
+  "learning_objective": "Students will *apply* offsets to convert UTC to local time, including date rollovers (Bloom: Applying).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: MicroSim\n**sim-id:** timezone-converter<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *apply* offsets to convert UTC to local time, including date rollovers (Bloom: Applying).\n\n**Visual elements:** A world strip map with time-zone bands, and a digital clock for UTC and one for the selected zone.\n\n**Controls:** A UTC time slider (0 to 24 hours plus a date), a zone dropdown with the table above, a \"DST on/off\" toggle, and a \"Predict\" mode asking for the local time before revealing it.\n\n**Behavior:** When the conversion crosses midnight, the date changes and the display highlights it.\n\n**Responsive design:** The map and clocks stack vertically below 600 px.\n\nImplementation: p5.js using integer second arithmetic."
+}

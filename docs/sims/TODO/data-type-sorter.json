@@ -1,0 +1,15 @@
+{
+  "sim_id": "data-type-sorter",
+  "diagram_name": "Data Type Sorter",
+  "chapter_number": 3,
+  "chapter_title": "MicroPython Basics: Variables and Data Types",
+  "chapter_dir": "03-micropython-basics",
+  "chapter_rel_dir": "chapters/03-micropython-basics",
+  "library": "p5.js",
+  "bloom_level": "Understanding",
+  "bloom_verb": "classify",
+  "learning_objective": "Students will *classify* values by data type (Bloom: Understanding).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: MicroSim\n**sim-id:** data-type-sorter<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *classify* values by data type (Bloom: Understanding).\n\n**Visual elements:** Six bins labeled int, float, str, bool, list, tuple. A stack of value cards such as `42`, `3.0`, `\"12:00\"`, `True`, `[1, 2, 3]`, `(2026, 9, 28)`.\n\n**Interactions:** Drag each card to a bin. Correct drops turn green; wrong drops bounce back with a hint (\"Look for a decimal point\"). Score and streak are shown, and tricky cards (`\"42\"` in quotes, `3.0`) are included on purpose.\n\n**Responsive design:** Bins wrap into two rows on narrow screens.\n\nImplementation: p5.js drag-and-drop with a card array."
+}

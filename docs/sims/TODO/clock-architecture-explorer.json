@@ -1,0 +1,15 @@
+{
+  "sim_id": "clock-architecture-explorer",
+  "diagram_name": "Clock Architecture Explorer",
+  "chapter_number": 2,
+  "chapter_title": "Electronics Fundamentals and Breadboard Wiring",
+  "chapter_dir": "02-electronics-fundamentals",
+  "chapter_rel_dir": "chapters/02-electronics-fundamentals",
+  "library": "vis-network",
+  "bloom_level": "Understanding",
+  "bloom_verb": "understand, compare",
+  "learning_objective": "Students will *understand* the five blocks of a clock and *compare* how three different clocks fill those blocks (Bloom: Understanding).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: interactive diagram\n**sim-id:** clock-architecture-explorer<br/>\n**Library:** vis-network<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *understand* the five blocks of a clock and *compare* how three different clocks fill those blocks (Bloom: Understanding).\n\n**Layout:** Five boxes (Power Supply, Microcontroller, Time Source, Display, Input) connected by arrows. Power Supply has arrows to every other box (labeled \"power\"); Time Source and Input point to the Microcontroller (labeled \"data in\"); the Microcontroller points to Display (\"data out\").\n\n**Interactions:**\n\n- A dropdown \"Choose a clock\" offers *4-digit LED clock*, *OLED clock with RTC*, and *Smartwatch*. Selecting one relabels each box with the actual part (for example, Time Source becomes \"DS3231 RTC\").\n- Clicking a box opens an infobox with one sentence on its job and a link to the chapter that covers it.\n\n**Responsive design:** The canvas fills the container width at 400 px tall and calls `network.fit()` on resize.\n\nImplementation: vis-network with a JavaScript object mapping each clock to its labels."
+}

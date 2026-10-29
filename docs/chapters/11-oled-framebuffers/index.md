@@ -89,6 +89,10 @@ Resolution matters because every pixel has to be stored somewhere. The memory ne
 
 #### Diagram: Resolution and Memory Calculator
 
+<iframe src="../../sims/resolution-memory-calculator/main.html" height="472px" width="100%" scrolling="no"></iframe>
+
+[Run the Resolution and Memory Calculator MicroSim Fullscreen](../../sims/resolution-memory-calculator/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Resolution and Memory Calculator</summary>
 Type: chart
@@ -200,6 +204,10 @@ The flow is the same every time you update the screen:
 
 #### Diagram: Framebuffer Pipeline
 
+<iframe src="../../sims/framebuffer-pipeline/main.html" height="547px" width="100%" scrolling="no"></iframe>
+
+[Run the Framebuffer Pipeline MicroSim Fullscreen](../../sims/framebuffer-pipeline/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Framebuffer Pipeline</summary>
 Type: workflow diagram
@@ -301,6 +309,10 @@ Drawing a line pixel by pixel like this works but is slow. Chapter 12 introduces
     When you set up a new display, draw a one-pixel border around the whole screen first. If any edge is missing, you have the wrong width, height, or controller, and you find out before you build a whole clock on top of it.
 
 #### Diagram: Pixel Grid Sketchpad
+
+<iframe src="../../sims/pixel-grid-sketchpad/main.html" height="672px" width="100%" scrolling="no"></iframe>
+
+[Run the Pixel Grid Sketchpad MicroSim Fullscreen](../../sims/pixel-grid-sketchpad/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Pixel Grid Sketchpad</summary>

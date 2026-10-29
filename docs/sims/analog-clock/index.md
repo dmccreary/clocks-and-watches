@@ -1,6 +1,6 @@
 ---
-title: Analog Clock
-description: Interactive p5.js analog clock simulation with manual and automatic modes, demonstrating trigonometric functions for hand positioning
+title: "Analog Clock"
+description: "Interactive p5.js analog clock simulation with manual and automatic modes, demonstrating trigonometric functions for hand positioning"
 image: /sims/analog-clock/analog-clock.png
 og:image: /sims/analog-clock/analog-clock.png
 quality_score: 75

@@ -83,6 +83,10 @@ Useful facts about the Pico's GPIO:
 
 #### Diagram: Pico Pinout Explorer
 
+<iframe src="../../sims/pico-pinout-explorer/main.html" height="542px" width="100%" scrolling="no"></iframe>
+
+[Run the Pico Pinout Explorer MicroSim Fullscreen](../../sims/pico-pinout-explorer/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Pico Pinout Explorer</summary>
 Type: interactive infographic
@@ -166,6 +170,10 @@ while True:
 The program reads the button ten times a second and prints a message while it is held. Chapter 7 shows how to handle bouncing and use interrupts.
 
 #### Diagram: Pull-Up Button Lab
+
+<iframe src="../../sims/pull-up-button-lab/main.html" height="472px" width="100%" scrolling="no"></iframe>
+
+[Run the Pull-Up Button Lab MicroSim Fullscreen](../../sims/pull-up-button-lab/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Pull-Up Button Lab</summary>
@@ -252,6 +260,10 @@ To make a clock start by itself without a computer, save your program on the Pic
     A `main.py` with an endless loop that never sleeps can make the Pico hard to reach from Thonny, because the program is always running. Press the Stop button or Ctrl+C repeatedly to interrupt it, then fix or delete the file. If that fails, hold BOOTSEL while plugging in and reinstall the firmware to reset the file system.
 
 #### Diagram: Pico Startup Sequence
+
+<iframe src="../../sims/pico-startup-sequence/main.html" height="550px" width="100%" scrolling="no"></iframe>
+
+[Run the Pico Startup Sequence MicroSim Fullscreen](../../sims/pico-startup-sequence/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Pico Startup Sequence</summary>

@@ -1,0 +1,100 @@
+{
+  "title": "Time Tuple Explorer",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "The eight fields of time.localtime() as labeled boxes filled from your clock: click for an index, drag for a slice like now[3:6], or quiz yourself on the field order.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Time Tuple Explorer",
+    "learningObjectives": [
+      "Identify the name, index and range of each of the eight time tuple fields",
+      "Apply indexing such as now[3] to extract one field",
+      "Apply slicing such as now[3:6] to extract several fields and unpack them"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Tuples and indexing from Chapter 3",
+      "The localtime() function"
+    ],
+    "standards": [],
+    "bloomsLevels": [
+      "Remember",
+      "Apply"
+    ]
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 500
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4 (jsDelivr CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false,
+      "notes": "Controls are standard HTML form elements; the canvas has a describe() text for screen readers"
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Interactive labeled data structure with retrieval quiz",
+    "keyQuestions": [
+      "Which index holds the hour?",
+      "Why does now[3:6] return three values and not four?",
+      "Is Sunday weekday 0 or 6?"
+    ],
+    "commonMisconceptions": [
+      "The slice [3:6] includes index 6",
+      "Weekday 0 is Sunday",
+      "Months are numbered from 0 like list positions"
+    ],
+    "assessmentOpportunities": [
+      "Students give the index of any field from memory.",
+      "Students write the slice that returns (month, day).",
+      "Students explain that the stop index is not included in a slice."
+    ]
+  },
+  "chapter": "06-getting-time",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "controls": [
+    {
+      "type": "checkbox",
+      "label": "Live clock",
+      "description": "Updates the values every second (off at load)"
+    },
+    {
+      "type": "checkbox",
+      "label": "Quiz me",
+      "description": "Hides field names and asks for a field"
+    },
+    {
+      "type": "button",
+      "label": "New question",
+      "description": "Asks for another field"
+    },
+    {
+      "type": "select",
+      "label": "Slice start / stop",
+      "description": "Sets the slice indexes"
+    },
+    {
+      "type": "canvas drag",
+      "label": "Boxes",
+      "description": "Click for one field, drag across boxes for a slice"
+    }
+  ]
+}

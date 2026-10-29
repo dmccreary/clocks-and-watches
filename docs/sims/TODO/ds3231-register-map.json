@@ -1,0 +1,15 @@
+{
+  "sim_id": "ds3231-register-map",
+  "diagram_name": "DS3231 Register Map",
+  "chapter_number": 13,
+  "chapter_title": "Real-Time Clocks and the DS3231",
+  "chapter_dir": "13-real-time-clocks",
+  "chapter_rel_dir": "chapters/13-real-time-clocks",
+  "library": "p5.js",
+  "bloom_level": "Remembering, Understanding",
+  "bloom_verb": "identify, interpret",
+  "learning_objective": "Students will *identify* which register holds each time field and *interpret* raw register bytes (Bloom: Remembering, Understanding).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: interactive infographic\n**sim-id:** ds3231-register-map<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *identify* which register holds each time field and *interpret* raw register bytes (Bloom: Remembering, Understanding).\n\n**Visual elements:** A vertical list of the registers `0x00` to `0x12` as labeled rows, each showing its byte in hex, binary, and (when decoded) its meaning. Color bands separate time, alarm, control, and temperature groups.\n\n**Interactions:**\n\n- Hovering a row shows the field name and range. Clicking a row opens an infobox about its bits.\n- A \"Live values\" toggle fills the time registers from the browser's clock, encoded in BCD.\n- A \"Quiz me\" mode shows a raw byte such as `0x45` and asks the student to type the decoded value.\n\n**Responsive design:** Rows compress to a two-column layout on narrow screens.\n\nImplementation: p5.js with a register data array."
+}

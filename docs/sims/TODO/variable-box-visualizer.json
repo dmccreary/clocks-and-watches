@@ -1,0 +1,15 @@
+{
+  "sim_id": "variable-box-visualizer",
+  "diagram_name": "Variable Box Visualizer",
+  "chapter_number": 3,
+  "chapter_title": "MicroPython Basics: Variables and Data Types",
+  "chapter_dir": "03-micropython-basics",
+  "chapter_rel_dir": "chapters/03-micropython-basics",
+  "library": "p5.js",
+  "bloom_level": "Understanding, Applying",
+  "bloom_verb": "predict",
+  "learning_objective": "Students will *predict* the value of variables after a sequence of assignments (Bloom: Understanding, Applying).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: MicroSim\n**sim-id:** variable-box-visualizer<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *predict* the value of variables after a sequence of assignments (Bloom: Understanding, Applying).\n\n**Visual elements:** A code panel of 3 to 6 lines on the left and labeled boxes on the right. As the student steps through, the labels move to new values and a changed box flashes.\n\n**Controls:** \"Step\" and \"Reset\" buttons; a preset menu (basic assignments, `+=` counter, swap two values). \"Predict first\" mode asks the student to type the value of `x` before each step is revealed.\n\n**Responsive design:** The two panels stack vertically below 600 px.\n\nImplementation: p5.js with a small interpreter for assignment lines."
+}

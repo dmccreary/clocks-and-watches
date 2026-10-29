@@ -155,6 +155,10 @@ Changing `ACCENT` once restyles every screen. The Chrono Smart Clock Kit's `conf
 
 #### Diagram: RGB565 Color Mixer
 
+<iframe src="../../sims/rgb565-color-mixer/main.html" height="592px" width="100%" scrolling="no"></iframe>
+
+[Run the RGB565 Color Mixer MicroSim Fullscreen](../../sims/rgb565-color-mixer/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>RGB565 Color Mixer</summary>
 Type: MicroSim
@@ -357,6 +361,10 @@ The dial layout is designed so that few things can be damaged by an erase, and t
     Every overlap costs you an extra repair step. Place static items, like ticks and numerals, where the moving hands never reach, and your update loop stays tiny and fast.
 
 #### Diagram: Analog Watch Face Builder
+
+<iframe src="../../sims/analog-watch-face-builder/main.html" height="547px" width="100%" scrolling="no"></iframe>
+
+[Run the Analog Watch Face Builder MicroSim Fullscreen](../../sims/analog-watch-face-builder/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Analog Watch Face Builder</summary>

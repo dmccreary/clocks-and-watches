@@ -1,0 +1,108 @@
+{
+  "title": "Battery Life Calculator",
+  "creator": "Dan McCreary",
+  "subject": [
+    "Battery Life",
+    "Current Draw",
+    "Low Power Design",
+    "Sleep Mode"
+  ],
+  "description": "Interactive Chart.js battery life calculator. Students include parts, set backlight brightness, time asleep and battery capacity, see each part's average current in a stacked bar, and compare runtime before and after their changes.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Estimating battery runtime from current draw",
+    "learningObjectives": [
+      "Calculate a clock's average current and estimated runtime from its parts",
+      "Evaluate which single design change saves the most energy",
+      "Justify a low-power design using numbers rather than guesses"
+    ],
+    "bloomsTaxonomy": "Evaluate",
+    "duration": "15-20 minutes",
+    "prerequisites": [
+      "Current in mA and capacity in mAh",
+      "The current draw table in Chapter 18"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "Chart.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 530
+    },
+    "responsive": true,
+    "dependencies": [
+      "Chart.js 4.4.4"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "What-if comparison with a saved baseline",
+    "keyQuestions": [
+      "Which part draws the most current in the worked example?",
+      "Why does sleeping 90% of the time save so much?",
+      "Is a bigger battery or a dimmer backlight the better change?"
+    ],
+    "commonMisconceptions": [
+      "The microcontroller is always the biggest power user (displays and radios often use more)",
+      "A battery delivers its full labeled capacity (the 0.8 factor allows for losses)"
+    ],
+    "assessmentOpportunities": [
+      "Hand-calculate the runtime for a given design",
+      "Rank design changes by the runtime they add",
+      "Meet a runtime target and explain the design"
+    ]
+  },
+  "chapter": "18-sensors-power",
+  "controls": [
+    {
+      "type": "checkbox",
+      "label": "Parts in the clock",
+      "description": "Pico, WiFi radio, small OLED, TFT backlight, DS3231 RTC, piezo buzzer, NeoPixel"
+    },
+    {
+      "type": "slider",
+      "label": "TFT backlight brightness",
+      "range": "0-100% (0-80 mA)",
+      "default": "75%"
+    },
+    {
+      "type": "slider",
+      "label": "Time asleep",
+      "range": "0-95%",
+      "default": "0%"
+    },
+    {
+      "type": "select",
+      "label": "Battery",
+      "options": [
+        "150 mAh",
+        "500 mAh",
+        "1000 mAh",
+        "2500 mAh"
+      ],
+      "default": "500 mAh"
+    },
+    {
+      "type": "button",
+      "label": "Save as Before",
+      "description": "Stores the current runtime for comparison."
+    },
+    {
+      "type": "button",
+      "label": "Reset",
+      "description": "Returns to the chapter's worked example."
+    }
+  ]
+}

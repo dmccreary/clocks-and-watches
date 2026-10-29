@@ -1,0 +1,84 @@
+{
+  "title": "Pico Startup Sequence",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "A clickable flowchart of what the Pico does from power-on to a running clock, with a toggle that shows how the path changes when main.py is missing.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Pico Startup Sequence",
+    "learningObjectives": [
+      "Describe the steps from power-on to a running clock program",
+      "Explain the roles of boot.py and main.py",
+      "Explain what changes when there is no main.py, and how Thonny can interrupt a running main.py"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Saving files to the Pico with Thonny",
+      "The REPL prompt from Chapter 3"
+    ],
+    "standards": [],
+    "bloomsLevels": [
+      "Understand"
+    ]
+  },
+  "technical": {
+    "framework": "Mermaid",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 548
+    },
+    "responsive": true,
+    "dependencies": [
+      "Mermaid 10 (jsDelivr CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true,
+      "notes": "Controls are standard HTML form elements"
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Annotated process diagram with a compare-the-cases toggle",
+    "keyQuestions": [
+      "Which file runs first, boot.py or main.py?",
+      "What does the Pico do at power-up if there is no main.py?",
+      "Why can Thonny stop main.py but a battery-powered clock cannot be stopped?"
+    ],
+    "commonMisconceptions": [
+      "The Pico runs whichever file was opened last in Thonny",
+      "boot.py is where the clock program belongs",
+      "Unplugging from the computer deletes main.py"
+    ],
+    "assessmentOpportunities": [
+      "Students put the startup steps in order without the diagram.",
+      "Students explain why a program named clock.py does not start at power-up.",
+      "Students describe two ways to interrupt a running main.py."
+    ]
+  },
+  "chapter": "05-pico-platform",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "controls": [
+    {
+      "type": "radio",
+      "label": "Has main.py / No main.py",
+      "description": "Switches the highlighted path"
+    },
+    {
+      "type": "diagram click",
+      "label": "Step",
+      "description": "Shows an explanation of that step"
+    }
+  ]
+}

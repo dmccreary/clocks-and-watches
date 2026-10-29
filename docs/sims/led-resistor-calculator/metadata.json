@@ -1,0 +1,94 @@
+{
+  "title": "LED Resistor Calculator",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "Choose an LED color, a 3.3 V or 5 V supply, and a standard resistor to see the LED current, its brightness, a warning above 20 mA, and the resistor you would need for 10 mA.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Electronics",
+    "topic": "Current-limiting resistors for LEDs",
+    "learningObjectives": [
+      "Apply the current-limiting formula to calculate LED current and the resistor needed for a target current.",
+      "Analyze how resistor value, supply voltage, and LED color change the current and brightness.",
+      "Choose a safe standard resistor value for an LED on a 3.3 V Pico pin."
+    ],
+    "bloomsTaxonomy": "Apply",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Ohm's Law (V = I × R).",
+      "Read the Current Limiting and LED Basics sections of Chapter 2."
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 450
+    },
+    "responsive": true,
+    "dependencies": [],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false,
+      "notes": "Screen-reader description provided; all controls are standard HTML elements."
+    },
+    "controls": [
+      {
+        "type": "select",
+        "label": "LED color",
+        "options": [
+          "Red 2.0 V",
+          "Yellow 2.1 V",
+          "Green 2.1 V",
+          "Blue 3.1 V",
+          "White 3.2 V"
+        ],
+        "description": "Sets the forward voltage."
+      },
+      {
+        "type": "select",
+        "label": "Supply",
+        "options": [
+          "3.3 V (Pico pin)",
+          "5 V (USB)"
+        ],
+        "description": "Supply voltage for the loop."
+      },
+      {
+        "type": "slider",
+        "label": "Resistor",
+        "range": "10 Ω - 2.2 kΩ (standard values)",
+        "default": "330 Ω",
+        "description": "Current-limiting resistor."
+      }
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Calculate, predict, and verify",
+    "keyQuestions": [
+      "What happens to the current if you halve the resistor?",
+      "Why does a blue LED barely light from a 3.3 V pin with a 330 Ω resistor?",
+      "Which standard resistor would you use for a red LED at 10 mA from 5 V?"
+    ],
+    "commonMisconceptions": [
+      "Using the full supply voltage instead of the leftover voltage (supply minus forward voltage) in the formula.",
+      "Thinking a bigger resistor makes the LED brighter.",
+      "Thinking an LED can be connected without a resistor because it \"has its own voltage.\""
+    ],
+    "assessmentOpportunities": [
+      "Students correctly calculate the resistor needed for a given LED color, supply, and target current.",
+      "Students explain why a smaller resistor makes the LED brighter and when that becomes unsafe.",
+      "Students explain why blue and white LEDs need smaller resistors on a 3.3 V pin."
+    ],
+    "interactionPattern": "Parameter exploration with live readout and safety warning"
+  },
+  "chapter": "02-electronics-fundamentals"
+}

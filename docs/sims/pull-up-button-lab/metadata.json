@@ -1,0 +1,85 @@
+{
+  "title": "Pull-Up Button Lab",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "A GP14 button circuit with the internal pull-up resistor: toggle the button and the pull-up to see the pin voltage, value() and a floating input.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Pull-Up Button Lab",
+    "learningObjectives": [
+      "Analyze how a pull-up resistor sets the resting voltage of an input pin",
+      "Explain why a pressed button reads 0 (active low) with a pull-up",
+      "Describe what a floating input is and why it gives random readings"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Voltage and current basics from Chapter 2",
+      "Pin configuration with Pin.IN"
+    ],
+    "standards": [],
+    "bloomsLevels": [
+      "Understand",
+      "Analyze"
+    ]
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 470
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4 (jsDelivr CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false,
+      "notes": "Controls are standard HTML form elements; the canvas has a describe() text for screen readers"
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Compare-the-conditions investigation",
+    "keyQuestions": [
+      "Why does an unconnected input not simply read 0?",
+      "How much current flows through the pull-up when the button is open?",
+      "Why does a pressed button read 0?"
+    ],
+    "commonMisconceptions": [
+      "A disconnected input reads 0",
+      "The pull-up makes the pressed button read 1",
+      "The pull-up resistor wastes current all the time"
+    ],
+    "assessmentOpportunities": [
+      "Students complete the four-row table correctly.",
+      "Students use the words \"floating\" and \"active low\" correctly in an explanation.",
+      "Students explain why no current flows through the pull-up while the button is open."
+    ]
+  },
+  "chapter": "05-pico-platform",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "controls": [
+    {
+      "type": "button",
+      "label": "Press button / Release button",
+      "description": "Closes or opens the push button"
+    },
+    {
+      "type": "checkbox",
+      "label": "Internal pull-up (Pin.PULL_UP)",
+      "description": "Connects or disconnects the internal pull-up resistor"
+    }
+  ]
+}

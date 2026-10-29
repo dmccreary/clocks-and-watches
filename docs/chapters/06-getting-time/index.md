@@ -114,6 +114,10 @@ This one line is the heart of nearly every clock program in the book.
 
 #### Diagram: Time Tuple Explorer
 
+<iframe src="../../sims/time-tuple-explorer/main.html" height="502px" width="100%" scrolling="no"></iframe>
+
+[Run the Time Tuple Explorer MicroSim Fullscreen](../../sims/time-tuple-explorer/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Time Tuple Explorer</summary>
 Type: interactive infographic
@@ -327,6 +331,10 @@ The loop runs thousands of times per second, and each time it asks "has 500 ms p
     `sleep()` says "do nothing for this long." `ticks_diff()` says "keep working, and tell me when this long has passed." That shift, from blocking to checking, is how one Pico handles buttons, displays, and a clock at the same time.
 
 #### Diagram: Sleep vs Ticks Timeline
+
+<iframe src="../../sims/sleep-vs-ticks/main.html" height="482px" width="100%" scrolling="no"></iframe>
+
+[Run the Sleep vs Ticks Timeline MicroSim Fullscreen](../../sims/sleep-vs-ticks/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Sleep vs Ticks Timeline</summary>

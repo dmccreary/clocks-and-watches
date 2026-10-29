@@ -117,6 +117,10 @@ With `scale = 3`, each digit is 24 by 24 pixels, so `12:34` needs \( 5 \times 24
 
 #### Diagram: Digit Scaling Explorer
 
+<iframe src="../../sims/digit-scaling-explorer/main.html" height="532px" width="100%" scrolling="no"></iframe>
+
+[Run the Digit Scaling Explorer MicroSim Fullscreen](../../sims/digit-scaling-explorer/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Digit Scaling Explorer</summary>
 Type: MicroSim
@@ -177,6 +181,10 @@ small = writer.Writer(oled, freesans14)
 Each font takes memory, so limit yourself to what the screen actually needs. Two or three fonts is a practical ceiling on the Pico.
 
 #### Diagram: Font Pipeline
+
+<iframe src="../../sims/font-pipeline/main.html" height="442px" width="100%" scrolling="no"></iframe>
+
+[Run the Font Pipeline MicroSim Fullscreen](../../sims/font-pipeline/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Font Pipeline</summary>
@@ -364,6 +372,10 @@ The bounding box gives you two useful powers. You can **erase** an old object ex
 A **clipping region** is a rectangle outside of which drawing is ignored. It keeps a scrolling message from spilling onto other parts of the screen. `framebuf` clips only at the edges of the whole buffer, so to clip to a smaller area, draw into a small buffer the size of the region and then `blit()` it into place. Anything that falls outside the small buffer is discarded automatically.
 
 #### Diagram: Bounding Box and Partial Update
+
+<iframe src="../../sims/bounding-box-partial-update/main.html" height="542px" width="100%" scrolling="no"></iframe>
+
+[Run the Bounding Box and Partial Update MicroSim Fullscreen](../../sims/bounding-box-partial-update/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Bounding Box and Partial Update</summary>
