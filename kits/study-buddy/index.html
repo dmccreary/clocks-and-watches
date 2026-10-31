@@ -3164,7 +3164,11 @@ four signal wires on four neighboring pins, plus power and ground:</p>
 </tr>
 </tbody>
 </table>
-<p>Leave the amplifier's <strong>SD</strong> pin unconnected.</p>
+<p>Leave the amplifier's <strong>SD</strong> pin unconnected. On the Adafruit-style breakout
+a pull-up on the board turns the amplifier on. See
+<a href="04-audio/#the-amplifiers-sd-and-gain-pins">the SD and GAIN pins</a> for what
+SD does, why the margin is thin when VIN is 3V3, and when to wire it
+differently.</p>
 <div class="admonition note">
 <p class="admonition-title">The I2S pin rule</p>
 <p>MicroPython's I2S on the Pico needs the word-select pin (LRC) to be

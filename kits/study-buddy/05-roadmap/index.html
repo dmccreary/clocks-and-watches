@@ -3451,7 +3451,7 @@ Already done: <code>config.py</code> has the I2S pins, the gain pin, <code>GAIN_
 <tr>
 <td><strong>Flash space for audio</strong></td>
 <td>The 2.5 MB filesystem holds about 1.5 minutes of speech.</td>
-<td>11 kHz clips first, then a 16 MB board or an SD card.</td>
+<td>8 kHz clips first (the amplifier does not accept 11.025 kHz, and 8 kHz needs its SD pin on a GPIO), then a 16 MB board or an SD card.</td>
 </tr>
 <tr>
 <td><strong>A private calendar address leaks</strong></td>

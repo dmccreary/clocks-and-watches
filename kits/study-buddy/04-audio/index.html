@@ -2024,6 +2024,89 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#the-amplifiers-sd-and-gain-pins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Amplifier's SD and GAIN Pins
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Amplifier&#39;s SD and GAIN Pins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-sd-does" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What SD does
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-a-breakout-works-with-sd-unconnected" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why a breakout works with SD unconnected
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#three-ways-to-wire-sd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Three ways to wire SD
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-shutdown-saves" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What shutdown saves
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#driving-sd-from-the-pico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Driving SD from the Pico
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-many-examples-tie-gain-to-gnd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why many examples tie GAIN to GND
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#volume-and-quiet-hours" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3144,6 +3227,89 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#the-amplifiers-sd-and-gain-pins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Amplifier's SD and GAIN Pins
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Amplifier&#39;s SD and GAIN Pins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-sd-does" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What SD does
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-a-breakout-works-with-sd-unconnected" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why a breakout works with SD unconnected
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#three-ways-to-wire-sd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Three ways to wire SD
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-shutdown-saves" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What shutdown saves
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#driving-sd-from-the-pico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Driving SD from the Pico
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-many-examples-tie-gain-to-gnd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why many examples tie GAIN to GND
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#volume-and-quiet-hours" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3356,8 +3522,9 @@ needing every sentence recorded:</p>
 <p>This needs a vocabulary of about 60 clips: subjects (algebra, history,
 science, reading, spelling, math, English, Spanish, art, music), kinds
 (quiz, test, exam, homework), times (today, tomorrow, in one hour, on
-Monday ... Sunday), and glue words. At 11 kHz speech quality that is roughly
-half a minute of audio, so it fits comfortably in flash.</p>
+Monday ... Sunday), and glue words. That is roughly half a minute of audio:
+about 1 MB at 16 kHz or 0.5 MB at 8 kHz, so it fits in flash (see the
+<a href="#flash-budget">Flash Budget</a>).</p>
 <p>An event's <code>subject</code> and <code>kind</code> pick the clips. If a clip is missing, the
 Study Buddy falls back to the chime, so a missing file never breaks a
 reminder.</p>
@@ -3386,24 +3553,28 @@ Pico 2 W (after the 1.5 MB of firmware) has to hold the program as well:</p>
 <td>about 64 seconds</td>
 </tr>
 <tr>
-<td>11.025 kHz, 16-bit mono</td>
-<td>22 KB</td>
-<td>about 93 seconds</td>
-</tr>
-<tr>
 <td>8 kHz, 16-bit mono</td>
 <td>16 KB</td>
 <td>about 128 seconds</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Why there is no 11.025 kHz row</p>
+<p>The MAX98357A datasheet says the amplifier accepts a sample rate (its
+LRCLK) of only 8, 16, 32, 44.1, 48, 88.2, or 96 kHz, and that 11.025,
+12, 22.05, and 24 kHz are <strong>not supported</strong>. The usual "small file"
+rates are therefore out. Convert clips to 16 kHz or 8 kHz.</p>
+</div>
 <p>Level 1 uses none of it. Level 2 uses well under a minute. Level 3 is
 where the limit shows up: a 50-word Spanish deck with a clip of about one
-second each takes 1.1 MB at 11 kHz.</p>
+second each takes 1.6 MB at 16 kHz, or 0.8 MB at 8 kHz.</p>
 <p>Three ways to get more room, from cheapest to most expensive:</p>
 <ol>
-<li><strong>Record at 11 kHz or 8 kHz.</strong> Speech stays clear, and it nearly halves
-   the size.</li>
+<li><strong>Record at 8 kHz instead of 16 kHz.</strong> It halves the size. Speech stays
+   understandable but sounds like a telephone, so listen to a clip before
+   converting a whole deck. 8 kHz also needs the amplifier's SD pin on a
+   GPIO (see <a href="#the-amplifiers-sd-and-gain-pins">the SD pin section</a>).</li>
 <li><strong>A 16 MB flash board</strong> such as the Pimoroni Pico Plus 2 W
    <strong>(verify MicroPython support and pin compatibility)</strong>. This is about
    8 times the room.</li>
@@ -3417,9 +3588,10 @@ second each takes 1.1 MB at 11 kHz.</p>
 <p class="admonition-title">WAV format</p>
 <p><code>sound.wav()</code> reads uncompressed 16-bit mono PCM only. MicroPython has
 no MP3 or ADPCM decoder in the standard build, so clips are converted
-to WAV on the computer with a converter script (still to be written).
-The player checks the WAV header, so a wrong format is rejected with
-a message and never played as noise.</p>
+to WAV on the computer with a converter script (still to be written),
+which writes 16 kHz or 8 kHz files, the small rates the amplifier
+accepts. The player checks the WAV header, so a wrong format or sample
+rate is rejected with a message and never played as noise.</p>
 </div>
 <h2 id="playback-must-survive-drawing-and-freezing">Playback Must Survive Drawing and Freezing</h2>
 <p>Updating the display blocks the Pico. A full-screen fill takes 131 ms, the
@@ -3566,11 +3738,270 @@ experiments. The script <code>multicore-stress-test.py</code> covers the first f
 <li>Fixing the flash glitch itself. The options are in the guide's "Ideas
   That Would Offload More".</li>
 <li>The click when I2S starts and stops. If it clicks, the amplifier stays
-  running with silence between sounds.</li>
+  running with silence between sounds. The datasheet's advice on clicks is
+  in <a href="#the-amplifiers-sd-and-gain-pins">The Amplifier's SD and GAIN Pins</a>.</li>
 <li>Whether full volume on 5 V disturbs the WiFi chip.</li>
 <li>What happens to the core-1 loop when a program stops with Thonny's Stop
   button instead of calling <code>sound.deinit()</code>.</li>
+<li>Whether the button theremin still feels quick. The theremin mode and Lab 08
+  moved from 22,050 Hz, which the datasheet lists as unsupported, to 16,000 Hz
+  (version 1.1 of each file). With the same 4096-byte buffer the reserve grew
+  from about 93 ms to 128 ms. This is <strong>not yet tried on the board</strong>. If the
+  pitch lags, try a smaller <code>ibuf</code> such as 3072 (96 ms).</li>
 </ul>
+<h2 id="the-amplifiers-sd-and-gain-pins">The Amplifier's SD and GAIN Pins</h2>
+<p>Two wires on the MAX98357A set how it behaves, and neither needs code: the
+amplifier reads the voltage on each pin. The numbers below come from the
+MAX98357A/MAX98357B datasheet (Rev 13, 7/19, document 19-6779) and, for the
+breakout board, from Adafruit's
+<a href="https://learn.adafruit.com/adafruit-max98357-i2s-class-d-mono-amp/pinouts">pinout page</a>.</p>
+<h3 id="what-sd-does">What SD does</h3>
+<p>The chip's pin is named <code>SD_MODE</code>. It does two jobs at once: it can <strong>shut
+the amplifier down</strong>, and it <strong>picks which I2S channel is played</strong>. The chip
+measures the voltage on the pin:</p>
+<table>
+<thead>
+<tr>
+<th>Voltage on SD</th>
+<th>The amplifier</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Below about 0.16 V</td>
+<td>Is in <strong>shutdown</strong></td>
+</tr>
+<tr>
+<td>0.16 V to 0.77 V</td>
+<td>Plays the <strong>mix</strong>, (left + right) / 2</td>
+</tr>
+<tr>
+<td>0.77 V to 1.4 V</td>
+<td>Plays the <strong>right</strong> channel</td>
+</tr>
+<tr>
+<td>Above about 1.4 V</td>
+<td>Plays the <strong>left</strong> channel</td>
+</tr>
+</tbody>
+</table>
+<p>Those are the typical trip points. The datasheet lets each one vary from
+chip to chip: 0.08 to 0.355 V for the shutdown edge, 0.65 to 0.825 V for the
+middle one, and 1.245 to 1.5 V for the top one.</p>
+<p>The chip also has a 100 kΩ resistor from SD to ground inside it, so on the
+bare chip an SD pin left floating means <strong>shutdown</strong>. To get the right
+channel or the mix, pull SD up through a resistor, which makes a voltage
+divider with that internal 100 kΩ. For 3.3 V logic the datasheet gives 210 kΩ
+(right) and 634 kΩ (mix). For the left channel, drive SD straight to logic
+high.</p>
+<h3 id="why-a-breakout-works-with-sd-unconnected">Why a breakout works with SD unconnected</h3>
+<p>Adafruit's breakout adds what the bare chip lacks: a 1 MΩ resistor from SD
+to VIN. With the chip's internal 100 kΩ, that holds SD at 100 / 1100, about
+one eleventh of VIN, which is the mix mode:</p>
+<table>
+<thead>
+<tr>
+<th>VIN</th>
+<th>SD sits at</th>
+<th>Against the highest shutdown edge the datasheet allows (0.355 V)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5 V</td>
+<td>0.45 V</td>
+<td>Above it. Safe on any chip.</td>
+</tr>
+<tr>
+<td>3.3 V</td>
+<td>0.30 V</td>
+<td><strong>Below it.</strong> A typical chip (0.16 V) is fine, but a chip at the top of the allowed range would be in shutdown.</td>
+</tr>
+</tbody>
+</table>
+<p>So the margin is thin when the amplifier runs from 3V3. This is arithmetic
+from the datasheet and Adafruit's resistor value, not something seen to fail
+<strong>(verify on the bench)</strong>, and a copy of the breakout may use a different
+resistor. If a board is silent on 3V3, tie SD to 3V3 as described next.</p>
+<h3 id="three-ways-to-wire-sd">Three ways to wire SD</h3>
+<table>
+<thead>
+<tr>
+<th>SD is wired to</th>
+<th>The amplifier</th>
+<th>Good for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nothing, on a breakout with the 1 MΩ pull-up</td>
+<td>Plays the mix, always on</td>
+<td>The simplest wiring, and the kit today. Thin margin on 3V3.</td>
+</tr>
+<tr>
+<td>3.3 V (or the amplifier's VIN)</td>
+<td>Plays the left channel, always on</td>
+<td>Designs that never need to switch the amplifier off</td>
+</tr>
+<tr>
+<td>A GPIO pin</td>
+<td>Left channel when high, shutdown when low</td>
+<td>Battery power, muting, and controlling clicks</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why many designs wire SD to 3.3 V.</strong> There are three reasons:</p>
+<ol>
+<li>The voltage is far above the 1.4 V edge on every chip, so no resistor
+   tolerance and no breakout resistor matters.</li>
+<li>Left-only costs nothing here. <code>sound.py</code> opens I2S with <code>I2S.MONO</code>, and
+   MicroPython writes a mono sample to <strong>both</strong> channels, so the left channel
+   alone sounds the same as the mix.</li>
+<li>It saves a GPIO pin.</li>
+</ol>
+<p>The price is that the pin can no longer switch the amplifier off. One
+caution from the datasheet: SD must not rise above VDD + 0.3 V. That is no
+problem when SD and the amplifier's VIN are on the same 3.3 V rail, or when
+VIN is 5 V. If VIN can fall below 3.0 V while SD is driven from 3.3 V (a
+nearly empty battery), put about 2 kΩ in series with SD.</p>
+<h3 id="what-shutdown-saves">What shutdown saves</h3>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>How it happens</th>
+<th>Supply current (typical)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Running</td>
+<td>SD high, I2S clocks running, no speaker connected</td>
+<td>2.75 mA at 5 V, 2.4 mA at 3.7 V</td>
+</tr>
+<tr>
+<td>Standby</td>
+<td>SD high, BCLK stopped (the chip does this by itself)</td>
+<td>340 µA</td>
+</tr>
+<tr>
+<td>Shutdown</td>
+<td>SD low</td>
+<td>0.6 µA</td>
+</tr>
+</tbody>
+</table>
+<p>These are the datasheet's numbers at 25 °C. A speaker playing adds to the
+running figure. The standby row matters: an SD pin tied high does <strong>not</strong>
+leave the amplifier burning 2.4 mA while idle, as long as <code>sound.deinit()</code> has
+stopped the clocks. It only runs at full idle current when the clocks keep
+running with silence, which is the fallback under "Still to measure" if
+starting and stopping I2S clicks.</p>
+<p>On USB power none of this is worth a GPIO. On a battery, 340 µA would drain
+a 500 mAh cell in about two months by itself, while 0.6 µA would not matter.</p>
+<h3 id="driving-sd-from-the-pico">Driving SD from the Pico</h3>
+<p>The kit does not do this today. GP17 is unused, so a port that wanted it
+could add <code>I2S_SD_PIN = 17</code> to <code>config.py</code> and wire SD to it:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="n">sd</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>   <span class="c1"># low: shutdown, 0.6 µA</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">amp_on</span><span class="p">():</span>
+    <span class="n">sd</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>                  <span class="c1"># high: left channel, amplifier on</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>            <span class="c1"># turn-on time is 7.5 ms at most</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">amp_off</span><span class="p">():</span>
+    <span class="n">sd</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Two facts from the datasheet help with clicks. The order of SD and the I2S
+clocks makes no difference to the click-and-pop level, so there is no
+sequence to get right at 16 kHz. But the chip has <strong>no volume ramp-down</strong>
+when it enters shutdown: end the sound with a fade (the <code>release</code> of
+<code>tone()</code> does this) and wait for <code>sound.busy()</code> to be false before calling
+<code>amp_off()</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">8 kHz audio needs SD under software control</p>
+<p>At 8 kHz the bit clock runs at 8,000 × 32 = 256 kHz, because it is 32
+times the sample rate (see the <a href="../06-multicore-guide/">multicore guide</a>).
+That is a special case in the datasheet: the clocks must not run before the
+amplifier is enabled, there must be a 10 µs wait after SD goes high
+before they start, and <strong>if the clocks stop, SD must be set to 0 V
+first</strong>. An SD pin tied high breaks that last rule each time
+<code>sound.deinit()</code> stops the clocks, and the datasheet says the chip may
+then not power up properly the next time. The default 16 kHz (a 512 kHz
+bit clock) is not affected. If you use 8 kHz, put SD on a GPIO.</p>
+</div>
+<h3 id="why-many-examples-tie-gain-to-gnd">Why many examples tie GAIN to GND</h3>
+<p>The GAIN pin (<code>GAIN_SLOT</code> on the chip) works the same way: its wiring sets
+the gain, with five choices (datasheet Table 8):</p>
+<table>
+<thead>
+<tr>
+<th>GAIN is wired to</th>
+<th>Gain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GND through a 100 kΩ resistor (±5%)</td>
+<td>15 dB</td>
+</tr>
+<tr>
+<td><strong>GND</strong></td>
+<td><strong>12 dB</strong></td>
+</tr>
+<tr>
+<td>Nothing</td>
+<td>9 dB</td>
+</tr>
+<tr>
+<td>VIN</td>
+<td>6 dB</td>
+</tr>
+<tr>
+<td>VIN through a 100 kΩ resistor (±5%)</td>
+<td>3 dB</td>
+</tr>
+</tbody>
+</table>
+<p>Examples overwhelmingly pick <strong>GND, 12 dB</strong>, for four reasons:</p>
+<ol>
+<li><strong>It is the datasheet's own setting.</strong> The output-power rating (3.2 W into
+   4 Ω at 5 V and 10% distortion) is specified at 12 dB, the typical-performance
+   curves are drawn at 12 dB, and the left-channel circuit (Figure 17) and
+   the example board layout (Figure 23) use it. The tiny WLP package's pinout
+   is even arranged so 12 dB needs no via (Figure 22). People copy the
+   reference circuit.</li>
+<li><strong>It is the loudest setting that needs no extra part.</strong> A bare wire to
+   GND gives 12 dB, and an open pin only 9 dB. Going up to 15 dB takes a
+   resistor. The chip's full-scale digital output is just 2.1 dBV (about
+   1.3 V rms), so a small speaker needs the gain.</li>
+<li><strong>It does not depend on the supply voltage.</strong> The gain edges are
+   fractions of VDD, so GND means 12 dB at any VIN. A Pico pin driven high
+   only means "VIN" when VIN is 3.3 V: on 5 V, 3.3 V is 0.66 × VDD, which
+   sits at the edge of the 3 dB band, not the 6 dB one. This is why the kit
+   can only offer 6 dB on a 3.3 V amplifier.</li>
+<li><strong>TDM mode fixes the gain at 12 dB</strong>, so it is the setting the chip is
+   built around.</li>
+</ol>
+<p>More gain is not always more sound. The datasheet gives the output level as
+the input level (dBFS) + 2.1 dB + the gain, but the amplifier cannot swing
+past its supply. As a rough figure, assuming an ideal bridge that swings the
+whole supply, a loud digital signal clips above about -3 dBFS at 12 dB on
+5 V and about -7 dBFS at 12 dB on 3.3 V. At 9 dB the limits are about 0 and
+-4 dBFS. Real chips clip a little sooner. The kit's default is 9 dB, and its
+software volume scales the signal before it reaches the amplifier.</p>
 <h2 id="volume-and-quiet-hours">Volume and Quiet Hours</h2>
 <ul>
 <li><code>VOLUME</code> in <code>config.py</code> sets the default level.</li>
