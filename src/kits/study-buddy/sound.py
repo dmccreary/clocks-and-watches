@@ -346,7 +346,9 @@ def _thread_main():
 def init(rate=16000, ibuf=8192, volume=None, core=1):
     """Start the amplifier. rate is samples per second (16000 is plenty for
     beeps and tunes, 44100 for the full range of hearing), and ibuf is the
-    reserve described at the top of this file, in bytes.
+    reserve described at the top of this file, in bytes. The MAX98357A
+    datasheet allows only 8000, 16000, 32000, 44100, 48000, 88200, and 96000;
+    rates such as 11025 and 22050 are not supported.
 
     core is which processor core feeds the amplifier: 1 (the default) or 0.
     See "TWO CORES" at the top of this file.

@@ -119,7 +119,7 @@ Already done: `config.py` has the I2S pins, the gain pin, `GAIN_DB`,
 | **Tick counter wraps** | A reminder days away cannot use `ticks_ms()`. | Use the wall clock for reminders. |
 | **The RTC resets on power loss** | A device with no battery loses the time. | It resyncs over WiFi at power-up. With no WiFi, reminders stay quiet and the screen says "Clock not set". |
 | **Flash wear** | Flash typically survives about 100,000 erases per block. | Write progress at the end of a round, not each question. |
-| **Flash space for audio** | The 2.5 MB filesystem holds about 1.5 minutes of speech. | 11 kHz clips first, then a 16 MB board or an SD card. |
+| **Flash space for audio** | The 2.5 MB filesystem holds about 1.5 minutes of speech. | 8 kHz clips first (the amplifier does not accept 11.025 kHz, and 8 kHz needs its SD pin on a GPIO), then a 16 MB board or an SD card. |
 | **A private calendar address leaks** | It gives read access to a student's calendar. | Keep it in `secrets.py` and never print or display it. |
 | **Wrong attributions on quotes** | Students learn a false fact. | A required `source` note on every shipped quote. |
 | **Students' schedules and scores** | Quiz dates and results are about a child. | Everything stays on the device. Nothing is sent anywhere except the calendar fetch the student sets up. |
