@@ -279,6 +279,18 @@ nav:
       - 14 Set the Time: kits/mondaine/14-set-time.md
       - 15 The Railway Clock: kits/mondaine/15-mondaine-clock.md
       - Notes for Teachers: kits/mondaine/teacher-notes.md
+    - Big Round Speaker Clock Kit (GC9B72, Pico W):
+      - Introduction: kits/big-round-speaker-clock/index.md
+      - 01 Blink the LED: kits/big-round-speaker-clock/01-blink-onboard-led.md
+      - 02 Kit Checkup: kits/big-round-speaker-clock/02-probe.md
+      - 03 Button Test: kits/big-round-speaker-clock/03-button-test.md
+      - 04 Hello, Round Screen: kits/big-round-speaker-clock/04-display-test.md
+      - 05 Speaker Test: kits/big-round-speaker-clock/05-speaker-test.md
+      - 06 WiFi Check: kits/big-round-speaker-clock/06-test-wifi.md
+      - 07 Get the Time: kits/big-round-speaker-clock/07-get-time.md
+      - 08 The Big Clock: kits/big-round-speaker-clock/08-big-clock.md
+      - 09 Ten Modes: kits/big-round-speaker-clock/09-ten-modes.md
+      - Notes for Teachers: kits/big-round-speaker-clock/teacher-notes.md
     - Knob Clock Kit (ST7735S, Pico 2 W):
       - Introduction: kits/rect-tft-display/index.md
       - 01 Blink the LED: kits/rect-tft-display/01-blink-onboard-led.md

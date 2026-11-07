@@ -49,6 +49,7 @@ class RealTimeout(Stop):
 BUSY_READS = 50
 REAL_TIMEOUT_S = 120        # real seconds before a run is stopped anyway
 _busy = [0]
+_in_i2s_irq = [False]       # no nested I2S interrupts, as on the Pico
 
 
 state = {"ms": 0, "limit": None, "presses": [], "pins": {}, "snaps": {},
@@ -65,6 +66,16 @@ def _tick():
         bouncing = any(b == name and s <= t < s + 20 and (t - s) % 20 == 10
                        for b, s, e in state["presses"])
         pin.set_level(1 if (not down or bouncing) else 0)
+    # A silent amplifier's buffer has run dry: interrupt, like the real
+    # I2S driver. The handler usually writes more, which moves due_ms on.
+    for amp in list(hardware.I2S.active):
+        if (amp.handler is not None and amp.due_ms is not None
+                and t >= amp.due_ms and not _in_i2s_irq[0]):
+            _in_i2s_irq[0] = True
+            try:
+                amp.handler(amp)
+            finally:
+                _in_i2s_irq[0] = False
     for when in list(state["snap_at"]):
         if t >= when:
             state["snaps"][when] = list(screen.px)
@@ -206,6 +217,7 @@ def run_lab(lab, limit_ms, presses=(), snap_at=(), start=None):
     if KIT is None:
         raise RuntimeError("call use_kit() first")
     forget_modes()
+    hardware.I2S.active.clear()          # no amplifier left over from a run
     dc_pin = screen.dc_pin
     screen.clear()
     screen.dc_pin = dc_pin

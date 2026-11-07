@@ -144,6 +144,15 @@ the old `u`-names (`utime`, `ustruct`, `ujson`, and others).
 - **Nothing is read back from the panel,** and there is no real WiFi, so
   anything about the physical board (colors on the glass, the bezel's
   exact edge, button wiring) still needs the real kit.
+- **Sound is silent, and there is one core.** For MAX98357A kits,
+  `machine.I2S` accepts samples, keeps them in `I2S.samples`, and "plays"
+  them on the fake clock: a blocking `write()` waits while its buffer is
+  full, and an `irq()` handler is called when the buffer runs dry. The
+  fake `_thread.start_new_thread()` always fails, so code like
+  `sound.py` uses its core-0 interrupt path. `@micropython.viper`
+  functions run as plain Python (pointer arguments work; arithmetic is
+  not cut to 32 bits). Anything about real sound, or about two cores
+  sharing work, needs the real kit.
 - **The fakes are process-wide.** Importing `gc9b72_sim` replaces
   `machine`, `time.ticks_ms`, and friends for the whole Python process.
   Run it on its own, not inside other code. `checks/run_all.py` runs each
@@ -160,6 +169,7 @@ the old `u`-names (`utime`, `ustruct`, `ujson`, and others).
 | `render_lab.py` | Command line: one lab to a PNG or GIF, for any kit |
 | `render_sw_gc9b72_docs.py` | Regenerates every image in `docs/kits/sw-gc9b72/img` |
 | `render_mondaine_docs.py` | Regenerates every image in `docs/kits/mondaine/img` from the `mondaine` kit's labs |
+| `render_big_round_speaker_clock_docs.py` | Regenerates every image in `docs/kits/big-round-speaker-clock/img`, including all ten modes of `mode-template.py` |
 | `checks/` | Verification of the sw-gc9b72 labs: `run_all.py` runs them all. Set `GC9B72_KIT` to check another kit's copies of the same labs. `check_mondaine.py` always checks the `mondaine` kit (its face, its stop-and-go timing, and that its incremental repaint matches a full redraw). |
 
 ## For another kit's documentation

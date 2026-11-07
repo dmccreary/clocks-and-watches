@@ -92,6 +92,8 @@ they have the first 20 rows yellow and the remaining 44 rows blue.
 
 [Railway Clock (Mondaine-Style) with the GC9B72 Display and Pico W](./mondaine/index.md)
 
+[Big Round Speaker Clock: the GC9B72 Display, a Speaker, and Pico W](./big-round-speaker-clock/index.md)
+
 [Waveshare LCD Smartwatch Display](./waveshare-lcd/index.md)
 
 ## E-Paper Clocks

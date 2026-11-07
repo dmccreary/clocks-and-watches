@@ -1,0 +1,68 @@
+{
+  "skill_name": "project-kit-generator",
+  "evals": [
+    {
+      "id": 1,
+      "name": "tof-distance-display",
+      "fixture": "repo-tof",
+      "new_kit": "tof-distance-display",
+      "prompt": "This repo has a boring VL53L0X time-of-flight distance kit at src/kits/tof-distance that just prints millimeters. I want a new kit, src/kits/tof-distance-display, that makes it fun for 6th graders by putting the readings on a cheap round GC9A01 smartwatch display, wired the same way as src/kits/smartwatch-ref/config.py (that wiring is known to work). All I actually have is the sensor, a Pico, a breadboard and the display. No NeoPixels, no buzzer, nothing else. I can't test on hardware right now.",
+      "expected_output": "A verified-as-far-as-possible kit scaffold: a plan that separates confirmed from assumed hardware, resolves the I2C/SPI pin clash, a config.py with no duplicate pins, incremental labs that print TEST PASS including a Thonny Plotter lab and a sensor-free display hello lab, an upload script, a README, a lesson outline and box-cover brief that follow the guidelines, and an honest summary of what was and was not verified.",
+      "expectations": [
+        "KIT-PLAN.md exists and is substantial",
+        "KIT-PLAN.md separates confirmed hardware from assumed hardware",
+        "KIT-PLAN.md compares at least two display options with prices",
+        "config.py has no duplicate GPIOs and valid bus pins (scripts/pin_check.py passes)",
+        "At least six numbered labs exist",
+        "Every lab imports config and hard-codes no pin numbers",
+        "At least four labs print TEST PASS",
+        "A Thonny Plotter lab exists and says it prints only numbers",
+        "A display hello lab exists that does not use the sensor",
+        "config.py does not import the display driver at the top level",
+        "upload-code.sh uploads lib, config and the labs with mpremote",
+        "upload-code.sh can install a chosen lab as main.py",
+        "The parent kit is untouched",
+        "README.md documents the expected TEST PASS output",
+        "SUMMARY.md says plainly that real hardware was not tested",
+        "SUMMARY.md says how the work was verified without hardware",
+        "The lesson outline has checkpoints, troubleshooting, teacher notes and the mascot rules",
+        "A box cover brief exists with a photo requirement, a QR code and at least 12 feature chips",
+        "No NeoPixel code was carried into the new kit",
+        "The display wiring matches the reference config (DC 4, CS 5, RST 6)",
+        "KIT-PLAN.md notices the GP2/GP3 pin clash between the parent's I2C and the display's SPI"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "mic-level-display",
+      "fixture": "repo-mic",
+      "new_kit": "mic-level-display",
+      "prompt": "I have a MAX4466 microphone module (analog output on GP26) kit at src/kits/mic-level that only prints a loudness number. Make me a fun new kit for 6th graders, src/kits/mic-level-display, using a cheap 1.3 inch square 240x240 ST7789 SPI display (about $5 online). I don't have any wiring reference for that display, and I think it has a BL backlight pin but I'm honestly not sure. I also own one push button. Pico and breadboard as usual. I can't test on hardware right now.",
+      "expected_output": "A scaffold for an analog-sensor kit on a square display: valid ADC pin, planned SPI pins with no clash, unconfirmed hardware (BL pin) flagged rather than assumed, a plan that reads the button with an IRQ and a 50 ms debounce, no shouting contest, and the same lab ladder, docs and honesty as the first eval.",
+      "expectations": [
+        "KIT-PLAN.md exists and is substantial",
+        "KIT-PLAN.md separates confirmed hardware from assumed hardware",
+        "KIT-PLAN.md compares at least two display options with prices",
+        "config.py has no duplicate GPIOs and valid bus pins (scripts/pin_check.py passes)",
+        "At least six numbered labs exist",
+        "Every lab imports config and hard-codes no pin numbers",
+        "At least four labs print TEST PASS",
+        "A Thonny Plotter lab exists and says it prints only numbers",
+        "A display hello lab exists that does not use the sensor",
+        "config.py does not import the display driver at the top level",
+        "upload-code.sh uploads lib, config and the labs with mpremote",
+        "upload-code.sh can install a chosen lab as main.py",
+        "The parent kit is untouched",
+        "README.md documents the expected TEST PASS output",
+        "SUMMARY.md says plainly that real hardware was not tested",
+        "SUMMARY.md says how the work was verified without hardware",
+        "The lesson outline has checkpoints, troubleshooting, teacher notes and the mascot rules",
+        "A box cover brief exists with a photo requirement, a QR code and at least 12 feature chips",
+        "The microphone ADC pin is a valid ADC pin (GP26, GP27 or GP28)",
+        "The unsure BL backlight pin is flagged as unconfirmed or optional, not silently assumed",
+        "No shouting or screaming contest is proposed anywhere",
+        "The plan says the button is read with an interrupt and a 50 ms debounce"
+      ]
+    }
+  ]
+}

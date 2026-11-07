@@ -1,6 +1,7 @@
 """CPython stand-ins for the MicroPython modules a GC9B72 kit imports.
 
-Importing this module installs fake `machine`, `micropython`, `ustruct`,
+Importing this module installs fake `machine` (including a silent
+`machine.I2S` for MAX98357A kits), `micropython`, `ustruct`,
 `framebuf`, `network`, `ntptime`, `requests`, and `secrets` modules, plus
 the MicroPython-only `time.ticks_*` functions and `gc.mem_free()`.
 
@@ -269,6 +270,65 @@ class FrameBuffer:
 
 
 # ---------------------------------------------------------------------------
+# A silent I2S amplifier (MAX98357A kits)
+# ---------------------------------------------------------------------------
+class I2S:
+    """machine.I2S in TX mode, with no sound. It "plays" what it is given
+    on the fake clock: write() remembers when its samples will have been
+    used up, and runner._tick() calls the irq() handler at that moment, the
+    way the real driver interrupts when a buffer empties. So sound code
+    that refills from the interrupt keeps running, and code that waits for
+    a tune to finish sees it finish on time.
+
+    Every sample written is kept in `samples` (most recent instance in
+    I2S.last), so a check can look at what a program would have played."""
+    TX, RX = 0, 1
+    MONO, STEREO = 0, 1
+    active = []                     # instances not yet deinit()-ed
+    last = None
+
+    def __init__(self, id, sck=None, ws=None, sd=None, mode=0, bits=16,
+                 format=0, rate=16000, ibuf=4096):
+        sck_id = getattr(sck, "id", None)
+        ws_id = getattr(ws, "id", None)
+        if sck_id is not None and ws_id is not None and ws_id != sck_id + 1:
+            # The rule the Pico's PIO-based I2S really enforces.
+            raise ValueError("invalid ws (must be sck+1)")
+        self.rate, self.bits, self.ibuf = rate, bits, ibuf
+        self.channels = 2 if format == I2S.STEREO else 1
+        self.handler = None
+        self.due_ms = None          # fake-clock time the buffer runs dry
+        self.samples = bytearray()
+        I2S.active.append(self)
+        I2S.last = self
+
+    def _ms(self, nbytes):
+        return nbytes / (self.bits // 8) / self.channels * 1000 / self.rate
+
+    def write(self, buf):
+        from . import runner        # imported here: runner imports us
+        now = runner.state["ms"]
+        start = max(now, self.due_ms if self.due_ms is not None else now)
+        self.due_ms = start + self._ms(len(buf))
+        if len(self.samples) < 4_000_000:
+            self.samples += bytes(buf)
+        # A blocking write() waits until what is left fits in the ibuf
+        # reserve. (Never inside the interrupt, which only refills.)
+        over = self.due_ms - now - self._ms(self.ibuf)
+        if over > 0 and self.handler is None:
+            runner._advance(int(over + 0.999))
+        return len(buf)
+
+    def irq(self, handler):
+        self.handler = handler
+
+    def deinit(self):
+        self.handler = None
+        if self in I2S.active:
+            I2S.active.remove(self)
+
+
+# ---------------------------------------------------------------------------
 # Network stand-ins: no real WiFi, NTP, or web requests, ever
 # ---------------------------------------------------------------------------
 class WLAN:
@@ -341,9 +401,58 @@ def _module(name, **attrs):
     return m
 
 
-machine = _module("machine", Pin=Pin, SPI=SPI, RTC=RTC,
+machine = _module("machine", Pin=Pin, SPI=SPI, RTC=RTC, I2S=I2S,
                   freq=lambda *a: 150_000_000)
-_module("micropython", const=lambda x: x)
+class _Ptr:
+    """What a viper function sees for a `ptr8`, `ptr16` or `ptr32`
+    argument: the buffer read and written as whole numbers of that width,
+    little-endian, with writes cut to the width the way the Pico cuts them."""
+
+    def __init__(self, buf, size):
+        self.mv = memoryview(buf).cast("B")
+        self.size = size
+        self.mask = (1 << (8 * size)) - 1
+
+    def __getitem__(self, i):
+        j = i * self.size
+        return int.from_bytes(self.mv[j:j + self.size], "little")
+
+    def __setitem__(self, i, v):
+        j = i * self.size
+        self.mv[j:j + self.size] = (int(v) & self.mask).to_bytes(self.size, "little")
+
+
+def _viper(fn):
+    """@micropython.viper, run as plain Python. Arguments annotated ptr8,
+    ptr16 or ptr32 get a _Ptr view, and an int result is wrapped to 32
+    bits. Arithmetic inside is NOT wrapped to 32 bits, so a function that
+    depends on overflow (a sign flip, say) can differ from the board.
+    Kits use viper for speed, and the simulator only needs the logic."""
+    sizes = {"ptr8": 1, "ptr16": 2, "ptr32": 4}
+    notes = getattr(fn, "__annotations__", {})
+    names = fn.__code__.co_varnames[:fn.__code__.co_argcount]
+    ptrs = {i: sizes[notes[n]] for i, n in enumerate(names)
+            if notes.get(n) in sizes}
+
+    def run(*args):
+        args = [(_Ptr(a, ptrs[i]) if i in ptrs else a) for i, a in enumerate(args)]
+        out = fn(*args)
+        if isinstance(out, int):
+            out &= 0xFFFFFFFF
+            if out >= 1 << 31:
+                out -= 1 << 32
+        return out
+    run.__name__ = fn.__name__
+    return run
+
+
+_module("micropython", const=lambda x: x, viper=_viper,
+        native=lambda fn: fn)
+# viper's type names must exist for annotations to evaluate
+import builtins  # noqa: E402
+for _name in ("ptr8", "ptr16", "ptr32", "uint"):
+    if not hasattr(builtins, _name):
+        setattr(builtins, _name, _name)
 
 # MicroPython's older "u" names, which many labs still use. utime is the
 # same (patched) time module, so `from utime import sleep` gets the fake
@@ -355,10 +464,31 @@ for _u, _real in (("utime", time), ("ustruct", struct), ("uos", os), ("ujson", j
                   ("uhashlib", hashlib)):
     sys.modules[_u] = _real
 _module("framebuf", FrameBuffer=FrameBuffer, RGB565=1)
-_module("network", STA_IF=0, AP_IF=1, WLAN=WLAN)
+_module("network", STA_IF=0, AP_IF=1, WLAN=WLAN,
+        STAT_IDLE=0, STAT_CONNECTING=1, STAT_GOT_IP=3, STAT_CONNECT_FAIL=-1,
+        STAT_NO_AP_FOUND=-2, STAT_WRONG_PASSWORD=-3)
 _module("ntptime", host="pool.ntp.org", timeout=1, settime=lambda: None)
 _module("requests", get=_get)
 _module("urequests", get=_get)
+# No second core. A real thread would run outside the fake clock, so
+# start_new_thread() fails the way it does on a board without one, and
+# code like sound.py falls back to interrupts on core 0. Locks still work.
+import _thread as _real_thread  # noqa: E402
+import threading  # noqa: E402,F401  (load it first: it needs the real _thread)
+
+
+def _no_core(*args, **kwargs):
+    raise OSError("the simulator has one core")
+
+
+_module("_thread", start_new_thread=_no_core,
+        allocate_lock=_real_thread.allocate_lock,
+        get_ident=_real_thread.get_ident)
+# A lab that looks up a host name (06-test-wifi.py checks the NTP server)
+# gets a made-up address instead of a real DNS lookup.
+import socket  # noqa: E402
+socket.getaddrinfo = lambda host, port, *a, **k: [
+    (2, 2, 17, "", ("10.0.0.123", port))]
 # Fake credentials, so a kit's real secrets.py is never read.
 _module("secrets", wifi_ssid="MyHomeWiFi", wifi_pass="not-a-real-password")
 
