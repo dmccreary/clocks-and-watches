@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -75,20 +75,7 @@
 
     
     
-  
-<meta property="og:type" content="website" />
-<meta property="og:title" content="Drawing Shapes, Text, and Animation - Clocks and Watches with AI" />
-<meta property="og:description" content="Drawing lines, shapes, and text on framebuffer displays, plus custom fonts, scaled digits, animation, and partial updates." />
-<meta property="og:image" content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/chapters/12-drawing-text-animation/index.png" />
-<meta property="og:image:type" content="image/png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://dmccreary.github.io/clocks-and-watches/chapters/12-drawing-text-animation/" />
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="Drawing Shapes, Text, and Animation - Clocks and Watches with AI" />
-<meta property="twitter:description" content="Drawing lines, shapes, and text on framebuffer displays, plus custom fonts, scaled digits, animation, and partial updates." />
-<meta property="twitter:image" content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/chapters/12-drawing-text-animation/index.png" />
-</head>
+  </head>
   
   
     
@@ -3078,12 +3065,12 @@ Setting one pixel at a time is like painting with a single grain of sand. In thi
 </div>
 <h2 id="text-rendering">Text Rendering</h2>
 <p><strong>Text rendering</strong> is drawing characters on the screen. The built-in <code>text()</code> method uses a fixed <strong>8 by 8 pixel</strong> font, so every character occupies an 8-pixel cell:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"12:34"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>      <span class="c1"># string, x, y, color (1 = on)</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;12:34&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>      <span class="c1"># string, x, y, color (1 = on)</span>
 </code></pre></div></td></tr></table></div>
 <p>Because each character is 8 pixels wide, you can predict text width exactly: <code>width = 8 * len(string)</code>. On the 128-pixel-wide OLED, 16 characters fit on a line, and with 8-pixel rows, 8 lines fit in 64 pixels. To center a string horizontally:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">msg</span> <span class="o">=</span> <span class="s2">"12:34"</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;12:34&quot;</span>
 <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="mi">128</span> <span class="o">-</span> <span class="mi">8</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">msg</span><span class="p">))</span> <span class="o">//</span> <span class="mi">2</span>       <span class="c1"># 44</span>
 <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -3142,7 +3129,7 @@ Setting one pixel at a time is like painting with a single grain of sand. In thi
 
 <span class="n">wri</span> <span class="o">=</span> <span class="n">writer</span><span class="o">.</span><span class="n">Writer</span><span class="p">(</span><span class="n">oled</span><span class="p">,</span> <span class="n">freesans32</span><span class="p">)</span>
 <span class="n">writer</span><span class="o">.</span><span class="n">Writer</span><span class="o">.</span><span class="n">set_textpos</span><span class="p">(</span><span class="n">oled</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>     <span class="c1"># row, column</span>
-<span class="n">wri</span><span class="o">.</span><span class="n">printstring</span><span class="p">(</span><span class="s2">"12:34"</span><span class="p">)</span>
+<span class="n">wri</span><span class="o">.</span><span class="n">printstring</span><span class="p">(</span><span class="s2">&quot;12:34&quot;</span><span class="p">)</span>
 <span class="n">oled</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
 <p>A loaded font is stored as Python data, so it takes up flash space and RAM when imported. Big fonts with many characters can use tens of kilobytes. That matters on a Pico with 264 KB of RAM, so import only the fonts you need.</p>
@@ -3207,14 +3194,14 @@ Setting one pixel at a time is like painting with a single grain of sand. In thi
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">array</span>
-<span class="n">diamond</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s1">'h'</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span>  <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>   <span class="c1"># 4 points</span>
+<span class="n">diamond</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span>  <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>   <span class="c1"># 4 points</span>
 <span class="n">oled</span><span class="o">.</span><span class="n">poly</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="n">diamond</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>      <span class="c1"># filled diamond at the center</span>
 </code></pre></div></td></tr></table></div>
 <p>This is a good shape for an hour hand, because it is wide near the center and pointed at the end. Rotating its points with the rotation formula from Chapter 10 aims it at the right hour.</p>
 <h3 id="triangle-drawing">Triangle Drawing</h3>
 <p>A <strong>triangle</strong> is the simplest polygon: three points. Triangles make arrows, play buttons, and alarm icons.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">tri</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s1">'h'</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>   <span class="c1"># points right</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">tri</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>   <span class="c1"># points right</span>
 <span class="n">oled</span><span class="o">.</span><span class="n">poly</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">tri</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <h3 id="arc-drawing">Arc Drawing</h3>
@@ -3253,9 +3240,9 @@ Setting one pixel at a time is like painting with a single grain of sand. In thi
 <span class="normal">17</span>
 <span class="normal">18</span>
 <span class="normal">19</span>
-<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">NAME</span> <span class="o">=</span> <span class="s2">"12-bounce.py"</span>
-<span class="n">VERSION</span> <span class="o">=</span> <span class="s2">"1.0"</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{}</span><span class="s2"> v</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">NAME</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">))</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">NAME</span> <span class="o">=</span> <span class="s2">&quot;12-bounce.py&quot;</span>
+<span class="n">VERSION</span> <span class="o">=</span> <span class="s2">&quot;1.0&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> v</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">NAME</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">))</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep_ms</span>
@@ -3307,7 +3294,7 @@ Anything that never changes, like the clock face outline and tick marks, only ne
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">msg</span> <span class="o">=</span> <span class="s2">"Let's make time tick!   "</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Let&#39;s make time tick!   &quot;</span>
 <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="o">-</span><span class="mi">8</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">msg</span><span class="p">),</span> <span class="o">-</span><span class="mi">2</span><span class="p">):</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -3318,7 +3305,7 @@ Anything that never changes, like the clock face outline and tick marks, only ne
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">oled</span><span class="o">.</span><span class="n">fill_rect</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>      <span class="c1"># erase only the old seconds</span>
-<span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">s</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="mi">88</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>      <span class="c1"># draw the new seconds</span>
+<span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">88</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>      <span class="c1"># draw the new seconds</span>
 <span class="n">oled</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
 <p>Be clear about what this saves. With the OLED's framebuffer, <code>show()</code> still sends the <em>entire</em> 1,024 bytes over the bus, so the bus time does not shrink, but you save drawing time. On larger color displays whose drivers can send just a window of pixels, a partial update also cuts the bus time dramatically, which becomes essential in later chapters.</p>
@@ -3390,9 +3377,9 @@ Whatever you draw, picture the smallest rectangle around it. That one idea gives
 <span class="normal">34</span>
 <span class="normal">35</span>
 <span class="normal">36</span>
-<span class="normal">37</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">NAME</span> <span class="o">=</span> <span class="s2">"12-analog-oled.py"</span>
-<span class="n">VERSION</span> <span class="o">=</span> <span class="s2">"1.0"</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{}</span><span class="s2"> v</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">NAME</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">))</span>
+<span class="normal">37</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">NAME</span> <span class="o">=</span> <span class="s2">&quot;12-analog-oled.py&quot;</span>
+<span class="n">VERSION</span> <span class="o">=</span> <span class="s2">&quot;1.0&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> v</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">NAME</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">))</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>
@@ -3550,10 +3537,10 @@ You can now draw lines, circles, and polygons, scale digits, load fonts, and ani
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
         <script src="../../js/extra.js"></script>
       

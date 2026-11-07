@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2373,7 +2373,7 @@ we can use software to test the features of the two chips.</p>
 </ul>
 <h3 id="better-ds1307-detection">Better DS1307 detection:</h3>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>-   Checks the DS1307's control register pattern
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>-   Checks the DS1307&#39;s control register pattern
 -   Verifies the register behaves as expected
 </code></pre></div></td></tr></table></div>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -2478,22 +2478,22 @@ we can use software to test the features of the two chips.</p>
 <span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">test_ds3231_features</span><span class="p">(</span><span class="n">i2c</span><span class="p">,</span> <span class="n">addr</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    More thoroughly test if the device is actually a DS3231</span>
 <span class="sd">    Returns: (is_ds3231, error_message)</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># Test 1: Check control and status registers with specific masks</span>
         <span class="c1"># DS3231 control register (0x0E) should have bits 6,5,4,2 readable/writable</span>
         <span class="c1"># Other bits should be 0</span>
         <span class="n">control</span> <span class="o">=</span> <span class="n">i2c</span><span class="o">.</span><span class="n">readfrom_mem</span><span class="p">(</span><span class="n">addr</span><span class="p">,</span> <span class="mh">0x0E</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">control</span> <span class="o">&amp;</span> <span class="mh">0x83</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># Bits 7,1,0 should be 0</span>
-            <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">"Control register pattern doesn't match DS3231"</span>
+            <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;Control register pattern doesn&#39;t match DS3231&quot;</span>
 
         <span class="c1"># Test 2: Status register (0x0F) should only have bits 7,3,2,1,0 possibly set</span>
         <span class="n">status</span> <span class="o">=</span> <span class="n">i2c</span><span class="o">.</span><span class="n">readfrom_mem</span><span class="p">(</span><span class="n">addr</span><span class="p">,</span> <span class="mh">0x0F</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">status</span> <span class="o">&amp;</span> <span class="mh">0x70</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># Bits 6,5,4 should be 0</span>
-            <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">"Status register pattern doesn't match DS3231"</span>
+            <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;Status register pattern doesn&#39;t match DS3231&quot;</span>
 
         <span class="c1"># Test 3: Try temperature register consistency check</span>
         <span class="c1"># Read temperature twice with a forced conversion between</span>
@@ -2512,17 +2512,17 @@ we can use software to test the features of the two chips.</p>
 
         <span class="c1"># Check if temperatures are in valid range</span>
         <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">msb1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">85</span> <span class="ow">or</span> <span class="nb">abs</span><span class="p">(</span><span class="n">msb2</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">85</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">"Temperature readings out of valid range"</span>
+            <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;Temperature readings out of valid range&quot;</span>
 
-        <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">"DS3231 verified"</span>
+        <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;DS3231 verified&quot;</span>
 
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"Error testing DS3231 features: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+        <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Error testing DS3231 features: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">identify_rtc</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">"""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Identify whether the RTC is a DS1307 or DS3231</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># Initialize I2C</span>
     <span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sda</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="n">scl</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">100000</span><span class="p">)</span>
 
@@ -2531,13 +2531,13 @@ we can use software to test the features of the two chips.</p>
     <span class="c1"># First check if any device is present</span>
     <span class="n">devices</span> <span class="o">=</span> <span class="n">i2c</span><span class="o">.</span><span class="n">scan</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">RTC_ADDR</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">devices</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">"No RTC found at address 0x68"</span>
+        <span class="k">return</span> <span class="s2">&quot;No RTC found at address 0x68&quot;</span>
 
     <span class="c1"># Test for DS3231 features</span>
     <span class="n">is_ds3231</span><span class="p">,</span> <span class="n">message</span> <span class="o">=</span> <span class="n">test_ds3231_features</span><span class="p">(</span><span class="n">i2c</span><span class="p">,</span> <span class="n">RTC_ADDR</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">is_ds3231</span><span class="p">:</span>
-        <span class="c1"># Get temperature if it's really a DS3231</span>
+        <span class="c1"># Get temperature if it&#39;s really a DS3231</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">temp_msb</span> <span class="o">=</span> <span class="n">i2c</span><span class="o">.</span><span class="n">readfrom_mem</span><span class="p">(</span><span class="n">RTC_ADDR</span><span class="p">,</span> <span class="mh">0x11</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
             <span class="n">temp_lsb</span> <span class="o">=</span> <span class="n">i2c</span><span class="o">.</span><span class="n">readfrom_mem</span><span class="p">(</span><span class="n">RTC_ADDR</span><span class="p">,</span> <span class="mh">0x12</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;&gt;</span> <span class="mi">6</span>
@@ -2548,9 +2548,9 @@ we can use software to test the features of the two chips.</p>
             <span class="n">temp_c</span> <span class="o">=</span> <span class="n">temp_msb</span> <span class="o">+</span> <span class="p">((</span><span class="n">temp_lsb</span> <span class="o">&amp;</span> <span class="mh">0x03</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.25</span><span class="p">)</span>
             <span class="n">temp_f</span> <span class="o">=</span> <span class="p">(</span><span class="n">temp_c</span> <span class="o">*</span> <span class="mi">9</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="mi">32</span>
 
-            <span class="k">return</span> <span class="sa">f</span><span class="s2">"DS3231 found! Current temperature: </span><span class="si">{</span><span class="n">temp_c</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°C (</span><span class="si">{</span><span class="n">temp_f</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°F)"</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;DS3231 found! Current temperature: </span><span class="si">{</span><span class="n">temp_c</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°C (</span><span class="si">{</span><span class="n">temp_f</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°F)&quot;</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="k">return</span> <span class="sa">f</span><span class="s2">"DS3231 found but error reading temperature: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;DS3231 found but error reading temperature: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="c1"># Test for DS1307</span>
         <span class="k">try</span><span class="p">:</span>
@@ -2558,20 +2558,20 @@ we can use software to test the features of the two chips.</p>
             <span class="c1"># It should only have bit 4 (OUT) possibly set</span>
             <span class="n">control</span> <span class="o">=</span> <span class="n">i2c</span><span class="o">.</span><span class="n">readfrom_mem</span><span class="p">(</span><span class="n">RTC_ADDR</span><span class="p">,</span> <span class="mh">0x07</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
             <span class="k">if</span> <span class="n">control</span> <span class="o">&amp;</span> <span class="mh">0xEF</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># All bits except bit 4 should be 0</span>
-                <span class="k">return</span> <span class="s2">"DS1307 found!"</span>
+                <span class="k">return</span> <span class="s2">&quot;DS1307 found!&quot;</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">return</span> <span class="s2">"Found RTC at 0x68 but cannot definitively identify type"</span>
+                <span class="k">return</span> <span class="s2">&quot;Found RTC at 0x68 but cannot definitively identify type&quot;</span>
         <span class="k">except</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s2">"Unknown RTC device type"</span>
+            <span class="k">return</span> <span class="s2">&quot;Unknown RTC device type&quot;</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">RTC Identifier"</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">40</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">RTC Identifier&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">40</span><span class="p">)</span>
 
     <span class="n">result</span> <span class="o">=</span> <span class="n">identify_rtc</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
 
@@ -2670,10 +2670,10 @@ we can use software to test the features of the two chips.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
         <script src="../../../js/extra.js"></script>
       

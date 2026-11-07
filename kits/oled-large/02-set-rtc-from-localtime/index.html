@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -3440,22 +3440,22 @@ In many cases when the clock is at room temperature the accuracy will be higher.
 <span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">scl</span><span class="o">=</span><span class="n">scl</span><span class="p">,</span> <span class="n">sda</span><span class="o">=</span><span class="n">sda</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="mi">100000</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">dec2bcd</span><span class="p">(</span><span class="n">dec</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Convert decimal to binary coded decimal."""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert decimal to binary coded decimal.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">dec</span> <span class="o">//</span> <span class="mi">10</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">4</span> <span class="o">|</span> <span class="p">(</span><span class="n">dec</span> <span class="o">%</span> <span class="mi">10</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">check_osf</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">"""Check the oscillator stop flag."""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check the oscillator stop flag.&quot;&quot;&quot;</span>
     <span class="n">status</span> <span class="o">=</span> <span class="n">i2c</span><span class="o">.</span><span class="n">readfrom_mem</span><span class="p">(</span><span class="n">DS3231_ADDR</span><span class="p">,</span> <span class="n">STATUS_REG</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
     <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">status</span> <span class="o">&gt;&gt;</span> <span class="mi">7</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">reset_osf</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">"""Clear the oscillator stop flag."""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Clear the oscillator stop flag.&quot;&quot;&quot;</span>
     <span class="n">status</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">i2c</span><span class="o">.</span><span class="n">readfrom_mem_into</span><span class="p">(</span><span class="n">DS3231_ADDR</span><span class="p">,</span> <span class="n">STATUS_REG</span><span class="p">,</span> <span class="n">status</span><span class="p">)</span>
     <span class="n">i2c</span><span class="o">.</span><span class="n">writeto_mem</span><span class="p">(</span><span class="n">DS3231_ADDR</span><span class="p">,</span> <span class="n">STATUS_REG</span><span class="p">,</span> <span class="nb">bytearray</span><span class="p">([</span><span class="n">status</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&amp;</span> <span class="mh">0x7f</span><span class="p">]))</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">set_ds3231</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">"""Set the DS3231 RTC time and ensure oscillator is running."""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set the DS3231 RTC time and ensure oscillator is running.&quot;&quot;&quot;</span>
     <span class="n">now</span> <span class="o">=</span> <span class="n">localtime</span><span class="p">()</span>
     <span class="n">year</span> <span class="o">=</span> <span class="n">now</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">%</span> <span class="mi">100</span>  <span class="c1"># Convert to 2-digit year</span>
     <span class="n">month</span> <span class="o">=</span> <span class="n">now</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -3466,7 +3466,7 @@ In many cases when the clock is at room temperature the accuracy will be higher.
 
     <span class="c1"># First check if oscillator is stopped</span>
     <span class="k">if</span> <span class="n">check_osf</span><span class="p">():</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">"Oscillator was stopped. Resetting OSF flag..."</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Oscillator was stopped. Resetting OSF flag...&quot;</span><span class="p">)</span>
         <span class="n">reset_osf</span><span class="p">()</span>
 
     <span class="n">data</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">([</span>
@@ -3480,15 +3480,15 @@ In many cases when the clock is at room temperature the accuracy will be higher.
     <span class="p">])</span>
 
     <span class="n">i2c</span><span class="o">.</span><span class="n">writeto_mem</span><span class="p">(</span><span class="n">DS3231_ADDR</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"RTC set to: </span><span class="si">{</span><span class="n">month</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">day</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">now</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">hour</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">minute</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">second</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RTC set to: </span><span class="si">{</span><span class="n">month</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">day</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">now</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">hour</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">minute</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">second</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="c1"># Verify oscillator is running</span>
     <span class="k">if</span> <span class="n">check_osf</span><span class="p">():</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">"Warning: Oscillator still shows stopped state!"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Warning: Oscillator still shows stopped state!&quot;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">"Oscillator running normally"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Oscillator running normally&quot;</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">set_ds3231</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="setting-the-rtc-using-the-ds1307">Setting the RTC using the DS1307</h2>
@@ -3536,17 +3536,17 @@ In many cases when the clock is at room temperature the accuracy will be higher.
 <span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="n">I2C_BUS</span><span class="p">,</span> <span class="n">scl</span><span class="o">=</span><span class="n">scl</span><span class="p">,</span> <span class="n">sda</span><span class="o">=</span><span class="n">sda</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="mi">3000000</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">i2c</span><span class="o">.</span><span class="n">scan</span><span class="p">())</span>
 <span class="n">rtc</span> <span class="o">=</span> <span class="n">DS1307</span><span class="p">(</span><span class="n">addr</span><span class="o">=</span><span class="n">RTC_I2C_ADDR</span><span class="p">,</span> <span class="n">i2c</span><span class="o">=</span><span class="n">i2c</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"DS1307 is on I2C address 0x</span><span class="si">{0:02x}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">rtc</span><span class="o">.</span><span class="n">addr</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Before setting the time the RTC clock had: "</span><span class="p">,</span> <span class="n">rtc</span><span class="o">.</span><span class="n">datetime</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Localtime: "</span><span class="p">,</span> <span class="n">localtime</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;DS1307 is on I2C address 0x</span><span class="si">{0:02x}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">rtc</span><span class="o">.</span><span class="n">addr</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Before setting the time the RTC clock had: &quot;</span><span class="p">,</span> <span class="n">rtc</span><span class="o">.</span><span class="n">datetime</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Localtime: &quot;</span><span class="p">,</span> <span class="n">localtime</span><span class="p">())</span>
 
 <span class="c1"># Set the local time</span>
 <span class="n">rtc</span><span class="o">.</span><span class="n">datetime</span> <span class="o">=</span> <span class="n">localtime</span><span class="p">()</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">"After setting the time from local time the RTC had: "</span><span class="p">,</span> <span class="n">rtc</span><span class="o">.</span><span class="n">datetime</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;After setting the time from local time the RTC had: &quot;</span><span class="p">,</span> <span class="n">rtc</span><span class="o">.</span><span class="n">datetime</span><span class="p">)</span>
 
 <span class="c1"># Print the date and time in ISO8601 format: 2023-04-18T21:14:22</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Today is </span><span class="si">{:04d}</span><span class="s2">-</span><span class="si">{:02d}</span><span class="s2">-</span><span class="si">{:02d}</span><span class="s2">T</span><span class="si">{:02d}</span><span class="s2">:</span><span class="si">{:02d}</span><span class="s2">:</span><span class="si">{:02d}</span><span class="s2"> weekday:</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Today is </span><span class="si">{:04d}</span><span class="s2">-</span><span class="si">{:02d}</span><span class="s2">-</span><span class="si">{:02d}</span><span class="s2">T</span><span class="si">{:02d}</span><span class="s2">:</span><span class="si">{:02d}</span><span class="s2">:</span><span class="si">{:02d}</span><span class="s2"> weekday:</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
     <span class="n">rtc</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">rtc</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">rtc</span><span class="o">.</span><span class="n">day</span><span class="p">,</span>
     <span class="n">rtc</span><span class="o">.</span><span class="n">hour</span><span class="p">,</span> <span class="n">rtc</span><span class="o">.</span><span class="n">minute</span><span class="p">,</span> <span class="n">rtc</span><span class="o">.</span><span class="n">second</span><span class="p">,</span> <span class="n">rtc</span><span class="o">.</span><span class="n">weekday</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
@@ -3646,10 +3646,10 @@ In many cases when the clock is at room temperature the accuracy will be higher.
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
         <script src="../../../js/extra.js"></script>
       

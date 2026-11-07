@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -75,20 +75,7 @@
 
     
     
-  
-<meta property="og:type" content="website" />
-<meta property="og:title" content="NeoPixels and Shift Register Clocks - Clocks and Watches with AI" />
-<meta property="og:description" content="NeoPixel LEDs, HSV color, LED power budgeting, and 74HC595 shift registers for creative art clocks." />
-<meta property="og:image" content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/chapters/16-neopixels-shift-registers/index.png" />
-<meta property="og:image:type" content="image/png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://dmccreary.github.io/clocks-and-watches/chapters/16-neopixels-shift-registers/" />
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="NeoPixels and Shift Register Clocks - Clocks and Watches with AI" />
-<meta property="twitter:description" content="NeoPixel LEDs, HSV color, LED power budgeting, and 74HC595 shift registers for creative art clocks." />
-<meta property="twitter:image" content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/chapters/16-neopixels-shift-registers/index.png" />
-</head>
+  </head>
   
   
     
@@ -3177,9 +3164,9 @@ A strip that lights up randomly, or not at all, is usually missing a shared grou
 <span class="normal">16</span>
 <span class="normal">17</span>
 <span class="normal">18</span>
-<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">NAME</span> <span class="o">=</span> <span class="s2">"16-neopixel-hello.py"</span>
-<span class="n">VERSION</span> <span class="o">=</span> <span class="s2">"1.0"</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{}</span><span class="s2"> v</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">NAME</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">))</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">NAME</span> <span class="o">=</span> <span class="s2">&quot;16-neopixel-hello.py&quot;</span>
+<span class="n">VERSION</span> <span class="o">=</span> <span class="s2">&quot;1.0&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> v</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">NAME</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">))</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">neopixel</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
@@ -3346,7 +3333,7 @@ Start every NeoPixel project with color values of 30 or less. You'll get a more 
 <span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">hsv_to_rgb</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""h: 0-359, s and v: 0-255. Returns an (r, g, b) tuple."""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;h: 0-359, s and v: 0-255. Returns an (r, g, b) tuple.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
     <span class="n">region</span> <span class="o">=</span> <span class="n">h</span> <span class="o">//</span> <span class="mi">60</span>
@@ -3381,9 +3368,9 @@ Start every NeoPixel project with color values of 30 or less. You'll get a more 
 <span class="normal">16</span>
 <span class="normal">17</span>
 <span class="normal">18</span>
-<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">NAME</span> <span class="o">=</span> <span class="s2">"16-rainbow-ring.py"</span>
-<span class="n">VERSION</span> <span class="o">=</span> <span class="s2">"1.0"</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{}</span><span class="s2"> v</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">NAME</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">))</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">NAME</span> <span class="o">=</span> <span class="s2">&quot;16-rainbow-ring.py&quot;</span>
+<span class="n">VERSION</span> <span class="o">=</span> <span class="s2">&quot;1.0&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> v</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">NAME</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">))</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">neopixel</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
@@ -3632,9 +3619,9 @@ A color wheel is a circle, and a hue is an angle on it. You already know how to 
 <span class="normal">17</span>
 <span class="normal">18</span>
 <span class="normal">19</span>
-<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">NAME</span> <span class="o">=</span> <span class="s2">"16-shift-register.py"</span>
-<span class="n">VERSION</span> <span class="o">=</span> <span class="s2">"1.0"</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{}</span><span class="s2"> v</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">NAME</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">))</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">NAME</span> <span class="o">=</span> <span class="s2">&quot;16-shift-register.py&quot;</span>
+<span class="n">VERSION</span> <span class="o">=</span> <span class="s2">&quot;1.0&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> v</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">NAME</span><span class="p">,</span> <span class="n">VERSION</span><span class="p">))</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
@@ -3668,7 +3655,7 @@ A color wheel is a circle, and a hue is an angle on it. You already know how to 
 <span class="normal">10</span>
 <span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">write_bytes</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
     <span class="n">latch</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>              <span class="c1"># send the far chip's byte first</span>
+    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>              <span class="c1"># send the far chip&#39;s byte first</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span>
             <span class="n">data</span><span class="o">.</span><span class="n">value</span><span class="p">((</span><span class="n">value</span> <span class="o">&gt;&gt;</span> <span class="p">(</span><span class="mi">7</span> <span class="o">-</span> <span class="n">i</span><span class="p">))</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">)</span>
             <span class="n">clock</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -3849,10 +3836,10 @@ You can now drive NeoPixels, paint a rainbow with HSV, budget the power, and exp
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
         <script src="../../js/extra.js"></script>
       

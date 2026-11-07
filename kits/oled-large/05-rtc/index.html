@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -3620,18 +3620,18 @@
     <span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="n">hour</span><span class="p">,</span> <span class="n">minute</span><span class="p">,</span> <span class="n">second</span><span class="p">,</span> <span class="n">subseconds</span><span class="p">,</span> <span class="n">weekday</span> <span class="o">=</span> <span class="n">datetime_tuple</span>
 
     <span class="c1"># Convert to 12-hour format</span>
-    <span class="n">am_pm</span> <span class="o">=</span> <span class="s2">"AM"</span> <span class="k">if</span> <span class="n">hour</span> <span class="o">&lt;</span> <span class="mi">12</span> <span class="k">else</span> <span class="s2">"PM"</span>
+    <span class="n">am_pm</span> <span class="o">=</span> <span class="s2">&quot;AM&quot;</span> <span class="k">if</span> <span class="n">hour</span> <span class="o">&lt;</span> <span class="mi">12</span> <span class="k">else</span> <span class="s2">&quot;PM&quot;</span>
     <span class="n">hour_12</span> <span class="o">=</span> <span class="n">hour</span> <span class="k">if</span> <span class="n">hour</span> <span class="o">&lt;=</span> <span class="mi">12</span> <span class="k">else</span> <span class="n">hour</span> <span class="o">-</span> <span class="mi">12</span>
     <span class="k">if</span> <span class="n">hour_12</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">hour_12</span> <span class="o">=</span> <span class="mi">12</span>
 
     <span class="c1"># Create day and month lookup tables</span>
-    <span class="n">days</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Monday'</span><span class="p">,</span> <span class="s1">'Tuesday'</span><span class="p">,</span> <span class="s1">'Wednesday'</span><span class="p">,</span> <span class="s1">'Thursday'</span><span class="p">,</span> <span class="s1">'Friday'</span><span class="p">,</span> <span class="s1">'Saturday'</span><span class="p">,</span> <span class="s1">'Sunday'</span><span class="p">]</span>
-    <span class="n">months</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'January'</span><span class="p">,</span> <span class="s1">'February'</span><span class="p">,</span> <span class="s1">'March'</span><span class="p">,</span> <span class="s1">'April'</span><span class="p">,</span> <span class="s1">'May'</span><span class="p">,</span> <span class="s1">'June'</span><span class="p">,</span> 
-              <span class="s1">'July'</span><span class="p">,</span> <span class="s1">'August'</span><span class="p">,</span> <span class="s1">'September'</span><span class="p">,</span> <span class="s1">'October'</span><span class="p">,</span> <span class="s1">'November'</span><span class="p">,</span> <span class="s1">'December'</span><span class="p">]</span>
+    <span class="n">days</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Monday&#39;</span><span class="p">,</span> <span class="s1">&#39;Tuesday&#39;</span><span class="p">,</span> <span class="s1">&#39;Wednesday&#39;</span><span class="p">,</span> <span class="s1">&#39;Thursday&#39;</span><span class="p">,</span> <span class="s1">&#39;Friday&#39;</span><span class="p">,</span> <span class="s1">&#39;Saturday&#39;</span><span class="p">,</span> <span class="s1">&#39;Sunday&#39;</span><span class="p">]</span>
+    <span class="n">months</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;January&#39;</span><span class="p">,</span> <span class="s1">&#39;February&#39;</span><span class="p">,</span> <span class="s1">&#39;March&#39;</span><span class="p">,</span> <span class="s1">&#39;April&#39;</span><span class="p">,</span> <span class="s1">&#39;May&#39;</span><span class="p">,</span> <span class="s1">&#39;June&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;July&#39;</span><span class="p">,</span> <span class="s1">&#39;August&#39;</span><span class="p">,</span> <span class="s1">&#39;September&#39;</span><span class="p">,</span> <span class="s1">&#39;October&#39;</span><span class="p">,</span> <span class="s1">&#39;November&#39;</span><span class="p">,</span> <span class="s1">&#39;December&#39;</span><span class="p">]</span>
 
-    <span class="c1"># Use 'd' instead of '02d' for hours to remove leading zero</span>
-    <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">days</span><span class="p">[</span><span class="n">weekday</span><span class="p">]</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">months</span><span class="p">[</span><span class="n">month</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">day</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">hour_12</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">minute</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">second</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">am_pm</span><span class="si">}</span><span class="s2">"</span>
+    <span class="c1"># Use &#39;d&#39; instead of &#39;02d&#39; for hours to remove leading zero</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">days</span><span class="p">[</span><span class="n">weekday</span><span class="p">]</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">months</span><span class="p">[</span><span class="n">month</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">day</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">hour_12</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">minute</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">second</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">am_pm</span><span class="si">}</span><span class="s2">&quot;</span>
 
 <span class="n">datetime</span> <span class="o">=</span> <span class="n">rtc</span><span class="o">.</span><span class="n">datetime</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">format_time</span><span class="p">(</span><span class="n">datetime</span><span class="p">))</span>
@@ -3668,7 +3668,7 @@ This function takes time information and makes it look nice for humans to read. 
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">am_pm</span> <span class="o">=</span> <span class="s2">"AM"</span> <span class="k">if</span> <span class="n">hour</span> <span class="o">&lt;</span> <span class="mi">12</span> <span class="k">else</span> <span class="s2">"PM"</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">am_pm</span> <span class="o">=</span> <span class="s2">&quot;AM&quot;</span> <span class="k">if</span> <span class="n">hour</span> <span class="o">&lt;</span> <span class="mi">12</span> <span class="k">else</span> <span class="s2">&quot;PM&quot;</span>
 <span class="n">hour_12</span> <span class="o">=</span> <span class="n">hour</span> <span class="k">if</span> <span class="n">hour</span> <span class="o">&lt;=</span> <span class="mi">12</span> <span class="k">else</span> <span class="n">hour</span> <span class="o">-</span> <span class="mi">12</span>
 <span class="k">if</span> <span class="n">hour_12</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
     <span class="n">hour_12</span> <span class="o">=</span> <span class="mi">12</span>
@@ -3688,8 +3688,8 @@ This function is like a safety check. It makes sure the time makes sense:
 <p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">local</span> <span class="o">=</span> <span class="n">localtime</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">System local time:"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Year: </span><span class="si">{</span><span class="n">local</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">, Month: </span><span class="si">{</span><span class="n">local</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">, Day: </span><span class="si">{</span><span class="n">local</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">System local time:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Year: </span><span class="si">{</span><span class="n">local</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">, Month: </span><span class="si">{</span><span class="n">local</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">, Day: </span><span class="si">{</span><span class="n">local</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 The program gets the current time from your computer or microcontroller and shows it to you.</p>
 <h3 id="5-final-step-updating-the-rtc">5. Final Step - Updating the RTC:</h3>
@@ -3835,63 +3835,63 @@ The program gets the current time from your computer or microcontroller and show
     <span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="n">weekday</span><span class="p">,</span> <span class="n">hour</span><span class="p">,</span> <span class="n">minute</span><span class="p">,</span> <span class="n">second</span><span class="p">,</span> <span class="n">subseconds</span> <span class="o">=</span> <span class="n">datetime_tuple</span>
 
     <span class="c1"># Convert to 12-hour format</span>
-    <span class="n">am_pm</span> <span class="o">=</span> <span class="s2">"AM"</span> <span class="k">if</span> <span class="n">hour</span> <span class="o">&lt;</span> <span class="mi">12</span> <span class="k">else</span> <span class="s2">"PM"</span>
+    <span class="n">am_pm</span> <span class="o">=</span> <span class="s2">&quot;AM&quot;</span> <span class="k">if</span> <span class="n">hour</span> <span class="o">&lt;</span> <span class="mi">12</span> <span class="k">else</span> <span class="s2">&quot;PM&quot;</span>
     <span class="n">hour_12</span> <span class="o">=</span> <span class="n">hour</span> <span class="k">if</span> <span class="n">hour</span> <span class="o">&lt;=</span> <span class="mi">12</span> <span class="k">else</span> <span class="n">hour</span> <span class="o">-</span> <span class="mi">12</span>
     <span class="k">if</span> <span class="n">hour_12</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">hour_12</span> <span class="o">=</span> <span class="mi">12</span>
 
     <span class="c1"># Create day and month lookup tables</span>
     <span class="c1"># weekday in RTC is 1-7 (Monday=1, Sunday=7)</span>
-    <span class="n">days</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Monday'</span><span class="p">,</span> <span class="s1">'Tuesday'</span><span class="p">,</span> <span class="s1">'Wednesday'</span><span class="p">,</span> <span class="s1">'Thursday'</span><span class="p">,</span> <span class="s1">'Friday'</span><span class="p">,</span> <span class="s1">'Saturday'</span><span class="p">,</span> <span class="s1">'Sunday'</span><span class="p">]</span>
-    <span class="n">months</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'January'</span><span class="p">,</span> <span class="s1">'February'</span><span class="p">,</span> <span class="s1">'March'</span><span class="p">,</span> <span class="s1">'April'</span><span class="p">,</span> <span class="s1">'May'</span><span class="p">,</span> <span class="s1">'June'</span><span class="p">,</span> 
-              <span class="s1">'July'</span><span class="p">,</span> <span class="s1">'August'</span><span class="p">,</span> <span class="s1">'September'</span><span class="p">,</span> <span class="s1">'October'</span><span class="p">,</span> <span class="s1">'November'</span><span class="p">,</span> <span class="s1">'December'</span><span class="p">]</span>
+    <span class="n">days</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Monday&#39;</span><span class="p">,</span> <span class="s1">&#39;Tuesday&#39;</span><span class="p">,</span> <span class="s1">&#39;Wednesday&#39;</span><span class="p">,</span> <span class="s1">&#39;Thursday&#39;</span><span class="p">,</span> <span class="s1">&#39;Friday&#39;</span><span class="p">,</span> <span class="s1">&#39;Saturday&#39;</span><span class="p">,</span> <span class="s1">&#39;Sunday&#39;</span><span class="p">]</span>
+    <span class="n">months</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;January&#39;</span><span class="p">,</span> <span class="s1">&#39;February&#39;</span><span class="p">,</span> <span class="s1">&#39;March&#39;</span><span class="p">,</span> <span class="s1">&#39;April&#39;</span><span class="p">,</span> <span class="s1">&#39;May&#39;</span><span class="p">,</span> <span class="s1">&#39;June&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;July&#39;</span><span class="p">,</span> <span class="s1">&#39;August&#39;</span><span class="p">,</span> <span class="s1">&#39;September&#39;</span><span class="p">,</span> <span class="s1">&#39;October&#39;</span><span class="p">,</span> <span class="s1">&#39;November&#39;</span><span class="p">,</span> <span class="s1">&#39;December&#39;</span><span class="p">]</span>
 
     <span class="c1"># Adjust weekday to 0-based index for days list</span>
     <span class="n">weekday_index</span> <span class="o">=</span> <span class="n">weekday</span> <span class="o">-</span> <span class="mi">1</span>
 
-    <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">days</span><span class="p">[</span><span class="n">weekday_index</span><span class="p">]</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">months</span><span class="p">[</span><span class="n">month</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">day</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">hour_12</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">minute</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">second</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">am_pm</span><span class="si">}</span><span class="s2">"</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">days</span><span class="p">[</span><span class="n">weekday_index</span><span class="p">]</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">months</span><span class="p">[</span><span class="n">month</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">day</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">hour_12</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">minute</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">second</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">am_pm</span><span class="si">}</span><span class="s2">&quot;</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">verify_time</span><span class="p">(</span><span class="n">local_time</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Verify that local_time values are within acceptable bounds</span>
 <span class="sd">    Returns: True if time appears valid, False otherwise</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># Unpack tuple</span>
     <span class="n">l_year</span><span class="p">,</span> <span class="n">l_month</span><span class="p">,</span> <span class="n">l_day</span><span class="p">,</span> <span class="n">l_hour</span><span class="p">,</span> <span class="n">l_min</span><span class="p">,</span> <span class="n">l_sec</span><span class="p">,</span> <span class="n">l_wday</span><span class="p">,</span> <span class="n">l_yday</span> <span class="o">=</span> <span class="n">local_time</span>
 
     <span class="c1"># Basic bounds checking</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">2000</span> <span class="o">&lt;=</span> <span class="n">l_year</span> <span class="o">&lt;=</span> <span class="mi">2099</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">"Error: Year out of range (2000-2099)"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error: Year out of range (2000-2099)&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">False</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">l_month</span> <span class="o">&lt;=</span> <span class="mi">12</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">"Error: Month out of range (1-12)"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error: Month out of range (1-12)&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">False</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">l_day</span> <span class="o">&lt;=</span> <span class="mi">31</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">"Error: Day out of range (1-31)"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error: Day out of range (1-31)&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">False</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">l_hour</span> <span class="o">&lt;=</span> <span class="mi">23</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">"Error: Hour out of range (0-23)"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error: Hour out of range (0-23)&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">False</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">l_min</span> <span class="o">&lt;=</span> <span class="mi">59</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">"Error: Minute out of range (0-59)"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error: Minute out of range (0-59)&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">False</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">l_sec</span> <span class="o">&lt;=</span> <span class="mi">59</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">"Error: Second out of range (0-59)"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error: Second out of range (0-59)&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">False</span>
 
     <span class="k">return</span> <span class="kc">True</span>
 
 <span class="c1"># Get current RTC time and print it</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Current RTC time before setting:"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Current RTC time before setting:&quot;</span><span class="p">)</span>
 <span class="n">current_rtc_time</span> <span class="o">=</span> <span class="n">rtc</span><span class="o">.</span><span class="n">datetime</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">format_time</span><span class="p">(</span><span class="n">current_rtc_time</span><span class="p">))</span>
 
 <span class="c1"># Get local time</span>
 <span class="n">local</span> <span class="o">=</span> <span class="n">localtime</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">System local time:"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Year: </span><span class="si">{</span><span class="n">local</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">, Month: </span><span class="si">{</span><span class="n">local</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">, Day: </span><span class="si">{</span><span class="n">local</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Hour: </span><span class="si">{</span><span class="n">local</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s2">, Minute: </span><span class="si">{</span><span class="n">local</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="si">}</span><span class="s2">, Second: </span><span class="si">{</span><span class="n">local</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Weekday: </span><span class="si">{</span><span class="n">local</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="si">}</span><span class="s2"> (0=Monday, 6=Sunday)"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">System local time:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Year: </span><span class="si">{</span><span class="n">local</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">, Month: </span><span class="si">{</span><span class="n">local</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">, Day: </span><span class="si">{</span><span class="n">local</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hour: </span><span class="si">{</span><span class="n">local</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s2">, Minute: </span><span class="si">{</span><span class="n">local</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="si">}</span><span class="s2">, Second: </span><span class="si">{</span><span class="n">local</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Weekday: </span><span class="si">{</span><span class="n">local</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="si">}</span><span class="s2"> (0=Monday, 6=Sunday)&quot;</span><span class="p">)</span>
 
 <span class="c1"># Verify the time data</span>
 <span class="k">if</span> <span class="n">verify_time</span><span class="p">(</span><span class="n">local</span><span class="p">):</span>
@@ -3913,14 +3913,14 @@ The program gets the current time from your computer or microcontroller and show
 
     <span class="c1"># Set the RTC</span>
     <span class="n">rtc</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="n">new_time</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">RTC time set successfully!"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">RTC time set successfully!&quot;</span><span class="p">)</span>
 
     <span class="c1"># Read back and print the new time</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">New RTC time after setting:"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">New RTC time after setting:&quot;</span><span class="p">)</span>
     <span class="n">new_rtc_time</span> <span class="o">=</span> <span class="n">rtc</span><span class="o">.</span><span class="n">datetime</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">format_time</span><span class="p">(</span><span class="n">new_rtc_time</span><span class="p">))</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Error: Time verification failed. RTC not set."</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Error: Time verification failed. RTC not set.&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 
 
@@ -4018,10 +4018,10 @@ The program gets the current time from your computer or microcontroller and show
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
         <script src="../../../js/extra.js"></script>
       

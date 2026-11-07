@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -3422,7 +3422,7 @@
 
 <h1 id="three-button-set">Three Button Set</h1>
 <h2 id="set-time-modes">Set Time Modes</h2>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">mode_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'run'</span><span class="p">,</span> <span class="s1">'set hour'</span><span class="p">,</span> <span class="s1">'set minute'</span><span class="p">,</span> <span class="s1">'set AM/PM'</span><span class="p">]</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">mode_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;run&#39;</span><span class="p">,</span> <span class="s1">&#39;set hour&#39;</span><span class="p">,</span> <span class="s1">&#39;set minute&#39;</span><span class="p">,</span> <span class="s1">&#39;set AM/PM&#39;</span><span class="p">]</span>
 </code></pre></div></td></tr></table></div>
 <p>We will create a new temporary array of date time values called <code>current_time</code>.
 This is a tuple of the values that the rtc.datetime() function needs to set
@@ -3435,7 +3435,7 @@ a new time.  We will change it as the user presses the increment and decrement b
 <span class="normal">4</span>
 <span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># main loop</span>
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="c1"># If we're in run mode and there's a pending update, update the RTC</span>
+    <span class="c1"># If we&#39;re in run mode and there&#39;s a pending update, update the RTC</span>
     <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">pending_update</span><span class="p">:</span>
         <span class="n">update_rtc</span><span class="p">()</span>  <span class="c1"># This will update the RTC and clear the flag</span>
 </code></pre></div></td></tr></table></div>
@@ -3474,7 +3474,7 @@ the clock correctly we need to rearrange the tuple to match the expected format:
 <span class="normal">16</span>
 <span class="normal">17</span>
 <span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">update_rtc</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">"""Update RTC with current time state"""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Update RTC with current time state&quot;&quot;&quot;</span>
     <span class="k">global</span> <span class="n">current_time</span><span class="p">,</span> <span class="n">pending_update</span>
     <span class="k">if</span> <span class="n">pending_update</span><span class="p">:</span>
         <span class="c1"># Rearrange the tuple to match the expected format:</span>
@@ -3511,7 +3511,7 @@ the clock correctly we need to rearrange the tuple to match the expected format:
         <span class="c1"># Increment the mode first</span>
         <span class="n">mode</span> <span class="o">=</span> <span class="p">(</span><span class="n">mode</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">mode_names</span><span class="p">)</span>
 
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Mode button pressed - New mode: </span><span class="si">{</span><span class="n">mode_names</span><span class="p">[</span><span class="n">mode</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mode button pressed - New mode: </span><span class="si">{</span><span class="n">mode_names</span><span class="p">[</span><span class="n">mode</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -3547,7 +3547,7 @@ During normal running <code>flash_state = False</code></p>
 
     <span class="c1"># Draw AM/PM indicator</span>
     <span class="k">if</span> <span class="n">mode</span> <span class="o">!=</span> <span class="mi">3</span> <span class="ow">or</span> <span class="n">flash_state</span><span class="p">:</span>
-        <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"PM"</span> <span class="k">if</span> <span class="n">is_pm</span><span class="p">(</span><span class="n">hour</span><span class="p">)</span> <span class="k">else</span> <span class="s2">"AM"</span><span class="p">,</span> <span class="mi">112</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;PM&quot;</span> <span class="k">if</span> <span class="n">is_pm</span><span class="p">(</span><span class="n">hour</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;AM&quot;</span><span class="p">,</span> <span class="mi">112</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="full-listing">Full Listing</h2>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
@@ -3854,7 +3854,7 @@ During normal running <code>flash_state = False</code></p>
 <span class="n">last_increment_press</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">last_decrement_press</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">DEBOUNCE_TIME_MS</span> <span class="o">=</span> <span class="mi">200</span>
-<span class="n">mode_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'run'</span><span class="p">,</span> <span class="s1">'set hour'</span><span class="p">,</span> <span class="s1">'set minute'</span><span class="p">,</span> <span class="s1">'set AM/PM'</span><span class="p">]</span>
+<span class="n">mode_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;run&#39;</span><span class="p">,</span> <span class="s1">&#39;set hour&#39;</span><span class="p">,</span> <span class="s1">&#39;set minute&#39;</span><span class="p">,</span> <span class="s1">&#39;set AM/PM&#39;</span><span class="p">]</span>
 <span class="n">flash_state</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="n">last_flash_toggle</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">FLASH_INTERVAL_MS</span> <span class="o">=</span> <span class="mi">500</span>
@@ -3878,7 +3878,7 @@ During normal running <code>flash_state = False</code></p>
 <span class="p">]</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">update_rtc</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">"""Update RTC with current time state"""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Update RTC with current time state&quot;&quot;&quot;</span>
     <span class="k">global</span> <span class="n">current_time</span><span class="p">,</span> <span class="n">pending_update</span>
     <span class="k">if</span> <span class="n">pending_update</span><span class="p">:</span>
         <span class="c1"># Rearrange the tuple to match the expected format:</span>
@@ -3897,12 +3897,12 @@ During normal running <code>flash_state = False</code></p>
         <span class="n">pending_update</span> <span class="o">=</span> <span class="kc">False</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">refresh_time</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">"""Read current time from RTC"""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Read current time from RTC&quot;&quot;&quot;</span>
     <span class="k">global</span> <span class="n">current_time</span>
     <span class="n">current_time</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">rtc</span><span class="o">.</span><span class="n">datetime</span><span class="p">())</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">convert_to_12h</span><span class="p">(</span><span class="n">hour</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Convert 24h hour to 12h hour"""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert 24h hour to 12h hour&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">hour</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">12</span>  <span class="c1"># Midnight is 12 AM</span>
     <span class="k">elif</span> <span class="n">hour</span> <span class="o">&gt;</span> <span class="mi">12</span><span class="p">:</span>
@@ -3910,11 +3910,11 @@ During normal running <code>flash_state = False</code></p>
     <span class="k">return</span> <span class="n">hour</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">is_pm</span><span class="p">(</span><span class="n">hour</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Check if hour is PM in 24h format"""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if hour is PM in 24h format&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">hour</span> <span class="o">&gt;=</span> <span class="mi">12</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">toggle_am_pm</span><span class="p">(</span><span class="n">hour</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Toggle between AM and PM for a given hour"""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Toggle between AM and PM for a given hour&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">hour</span> <span class="o">&lt;</span> <span class="mi">12</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">hour</span> <span class="o">+</span> <span class="mi">12</span>
     <span class="k">return</span> <span class="n">hour</span> <span class="o">-</span> <span class="mi">12</span>
@@ -3973,8 +3973,8 @@ During normal running <code>flash_state = False</code></p>
     <span class="n">minute_ten</span> <span class="o">=</span> <span class="n">minute</span> <span class="o">//</span> <span class="mi">10</span>
     <span class="n">minute_one</span> <span class="o">=</span> <span class="n">minute</span> <span class="o">%</span> <span class="mi">10</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Debug display - Raw Hour:</span><span class="si">{</span><span class="n">hour</span><span class="si">}</span><span class="s2"> Display Hour:</span><span class="si">{</span><span class="n">display_hour</span><span class="si">}</span><span class="s2"> Min:</span><span class="si">{</span><span class="n">minute</span><span class="si">}</span><span class="s2"> "</span> <span class="o">+</span> 
-          <span class="sa">f</span><span class="s2">"Digits: </span><span class="si">{</span><span class="n">hour_ten</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="n">hour_one</span><span class="si">}</span><span class="s2"> : </span><span class="si">{</span><span class="n">minute_ten</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="n">minute_one</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="p">(</span><span class="s1">'AM'</span><span class="p">,</span><span class="w"> </span><span class="s1">'PM'</span><span class="p">)[</span><span class="n">is_pm</span><span class="p">(</span><span class="n">hour</span><span class="p">)]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Debug display - Raw Hour:</span><span class="si">{</span><span class="n">hour</span><span class="si">}</span><span class="s2"> Display Hour:</span><span class="si">{</span><span class="n">display_hour</span><span class="si">}</span><span class="s2"> Min:</span><span class="si">{</span><span class="n">minute</span><span class="si">}</span><span class="s2"> &quot;</span> <span class="o">+</span> 
+          <span class="sa">f</span><span class="s2">&quot;Digits: </span><span class="si">{</span><span class="n">hour_ten</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="n">hour_one</span><span class="si">}</span><span class="s2"> : </span><span class="si">{</span><span class="n">minute_ten</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="n">minute_one</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="p">(</span><span class="s1">&#39;AM&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;PM&#39;</span><span class="p">)[</span><span class="n">is_pm</span><span class="p">(</span><span class="n">hour</span><span class="p">)]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="c1"># Draw digits with flashing based on mode</span>
     <span class="k">if</span> <span class="n">mode</span> <span class="o">!=</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">flash_state</span><span class="p">:</span>
@@ -3993,10 +3993,10 @@ During normal running <code>flash_state = False</code></p>
 
     <span class="c1"># Draw AM/PM indicator</span>
     <span class="k">if</span> <span class="n">mode</span> <span class="o">!=</span> <span class="mi">3</span> <span class="ow">or</span> <span class="n">flash_state</span><span class="p">:</span>
-        <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"PM"</span> <span class="k">if</span> <span class="n">is_pm</span><span class="p">(</span><span class="n">hour</span><span class="p">)</span> <span class="k">else</span> <span class="s2">"AM"</span><span class="p">,</span> <span class="mi">112</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;PM&quot;</span> <span class="k">if</span> <span class="n">is_pm</span><span class="p">(</span><span class="n">hour</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;AM&quot;</span><span class="p">,</span> <span class="mi">112</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
     <span class="c1"># Draw seconds</span>
-    <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">second</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">54</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">second</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">54</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">mode_button_pressed</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
@@ -4008,21 +4008,21 @@ During normal running <code>flash_state = False</code></p>
         <span class="c1"># Increment the mode first</span>
         <span class="n">mode</span> <span class="o">=</span> <span class="p">(</span><span class="n">mode</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">mode_names</span><span class="p">)</span>
 
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Mode button pressed - New mode: </span><span class="si">{</span><span class="n">mode_names</span><span class="p">[</span><span class="n">mode</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mode button pressed - New mode: </span><span class="si">{</span><span class="n">mode_names</span><span class="p">[</span><span class="n">mode</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">increment_button_pressed</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">last_increment_press</span><span class="p">,</span> <span class="n">current_time</span><span class="p">,</span> <span class="n">pending_update</span>
     <span class="n">current_ms</span> <span class="o">=</span> <span class="n">ticks_ms</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">ticks_diff</span><span class="p">(</span><span class="n">current_ms</span><span class="p">,</span> <span class="n">last_increment_press</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">DEBOUNCE_TIME_MS</span><span class="p">:</span>
         <span class="n">last_increment_press</span> <span class="o">=</span> <span class="n">current_ms</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">"Increment button pressed"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Increment button pressed&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># Hour</span>
             <span class="n">hour</span> <span class="o">=</span> <span class="n">current_time</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
             <span class="n">new_hour</span> <span class="o">=</span> <span class="p">(</span><span class="n">hour</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="n">hour</span> <span class="o">&lt;</span> <span class="mi">23</span> <span class="k">else</span> <span class="mi">0</span>
             <span class="n">current_time</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_hour</span>
             <span class="n">pending_update</span> <span class="o">=</span> <span class="kc">True</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Hour adjusted to: </span><span class="si">{</span><span class="n">new_hour</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hour adjusted to: </span><span class="si">{</span><span class="n">new_hour</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
         <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>  <span class="c1"># Minute</span>
             <span class="n">minute</span> <span class="o">=</span> <span class="n">current_time</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
@@ -4030,28 +4030,28 @@ During normal running <code>flash_state = False</code></p>
             <span class="n">current_time</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_minute</span>
             <span class="n">current_time</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Reset seconds when setting minutes</span>
             <span class="n">pending_update</span> <span class="o">=</span> <span class="kc">True</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Minute adjusted to: </span><span class="si">{</span><span class="n">new_minute</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Minute adjusted to: </span><span class="si">{</span><span class="n">new_minute</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
         <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>  <span class="c1"># AM/PM</span>
             <span class="n">hour</span> <span class="o">=</span> <span class="n">current_time</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
             <span class="n">new_hour</span> <span class="o">=</span> <span class="n">toggle_am_pm</span><span class="p">(</span><span class="n">hour</span><span class="p">)</span>
             <span class="n">current_time</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_hour</span>
             <span class="n">pending_update</span> <span class="o">=</span> <span class="kc">True</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Hour adjusted to: </span><span class="si">{</span><span class="n">new_hour</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="p">(</span><span class="s1">'AM'</span><span class="p">,</span><span class="w"> </span><span class="s1">'PM'</span><span class="p">)[</span><span class="n">is_pm</span><span class="p">(</span><span class="n">new_hour</span><span class="p">)]</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hour adjusted to: </span><span class="si">{</span><span class="n">new_hour</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="p">(</span><span class="s1">&#39;AM&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;PM&#39;</span><span class="p">)[</span><span class="n">is_pm</span><span class="p">(</span><span class="n">new_hour</span><span class="p">)]</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">decrement_button_pressed</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">last_decrement_press</span><span class="p">,</span> <span class="n">current_time</span><span class="p">,</span> <span class="n">pending_update</span>
     <span class="n">current_ms</span> <span class="o">=</span> <span class="n">ticks_ms</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">ticks_diff</span><span class="p">(</span><span class="n">current_ms</span><span class="p">,</span> <span class="n">last_decrement_press</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">DEBOUNCE_TIME_MS</span><span class="p">:</span>
         <span class="n">last_decrement_press</span> <span class="o">=</span> <span class="n">current_ms</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">"Decrement button pressed"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Decrement button pressed&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># Hour</span>
             <span class="n">hour</span> <span class="o">=</span> <span class="n">current_time</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
             <span class="n">new_hour</span> <span class="o">=</span> <span class="p">(</span><span class="n">hour</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="n">hour</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">23</span>
             <span class="n">current_time</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_hour</span>
             <span class="n">pending_update</span> <span class="o">=</span> <span class="kc">True</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Hour adjusted to: </span><span class="si">{</span><span class="n">new_hour</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hour adjusted to: </span><span class="si">{</span><span class="n">new_hour</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
         <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>  <span class="c1"># Minute</span>
             <span class="n">minute</span> <span class="o">=</span> <span class="n">current_time</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
@@ -4059,21 +4059,21 @@ During normal running <code>flash_state = False</code></p>
             <span class="n">current_time</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_minute</span>
             <span class="n">current_time</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Reset seconds when setting minutes</span>
             <span class="n">pending_update</span> <span class="o">=</span> <span class="kc">True</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Minute adjusted to: </span><span class="si">{</span><span class="n">new_minute</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Minute adjusted to: </span><span class="si">{</span><span class="n">new_minute</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
         <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>  <span class="c1"># AM/PM</span>
             <span class="n">hour</span> <span class="o">=</span> <span class="n">current_time</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
             <span class="n">new_hour</span> <span class="o">=</span> <span class="n">toggle_am_pm</span><span class="p">(</span><span class="n">hour</span><span class="p">)</span>
             <span class="n">current_time</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_hour</span>
             <span class="n">pending_update</span> <span class="o">=</span> <span class="kc">True</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Hour adjusted to: </span><span class="si">{</span><span class="n">new_hour</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="p">(</span><span class="s1">'AM'</span><span class="p">,</span><span class="w"> </span><span class="s1">'PM'</span><span class="p">)[</span><span class="n">is_pm</span><span class="p">(</span><span class="n">new_hour</span><span class="p">)]</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hour adjusted to: </span><span class="si">{</span><span class="n">new_hour</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="p">(</span><span class="s1">&#39;AM&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;PM&#39;</span><span class="p">)[</span><span class="n">is_pm</span><span class="p">(</span><span class="n">new_hour</span><span class="p">)]</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
 
 <span class="c1"># Setup button interrupts</span>
 <span class="n">mode_button</span><span class="o">.</span><span class="n">irq</span><span class="p">(</span><span class="n">trigger</span><span class="o">=</span><span class="n">Pin</span><span class="o">.</span><span class="n">IRQ_FALLING</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="n">mode_button_pressed</span><span class="p">)</span>
 <span class="n">increment_button</span><span class="o">.</span><span class="n">irq</span><span class="p">(</span><span class="n">trigger</span><span class="o">=</span><span class="n">Pin</span><span class="o">.</span><span class="n">IRQ_FALLING</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="n">increment_button_pressed</span><span class="p">)</span>
 <span class="n">decrement_button</span><span class="o">.</span><span class="n">irq</span><span class="p">(</span><span class="n">trigger</span><span class="o">=</span><span class="n">Pin</span><span class="o">.</span><span class="n">IRQ_FALLING</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="n">decrement_button_pressed</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Clock started in mode: run"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Clock started in mode: run&quot;</span><span class="p">)</span>
 
 <span class="c1"># Initialize time state</span>
 <span class="n">refresh_time</span><span class="p">()</span>
@@ -4088,7 +4088,7 @@ During normal running <code>flash_state = False</code></p>
         <span class="n">flash_state</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">flash_state</span>
         <span class="n">last_flash_toggle</span> <span class="o">=</span> <span class="n">current_ms</span>
 
-    <span class="c1"># If we're in run mode and there's a pending update, update the RTC</span>
+    <span class="c1"># If we&#39;re in run mode and there&#39;s a pending update, update the RTC</span>
     <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">pending_update</span><span class="p">:</span>
         <span class="n">update_rtc</span><span class="p">()</span>  <span class="c1"># This will update the RTC and clear the flag</span>
 
@@ -4196,10 +4196,10 @@ During normal running <code>flash_state = False</code></p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
         <script src="../../../js/extra.js"></script>
       

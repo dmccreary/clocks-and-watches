@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -3214,13 +3214,13 @@ For example, when displaying "12:59", only the ":59" portion will update frequen
 <span class="n">TEXT_COLOR</span> <span class="o">=</span> <span class="n">display</span><span class="o">.</span><span class="n">rgb_to_565</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>      <span class="c1"># Yellow for text</span>
 
 <span class="c1"># Previous state tracking</span>
-<span class="n">prev_date</span> <span class="o">=</span> <span class="s2">""</span>
+<span class="n">prev_date</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 <span class="n">prev_hour_ten</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
 <span class="n">prev_hour_right</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
 <span class="n">prev_minute_ten</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
 <span class="n">prev_minute_right</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
 <span class="n">prev_second</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-<span class="n">prev_am_pm</span> <span class="o">=</span> <span class="s2">""</span>
+<span class="n">prev_am_pm</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 <span class="n">screen_initialized</span> <span class="o">=</span> <span class="kc">False</span>
 
 <span class="n">segmentMapping</span> <span class="o">=</span> <span class="p">[</span>
@@ -3238,26 +3238,26 @@ For example, when displaying "12:59", only the ":59" portion will update frequen
 <span class="p">]</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">day_to_str</span><span class="p">(</span><span class="n">day_num</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Convert a day number (0-6) to a three-letter day abbreviation."""</span>
-    <span class="n">days</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Mon'</span><span class="p">,</span> <span class="s1">'Tue'</span><span class="p">,</span> <span class="s1">'Wed'</span><span class="p">,</span> <span class="s1">'Thu'</span><span class="p">,</span> <span class="s1">'Fri'</span><span class="p">,</span> <span class="s1">'Sat'</span><span class="p">,</span> <span class="s1">'Sun'</span><span class="p">]</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a day number (0-6) to a three-letter day abbreviation.&quot;&quot;&quot;</span>
+    <span class="n">days</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Mon&#39;</span><span class="p">,</span> <span class="s1">&#39;Tue&#39;</span><span class="p">,</span> <span class="s1">&#39;Wed&#39;</span><span class="p">,</span> <span class="s1">&#39;Thu&#39;</span><span class="p">,</span> <span class="s1">&#39;Fri&#39;</span><span class="p">,</span> <span class="s1">&#39;Sat&#39;</span><span class="p">,</span> <span class="s1">&#39;Sun&#39;</span><span class="p">]</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">day_num</span> <span class="o">&lt;=</span> <span class="mi">6</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Day number must be between 0 and 6"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Day number must be between 0 and 6&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">days</span><span class="p">[</span><span class="n">day_num</span><span class="p">]</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">month_to_str</span><span class="p">(</span><span class="n">month_num</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Convert a month number (1-12) to a three-letter month abbreviation."""</span>
-    <span class="n">months</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Jan'</span><span class="p">,</span> <span class="s1">'Feb'</span><span class="p">,</span> <span class="s1">'Mar'</span><span class="p">,</span> <span class="s1">'Apr'</span><span class="p">,</span> <span class="s1">'May'</span><span class="p">,</span> <span class="s1">'Jun'</span><span class="p">,</span> 
-             <span class="s1">'Jul'</span><span class="p">,</span> <span class="s1">'Aug'</span><span class="p">,</span> <span class="s1">'Sep'</span><span class="p">,</span> <span class="s1">'Oct'</span><span class="p">,</span> <span class="s1">'Nov'</span><span class="p">,</span> <span class="s1">'Dec'</span><span class="p">]</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a month number (1-12) to a three-letter month abbreviation.&quot;&quot;&quot;</span>
+    <span class="n">months</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Jan&#39;</span><span class="p">,</span> <span class="s1">&#39;Feb&#39;</span><span class="p">,</span> <span class="s1">&#39;Mar&#39;</span><span class="p">,</span> <span class="s1">&#39;Apr&#39;</span><span class="p">,</span> <span class="s1">&#39;May&#39;</span><span class="p">,</span> <span class="s1">&#39;Jun&#39;</span><span class="p">,</span> 
+             <span class="s1">&#39;Jul&#39;</span><span class="p">,</span> <span class="s1">&#39;Aug&#39;</span><span class="p">,</span> <span class="s1">&#39;Sep&#39;</span><span class="p">,</span> <span class="s1">&#39;Oct&#39;</span><span class="p">,</span> <span class="s1">&#39;Nov&#39;</span><span class="p">,</span> <span class="s1">&#39;Dec&#39;</span><span class="p">]</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">month_num</span> <span class="o">&lt;=</span> <span class="mi">12</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Month number must be between 1 and 12"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Month number must be between 1 and 12&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">months</span><span class="p">[</span><span class="n">month_num</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">clear_digit_area</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Clear the area where a digit was previously drawn."""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Clear the area where a digit was previously drawn.&quot;&quot;&quot;</span>
     <span class="n">display</span><span class="o">.</span><span class="n">draw_block</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">drawDigit</span><span class="p">(</span><span class="n">digit</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">thickness</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Draw a seven-segment digit on the display."""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Draw a seven-segment digit on the display.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">digit</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span>
 
@@ -3290,12 +3290,12 @@ For example, when displaying "12:59", only the ":59" portion will update frequen
             <span class="n">display</span><span class="o">.</span><span class="n">draw_block</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">xOffset</span><span class="p">,</span> <span class="n">startY</span><span class="p">,</span> <span class="n">thickness</span><span class="p">,</span> <span class="n">endY</span> <span class="o">-</span> <span class="n">startY</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">draw_colon</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Draw the blinking colon between hours and minutes."""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Draw the blinking colon between hours and minutes.&quot;&quot;&quot;</span>
     <span class="n">display</span><span class="o">.</span><span class="n">draw_block</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>
     <span class="n">display</span><span class="o">.</span><span class="n">draw_block</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">update_screen</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="n">hour</span><span class="p">,</span> <span class="n">minute</span><span class="p">,</span> <span class="n">second</span><span class="p">,</span> <span class="n">weekday</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Update only the changing parts of the display."""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Update only the changing parts of the display.&quot;&quot;&quot;</span>
     <span class="k">global</span> <span class="n">prev_date</span><span class="p">,</span> <span class="n">prev_hour_ten</span><span class="p">,</span> <span class="n">prev_hour_right</span><span class="p">,</span> <span class="n">prev_minute_ten</span>
     <span class="k">global</span> <span class="n">prev_minute_right</span><span class="p">,</span> <span class="n">prev_second</span><span class="p">,</span> <span class="n">prev_am_pm</span><span class="p">,</span> <span class="n">screen_initialized</span>
 
@@ -3318,7 +3318,7 @@ For example, when displaying "12:59", only the ":59" portion will update frequen
         <span class="n">display_hour</span> <span class="o">=</span> <span class="mi">12</span>
 
     <span class="c1"># Format date string</span>
-    <span class="n">date_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">day_to_str</span><span class="p">(</span><span class="n">weekday</span><span class="p">)</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">month_to_str</span><span class="p">(</span><span class="n">month</span><span class="p">)</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">day</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">"</span>
+    <span class="n">date_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">day_to_str</span><span class="p">(</span><span class="n">weekday</span><span class="p">)</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">month_to_str</span><span class="p">(</span><span class="n">month</span><span class="p">)</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">day</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">&quot;</span>
 
     <span class="c1"># Update date if changed</span>
     <span class="k">if</span> <span class="n">date_str</span> <span class="o">!=</span> <span class="n">prev_date</span><span class="p">:</span>
@@ -3334,7 +3334,7 @@ For example, when displaying "12:59", only the ":59" portion will update frequen
     <span class="n">minute_ten</span> <span class="o">=</span> <span class="n">minute</span> <span class="o">//</span> <span class="mi">10</span>
     <span class="n">minute_right</span> <span class="o">=</span> <span class="n">minute</span> <span class="o">%</span> <span class="mi">10</span>
 
-    <span class="c1"># Update digits only if they've changed</span>
+    <span class="c1"># Update digits only if they&#39;ve changed</span>
     <span class="k">if</span> <span class="n">hour_ten</span> <span class="o">!=</span> <span class="n">prev_hour_ten</span><span class="p">:</span>
         <span class="n">drawDigit</span><span class="p">(</span><span class="n">hour_ten</span><span class="p">,</span> <span class="n">left_margin</span><span class="p">,</span> <span class="n">y_offset</span><span class="p">,</span> <span class="n">digit_width</span><span class="p">,</span> <span class="n">digit_height</span><span class="p">,</span> <span class="n">digit_thickness</span><span class="p">,</span> <span class="n">DIGIT_COLOR</span><span class="p">)</span>
         <span class="n">prev_hour_ten</span> <span class="o">=</span> <span class="n">hour_ten</span>
@@ -3360,7 +3360,7 @@ For example, when displaying "12:59", only the ":59" portion will update frequen
         <span class="n">draw_colon</span><span class="p">(</span><span class="n">colon_x</span><span class="p">,</span> <span class="n">colon_y</span><span class="p">,</span> <span class="n">BACKGROUND_COLOR</span><span class="p">)</span>
 
     <span class="c1"># Update AM/PM indicator if needed</span>
-    <span class="n">am_pm_str</span> <span class="o">=</span> <span class="s2">"PM"</span> <span class="k">if</span> <span class="n">hour</span> <span class="o">&gt;=</span> <span class="mi">12</span> <span class="k">else</span> <span class="s2">"AM"</span>
+    <span class="n">am_pm_str</span> <span class="o">=</span> <span class="s2">&quot;PM&quot;</span> <span class="k">if</span> <span class="n">hour</span> <span class="o">&gt;=</span> <span class="mi">12</span> <span class="k">else</span> <span class="s2">&quot;AM&quot;</span>
     <span class="k">if</span> <span class="n">am_pm_str</span> <span class="o">!=</span> <span class="n">prev_am_pm</span><span class="p">:</span>
         <span class="n">display</span><span class="o">.</span><span class="n">_color</span> <span class="o">=</span> <span class="n">TEXT_COLOR</span>
         <span class="n">display</span><span class="o">.</span><span class="n">draw_block</span><span class="p">(</span><span class="n">left_margin</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">digit_spacing</span> <span class="o">+</span> <span class="n">digit_width</span><span class="p">,</span> <span class="n">y_offset</span> <span class="o">+</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">BACKGROUND_COLOR</span><span class="p">)</span>
@@ -3371,7 +3371,7 @@ For example, when displaying "12:59", only the ":59" portion will update frequen
     <span class="k">if</span> <span class="n">second</span> <span class="o">!=</span> <span class="n">prev_second</span><span class="p">:</span>
         <span class="n">display</span><span class="o">.</span><span class="n">_color</span> <span class="o">=</span> <span class="n">TEXT_COLOR</span>
         <span class="n">display</span><span class="o">.</span><span class="n">draw_block</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">y_offset</span> <span class="o">+</span> <span class="n">digit_height</span> <span class="o">+</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">BACKGROUND_COLOR</span><span class="p">)</span>
-        <span class="n">display</span><span class="o">.</span><span class="n">p_string</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">y_offset</span> <span class="o">+</span> <span class="n">digit_height</span> <span class="o">+</span> <span class="mi">10</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">second</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="n">display</span><span class="o">.</span><span class="n">p_string</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">y_offset</span> <span class="o">+</span> <span class="n">digit_height</span> <span class="o">+</span> <span class="mi">10</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">second</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="n">prev_second</span> <span class="o">=</span> <span class="n">second</span>
 
 <span class="c1"># Main loop</span>
@@ -3484,10 +3484,10 @@ For example, when displaying "12:59", only the ":59" portion will update frequen
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
         <script src="../../../js/extra.js"></script>
       

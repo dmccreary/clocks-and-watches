@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2084,7 +2084,7 @@ This is the time to check your cables and connectors.  Older USB cables frequent
 <p>You can also get information about how much current will be provided to the USB
 using the following shell commnad:</p>
 <p>You can get the full information on your device using this command:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>system_profiler<span class="w"> </span>SPUSBDataType<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-B<span class="w"> </span><span class="m">6</span><span class="w"> </span>-A<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="s2">"MicroPython"</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>system_profiler<span class="w"> </span>SPUSBDataType<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-B<span class="w"> </span><span class="m">6</span><span class="w"> </span>-A<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="s2">&quot;MicroPython&quot;</span>
 </code></pre></div></td></tr></table></div>
 <p>This command prints the 6 lines before and five lines after the string "MicroPython" appears in the output of the system_profiler command.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -2163,37 +2163,37 @@ This includes all properties associated with each object in the I/O Registry. Wi
 <span class="normal">31</span>
 <span class="normal">32</span>
 <span class="normal">33</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="s2">"sessionID"</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">37899561861259</span>
-<span class="w">  </span><span class="s2">"USBSpeed"</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">  </span><span class="s2">"idProduct"</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">5</span>
-<span class="w">  </span><span class="s2">"iManufacturer"</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">  </span><span class="s2">"bDeviceClass"</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">239</span>
-<span class="w">  </span><span class="s2">"IOPowerManagement"</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">{</span><span class="s2">"PowerOverrideOn"</span><span class="err">=Yes</span><span class="p">,</span><span class="s2">"DevicePowerState"</span><span class="err">=</span><span class="mi">2</span><span class="p">,</span><span class="s2">"CurrentPowerState"</span><span class="err">=</span><span class="mi">2</span><span class="p">,</span><span class="s2">"CapabilityFlags"</span><span class="err">=</span><span class="mi">32768</span><span class="p">,</span><span class="s2">"MaxPowerState"</span><span class="err">=</span><span class="mi">2</span><span class="p">,</span><span class="s2">"DriverPowerState"</span><span class="err">=</span><span class="mi">0</span><span class="p">}</span>
-<span class="w">  </span><span class="s2">"bcdDevice"</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">256</span>
-<span class="w">  </span><span class="s2">"bMaxPacketSize0"</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">64</span>
-<span class="w">  </span><span class="s2">"iProduct"</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">2</span>
-<span class="w">  </span><span class="s2">"iSerialNumber"</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">3</span>
-<span class="w">  </span><span class="s2">"bNumConfigurations"</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">  </span><span class="s2">"UsbDeviceSignature"</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">&lt;</span><span class="mi">8</span><span class="err">a</span><span class="mf">2e0500000165363631373863313237366435363264e</span><span class="kc">f</span><span class="mi">02010202000</span><span class="err">a</span><span class="mi">0000</span><span class="err">&gt;</span>
-<span class="w">  </span><span class="s2">"USB Product Name"</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">"Board in FS mode"</span>
-<span class="w">  </span><span class="s2">"locationID"</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">17825792</span>
-<span class="w">  </span><span class="s2">"bDeviceSubClass"</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">2</span>
-<span class="w">  </span><span class="s2">"bcdUSB"</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">512</span>
-<span class="w">  </span><span class="s2">"kUSBSerialNumberString"</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">"e66178c1276d562d"</span>
-<span class="w">  </span><span class="s2">"USB Address"</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">  </span><span class="s2">"IOCFPlugInTypes"</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">{</span><span class="s2">"9dc7b780-9ec0-11d4-a54f-000a27052861"</span><span class="err">=</span><span class="s2">"IOUSBHostFamily.kext/Contents/PlugIns/IOUSBLib.bundle"</span><span class="p">}</span>
-<span class="w">  </span><span class="s2">"kUSBCurrentConfiguration"</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">  </span><span class="s2">"bDeviceProtocol"</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">  </span><span class="s2">"USBPortType"</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">0</span>
-<span class="w">  </span><span class="s2">"IOServiceDEXTEntitlements"</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">((</span><span class="s2">"com.apple.developer.driverkit.transport.usb"</span><span class="err">))</span>
-<span class="w">  </span><span class="s2">"USB Vendor Name"</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">"MicroPython"</span>
-<span class="w">  </span><span class="s2">"Device Speed"</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">  </span><span class="s2">"idVendor"</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">11914</span>
-<span class="w">  </span><span class="s2">"kUSBProductString"</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">"Board in FS mode"</span>
-<span class="w">  </span><span class="s2">"USB Serial Number"</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">"e66178c1276d562d"</span>
-<span class="w">  </span><span class="s2">"IOGeneralInterest"</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">"IOCommand is not serializable"</span>
-<span class="w">  </span><span class="s2">"kUSBAddress"</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">  </span><span class="s2">"kUSBVendorString"</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">"MicroPython"</span>
+<span class="w">  </span><span class="s2">&quot;sessionID&quot;</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">37899561861259</span>
+<span class="w">  </span><span class="s2">&quot;USBSpeed&quot;</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">  </span><span class="s2">&quot;idProduct&quot;</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">5</span>
+<span class="w">  </span><span class="s2">&quot;iManufacturer&quot;</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">  </span><span class="s2">&quot;bDeviceClass&quot;</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">239</span>
+<span class="w">  </span><span class="s2">&quot;IOPowerManagement&quot;</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">{</span><span class="s2">&quot;PowerOverrideOn&quot;</span><span class="err">=Yes</span><span class="p">,</span><span class="s2">&quot;DevicePowerState&quot;</span><span class="err">=</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;CurrentPowerState&quot;</span><span class="err">=</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;CapabilityFlags&quot;</span><span class="err">=</span><span class="mi">32768</span><span class="p">,</span><span class="s2">&quot;MaxPowerState&quot;</span><span class="err">=</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;DriverPowerState&quot;</span><span class="err">=</span><span class="mi">0</span><span class="p">}</span>
+<span class="w">  </span><span class="s2">&quot;bcdDevice&quot;</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">256</span>
+<span class="w">  </span><span class="s2">&quot;bMaxPacketSize0&quot;</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">64</span>
+<span class="w">  </span><span class="s2">&quot;iProduct&quot;</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">  </span><span class="s2">&quot;iSerialNumber&quot;</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">3</span>
+<span class="w">  </span><span class="s2">&quot;bNumConfigurations&quot;</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">  </span><span class="s2">&quot;UsbDeviceSignature&quot;</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">&lt;</span><span class="mi">8</span><span class="err">a</span><span class="mf">2e0500000165363631373863313237366435363264e</span><span class="kc">f</span><span class="mi">02010202000</span><span class="err">a</span><span class="mi">0000</span><span class="err">&gt;</span>
+<span class="w">  </span><span class="s2">&quot;USB Product Name&quot;</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">&quot;Board in FS mode&quot;</span>
+<span class="w">  </span><span class="s2">&quot;locationID&quot;</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">17825792</span>
+<span class="w">  </span><span class="s2">&quot;bDeviceSubClass&quot;</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">  </span><span class="s2">&quot;bcdUSB&quot;</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">512</span>
+<span class="w">  </span><span class="s2">&quot;kUSBSerialNumberString&quot;</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">&quot;e66178c1276d562d&quot;</span>
+<span class="w">  </span><span class="s2">&quot;USB Address&quot;</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">  </span><span class="s2">&quot;IOCFPlugInTypes&quot;</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">{</span><span class="s2">&quot;9dc7b780-9ec0-11d4-a54f-000a27052861&quot;</span><span class="err">=</span><span class="s2">&quot;IOUSBHostFamily.kext/Contents/PlugIns/IOUSBLib.bundle&quot;</span><span class="p">}</span>
+<span class="w">  </span><span class="s2">&quot;kUSBCurrentConfiguration&quot;</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">  </span><span class="s2">&quot;bDeviceProtocol&quot;</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">  </span><span class="s2">&quot;USBPortType&quot;</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">  </span><span class="s2">&quot;IOServiceDEXTEntitlements&quot;</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">((</span><span class="s2">&quot;com.apple.developer.driverkit.transport.usb&quot;</span><span class="err">))</span>
+<span class="w">  </span><span class="s2">&quot;USB Vendor Name&quot;</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">&quot;MicroPython&quot;</span>
+<span class="w">  </span><span class="s2">&quot;Device Speed&quot;</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">  </span><span class="s2">&quot;idVendor&quot;</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">11914</span>
+<span class="w">  </span><span class="s2">&quot;kUSBProductString&quot;</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">&quot;Board in FS mode&quot;</span>
+<span class="w">  </span><span class="s2">&quot;USB Serial Number&quot;</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">&quot;e66178c1276d562d&quot;</span>
+<span class="w">  </span><span class="s2">&quot;IOGeneralInterest&quot;</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">&quot;IOCommand is not serializable&quot;</span>
+<span class="w">  </span><span class="s2">&quot;kUSBAddress&quot;</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">  </span><span class="s2">&quot;kUSBVendorString&quot;</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="s2">&quot;MicroPython&quot;</span>
 <span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <h3 id="automatic-power-draw-shutoff">Automatic Power Draw Shutoff</h3>
@@ -2393,10 +2393,10 @@ site and verify that the code is there you may not have saved your code.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
         <script src="../../js/extra.js"></script>
       

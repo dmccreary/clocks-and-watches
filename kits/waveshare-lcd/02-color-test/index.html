@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -3032,12 +3032,12 @@
 <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">LCD</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">LCD</span><span class="o">.</span><span class="n">blue</span><span class="p">)</span>
 <span class="n">LCD</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'done'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;done&#39;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>What happens when you change the color "red" to be "orange"?  You shouild see:</p>
 <div class="highlight"><pre><span></span><code>Traceback (most recent call last):
-  File "&lt;stdin&gt;", line 10, in &lt;module&gt;
-AttributeError: 'LCD_1inch28' object has no attribute 'orange'
+  File &quot;&lt;stdin&gt;&quot;, line 10, in &lt;module&gt;
+AttributeError: &#39;LCD_1inch28&#39; object has no attribute &#39;orange&#39;
 </code></pre></div>
 <p>This shows you that although the driver knows about some basic colors, (black, white, red, green and blue), it has
 no understanding of other colors.</p>
@@ -3145,8 +3145,8 @@ this display, we order the bits, blue, red and green.</p>
 
 <span class="n">ColorList</span> <span class="o">=</span>  <span class="p">(</span><span class="n">red</span><span class="p">,</span>    <span class="n">green</span><span class="p">,</span>   <span class="n">blue</span><span class="p">,</span>   <span class="n">white</span><span class="p">,</span>   <span class="n">yellow</span><span class="p">,</span>  <span class="n">orange</span><span class="p">,</span>
               <span class="n">cyan</span><span class="p">,</span> <span class="n">brown</span><span class="p">,</span> <span class="n">gold</span><span class="p">,</span> <span class="n">purple</span><span class="p">,</span> <span class="n">magenta</span><span class="p">,</span> <span class="n">pink</span><span class="p">,</span> <span class="n">olive</span><span class="p">,</span> <span class="n">gray</span><span class="p">,</span> <span class="n">lightGreen</span><span class="p">,</span> <span class="n">darkGreen</span><span class="p">)</span>
-<span class="n">ColorNames</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'red'</span><span class="p">,</span> <span class="s1">'green'</span><span class="p">,</span> <span class="s1">'blue'</span><span class="p">,</span> <span class="s1">'white'</span><span class="p">,</span> <span class="s1">'yellow'</span><span class="p">,</span> <span class="s1">'orange'</span><span class="p">,</span>
-              <span class="s1">'cyan'</span><span class="p">,</span> <span class="s1">'brown'</span><span class="p">,</span> <span class="s1">'gold'</span><span class="p">,</span> <span class="s1">'purple'</span><span class="p">,</span> <span class="s1">'magenta'</span><span class="p">,</span> <span class="s1">'pink'</span><span class="p">,</span> <span class="s1">'olive'</span><span class="p">,</span> <span class="s1">'gray'</span><span class="p">,</span> <span class="s1">'lightGreen'</span><span class="p">,</span> <span class="s1">'darkGreen'</span><span class="p">)</span>
+<span class="n">ColorNames</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;cyan&#39;</span><span class="p">,</span> <span class="s1">&#39;brown&#39;</span><span class="p">,</span> <span class="s1">&#39;gold&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="s1">&#39;pink&#39;</span><span class="p">,</span> <span class="s1">&#39;olive&#39;</span><span class="p">,</span> <span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="s1">&#39;lightGreen&#39;</span><span class="p">,</span> <span class="s1">&#39;darkGreen&#39;</span><span class="p">)</span>
 
 <span class="n">radius</span> <span class="o">=</span> <span class="mi">120</span>
 <span class="n">LCD</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">LCD</span><span class="o">.</span><span class="n">black</span><span class="p">)</span>
@@ -3263,10 +3263,10 @@ We could have used the ellipse funtion to draw into the frame buffer, but the fi
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
         <script src="../../../js/extra.js"></script>
       

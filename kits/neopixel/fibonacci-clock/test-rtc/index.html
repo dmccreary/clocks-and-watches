@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.618322db.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -3246,9 +3246,9 @@
 <span class="n">I2C_BUS</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">I2C_FREQUENCY</span> <span class="o">=</span> <span class="mi">200000</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">"I2C Data SDA on pin: "</span><span class="p">,</span> <span class="n">I2C_SDA_PIN</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"I2C Clock SCL on pin: "</span><span class="p">,</span> <span class="n">I2C_SCL_PIN</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Checking for devices on Bus"</span><span class="p">,</span> <span class="n">I2C_BUS</span><span class="p">,</span> <span class="s2">"at frequency"</span><span class="p">,</span> <span class="n">I2C_FREQUENCY</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I2C Data SDA on pin: &quot;</span><span class="p">,</span> <span class="n">I2C_SDA_PIN</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I2C Clock SCL on pin: &quot;</span><span class="p">,</span> <span class="n">I2C_SCL_PIN</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Checking for devices on Bus&quot;</span><span class="p">,</span> <span class="n">I2C_BUS</span><span class="p">,</span> <span class="s2">&quot;at frequency&quot;</span><span class="p">,</span> <span class="n">I2C_FREQUENCY</span><span class="p">)</span>
 
 <span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="n">I2C_BUS</span><span class="p">,</span> <span class="n">scl</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="n">I2C_SCL_PIN</span><span class="p">),</span> <span class="n">sda</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="n">I2C_SDA_PIN</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="n">I2C_FREQUENCY</span><span class="p">)</span>
 
@@ -3256,7 +3256,7 @@
 
 <span class="nb">print</span><span class="p">(</span><span class="n">scan_result</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">"I2C addresses found:"</span><span class="p">,</span> <span class="p">[</span><span class="nb">hex</span><span class="p">(</span><span class="n">device_address</span><span class="p">)</span> <span class="k">for</span> <span class="n">device_address</span> <span class="ow">in</span> <span class="n">i2c</span><span class="o">.</span><span class="n">scan</span><span class="p">()])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I2C addresses found:&quot;</span><span class="p">,</span> <span class="p">[</span><span class="nb">hex</span><span class="p">(</span><span class="n">device_address</span><span class="p">)</span> <span class="k">for</span> <span class="n">device_address</span> <span class="ow">in</span> <span class="n">i2c</span><span class="o">.</span><span class="n">scan</span><span class="p">()])</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="test-rtc_1">Test RTC</h2>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -3356,22 +3356,22 @@
 <span class="n">I2C_FREQUENCY</span> <span class="o">=</span> <span class="mi">100000</span>  <span class="c1"># Reduced frequency for stability</span>
 <span class="n">DS3231_ADDR</span> <span class="o">=</span> <span class="mh">0x68</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">"I2C Data SDA on pin: "</span><span class="p">,</span> <span class="n">I2C_SDA_PIN</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"I2C Clock SCL on pin: "</span><span class="p">,</span> <span class="n">I2C_SCL_PIN</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Checking for devices on Bus"</span><span class="p">,</span> <span class="n">I2C_BUS</span><span class="p">,</span> <span class="s2">"at frequency"</span><span class="p">,</span> <span class="n">I2C_FREQUENCY</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I2C Data SDA on pin: &quot;</span><span class="p">,</span> <span class="n">I2C_SDA_PIN</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I2C Clock SCL on pin: &quot;</span><span class="p">,</span> <span class="n">I2C_SCL_PIN</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Checking for devices on Bus&quot;</span><span class="p">,</span> <span class="n">I2C_BUS</span><span class="p">,</span> <span class="s2">&quot;at frequency&quot;</span><span class="p">,</span> <span class="n">I2C_FREQUENCY</span><span class="p">)</span>
 
 <span class="c1"># Initialize I2C</span>
 <span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="n">I2C_BUS</span><span class="p">,</span> <span class="n">scl</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="n">I2C_SCL_PIN</span><span class="p">),</span> <span class="n">sda</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="n">I2C_SDA_PIN</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="n">I2C_FREQUENCY</span><span class="p">)</span>
 <span class="n">scan_result</span> <span class="o">=</span> <span class="n">i2c</span><span class="o">.</span><span class="n">scan</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">scan_result</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"I2C addresses found:"</span><span class="p">,</span> <span class="p">[</span><span class="nb">hex</span><span class="p">(</span><span class="n">device_address</span><span class="p">)</span> <span class="k">for</span> <span class="n">device_address</span> <span class="ow">in</span> <span class="n">i2c</span><span class="o">.</span><span class="n">scan</span><span class="p">()])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I2C addresses found:&quot;</span><span class="p">,</span> <span class="p">[</span><span class="nb">hex</span><span class="p">(</span><span class="n">device_address</span><span class="p">)</span> <span class="k">for</span> <span class="n">device_address</span> <span class="ow">in</span> <span class="n">i2c</span><span class="o">.</span><span class="n">scan</span><span class="p">()])</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">bcd2dec</span><span class="p">(</span><span class="n">bcd</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Convert binary coded decimal to decimal."""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert binary coded decimal to decimal.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">((</span><span class="n">bcd</span> <span class="o">&gt;&gt;</span> <span class="mi">4</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">bcd</span> <span class="o">&amp;</span> <span class="mh">0x0F</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">read_ds3231_time</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">"""Read time directly from DS3231 registers with robust error handling."""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Read time directly from DS3231 registers with robust error handling.&quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># Make multiple attempts</span>
         <span class="k">for</span> <span class="n">attempt</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
@@ -3402,38 +3402,38 @@
                 <span class="k">return</span> <span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="n">weekday</span><span class="p">,</span> <span class="n">hour</span><span class="p">,</span> <span class="n">minute</span><span class="p">,</span> <span class="n">second</span><span class="p">)</span>
 
             <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Attempt </span><span class="si">{</span><span class="n">attempt</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">: Error reading time: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Attempt </span><span class="si">{</span><span class="n">attempt</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">: Error reading time: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
                 <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>  <span class="c1"># Short delay before retry</span>
 
         <span class="c1"># If all attempts failed</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">"All attempts to read time failed"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All attempts to read time failed&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Unexpected error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unexpected error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="c1"># Main loop</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Attempting to read time from DS3231..."</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Attempting to read time from DS3231...&quot;</span><span class="p">)</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="c1"># Get date and time</span>
         <span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="n">weekday</span><span class="p">,</span> <span class="n">hour</span><span class="p">,</span> <span class="n">minute</span><span class="p">,</span> <span class="n">second</span> <span class="o">=</span> <span class="n">read_ds3231_time</span><span class="p">()</span>
 
         <span class="c1"># Get weekday name</span>
-        <span class="n">days</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Monday"</span><span class="p">,</span> <span class="s2">"Tuesday"</span><span class="p">,</span> <span class="s2">"Wednesday"</span><span class="p">,</span> <span class="s2">"Thursday"</span><span class="p">,</span> <span class="s2">"Friday"</span><span class="p">,</span> <span class="s2">"Saturday"</span><span class="p">,</span> <span class="s2">"Sunday"</span><span class="p">]</span>
-        <span class="n">weekday_name</span> <span class="o">=</span> <span class="n">days</span><span class="p">[</span><span class="n">weekday</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">weekday</span> <span class="o">&lt;=</span> <span class="mi">7</span> <span class="k">else</span> <span class="s2">"Unknown"</span>
+        <span class="n">days</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Monday&quot;</span><span class="p">,</span> <span class="s2">&quot;Tuesday&quot;</span><span class="p">,</span> <span class="s2">&quot;Wednesday&quot;</span><span class="p">,</span> <span class="s2">&quot;Thursday&quot;</span><span class="p">,</span> <span class="s2">&quot;Friday&quot;</span><span class="p">,</span> <span class="s2">&quot;Saturday&quot;</span><span class="p">,</span> <span class="s2">&quot;Sunday&quot;</span><span class="p">]</span>
+        <span class="n">weekday_name</span> <span class="o">=</span> <span class="n">days</span><span class="p">[</span><span class="n">weekday</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">weekday</span> <span class="o">&lt;=</span> <span class="mi">7</span> <span class="k">else</span> <span class="s2">&quot;Unknown&quot;</span>
 
         <span class="c1"># Print time even if zeros, so we can see if it ever succeeds</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Date: </span><span class="si">{</span><span class="n">year</span><span class="si">:</span><span class="s2">04d</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">month</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">day</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">weekday_name</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Time: </span><span class="si">{</span><span class="n">hour</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">minute</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">second</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">40</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Date: </span><span class="si">{</span><span class="n">year</span><span class="si">:</span><span class="s2">04d</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">month</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">day</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">weekday_name</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Time: </span><span class="si">{</span><span class="n">hour</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">minute</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">second</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">40</span><span class="p">)</span>
 
         <span class="c1"># Longer delay to reduce I2C traffic</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Program stopped by user"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Program stopped by user&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 
 
@@ -3531,10 +3531,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
         <script src="../../../../js/extra.js"></script>
       

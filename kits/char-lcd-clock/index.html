@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2843,15 +2843,15 @@ create a clock that will display the date, time and temperature </p>
 <span class="n">I2C_SCL_PIN</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">i2c</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">sda</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="n">I2C_SDA_PIN</span><span class="p">),</span> <span class="n">scl</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="n">I2C_SCL_PIN</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">400000</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">'Scanning I2C bus.'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Scanning I2C bus.&#39;</span><span class="p">)</span>
 <span class="n">devices</span> <span class="o">=</span> <span class="n">i2c</span><span class="o">.</span><span class="n">scan</span><span class="p">()</span> <span class="c1"># this returns a list of devices</span>
 <span class="n">device_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">devices</span><span class="p">)</span>
 <span class="k">if</span> <span class="n">device_count</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">'No i2c device found.'</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No i2c device found.&#39;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">device_count</span><span class="p">,</span> <span class="s1">'devices found.'</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">device_count</span><span class="p">,</span> <span class="s1">&#39;devices found.&#39;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">device</span> <span class="ow">in</span> <span class="n">devices</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">'Decimal address:'</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="s2">", Hex address: "</span><span class="p">,</span> <span class="nb">hex</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Decimal address:&#39;</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="s2">&quot;, Hex address: &quot;</span><span class="p">,</span> <span class="nb">hex</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
 <h3 id="lcd1602-micropython-libraries">LCD1602 MicroPython Libraries</h3>
 <p>Because the LCD1602 is a common display, there are several LCD1602 libraries.  Many of the share a common interface language.</p>
@@ -2947,25 +2947,25 @@ create a clock that will display the date, time and temperature </p>
     <span class="k">if</span> <span class="n">hour</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="c1"># Midnight edge case</span>
         <span class="n">hour</span> <span class="o">=</span> <span class="mi">12</span>
-        <span class="n">am_pm</span> <span class="o">=</span> <span class="s1">'AM'</span>
+        <span class="n">am_pm</span> <span class="o">=</span> <span class="s1">&#39;AM&#39;</span>
     <span class="k">elif</span> <span class="n">hour</span> <span class="o">==</span> <span class="mi">12</span><span class="p">:</span>
         <span class="c1"># Noon edge case</span>
-        <span class="n">am_pm</span> <span class="o">=</span> <span class="s1">'PM'</span>
+        <span class="n">am_pm</span> <span class="o">=</span> <span class="s1">&#39;PM&#39;</span>
     <span class="k">elif</span> <span class="n">hour</span> <span class="o">&gt;</span> <span class="mi">12</span><span class="p">:</span>
         <span class="c1"># Afternoon hours</span>
         <span class="n">hour</span> <span class="o">-=</span> <span class="mi">12</span>
-        <span class="n">am_pm</span> <span class="o">=</span> <span class="s1">'PM'</span>
+        <span class="n">am_pm</span> <span class="o">=</span> <span class="s1">&#39;PM&#39;</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="c1"># Morning hours</span>
-        <span class="n">am_pm</span> <span class="o">=</span> <span class="s1">'AM'</span>
+        <span class="n">am_pm</span> <span class="o">=</span> <span class="s1">&#39;AM&#39;</span>
 
     <span class="c1"># Format date on first row - centered</span>
-    <span class="n">date_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">month</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">day</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">"</span>
+    <span class="n">date_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">month</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">day</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">&quot;</span>
     <span class="n">lcd</span><span class="o">.</span><span class="n">move_to</span><span class="p">((</span><span class="mi">16</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">date_str</span><span class="p">))</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># Center the date</span>
     <span class="n">lcd</span><span class="o">.</span><span class="n">putstr</span><span class="p">(</span><span class="n">date_str</span><span class="p">)</span>
 
     <span class="c1"># Format time on second row with seconds</span>
-    <span class="n">time_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">hour</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">minute</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">second</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">am_pm</span><span class="si">}</span><span class="s2">"</span>
+    <span class="n">time_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">hour</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">minute</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">second</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">am_pm</span><span class="si">}</span><span class="s2">&quot;</span>
     <span class="n">lcd</span><span class="o">.</span><span class="n">move_to</span><span class="p">((</span><span class="mi">16</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">time_str</span><span class="p">))</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Center the time</span>
     <span class="n">lcd</span><span class="o">.</span><span class="n">putstr</span><span class="p">(</span><span class="n">time_str</span><span class="p">)</span>
 
@@ -3072,10 +3072,10 @@ create a clock that will display the date, time and temperature </p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
         <script src="../../js/extra.js"></script>
       

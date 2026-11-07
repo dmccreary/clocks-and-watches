@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -3251,18 +3251,18 @@ total time accumulated will be reset back to 0.</p>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">format_time</span><span class="p">(</span><span class="n">milliseconds</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Convert milliseconds to formatted time string (MM:SS.mmm)"""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert milliseconds to formatted time string (MM:SS.mmm)&quot;&quot;&quot;</span>
     <span class="n">seconds</span> <span class="o">=</span> <span class="n">milliseconds</span> <span class="o">//</span> <span class="mi">1000</span>
     <span class="n">ms</span> <span class="o">=</span> <span class="n">milliseconds</span> <span class="o">%</span> <span class="mi">1000</span>
     <span class="n">minutes</span> <span class="o">=</span> <span class="n">seconds</span> <span class="o">//</span> <span class="mi">60</span>
     <span class="n">seconds</span> <span class="o">=</span> <span class="n">seconds</span> <span class="o">%</span> <span class="mi">60</span>
-    <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">minutes</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">seconds</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">ms</span><span class="si">:</span><span class="s2">03d</span><span class="si">}</span><span class="s2">"</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">minutes</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">seconds</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">ms</span><span class="si">:</span><span class="s2">03d</span><span class="si">}</span><span class="s2">&quot;</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">update_screen</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">elapsed_time</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">stopwatch_starttime</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"stopwatch lab"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">state_text</span> <span class="o">=</span> <span class="s2">"RUNNING"</span> <span class="k">if</span> <span class="n">state</span> <span class="o">==</span> <span class="n">RUNNING</span> <span class="k">else</span> <span class="s2">"STOPPED"</span>
+    <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;stopwatch lab&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">state_text</span> <span class="o">=</span> <span class="s2">&quot;RUNNING&quot;</span> <span class="k">if</span> <span class="n">state</span> <span class="o">==</span> <span class="n">RUNNING</span> <span class="k">else</span> <span class="s2">&quot;STOPPED&quot;</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">state_text</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">state</span> <span class="o">==</span> <span class="n">RUNNING</span><span class="p">:</span>
@@ -3373,10 +3373,10 @@ total time accumulated will be reset back to 0.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
         <script src="../../js/extra.js"></script>
       

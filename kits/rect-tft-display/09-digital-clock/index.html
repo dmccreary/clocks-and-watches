@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -75,20 +75,7 @@
 
     
     
-  
-<meta property="og:type" content="website" />
-<meta property="og:title" content="09 Digital Clock - Clocks and Watches with AI" />
-<meta property="og:description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." />
-<meta property="og:image" content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/kits/rect-tft-display/09-digital-clock.png" />
-<meta property="og:image:type" content="image/png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://dmccreary.github.io/clocks-and-watches/kits/rect-tft-display/09-digital-clock/" />
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="09 Digital Clock - Clocks and Watches with AI" />
-<meta property="twitter:description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." />
-<meta property="twitter:image" content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/kits/rect-tft-display/09-digital-clock.png" />
-</head>
+  </head>
   
   
     
@@ -3585,8 +3572,8 @@ e    c
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Which bars are lit for each digit, 0 to 9.</span>
-<span class="n">DIGITS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"abcdef"</span><span class="p">,</span> <span class="s2">"bc"</span><span class="p">,</span> <span class="s2">"abdeg"</span><span class="p">,</span> <span class="s2">"abcdg"</span><span class="p">,</span> <span class="s2">"bcfg"</span><span class="p">,</span>
-          <span class="s2">"acdfg"</span><span class="p">,</span> <span class="s2">"acdefg"</span><span class="p">,</span> <span class="s2">"abc"</span><span class="p">,</span> <span class="s2">"abcdefg"</span><span class="p">,</span> <span class="s2">"abcdfg"</span><span class="p">)</span>
+<span class="n">DIGITS</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;abcdef&quot;</span><span class="p">,</span> <span class="s2">&quot;bc&quot;</span><span class="p">,</span> <span class="s2">&quot;abdeg&quot;</span><span class="p">,</span> <span class="s2">&quot;abcdg&quot;</span><span class="p">,</span> <span class="s2">&quot;bcfg&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;acdfg&quot;</span><span class="p">,</span> <span class="s2">&quot;acdefg&quot;</span><span class="p">,</span> <span class="s2">&quot;abc&quot;</span><span class="p">,</span> <span class="s2">&quot;abcdefg&quot;</span><span class="p">,</span> <span class="s2">&quot;abcdfg&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>Count from zero. <code>DIGITS[1]</code> is <code>"bc"</code>, so a 1 lights b and c, the two
 bars on the right. <code>DIGITS[8]</code> is <code>"abcdefg"</code>, so an 8 lights all seven.</p>
@@ -3603,7 +3590,7 @@ This function puts the two together:</p>
 <span class="normal">7</span>
 <span class="normal">8</span>
 <span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">draw_digit</span><span class="p">(</span><span class="n">position</span><span class="p">,</span> <span class="n">digit</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Draw a digit, 0 to 9, in one of the four positions. None is a blank."""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Draw a digit, 0 to 9, in one of the four positions. None is a blank.&quot;&quot;&quot;</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">DIGIT_X</span><span class="p">[</span><span class="n">position</span><span class="p">]</span>
     <span class="n">display</span><span class="o">.</span><span class="n">fill_rect</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">TOP</span><span class="p">,</span> <span class="n">DIGIT_WIDTH</span><span class="p">,</span> <span class="n">DIGIT_HEIGHT</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">BLACK</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">digit</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -3761,10 +3748,10 @@ internet for the time.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
         <script src="../../../js/extra.js"></script>
       

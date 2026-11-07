@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -3176,16 +3176,16 @@ a bit of time to startup with the Pico first powers up.</p>
 <span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span><span class="p">,</span> <span class="n">localtime</span><span class="p">,</span> <span class="n">ticks_ms</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">wait_for_rtc</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"Waiting for RTC to be ready..."</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Waiting for RTC to be ready...&quot;</span><span class="p">)</span>
     <span class="n">rtc</span> <span class="o">=</span> <span class="n">RTC</span><span class="p">()</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">current_time</span> <span class="o">=</span> <span class="n">rtc</span><span class="o">.</span><span class="n">datetime</span><span class="p">()</span>
         <span class="c1"># On Pico, default RTC starts at (2021, 1, 1, 0, 0, 0, 0, 0)</span>
-        <span class="c1"># So we check if it's been set to something else</span>
+        <span class="c1"># So we check if it&#39;s been set to something else</span>
         <span class="k">if</span> <span class="n">current_time</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">2021</span> <span class="ow">or</span> <span class="n">current_time</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">current_time</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">"RTC is ready!"</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RTC is ready!&quot;</span><span class="p">)</span>
             <span class="k">return</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">"RTC not ready yet..."</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RTC not ready yet...&quot;</span><span class="p">)</span>
         <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Check every second</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">FourDigitClock</span><span class="p">:</span>
@@ -3198,13 +3198,13 @@ a bit of time to startup with the Pico first powers up.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">sr</span> <span class="o">=</span> <span class="n">SR74HC595_BITBANG</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ser</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">srclk</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rclk</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">SEGMENTS</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">'a'</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> 
-            <span class="s1">'d'</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="s1">'e'</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">'f'</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">'g'</span><span class="p">:</span> <span class="mi">1</span>
+            <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> 
+            <span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">:</span> <span class="mi">1</span>
         <span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">DIGIT_SEGMENTS</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="mi">0</span><span class="p">:</span> <span class="s1">'abcdef'</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">'bc'</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">'abged'</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s1">'abgcd'</span><span class="p">,</span>
-            <span class="mi">4</span><span class="p">:</span> <span class="s1">'fbcg'</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="s1">'afgcd'</span><span class="p">,</span> <span class="mi">6</span><span class="p">:</span> <span class="s1">'afedcg'</span><span class="p">,</span> 
-            <span class="mi">7</span><span class="p">:</span> <span class="s1">'abc'</span><span class="p">,</span> <span class="mi">8</span><span class="p">:</span> <span class="s1">'abcdefg'</span><span class="p">,</span> <span class="mi">9</span><span class="p">:</span> <span class="s1">'abfgcd'</span>
+            <span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;abcdef&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;bc&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;abged&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;abgcd&#39;</span><span class="p">,</span>
+            <span class="mi">4</span><span class="p">:</span> <span class="s1">&#39;fbcg&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="s1">&#39;afgcd&#39;</span><span class="p">,</span> <span class="mi">6</span><span class="p">:</span> <span class="s1">&#39;afedcg&#39;</span><span class="p">,</span> 
+            <span class="mi">7</span><span class="p">:</span> <span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">:</span> <span class="s1">&#39;abcdefg&#39;</span><span class="p">,</span> <span class="mi">9</span><span class="p">:</span> <span class="s1">&#39;abfgcd&#39;</span>
         <span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">DIGIT_PATTERNS</span> <span class="o">=</span> <span class="p">{</span>
             <span class="n">digit</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_pattern</span><span class="p">(</span><span class="n">segments</span><span class="p">)</span>
@@ -3251,7 +3251,7 @@ a bit of time to startup with the Pico first powers up.</p>
     <span class="n">wait_for_rtc</span><span class="p">()</span>
 
     <span class="n">clock</span> <span class="o">=</span> <span class="n">FourDigitClock</span><span class="p">(</span><span class="n">ser_pin</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">srclk_pin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">rclk_pin</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"Starting clock..."</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Starting clock...&quot;</span><span class="p">)</span>
 
     <span class="n">last_second</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
     <span class="n">colon_state</span> <span class="o">=</span> <span class="kc">True</span>
@@ -3270,7 +3270,7 @@ a bit of time to startup with the Pico first powers up.</p>
         <span class="n">clock</span><span class="o">.</span><span class="n">display_time</span><span class="p">(</span><span class="n">hour</span><span class="p">,</span> <span class="n">minute</span><span class="p">,</span> <span class="n">colon_state</span><span class="p">)</span>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">run_clock</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
 
@@ -3369,10 +3369,10 @@ a bit of time to startup with the Pico first powers up.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
         <script src="../../../js/extra.js"></script>
       

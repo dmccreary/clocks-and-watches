@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -3078,10 +3078,10 @@
 <span class="normal">63</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># SPDX-FileCopyrightText: 2021 Mike Causer &lt;https://github.com/mcauser&gt;</span>
 <span class="c1"># SPDX-License-Identifier: MIT</span>
 
-<span class="sd">"""</span>
+<span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">MicroPython 74HC595 8-Bit Shift Register</span>
 <span class="sd">https://github.com/mcauser/micropython-74hc595</span>
-<span class="sd">"""</span>
+<span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
 <span class="c1"># from sr74hc595 import SR74HC595_BITBANG</span>
@@ -3095,8 +3095,8 @@
 <span class="c1"># construct without optional pins</span>
 <span class="n">sr</span> <span class="o">=</span> <span class="n">SR74HC595_BITBANG</span><span class="p">(</span><span class="n">ser</span><span class="p">,</span> <span class="n">srclk</span><span class="p">,</span> <span class="n">rclk</span><span class="p">)</span>
 
-<span class="c1">#sr.clear()  # raises RuntimeError because you haven't provide srclr pin</span>
-<span class="c1">#sr.enable()  # raises RuntimeError because you haven't provide oe pin</span>
+<span class="c1">#sr.clear()  # raises RuntimeError because you haven&#39;t provide srclr pin</span>
+<span class="c1">#sr.enable()  # raises RuntimeError because you haven&#39;t provide oe pin</span>
 
 <span class="c1"># reconstruct with all pins</span>
 <span class="n">oe</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># low enables output</span>
@@ -3114,7 +3114,7 @@
     <span class="n">sr</span><span class="o">.</span><span class="n">bit</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># send low bit and latch, outputs=0000_1010</span>
 
     <span class="n">sr</span><span class="o">.</span><span class="n">bits</span><span class="p">(</span><span class="mh">0xFF</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>  <span class="c1"># send 4 lowest bits of 0xff (sends 0x0f), outputs=1010_1111</span>
-    <span class="n">sr</span><span class="o">.</span><span class="n">clear</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># clear the memory but don't latch yet</span>
+    <span class="n">sr</span><span class="o">.</span><span class="n">clear</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># clear the memory but don&#39;t latch yet</span>
     <span class="n">sr</span><span class="o">.</span><span class="n">latch</span><span class="p">()</span>  <span class="c1"># next latch shows the outputs have been reset</span>
     <span class="n">sr</span><span class="o">.</span><span class="n">bits</span><span class="p">(</span><span class="mb">0b1010_1010</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>  <span class="c1"># write some bits</span>
     <span class="n">sr</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>  <span class="c1"># clear the memory and latch, outputs have been reset</span>
@@ -3235,10 +3235,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
         <script src="../../../js/extra.js"></script>
       

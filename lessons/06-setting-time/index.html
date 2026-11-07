@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2343,7 +2343,7 @@ breaking it down into clear, digestible concepts for everyone new to MicroPython
 <span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">counter_pressed</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">counter_released</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">mode</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># default clock running</span>
-<span class="n">mode_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"run"</span><span class="p">,</span><span class="s2">"set hour"</span><span class="p">,</span><span class="s2">"set minute"</span><span class="p">,</span><span class="s2">"set AM/PM"</span><span class="p">]</span>
+<span class="n">mode_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;run&quot;</span><span class="p">,</span><span class="s2">&quot;set hour&quot;</span><span class="p">,</span><span class="s2">&quot;set minute&quot;</span><span class="p">,</span><span class="s2">&quot;set AM/PM&quot;</span><span class="p">]</span>
 <span class="n">mode_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">mode_names</span><span class="p">)</span>
 <span class="n">now</span> <span class="o">=</span> <span class="n">localtime</span><span class="p">()</span>
 <span class="n">hours</span> <span class="o">=</span> <span class="n">now</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
@@ -2369,7 +2369,7 @@ breaking it down into clear, digestible concepts for everyone new to MicroPython
     <span class="k">if</span> <span class="n">event</span> <span class="o">==</span> <span class="n">Button</span><span class="o">.</span><span class="n">PRESSED</span><span class="p">:</span>
         <span class="n">mode</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="n">mode</span> <span class="o">=</span> <span class="n">mode</span> <span class="o">%</span> <span class="n">mode_count</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">'new mode:'</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">mode_names</span><span class="p">[</span><span class="n">mode</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;new mode:&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">mode_names</span><span class="p">[</span><span class="n">mode</span><span class="p">])</span>
 </code></pre></div></td></tr></table></div>
 <p>This is our mode button handler:
 - <code>global</code> tells Python we want to change variables outside this function
@@ -2511,7 +2511,7 @@ breaking it down into clear, digestible concepts for everyone new to MicroPython
 <span class="n">counter_pressed</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">counter_released</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">mode</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># default clock running</span>
-<span class="n">mode_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"run"</span><span class="p">,</span><span class="s2">"set hour"</span><span class="p">,</span><span class="s2">"set minute"</span><span class="p">,</span><span class="s2">"set AM/PM"</span><span class="p">]</span>
+<span class="n">mode_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;run&quot;</span><span class="p">,</span><span class="s2">&quot;set hour&quot;</span><span class="p">,</span><span class="s2">&quot;set minute&quot;</span><span class="p">,</span><span class="s2">&quot;set AM/PM&quot;</span><span class="p">]</span>
 <span class="n">mode_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">mode_names</span><span class="p">)</span>
 <span class="n">now</span> <span class="o">=</span> <span class="n">localtime</span><span class="p">()</span>
 <span class="n">hours</span> <span class="o">=</span> <span class="n">now</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
@@ -2523,7 +2523,7 @@ breaking it down into clear, digestible concepts for everyone new to MicroPython
 <span class="c1"># the Button module expects a callback to handle </span>
 <span class="c1"># - pin number</span>
 <span class="c1"># - event (Button.PRESSED | Button.RELEASED)</span>
-<span class="c1"># the event contains a string 'pressed' or 'released'</span>
+<span class="c1"># the event contains a string &#39;pressed&#39; or &#39;released&#39;</span>
 <span class="c1"># which can be used in your code to act upon</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">button_mode_irq</span><span class="p">(</span><span class="n">button</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">mode</span><span class="p">,</span> <span class="n">hours</span><span class="p">,</span> <span class="n">minutes</span>
@@ -2531,7 +2531,7 @@ breaking it down into clear, digestible concepts for everyone new to MicroPython
         <span class="n">mode</span> <span class="o">+=</span><span class="mi">1</span>
         <span class="c1"># cycle back to zero if greater than mode_count</span>
         <span class="n">mode</span> <span class="o">=</span>  <span class="n">mode</span> <span class="o">%</span> <span class="n">mode_count</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">'new mode:'</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">mode_names</span><span class="p">[</span><span class="n">mode</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;new mode:&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">mode_names</span><span class="p">[</span><span class="n">mode</span><span class="p">])</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">button_next_irq</span><span class="p">(</span><span class="n">button</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">mode</span><span class="p">,</span> <span class="n">hours</span><span class="p">,</span> <span class="n">minutes</span><span class="p">,</span> <span class="n">am_pm</span>
@@ -2545,7 +2545,7 @@ breaking it down into clear, digestible concepts for everyone new to MicroPython
                 <span class="n">am_pm</span> <span class="o">=</span> <span class="mi">1</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">am_pm</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">'next button:'</span><span class="p">,</span> <span class="n">hours</span><span class="p">,</span> <span class="n">minutes</span><span class="p">,</span> <span class="n">am_pm</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;next button:&#39;</span><span class="p">,</span> <span class="n">hours</span><span class="p">,</span> <span class="n">minutes</span><span class="p">,</span> <span class="n">am_pm</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">button_previous_irq</span><span class="p">(</span><span class="n">button</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">mode</span><span class="p">,</span> <span class="n">hours</span><span class="p">,</span> <span class="n">minutes</span><span class="p">,</span> <span class="n">am_pm</span>
@@ -2559,13 +2559,13 @@ breaking it down into clear, digestible concepts for everyone new to MicroPython
                 <span class="n">am_pm</span> <span class="o">=</span> <span class="mi">1</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">am_pm</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">'prev button:'</span><span class="p">,</span> <span class="n">hours</span><span class="p">,</span> <span class="n">minutes</span><span class="p">,</span> <span class="n">am_pm</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;prev button:&#39;</span><span class="p">,</span> <span class="n">hours</span><span class="p">,</span> <span class="n">minutes</span><span class="p">,</span> <span class="n">am_pm</span><span class="p">)</span>
 
 <span class="n">button_mode</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">button_mode_irq</span><span class="p">,</span> <span class="n">internal_pullup</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">debounce_time</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">button_next</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">button_next_irq</span><span class="p">,</span> <span class="n">internal_pullup</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">debounce_time</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">button_previous</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">button_previous_irq</span><span class="p">,</span> <span class="n">internal_pullup</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">debounce_time</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">"year:"</span><span class="p">,</span> <span class="n">now</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">"month:"</span><span class="p">,</span> <span class="n">now</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">"day-of-month:"</span><span class="p">,</span> <span class="n">now</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="s2">"hours"</span><span class="p">,</span> <span class="n">now</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="s2">"minutes:"</span><span class="p">,</span> <span class="n">now</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;year:&quot;</span><span class="p">,</span> <span class="n">now</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;month:&quot;</span><span class="p">,</span> <span class="n">now</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;day-of-month:&quot;</span><span class="p">,</span> <span class="n">now</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="s2">&quot;hours&quot;</span><span class="p">,</span> <span class="n">now</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="s2">&quot;minutes:&quot;</span><span class="p">,</span> <span class="n">now</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
 <span class="k">while</span><span class="p">(</span><span class="kc">True</span><span class="p">):</span>
     <span class="n">button_mode</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
     <span class="n">button_next</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
@@ -2745,7 +2745,7 @@ sequence: 12 → 11 → 10 → ... → 1 → 12</p>
 <span class="n">tm</span> <span class="o">=</span> <span class="n">tm1637</span><span class="o">.</span><span class="n">TM1637</span><span class="p">(</span><span class="n">clk</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="n">CLK_PIN</span><span class="p">),</span> <span class="n">dio</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="n">DST_PIN</span><span class="p">))</span>
 
 <span class="n">mode</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">mode_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"run"</span><span class="p">,</span> <span class="s2">"set hour"</span><span class="p">,</span> <span class="s2">"set minute"</span><span class="p">,</span> <span class="s2">"set AM/PM"</span><span class="p">]</span>
+<span class="n">mode_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;run&quot;</span><span class="p">,</span> <span class="s2">&quot;set hour&quot;</span><span class="p">,</span> <span class="s2">&quot;set minute&quot;</span><span class="p">,</span> <span class="s2">&quot;set AM/PM&quot;</span><span class="p">]</span>
 <span class="n">mode_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">mode_names</span><span class="p">)</span>
 
 <span class="c1"># Debounce state</span>
@@ -2755,7 +2755,7 @@ sequence: 12 → 11 → 10 → ... → 1 → 12</p>
 <span class="n">DEBOUNCE_MS</span> <span class="o">=</span> <span class="mi">100</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">format_time</span><span class="p">():</span>
-    <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">hour</span><span class="si">:</span><span class="s2">d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">minute</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">second</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'PM'</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">is_pm</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">'AM'</span><span class="si">}</span><span class="s2">"</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">hour</span><span class="si">:</span><span class="s2">d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">minute</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">second</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;PM&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">is_pm</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;AM&#39;</span><span class="si">}</span><span class="s2">&quot;</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">set_pm</span><span class="p">():</span>
     <span class="k">if</span> <span class="n">hour</span> <span class="o">&lt;</span> <span class="mi">12</span><span class="p">:</span>
@@ -2770,7 +2770,7 @@ sequence: 12 → 11 → 10 → ... → 1 → 12</p>
     <span class="n">current_time</span> <span class="o">=</span> <span class="n">ticks_ms</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">ticks_diff</span><span class="p">(</span><span class="n">current_time</span><span class="p">,</span> <span class="n">last_mode_press</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">DEBOUNCE_MS</span><span class="p">:</span>
         <span class="n">mode</span> <span class="o">=</span> <span class="p">(</span><span class="n">mode</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">mode_count</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Mode: </span><span class="si">{</span><span class="n">mode_names</span><span class="p">[</span><span class="n">mode</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mode: </span><span class="si">{</span><span class="n">mode_names</span><span class="p">[</span><span class="n">mode</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="n">last_mode_press</span> <span class="o">=</span> <span class="n">current_time</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">handle_next</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
@@ -2805,13 +2805,13 @@ sequence: 12 → 11 → 10 → ... → 1 → 12</p>
 
 <span class="c1"># numbers modified to not dispaly the leading zero</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">numbers_nlz</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">,</span> <span class="n">colon</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Display two numeric values -9 through 99, with a leading space before</span>
-<span class="sd">    single-digit first numbers and separated by a colon."""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Display two numeric values -9 through 99, with a leading space before</span>
+<span class="sd">    single-digit first numbers and separated by a colon.&quot;&quot;&quot;</span>
     <span class="n">num1</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="mi">99</span><span class="p">))</span>
     <span class="n">num2</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">num2</span><span class="p">,</span> <span class="mi">99</span><span class="p">))</span>
-    <span class="n">prefix</span> <span class="o">=</span> <span class="s1">' '</span> <span class="k">if</span> <span class="n">num1</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="k">else</span> <span class="s1">''</span>
-    <span class="c1"># print(f'"{prefix}{num1:d}{num2:0&gt;2d}"')</span>
-    <span class="n">segments</span> <span class="o">=</span> <span class="n">tm</span><span class="o">.</span><span class="n">encode_string</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">prefix</span><span class="si">}{</span><span class="n">num1</span><span class="si">:</span><span class="s1">d</span><span class="si">}{</span><span class="n">num2</span><span class="si">:</span><span class="s1">0&gt;2d</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span> <span class="k">if</span> <span class="n">num1</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+    <span class="c1"># print(f&#39;&quot;{prefix}{num1:d}{num2:0&gt;2d}&quot;&#39;)</span>
+    <span class="n">segments</span> <span class="o">=</span> <span class="n">tm</span><span class="o">.</span><span class="n">encode_string</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">prefix</span><span class="si">}{</span><span class="n">num1</span><span class="si">:</span><span class="s1">d</span><span class="si">}{</span><span class="n">num2</span><span class="si">:</span><span class="s1">0&gt;2d</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">colon</span><span class="p">:</span>
         <span class="n">segments</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">|=</span> <span class="mh">0x80</span>  <span class="c1"># colon on</span>
     <span class="n">tm</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">segments</span><span class="p">)</span>
@@ -2822,7 +2822,7 @@ sequence: 12 → 11 → 10 → ... → 1 → 12</p>
 <span class="n">previous_pin</span><span class="o">.</span><span class="n">irq</span><span class="p">(</span><span class="n">trigger</span><span class="o">=</span><span class="n">Pin</span><span class="o">.</span><span class="n">IRQ_FALLING</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="n">handle_previous</span><span class="p">)</span>
 
 <span class="c1"># Main loop</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Clock started. Press mode button to change settings."</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Clock started. Press mode button to change settings.&quot;</span><span class="p">)</span>
 
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
     <span class="n">second</span> <span class="o">=</span> <span class="n">localtime</span><span class="p">()[</span><span class="mi">5</span><span class="p">]</span>
@@ -2932,10 +2932,10 @@ sequence: 12 → 11 → 10 → ... → 1 → 12</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
         <script src="../../js/extra.js"></script>
       

@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -3802,7 +3802,7 @@
 <iframe src="binary-number.html" width="350" height="140" scrolling="no"></iframe>
 
 <p><strong>Copy this iframe to your website:</strong></p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://dmccreary.github.io/clocks-and-watches/sims/binary-number/binary-number.html"</span> <span class="na">width</span><span class="o">=</span><span class="s">"350"</span> <span class="na">height</span><span class="o">=</span><span class="s">"140"</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">"no"</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://dmccreary.github.io/clocks-and-watches/sims/binary-number/binary-number.html&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;350&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;140&quot;</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">&quot;no&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
 </code></pre></div></td></tr></table></div>
 <p><a class="md-button md-button--primary" href="binary-number.html">Run the 4-Bit Binary Number MicroSim in fullscreen</a></p>
 <h2 id="description">Description</h2>
@@ -3882,7 +3882,7 @@ Add a text output that shows the decimal equivalent of the binary number.
 <span class="w">  </span><span class="nx">background</span><span class="p">(</span><span class="mf">245</span><span class="p">);</span>
 
 <span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">4</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">btn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createButton</span><span class="p">(</span><span class="s1">'Bit '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">i</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">btn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createButton</span><span class="p">(</span><span class="s1">&#39;Bit &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">i</span><span class="p">);</span>
 <span class="w">    </span><span class="nx">btn</span><span class="p">.</span><span class="nx">position</span><span class="p">(</span><span class="mf">20</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="mf">3</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">i</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">80</span><span class="p">,</span><span class="w"> </span><span class="mf">50</span><span class="p">);</span>
 <span class="w">    </span><span class="nx">btn</span><span class="p">.</span><span class="nx">mousePressed</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">toggleBit</span><span class="p">(</span><span class="nx">i</span><span class="p">));</span>
 <span class="w">  </span><span class="p">}</span>
@@ -3897,7 +3897,7 @@ Add a text output that shows the decimal equivalent of the binary number.
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="nx">decimalValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">binaryToDecimal</span><span class="p">(</span><span class="nx">bits</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">text</span><span class="p">(</span><span class="s1">'Decimal: '</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">decimalValue</span><span class="p">,</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="mf">110</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">text</span><span class="p">(</span><span class="s1">&#39;Decimal: &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">decimalValue</span><span class="p">,</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span><span class="w"> </span><span class="mf">110</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kd">function</span><span class="w"> </span><span class="nx">toggleBit</span><span class="p">(</span><span class="nx">index</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -4097,10 +4097,10 @@ Add a text output that shows the decimal equivalent of the binary number.
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
         <script src="../../js/extra.js"></script>
       

@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2551,18 +2551,18 @@ How accurate is the DS3231, you might ask? Well, it has a typical accuracy of ±
 <span class="n">DST_PIN</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">DST_PIN</span>
 <span class="n">DS_PIN</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">DS_PIN</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Clock on pin:"</span><span class="p">,</span> <span class="n">CLK_PIN</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Data on pin:"</span><span class="p">,</span> <span class="n">DST_PIN</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Data Select on pin:"</span><span class="p">,</span> <span class="n">DS_PIN</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Clock on pin:&quot;</span><span class="p">,</span> <span class="n">CLK_PIN</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data on pin:&quot;</span><span class="p">,</span> <span class="n">DST_PIN</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data Select on pin:&quot;</span><span class="p">,</span> <span class="n">DS_PIN</span><span class="p">)</span>
 
 <span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">scl</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="n">CLK_PIN</span><span class="p">),</span> <span class="n">sda</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="n">DST_PIN</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">100000</span><span class="p">)</span>
 <span class="n">scan_result</span> <span class="o">=</span> <span class="n">i2c</span><span class="o">.</span><span class="n">scan</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"I2C addresses found:"</span><span class="p">,</span> <span class="p">[</span><span class="nb">hex</span><span class="p">(</span><span class="n">device_address</span><span class="p">)</span> <span class="k">for</span> <span class="n">device_address</span> <span class="ow">in</span> <span class="n">scan_result</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I2C addresses found:&quot;</span><span class="p">,</span> <span class="p">[</span><span class="nb">hex</span><span class="p">(</span><span class="n">device_address</span><span class="p">)</span> <span class="k">for</span> <span class="n">device_address</span> <span class="ow">in</span> <span class="n">scan_result</span><span class="p">])</span>
 
 <span class="k">if</span> <span class="mi">104</span> <span class="ow">in</span> <span class="n">scan_result</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"PASS: DS1307 FOUND"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;PASS: DS1307 FOUND&quot;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"FAIL: DS1307 NOT FOUND"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;FAIL: DS1307 NOT FOUND&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <h3 id="sample-test-result">Sample Test Result</h3>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -2572,7 +2572,7 @@ How accurate is the DS3231, you might ask? Well, it has a typical accuracy of ±
 <span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>Clock on pin: 17
 Data on pin: 16
 Data Select on pin: 18
-I2C addresses found: ['0x50', '0x68']
+I2C addresses found: [&#39;0x50&#39;, &#39;0x68&#39;]
 PASS: DS1307 FOUND
 </code></pre></div></td></tr></table></div>
 <h2 id="full-test-of-ds1307">Full Test of DS1307</h2>
@@ -2638,7 +2638,7 @@ PASS: DS1307 FOUND
 <span class="normal">60</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
 <span class="c1"># -*- coding: UTF-8 -*-</span>
 
-<span class="sd">"""I2C DS1307 showcase"""</span>
+<span class="sd">&quot;&quot;&quot;I2C DS1307 showcase&quot;&quot;&quot;</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">ds1307</span><span class="w"> </span><span class="kn">import</span> <span class="n">DS1307</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">I2C</span><span class="p">,</span> <span class="n">Pin</span>
@@ -2651,7 +2651,7 @@ PASS: DS1307 FOUND
 <span class="c1"># DS1307 on 0x68</span>
 <span class="n">I2C_ADDR</span> <span class="o">=</span> <span class="mh">0x68</span>     <span class="c1"># DEC 104, HEX 0x68</span>
 
-<span class="c1"># define custom I2C interface, default is 'I2C(0)'</span>
+<span class="c1"># define custom I2C interface, default is &#39;I2C(0)&#39;</span>
 <span class="c1"># check the docs of your device for further details and pin infos</span>
 <span class="c1"># this are the pins for the Raspberry Pi Pico adapter board</span>
 <span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">scl</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="n">CLK_PIN</span><span class="p">),</span> <span class="n">sda</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="n">DST_PIN</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">800000</span><span class="p">)</span>
@@ -2659,42 +2659,42 @@ PASS: DS1307 FOUND
 <span class="n">ds1307</span> <span class="o">=</span> <span class="n">DS1307</span><span class="p">(</span><span class="n">addr</span><span class="o">=</span><span class="n">I2C_ADDR</span><span class="p">,</span> <span class="n">i2c</span><span class="o">=</span><span class="n">i2c</span><span class="p">)</span>
 
 <span class="c1"># get LCD infos/properties</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"DS1307 is on I2C address 0x</span><span class="si">{0:02x}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ds1307</span><span class="o">.</span><span class="n">addr</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Weekday start is </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ds1307</span><span class="o">.</span><span class="n">weekday_start</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;DS1307 is on I2C address 0x</span><span class="si">{0:02x}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ds1307</span><span class="o">.</span><span class="n">addr</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Weekday start is </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ds1307</span><span class="o">.</span><span class="n">weekday_start</span><span class="p">))</span>
 
 <span class="c1"># get the current RTC time</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Current RTC time: </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ds1307</span><span class="o">.</span><span class="n">datetime</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Current RTC time: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ds1307</span><span class="o">.</span><span class="n">datetime</span><span class="p">))</span>
 
 <span class="c1"># set the RTC time to the current system time</span>
 <span class="n">now</span> <span class="o">=</span> <span class="n">gmtime</span><span class="p">(</span><span class="n">time</span><span class="p">())</span>
 <span class="n">ds1307</span><span class="o">.</span><span class="n">datetime</span> <span class="o">=</span> <span class="n">now</span>
 
 <span class="c1"># Print the date and time in ISO8601 format: 2023-04-18T21:14:22</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Today is </span><span class="si">{:04d}</span><span class="s2">-</span><span class="si">{:02d}</span><span class="s2">-</span><span class="si">{:02d}</span><span class="s2">T</span><span class="si">{:02d}</span><span class="s2">:</span><span class="si">{:02d}</span><span class="s2">:</span><span class="si">{:02d}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Today is </span><span class="si">{:04d}</span><span class="s2">-</span><span class="si">{:02d}</span><span class="s2">-</span><span class="si">{:02d}</span><span class="s2">T</span><span class="si">{:02d}</span><span class="s2">:</span><span class="si">{:02d}</span><span class="s2">:</span><span class="si">{:02d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
     <span class="n">ds1307</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">ds1307</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">ds1307</span><span class="o">.</span><span class="n">day</span><span class="p">,</span>
     <span class="n">ds1307</span><span class="o">.</span><span class="n">hour</span><span class="p">,</span> <span class="n">ds1307</span><span class="o">.</span><span class="n">minute</span><span class="p">,</span> <span class="n">ds1307</span><span class="o">.</span><span class="n">second</span><span class="p">))</span>
 
 <span class="c1"># check whether this year is a leap year</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Is this year a leap year? </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ds1307</span><span class="o">.</span><span class="n">is_leap_year</span><span class="p">(</span><span class="n">ds1307</span><span class="o">.</span><span class="n">year</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Is this year a leap year? </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ds1307</span><span class="o">.</span><span class="n">is_leap_year</span><span class="p">(</span><span class="n">ds1307</span><span class="o">.</span><span class="n">year</span><span class="p">)))</span>
 
 <span class="c1"># get the day of the year</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Today is day </span><span class="si">{}</span><span class="s2"> of </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Today is day </span><span class="si">{}</span><span class="s2"> of </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
     <span class="n">ds1307</span><span class="o">.</span><span class="n">day_of_year</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="n">ds1307</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="n">ds1307</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="n">ds1307</span><span class="o">.</span><span class="n">day</span><span class="p">),</span>
     <span class="n">ds1307</span><span class="o">.</span><span class="n">year</span><span class="p">))</span>
 
 <span class="c1"># halt the oscillator</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"The oscillator is currently active at </span><span class="si">{}</span><span class="s2">? </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The oscillator is currently active at </span><span class="si">{}</span><span class="s2">? </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
     <span class="n">ds1307</span><span class="o">.</span><span class="n">datetime</span><span class="p">,</span> <span class="n">ds1307</span><span class="o">.</span><span class="n">halt</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Halt the oscillator and wait for 5 seconds ..."</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Halt the oscillator and wait for 5 seconds ...&quot;</span><span class="p">)</span>
 <span class="n">ds1307</span><span class="o">.</span><span class="n">halt</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Current RTC time: </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ds1307</span><span class="o">.</span><span class="n">datetime</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Current RTC time: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ds1307</span><span class="o">.</span><span class="n">datetime</span><span class="p">))</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Enable the oscillator and wait for 5 seconds ..."</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enable the oscillator and wait for 5 seconds ...&quot;</span><span class="p">)</span>
 <span class="n">ds1307</span><span class="o">.</span><span class="n">halt</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Current RTC time: </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ds1307</span><span class="o">.</span><span class="n">datetime</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Current RTC time: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ds1307</span><span class="o">.</span><span class="n">datetime</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
 <h3 id="test-result">Test Result</h3>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -2726,9 +2726,9 @@ Current RTC time: (2024, 12, 27, 20, 29, 56, 4, 362)
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">gmtime</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">localtime</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"time()"</span><span class="p">,</span> <span class="n">time</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"   localtime()"</span><span class="p">,</span> <span class="n">localtime</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"gmtime(time())"</span><span class="p">,</span> <span class="n">gmtime</span><span class="p">(</span><span class="n">time</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;time()&quot;</span><span class="p">,</span> <span class="n">time</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   localtime()&quot;</span><span class="p">,</span> <span class="n">localtime</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;gmtime(time())&quot;</span><span class="p">,</span> <span class="n">gmtime</span><span class="p">(</span><span class="n">time</span><span class="p">()))</span>
 </code></pre></div></td></tr></table></div>
 <p>Result</p>
 <p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -2903,10 +2903,10 @@ clock may drift over time, resulting in slight inaccuracies compared to the actu
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
         <script src="../../../js/extra.js"></script>
       

@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2614,7 +2614,7 @@
 </ol>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">framebuf</span>
-<span class="c1"># Define a custom font as a bytearrayCUSTOM_FONT ={'0':bytearray([0b01110000,0b10001000,0b10001000,0b10001000,0b01110000]),# Add more characters...}defdraw_custom_char(oled, char, x, y):if char in CUSTOM_FONT:        fb = framebuf.FrameBuffer(CUSTOM_FONT[char],8,8, framebuf.MONO_VLSB)        oled.blit(fb, x, y)`</span>
+<span class="c1"># Define a custom font as a bytearrayCUSTOM_FONT ={&#39;0&#39;:bytearray([0b01110000,0b10001000,0b10001000,0b10001000,0b01110000]),# Add more characters...}defdraw_custom_char(oled, char, x, y):if char in CUSTOM_FONT:        fb = framebuf.FrameBuffer(CUSTOM_FONT[char],8,8, framebuf.MONO_VLSB)        oled.blit(fb, x, y)`</span>
 </code></pre></div></td></tr></table></div>
 <ol>
 <li>Using Third-Party Font Modules</li>
@@ -2661,7 +2661,7 @@ definit_custom_font(oled):    font_writer = Writer(oled, my_converted_font)retur
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Define a simple bitmap font</span>
-<span class="n">DIGIT_FONT</span> <span class="o">=</span><span class="p">{</span><span class="s1">'0'</span><span class="p">:[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]],</span>
+<span class="n">DIGIT_FONT</span> <span class="o">=</span><span class="p">{</span><span class="s1">&#39;0&#39;</span><span class="p">:[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]],</span>
 <span class="c1"># # Add more characters...</span>
 <span class="p">}</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">draw_bitmap_char</span><span class="p">(</span><span class="n">oled</span><span class="p">,</span> <span class="n">char</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
@@ -2698,7 +2698,7 @@ definit_custom_font(oled):    font_writer = Writer(oled, my_converted_font)retur
 <span class="n">defsetup_font</span><span class="p">(</span><span class="n">oled</span><span class="p">):</span>    <span class="n">font_writer</span> <span class="o">=</span> <span class="n">Writer</span><span class="p">(</span><span class="n">oled</span><span class="p">,</span> <span class="n">font20</span><span class="p">)</span>    <span class="n">font_writer</span><span class="o">.</span><span class="n">set_textpos</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="k">return</span> <span class="n">font_writer</span>
 <span class="c1"># Usage</span>
 <span class="c1"># writer = setup_font(oled)</span>
-<span class="c1"># writer.writeln('Hello World!')</span>
+<span class="c1"># writer.writeln(&#39;Hello World!&#39;)</span>
 <span class="c1"># oled.show()`</span>
 </code></pre></div></td></tr></table></div>
 <p>Important considerations:</p>
@@ -3070,16 +3070,16 @@ can easily use up this memory.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">writer</span> <span class="o">=</span> <span class="n">Writer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">display</span><span class="p">,</span> <span class="n">helvetica_40</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">get_char_width</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">char</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">"""Get width of a specific character"""</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get width of a specific character&quot;&quot;&quot;</span>
         <span class="n">_</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="n">helvetica_40</span><span class="o">.</span><span class="n">get_ch</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">width</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">get_string_width</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">"""Calculate total width of a string"""</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate total width of a string&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_char_width</span><span class="p">(</span><span class="n">char</span><span class="p">)</span> <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">text</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">draw_colon</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">"""Draw a large colon for separating hours and minutes"""</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Draw a large colon for separating hours and minutes&quot;&quot;&quot;</span>
         <span class="n">colon_width</span> <span class="o">=</span> <span class="mi">6</span>
         <span class="n">colon_height</span> <span class="o">=</span> <span class="mi">6</span>
         <span class="n">spacing</span> <span class="o">=</span> <span class="mi">10</span>
@@ -3093,13 +3093,13 @@ can easily use up this memory.</p>
         <span class="k">return</span> <span class="n">colon_width</span>  <span class="c1"># Return width for position calculations</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">show_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hours</span><span class="p">,</span> <span class="n">minutes</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">"""Display time with variable width font"""</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Display time with variable width font&quot;&quot;&quot;</span>
         <span class="c1"># Clear display</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
         <span class="c1"># Format numbers with leading zeros for minutes only</span>
         <span class="n">hour_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">hours</span><span class="p">)</span>  <span class="c1"># No leading zero for hours</span>
-        <span class="n">min_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">minutes</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">"</span>  <span class="c1"># Leading zero for minutes</span>
+        <span class="n">min_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">minutes</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">&quot;</span>  <span class="c1"># Leading zero for minutes</span>
 
         <span class="c1"># Calculate widths</span>
         <span class="n">hour_width</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_string_width</span><span class="p">(</span><span class="n">hour_str</span><span class="p">)</span>
@@ -3133,7 +3133,7 @@ can easily use up this memory.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="c1"># Example usage</span>
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="c1"># Create display instance</span>
     <span class="n">time_display</span> <span class="o">=</span> <span class="n">LargeTimeDisplay</span><span class="p">()</span>
 
@@ -3152,7 +3152,7 @@ can easily use up this memory.</p>
         <span class="n">time_display</span><span class="o">.</span><span class="n">show_time</span><span class="p">(</span><span class="n">hours</span><span class="p">,</span> <span class="n">minutes</span><span class="p">)</span>
         <span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="sd">"""</span>
+<span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Key Changes from Fixed-Width Version:</span>
 <span class="sd">1. Removed -x flag from font conversion</span>
 <span class="sd">2. Added methods to calculate individual character widths</span>
@@ -3166,7 +3166,7 @@ can easily use up this memory.</p>
 <span class="sd">- Minutes: Always show leading zero</span>
 <span class="sd">- Colon: Centered between hours and minutes</span>
 <span class="sd">- Overall: Centered on display</span>
-<span class="sd">"""</span>
+<span class="sd">&quot;&quot;&quot;</span>
 </code></pre></div></td></tr></table></div>
 
 
@@ -3264,10 +3264,10 @@ can easily use up this memory.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
         <script src="../../../js/extra.js"></script>
       

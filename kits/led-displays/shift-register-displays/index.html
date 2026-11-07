@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -3537,14 +3537,14 @@
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">wait_for_rtc</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"Waiting for RTC to be ready..."</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Waiting for RTC to be ready...&quot;</span><span class="p">)</span>
     <span class="n">rtc</span> <span class="o">=</span> <span class="n">RTC</span><span class="p">()</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">current_time</span> <span class="o">=</span> <span class="n">rtc</span><span class="o">.</span><span class="n">datetime</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">current_time</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">2021</span> <span class="ow">or</span> <span class="n">current_time</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">current_time</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">"RTC is ready!"</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RTC is ready!&quot;</span><span class="p">)</span>
             <span class="k">return</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">"RTC not ready yet..."</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RTC not ready yet...&quot;</span><span class="p">)</span>
         <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>This function ensures the RTC has been set to a valid time before proceeding.</p>
@@ -3569,7 +3569,7 @@
 
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
     <span class="n">current_time</span> <span class="o">=</span> <span class="n">rtc</span><span class="o">.</span><span class="n">datetime</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Current time: </span><span class="si">{</span><span class="n">current_time</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">current_time</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">current_time</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Current time: </span><span class="si">{</span><span class="n">current_time</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">current_time</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">current_time</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="3-seven-segment-display-setup">3. Seven-Segment Display Setup</h2>
@@ -3611,17 +3611,17 @@ This class manages the four-digit display. It uses three pins to control the shi
 
 <span class="c1"># Create a simple version that lights up segments manually</span>
 <span class="n">segments</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">'a'</span><span class="p">:</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">),</span>
-    <span class="s1">'b'</span><span class="p">:</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">),</span>
-    <span class="s1">'c'</span><span class="p">:</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">),</span>
+    <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">),</span>
+    <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">),</span>
+    <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">),</span>
     <span class="c1"># ... add more segments</span>
 <span class="p">}</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">display_number</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
     <span class="c1"># Pattern for number 1</span>
     <span class="k">if</span> <span class="n">number</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">segments</span><span class="p">[</span><span class="s1">'b'</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">segments</span><span class="p">[</span><span class="s1">'c'</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">segments</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">segments</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     <span class="c1"># Add more numbers...</span>
 </code></pre></div></td></tr></table></div></p>
 <h2 id="4-digit-patterns">4. Digit Patterns</h2>
@@ -3634,13 +3634,13 @@ This class manages the four-digit display. It uses three pins to control the shi
 <span class="normal">7</span>
 <span class="normal">8</span>
 <span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">SEGMENTS</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">'a'</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> 
-    <span class="s1">'d'</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="s1">'e'</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">'f'</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">'g'</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> 
+    <span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">:</span> <span class="mi">1</span>
 <span class="p">}</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">DIGIT_SEGMENTS</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="mi">0</span><span class="p">:</span> <span class="s1">'abcdef'</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">'bc'</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">'abged'</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s1">'abgcd'</span><span class="p">,</span>
-    <span class="mi">4</span><span class="p">:</span> <span class="s1">'fbcg'</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="s1">'afgcd'</span><span class="p">,</span> <span class="mi">6</span><span class="p">:</span> <span class="s1">'afedcg'</span><span class="p">,</span> 
-    <span class="mi">7</span><span class="p">:</span> <span class="s1">'abc'</span><span class="p">,</span> <span class="mi">8</span><span class="p">:</span> <span class="s1">'abcdefg'</span><span class="p">,</span> <span class="mi">9</span><span class="p">:</span> <span class="s1">'abfgcd'</span>
+    <span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;abcdef&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;bc&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;abged&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;abgcd&#39;</span><span class="p">,</span>
+    <span class="mi">4</span><span class="p">:</span> <span class="s1">&#39;fbcg&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="s1">&#39;afgcd&#39;</span><span class="p">,</span> <span class="mi">6</span><span class="p">:</span> <span class="s1">&#39;afedcg&#39;</span><span class="p">,</span> 
+    <span class="mi">7</span><span class="p">:</span> <span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">:</span> <span class="s1">&#39;abcdefg&#39;</span><span class="p">,</span> <span class="mi">9</span><span class="p">:</span> <span class="s1">&#39;abfgcd&#39;</span>
 <span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 This section defines which segments should be lit for each number.</p>
@@ -3674,13 +3674,13 @@ This section defines which segments should be lit for each number.</p>
 <span class="normal">8</span>
 <span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">convert_time</span><span class="p">(</span><span class="n">hour24</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">hour24</span> <span class="o">&gt;</span> <span class="mi">12</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">hour24</span> <span class="o">-</span> <span class="mi">12</span><span class="p">,</span> <span class="s2">"PM"</span>
+        <span class="k">return</span> <span class="n">hour24</span> <span class="o">-</span> <span class="mi">12</span><span class="p">,</span> <span class="s2">&quot;PM&quot;</span>
     <span class="k">elif</span> <span class="n">hour24</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">12</span><span class="p">,</span> <span class="s2">"AM"</span>
+        <span class="k">return</span> <span class="mi">12</span><span class="p">,</span> <span class="s2">&quot;AM&quot;</span>
     <span class="k">elif</span> <span class="n">hour24</span> <span class="o">==</span> <span class="mi">12</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">12</span><span class="p">,</span> <span class="s2">"PM"</span>
+        <span class="k">return</span> <span class="mi">12</span><span class="p">,</span> <span class="s2">&quot;PM&quot;</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">hour24</span><span class="p">,</span> <span class="s2">"AM"</span>
+        <span class="k">return</span> <span class="n">hour24</span><span class="p">,</span> <span class="s2">&quot;AM&quot;</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="advanced-labs-and-extensions">Advanced Labs and Extensions:</h2>
 <h3 id="1-alarm-clock-lab">1. <strong>Alarm Clock Lab</strong></h3>
@@ -3816,10 +3816,10 @@ This section defines which segments should be lit for each number.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
         <script src="../../../js/extra.js"></script>
       

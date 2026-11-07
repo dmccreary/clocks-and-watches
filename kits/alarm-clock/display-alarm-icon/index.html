@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2886,7 +2886,7 @@
 <span class="normal">94</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">array</span><span class="w"> </span><span class="kn">import</span> <span class="n">array</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">draw_alarm_icon</span><span class="p">(</span><span class="n">display</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">alarm_hour</span><span class="p">,</span> <span class="n">alarm_minute</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">24</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Draw an alarm bell icon with time display using polygons.</span>
 
 <span class="sd">    Args:</span>
@@ -2895,12 +2895,12 @@
 <span class="sd">        alarm_hour: Hour of the alarm (1-12)</span>
 <span class="sd">        alarm_minute: Minute of the alarm (0-59)</span>
 <span class="sd">        size: Base size of the icon (default 24 pixels)</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># Scale factors</span>
     <span class="n">scale</span> <span class="o">=</span> <span class="n">size</span> <span class="o">/</span> <span class="mi">24</span>  <span class="c1"># Base size is 24 pixels</span>
 
     <span class="c1"># Bell body coordinates (scaled from base design)</span>
-    <span class="n">bell_body</span> <span class="o">=</span> <span class="n">array</span><span class="p">(</span><span class="s1">'B'</span><span class="p">,</span> <span class="p">[</span>
+    <span class="n">bell_body</span> <span class="o">=</span> <span class="n">array</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="p">[</span>
         <span class="nb">int</span><span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span>  <span class="nb">int</span><span class="p">(</span><span class="mi">0</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span>    <span class="c1"># Top left of dome</span>
         <span class="nb">int</span><span class="p">(</span><span class="mi">20</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="mi">0</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span>    <span class="c1"># Top right of dome</span>
         <span class="nb">int</span><span class="p">(</span><span class="mi">24</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="mi">12</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span>   <span class="c1"># Bottom right curve</span>
@@ -2910,7 +2910,7 @@
     <span class="p">])</span>
 
     <span class="c1"># Bell base coordinates</span>
-    <span class="n">bell_base</span> <span class="o">=</span> <span class="n">array</span><span class="p">(</span><span class="s1">'B'</span><span class="p">,</span> <span class="p">[</span>
+    <span class="n">bell_base</span> <span class="o">=</span> <span class="n">array</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="p">[</span>
         <span class="nb">int</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span>  <span class="nb">int</span><span class="p">(</span><span class="mi">18</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span>   <span class="c1"># Top left</span>
         <span class="nb">int</span><span class="p">(</span><span class="mi">22</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="mi">18</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span>   <span class="c1"># Top right</span>
         <span class="nb">int</span><span class="p">(</span><span class="mi">20</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="mi">20</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span>   <span class="c1"># Bottom right</span>
@@ -2918,7 +2918,7 @@
     <span class="p">])</span>
 
     <span class="c1"># Clapper coordinates</span>
-    <span class="n">clapper</span> <span class="o">=</span> <span class="n">array</span><span class="p">(</span><span class="s1">'B'</span><span class="p">,</span> <span class="p">[</span>
+    <span class="n">clapper</span> <span class="o">=</span> <span class="n">array</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="p">[</span>
         <span class="nb">int</span><span class="p">(</span><span class="mi">11</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="mi">20</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span>   <span class="c1"># Top</span>
         <span class="nb">int</span><span class="p">(</span><span class="mi">13</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="mi">20</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span>   <span class="c1"># Top right</span>
         <span class="nb">int</span><span class="p">(</span><span class="mi">14</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="mi">24</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span>   <span class="c1"># Bottom right</span>
@@ -2926,14 +2926,14 @@
     <span class="p">])</span>
 
     <span class="c1"># Sound wave lines (using array for consistency)</span>
-    <span class="n">left_wave</span> <span class="o">=</span> <span class="n">array</span><span class="p">(</span><span class="s1">'B'</span><span class="p">,</span> <span class="p">[</span>
+    <span class="n">left_wave</span> <span class="o">=</span> <span class="n">array</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="p">[</span>
         <span class="nb">int</span><span class="p">(</span><span class="mi">0</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span>  <span class="nb">int</span><span class="p">(</span><span class="mi">12</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span>
         <span class="nb">int</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="mi">12</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span>
         <span class="nb">int</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="mi">14</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span>
         <span class="nb">int</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="mi">16</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span>
     <span class="p">])</span>
 
-    <span class="n">right_wave</span> <span class="o">=</span> <span class="n">array</span><span class="p">(</span><span class="s1">'B'</span><span class="p">,</span> <span class="p">[</span>
+    <span class="n">right_wave</span> <span class="o">=</span> <span class="n">array</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="p">[</span>
         <span class="nb">int</span><span class="p">(</span><span class="mi">24</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="mi">12</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span>
         <span class="nb">int</span><span class="p">(</span><span class="mi">27</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="mi">12</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span>
         <span class="nb">int</span><span class="p">(</span><span class="mi">28</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="mi">14</span> <span class="o">*</span> <span class="n">scale</span><span class="p">),</span>
@@ -2951,16 +2951,16 @@
         <span class="n">display</span><span class="o">.</span><span class="n">poly</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">right_wave</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># Right sound wave</span>
 
     <span class="c1"># Draw the alarm time below the bell</span>
-    <span class="n">time_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">alarm_hour</span><span class="si">:</span><span class="s2">2d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">alarm_minute</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">"</span>
+    <span class="n">time_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">alarm_hour</span><span class="si">:</span><span class="s2">2d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">alarm_minute</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">&quot;</span>
     <span class="c1"># Center the time string under the bell</span>
     <span class="n">text_x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mi">24</span> <span class="o">*</span> <span class="n">scale</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">time_str</span><span class="p">)</span> <span class="o">*</span> <span class="mi">6</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
     <span class="n">text_y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="mi">26</span> <span class="o">*</span> <span class="n">scale</span><span class="p">)</span>
     <span class="n">display</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">time_str</span><span class="p">,</span> <span class="n">text_x</span><span class="p">,</span> <span class="n">text_y</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">demo_alarm_icons</span><span class="p">(</span><span class="n">display</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Demonstrate the alarm icon at different sizes and positions</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># Clear the display</span>
     <span class="n">display</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
@@ -2973,10 +2973,10 @@
     <span class="n">display</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="c1"># Example usage:</span>
-<span class="sd">"""</span>
+<span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">oled = ssd1306.SSD1306_SPI(128, 64, spi, DC, RES, CS)</span>
 <span class="sd">demo_alarm_icons(oled)</span>
-<span class="sd">"""</span>
+<span class="sd">&quot;&quot;&quot;</span>
 </code></pre></div></td></tr></table></div>
 
 
@@ -3074,10 +3074,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
         <script src="../../../js/extra.js"></script>
       

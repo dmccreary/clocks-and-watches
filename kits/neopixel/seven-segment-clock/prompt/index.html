@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.618322db.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -3373,12 +3373,12 @@ strip = NeoPixel(Pin(0), NUMBER_PIXELS)</p>
 <span class="n">OFF_COLOR</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>    <span class="c1"># Off</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">set_segment_pixels</span><span class="p">(</span><span class="n">start_idx</span><span class="p">,</span> <span class="n">segment_pattern</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Set three pixels for a segment based on pattern"""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set three pixels for a segment based on pattern&quot;&quot;&quot;</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
         <span class="n">strip</span><span class="p">[</span><span class="n">start_idx</span> <span class="o">+</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">ON_COLOR</span> <span class="k">if</span> <span class="n">segment_pattern</span> <span class="k">else</span> <span class="n">OFF_COLOR</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">display_digit</span><span class="p">(</span><span class="n">digit</span><span class="p">,</span> <span class="n">start_pixel</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Display a single digit starting at the specified pixel"""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Display a single digit starting at the specified pixel&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">digit</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">DIGITS</span><span class="p">:</span>
         <span class="k">return</span>
 
@@ -3403,19 +3403,19 @@ strip = NeoPixel(Pin(0), NUMBER_PIXELS)</p>
         <span class="n">set_segment_pixels</span><span class="p">(</span><span class="n">segments</span><span class="p">[</span><span class="n">segment_index</span><span class="p">],</span> <span class="n">segment_on</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">set_colon</span><span class="p">(</span><span class="n">on</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Set colon pixels (42 and 43)"""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set colon pixels (42 and 43)&quot;&quot;&quot;</span>
     <span class="n">color</span> <span class="o">=</span> <span class="n">ON_COLOR</span> <span class="k">if</span> <span class="n">on</span> <span class="k">else</span> <span class="n">OFF_COLOR</span>
     <span class="n">strip</span><span class="p">[</span><span class="mi">42</span><span class="p">]</span> <span class="o">=</span> <span class="n">color</span>
     <span class="n">strip</span><span class="p">[</span><span class="mi">43</span><span class="p">]</span> <span class="o">=</span> <span class="n">color</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">display_time</span><span class="p">(</span><span class="n">hour</span><span class="p">,</span> <span class="n">minute</span><span class="p">,</span> <span class="n">colon_on</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Display time on the LED strip"""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Display time on the LED strip&quot;&quot;&quot;</span>
     <span class="c1"># Convert 24-hour to 12-hour format</span>
     <span class="n">hour</span> <span class="o">=</span> <span class="n">hour</span> <span class="k">if</span> <span class="n">hour</span> <span class="o">&lt;=</span> <span class="mi">12</span> <span class="k">else</span> <span class="n">hour</span> <span class="o">-</span> <span class="mi">12</span>
     <span class="k">if</span> <span class="n">hour</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">hour</span> <span class="o">=</span> <span class="mi">12</span>
 
-    <span class="c1"># Set hours "1" digit if needed (pixels 65-73)</span>
+    <span class="c1"># Set hours &quot;1&quot; digit if needed (pixels 65-73)</span>
     <span class="k">if</span> <span class="n">hour</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">65</span><span class="p">,</span> <span class="mi">74</span><span class="p">):</span>
             <span class="n">strip</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">ON_COLOR</span>
@@ -3438,7 +3438,7 @@ strip = NeoPixel(Pin(0), NUMBER_PIXELS)</p>
     <span class="n">strip</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">clear_display</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">"""Turn off all pixels"""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Turn off all pixels&quot;&quot;&quot;</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">NUMBER_PIXELS</span><span class="p">):</span>
         <span class="n">strip</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">OFF_COLOR</span>
     <span class="n">strip</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
@@ -3455,7 +3455,7 @@ strip = NeoPixel(Pin(0), NUMBER_PIXELS)</p>
         <span class="n">display_hour</span> <span class="o">=</span> <span class="n">hour</span> <span class="o">-</span> <span class="mi">12</span>   
     <span class="n">display_time</span><span class="p">(</span><span class="n">hour</span><span class="p">,</span> <span class="n">minute</span><span class="p">,</span> <span class="n">colon_state</span><span class="p">)</span>
     <span class="n">colon_state</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">colon_state</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">display_hour</span><span class="si">}</span><span class="s1">:</span><span class="si">{</span><span class="n">minute</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">display_hour</span><span class="si">}</span><span class="s1">:</span><span class="si">{</span><span class="n">minute</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 
@@ -3554,10 +3554,10 @@ strip = NeoPixel(Pin(0), NUMBER_PIXELS)</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
         <script src="../../../../js/extra.js"></script>
       

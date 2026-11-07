@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -3425,9 +3425,9 @@ the Pico.  We configure this when we setup the code.</p>
 
 <span class="n">button_1_pin</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="n">BUTTON_1_PIN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">PULL_UP</span><span class="p">)</span>
 
-<span class="c1"># This function gets called every time the button is pressed.  The parameter "pin" is not used.</span>
+<span class="c1"># This function gets called every time the button is pressed.  The parameter &quot;pin&quot; is not used.</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">button_1_pressed</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">'Button 1 pressed'</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Button 1 pressed&#39;</span><span class="p">)</span>
 
 <span class="c1"># now we register the button handler function using the irq setter method for this pin</span>
 <span class="n">button_1_pin</span><span class="o">.</span><span class="n">irq</span><span class="p">(</span><span class="n">trigger</span><span class="o">=</span><span class="n">Pin</span><span class="o">.</span><span class="n">IRQ_FALLING</span><span class="p">,</span> <span class="n">handler</span> <span class="o">=</span> <span class="n">button_1_pressed</span><span class="p">)</span>
@@ -3483,18 +3483,18 @@ the Pico.  We configure this when we setup the code.</p>
 
 <span class="c1"># These functions gets called every time a button is pressed.</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">button_1_pressed</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">'Button 1 pressed'</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Button 1 pressed&#39;</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">button_2_pressed</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">'Button 2 pressed'</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Button 2 pressed&#39;</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">button_3_pressed</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">'Button 3 pressed'</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Button 3 pressed&#39;</span><span class="p">)</span>
 
 <span class="c1"># now we register the button handler functions using the irq setter method for each pin</span>
 <span class="n">button_1_pin</span><span class="o">.</span><span class="n">irq</span><span class="p">(</span><span class="n">trigger</span><span class="o">=</span><span class="n">Pin</span><span class="o">.</span><span class="n">IRQ_FALLING</span><span class="p">,</span> <span class="n">handler</span> <span class="o">=</span> <span class="n">button_1_pressed</span><span class="p">)</span>
 <span class="n">button_2_pin</span><span class="o">.</span><span class="n">irq</span><span class="p">(</span><span class="n">trigger</span><span class="o">=</span><span class="n">Pin</span><span class="o">.</span><span class="n">IRQ_FALLING</span><span class="p">,</span> <span class="n">handler</span> <span class="o">=</span> <span class="n">button_2_pressed</span><span class="p">)</span>
 <span class="n">button_3_pin</span><span class="o">.</span><span class="n">irq</span><span class="p">(</span><span class="n">trigger</span><span class="o">=</span><span class="n">Pin</span><span class="o">.</span><span class="n">IRQ_FALLING</span><span class="p">,</span> <span class="n">handler</span> <span class="o">=</span> <span class="n">button_3_pressed</span><span class="p">)</span>
 
-<span class="c1"># we don't do anything in the main loop but sleep</span>
+<span class="c1"># we don&#39;t do anything in the main loop but sleep</span>
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
     <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -3594,10 +3594,10 @@ the Pico.  We configure this when we setup the code.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
         <script src="../../../js/extra.js"></script>
       

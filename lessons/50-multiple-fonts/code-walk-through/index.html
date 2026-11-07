@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2469,7 +2469,7 @@
     <span class="c1"># If we reach the bottom, go back to top</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">height</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">font</span><span class="o">.</span><span class="n">height</span><span class="p">():</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">'Screen full! Returning to top.'</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Screen full! Returning to top.&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
 </code></pre></div></td></tr></table></div>
 <p>This is like when you reach the end of a line in your notebook:
@@ -2502,22 +2502,22 @@
 <span class="normal">23</span>
 <span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_printchar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">char</span><span class="p">):</span>
     <span class="c1"># Handle new line character</span>
-    <span class="k">if</span> <span class="n">char</span> <span class="o">==</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">char</span> <span class="o">==</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_newline</span><span class="p">()</span>
         <span class="k">return</span>
 
     <span class="c1"># Check if we can write this character</span>
     <span class="k">if</span> <span class="n">char</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">char_dict</span><span class="p">:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Character </span><span class="si">{</span><span class="n">char</span><span class="si">}</span><span class="s1"> not in font!'</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Character </span><span class="si">{</span><span class="n">char</span><span class="si">}</span><span class="s1"> not in font!&#39;</span><span class="p">)</span>
         <span class="k">return</span>
 
-    <span class="c1"># Get the character's image data</span>
+    <span class="c1"># Get the character&#39;s image data</span>
     <span class="n">buf</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">font</span><span class="o">.</span><span class="n">get_ch</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
     <span class="n">fb</span> <span class="o">=</span> <span class="n">framebuf</span><span class="o">.</span><span class="n">FrameBuffer</span><span class="p">(</span><span class="nb">bytearray</span><span class="p">(</span><span class="n">buf</span><span class="p">),</span> <span class="n">w</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">font</span><span class="o">.</span><span class="n">height</span><span class="p">(),</span> 
                              <span class="n">framebuf</span><span class="o">.</span><span class="n">MONO_HLSB</span><span class="p">)</span>
 
-    <span class="c1"># If we'll go past the right edge, start a new line</span>
+    <span class="c1"># If we&#39;ll go past the right edge, start a new line</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">w</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">width</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_newline</span><span class="p">()</span>
 
@@ -2565,7 +2565,7 @@
 <span class="n">writer</span><span class="o">.</span><span class="n">set_textpos</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="c1"># Write some text</span>
-<span class="n">writer</span><span class="o">.</span><span class="n">printstring</span><span class="p">(</span><span class="s2">"Hello!"</span><span class="p">)</span>
+<span class="n">writer</span><span class="o">.</span><span class="n">printstring</span><span class="p">(</span><span class="s2">&quot;Hello!&quot;</span><span class="p">)</span>
 
 <span class="c1"># Show it on the screen</span>
 <span class="n">oled</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -2690,10 +2690,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
         <script src="../../../js/extra.js"></script>
       

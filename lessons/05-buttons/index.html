@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2150,14 +2150,14 @@ adjusting the hour you have to make sure the cycle value starts at the current h
 <span class="n">mode_pin</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="n">MODE_BUTTON_PIN</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">PULL_UP</span><span class="p">)</span>
 <span class="n">cycle_pin</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="n">CYCLE_BUTTON_PIN</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">PULL_UP</span><span class="p">)</span>
 
-<span class="c1"># This function gets called every time the button is pressed.  The parameter "pin" is not used.</span>
+<span class="c1"># This function gets called every time the button is pressed.  The parameter &quot;pin&quot; is not used.</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">button_pressed_handler</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">mode</span><span class="p">,</span> <span class="n">cycle</span><span class="p">,</span> <span class="n">last_time</span>
     <span class="n">new_time</span> <span class="o">=</span> <span class="n">ticks_ms</span><span class="p">()</span>
     <span class="c1"># if it has been more that 1/5 of a second since the last event, we have a new event</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">new_time</span> <span class="o">-</span> <span class="n">last_time</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">200</span><span class="p">:</span>
         <span class="c1"># this should be pin.id but it does not work</span>
-        <span class="k">if</span> <span class="s1">'14'</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s1">&#39;14&#39;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
             <span class="n">mode</span> <span class="o">+=</span><span class="mi">1</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">cycle</span> <span class="o">+=</span><span class="mi">1</span>
@@ -2176,11 +2176,11 @@ adjusting the hour you have to make sure the cycle value starts at the current h
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
     <span class="c1"># only print on change in the button_presses value</span>
     <span class="k">if</span> <span class="n">mode</span> <span class="o">!=</span> <span class="n">old_mode</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">'New Mode:'</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;New Mode:&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
         <span class="n">builtin_led</span><span class="o">.</span><span class="n">toggle</span><span class="p">()</span>
         <span class="n">old_mode</span> <span class="o">=</span> <span class="n">mode</span>
     <span class="k">if</span> <span class="n">cycle</span> <span class="o">!=</span> <span class="n">old_cycle</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">'New Cycle:'</span><span class="p">,</span> <span class="n">cycle</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;New Cycle:&#39;</span><span class="p">,</span> <span class="n">cycle</span><span class="p">)</span>
         <span class="n">builtin_led</span><span class="o">.</span><span class="n">toggle</span><span class="p">()</span>
         <span class="n">old_cycle</span> <span class="o">=</span> <span class="n">cycle</span>
     <span class="n">sleep</span><span class="p">(</span><span class="mf">.1</span><span class="p">)</span>
@@ -2272,7 +2272,7 @@ adjusting the hour you have to make sure the cycle value starts at the current h
 <span class="n">minute</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">is_pm</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="n">mode</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">mode_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"run"</span><span class="p">,</span> <span class="s2">"set hour"</span><span class="p">,</span> <span class="s2">"set minute"</span><span class="p">,</span> <span class="s2">"set AM/PM"</span><span class="p">]</span>
+<span class="n">mode_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;run&quot;</span><span class="p">,</span> <span class="s2">&quot;set hour&quot;</span><span class="p">,</span> <span class="s2">&quot;set minute&quot;</span><span class="p">,</span> <span class="s2">&quot;set AM/PM&quot;</span><span class="p">]</span>
 <span class="n">mode_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">mode_names</span><span class="p">)</span>
 
 <span class="c1"># Debounce state</span>
@@ -2282,14 +2282,14 @@ adjusting the hour you have to make sure the cycle value starts at the current h
 <span class="n">DEBOUNCE_MS</span> <span class="o">=</span> <span class="mi">200</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">format_time</span><span class="p">():</span>
-    <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">hour</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">minute</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'PM'</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">is_pm</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">'AM'</span><span class="si">}</span><span class="s2">"</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">hour</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">minute</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;PM&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">is_pm</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;AM&#39;</span><span class="si">}</span><span class="s2">&quot;</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">handle_mode</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">mode</span><span class="p">,</span> <span class="n">last_mode_press</span>
     <span class="n">current_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">ticks_ms</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">ticks_diff</span><span class="p">(</span><span class="n">current_time</span><span class="p">,</span> <span class="n">last_mode_press</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">DEBOUNCE_MS</span><span class="p">:</span>
         <span class="n">mode</span> <span class="o">=</span> <span class="p">(</span><span class="n">mode</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">mode_count</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Mode: </span><span class="si">{</span><span class="n">mode_names</span><span class="p">[</span><span class="n">mode</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mode: </span><span class="si">{</span><span class="n">mode_names</span><span class="p">[</span><span class="n">mode</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="n">last_mode_press</span> <span class="o">=</span> <span class="n">current_time</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">handle_next</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
@@ -2328,7 +2328,7 @@ adjusting the hour you have to make sure the cycle value starts at the current h
 <span class="n">previous_pin</span><span class="o">.</span><span class="n">irq</span><span class="p">(</span><span class="n">trigger</span><span class="o">=</span><span class="n">Pin</span><span class="o">.</span><span class="n">IRQ_FALLING</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="n">handle_previous</span><span class="p">)</span>
 
 <span class="c1"># Main loop</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Clock started. Press mode button to change settings."</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Clock started. Press mode button to change settings.&quot;</span><span class="p">)</span>
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># Only update display in run mode</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">format_time</span><span class="p">())</span>
@@ -2430,10 +2430,10 @@ adjusting the hour you have to make sure the cycle value starts at the current h
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
         <script src="../../js/extra.js"></script>
       

@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -75,20 +75,7 @@
 
     
     
-  
-<meta property="og:type" content="website" />
-<meta property="og:title" content="17 Five Modes - Clocks and Watches with AI" />
-<meta property="og:description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." />
-<meta property="og:image" content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/kits/rect-tft-display/17-main-template.png" />
-<meta property="og:image:type" content="image/png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://dmccreary.github.io/clocks-and-watches/kits/rect-tft-display/17-main-template/" />
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="17 Five Modes - Clocks and Watches with AI" />
-<meta property="twitter:description" content="Designing and Building and Clock and Watches with MicroPython and AI.  This projects uses low-cost parts, MicroPython and AI to teach computational thinking." />
-<meta property="twitter:image" content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/kits/rect-tft-display/17-main-template.png" />
-</head>
+  </head>
   
   
     
@@ -3575,11 +3562,11 @@ The main program lists the modes in the order the knob visits them:</p>
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">MODES</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="p">(</span><span class="s2">"mode_weather"</span><span class="p">,</span> <span class="s2">"Weather"</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">"mode_analog"</span><span class="p">,</span> <span class="s2">"Analog"</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">"mode_digital"</span><span class="p">,</span> <span class="s2">"Digital"</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">"mode_stopwatch"</span><span class="p">,</span> <span class="s2">"Stopwatch"</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">"mode_timer"</span><span class="p">,</span> <span class="s2">"Timer"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;mode_weather&quot;</span><span class="p">,</span> <span class="s2">&quot;Weather&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;mode_analog&quot;</span><span class="p">,</span> <span class="s2">&quot;Analog&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;mode_digital&quot;</span><span class="p">,</span> <span class="s2">&quot;Digital&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;mode_stopwatch&quot;</span><span class="p">,</span> <span class="s2">&quot;Stopwatch&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;mode_timer&quot;</span><span class="p">,</span> <span class="s2">&quot;Timer&quot;</span><span class="p">),</span>
 <span class="p">)</span>
 <span class="n">START_MODE</span> <span class="o">=</span> <span class="mi">0</span>           <span class="c1"># Weather</span>
 </code></pre></div></td></tr></table></div>
@@ -3679,7 +3666,7 @@ and seconds. So the main program asks the mode first:</p>
 <span class="normal">6</span>
 <span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="n">clicks</span> <span class="o">=</span> <span class="n">knob</span><span class="o">.</span><span class="n">turned</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">clicks</span><span class="p">:</span>
-        <span class="n">on_knob</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">mode</span><span class="p">,</span> <span class="s2">"on_knob"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">on_knob</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">mode</span><span class="p">,</span> <span class="s2">&quot;on_knob&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
         <span class="n">used</span> <span class="o">=</span> <span class="n">on_knob</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">on_knob</span><span class="p">(</span><span class="n">clicks</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">used</span><span class="p">:</span>
             <span class="n">step</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">clicks</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span>
@@ -3707,9 +3694,9 @@ How? When a mode stops, it hands the main program a note to keep:</p>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">stop</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">"""Keep everything, so a running stopwatch keeps running."""</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s2">"state"</span><span class="p">:</span> <span class="n">state</span><span class="p">,</span> <span class="s2">"run_started"</span><span class="p">:</span> <span class="n">run_started</span><span class="p">,</span> <span class="s2">"banked_ms"</span><span class="p">:</span> <span class="n">banked_ms</span><span class="p">,</span>
-            <span class="s2">"laps"</span><span class="p">:</span> <span class="n">laps</span><span class="p">,</span> <span class="s2">"lap_started_ms"</span><span class="p">:</span> <span class="n">lap_started_ms</span><span class="p">}</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Keep everything, so a running stopwatch keeps running.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="n">state</span><span class="p">,</span> <span class="s2">&quot;run_started&quot;</span><span class="p">:</span> <span class="n">run_started</span><span class="p">,</span> <span class="s2">&quot;banked_ms&quot;</span><span class="p">:</span> <span class="n">banked_ms</span><span class="p">,</span>
+            <span class="s2">&quot;laps&quot;</span><span class="p">:</span> <span class="n">laps</span><span class="p">,</span> <span class="s2">&quot;lap_started_ms&quot;</span><span class="p">:</span> <span class="n">lap_started_ms</span><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <p>The note is a <strong>dictionary</strong>, a set of values that each have a name. One
 of them is <code>run_started</code>, the moment the stopwatch began. When the mode
@@ -3718,7 +3705,7 @@ counter never stopped, so "now minus <code>run_started</code>" is still right.</
 <p>A running timer adds one more thing to its note:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">if</span> <span class="n">state</span> <span class="o">==</span> <span class="n">RUNNING</span><span class="p">:</span>
-        <span class="n">saved</span><span class="p">[</span><span class="s2">"wake_at"</span><span class="p">]</span> <span class="o">=</span> <span class="n">end_ticks</span>
+        <span class="n">saved</span><span class="p">[</span><span class="s2">&quot;wake_at&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">end_ticks</span>
 </code></pre></div></td></tr></table></div>
 <p><code>wake_at</code> means "show me again at this moment". The main program checks
 the notes on every pass of its loop. When the moment comes, it switches
@@ -3883,10 +3870,10 @@ out of sight. That is how real gadget software is built!</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
         <script src="../../../js/extra.js"></script>
       

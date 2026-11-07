@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -75,20 +75,7 @@
 
     
     
-  
-<meta property="og:type" content="website" />
-<meta property="og:title" content="Sensors, Power, and Low-Power Design - Clocks and Watches with AI" />
-<meta property="og:description" content="Light and motion sensors, ADC readings, auto brightness, batteries, current budgets, and low-power design." />
-<meta property="og:image" content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/chapters/18-sensors-power/index.png" />
-<meta property="og:image:type" content="image/png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://dmccreary.github.io/clocks-and-watches/chapters/18-sensors-power/" />
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="Sensors, Power, and Low-Power Design - Clocks and Watches with AI" />
-<meta property="twitter:description" content="Light and motion sensors, ADC readings, auto brightness, batteries, current budgets, and low-power design." />
-<meta property="twitter:image" content="https://dmccreary.github.io/clocks-and-watches/assets/images/social/chapters/18-sensors-power/index.png" />
-</head>
+  </head>
   
   
     
@@ -3282,9 +3269,9 @@ With a single threshold, noise near the line makes the output chatter. Add a gap
 <span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sda</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">scl</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">400000</span><span class="p">)</span>
 <span class="n">MPU</span> <span class="o">=</span> <span class="mh">0x69</span>                                     <span class="c1"># AD0 tied high</span>
 
-<span class="n">i2c</span><span class="o">.</span><span class="n">writeto_mem</span><span class="p">(</span><span class="n">MPU</span><span class="p">,</span> <span class="mh">0x6B</span><span class="p">,</span> <span class="sa">b</span><span class="s2">"</span><span class="se">\x00</span><span class="s2">"</span><span class="p">)</span>            <span class="c1"># wake the chip up</span>
+<span class="n">i2c</span><span class="o">.</span><span class="n">writeto_mem</span><span class="p">(</span><span class="n">MPU</span><span class="p">,</span> <span class="mh">0x6B</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x00</span><span class="s2">&quot;</span><span class="p">)</span>            <span class="c1"># wake the chip up</span>
 <span class="n">raw</span> <span class="o">=</span> <span class="n">i2c</span><span class="o">.</span><span class="n">readfrom_mem</span><span class="p">(</span><span class="n">MPU</span><span class="p">,</span> <span class="mh">0x3B</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>           <span class="c1"># x, y, z acceleration</span>
-<span class="n">ax</span><span class="p">,</span> <span class="n">ay</span><span class="p">,</span> <span class="n">az</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s2">"&gt;hhh"</span><span class="p">,</span> <span class="n">raw</span><span class="p">)</span>        <span class="c1"># three signed 16-bit numbers</span>
+<span class="n">ax</span><span class="p">,</span> <span class="n">ay</span><span class="p">,</span> <span class="n">az</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s2">&quot;&gt;hhh&quot;</span><span class="p">,</span> <span class="n">raw</span><span class="p">)</span>        <span class="c1"># three signed 16-bit numbers</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">ax</span> <span class="o">/</span> <span class="mi">16384</span><span class="p">,</span> <span class="n">ay</span> <span class="o">/</span> <span class="mi">16384</span><span class="p">,</span> <span class="n">az</span> <span class="o">/</span> <span class="mi">16384</span><span class="p">)</span>      <span class="c1"># convert to g (at the +/-2 g range)</span>
 </code></pre></div></td></tr></table></div>
 <p>The chip sends two bytes for each axis, high byte first, so <code>"&gt;hhh"</code> unpacks three signed 16-bit integers. At the default range of ±2 g, 16,384 counts equal 1 g.</p>
@@ -3682,10 +3669,10 @@ You can now read analog sensors, dim the display automatically without flicker, 
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
         <script src="../../js/extra.js"></script>
       

@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -3506,13 +3506,13 @@ display the ambient temperature of the area it is in.</p>
 <span class="normal">22</span>
 <span class="normal">23</span>
 <span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">read_temperature</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">"""Read temperature from DS3231 RTC with 0.25°C resolution."""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Read temperature from DS3231 RTC with 0.25°C resolution.&quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># Read temperature registers</span>
         <span class="n">temp_msb</span> <span class="o">=</span> <span class="n">i2c</span><span class="o">.</span><span class="n">readfrom_mem</span><span class="p">(</span><span class="n">DS3231_ADDR</span><span class="p">,</span> <span class="mh">0x11</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">temp_lsb</span> <span class="o">=</span> <span class="n">i2c</span><span class="o">.</span><span class="n">readfrom_mem</span><span class="p">(</span><span class="n">DS3231_ADDR</span><span class="p">,</span> <span class="mh">0x12</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 
-        <span class="c1"># Handle signed temperature value (2's complement)</span>
+        <span class="c1"># Handle signed temperature value (2&#39;s complement)</span>
         <span class="n">temp_c</span> <span class="o">=</span> <span class="n">temp_msb</span>
         <span class="k">if</span> <span class="n">temp_msb</span> <span class="o">&amp;</span> <span class="mh">0x80</span><span class="p">:</span>  <span class="c1"># Negative value</span>
             <span class="n">temp_c</span> <span class="o">=</span> <span class="o">-</span><span class="p">((</span><span class="o">~</span><span class="n">temp_msb</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">)</span>
@@ -3522,12 +3522,12 @@ display the ambient temperature of the area it is in.</p>
 
         <span class="c1"># Convert to Fahrenheit</span>
         <span class="n">temp_f</span> <span class="o">=</span> <span class="p">(</span><span class="n">temp_c</span> <span class="o">*</span> <span class="mi">9</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="mi">32</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Raw temp data - MSB: 0x</span><span class="si">{</span><span class="n">temp_msb</span><span class="si">:</span><span class="s2">02X</span><span class="si">}</span><span class="s2">, LSB: 0x</span><span class="si">{</span><span class="n">temp_lsb</span><span class="si">:</span><span class="s2">02X</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Temperature: </span><span class="si">{</span><span class="n">temp_c</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°C, </span><span class="si">{</span><span class="n">temp_f</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°F"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Raw temp data - MSB: 0x</span><span class="si">{</span><span class="n">temp_msb</span><span class="si">:</span><span class="s2">02X</span><span class="si">}</span><span class="s2">, LSB: 0x</span><span class="si">{</span><span class="n">temp_lsb</span><span class="si">:</span><span class="s2">02X</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Temperature: </span><span class="si">{</span><span class="n">temp_c</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°C, </span><span class="si">{</span><span class="n">temp_f</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°F&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">temp_f</span>
 
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">"Error reading temperature:"</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error reading temperature:&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">None</span>
 </code></pre></div></td></tr></table></div>
 <p>This function will read directly from the DS3231 I2C memory <code>readfrom_mem</code>.</p>
@@ -3567,8 +3567,8 @@ This is the same formula you might use in math class: °F = (°C × 9/5) + 32</p
 <h3 id="printing-and-returning">Printing and Returning</h3>
 <p>Finally, it prints out both the raw data and the converted temperatures:</p>
 <p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Raw temp data - MSB: 0x</span><span class="si">{</span><span class="n">temp_msb</span><span class="si">:</span><span class="s2">02X</span><span class="si">}</span><span class="s2">, LSB: 0x</span><span class="si">{</span><span class="n">temp_lsb</span><span class="si">:</span><span class="s2">02X</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Temperature: </span><span class="si">{</span><span class="n">temp_c</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°C, </span><span class="si">{</span><span class="n">temp_f</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°F"</span><span class="p">)</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Raw temp data - MSB: 0x</span><span class="si">{</span><span class="n">temp_msb</span><span class="si">:</span><span class="s2">02X</span><span class="si">}</span><span class="s2">, LSB: 0x</span><span class="si">{</span><span class="n">temp_lsb</span><span class="si">:</span><span class="s2">02X</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Temperature: </span><span class="si">{</span><span class="n">temp_c</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°C, </span><span class="si">{</span><span class="n">temp_f</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°F&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 - It shows both Celsius and Fahrenheit with two decimal places
 - The raw data is shown in hexadecimal (that's what the '0x' means)</p>
@@ -3576,7 +3576,7 @@ This is the same formula you might use in math class: °F = (°C × 9/5) + 32</p
 <p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"Error reading temperature:"</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error reading temperature:&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
     <span class="k">return</span> <span class="kc">None</span>
 </code></pre></div></td></tr></table></div>
 - Print out what went wrong
@@ -3678,10 +3678,10 @@ This is the same formula you might use in math class: °F = (°C × 9/5) + 32</p
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
         <script src="../../../js/extra.js"></script>
       
