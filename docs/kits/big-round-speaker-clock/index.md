@@ -1,6 +1,9 @@
 ---
 title: Big Round Speaker Clock Kit
 description: Build a round-screen clock that talks back with sound. A Raspberry Pi Pico W, a 2.1-inch round display and a small speaker make a clock with ten modes, from giant digits to a weather forecast, an alarm, a timer and a holiday calendar. Nine labs, no soldering.
+image: /kits/big-round-speaker-clock/img/09-ten-modes.png
+og:image: /kits/big-round-speaker-clock/img/09-ten-modes.png
+twitter:image: /kits/big-round-speaker-clock/img/09-ten-modes.png
 ---
 
 # Big Round Speaker Clock Kit
