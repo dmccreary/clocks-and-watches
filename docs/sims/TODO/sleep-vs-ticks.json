@@ -1,0 +1,15 @@
+{
+  "sim_id": "sleep-vs-ticks",
+  "diagram_name": "Sleep vs Ticks Timeline",
+  "chapter_number": 6,
+  "chapter_title": "Getting the Time in MicroPython",
+  "chapter_dir": "06-getting-time",
+  "chapter_rel_dir": "chapters/06-getting-time",
+  "library": "p5.js",
+  "bloom_level": "Analyzing",
+  "bloom_verb": "compare",
+  "learning_objective": "Students will *compare* blocking (`sleep`) and non-blocking (`ticks_diff`) timing by observing how a button press is handled (Bloom: Analyzing).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: MicroSim\n**sim-id:** sleep-vs-ticks<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *compare* blocking (`sleep`) and non-blocking (`ticks_diff`) timing by observing how a button press is handled (Bloom: Analyzing).\n\n**Visual elements:** Two horizontal timelines running side by side. The top shows a program using `sleep(1)`, with long gray \"sleeping\" blocks. The bottom shows a program using ticks, with many small \"checking\" blocks. A blinking LED icon sits on each.\n\n**Controls:** A \"Press button\" button and a speed slider. On the sleep timeline the press is ignored until the sleep ends (latency shown as a red bar), while the ticks timeline responds within a few milliseconds.\n\n**Responsive design:** Timelines scale to container width and stack vertically.\n\nImplementation: p5.js frame loop with a simulated millisecond counter."
+}

@@ -1,0 +1,15 @@
+{
+  "sim_id": "analog-watch-face-builder",
+  "diagram_name": "Analog Watch Face Builder",
+  "chapter_number": 15,
+  "chapter_title": "Color Displays and Smartwatch Faces",
+  "chapter_dir": "15-color-displays",
+  "chapter_rel_dir": "chapters/15-color-displays",
+  "library": "p5.js",
+  "bloom_level": "Analyzing, Creating",
+  "bloom_verb": "create, analyze",
+  "learning_objective": "Students will *create* an analog face by choosing radii and colors, and *analyze* which parts an erased hand damages (Bloom: Analyzing, Creating).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: MicroSim\n**sim-id:** analog-watch-face-builder<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *create* an analog face by choosing radii and colors, and *analyze* which parts an erased hand damages (Bloom: Analyzing, Creating).\n\n**Visual elements:** A 360 by 360 round display with the safe-radius ring drawn faintly. Layers: ticks, numerals, three hands.\n\n**Controls:** Sliders for tick outer radius, minute hand length, second hand length, and numeral radius. A toggle \"Erase mode\" replaces the old second hand with black and highlights in yellow any pixels of other items that get erased. A \"Play\" button advances the seconds.\n\n**Behavior:** The readout says \"Repairs needed: none\" when hand lengths keep clear of numerals and ticks, and lists conflicts otherwise.\n\n**Responsive design:** The display scales to container width.\n\nImplementation: p5.js with polar geometry and an overlap test on bounding circles."
+}

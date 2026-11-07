@@ -1,0 +1,15 @@
+{
+  "sim_id": "pull-up-button-lab",
+  "diagram_name": "Pull-Up Button Lab",
+  "chapter_number": 5,
+  "chapter_title": "The Pico Platform: Pins, Files, and Firmware",
+  "chapter_dir": "05-pico-platform",
+  "chapter_rel_dir": "chapters/05-pico-platform",
+  "library": "p5.js",
+  "bloom_level": "Analyzing",
+  "bloom_verb": "analyze",
+  "learning_objective": "Students will *analyze* how a pull-up resistor sets an input's resting voltage (Bloom: Analyzing).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: MicroSim\n**sim-id:** pull-up-button-lab<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *analyze* how a pull-up resistor sets an input's resting voltage (Bloom: Analyzing).\n\n**Visual elements:** A schematic of GP14, a resistor to 3.3 V, and a button to ground. A voltage bar shows the pin voltage; a readout shows `value()`.\n\n**Controls:** A \"Press button\" toggle; a \"Pull-up: on/off\" toggle. With the pull-up off and the button open, the voltage bar jitters randomly and the readout flickers to show a floating input.\n\n**Responsive design:** Schematic scales to canvas width.\n\nImplementation: p5.js with randomized noise when floating."
+}

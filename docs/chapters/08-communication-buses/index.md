@@ -119,6 +119,10 @@ Sender and receiver must agree on the order or every byte will arrive scrambled.
 
 #### Diagram: Byte Bit Explorer
 
+<iframe src="../../sims/byte-bit-explorer/main.html" height="472px" width="100%" scrolling="no"></iframe>
+
+[Run the Byte Bit Explorer MicroSim Fullscreen](../../sims/byte-bit-explorer/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Byte Bit Explorer</summary>
 Type: MicroSim
@@ -205,6 +209,10 @@ That is fast enough for a clock, but not for video.
     Picture I2C as a single street with two lanes: SDA carries the mail and SCL keeps time. Every device is a house with its own street number. The controller shouts an address first, and only the house with that number opens the door.
 
 #### Diagram: I2C Conversation Animator
+
+<iframe src="../../sims/i2c-conversation-animator/main.html" height="532px" width="100%" scrolling="no"></iframe>
+
+[Run the I2C Conversation Animator MicroSim Fullscreen](../../sims/i2c-conversation-animator/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>I2C Conversation Animator</summary>
@@ -374,6 +382,10 @@ The SPI time comes from \( 115{,}200 \times 8 / 40{,}000{,}000 \approx 23 \) ms.
 
 #### Diagram: Bus Speed Race
 
+<iframe src="../../sims/bus-speed-race/main.html" height="422px" width="100%" scrolling="no"></iframe>
+
+[Run the Bus Speed Race MicroSim Fullscreen](../../sims/bus-speed-race/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Bus Speed Race</summary>
 Type: chart
@@ -446,3 +458,5 @@ The display cable harness in this course reduces crosstalk by placing ground wir
 3. Write code to set bit 5 of a byte named `x` and to test whether bit 5 is set.
 4. Send `0xC1` on the wire in MSB-first order, then in LSB-first order.
 5. A 128 by 64 OLED on I2C at 100 kHz needs how long to receive 1,024 bytes? Use 9 clock cycles per byte.
+
+[See Annotated References](./references.md)

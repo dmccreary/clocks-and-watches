@@ -1,0 +1,118 @@
+{
+  "title": "Weather Station Layout",
+  "creator": "Dan McCreary",
+  "subject": [
+    "E-Paper Display",
+    "Weather Station",
+    "Update Schedule",
+    "Battery Life",
+    "Layout Design"
+  ],
+  "description": "Interactive p5.js design tool for a 152 x 152 e-paper weather display. Students drag and resize the time, indoor and forecast panels, choose update intervals, and simulate a day to count refreshes and WiFi connections and estimate battery life on 500 mAh.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Designing a weather station display and its update schedule",
+    "learningObjectives": [
+      "Design a readable layout for a small e-paper weather display",
+      "Evaluate how each panel's update interval changes refreshes, WiFi connections and battery life",
+      "Justify an update schedule by matching it to how fast each kind of data changes"
+    ],
+    "bloomsTaxonomy": "Create",
+    "duration": "20 minutes",
+    "prerequisites": [
+      "E-paper partial and full refresh",
+      "Non-blocking timers",
+      "WiFi power cost"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 545
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Design challenge with simulated feedback",
+    "keyQuestions": [
+      "Which kind of data needs to update most often, and which least?",
+      "Why is a WiFi fetch more expensive than a display refresh?",
+      "How big must the time digits be to read from across a room?"
+    ],
+    "commonMisconceptions": [
+      "Every panel should update as often as possible to stay accurate",
+      "A bigger display area is free on e-paper (larger partial refreshes take longer)"
+    ],
+    "assessmentOpportunities": [
+      "Compare battery life for several schedules",
+      "Defend a final layout and schedule in writing"
+    ]
+  },
+  "chapter": "19-epaper-weather",
+  "controls": [
+    {
+      "type": "canvas-drag",
+      "label": "Drag and resize panels",
+      "description": "Move a panel by dragging it; resize it by dragging its corner."
+    },
+    {
+      "type": "button",
+      "label": "Simulate day / Pause / Continue",
+      "description": "Runs a 24-hour timeline. Opens paused; nothing runs until it is pressed."
+    },
+    {
+      "type": "button",
+      "label": "Reset layout",
+      "description": "Restores the starting layout and clears results."
+    },
+    {
+      "type": "select",
+      "label": "Time every",
+      "options": [
+        "1 min",
+        "5 min",
+        "15 min"
+      ],
+      "default": "1 min"
+    },
+    {
+      "type": "select",
+      "label": "Indoor every",
+      "options": [
+        "1 min",
+        "5 min",
+        "10 min",
+        "30 min"
+      ],
+      "default": "10 min"
+    },
+    {
+      "type": "select",
+      "label": "Forecast every",
+      "options": [
+        "30 min",
+        "1 hour",
+        "3 hours",
+        "6 hours"
+      ],
+      "default": "1 hour"
+    }
+  ]
+}

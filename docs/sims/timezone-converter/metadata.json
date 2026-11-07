@@ -1,0 +1,72 @@
+{
+  "title": "Timezone Converter",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "Convert UTC to local time for seven time zones with integer second arithmetic, a world map of time-zone bands, a DST toggle, highlighted date rollovers, and a Predict mode.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Timezone Converter",
+    "learningObjectives": [
+      "Apply time zone offsets to convert UTC to local time",
+      "Identify when a conversion crosses midnight and changes the date"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "UTC and time zones (Chapter 14)",
+      "Seconds since an epoch (Chapter 6)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 525
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Interactive exploration",
+    "keyQuestions": [
+      "When does converting UTC to local time change the date?",
+      "How does DST change the offset?"
+    ],
+    "commonMisconceptions": [
+      "Local time always has the same date as UTC",
+      "All time zones are whole hours"
+    ],
+    "assessmentOpportunities": [
+      "Convert 23:00 UTC to Central European time and give the date",
+      "Give India's offset in seconds"
+    ]
+  },
+  "chapter": "14-wifi-ntp",
+  "canvasHeight": 525,
+  "userInterface": {
+    "controls": [
+      "UTC time slider (15-minute steps)",
+      "UTC date input",
+      "Zone dropdown",
+      "DST on checkbox",
+      "Predict button",
+      "HH:MM answer input",
+      "Check button"
+    ]
+  }
+}

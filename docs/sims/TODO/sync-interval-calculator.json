@@ -1,0 +1,15 @@
+{
+  "sim_id": "sync-interval-calculator",
+  "diagram_name": "Sync Interval Calculator",
+  "chapter_number": 14,
+  "chapter_title": "WiFi, NTP, and Time Accuracy",
+  "chapter_dir": "14-wifi-ntp",
+  "chapter_rel_dir": "chapters/14-wifi-ntp",
+  "library": "Chart.js",
+  "bloom_level": "Applying, Evaluating",
+  "bloom_verb": "calculate",
+  "learning_objective": "Students will *calculate* how often a clock must resynchronize for a given accuracy goal (Bloom: Applying, Evaluating).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: chart\n**sim-id:** sync-interval-calculator<br/>\n**Library:** Chart.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *calculate* how often a clock must resynchronize for a given accuracy goal (Bloom: Applying, Evaluating).\n\n**Visual elements:** A sawtooth line chart showing error growing between syncs and resetting to zero at each sync, over 3 days.\n\n**Controls:** Sliders for drift (1 to 100 ppm) and sync interval (1 to 48 hours); a readout \"Worst-case error: X seconds\" and \"Sync interval needed for 1 s accuracy.\" A preset menu selects Pico crystal (30 ppm), DS1307 (20), DS3231 (2).\n\n**Responsive design:** The chart resizes to the container.\n\nImplementation: Chart.js line chart with a generated sawtooth dataset."
+}

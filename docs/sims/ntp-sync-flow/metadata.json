@@ -1,0 +1,71 @@
+{
+  "title": "NTP Sync Flow",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "A Mermaid flowchart of a Pico W time sync with clickable steps that show their MicroPython code and toggles that light up the WiFi and NTP retry paths.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "NTP Sync Flow",
+    "learningObjectives": [
+      "Sequence the steps of an NTP time sync",
+      "Identify what the program should do at each failure point"
+    ],
+    "bloomsTaxonomy": [
+      "Understand",
+      "Apply"
+    ],
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "WiFi, secrets.py, and ntptime (Chapter 14)",
+      "try and except (Chapter 4)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "Mermaid",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 690
+    },
+    "responsive": true,
+    "dependencies": [
+      "Mermaid 10"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Interactive exploration",
+    "keyQuestions": [
+      "What should the clock do if WiFi fails?",
+      "Why convert to local time only after the sync?"
+    ],
+    "commonMisconceptions": [
+      "A failed sync should stop the program",
+      "ntptime.settime() sets local time"
+    ],
+    "assessmentOpportunities": [
+      "Order the sync steps",
+      "Name the exception raised by a failed NTP request and how to handle it"
+    ]
+  },
+  "chapter": "14-wifi-ntp",
+  "canvasHeight": 690,
+  "userInterface": {
+    "controls": [
+      "Click or hover a node to see its code",
+      "WiFi fails toggle",
+      "NTP fails toggle"
+    ]
+  }
+}

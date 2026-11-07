@@ -53,7 +53,7 @@
       }
     },
     "DISP": {
-      "classifierName": "Displays and Drawing",
+      "classifierName": "Display Graphics",
       "color": "PaleGreen",
       "font": {
         "color": "black"
@@ -138,31 +138,31 @@
       "label": "Python Syntax",
       "group": "PYTH",
       "shape": "box",
-      "cis": 1329
+      "cis": 1386
     },
     {
       "id": 8,
       "label": "Variables",
       "group": "PYTH",
-      "cis": 1041
+      "cis": 1098
     },
     {
       "id": 9,
       "label": "Data Types",
       "group": "PYTH",
-      "cis": 824
+      "cis": 881
     },
     {
       "id": 10,
       "label": "Integers",
       "group": "PYTH",
-      "cis": 275
+      "cis": 313
     },
     {
       "id": 11,
       "label": "Floats",
       "group": "PYTH",
-      "cis": 164
+      "cis": 183
     },
     {
       "id": 12,
@@ -198,7 +198,7 @@
       "id": 17,
       "label": "Arithmetic Operations",
       "group": "PYTH",
-      "cis": 162
+      "cis": 181
     },
     {
       "id": 18,
@@ -288,13 +288,13 @@
       "id": 32,
       "label": "Raspberry Pi Pico",
       "group": "MCTR",
-      "cis": 956
+      "cis": 975
     },
     {
       "id": 33,
       "label": "RP2040 Chip",
       "group": "MCTR",
-      "cis": 89
+      "cis": 108
     },
     {
       "id": 34,
@@ -361,7 +361,7 @@
       "id": 44,
       "label": "Flash Memory",
       "group": "MCTR",
-      "cis": 74
+      "cis": 93
     },
     {
       "id": 45,
@@ -380,7 +380,7 @@
       "label": "Microcontroller",
       "group": "MCTR",
       "shape": "box",
-      "cis": 1509
+      "cis": 1567
     },
     {
       "id": 48,
@@ -404,7 +404,7 @@
       "id": 51,
       "label": "Actuators",
       "group": "MCTR",
-      "cis": 245
+      "cis": 284
     },
     {
       "id": 52,
@@ -416,7 +416,7 @@
       "id": 53,
       "label": "Voltage Levels",
       "group": "HARD",
-      "cis": 284
+      "cis": 323
     },
     {
       "id": 54,
@@ -836,7 +836,7 @@
       "id": 123,
       "label": "LED Display",
       "group": "DISP",
-      "cis": 190
+      "cis": 229
     },
     {
       "id": 124,
@@ -896,7 +896,7 @@
       "id": 133,
       "label": "OLED Display",
       "group": "DISP",
-      "cis": 67
+      "cis": 86
     },
     {
       "id": 134,
@@ -926,7 +926,7 @@
       "id": 138,
       "label": "Framebuffer",
       "group": "DISP",
-      "cis": 58
+      "cis": 77
     },
     {
       "id": 139,
@@ -944,19 +944,19 @@
       "id": 141,
       "label": "Pixel Drawing",
       "group": "DISP",
-      "cis": 15
+      "cis": 24
     },
     {
       "id": 142,
       "label": "Line Drawing",
       "group": "DISP",
-      "cis": 14
+      "cis": 23
     },
     {
       "id": 143,
       "label": "Rectangle Drawing",
       "group": "DISP",
-      "cis": 3
+      "cis": 12
     },
     {
       "id": 144,
@@ -1520,7 +1520,7 @@
       "id": 237,
       "label": "X Y Coordinate System",
       "group": "MATH",
-      "cis": 40
+      "cis": 59
     },
     {
       "id": 238,
@@ -1683,7 +1683,7 @@
       "label": "Ohms Law",
       "group": "HARD",
       "shape": "box",
-      "cis": 647
+      "cis": 725
     },
     {
       "id": 265,
@@ -1713,7 +1713,7 @@
       "id": 269,
       "label": "LED Basics",
       "group": "HARD",
-      "cis": 263
+      "cis": 302
     },
     {
       "id": 270,
@@ -1773,7 +1773,7 @@
       "id": 279,
       "label": "Display Resolution",
       "group": "DISP",
-      "cis": 78
+      "cis": 98
     },
     {
       "id": 280,
@@ -1827,19 +1827,19 @@
       "id": 288,
       "label": "Display Coordinates",
       "group": "DISP",
-      "cis": 3
+      "cis": 13
     },
     {
       "id": 289,
       "label": "Bounding Box",
       "group": "DISP",
-      "cis": 2
+      "cis": 11
     },
     {
       "id": 290,
       "label": "Clipping Region",
       "group": "DISP",
-      "cis": 1
+      "cis": 10
     },
     {
       "id": 291,
@@ -2198,6 +2198,12 @@
     {
       "id": 350,
       "label": "Partial E-Paper Refresh",
+      "group": "DISP",
+      "cis": 1
+    },
+    {
+      "id": 351,
+      "label": "Display Shapes",
       "group": "DISP",
       "cis": 1
     }
@@ -3306,6 +3312,10 @@
     {
       "from": 162,
       "to": 279
+    },
+    {
+      "from": 162,
+      "to": 290
     },
     {
       "from": 163,
@@ -4826,6 +4836,14 @@
     {
       "from": 350,
       "to": 348
+    },
+    {
+      "from": 351,
+      "to": 279
+    },
+    {
+      "from": 351,
+      "to": 288
     }
   ]
 }

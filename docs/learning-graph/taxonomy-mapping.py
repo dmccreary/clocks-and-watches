@@ -49,7 +49,7 @@ taxonomy = {
     292: "TIME", 293: "TIME", 294: "TIME", 295: "TIME", 296: "TIME",
     297: "TIME", 298: "TIME", 299: "TIME", 300: "TIME",
 
-    # DISP - Displays and Drawing (123-169, 279-290, 205-207, 230, 348-350)
+    # DISP - Display Graphics (123-169, 279-290, 205-207, 230, 348-351)
     123: "DISP", 124: "DISP", 125: "DISP", 126: "DISP", 127: "DISP",
     128: "DISP", 129: "DISP", 130: "DISP", 131: "DISP", 132: "DISP",
     133: "DISP", 134: "DISP", 135: "DISP", 136: "DISP", 137: "DISP",
@@ -64,7 +64,7 @@ taxonomy = {
     284: "DISP", 285: "DISP", 286: "DISP", 287: "DISP", 288: "DISP",
     289: "DISP", 290: "DISP",
     205: "DISP", 206: "DISP", 207: "DISP", 230: "DISP",
-    348: "DISP", 349: "DISP", 350: "DISP",
+    348: "DISP", 349: "DISP", 350: "DISP", 351: "DISP",
 
     # MATH - Math and Geometry (81, 231-245)
     81: "MATH", 231: "MATH", 232: "MATH", 233: "MATH", 234: "MATH",

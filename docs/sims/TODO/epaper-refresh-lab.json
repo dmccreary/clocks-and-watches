@@ -1,0 +1,15 @@
+{
+  "sim_id": "epaper-refresh-lab",
+  "diagram_name": "E-Paper Refresh Lab",
+  "chapter_number": 19,
+  "chapter_title": "E-Paper and Weather Displays",
+  "chapter_dir": "19-epaper-weather",
+  "chapter_rel_dir": "chapters/19-epaper-weather",
+  "library": "p5.js",
+  "bloom_level": "Analyzing, Evaluating",
+  "bloom_verb": "analyze",
+  "learning_objective": "Students will *analyze* how full and partial refresh strategies trade speed against ghosting (Bloom: Analyzing, Evaluating).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: MicroSim\n**sim-id:** epaper-refresh-lab<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *analyze* how full and partial refresh strategies trade speed against ghosting (Bloom: Analyzing, Evaluating).\n\n**Visual elements:** A 152 by 152 e-paper panel preview showing a clock time. Under it, a running ghost meter (0 to 100 percent) and a timeline of refresh events.\n\n**Controls:** A \"Advance one minute\" button and a \"Run a day\" fast-forward. A refresh-mode selector: *always full*, *always partial*, and *mixed (full every N)* with a slider for N. Readouts show refresh count, total refresh time, and ghost level. Ghost level rises with each partial update, is drawn as faint old digits on the panel, and resets after a full refresh.\n\n**Responsive design:** The panel and timeline stack below 600 px.\n\nImplementation: p5.js with a simple ghost accumulator model."
+}

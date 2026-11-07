@@ -1,0 +1,15 @@
+{
+  "sim_id": "pico-board-explorer",
+  "diagram_name": "Pico Board Explorer",
+  "chapter_number": 1,
+  "chapter_title": "Computational Thinking and Physical Computing",
+  "chapter_dir": "01-foundations",
+  "chapter_rel_dir": "chapters/01-foundations",
+  "library": "p5.js",
+  "bloom_level": "Remembering",
+  "bloom_verb": "identify, recall",
+  "learning_objective": "Students will *identify* the main parts of the Raspberry Pi Pico and *recall* the purpose of each (Bloom: Remembering).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: interactive infographic\n**sim-id:** pico-board-explorer<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *identify* the main parts of the Raspberry Pi Pico and *recall* the purpose of each (Bloom: Remembering).\n\n**Visual elements:** A top-down drawing of the Pico W on a 600 x 450 canvas, with hotspots on the RP2040 chip, USB connector, BOOTSEL button, on-board LED, wireless module, and the two rows of 20 pins.\n\n**Interactions:**\n\n- Hovering a hotspot shows a tooltip with the part name.\n- Clicking a hotspot opens an infobox with a two-sentence description and a \"Used in this book for...\" line.\n- A \"Quiz me\" button hides all labels and asks the student to click a named part; the score is shown and the sim tracks which parts were missed.\n\n**Responsive design:** The board image scales to canvas width and hotspots reposition proportionally on resize.\n\nImplementation: p5.js with an array of hotspot rectangles in normalized coordinates."
+}

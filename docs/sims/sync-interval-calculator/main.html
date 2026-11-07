@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
+    <title>Sync Interval Calculator using Chart.js</title>
+    <style>
+        body { margin: 0px; padding: 0px; font-family: Arial, Helvetica, sans-serif; }
+        main { box-sizing: border-box; min-height: 500px; border: 1px solid silver; background: aliceblue; }
+        #title { text-align: center; font-size: 22px; padding: 8px 0 2px 0; }
+        #chart-wrap { position: relative; height: 300px; margin: 0 10px; background: white; border-radius: 6px; }
+        #readout { margin: 8px 10px 0 10px; padding: 6px 10px; background: white; border-radius: 6px;
+                   font-size: 16px; display: flex; flex-wrap: wrap; gap: 4px 24px; }
+        #readout .ok { color: green; font-weight: bold; }
+        #readout .bad { color: firebrick; font-weight: bold; }
+        .controls { background: white; border-top: 1px solid silver; margin-top: 8px; padding: 6px 10px; font-size: 16px; }
+        .row { display: flex; align-items: center; gap: 10px; margin: 4px 0; }
+        .row .lbl { width: 190px; flex: none; }
+        .row input[type=range] { flex: 1; min-width: 80px; }
+        select { font-size: 15px; }
+        @media (max-width: 560px) {
+            #chart-wrap { height: 290px; }
+            .sub { display: none; }
+            .row .lbl { width: 150px; font-size: 14px; }
+            #readout { font-size: 14px; }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+    <script src="sync-interval-calculator.js"></script>
+</head>
+<body>
+    <main>
+        <div id="title">Sync Interval Calculator<span class="sub">: Error Between Syncs</span></div>
+        <div id="chart-wrap"><canvas id="chart"></canvas></div>
+        <div id="readout"></div>
+        <div class="controls">
+            <div class="row">
+                <label class="lbl" for="preset">Clock source:</label>
+                <select id="preset">
+                    <option value="30" selected>Pico crystal (30 ppm)</option>
+                    <option value="20">DS1307 (20 ppm)</option>
+                    <option value="2">DS3231 (2 ppm)</option>
+                    <option value="custom">Custom (use the slider)</option>
+                </select>
+            </div>
+            <div class="row">
+                <label class="lbl" for="drift">Drift: <strong id="drift-value">30</strong> ppm</label>
+                <input type="range" id="drift" min="1" max="100" step="1" value="30">
+            </div>
+            <div class="row">
+                <label class="lbl" for="interval">Sync interval: <strong id="interval-value">24</strong> h</label>
+                <input type="range" id="interval" min="1" max="48" step="1" value="24">
+            </div>
+        </div>
+    </main>
+    <br/>
+    <a href=".">Back to Lesson Plan</a>
+</body>
+</html>

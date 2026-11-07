@@ -1,0 +1,111 @@
+{
+  "title": "PWM Tone Lab",
+  "creator": "Dan McCreary",
+  "subject": [
+    "PWM",
+    "Sound",
+    "Frequency",
+    "Duty Cycle",
+    "Musical Notes"
+  ],
+  "description": "Interactive p5.js MicroSim where frequency and duty-cycle sliders shape a PWM square wave on an oscilloscope, a piano keyboard highlights the nearest note, and a Play button sounds the tone with the Web Audio API.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "PWM sound: frequency, pitch and duty cycle",
+    "learningObjectives": [
+      "Explain that frequency sets pitch and duty cycle sets how long each cycle is on",
+      "Calculate the period, on time and off time for a given frequency and duty cycle",
+      "Apply f = 440 x 2^(n/12) to find the frequency of a note"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "duration": "15 minutes",
+    "prerequisites": [
+      "GPIO high and low states",
+      "Frequency in hertz"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 560
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4",
+      "Web Audio API"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Guided exploration with calculate-then-check",
+    "keyQuestions": [
+      "What happens to the frequency when a note goes up one octave?",
+      "Does changing the duty cycle change the pitch?",
+      "Why is there no sound at 0% or 100% duty?"
+    ],
+    "commonMisconceptions": [
+      "A higher duty cycle makes a higher pitch (pitch depends only on frequency)",
+      "Notes are evenly spaced in hertz (each semitone multiplies the frequency by about 1.0595)"
+    ],
+    "assessmentOpportunities": [
+      "Calculate the period and on time for a given frequency and duty",
+      "Predict a note's frequency with the formula and verify it"
+    ]
+  },
+  "chapter": "17-sound-alarms-timers",
+  "controls": [
+    {
+      "type": "button",
+      "label": "Play / Stop",
+      "description": "Starts or stops the tone. The MicroSim opens silent; sound starts only after this click."
+    },
+    {
+      "type": "select",
+      "label": "Jump to a note",
+      "options": [
+        "C4",
+        "D4",
+        "E4",
+        "F4",
+        "G4",
+        "A4",
+        "B4",
+        "C5",
+        "A5",
+        "C6",
+        "A6",
+        "E7"
+      ]
+    },
+    {
+      "type": "checkbox",
+      "label": "Show formula",
+      "default": false
+    },
+    {
+      "type": "slider",
+      "label": "Frequency (pitch)",
+      "range": "100-4000 Hz (logarithmic)",
+      "default": 440
+    },
+    {
+      "type": "slider",
+      "label": "Duty cycle",
+      "range": "0-100 percent",
+      "default": 50
+    }
+  ]
+}

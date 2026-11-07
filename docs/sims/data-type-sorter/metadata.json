@@ -1,0 +1,85 @@
+{
+  "title": "Data Type Sorter",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "Drag Python value cards such as 3.0, \"42\" and (2026, 9, 28) into bins for int, float, str, bool, list and tuple, with hints for wrong answers.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Data Type Sorter",
+    "learningObjectives": [
+      "Classify a written Python value as int, float, str, bool, list or tuple",
+      "Name the clue that marks each type: a decimal point, quote marks, True/False, square brackets or parentheses",
+      "Explain why \"42\" is a string and 3.0 is a float even though both look like whole numbers"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Typing values in the Thonny REPL",
+      "The type() function from this chapter"
+    ],
+    "standards": [],
+    "bloomsLevels": [
+      "Remember",
+      "Understand"
+    ]
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 465
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4 (jsDelivr CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false,
+      "notes": "Controls are standard HTML form elements; the canvas has a describe() text for screen readers"
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Sorting game with immediate corrective feedback",
+    "keyQuestions": [
+      "What single clue tells you a value is a string?",
+      "Why is 3.0 not an int?",
+      "How do you tell a list from a tuple at a glance?"
+    ],
+    "commonMisconceptions": [
+      "A value made of digits is always a number, even inside quotes",
+      "Any whole-looking number such as 3.0 is an int",
+      "The words True and \"True\" mean the same thing"
+    ],
+    "assessmentOpportunities": [
+      "Students sort at least 14 of 16 cards correctly on the first try.",
+      "Students can explain why `\"42\"` is a `str` and `3.0` is a `float`.",
+      "Students can write one new example value for each of the six types."
+    ]
+  },
+  "chapter": "03-micropython-basics",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "controls": [
+    {
+      "type": "button",
+      "label": "Shuffle and Restart",
+      "description": "Deals all 16 cards again in a new order and clears the score"
+    },
+    {
+      "type": "canvas drag",
+      "label": "Value card",
+      "description": "Drag the top card onto a bin, or click a bin to drop it there"
+    }
+  ]
+}

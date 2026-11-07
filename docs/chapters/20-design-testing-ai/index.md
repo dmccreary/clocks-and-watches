@@ -107,6 +107,10 @@ The LED clock wins for this user. A student who wants a wearable, or who gives p
 
 #### Diagram: Design Decision Matrix
 
+<iframe src="../../sims/design-decision-matrix/main.html" height="547px" width="100%" scrolling="no"></iframe>
+
+[Run the Design Decision Matrix MicroSim Fullscreen](../../sims/design-decision-matrix/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Design Decision Matrix</summary>
 Type: MicroSim
@@ -243,6 +247,10 @@ Work from the cheapest, most likely cause to the most expensive. Check power and
 
 #### Diagram: Troubleshooting Decision Tree
 
+<iframe src="../../sims/troubleshooting-decision-tree/main.html" height="602px" width="100%" scrolling="no"></iframe>
+
+[Run the Troubleshooting Decision Tree MicroSim Fullscreen](../../sims/troubleshooting-decision-tree/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Troubleshooting Decision Tree</summary>
 Type: workflow diagram
@@ -306,6 +314,10 @@ Connect one channel to SDA, another to SCL, and one to ground, then trigger a ca
 A logic analyzer is the electronics version of a print statement: it shows what is *actually* happening on the wires, which may be different from what you think you told it to do.
 
 #### Diagram: Logic Analyzer Trace Reader
+
+<iframe src="../../sims/logic-analyzer-trace-reader/main.html" height="527px" width="100%" scrolling="no"></iframe>
+
+[Run the Logic Analyzer Trace Reader MicroSim Fullscreen](../../sims/logic-analyzer-trace-reader/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Logic Analyzer Trace Reader</summary>
@@ -446,3 +458,5 @@ Presenters are judged on the whole process, not only on the finished object. A c
 3. Make a bill of materials for a TM1637 clock with an RTC, including a 15 percent spares allowance.
 4. Your clock shows the wrong date after midnight on December 31. Describe a systematic debugging plan, starting with how you reproduce it quickly.
 5. An AI gives you a program that calls `time.strftime()`. What is the problem, and what would you do?
+
+[See Annotated References](./references.md)

@@ -149,6 +149,10 @@ The module works from 3.3 V or 5 V. Powering it from 3.3 V keeps the signal leve
 
 #### Diagram: TM1637 Wiring Diagram
 
+<iframe src="../../sims/tm1637-wiring/main.html" height="557px" width="100%" scrolling="no"></iframe>
+
+[Run the TM1637 Wiring Diagram MicroSim Fullscreen](../../sims/tm1637-wiring/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>TM1637 Wiring Diagram</summary>
 Type: interactive diagram
@@ -302,3 +306,5 @@ The table you saw for the TM1637 is that companion table. When a project does no
 3. A TM1637 is wired to GP2 and GP3, but an I2C scan finds nothing. Is the module broken? Explain.
 4. Write the line that turns the colon on only during even seconds.
 5. Draw a wiring diagram and pin table for a TM1637 using GP10 for CLK and GP11 for DIO.
+
+[See Annotated References](./references.md)

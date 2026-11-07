@@ -1,0 +1,15 @@
+{
+  "sim_id": "troubleshooting-decision-tree",
+  "diagram_name": "Troubleshooting Decision Tree",
+  "chapter_number": 20,
+  "chapter_title": "Design, Testing, and AI-Assisted Development",
+  "chapter_dir": "20-design-testing-ai",
+  "chapter_rel_dir": "chapters/20-design-testing-ai",
+  "library": "Mermaid",
+  "bloom_level": "Analyzing",
+  "bloom_verb": "analyze, select",
+  "learning_objective": "Students will *analyze* a symptom and *select* the most likely cause and the next test (Bloom: Analyzing).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: workflow diagram\n**sim-id:** troubleshooting-decision-tree<br/>\n**Library:** Mermaid<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *analyze* a symptom and *select* the most likely cause and the next test (Bloom: Analyzing).\n\n**Nodes:** A root \"What is the symptom?\" leading to branches: nothing on the display, wrong image, wrong time, buttons misbehave, random resets. Each branch asks yes/no questions (\"Does the I2C scan find the device?\") and ends at a suggested fix and the chapter to review.\n\n**Interactions:** Every node has a Mermaid `click` directive that shows the reasoning and the test to run. A \"Start over\" button resets the path, and a breadcrumb shows the questions answered so far.\n\n**Responsive design:** The diagram scales to container width.\n\nImplementation: Mermaid flowchart with click callbacks."
+}

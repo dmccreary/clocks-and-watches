@@ -114,6 +114,10 @@ This one line is the heart of nearly every clock program in the book.
 
 #### Diagram: Time Tuple Explorer
 
+<iframe src="../../sims/time-tuple-explorer/main.html" height="502px" width="100%" scrolling="no"></iframe>
+
+[Run the Time Tuple Explorer MicroSim Fullscreen](../../sims/time-tuple-explorer/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Time Tuple Explorer</summary>
 Type: interactive infographic
@@ -328,6 +332,10 @@ The loop runs thousands of times per second, and each time it asks "has 500 ms p
 
 #### Diagram: Sleep vs Ticks Timeline
 
+<iframe src="../../sims/sleep-vs-ticks/main.html" height="482px" width="100%" scrolling="no"></iframe>
+
+[Run the Sleep vs Ticks Timeline MicroSim Fullscreen](../../sims/sleep-vs-ticks/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Sleep vs Ticks Timeline</summary>
 Type: MicroSim
@@ -451,3 +459,5 @@ while True:
 3. Convert these 24-hour times to 12-hour with AM or PM: 0:15, 12:00, 18:45.
 4. Why should you use `ticks_diff()` instead of subtracting two `ticks_ms()` values with `-`?
 5. A web service sends the Unix timestamp 1,800,000,000. What value would the Pico's `time.localtime()` need to be given for the same moment?
+
+[See Annotated References](./references.md)

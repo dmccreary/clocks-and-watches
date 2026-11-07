@@ -1,0 +1,86 @@
+{
+  "title": "Bus Speed Race",
+  "creator": "Dan McCreary",
+  "subject": [
+    "Communication Buses",
+    "I2C",
+    "SPI",
+    "UART",
+    "Frame Rate"
+  ],
+  "description": "Compare how long UART, I2C and SPI take to send one full screen of pixels to three different displays, on a logarithmic time axis.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Bus speed and frame time",
+    "learningObjectives": [
+      "Compare the time UART, I2C and SPI need to send one frame to a display",
+      "Calculate frame time from bytes, bits per byte and bus speed",
+      "Evaluate which bus a display needs to reach 20 frames per second"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "duration": "15 minutes",
+    "prerequisites": [
+      "Bits, bytes and the I2C, SPI and UART buses (Chapter 8)",
+      "Display resolution and pixels"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "Chart.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 420
+    },
+    "responsive": true,
+    "dependencies": [
+      "Chart.js 4.4.4"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Comparison of two strategies on the same data",
+    "keyQuestions": [
+      "Why does the UART bar not change when you move either slider?",
+      "How many times more data does the 240x240 color frame hold than the OLED frame?",
+      "What clock speed does I2C need to send a color frame at 20 fps, and is that possible?"
+    ],
+    "commonMisconceptions": [
+      "A faster bus always matters (for a 1,024-byte OLED, 400 kHz I2C is already fast enough for a clock)",
+      "Doubling resolution doubles the data (doubling width and height makes four times the pixels)"
+    ],
+    "assessmentOpportunities": [
+      "The student computes 1,024 x 9 / 400,000 = 23 ms for the OLED on 400 kHz I2C.",
+      "The student explains that each tick on a log axis is ten times the previous one.",
+      "The student justifies a bus choice using frames per second, not just \"faster\"."
+    ]
+  },
+  "chapter": "08-communication-buses",
+  "controls": [
+    {
+      "type": "select",
+      "label": "Display",
+      "description": "Chooses the 128x64 mono OLED, 240x240 color or 320x240 color frame size"
+    },
+    {
+      "type": "slider",
+      "label": "I2C clock",
+      "description": "100 kHz to 1 MHz, default 400 kHz"
+    },
+    {
+      "type": "slider",
+      "label": "SPI clock",
+      "description": "1 MHz to 62.5 MHz, default 40 MHz"
+    }
+  ]
+}

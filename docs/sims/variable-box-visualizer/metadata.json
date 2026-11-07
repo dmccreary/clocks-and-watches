@@ -1,0 +1,100 @@
+{
+  "title": "Variable Box Visualizer",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "Step through short Python programs one assignment at a time and predict each variable's new value before the line runs.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Variable Box Visualizer",
+    "learningObjectives": [
+      "Predict the value of each variable after a sequence of assignment statements",
+      "Explain that x = y copies the current value, so changing y later does not change x",
+      "Apply the shortcut operators +=, -= and %= by rewriting them as x = x + ..."
+    ],
+    "bloomsTaxonomy": "Apply",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Variables and the = assignment operator",
+      "Integer arithmetic, including % for remainders"
+    ],
+    "standards": [],
+    "bloomsLevels": [
+      "Understand",
+      "Apply"
+    ]
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 490
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4 (jsDelivr CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false,
+      "notes": "Controls are standard HTML form elements; the canvas has a describe() text for screen readers"
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Step-through worked example with prediction",
+    "keyQuestions": [
+      "After x = y, does changing y change x?",
+      "What does seconds %= 60 do when seconds is 60?",
+      "Why does a swap need a third variable in most languages?"
+    ],
+    "commonMisconceptions": [
+      "= means \"is equal to\" rather than \"store\"",
+      "x = y links the two names forever",
+      "Two assignment lines can run at the same time"
+    ],
+    "assessmentOpportunities": [
+      "Students predict every value in the \"Counter with +=\" preset correctly, including 60 % 60 = 0.",
+      "Students explain why `a = b` followed by `b = a` does not swap two values.",
+      "Students rewrite `seconds %= 60` as an ordinary assignment."
+    ]
+  },
+  "chapter": "03-micropython-basics",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "controls": [
+    {
+      "type": "button",
+      "label": "Step",
+      "description": "Runs the highlighted line"
+    },
+    {
+      "type": "button",
+      "label": "Reset",
+      "description": "Starts the program again"
+    },
+    {
+      "type": "select",
+      "label": "Preset",
+      "description": "Chooses one of four short programs"
+    },
+    {
+      "type": "checkbox",
+      "label": "Predict first",
+      "description": "Asks for a prediction before each step"
+    },
+    {
+      "type": "input",
+      "label": "Your prediction",
+      "description": "The value you expect the variable to have"
+    }
+  ]
+}

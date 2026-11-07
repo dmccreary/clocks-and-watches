@@ -1,0 +1,80 @@
+{
+  "title": "Sense-Think-Act Clock Sorter",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "Drag eight clock parts into Sensors, Microcontroller, and Actuators columns, get a hint for every wrong drop, then step one signal through the sense-think-act loop.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Physical Computing",
+    "topic": "Sensors, microcontrollers, and actuators in a clock",
+    "learningObjectives": [
+      "Classify clock parts as sensors, a microcontroller, or actuators.",
+      "Explain the direction information flows between each part and the Pico.",
+      "Describe one full sense-think-act cycle in an auto-dimming clock."
+    ],
+    "bloomsTaxonomy": "Understand",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Read the Sensors and Actuators section of Chapter 1."
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 520
+    },
+    "responsive": true,
+    "dependencies": [],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false,
+      "notes": "Screen-reader description provided; all controls are standard HTML elements."
+    },
+    "controls": [
+      {
+        "type": "drag",
+        "label": "Part cards",
+        "description": "Drag each card into a column; correct drops snap in place, wrong drops return with a hint."
+      },
+      {
+        "type": "button",
+        "label": "Reset",
+        "description": "Returns all cards to the tray in a new order."
+      },
+      {
+        "type": "button",
+        "label": "Next step",
+        "description": "Enabled after all cards are placed; steps a signal from sensor to Pico to display."
+      }
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Classification with immediate feedback, followed by a worked example",
+    "keyQuestions": [
+      "Does information flow toward the Pico or away from it for this part?",
+      "Why is a real-time clock chip an input even though it \"keeps time\"?",
+      "Which part does the \"think\" step in every clock?"
+    ],
+    "commonMisconceptions": [
+      "Calling a display an input because it \"shows information.\" It only receives data from the Pico.",
+      "Calling the real-time clock an actuator because it \"does something.\" It reports the time to the Pico, so it is an input.",
+      "Thinking the Pico is a sensor because it has pins that read signals. The pins belong to the controller that runs the program."
+    ],
+    "assessmentOpportunities": [
+      "Students sort all eight parts with no more than one hint.",
+      "Students can explain, using the words \"to the Pico\" or \"from the Pico,\" why each part is a sensor or an actuator.",
+      "Students can describe a sense-think-act cycle for a clock feature not shown in the MicroSim."
+    ],
+    "interactionPattern": "Drag-and-drop sorting with step-through trace"
+  },
+  "chapter": "01-foundations"
+}

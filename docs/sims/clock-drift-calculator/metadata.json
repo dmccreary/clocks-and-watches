@@ -1,0 +1,72 @@
+{
+  "title": "Drift Calculator",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "A Chart.js line chart of accumulated drift versus days for a Pico crystal (30 ppm), DS1307 (20 ppm), DS3231 (2 ppm), and a custom ppm, with days until one minute off.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Drift Calculator",
+    "learningObjectives": [
+      "Calculate accumulated drift from ppm and elapsed time",
+      "Compare how long different clock sources stay within one minute"
+    ],
+    "bloomsTaxonomy": [
+      "Apply",
+      "Evaluate"
+    ],
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Parts per million and the drift formula (Chapter 13)",
+      "Reading a line graph"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "Chart.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 530
+    },
+    "responsive": true,
+    "dependencies": [
+      "Chart.js 4.4.4"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Interactive exploration",
+    "keyQuestions": [
+      "How many days until each source is one minute off?",
+      "Why are the drift lines straight?"
+    ],
+    "commonMisconceptions": [
+      "A clock that is accurate today stays accurate forever",
+      "A small ppm difference does not matter over a year"
+    ],
+    "assessmentOpportunities": [
+      "Compute the one-year drift of a 20 ppm crystal",
+      "Estimate ppm from a measured error after 100 days"
+    ]
+  },
+  "chapter": "13-real-time-clocks",
+  "canvasHeight": 530,
+  "userInterface": {
+    "controls": [
+      "Elapsed days slider (1-365)",
+      "Custom ppm number input",
+      "Legend toggles",
+      "Hover tooltips"
+    ]
+  }
+}

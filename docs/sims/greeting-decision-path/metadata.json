@@ -1,0 +1,95 @@
+{
+  "title": "Greeting Decision Path",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "Trace an if/elif/else chain that picks a greeting from the hour, one test at a time, and see how reordering the tests changes the answer.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Greeting Decision Path",
+    "learningObjectives": [
+      "Trace an if/elif/else chain one test at a time to predict which block runs",
+      "Explain that Python runs only the first block whose test is True and skips the rest",
+      "Analyze how changing the order of elif tests can produce a wrong answer"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Comparison operators such as < and >=",
+      "Booleans (True and False)"
+    ],
+    "standards": [],
+    "bloomsLevels": [
+      "Understand",
+      "Apply"
+    ]
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 520
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4 (jsDelivr CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false,
+      "notes": "Controls are standard HTML form elements; the canvas has a describe() text for screen readers"
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Step-through tracing with prediction",
+    "keyQuestions": [
+      "Why are the tests after the first true one never checked?",
+      "What greeting does hour 18 get, and why?",
+      "Which order of tests is correct, and how can you tell?"
+    ],
+    "commonMisconceptions": [
+      "Python checks every test and uses the last one that is true",
+      "elif tests run in any order",
+      "The else block runs whenever the first test is False"
+    ],
+    "assessmentOpportunities": [
+      "Students predict the greeting for any hour before stepping and are right at least 4 times out of 5.",
+      "Students explain why hour 12 gives \"Afternoon\" and not \"Morning\".",
+      "Students state a rule for ordering `<` tests: smallest limit first."
+    ]
+  },
+  "chapter": "04-control-flow-functions",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "controls": [
+    {
+      "type": "button",
+      "label": "Step",
+      "description": "Checks the next test"
+    },
+    {
+      "type": "button",
+      "label": "Reset trace",
+      "description": "Returns the marker to the start"
+    },
+    {
+      "type": "checkbox",
+      "label": "Reorder tests",
+      "description": "Reverses the order of the three tests"
+    },
+    {
+      "type": "slider",
+      "label": "hour",
+      "description": "Sets the hour from 0 to 23"
+    }
+  ]
+}

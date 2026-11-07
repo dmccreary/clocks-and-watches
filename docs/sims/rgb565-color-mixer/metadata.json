@@ -1,0 +1,75 @@
+{
+  "title": "RGB565 Color Mixer",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "Mix a color with RGB sliders and see it packed into 16-bit RGB565, with 5-6-5 bit groups, hex, the color565() call, lost detail, a gradient banding view, and a Predict mode.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "RGB565 Color Mixer",
+    "learningObjectives": [
+      "Apply the RGB565 packing formula",
+      "Analyze how many bits of color detail are lost in each channel"
+    ],
+    "bloomsTaxonomy": [
+      "Apply",
+      "Analyze"
+    ],
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Binary, hex, shifts, and masks (Chapter 8)",
+      "RGB color (Chapter 15)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 590
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Interactive exploration",
+    "keyQuestions": [
+      "Why does green get 6 bits?",
+      "Which red values pack to the same RGB565 value?"
+    ],
+    "commonMisconceptions": [
+      "RGB565 shows every color your computer can show",
+      "Changing a channel by 1 always changes the displayed color"
+    ],
+    "assessmentOpportunities": [
+      "Pack color565(0, 255, 0) by hand",
+      "Explain why red 250 and 253 look the same on the display"
+    ]
+  },
+  "chapter": "15-color-displays",
+  "canvasHeight": 590,
+  "userInterface": {
+    "controls": [
+      "Red slider (0-255)",
+      "Green slider (0-255)",
+      "Blue slider (0-255)",
+      "Gradient checkbox",
+      "Predict button",
+      "Hex answer input",
+      "Check button"
+    ]
+  }
+}

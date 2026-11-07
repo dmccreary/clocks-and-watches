@@ -62,6 +62,27 @@ We like the 2.42" inch OLED displays since they are bright and have a wide viewi
 
 ## Smartwatch Displays
 
+### GC9A01 Round 1.28" 240x240 Display
+
+The GC9A01 is a round 1.28 inch, 240x240 color TFT display with a 4-wire SPI
+interface. It is the display used in our smartwatch kits.
+
+**Price range:** $3.19 and up.
+
+#### New Low Price: $3.19
+
+![An AliExpress listing from WCMCU Store for a 1.28 inch round 240x240 GC9A01 TFT display module with a 4-wire SPI interface, priced at $3.19](../img/smartwatch-display-gc9a01-three-dollars.png){ width="640" }
+
+*The $3.19 AliExpress listing from WCMCU Store, seen Oct 25, 2026.*
+
+New low price seen Oct 25, 2026. WCMCU Store on AliExpress lists the "TFT
+Display 1.28 Inch TFT LCD Display Module Round RGB 240*240 GC9A01 Driver 4 Wire
+SPI Interface 240x240 PCB" for **$3.19** (circular plate option; 4.8 stars, 32
+reviews, 600+ sold). It is a Choice listing, with free shipping on orders over
+$10 and delivery in about 6 to 10 days.
+
+**Search keywords:** `GC9A01 1.28 inch round TFT 240x240 SPI`
+
 ## Real-Time Clocks
 
 Learning how to use a real-time clock (RTC) is a core part of building

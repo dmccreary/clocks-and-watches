@@ -1,0 +1,15 @@
+{
+  "sim_id": "seconds-to-clock-flowchart",
+  "diagram_name": "Seconds-to-Clock Flowchart",
+  "chapter_number": 1,
+  "chapter_title": "Computational Thinking and Physical Computing",
+  "chapter_dir": "01-foundations",
+  "chapter_rel_dir": "chapters/01-foundations",
+  "library": "Mermaid",
+  "bloom_level": "Applying",
+  "bloom_verb": "apply",
+  "learning_objective": "Students will *apply* an algorithm by tracing a number of seconds through each step (Bloom: Applying).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: workflow diagram\n**sim-id:** seconds-to-clock-flowchart<br/>\n**Library:** Mermaid<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *apply* an algorithm by tracing a number of seconds through each step (Bloom: Applying).\n\n**Nodes (top to bottom):** \"Start: total seconds,\" \"hours = seconds // 3600,\" \"left = seconds % 3600,\" \"minutes = left // 60,\" \"seconds = left % 60,\" \"Show hours:minutes:seconds.\"\n\n**Interactions:**\n\n- Every node has a Mermaid `click` directive that opens an infobox explaining the step in one sentence.\n- A number input labeled \"Seconds since midnight\" (default 45296, range 0 to 86399) runs the algorithm. Each node shows the intermediate value it produces, and the current node is highlighted as the user presses \"Next step.\"\n\n**Responsive design:** The diagram scales to container width; the input panel stacks under the diagram on screens narrower than 600 px.\n\nImplementation: Mermaid flowchart plus a small JavaScript stepper that updates node labels."
+}

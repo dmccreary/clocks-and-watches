@@ -4,11 +4,13 @@
   "kit_docs": "docs/kits/rect-tft-display/index.md",
   "duration": 30,
   "fps": 30,
-  "width": 1280,
-  "height": 720,
-  "scale": 1.5,
   "animation": "animation.html",
   "output": { "name": "rect-tft-display-30s" },
+
+  "formats": {
+    "portrait":  { "default": true, "width": 720,  "height": 1280, "scale": 1.5, "suffix": "" },
+    "landscape": {                   "width": 1280, "height": 720,  "scale": 1.5, "suffix": "-landscape" }
+  },
 
   "storyboard": [
     { "from": 0.0,  "to": 3.0,  "scene": "Meet the kit",       "caption": "Meet the Knob Clock Kit" },

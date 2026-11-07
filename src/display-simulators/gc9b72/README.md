@@ -159,7 +159,8 @@ the old `u`-names (`utime`, `ustruct`, `ujson`, and others).
 | `gc9b72_sim/pico2w.py` | A real Pico 2 W's answers, for programs that inspect the board |
 | `render_lab.py` | Command line: one lab to a PNG or GIF, for any kit |
 | `render_sw_gc9b72_docs.py` | Regenerates every image in `docs/kits/sw-gc9b72/img` |
-| `checks/` | Verification of the sw-gc9b72 labs: `run_all.py` runs them all. Set `GC9B72_KIT` to check another kit's copies of the same labs. |
+| `render_mondaine_docs.py` | Regenerates every image in `docs/kits/mondaine/img` from the `mondaine` kit's labs |
+| `checks/` | Verification of the sw-gc9b72 labs: `run_all.py` runs them all. Set `GC9B72_KIT` to check another kit's copies of the same labs. `check_mondaine.py` always checks the `mondaine` kit (its face, its stop-and-go timing, and that its incremental repaint matches a full redraw). |
 
 ## For another kit's documentation
 

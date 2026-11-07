@@ -1,0 +1,95 @@
+{
+  "title": "Breadboard Connectivity Explorer",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "Hover over any hole of a half-size breadboard to light up every hole it is connected to, add jumper wires, peek at the hidden metal strips with X-ray view, and test yourself in Challenge mode.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Electronics",
+    "topic": "How the holes of a solderless breadboard are connected",
+    "learningObjectives": [
+      "Analyze which holes on a breadboard are electrically connected.",
+      "Explain why the center channel and the separate + and − rails matter.",
+      "Predict how a jumper wire changes which holes are connected."
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Read the Breadboard section of Chapter 2."
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 540
+    },
+    "responsive": true,
+    "dependencies": [],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false,
+      "notes": "Screen-reader description provided; all controls are standard HTML elements."
+    },
+    "controls": [
+      {
+        "type": "hover",
+        "label": "Breadboard holes",
+        "description": "Highlights every hole connected to the hole under the pointer."
+      },
+      {
+        "type": "click",
+        "label": "Breadboard holes",
+        "description": "Two clicks add a jumper wire between two holes."
+      },
+      {
+        "type": "checkbox",
+        "label": "X-ray view",
+        "description": "Shows the hidden metal strips."
+      },
+      {
+        "type": "button",
+        "label": "Clear jumpers",
+        "description": "Removes all jumper wires."
+      },
+      {
+        "type": "button",
+        "label": "Challenge / Free play",
+        "description": "Switches between free exploration and the yes/no connection quiz."
+      },
+      {
+        "type": "button",
+        "label": "Yes / No / Next question",
+        "description": "Answer the current Challenge question and move to the next one."
+      }
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Exploration followed by scored self-assessment",
+    "keyQuestions": [
+      "Are holes c12 and h12 connected? Why or why not?",
+      "Why do strips run along columns and not along rows?",
+      "How many holes are connected to one hole on a power rail?"
+    ],
+    "commonMisconceptions": [
+      "Thinking holes in the same lettered row are connected across the board.",
+      "Thinking a column strip runs across the center channel.",
+      "Thinking the + and − rails are connected to each other."
+    ],
+    "assessmentOpportunities": [
+      "Students score at least 8 out of 10 in Challenge mode.",
+      "Students can state which holes are connected to any given hole without the MicroSim.",
+      "Students explain why connecting the + rail directly to the − rail is dangerous."
+    ],
+    "interactionPattern": "Connectivity explorer with challenge quiz"
+  },
+  "chapter": "02-electronics-fundamentals"
+}

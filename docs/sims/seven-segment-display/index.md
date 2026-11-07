@@ -1,6 +1,6 @@
 ---
-title: Seven-Segment Display
-description: Interactive p5.js simulation demonstrating how seven-segment displays work with individual segment control
+title: "Seven-Segment Display"
+description: "Interactive p5.js simulation demonstrating how seven-segment displays work with individual segment control"
 image: /sims/seven-segment-display/7-segment-display.png
 og:image: /sims/seven-segment-display/7-segment-display.png
 quality_score: 72

@@ -1,0 +1,74 @@
+{
+  "title": "NeoPixel Digit Layout",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "A seven-segment digit built from 14 NeoPixels; click segments, choose digits, show the strip path, rewire the order, and copy the SEG_PIXELS mapping as Python.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "NeoPixel Digit Layout",
+    "learningObjectives": [
+      "Design a pixel-to-segment mapping for a NeoPixel digit",
+      "Apply the mapping and segment bytes to display a digit"
+    ],
+    "bloomsTaxonomy": [
+      "Apply",
+      "Create"
+    ],
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Seven-segment bytes (Chapter 9)",
+      "NeoPixel indexing (Chapter 16)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 525
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Interactive exploration",
+    "keyQuestions": [
+      "Which pixels light for the digit 2?",
+      "How does the wiring order change SEG_PIXELS but not DIGITS?"
+    ],
+    "commonMisconceptions": [
+      "Pixel numbers must follow the segment letters",
+      "Changing the wiring requires new digit bytes"
+    ],
+    "assessmentOpportunities": [
+      "List the lit pixels for a digit",
+      "Count the pixels needed for a four-digit clock with a colon"
+    ]
+  },
+  "chapter": "16-neopixels-shift-registers",
+  "canvasHeight": 525,
+  "userInterface": {
+    "controls": [
+      "Digit dropdown (0-9)",
+      "Show strip order checkbox",
+      "Rewire button",
+      "Reset wiring button",
+      "Copy SEG_PIXELS button",
+      "Click segments"
+    ]
+  }
+}

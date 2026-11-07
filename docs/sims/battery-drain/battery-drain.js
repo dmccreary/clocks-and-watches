@@ -1,4 +1,5 @@
 // battery drain
+// CANVAS_HEIGHT: 430
 // Animate a motor that drains a battery faster the more power is used
 let canvasWidth = 400;
 let drawHeight = 400;

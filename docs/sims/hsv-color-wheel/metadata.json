@@ -1,0 +1,73 @@
+{
+  "title": "HSV Color Wheel",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "A color wheel with a draggable marker shows hue, saturation, and value, the RGB result of the integer hsv_to_rgb function, and a 12-pixel virtual NeoPixel rainbow ring.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "HSV Color Wheel",
+    "learningObjectives": [
+      "Explain hue, saturation, and value",
+      "Convert HSV to RGB with the integer hsv_to_rgb function"
+    ],
+    "bloomsTaxonomy": [
+      "Understand",
+      "Apply"
+    ],
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "RGB NeoPixel colors (Chapter 16)",
+      "Clock angles (Chapter 10)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 600
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Interactive exploration",
+    "keyQuestions": [
+      "How do you dim a color without changing its hue?",
+      "What hue does each pixel of the ring get?"
+    ],
+    "commonMisconceptions": [
+      "Lowering brightness changes the hue",
+      "Saturation and brightness are the same thing"
+    ],
+    "assessmentOpportunities": [
+      "Name the hue of cyan",
+      "Compute hsv_to_rgb(h, 0, 120)"
+    ]
+  },
+  "chapter": "16-neopixels-shift-registers",
+  "canvasHeight": 600,
+  "userInterface": {
+    "controls": [
+      "Draggable wheel marker",
+      "Hue slider (0-359)",
+      "Saturation slider (0-255)",
+      "Value slider (0-255)",
+      "Rotate/Stop button (opens stopped)"
+    ]
+  }
+}

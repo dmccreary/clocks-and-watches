@@ -155,6 +155,10 @@ Changing `ACCENT` once restyles every screen. The Chrono Smart Clock Kit's `conf
 
 #### Diagram: RGB565 Color Mixer
 
+<iframe src="../../sims/rgb565-color-mixer/main.html" height="592px" width="100%" scrolling="no"></iframe>
+
+[Run the RGB565 Color Mixer MicroSim Fullscreen](../../sims/rgb565-color-mixer/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>RGB565 Color Mixer</summary>
 Type: MicroSim
@@ -358,6 +362,10 @@ The dial layout is designed so that few things can be damaged by an erase, and t
 
 #### Diagram: Analog Watch Face Builder
 
+<iframe src="../../sims/analog-watch-face-builder/main.html" height="547px" width="100%" scrolling="no"></iframe>
+
+[Run the Analog Watch Face Builder MicroSim Fullscreen](../../sims/analog-watch-face-builder/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Analog Watch Face Builder</summary>
 Type: MicroSim
@@ -409,3 +417,5 @@ Implementation: p5.js with polar geometry and an overlap test on bounding circle
 3. A 320 by 240 display uses 2 bytes per pixel. How many bytes does a full framebuffer need? Will it fit in 264 KB of RAM?
 4. On the 360 px display with a safe radius of 168, how wide is the usable row 120 pixels above center?
 5. Explain why a direct write display draws the tick marks once instead of every second.
+
+[See Annotated References](./references.md)

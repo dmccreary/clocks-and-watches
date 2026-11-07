@@ -1,0 +1,15 @@
+{
+  "sim_id": "polar-to-screen",
+  "diagram_name": "Polar to Screen Converter",
+  "chapter_number": 10,
+  "chapter_title": "Coordinates, Trigonometry, and Clock Geometry",
+  "chapter_dir": "10-clock-math",
+  "chapter_rel_dir": "chapters/10-clock-math",
+  "library": "p5.js",
+  "bloom_level": "Applying",
+  "bloom_verb": "apply, predict",
+  "learning_objective": "Students will *apply* the polar conversion formulas and *predict* pixel coordinates (Bloom: Applying).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: MicroSim\n**sim-id:** polar-to-screen<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *apply* the polar conversion formulas and *predict* pixel coordinates (Bloom: Applying).\n\n**Visual elements:** A 240 by 240 screen grid with axes showing pixel coordinates (origin at top-left). A line from the center to a movable point labeled with its (x, y) pixel position and its (r, θ) polar position.\n\n**Controls:** Sliders for radius (0 to 120) and angle (0 to 359); a toggle to show the formula with the current numbers substituted; a \"Predict\" mode where the student types the x and y before they are revealed.\n\n**Responsive design:** Grid scales to the canvas size.\n\nImplementation: p5.js with `sin` and `cos` on the formula above."
+}

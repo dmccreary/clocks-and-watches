@@ -9,3 +9,7 @@ secrets.py
 
 # Python bytecode caches (the display simulator, the MkDocs hook)
 __pycache__/
+
+# MicroPython firmware images (.uf2) are never committed. Download them from
+# micropython.org when needed, and keep them out of the repository.
+*.uf2

@@ -1,0 +1,85 @@
+{
+  "title": "Framebuffer Pipeline",
+  "creator": "Dan McCreary",
+  "subject": [
+    "Framebuffer",
+    "SSD1306",
+    "show()",
+    "OLED"
+  ],
+  "description": "Follow the path from a drawing call to lit pixels on an OLED, and compare the state before and after show().",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Framebuffer drawing and the show() command",
+    "learningObjectives": [
+      "Explain the path from a drawing call to lit pixels on the OLED",
+      "Distinguish what changes before show() from what changes after show()",
+      "State how many bytes cross the bus on each show()"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "duration": "12 minutes",
+    "prerequisites": [
+      "Bits and bytes (Chapter 8)",
+      "OLED display basics (Chapter 11)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "Mermaid",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 545
+    },
+    "responsive": true,
+    "dependencies": [
+      "Mermaid 11.4.1"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Step-through exploration with concrete values",
+    "keyQuestions": [
+      "Why is drawing into RAM faster than drawing on the display?",
+      "Why should show() be called once per frame?",
+      "What does the SSD1306 do if the Pico stops sending data?"
+    ],
+    "commonMisconceptions": [
+      "oled.text() draws directly on the screen (it changes the RAM buffer)",
+      "show() only sends the pixels that changed (it sends the whole buffer)"
+    ],
+    "assessmentOpportunities": [
+      "The student explains that drawing calls change only RAM.",
+      "The student states that show() sends all 1,024 bytes every time.",
+      "The student diagnoses a missing show() call from its symptom."
+    ]
+  },
+  "chapter": "11-oled-framebuffers",
+  "controls": [
+    {
+      "type": "node click",
+      "label": "Any box",
+      "description": "Shows the box's role and byte count in the side panel"
+    },
+    {
+      "type": "button",
+      "label": "Before show()",
+      "description": "Highlights the boxes that change before show() is called"
+    },
+    {
+      "type": "button",
+      "label": "After show()",
+      "description": "Highlights the boxes that change when show() runs"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "title": "DS3231 Register Map",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "An interactive map of DS3231 registers 0x00 to 0x12 with hex, binary, and decoded values, bit-field details, live BCD values from the browser clock, and a decoding quiz.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "DS3231 Register Map",
+    "learningObjectives": [
+      "Identify which DS3231 register holds each time field",
+      "Interpret raw register bytes, including BCD and control bits"
+    ],
+    "bloomsTaxonomy": [
+      "Remember",
+      "Understand"
+    ],
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "I2C and readfrom_mem (Chapters 8 and 13)",
+      "Hex, binary, and BCD (Chapters 8 and 13)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 610
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Interactive exploration",
+    "keyQuestions": [
+      "Which register holds the minutes?",
+      "Why must the hours byte be masked with 0x3F?"
+    ],
+    "commonMisconceptions": [
+      "Every register is stored in BCD (temperature is a signed integer)",
+      "The month register needs no masking"
+    ],
+    "assessmentOpportunities": [
+      "Name the register for the day of the month",
+      "Decode a raw minutes byte",
+      "Explain the OSF status flag"
+    ]
+  },
+  "chapter": "13-real-time-clocks",
+  "canvasHeight": 610,
+  "userInterface": {
+    "controls": [
+      "Hover and click on register rows",
+      "Live values checkbox",
+      "Quiz me button",
+      "Answer input",
+      "Check button"
+    ]
+  }
+}

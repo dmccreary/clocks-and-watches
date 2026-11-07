@@ -1,0 +1,15 @@
+{
+  "sim_id": "bounding-box-partial-update",
+  "diagram_name": "Bounding Box and Partial Update",
+  "chapter_number": 12,
+  "chapter_title": "Drawing Shapes, Text, and Animation",
+  "chapter_dir": "12-drawing-text-animation",
+  "chapter_rel_dir": "chapters/12-drawing-text-animation",
+  "library": "p5.js",
+  "bloom_level": "Analyzing",
+  "bloom_verb": "analyze",
+  "learning_objective": "Students will *analyze* how erasing a bounding box lets part of the screen update without disturbing the rest (Bloom: Analyzing).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: MicroSim\n**sim-id:** bounding-box-partial-update<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *analyze* how erasing a bounding box lets part of the screen update without disturbing the rest (Bloom: Analyzing).\n\n**Visual elements:** A 128 by 64 OLED preview with a clock display: hours, minutes, seconds, and a date line. Each item's bounding box can be shown as a colored outline.\n\n**Controls:** Toggle \"Show bounding boxes\"; button \"Advance one second.\" A \"Update mode\" selector switches between *Full redraw* (all pixels flash red as they are redrawn) and *Partial update* (only the seconds box flashes). A counter shows pixels redrawn per frame in each mode.\n\n**Responsive design:** The preview and counter stack below 600 px.\n\nImplementation: p5.js with per-item rectangles and a redraw counter."
+}

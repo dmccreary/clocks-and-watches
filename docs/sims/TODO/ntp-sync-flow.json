@@ -1,0 +1,15 @@
+{
+  "sim_id": "ntp-sync-flow",
+  "diagram_name": "NTP Sync Flow",
+  "chapter_number": 14,
+  "chapter_title": "WiFi, NTP, and Time Accuracy",
+  "chapter_dir": "14-wifi-ntp",
+  "chapter_rel_dir": "chapters/14-wifi-ntp",
+  "library": "Mermaid",
+  "bloom_level": "Understanding, Applying",
+  "bloom_verb": "sequence, identify",
+  "learning_objective": "Students will *sequence* the steps of a time sync and *identify* what to do at each failure point (Bloom: Understanding, Applying).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: workflow diagram\n**sim-id:** ntp-sync-flow<br/>\n**Library:** Mermaid<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *sequence* the steps of a time sync and *identify* what to do at each failure point (Bloom: Understanding, Applying).\n\n**Nodes:** Start, read `secrets.py`, connect WiFi (timeout?), `ntptime.settime()` (success?), apply time zone offset and DST, update display, wait N hours, back to connect. Failure branches go to \"Retry\" and then \"Keep running on last known time.\"\n\n**Interactions:** Every node has a Mermaid `click` directive that shows the code for the step. Two toggle buttons, \"WiFi fails\" and \"NTP fails,\" light up the retry paths.\n\n**Responsive design:** The diagram scales to container width.\n\nImplementation: Mermaid flowchart with click callbacks."
+}

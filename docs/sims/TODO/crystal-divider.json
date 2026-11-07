@@ -1,0 +1,15 @@
+{
+  "sim_id": "crystal-divider",
+  "diagram_name": "Crystal Divider MicroSim",
+  "chapter_number": 1,
+  "chapter_title": "Computational Thinking and Physical Computing",
+  "chapter_dir": "01-foundations",
+  "chapter_rel_dir": "chapters/01-foundations",
+  "library": "p5.js",
+  "bloom_level": "Applying",
+  "bloom_verb": "apply, calculate",
+  "learning_objective": "Students will *apply* frequency division to see how a fast crystal signal becomes a one-second tick, and *calculate* daily drift from a ppm error (Bloom: Applying).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: MicroSim\n**sim-id:** crystal-divider<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *apply* frequency division to see how a fast crystal signal becomes a one-second tick, and *calculate* daily drift from a ppm error (Bloom: Applying).\n\n**Visual elements:** A row of 15 small boxes, each labeled with a frequency starting at 32,768 Hz and halving each box down to 1 Hz. A pulse animation runs through the chain; each box flashes at its own rate.\n\n**Controls:**\n\n- Slider \"Crystal error (ppm),\" range 0 to 100, default 30.\n- Button \"Run one day\" that displays the computed drift in seconds.\n- Toggle \"Slow motion\" that slows the animation so the fast boxes are visible.\n\n**Behavior:** Changing the ppm slider updates a readout, \"Drift per day: X seconds.\" The last box, at 1 Hz, flashes once per second and a digital clock beside it counts up, gaining or losing time visibly when ppm is high.\n\n**Responsive design:** Boxes shrink to fit the container width; the layout stacks vertically under 600 px.\n\nImplementation: p5.js with `frameRate` control and a simple accumulator per box."
+}

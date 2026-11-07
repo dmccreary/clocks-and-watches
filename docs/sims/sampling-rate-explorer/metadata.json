@@ -1,0 +1,97 @@
+{
+  "title": "Sampling Rate Explorer",
+  "creator": "Dan McCreary",
+  "subject": [
+    "Digital Audio",
+    "Sampling Rate",
+    "Nyquist Limit",
+    "Aliasing",
+    "Data Rate"
+  ],
+  "description": "Interactive p5.js MicroSim that samples a sine wave at a chosen rate and bit depth, rebuilds it as a DAC staircase, and shows the Nyquist limit, aliasing, and the data rate in bytes per second.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Audio sampling rate, Nyquist limit and aliasing",
+    "learningObjectives": [
+      "Analyze how the sampling rate changes the number of samples per cycle and the shape of the rebuilt wave",
+      "Predict the heard frequency when a tone is above the Nyquist limit",
+      "Calculate the data rate of digital audio from the sampling rate, bit depth and channel count"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "duration": "15 minutes",
+    "prerequisites": [
+      "Frequency and pitch in hertz",
+      "Bits and bytes"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 545
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Parameter exploration with predict-then-test",
+    "keyQuestions": [
+      "Why must the sampling rate be more than twice the highest frequency?",
+      "What frequency do you hear when a 3,500 Hz tone is sampled 4,000 times per second?",
+      "Why does doubling the bit depth double the data rate?"
+    ],
+    "commonMisconceptions": [
+      "A higher-frequency tone sampled too slowly just sounds quieter (it actually sounds like a different, lower pitch)",
+      "Exactly two samples per cycle is always enough (at exactly the Nyquist limit the samples can all land on zero)"
+    ],
+    "assessmentOpportunities": [
+      "State the Nyquist limit for a given sampling rate",
+      "Predict and verify an aliased frequency",
+      "Calculate bytes per second for a given rate and bit depth"
+    ]
+  },
+  "chapter": "17-sound-alarms-timers",
+  "controls": [
+    {
+      "type": "slider",
+      "label": "Wave frequency",
+      "range": "100-4000 Hz",
+      "default": 440
+    },
+    {
+      "type": "slider",
+      "label": "Sampling rate",
+      "range": "2000-44100 samples/s",
+      "default": 8000
+    },
+    {
+      "type": "select",
+      "label": "Bit depth",
+      "options": [
+        "16-bit",
+        "8-bit"
+      ],
+      "default": "16-bit"
+    },
+    {
+      "type": "checkbox",
+      "label": "Show the wave you hear (after filtering)",
+      "default": false
+    }
+  ]
+}

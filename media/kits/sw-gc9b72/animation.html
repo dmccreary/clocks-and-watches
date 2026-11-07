@@ -5,25 +5,39 @@
 <title>Chrono Smart Clock Kit Animation</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&amp;family=VT323&amp;display=swap">
 <style>
+/* Layout tokens: landscape is the base; the PORTRAIT block at the end overrides them. */
+:root{
+  --W:1280px; --H:720px;
+  --stage-bg:radial-gradient(900px 540px at 60% 50%,#18222f 0%,#0b0e13 72%);
+  --cap-l:64px; --cap-t:30px; --cap-w:1152px; --kick-fs:15px; --kick-ls:.14em; --head-fs:44px; --head-mt:10px;
+  --band-t:650px;
+  --prog-l:64px; --prog-t:704px; --prog-w:1152px;
+  --pills-l:0px; --pills-w:1280px; --pill-fs:17px; --pill-pad:10px 20px; --pill-gap:12px;
+  --chips-l:0px; --chips-w:1280px; --chip-sz:40px; --chip-fs:15px; --chip-gap:8px;
+  --tag-fs:17px; --tag-pad:6px 14px;
+  --cam-wide:translate(55px,120px) scale(.85);
+  --cam-mid:translate(55px,120px) scale(.85);
+  --cam-close:translate(-350px,110px) scale(1);
+}
 body{margin:0;background:#0b0e13}
-.stage{position:absolute;left:0;top:0;width:1280px;height:720px;overflow:hidden;background:radial-gradient(900px 540px at 60% 50%,#18222f 0%,#0b0e13 72%);font-family:'Rubik',system-ui,sans-serif;color:#e8edf5}
-.pause-input{position:absolute;left:1172px;top:650px;width:44px;height:44px;margin:0;opacity:0;z-index:30;cursor:pointer}
-.pause-btn{position:absolute;left:1172px;top:650px;width:44px;height:44px;box-sizing:border-box;border-radius:50%;border:1.5px solid #3a4659;background:#10151d;display:flex;align-items:center;justify-content:center;z-index:25;color:#e8edf5;font-size:14px}
+.stage{position:absolute;left:0;top:0;width:var(--W);height:var(--H);overflow:hidden;background:var(--stage-bg);font-family:'Rubik',system-ui,sans-serif;color:#e8edf5}
+.pause-input{position:absolute;left:calc(var(--W) - 108px);top:var(--band-t);width:44px;height:44px;margin:0;opacity:0;z-index:30;cursor:pointer}
+.pause-btn{position:absolute;left:calc(var(--W) - 108px);top:var(--band-t);width:44px;height:44px;box-sizing:border-box;border-radius:50%;border:1.5px solid #3a4659;background:#10151d;display:flex;align-items:center;justify-content:center;z-index:25;color:#e8edf5;font-size:14px}
 .ico-play{display:none}
 .pause-input:checked ~ .pause-btn .ico-pause{display:none}
 .pause-input:checked ~ .pause-btn .ico-play{display:block}
 .pause-input:checked ~ .stage *{animation-play-state:paused !important}
-.cover{position:absolute;left:0;top:0;width:1280px;height:720px;background:#0b0e13;z-index:10;animation:cover 30s linear infinite both}
-.cap{position:absolute;left:64px;top:30px;width:1152px;opacity:0}
-.kick{font-size:15px;font-weight:500;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:#2fd8f0}
-.head{font-size:44px;font-weight:700;line-height:1.1;margin-top:10px;color:#fff;white-space:nowrap}
-.prog-track{position:absolute;left:64px;top:704px;width:1152px;height:4px;border-radius:2px;background:#1d2633}
-.prog-fill{position:absolute;left:64px;top:704px;width:1152px;height:4px;border-radius:2px;background:#2fd8f0;transform-origin:0 50%;animation:prog 30s linear infinite both}
-.prog-tick{position:absolute;top:700px;width:2px;height:12px;background:#3a4659}
-.pills{position:absolute;left:0;top:650px;width:1280px;display:flex;justify-content:center;gap:12px;opacity:0;animation:pillsRow 30s linear infinite both}
-.pill{--off:transparent;--offc:#9fb0c6;--offb:#3a4659;--on:#2fd8f0;--onc:#04222b;padding:10px 20px;border-radius:999px;border:1.5px solid #3a4659;font-size:17px;font-weight:500;line-height:1.2}
-.chips{position:absolute;left:0;top:650px;width:1280px;display:flex;justify-content:center;gap:8px;opacity:0;animation:chipsRow 30s linear infinite both}
-.chip{width:40px;height:40px;box-sizing:border-box;border:1.5px solid #3a4659;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:500;color:#7e8aa0;animation:chipOn 30s linear infinite both}
+.cover{position:absolute;left:0;top:0;width:var(--W);height:var(--H);background:#0b0e13;z-index:10;animation:cover 30s linear infinite both}
+.cap{position:absolute;left:var(--cap-l);top:var(--cap-t);width:var(--cap-w);opacity:0}
+.kick{font-size:var(--kick-fs);font-weight:500;line-height:1;letter-spacing:var(--kick-ls);text-transform:uppercase;color:#2fd8f0}
+.head{font-size:var(--head-fs);font-weight:700;line-height:1.1;margin-top:var(--head-mt);color:#fff;white-space:nowrap}
+.prog-track{position:absolute;left:var(--prog-l);top:var(--prog-t);width:var(--prog-w);height:4px;border-radius:2px;background:#1d2633}
+.prog-fill{position:absolute;left:var(--prog-l);top:var(--prog-t);width:var(--prog-w);height:4px;border-radius:2px;background:#2fd8f0;transform-origin:0 50%;animation:prog 30s linear infinite both}
+.prog-tick{position:absolute;top:calc(var(--prog-t) - 4px);left:calc(var(--prog-l) + var(--prog-w) * var(--f));width:2px;height:12px;background:#3a4659}
+.pills{position:absolute;left:var(--pills-l);top:var(--band-t);width:var(--pills-w);display:flex;flex-wrap:wrap;justify-content:center;gap:var(--pill-gap);opacity:0;animation:pillsRow 30s linear infinite both}
+.pill{--off:transparent;--offc:#9fb0c6;--offb:#3a4659;--on:#2fd8f0;--onc:#04222b;padding:var(--pill-pad);border-radius:999px;border:1.5px solid #3a4659;font-size:var(--pill-fs);font-weight:500;line-height:1.2}
+.chips{position:absolute;left:var(--chips-l);top:var(--band-t);width:var(--chips-w);display:flex;flex-wrap:wrap;justify-content:center;gap:var(--chip-gap);opacity:0;animation:chipsRow 30s linear infinite both}
+.chip{width:var(--chip-sz);height:var(--chip-sz);box-sizing:border-box;border:1.5px solid #3a4659;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:var(--chip-fs);font-weight:500;color:#7e8aa0;animation:chipOn 30s linear infinite both}
 .rig{position:absolute;left:0;top:0;width:1400px;height:620px;transform-origin:0 0;animation:cam 30s ease-in-out infinite both}
 .rise{position:absolute;left:0;top:0;width:1400px;height:620px;animation:rise 30s ease-out infinite both}
 .bb{position:absolute;left:20px;top:200px;width:820px;height:330px;background:#eef0f2;background-image:radial-gradient(circle,#9aa1ab 2px,transparent 2.6px);background-size:18px 18px;border-radius:12px;box-shadow:inset 0 0 0 3px #c9ced6,0 24px 40px rgba(0,0,0,.45)}
@@ -48,7 +62,7 @@ body{margin:0;background:#0b0e13}
 .cap-b{position:absolute;left:13px;top:13px;width:38px;height:38px;border-radius:50%}
 .blab{position:absolute;top:72px;width:64px;text-align:center;font-size:15px;font-weight:700;color:#334}
 .rip{position:absolute;left:-12px;top:-12px;width:88px;height:88px;box-sizing:border-box;border-radius:50%;border:3px solid #2fd8f0;opacity:0}
-.tag{position:absolute;padding:6px 14px;border:1.5px solid #2fd8f0;border-radius:999px;background:#0b0e13;color:#e8edf5;font-size:17px;font-weight:500;line-height:1.2;white-space:nowrap;opacity:0}
+.tag{position:absolute;padding:var(--tag-pad);border:1.5px solid #2fd8f0;border-radius:999px;background:#0b0e13;color:#e8edf5;font-size:var(--tag-fs);font-weight:500;line-height:1.2;white-space:nowrap;opacity:0}
 .tag-amber{border-color:#ff9b2e;color:#ffd9a8}
 @keyframes cover {
   0%,2% {opacity:1}
@@ -56,9 +70,10 @@ body{margin:0;background:#0b0e13}
   100% {opacity:1}
 }
 @keyframes cam {
-  0%,26.667% {transform:translate(55px,120px) scale(.85)}
-  30.667%,86.667% {transform:translate(-350px,110px) scale(1)}
-  91.333%,100% {transform:translate(55px,120px) scale(.85)}
+  0%,10% {transform:var(--cam-wide)}
+  13.333%,26.667% {transform:var(--cam-mid)}
+  30.667%,86.667% {transform:var(--cam-close)}
+  91.333%,100% {transform:var(--cam-wide)}
 }
 @keyframes rise {
   0%,2% {opacity:0;transform:translateY(28px)}
@@ -262,14 +277,51 @@ body{margin:0;background:#0b0e13}
   24.333%,25.333% {opacity:1}
   26.333%,100% {opacity:0}
 }
+.tag-pico{left:150px;top:150px;animation:tagIntro 30s linear infinite both}
+.tag-board{left:640px;top:90px;animation:tagIntro 30s linear infinite both}
+.tag-btns{left:600px;top:430px;animation:tagIntro 30s linear infinite both}
+.tag-vcc{left:560px;top:250px;animation:tagVcc 30s linear infinite both}
+.tag-usb{left:40px;top:395px;animation:tagUsb 30s linear infinite both}
+.tag-mode{left:560px;top:260px;animation:tagMode 30s linear infinite both}
+.tag-up{left:660px;top:260px;animation:tagUp 30s linear infinite both}
+@keyframes tagIntroP {
+  0%,5.333% {opacity:0}
+  6%,9.333% {opacity:1}
+  10%,100% {opacity:0}
+}
 
+/* ---------- PORTRAIT: 720 x 1280 stage, x1.5 = 1080 x 1920 (YouTube Shorts) ----------
+   Safe box x 40..640, y 165..1025. Caption 170-340 | rig 360-880 | pills/chips 905-1000 | progress 1014.
+   Camera: wide (whole kit) -> mid (Pico + breadboard) -> close (screen + buttons) -> wide. */
+:root[data-format=portrait]{
+  --W:720px; --H:1280px;
+  --stage-bg:radial-gradient(760px 760px at 50% 48%,#18222f 0%,#0b0e13 72%);
+  --cap-l:40px; --cap-t:170px; --cap-w:580px; --kick-fs:18px; --kick-ls:.08em; --head-fs:52px; --head-mt:14px;
+  --band-t:905px;
+  --prog-l:40px; --prog-t:1014px; --prog-w:580px;
+  --pills-l:110px; --pills-w:460px; --pill-fs:22px; --pill-pad:9px 18px; --pill-gap:10px;
+  --chips-l:150px; --chips-w:380px; --chip-sz:46px; --chip-fs:18px; --chip-gap:8px;
+  --tag-fs:30px; --tag-pad:8px 16px;
+  --cam-wide:translate(29.5px,498.5px) scale(.45);
+  --cam-mid:translate(30px,354px) scale(.72);
+  --cam-close:translate(-448px,436px) scale(.8);
+}
+:root[data-format=portrait] .head{white-space:normal;text-wrap:balance}
+:root[data-format=portrait] .tag-intro{animation-name:tagIntroP}
+:root[data-format=portrait] .tag-pico{left:60px;top:120px}
+:root[data-format=portrait] .tag-board{left:560px;top:-40px}
+:root[data-format=portrait] .tag-btns{left:470px;top:440px}
+:root[data-format=portrait] .tag-vcc{left:300px;top:130px}
+:root[data-format=portrait] .tag-usb{left:20px;top:400px}
+:root[data-format=portrait] .tag-mode,
+:root[data-format=portrait] .tag-up{left:600px;top:236px}
 </style>
 </head>
 <body>
 <input class="pause-input no-video" type="checkbox" id="pause" aria-label="Pause animation">
 <label class="pause-btn no-video" for="pause"><span class="ico-pause">II</span><span class="ico-play">&#9654;</span></label>
 <div class="stage" role="img" aria-label="A 30-second animation of the Chrono Smart Clock Kit. A Raspberry Pi Pico W on a breadboard is joined to a round 360 by 360 color display by eight colored wires, with a reminder that VCC goes to 3V3, not 5 volts. A USB cable plugs in, the clock sets its time over WiFi and shows the weather. Pressing the MODE button steps through five faces: weather, analog, digital, stopwatch and timer, and the UP button starts the stopwatch and the timer. The kit has 13 labs, for ages 10 and up, with no soldering.">
-  <div class="cap" style="animation:cap0 30s ease-out infinite both"><div class="kick">Ages 10 and up · no soldering</div><div class="head">Meet the Chrono Smart Clock Kit</div></div><div class="cap" style="animation:cap1 30s ease-out infinite both"><div class="kick">Step 1 · Wire it</div><div class="head">8 wires join the Pico W to the screen</div></div><div class="cap" style="animation:cap2 30s ease-out infinite both"><div class="kick">Step 2 · Power on</div><div class="head">It sets its own time from the internet</div></div><div class="cap" style="animation:cap3 30s ease-out infinite both"><div class="kick">Step 3 · Five modes</div><div class="head">Press MODE to step through the faces</div></div><div class="cap" style="animation:cap4 30s ease-out infinite both"><div class="kick">13 labs · under $20 in parts</div><div class="head">Build it. Code it. Make it yours.</div></div>
+  <div class="cap" style="animation:cap0 30s ease-out infinite both"><div class="kick">Ages 10 and up · no soldering</div><div class="head">Meet the Chrono Smart Clock Kit</div></div><div class="cap" style="animation:cap1 30s ease-out infinite both"><div class="kick">Step 1 · Wire it</div><div class="head">8 wires join the Pico&nbsp;W to the screen</div></div><div class="cap" style="animation:cap2 30s ease-out infinite both"><div class="kick">Step 2 · Power on</div><div class="head">It sets its own time from the internet</div></div><div class="cap" style="animation:cap3 30s ease-out infinite both"><div class="kick">Step 3 · Five modes</div><div class="head">Press MODE to step through the faces</div></div><div class="cap" style="animation:cap4 30s ease-out infinite both"><div class="kick">13 labs · under $20 in parts</div><div class="head">Build it. Code it. Make it yours.</div></div>
   <div class="rig">
     <div class="rise">
       <div class="bb"></div>
@@ -298,13 +350,13 @@ body{margin:0;background:#0b0e13}
 <path class="w" style="stroke:#9e9e9e;animation-delay:2.10s" d="M472,362 V472 Q472,488 488,488 H1204 Q1220,488 1220,472 V448"/>
 </svg>
     </div>
-    <div class="tag" style="left:150px;top:150px;animation:tagIntro 30s linear infinite both">Pico W · the brain, with WiFi</div>
-    <div class="tag" style="left:640px;top:90px;animation:tagIntro 30s linear infinite both">Round screen · 360 × 360 pixels</div>
-    <div class="tag" style="left:600px;top:430px;animation:tagIntro 30s linear infinite both">3 buttons: MODE · UP · DOWN</div>
-    <div class="tag tag-amber" style="left:560px;top:250px;animation:tagVcc 30s linear infinite both">VCC to 3V3 · not 5 volts</div>
-    <div class="tag" style="left:40px;top:395px;animation:tagUsb 30s linear infinite both">USB power</div>
-    <div class="tag" style="left:560px;top:260px;animation:tagMode 30s linear infinite both">MODE: next face</div>
-    <div class="tag" style="left:660px;top:260px;animation:tagUp 30s linear infinite both">UP: start</div>
+    <div class="tag tag-pico tag-intro">Pico W · the brain, with WiFi</div>
+    <div class="tag tag-board tag-intro">Round screen · 360 × 360 pixels</div>
+    <div class="tag tag-btns tag-intro">3 buttons: MODE · UP · DOWN</div>
+    <div class="tag tag-amber tag-vcc">VCC to 3V3 · not 5 volts</div>
+    <div class="tag tag-usb">USB power</div>
+    <div class="tag tag-mode">MODE: next face</div>
+    <div class="tag tag-up">UP: start</div>
   </div>
   <div class="pills">
     <div class="pill" style="animation:act0 30s linear infinite both">Weather</div>
@@ -314,7 +366,7 @@ body{margin:0;background:#0b0e13}
     <div class="pill" style="animation:act4 30s linear infinite both">Timer</div>
   </div>
   <div class="chips"><div class="chip" style="animation-delay:0.00s">00</div><div class="chip" style="animation-delay:0.14s">01</div><div class="chip" style="animation-delay:0.28s">02</div><div class="chip" style="animation-delay:0.42s">03</div><div class="chip" style="animation-delay:0.56s">04</div><div class="chip" style="animation-delay:0.70s">05</div><div class="chip" style="animation-delay:0.84s">06</div><div class="chip" style="animation-delay:0.98s">07</div><div class="chip" style="animation-delay:1.12s">08</div><div class="chip" style="animation-delay:1.26s">09</div><div class="chip" style="animation-delay:1.40s">10</div><div class="chip" style="animation-delay:1.54s">11</div><div class="chip" style="animation-delay:1.68s">12</div></div>
-  <div class="prog-track"></div><div class="prog-fill"></div><div class="prog-tick" style="left:179px"></div><div class="prog-tick" style="left:371px"></div><div class="prog-tick" style="left:525px"></div><div class="prog-tick" style="left:1062px"></div>
+  <div class="prog-track"></div><div class="prog-fill"></div><div class="prog-tick" style="--f:0.1"></div><div class="prog-tick" style="--f:0.2667"></div><div class="prog-tick" style="--f:0.4"></div><div class="prog-tick" style="--f:0.8667"></div>
   <div class="cover"></div>
 </div>
 </body>

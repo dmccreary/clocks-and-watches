@@ -1,0 +1,70 @@
+{
+  "title": "Accuracy vs Precision Targets",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "A dartboard target where the bullseye is the true time and each dot is a clock reading; bias and spread sliders show the difference between accurate and precise clocks.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Accuracy vs Precision Targets",
+    "learningObjectives": [
+      "Differentiate accuracy (closeness to the true time) from precision (consistency of readings) using a clock-error analogy"
+    ],
+    "bloomsTaxonomy": [
+      "Understand",
+      "Analyze"
+    ],
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Clock drift and ppm (Chapter 13)",
+      "The idea of an average"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 535
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Interactive exploration",
+    "keyQuestions": [
+      "Which slider moves the average away from the bullseye?",
+      "Can a clock be precise but not accurate?"
+    ],
+    "commonMisconceptions": [
+      "Accuracy and precision mean the same thing",
+      "A clock with tightly grouped readings must be correct"
+    ],
+    "assessmentOpportunities": [
+      "Classify a target picture and name the slider that caused it",
+      "Explain whether a clock that is always 5 s fast is accurate or precise"
+    ]
+  },
+  "chapter": "13-real-time-clocks",
+  "canvasHeight": 535,
+  "userInterface": {
+    "controls": [
+      "Bias slider (0-4 s)",
+      "Spread slider (0.1-3 s)",
+      "Take 20 readings button"
+    ]
+  }
+}

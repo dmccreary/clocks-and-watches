@@ -90,6 +90,8 @@ they have the first 20 rows yellow and the remaining 44 rows blue.
 
 [GC9B72 2.1" Smartwatch Display with Pico 2 W](./sw-gc9b72/index.md)
 
+[Railway Clock (Mondaine-Style) with the GC9B72 Display and Pico W](./mondaine/index.md)
+
 [Waveshare LCD Smartwatch Display](./waveshare-lcd/index.md)
 
 ## E-Paper Clocks

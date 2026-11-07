@@ -1,0 +1,15 @@
+{
+  "sim_id": "quadrature-encoder-sim",
+  "diagram_name": "Quadrature Encoder Simulator",
+  "chapter_number": 7,
+  "chapter_title": "Buttons, Interrupts, and State Machines",
+  "chapter_dir": "07-buttons-state-machines",
+  "chapter_rel_dir": "chapters/07-buttons-state-machines",
+  "library": "p5.js",
+  "bloom_level": "Understanding",
+  "bloom_verb": "understand",
+  "learning_objective": "Students will *understand* how the A and B signals encode rotation direction (Bloom: Understanding).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: MicroSim\n**sim-id:** quadrature-encoder-sim<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *understand* how the A and B signals encode rotation direction (Bloom: Understanding).\n\n**Visual elements:** A draggable knob on the left. On the right, two square-wave traces for A and B scrolling in time, with a vertical line at each falling edge of A showing the value of B at that instant. A counter shows the running value.\n\n**Controls:** Drag the knob clockwise or counterclockwise, or use \"Step CW\" and \"Step CCW\" buttons; a \"Show table\" toggle displays the state sequence.\n\n**Responsive design:** Knob and traces scale with the container.\n\nImplementation: p5.js with angle-to-signal mapping."
+}

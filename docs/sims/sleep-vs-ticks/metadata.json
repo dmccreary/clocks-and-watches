@@ -1,0 +1,95 @@
+{
+  "title": "Sleep vs Ticks Timeline",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "Two timelines compare a blocking sleep(1) loop with a non-blocking ticks_diff() loop and measure how long each takes to notice a button press.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Sleep vs Ticks Timeline",
+    "learningObjectives": [
+      "Compare blocking timing with sleep() and non-blocking timing with ticks_ms() and ticks_diff()",
+      "Measure the delay (latency) before each program notices a button press",
+      "Explain why a program that sleeps cannot respond to input"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "The sleep() and ticks_ms() functions",
+      "Reading a button with value()"
+    ],
+    "standards": [],
+    "bloomsLevels": [
+      "Understand",
+      "Analyze"
+    ]
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 480
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4 (jsDelivr CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false,
+      "notes": "Controls are standard HTML form elements; the canvas has a describe() text for screen readers"
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Side-by-side comparison with measurement",
+    "keyQuestions": [
+      "What can the top program do while it is asleep?",
+      "Why is the bottom program never more than about 10 ms late?",
+      "Do both programs blink the LED at the same rate?"
+    ],
+    "commonMisconceptions": [
+      "A button press is stored until the program wakes up and is never late",
+      "sleep() lets other code run in the background",
+      "Non-blocking code makes the LED blink faster"
+    ],
+    "assessmentOpportunities": [
+      "Students state the longest possible delay for each program (about 1000 ms and about 10 ms).",
+      "Students explain the word \"blocking\" using the gray blocks.",
+      "Students identify which program to use for a stopwatch with a start button, and why."
+    ]
+  },
+  "chapter": "06-getting-time",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "controls": [
+    {
+      "type": "button",
+      "label": "Start / Pause",
+      "description": "Runs or freezes the simulated clock; opens paused"
+    },
+    {
+      "type": "button",
+      "label": "Press button",
+      "description": "Presses the button at the current simulated time"
+    },
+    {
+      "type": "button",
+      "label": "Reset",
+      "description": "Clears presses and returns to the paused start"
+    },
+    {
+      "type": "slider",
+      "label": "Speed",
+      "description": "Sets simulated time from 0.05x to 1x real time"
+    }
+  ]
+}

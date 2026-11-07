@@ -1,6 +1,6 @@
 ---
-title: Binary Clock
-description: Interactive p5.js simulation displaying current time in binary format using vertical LED columns
+title: "Binary Clock"
+description: "Interactive p5.js simulation displaying current time in binary format using vertical LED columns"
 quality_score: 72
 ---
 

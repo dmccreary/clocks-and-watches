@@ -102,6 +102,10 @@ The interactive diagram below lets you explore the decomposition of a clock your
 
 #### Diagram: Clock Decomposition Explorer
 
+<iframe src="../../sims/clock-decomposition-explorer/main.html" height="494px" width="100%" scrolling="no"></iframe>
+
+[Run the Clock Decomposition Explorer MicroSim Fullscreen](../../sims/clock-decomposition-explorer/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Clock Decomposition Explorer</summary>
 Type: interactive diagram
@@ -178,6 +182,10 @@ The clickable flowchart below shows the same algorithm as a diagram.
 
 #### Diagram: Seconds-to-Clock Flowchart
 
+<iframe src="../../sims/seconds-to-clock-flowchart/main.html" height="542px" width="100%" scrolling="no"></iframe>
+
+[Run the Seconds-to-Clock Flowchart MicroSim Fullscreen](../../sims/seconds-to-clock-flowchart/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Seconds-to-Clock Flowchart</summary>
 Type: workflow diagram
@@ -247,6 +255,10 @@ Together these form the pattern behind every device in this book: **sense, think
 
 #### Diagram: Sense-Think-Act Infographic
 
+<iframe src="../../sims/sense-think-act-clock/main.html" height="522px" width="100%" scrolling="no"></iframe>
+
+[Run the Sense-Think-Act Infographic MicroSim Fullscreen](../../sims/sense-think-act-clock/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Sense-Think-Act Infographic</summary>
 Type: interactive infographic
@@ -287,6 +299,10 @@ Watch and clock chips often use a different crystal that vibrates at 32,768 Hz. 
 So a crystal-driven clock might drift about 2.6 seconds per day, or roughly a minute a month. That is why later chapters add real-time clock chips and internet time sync to correct the drift.
 
 #### Diagram: Crystal Divider MicroSim
+
+<iframe src="../../sims/crystal-divider/main.html" height="482px" width="100%" scrolling="no"></iframe>
+
+[Run the Crystal Divider MicroSim MicroSim Fullscreen](../../sims/crystal-divider/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Crystal Divider MicroSim</summary>
@@ -380,6 +396,10 @@ This tiny program is a full sense-think-act loop with no sensor: the loop is the
 
 #### Diagram: Pico Board Explorer
 
+<iframe src="../../sims/pico-board-explorer/main.html" height="582px" width="100%" scrolling="no"></iframe>
+
+[Run the Pico Board Explorer MicroSim Fullscreen](../../sims/pico-board-explorer/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Pico Board Explorer</summary>
 Type: interactive infographic
@@ -439,3 +459,5 @@ The table below connects each idea from this chapter to a piece of your first cl
 3. Calculate the drift per day of a crystal that is accurate to 20 ppm.
 4. Explain in your own words why a microcontroller with 264 KB of RAM is enough for a clock.
 5. In the blink program, which line is the sensor, which is the actuator, and which is the "think" part? (Hint: one of these does not exist.)
+
+[See Annotated References](./references.md)

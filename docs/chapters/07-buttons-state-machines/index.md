@@ -90,6 +90,10 @@ A human sees one press. The Pico is fast enough to see the burst as **ten presse
 
 #### Diagram: Button Bounce Oscilloscope
 
+<iframe src="../../sims/button-bounce-scope/main.html" height="547px" width="100%" scrolling="no"></iframe>
+
+[Run the Button Bounce Oscilloscope MicroSim Fullscreen](../../sims/button-bounce-scope/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Button Bounce Oscilloscope</summary>
 Type: MicroSim
@@ -236,6 +240,10 @@ A drawing of the same idea, with circles for states and arrows for transitions, 
 
 #### Diagram: Clock Mode State Machine
 
+<iframe src="../../sims/clock-mode-state-machine/main.html" height="504px" width="100%" scrolling="no"></iframe>
+
+[Run the Clock Mode State Machine MicroSim Fullscreen](../../sims/clock-mode-state-machine/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Clock Mode State Machine</summary>
 Type: interactive diagram
@@ -366,6 +374,10 @@ a.irq(trigger=Pin.IRQ_FALLING, handler=on_turn)
 
 #### Diagram: Quadrature Encoder Simulator
 
+<iframe src="../../sims/quadrature-encoder-sim/main.html" height="467px" width="100%" scrolling="no"></iframe>
+
+[Run the Quadrature Encoder Simulator MicroSim Fullscreen](../../sims/quadrature-encoder-sim/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Quadrature Encoder Simulator</summary>
 Type: MicroSim
@@ -434,3 +446,5 @@ Multiply the direction (+1 or -1) by `step_size()` to get the change. Slow turns
 3. Why should an interrupt handler set a flag instead of drawing on the display?
 4. Draw the state machine for a clock with modes RUN, SET_HOUR, SET_MINUTE, SET_ALARM_HOUR, and SET_ALARM_MINUTE.
 5. Write `step_size()` thresholds so that turning the encoder very fast changes the minute by 10 per click.
+
+[See Annotated References](./references.md)

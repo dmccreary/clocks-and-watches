@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
+    <title>Alarm State Machine using vis-network</title>
+    <script src="https://cdn.jsdelivr.net/npm/vis-network@9.1.9/standalone/umd/vis-network.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vis-network@9.1.9/styles/vis-network.min.css">
+    <style>
+        * { box-sizing: border-box; }
+        body { margin: 0px; padding: 0px; font-family: Arial, Helvetica, sans-serif; }
+        main { display: block; width: 100%; height: 500px; border: 1px solid silver; background: aliceblue; overflow: hidden; }
+        #toolbar { height: 82px; padding: 6px 10px; background: white; border-bottom: 1px solid silver; }
+        #toolbar h1 { font-size: 20px; margin: 0 0 6px 0; text-align: center; font-weight: normal; }
+        #toolbar button { font-size: 15px; margin: 2px 4px 2px 0; padding: 4px 9px; cursor: pointer; }
+        #toolbar .evt { border: 2px solid steelblue; background: white; border-radius: 4px; }
+        #toolbar .evt:hover { background: aliceblue; }
+        #wrap { display: flex; height: 416px; }
+        #network { flex: 1 1 64%; height: 100%; min-width: 0; }
+        #side { flex: 0 0 33%; height: 100%; padding: 8px 10px; background: white; border-left: 1px solid silver; font-size: 15px; overflow: hidden; }
+        #clock { font-family: 'Courier New', monospace; background: black; color: lime; border-radius: 6px; padding: 6px 10px; margin-bottom: 8px; }
+        #clock .big { font-size: 26px; font-weight: bold; }
+        #clock .row { font-size: 14px; color: white; }
+        #vars { font-family: 'Courier New', monospace; font-size: 15px; background: #f4f6f8; border: 1px solid #dde2e8; border-radius: 6px; padding: 6px 8px; margin-bottom: 8px; line-height: 1.45; }
+        .t { color: darkgreen; font-weight: bold; }
+        .f { color: firebrick; font-weight: bold; }
+        #msg { border-radius: 6px; padding: 6px 8px; line-height: 1.35; border: 1px solid #cbd5e1; background: #f8fafc; }
+        #msg.ok { border-color: seagreen; background: #eefaf2; }
+        #msg.bad { border-color: firebrick; background: #fdf0f0; }
+        #msg.info { border-color: steelblue; background: #eef5fb; }
+        @media (max-width: 560px) {
+            #toolbar { height: 108px; }
+            #wrap { flex-direction: column; height: 390px; }
+            #network { flex: none; height: 230px; }
+            #side { flex: 1 1 auto; border-left: none; border-top: 1px solid silver; font-size: 13px; }
+            #clock, #vars { display: inline-block; vertical-align: top; width: 49%; height: 82px; margin-bottom: 6px; padding: 4px 6px; }
+            #clock .big { font-size: 18px; }
+            #clock .row { font-size: 11px; }
+            #vars { font-size: 12px; line-height: 1.3; }
+        }
+    </style>
+    <script src="alarm-state-machine.js"></script>
+</head>
+<body>
+    <main>
+        <div id="toolbar">
+            <h1>Alarm State Machine</h1>
+            <button class="evt" id="btnToggle">Toggle alarm</button>
+            <button class="evt" id="btnMatch">Time matches</button>
+            <button class="evt" id="btnStop">Stop</button>
+            <button class="evt" id="btnSnooze">Snooze</button>
+            <button class="evt" id="btnMinute">60 seconds pass</button>
+            <button id="btnReset">Reset</button>
+        </div>
+        <div id="wrap">
+            <div id="network"></div>
+            <div id="side">
+                <div id="clock"></div>
+                <div id="vars"></div>
+                <div id="msg"></div>
+            </div>
+        </div>
+    </main>
+    <br/>
+    <a href=".">Back to Lesson Plan</a>
+</body>
+</html>

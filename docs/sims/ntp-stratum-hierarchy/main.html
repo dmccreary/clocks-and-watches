@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
+    <title>NTP Stratum Hierarchy using vis-network</title>
+    <style>
+        body { margin: 0px; padding: 0px; font-family: Arial, Helvetica, sans-serif; }
+        main { box-sizing: border-box; height: 560px; border: 1px solid silver; background: aliceblue;
+               display: flex; overflow: hidden; }
+        #left { flex: 1; position: relative; min-width: 0; }
+        #title { position: absolute; top: 6px; left: 0; right: 0; text-align: center; font-size: 21px; z-index: 5;
+                 pointer-events: none; }
+        #network { position: absolute; top: 34px; left: 0; right: 0; bottom: 0; }
+        #panel { width: 300px; flex: none; background: white; border-left: 1px solid silver; padding: 8px 10px;
+                 box-sizing: border-box; font-size: 15px; display: flex; flex-direction: column; gap: 6px; }
+        #panel label { font-size: 15px; }
+        .ctrl-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        #server { font-size: 14px; max-width: 170px; }
+        #step-btn { font-size: 15px; padding: 3px 8px; }
+        #delay { flex: 1; min-width: 80px; }
+        #stamps { background: #f6f8fb; border: 1px solid #dde3ea; border-radius: 6px; padding: 6px 8px; font-size: 14px;
+                  line-height: 1.35; min-height: 118px; }
+        #stamps .t { font-family: "Courier New", monospace; font-size: 13px; }
+        #info { background: #fffbea; border: 1px solid #f0e2a8; border-radius: 6px; padding: 6px 8px; font-size: 14px;
+                line-height: 1.35; flex: 1; overflow: hidden; }
+        #info h4 { margin: 0 0 4px 0; font-size: 15px; }
+        @media (max-width: 640px) {
+            main { flex-direction: column; }
+            #left { flex: none; height: 250px; }
+            #panel { width: auto; border-left: none; border-top: 1px solid silver; gap: 4px; padding: 6px 8px; font-size: 13px; }
+            #stamps { min-height: 0; font-size: 12px; }
+            #stamps .t { font-size: 12px; }
+            #info { font-size: 12px; }
+            #info h4 { font-size: 13px; }
+            #title { font-size: 18px; }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vis-network@9.1.9/styles/vis-network.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/vis-network@9.1.9/standalone/umd/vis-network.min.js"></script>
+    <script src="ntp-stratum-hierarchy.js"></script>
+</head>
+<body>
+    <main>
+        <div id="left">
+            <div id="title">NTP Stratum Hierarchy</div>
+            <div id="network"></div>
+        </div>
+        <div id="panel">
+            <div class="ctrl-row">
+                <label for="server">Ask server:</label>
+                <select id="server"></select>
+            </div>
+            <div class="ctrl-row">
+                <button id="step-btn">Send request</button>
+            </div>
+            <div class="ctrl-row">
+                <label for="delay">Delay (one way): <strong id="delay-value">40</strong> ms</label>
+                <input type="range" id="delay" min="5" max="300" step="5" value="40">
+            </div>
+            <div id="stamps"></div>
+            <div id="info"></div>
+        </div>
+    </main>
+    <br/>
+    <a href=".">Back to Lesson Plan</a>
+</body>
+</html>

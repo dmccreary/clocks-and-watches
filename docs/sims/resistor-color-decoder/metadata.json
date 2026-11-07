@@ -1,0 +1,96 @@
+{
+  "title": "Resistor Color Code Decoder",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "Click the bands of a large four-band resistor to change their colors and read its value, then quiz yourself by reading random resistors or setting the bands to match a value.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Electronics",
+    "topic": "Reading the four-band resistor color code",
+    "learningObjectives": [
+      "Recall the digit value of each resistor band color.",
+      "Apply the color code to read the value of a four-band resistor.",
+      "Apply the color code in reverse to choose the bands for a given value."
+    ],
+    "bloomsTaxonomy": "Apply",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Read the Resistors section of Chapter 2.",
+      "Know that 1 kΩ = 1,000 Ω and 1 MΩ = 1,000,000 Ω."
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 420
+    },
+    "responsive": true,
+    "dependencies": [],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false,
+      "notes": "Screen-reader description provided; all controls are standard HTML elements."
+    },
+    "controls": [
+      {
+        "type": "click",
+        "label": "Resistor bands",
+        "description": "Cycles the color of the clicked band (not used in the read-the-bands quiz)."
+      },
+      {
+        "type": "select",
+        "label": "Mode",
+        "options": [
+          "Explore",
+          "Quiz: read the bands",
+          "Quiz: set the bands"
+        ],
+        "description": "Chooses free exploration or one of the two quizzes."
+      },
+      {
+        "type": "button",
+        "label": "Random resistor",
+        "description": "Shows a random resistor (Explore and read quiz) or a random target value (set quiz)."
+      },
+      {
+        "type": "input",
+        "label": "Your value",
+        "description": "The value you read, or the value you want the bands to make."
+      },
+      {
+        "type": "button",
+        "label": "Check",
+        "description": "Checks the answer and updates the score."
+      }
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Retrieval practice with immediate feedback",
+    "keyQuestions": [
+      "Why is the first band never black?",
+      "What does the third band tell you?",
+      "What colors would a 10 kΩ ±5% resistor have?"
+    ],
+    "commonMisconceptions": [
+      "Reading the multiplier band as a third digit (reading red as \"2\" instead of \"×100\").",
+      "Reading the resistor from the wrong end. The tolerance band (gold or silver) goes on the right.",
+      "Thinking tolerance changes the value. It only says how far the real value may be from the marked value."
+    ],
+    "assessmentOpportunities": [
+      "Students score at least 8 out of 10 when reading random resistors.",
+      "Students can name the four bands for a given value such as 4.7 kΩ ±5% (yellow-violet-red-gold).",
+      "Students explain what the tolerance band means for a real 330 Ω ±5% resistor (between about 314 Ω and 347 Ω)."
+    ],
+    "interactionPattern": "Clickable model with two-way quiz"
+  },
+  "chapter": "02-electronics-fundamentals"
+}

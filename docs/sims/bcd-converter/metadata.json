@@ -1,0 +1,74 @@
+{
+  "title": "BCD Converter",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "Two rows of bit lights compare ordinary binary with BCD for 0 to 59, with a hex byte decoder, the read-as-integer mistake, and a Predict mode.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "BCD Converter",
+    "learningObjectives": [
+      "Apply BCD encoding and decoding with shifts and masks",
+      "Compare BCD with ordinary binary for the same number"
+    ],
+    "bloomsTaxonomy": [
+      "Apply",
+      "Analyze"
+    ],
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Binary and hex (Chapter 8)",
+      "Shift and mask operators (Chapter 8)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 535
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Interactive exploration",
+    "keyQuestions": [
+      "Why does the BCD byte look like the decimal number in hex?",
+      "What happens if you read a BCD byte as an ordinary integer?"
+    ],
+    "commonMisconceptions": [
+      "0x45 means 69 seconds in an RTC register",
+      "BCD and binary are the same for every number"
+    ],
+    "assessmentOpportunities": [
+      "Encode 38 as BCD in hex",
+      "Decode a seconds register that reads 0x52"
+    ]
+  },
+  "chapter": "13-real-time-clocks",
+  "canvasHeight": 535,
+  "userInterface": {
+    "controls": [
+      "Number slider (0-59)",
+      "BCD byte hex input",
+      "Read BCD byte as integer checkbox",
+      "Predict button",
+      "Answer input",
+      "Check button"
+    ]
+  }
+}

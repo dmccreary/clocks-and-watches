@@ -1,0 +1,101 @@
+{
+  "title": "Design Decision Matrix",
+  "creator": "Dan McCreary",
+  "subject": [
+    "Decision Matrix",
+    "Design Trade-Offs",
+    "Engineering Design",
+    "Sensitivity Analysis"
+  ],
+  "description": "Interactive p5.js weighted decision matrix for comparing up to four clock designs: weight sliders, 1-5 score menus, a bar chart of weighted totals with the winner highlighted, presets including the chapter's worked example, and a sensitivity check that finds the weight change that would flip the winner.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Weighted decision matrices for design choices",
+    "learningObjectives": [
+      "Evaluate competing clock designs with a weighted decision matrix",
+      "Justify a choice by naming the weights that decide it",
+      "Judge whether a decision is robust or would flip with a small change in priorities"
+    ],
+    "bloomsTaxonomy": "Evaluate",
+    "duration": "20 minutes",
+    "prerequisites": [
+      "Design trade-offs (Chapter 20)",
+      "Weighted sums"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 545
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Evaluation with a rubric and a robustness check",
+    "keyQuestions": [
+      "Which weights decide the winner?",
+      "How much would your priorities have to change before another design wins?",
+      "Why can two students reach different answers from the same scores?"
+    ],
+    "commonMisconceptions": [
+      "The design with the most top scores always wins (weights can override them)",
+      "A decision matrix gives the one right answer (it explains a choice for a given set of priorities)"
+    ],
+    "assessmentOpportunities": [
+      "Verify weighted totals by hand",
+      "Write a justification that cites the sensitivity result"
+    ]
+  },
+  "chapter": "20-design-testing-ai",
+  "controls": [
+    {
+      "type": "slider",
+      "label": "Weight (one per criterion)",
+      "range": "0-5 in steps of 0.5"
+    },
+    {
+      "type": "select",
+      "label": "Score (one per design and criterion)",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    {
+      "type": "select",
+      "label": "Preset",
+      "options": [
+        "Worked example",
+        "Four desk clocks",
+        "Wearable priorities",
+        "Blank (all 3s)"
+      ],
+      "default": "Worked example"
+    },
+    {
+      "type": "button",
+      "label": "Sensitivity",
+      "description": "Reports the smallest single weight change that would make another design tie or win."
+    }
+  ]
+}

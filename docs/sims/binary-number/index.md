@@ -1,6 +1,6 @@
 ---
-title: Binary Number
-description: Interactive p5.js simulation for learning binary numbers with toggle buttons and decimal conversion display
+title: "Binary Number"
+description: "Interactive p5.js simulation for learning binary numbers with toggle buttons and decimal conversion display"
 image: /sims/binary-number/binary-number.png
 og:image: /sims/binary-number/binary-number.png
 quality_score: 80

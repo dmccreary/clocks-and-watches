@@ -109,6 +109,10 @@ In bright light, \( R_{LDR} \) is small, so \( V_{out} \) is high. In the dark, 
 
 #### Diagram: LDR Light Sensor Lab
 
+<iframe src="../../sims/ldr-light-sensor-lab/main.html" height="537px" width="100%" scrolling="no"></iframe>
+
+[Run the LDR Light Sensor Lab MicroSim Fullscreen](../../sims/ldr-light-sensor-lab/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>LDR Light Sensor Lab</summary>
 Type: MicroSim
@@ -176,6 +180,10 @@ Hysteresis is the same idea as debouncing in Chapter 7: both ignore small change
     With a single threshold, noise near the line makes the output chatter. Add a gap between the "up" and "down" thresholds and the noise falls inside the gap, where nothing happens. That small gap is what makes automatic controls feel calm.
 
 #### Diagram: Hysteresis Demonstrator
+
+<iframe src="../../sims/hysteresis-demonstrator/main.html" height="562px" width="100%" scrolling="no"></iframe>
+
+[Run the Hysteresis Demonstrator MicroSim Fullscreen](../../sims/hysteresis-demonstrator/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Hysteresis Demonstrator</summary>
@@ -245,6 +253,10 @@ A **step counter** counts steps by looking for the rhythmic bumps of walking in 
 At rest this is about 1 g. Each footstep makes it spike above roughly 1.2 g. Count each time the magnitude *crosses upward* through a threshold, and ignore any crossing within about 250 milliseconds of the last one, since people walk at about 2 steps per second. This is the same threshold-plus-debounce pattern used for buttons and light sensing. Real fitness watches use much smarter filtering, but this simple version is a good project.
 
 #### Diagram: Tilt and Step Explorer
+
+<iframe src="../../sims/tilt-step-explorer/main.html" height="547px" width="100%" scrolling="no"></iframe>
+
+[Run the Tilt and Step Explorer MicroSim Fullscreen](../../sims/tilt-step-explorer/main.html){ .md-button .md-button--primary }
 
 <details markdown="1">
 <summary>Tilt and Step Explorer</summary>
@@ -352,6 +364,10 @@ To predict battery life you need the total current your clock uses. **Current dr
 
 #### Diagram: Battery Life Calculator
 
+<iframe src="../../sims/battery-life-calculator/main.html" height="532px" width="100%" scrolling="no"></iframe>
+
+[Run the Battery Life Calculator MicroSim Fullscreen](../../sims/battery-life-calculator/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Battery Life Calculator</summary>
 Type: MicroSim
@@ -453,3 +469,5 @@ The **Waveshare RP2040 boards**, such as the round LCD models, combine the RP204
 3. A clock draws 40 mA on average. How long will a 1,000 mAh battery run it, using the 0.8 factor?
 4. Why is a 4 × AA alkaline pack unsuitable for the VSYS pin?
 5. List three things you would do to make a smartwatch last longer on its battery.
+
+[See Annotated References](./references.md)

@@ -1,0 +1,15 @@
+{
+  "sim_id": "hysteresis-demonstrator",
+  "diagram_name": "Hysteresis Demonstrator",
+  "chapter_number": 18,
+  "chapter_title": "Sensors, Power, and Low-Power Design",
+  "chapter_dir": "18-sensors-power",
+  "chapter_rel_dir": "chapters/18-sensors-power",
+  "library": "p5.js",
+  "bloom_level": "Analyzing",
+  "bloom_verb": "analyze",
+  "learning_objective": "Students will *analyze* how a dead zone removes chatter from a noisy sensor (Bloom: Analyzing).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: MicroSim\n**sim-id:** hysteresis-demonstrator<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *analyze* how a dead zone removes chatter from a noisy sensor (Bloom: Analyzing).\n\n**Visual elements:** A scrolling line chart of a noisy light reading with two horizontal threshold lines, and below it, two on/off traces: \"Single threshold\" and \"With hysteresis.\"\n\n**Controls:** Sliders for the noise amount, the upper threshold, and the lower threshold; a \"Lock thresholds together\" toggle (which makes the gap zero). A counter shows how many times each output switched.\n\n**Responsive design:** The charts scale to container width.\n\nImplementation: p5.js with Gaussian noise around a slowly varying light level."
+}

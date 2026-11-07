@@ -1,0 +1,15 @@
+{
+  "sim_id": "function-machine",
+  "diagram_name": "Function Machine",
+  "chapter_number": 4,
+  "chapter_title": "Control Flow, Functions, and Modules",
+  "chapter_dir": "04-control-flow-functions",
+  "chapter_rel_dir": "chapters/04-control-flow-functions",
+  "library": "p5.js",
+  "bloom_level": "Understanding, Creating",
+  "bloom_verb": "understand, create",
+  "learning_objective": "Students will *understand* functions as input-output machines and *create* their own simple function (Bloom: Understanding, Creating).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: MicroSim\n**sim-id:** function-machine<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *understand* functions as input-output machines and *create* their own simple function (Bloom: Understanding, Creating).\n\n**Visual elements:** A machine box with input chutes on the left labeled by parameter names and an output chute on the right. Number tokens drop into the chutes and a result token comes out.\n\n**Controls:** A dropdown of functions (`to_12_hour`, `split_seconds`, `add`, and a \"Write your own\" text field with a one-line lambda). Input boxes for arguments and a \"Run\" button that animates the token flow and shows the return value.\n\n**Responsive design:** Machine scales to container width; controls stack below 600 px.\n\nImplementation: p5.js with `eval` restricted to a whitelisted set of expressions."
+}

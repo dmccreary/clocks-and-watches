@@ -1,0 +1,15 @@
+{
+  "sim_id": "hsv-color-wheel",
+  "diagram_name": "HSV Color Wheel",
+  "chapter_number": 16,
+  "chapter_title": "NeoPixels and Shift Register Clocks",
+  "chapter_dir": "16-neopixels-shift-registers",
+  "chapter_rel_dir": "chapters/16-neopixels-shift-registers",
+  "library": "p5.js",
+  "bloom_level": "Understanding, Applying",
+  "bloom_verb": "understand, convert",
+  "learning_objective": "Students will *understand* hue, saturation, and value and *convert* between HSV and RGB (Bloom: Understanding, Applying).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: MicroSim\n**sim-id:** hsv-color-wheel<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *understand* hue, saturation, and value and *convert* between HSV and RGB (Bloom: Understanding, Applying).\n\n**Visual elements:** A color wheel with a draggable marker, and a swatch of the selected color. A 12-pixel virtual ring below it shows the rainbow that `hsv_to_rgb` would produce.\n\n**Controls:** Sliders for hue (0 to 359), saturation, and value. Readouts for R, G, B and the `np[i] = (...)` code line. A \"Rotate\" button animates the offset as in the rainbow program.\n\n**Responsive design:** The wheel scales to container width.\n\nImplementation: p5.js with the same integer conversion as the MicroPython code."
+}

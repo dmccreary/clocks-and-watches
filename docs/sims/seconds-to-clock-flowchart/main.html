@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
+    <title>Seconds-to-Clock Flowchart using Mermaid</title>
+    <style>
+        * { box-sizing: border-box; }
+        html, body { margin: 0px; padding: 0px; font-family: Arial, Helvetica, sans-serif; }
+        #app {
+            display: flex;
+            height: 540px;
+            border: 1px solid silver;
+            background: aliceblue;
+            overflow: hidden;
+        }
+        #diagram-panel {
+            flex: 2 1 0;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+        #title {
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            padding: 8px 4px 2px 4px;
+        }
+        #diagram {
+            flex: 1 1 auto;
+            min-height: 0;
+            position: relative;
+        }
+        #diagram svg {
+            position: absolute;
+            left: 6px;
+            top: 4px;
+            width: calc(100% - 12px);
+            height: calc(100% - 8px);
+            max-width: none !important;
+        }
+        #diagram .node { cursor: pointer; }
+        #info-panel {
+            flex: 1 1 0;
+            min-width: 220px;
+            background: white;
+            border-left: 1px solid silver;
+            padding: 10px 12px;
+            font-size: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        #info-panel label { font-weight: bold; font-size: 15px; }
+        #secInput { font-size: 16px; padding: 4px 6px; width: 100%; }
+        .btns { display: flex; gap: 8px; }
+        .btns button { font-size: 15px; padding: 5px 10px; cursor: pointer; }
+        .card {
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 8px 10px;
+            line-height: 1.35;
+        }
+        .card h4 { margin: 0 0 4px 0; font-size: 15px; }
+        #stepText .result { font-size: 18px; font-weight: bold; color: #b45309; }
+        #inputMsg { color: firebrick; font-size: 14px; min-height: 0; }
+        @media (max-width: 599px) {
+            #app { flex-direction: column; }
+            #diagram-panel { flex: 0 0 280px; }
+            #title { font-size: 17px; padding-top: 4px; }
+            #info-panel {
+                flex: 1 1 auto;
+                min-width: 0;
+                border-left: none;
+                border-top: 1px solid silver;
+                padding: 6px 10px;
+                gap: 5px;
+                font-size: 14px;
+            }
+            .card { padding: 5px 8px; }
+            .input-row { display: flex; gap: 8px; align-items: center; }
+            .input-row label { white-space: nowrap; }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script src="seconds-to-clock-flowchart.js"></script>
+</head>
+<body>
+    <main>
+        <div id="app">
+            <div id="diagram-panel">
+                <div id="title">Seconds-to-Clock Algorithm</div>
+                <div id="diagram" aria-label="Flowchart of the seconds-to-clock algorithm"></div>
+            </div>
+            <div id="info-panel">
+                <div class="input-row">
+                    <label for="secInput">Seconds since midnight</label>
+                    <input id="secInput" type="number" min="0" max="86399" step="1" value="45296">
+                </div>
+                <div id="inputMsg"></div>
+                <div class="btns">
+                    <button id="nextBtn">Next step</button>
+                    <button id="resetBtn">Reset</button>
+                </div>
+                <div id="stepText" class="card"></div>
+                <div id="nodeInfo" class="card"><h4>Step details</h4>Click any box in the flowchart to see what that step does.</div>
+            </div>
+        </div>
+    </main>
+    <br/>
+    <a href=".">Back to Lesson Plan</a>
+</body>
+</html>

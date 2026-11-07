@@ -1,0 +1,15 @@
+{
+  "sim_id": "battery-life-calculator",
+  "diagram_name": "Battery Life Calculator",
+  "chapter_number": 18,
+  "chapter_title": "Sensors, Power, and Low-Power Design",
+  "chapter_dir": "18-sensors-power",
+  "chapter_rel_dir": "chapters/18-sensors-power",
+  "library": "Chart.js",
+  "bloom_level": "Applying, Evaluating",
+  "bloom_verb": "calculate, evaluate",
+  "learning_objective": "Students will *calculate* battery life and *evaluate* which design changes save the most energy (Bloom: Applying, Evaluating).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: MicroSim\n**sim-id:** battery-life-calculator<br/>\n**Library:** Chart.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *calculate* battery life and *evaluate* which design changes save the most energy (Bloom: Applying, Evaluating).\n\n**Visual elements:** A stacked bar showing each part's current, a total current readout, and a large \"Estimated runtime\" label.\n\n**Controls:** Checkboxes to include each part in the table, sliders for the backlight brightness and the fraction of time asleep, and a dropdown for battery capacity (150, 500, 1000, 2500 mAh). A bar chart compares runtime before and after the student's changes.\n\n**Responsive design:** The chart resizes to the container.\n\nImplementation: Chart.js with the runtime formula."
+}

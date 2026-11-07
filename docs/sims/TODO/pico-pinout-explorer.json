@@ -1,0 +1,15 @@
+{
+  "sim_id": "pico-pinout-explorer",
+  "diagram_name": "Pico Pinout Explorer",
+  "chapter_number": 5,
+  "chapter_title": "The Pico Platform: Pins, Files, and Firmware",
+  "chapter_dir": "05-pico-platform",
+  "chapter_rel_dir": "chapters/05-pico-platform",
+  "library": "p5.js",
+  "bloom_level": "Remembering",
+  "bloom_verb": "identify",
+  "learning_objective": "Students will *identify* GP numbers, physical pin numbers, and special functions on the Pico (Bloom: Remembering).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: interactive infographic\n**sim-id:** pico-pinout-explorer<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *identify* GP numbers, physical pin numbers, and special functions on the Pico (Bloom: Remembering).\n\n**Visual elements:** A top-down Pico drawing with all 40 pins labeled by physical number. Color coding: GPIO (blue), power (red), ground (black), ADC (green).\n\n**Interactions:**\n\n- Hover a pin to show its GP number, physical number, and possible functions (I2C0 SDA, SPI0 SCK, PWM slice, and so on).\n- Click a pin to see the MicroPython line that configures it.\n- A filter menu highlights all pins for I2C, SPI, UART, or ADC.\n- A quiz mode names a GP number and asks the student to click the pin.\n\n**Responsive design:** Board scales to canvas width; labels reflow on narrow screens.\n\nImplementation: p5.js with a pin data array."
+}

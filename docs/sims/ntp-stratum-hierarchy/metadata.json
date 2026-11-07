@@ -1,0 +1,69 @@
+{
+  "title": "NTP Stratum Hierarchy",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "A vis-network tree from stratum 0 reference clocks through stratum 1 and 2 servers to a Pico W, with node info, a step-through NTP request showing T1-T4, and a network delay slider.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "NTP Stratum Hierarchy",
+    "learningObjectives": [
+      "Explain how time flows from atomic clocks through NTP strata to a Pico W client",
+      "Explain how network delay limits NTP accuracy"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "WiFi on the Pico W (Chapter 14)",
+      "UTC (Chapter 14)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "vis-network",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 560
+    },
+    "responsive": true,
+    "dependencies": [
+      "vis-network 9.1.9"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Interactive exploration",
+    "keyQuestions": [
+      "What does the stratum number mean?",
+      "Why is the error limited to about half the round trip?"
+    ],
+    "commonMisconceptions": [
+      "A stratum 1 server always gives a more accurate result than a nearby stratum 2 server",
+      "The Pico gets time directly from an atomic clock"
+    ],
+    "assessmentOpportunities": [
+      "Define stratum 2",
+      "Compute the worst-case error for a 100 ms round trip"
+    ]
+  },
+  "chapter": "14-wifi-ntp",
+  "canvasHeight": 560,
+  "userInterface": {
+    "controls": [
+      "Click nodes for info",
+      "Ask server dropdown",
+      "Send request step button",
+      "Delay (one way) slider 5-300 ms"
+    ]
+  }
+}

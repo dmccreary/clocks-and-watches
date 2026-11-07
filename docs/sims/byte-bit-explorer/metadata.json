@@ -1,0 +1,116 @@
+{
+  "title": "Byte Bit Explorer",
+  "creator": "Dan McCreary",
+  "subject": [
+    "Bits and Bytes",
+    "Bitwise Operators",
+    "Hexadecimal",
+    "MSB and LSB",
+    "Bit Ordering"
+  ],
+  "description": "Toggle the eight bits of a byte, apply set, clear and shift operations, predict the result, and watch the byte go onto a wire MSB-first or LSB-first.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Bits, bytes and bit ordering",
+    "learningObjectives": [
+      "Apply set, clear and shift operations to a byte and state the new value",
+      "Convert a byte between decimal, hexadecimal and binary",
+      "Predict the order in which bits appear on the wire for MSB-first and LSB-first"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "duration": "15 minutes",
+    "prerequisites": [
+      "Binary and hexadecimal numbers (Chapter 8)",
+      "Python integers and variables"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 470
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Practice with immediate feedback",
+    "keyQuestions": [
+      "Why does shifting left multiply by 2?",
+      "What happens to bit 0 when you shift right?",
+      "Which bit goes on the wire first in MSB-first order?"
+    ],
+    "commonMisconceptions": [
+      "Bit 1 is the rightmost bit (bits are numbered from 0, so the rightmost is bit 0)",
+      "LSB-first sends a different value (it sends the same bits in the opposite order)"
+    ],
+    "assessmentOpportunities": [
+      "The student predicts that shift left doubles the value until bit 7 falls off.",
+      "The student writes the Python expression to set or clear a given bit.",
+      "The student explains why sender and receiver must agree on bit order."
+    ]
+  },
+  "chapter": "08-communication-buses",
+  "controls": [
+    {
+      "type": "canvas",
+      "label": "Bit boxes",
+      "description": "Click a box to flip that bit"
+    },
+    {
+      "type": "select",
+      "label": "bit",
+      "description": "Chooses the bit position for Set bit and Clear bit"
+    },
+    {
+      "type": "button",
+      "label": "Set bit / Clear bit",
+      "description": "Applies x | (1 << n) or x & ~(1 << n)"
+    },
+    {
+      "type": "button",
+      "label": "Shift left / Shift right",
+      "description": "Applies (x << 1) & 0xFF or x >> 1"
+    },
+    {
+      "type": "select",
+      "label": "Bit order",
+      "description": "MSB first or LSB first for the data wire"
+    },
+    {
+      "type": "button",
+      "label": "Send byte",
+      "description": "Animates the eight bits going onto the wire, once"
+    },
+    {
+      "type": "button",
+      "label": "Random byte",
+      "description": "Loads a random value"
+    },
+    {
+      "type": "checkbox",
+      "label": "Predict mode",
+      "description": "Hides each result until the student checks a typed prediction"
+    },
+    {
+      "type": "input",
+      "label": "Answer",
+      "description": "Decimal prediction, checked with the Check button"
+    }
+  ]
+}

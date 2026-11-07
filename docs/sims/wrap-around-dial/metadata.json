@@ -1,0 +1,104 @@
+{
+  "title": "Wrap-Around Dial",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "A clock-style dial for 12, 24 or 60 positions shows (x + step) % n step by step, including how Python wraps negative numbers.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Wrap-Around Dial",
+    "learningObjectives": [
+      "Apply the modulo operator to predict where a counter lands after adding or subtracting",
+      "Explain why (x + step) % n always gives a value from 0 to n - 1",
+      "Predict the result of going backward past zero, such as (0 - 1) % 60 = 59"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Integer division and remainders",
+      "The % operator from the arithmetic section of Chapter 3"
+    ],
+    "standards": [],
+    "bloomsLevels": [
+      "Apply"
+    ]
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 510
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4 (jsDelivr CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false,
+      "notes": "Controls are standard HTML form elements; the canvas has a describe() text for screen readers"
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Practice with immediate visual feedback and prediction",
+    "keyQuestions": [
+      "What is the largest value (x + step) % n can have?",
+      "How many times did the pointer pass 0 when 68 became 8?",
+      "Why does Python give 59 for -1 % 60?"
+    ],
+    "commonMisconceptions": [
+      "x % n can equal n",
+      "-1 % 60 is -1 in Python",
+      "A wrap needs an if statement to reset the counter"
+    ],
+    "assessmentOpportunities": [
+      "Students predict at least 8 of 10 results correctly in Predict mode.",
+      "Students explain why the result can never equal n.",
+      "Students write `minute = (minute - 1) % 60` for a down button without help."
+    ]
+  },
+  "chapter": "04-control-flow-functions",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "controls": [
+    {
+      "type": "button",
+      "label": "-1 / +1 / +10",
+      "description": "Changes x by that step"
+    },
+    {
+      "type": "button",
+      "label": "Reset",
+      "description": "Returns x to its starting value"
+    },
+    {
+      "type": "select",
+      "label": "Modulus n",
+      "description": "Chooses 12, 24 or 60 positions"
+    },
+    {
+      "type": "checkbox",
+      "label": "Predict",
+      "description": "Asks for the result before the pointer moves"
+    },
+    {
+      "type": "input",
+      "label": "Answer",
+      "description": "Your predicted landing value"
+    },
+    {
+      "type": "button",
+      "label": "Check",
+      "description": "Checks the prediction and moves the pointer"
+    }
+  ]
+}

@@ -5,43 +5,69 @@
 <title>Knob Clock Kit Animation</title>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&amp;family=VT323&amp;display=swap">
+<script>
+/* One-time layout switch (not an animation timer). The renderer writes data-format on <html>;
+   to preview the vertical layout in a browser, open this page with ?format=portrait */
+(function(){var m=location.search.match(/format=(\w+)/);if(m)document.documentElement.setAttribute('data-format',m[1]);})();
+</script>
 <style>
 body{margin:0;background:#0b0e13}
 
+/* ---------- layout tokens: one set per format ----------
+   landscape = 1280 x 720  -> 1920 x 1080 (YouTube, the site, slides)
+   portrait  =  720 x 1280 -> 1080 x 1920 (9:16: YouTube Shorts)
+   Everything format-specific lives in these tokens or in the PORTRAIT block at the
+   end of this stylesheet. The keyframes (the story and its timing) are shared. */
+:root{
+  --W:1280px; --H:720px;
+  --stage-bg:radial-gradient(900px 540px at 60% 50%,#18222f 0%,#0b0e13 72%);
+  --cap-l:64px; --cap-t:30px; --cap-w:1152px; --kick-fs:15px; --kick-ls:.14em; --head-fs:44px; --head-mt:10px;
+  --band-t:650px;
+  --prog-l:64px; --prog-t:704px; --prog-w:1152px;
+  --pills-l:0px; --pills-w:1280px; --pill-fs:17px; --pill-pad:10px 20px; --pill-gap:12px;
+  --chips-l:0px; --chips-w:1280px; --chip-sz:40px; --chip-fs:15px; --chip-gap:8px;
+  --tag-fs:16px; --tag-pad:6px 14px;
+  /* camera poses (rig point -> stage point); every pose uses translate() scale() so they interpolate */
+  --cam-wide:translate(40px,100px) scale(.85);
+  --cam-mid:translate(40px,100px) scale(.85);
+  --cam-close:translate(-475.5px,18.5px) scale(1.15);
+}
+
 /* ---------- stage + chrome ---------- */
-.stage{position:absolute;left:0;top:0;width:1280px;height:720px;overflow:hidden;background:radial-gradient(900px 540px at 60% 50%,#18222f 0%,#0b0e13 72%);font-family:'Rubik',system-ui,sans-serif;color:#e8edf5}
-.pause-input{position:absolute;left:1172px;top:650px;width:44px;height:44px;margin:0;opacity:0;z-index:30;cursor:pointer}
-.pause-btn{position:absolute;left:1172px;top:650px;width:44px;height:44px;box-sizing:border-box;border-radius:50%;border:1.5px solid #3a4659;background:#10151d;display:flex;align-items:center;justify-content:center;z-index:25}
+.root{position:relative;width:var(--W);height:var(--H);overflow:hidden;background:#0b0e13}
+.stage{position:absolute;left:0;top:0;width:var(--W);height:var(--H);overflow:hidden;background:var(--stage-bg);font-family:'Rubik',system-ui,sans-serif;color:#e8edf5}
+.pause-input{position:absolute;left:calc(var(--W) - 108px);top:var(--band-t);width:44px;height:44px;margin:0;opacity:0;z-index:30;cursor:pointer}
+.pause-btn{position:absolute;left:calc(var(--W) - 108px);top:var(--band-t);width:44px;height:44px;box-sizing:border-box;border-radius:50%;border:1.5px solid #3a4659;background:#10151d;display:flex;align-items:center;justify-content:center;z-index:25}
 .pause-input:focus-visible ~ .pause-btn{outline:2px solid #2fd8f0;outline-offset:3px}
 .ico-play{display:none}
 .pause-input:checked ~ .pause-btn .ico-pause{display:none}
 .pause-input:checked ~ .pause-btn .ico-play{display:block}
 .pause-input:checked ~ .stage *{animation-play-state:paused !important}
 
-.cover{position:absolute;left:0;top:0;width:1280px;height:720px;background:#0b0e13;z-index:10;pointer-events:none;animation:cover 30s linear infinite both}
-.cap{position:absolute;left:64px;top:30px;width:1152px;opacity:0}
-.kick{font-size:15px;font-weight:500;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:#2fd8f0}
-.head{font-size:44px;font-weight:700;line-height:1.1;margin-top:10px;color:#fff}
+.cover{position:absolute;left:0;top:0;width:var(--W);height:var(--H);background:#0b0e13;z-index:10;pointer-events:none;animation:cover 30s linear infinite both}
+.cap{position:absolute;left:var(--cap-l);top:var(--cap-t);width:var(--cap-w);opacity:0}
+.kick{font-size:var(--kick-fs);font-weight:500;line-height:1;letter-spacing:var(--kick-ls);text-transform:uppercase;color:#2fd8f0}
+.head{font-size:var(--head-fs);font-weight:700;line-height:1.1;margin-top:var(--head-mt);color:#fff;text-wrap:balance}
 .cap0{animation:cap0 30s ease-out infinite both}
 .cap1{animation:cap1 30s ease-out infinite both}
 .cap2{animation:cap2 30s ease-out infinite both}
 .cap3{animation:cap3 30s ease-out infinite both}
 .cap4{animation:cap4 30s ease-out infinite both}
 
-.prog-track{position:absolute;left:64px;top:704px;width:1152px;height:4px;border-radius:2px;background:#1d2633}
-.prog-fill{position:absolute;left:64px;top:704px;width:1152px;height:4px;border-radius:2px;background:#2fd8f0;transform-origin:0 50%;animation:prog 30s linear infinite both}
-.prog-tick{position:absolute;top:700px;width:2px;height:12px;background:#3a4659}
+.prog-track{position:absolute;left:var(--prog-l);top:var(--prog-t);width:var(--prog-w);height:4px;border-radius:2px;background:#1d2633}
+.prog-fill{position:absolute;left:var(--prog-l);top:var(--prog-t);width:var(--prog-w);height:4px;border-radius:2px;background:#2fd8f0;transform-origin:0 50%;animation:prog 30s linear infinite both}
+.prog-tick{position:absolute;top:calc(var(--prog-t) - 4px);left:calc(var(--prog-l) + var(--prog-w) * var(--f));width:2px;height:12px;background:#3a4659}
 
-.pills{position:absolute;left:0;top:650px;width:1280px;display:flex;justify-content:center;gap:12px;opacity:0;animation:pillsRow 30s linear infinite both}
-.pill{--off:transparent;--offc:#9fb0c6;--offb:#3a4659;--on:#2fd8f0;--onc:#04222b;padding:10px 20px;border-radius:999px;border:1.5px solid #3a4659;font-size:17px;font-weight:500;line-height:1.2}
+.pills{position:absolute;left:var(--pills-l);top:var(--band-t);width:var(--pills-w);display:flex;flex-wrap:wrap;justify-content:center;gap:var(--pill-gap);opacity:0;animation:pillsRow 30s linear infinite both}
+.pill{--off:transparent;--offc:#9fb0c6;--offb:#3a4659;--on:#2fd8f0;--onc:#04222b;padding:var(--pill-pad);border-radius:999px;border:1.5px solid #3a4659;font-size:var(--pill-fs);font-weight:500;line-height:1.2}
 .pill0{animation:act0 30s linear infinite both}
 .pill1{animation:act1 30s linear infinite both}
 .pill2{animation:act2 30s linear infinite both}
 .pill3{animation:act3 30s linear infinite both}
 .pill4{animation:act4 30s linear infinite both}
 
-.chips{position:absolute;left:0;top:650px;width:1280px;display:flex;justify-content:center;gap:8px;opacity:0;animation:chipsRow 30s linear infinite both}
-.chip{width:40px;height:40px;box-sizing:border-box;border:1.5px solid #3a4659;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:500;color:#7e8aa0;animation:chipOn 30s linear infinite both}
+.chips{position:absolute;left:var(--chips-l);top:var(--band-t);width:var(--chips-w);display:flex;flex-wrap:wrap;justify-content:center;gap:var(--chip-gap);opacity:0;animation:chipsRow 30s linear infinite both}
+.chip{width:var(--chip-sz);height:var(--chip-sz);box-sizing:border-box;border:1.5px solid #3a4659;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:var(--chip-fs);font-weight:500;color:#7e8aa0;animation:chipOn 30s linear infinite both}
 
 /* ---------- rig (camera) ---------- */
 .rig{position:absolute;left:0;top:0;width:1500px;height:620px;transform-origin:0 0;animation:cam 30s ease-in-out infinite both}
@@ -55,13 +81,16 @@ body{margin:0;background:#0b0e13}
 .hole{position:absolute;width:22px;height:22px;border-radius:50%;background:#0d1b4a;box-shadow:0 0 0 4px #e9edf5}
 .smd{position:absolute;width:24px;height:10px;border-radius:2px;background:#161b26;box-shadow:inset 0 0 0 1px #3a4768}
 
-.tag{position:absolute;padding:6px 14px;border:1.5px solid #2fd8f0;border-radius:999px;background:#0b0e13;color:#e8edf5;font-size:16px;font-weight:500;line-height:1.2;white-space:nowrap;opacity:0}
+/* tags live in the rig, so their positions are rig coordinates; portrait overrides them below */
+.tag{position:absolute;padding:var(--tag-pad);border:1.5px solid #2fd8f0;border-radius:999px;background:#0b0e13;color:#e8edf5;font-size:var(--tag-fs);font-weight:500;line-height:1.2;white-space:nowrap;opacity:0}
 .tag-amber{border-color:#ff9b2e;color:#ffd9a8}
 .tag-intro{animation:tagIntro 30s linear infinite both}
-.tag-vcc{animation:tagVcc 30s linear infinite both}
-.tag-turn{animation:tagTurn 30s linear infinite both}
-.tag-push{animation:tagPush 30s linear infinite both}
-.tag-k0{animation:tagK0 30s linear infinite both}
+.tag-pico{left:30px;top:28px}
+.tag-board{left:640px;top:38px}
+.tag-vcc{left:360px;top:520px;animation:tagVcc 30s linear infinite both}
+.tag-turn{left:1160px;top:178px;animation:tagTurn 30s linear infinite both}
+.tag-push{left:1178px;top:178px;animation:tagPush 30s linear infinite both}
+.tag-k0{left:1133px;top:492px;animation:tagK0 30s linear infinite both}
 
 .knob-turn{transform-origin:50% 50%;animation:knobTurn 30s cubic-bezier(.25,.8,.35,1.15) infinite both}
 .knob-press{animation:knobPress 30s ease-out infinite both}
@@ -111,9 +140,12 @@ body{margin:0;background:#0b0e13}
   100% {opacity:1}
 }
 @keyframes cam {
-  0%,26.667% {transform:translate(40px,100px) scale(.85)}
-  30.667%,86.667% {transform:translate(-475.5px,18.5px) scale(1.15)}
-  91.333%,100% {transform:translate(40px,100px) scale(.85)}
+  /* wide (meet) -> mid (wire it) -> close (the screen) -> wide (finale).
+     Landscape sets mid = wide, so it only pushes in; portrait uses all three poses. */
+  0%,10% {transform:var(--cam-wide)}
+  13.333%,26.667% {transform:var(--cam-mid)}
+  30.667%,86.667% {transform:var(--cam-close)}
+  91.333%,100% {transform:var(--cam-wide)}
 }
 @keyframes rise {
   0%,2% {opacity:0;transform:translateY(28px)}
@@ -362,12 +394,41 @@ body{margin:0;background:#0b0e13}
   82.65%,85.95% {transform:translateY(-92px)}
   86%,100% {transform:translateY(-138px)}
 }
+
+/* ---------- PORTRAIT: 720 x 1280 stage, rendered at x1.5 = 1080 x 1920 (9:16, YouTube Shorts) ----------
+   Shorts draws its own UI over the bottom ~20 % (title, channel) and the right ~12 % (like,
+   comment, share), and the status bar over the top. Keep every key element inside the safe box
+     x 40..640   y 165..1025   (stage px)
+   Layout: caption 170-340 | rig 360-880 | pills or chips 905-1000 | progress 1014.
+   Camera: wide shot (whole kit) -> mid shot (Pico + wires) -> close shot (display board) -> wide. */
+:root[data-format=portrait]{
+  --W:720px; --H:1280px;
+  --stage-bg:radial-gradient(760px 760px at 50% 48%,#18222f 0%,#0b0e13 72%);
+  --cap-l:40px; --cap-t:170px; --cap-w:580px; --kick-fs:18px; --kick-ls:.08em; --head-fs:52px; --head-mt:14px;
+  --band-t:905px;
+  --prog-l:40px; --prog-t:1014px; --prog-w:580px;
+  --pills-l:120px; --pills-w:440px; --pill-fs:22px; --pill-pad:9px 18px; --pill-gap:10px;
+  --chips-l:124px; --chips-w:432px; --chip-fs:17px;
+  --tag-fs:26px; --tag-pad:8px 16px;
+  --cam-wide:translate(-6.6px,451.5px) scale(.52);
+  --cam-mid:translate(24.5px,344.6px) scale(.85);
+  --cam-close:translate(-416px,372px) scale(.8);
+}
+/* shorter label text where the wide landscape wording does not fit */
+:root[data-format=portrait] .l-only{display:none}
+/* tag positions (rig coordinates) re-placed for the portrait camera poses and larger type */
+:root[data-format=portrait] .tag-pico{left:30px;top:20px}
+:root[data-format=portrait] .tag-board{left:480px;top:30px}
+:root[data-format=portrait] .tag-vcc{left:380px;top:548px}
+:root[data-format=portrait] .tag-turn,
+:root[data-format=portrait] .tag-push{left:1096px;top:150px}
+:root[data-format=portrait] .tag-k0{left:1092px;top:490px}
 </style>
 <meta name="viewport" content="width=1280">
 </head>
 <body>
 
-<div style="position:relative;width:1280px;height:720px;overflow:hidden;background:#0b0e13">
+<div class="root">
 
   <input type="checkbox" id="pause" class="pause-input" aria-label="Pause animation">
   <label for="pause" class="pause-btn" aria-hidden="true">
@@ -625,12 +686,12 @@ body{margin:0;background:#0b0e13}
       </div>
 
       <!-- callouts -->
-      <div class="tag tag-intro" style="left:30px;top:28px">Pico 2 W · the brain</div>
-      <div class="tag tag-intro" style="left:640px;top:38px">Display board · screen + knob + K0</div>
-      <div class="tag tag-amber tag-vcc" style="left:360px;top:520px">VCC to 3V3 · never 5 V</div>
-      <div class="tag tag-turn" style="left:1160px;top:178px">Turn: next face</div>
-      <div class="tag tag-push" style="left:1178px;top:178px">Push: lap</div>
-      <div class="tag tag-k0" style="left:1133px;top:492px">K0: start / stop</div>
+      <div class="tag tag-intro tag-pico">Pico 2 W · the brain</div>
+      <div class="tag tag-intro tag-board">Display board<span class="l-only"> · screen + knob + K0</span></div>
+      <div class="tag tag-amber tag-vcc">VCC to 3V3 · never 5 V</div>
+      <div class="tag tag-turn">Turn: next face</div>
+      <div class="tag tag-push">Push: lap</div>
+      <div class="tag tag-k0">K0: start / stop</div>
     </div>
 
     <!-- bottom band: face names, then the 17 labs -->
@@ -663,10 +724,11 @@ body{margin:0;background:#0b0e13}
 
     <div class="prog-track"></div>
     <div class="prog-fill"></div>
-    <div class="prog-tick" style="left:179px"></div>
-    <div class="prog-tick" style="left:371px"></div>
-    <div class="prog-tick" style="left:525px"></div>
-    <div class="prog-tick" style="left:1062px"></div>
+    <!-- scene boundaries at 3, 8, 12 and 26 s: --f is the fraction of the 30 s bar -->
+    <div class="prog-tick" style="--f:.1"></div>
+    <div class="prog-tick" style="--f:.2667"></div>
+    <div class="prog-tick" style="--f:.4"></div>
+    <div class="prog-tick" style="--f:.8667"></div>
 
     <div class="cover"></div>
   </div>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
+    <title>Pico Startup Sequence using Mermaid</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { margin: 0px; padding: 0px; font-family: Arial, Helvetica, sans-serif; }
+        main { display: block; width: 100%; }
+        #toolbar {
+            display: flex; flex-wrap: wrap; align-items: center; gap: 6px 18px;
+            padding: 6px 10px; background: white; border: 1px solid silver; border-bottom: none;
+            font-size: 16px;
+        }
+        #toolbar .title { font-size: 20px; font-weight: bold; margin-right: auto; }
+        #toolbar label { cursor: pointer; white-space: nowrap; }
+        .container { display: flex; width: 100%; border: 1px solid silver; }
+        #diagram {
+            width: 62%; background: aliceblue; padding: 6px 4px; text-align: center;
+        }
+        #diagram svg { max-width: 100%; height: auto; }
+        #info {
+            width: 38%; background: white; border-left: 1px solid silver; padding: 12px;
+            font-size: 16px; line-height: 1.4;
+        }
+        #info-card { position: relative; transition: top 0.15s; }
+        #info h3 { margin: 0 0 8px 0; font-size: 18px; color: steelblue;
+            border-bottom: 2px solid steelblue; padding-bottom: 4px; }
+        #info p { margin: 0 0 8px 0; }
+        #info .placeholder { color: dimgray; font-style: italic; }
+        #info code { background: whitesmoke; padding: 0 3px; }
+        .node { cursor: pointer; }
+        /* narrow screens: keep the panels side by side but use smaller text */
+        @media (max-width: 600px) {
+            #diagram { width: 58%; }
+            #info { width: 42%; font-size: 14px; padding: 8px; }
+            #info h3 { font-size: 16px; }
+            #toolbar .title { font-size: 17px; }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script src="pico-startup-sequence.js"></script>
+</head>
+<body>
+    <main>
+        <div id="toolbar">
+            <span class="title">Pico Startup Sequence</span>
+            <label><input type="radio" name="mainpy" value="yes" checked> Has main.py</label>
+            <label><input type="radio" name="mainpy" value="no"> No main.py</label>
+        </div>
+        <div class="container">
+            <div id="diagram"></div>
+            <div id="info">
+                <div id="info-card">
+                    <h3>What happens at power-on?</h3>
+                    <p class="placeholder">Click any step in the diagram to see what the Pico is doing there.</p>
+                    <p>Switch between <b>Has main.py</b> and <b>No main.py</b>. The steps drawn with an
+                    orange border are the part of the path that changes.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <br/>
+    <a href=".">Back to Lesson Plan</a>
+</body>
+</html>

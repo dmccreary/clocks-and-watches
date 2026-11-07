@@ -1,0 +1,15 @@
+{
+  "sim_id": "framebuffer-pipeline",
+  "diagram_name": "Framebuffer Pipeline",
+  "chapter_number": 11,
+  "chapter_title": "OLED Displays and Framebuffers",
+  "chapter_dir": "11-oled-framebuffers",
+  "chapter_rel_dir": "chapters/11-oled-framebuffers",
+  "library": "Mermaid",
+  "bloom_level": "Understanding",
+  "bloom_verb": "understand",
+  "learning_objective": "Students will *understand* the path from a drawing call to lit pixels (Bloom: Understanding).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: workflow diagram\n**sim-id:** framebuffer-pipeline<br/>\n**Library:** Mermaid<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *understand* the path from a drawing call to lit pixels (Bloom: Understanding).\n\n**Nodes:** Your program, `oled.text()` and `oled.pixel()` (drawing calls), framebuffer in RAM (1,024 bytes), `oled.show()`, I2C or SPI bus, SSD1306 controller memory, OLED panel.\n\n**Interactions:** Every node has a Mermaid `click` directive that opens an infobox describing its role and how many bytes pass through it. A toggle highlights the \"Before show()\" state, where only the buffer has changed and the panel is unchanged, and the \"After show()\" state.\n\n**Responsive design:** The diagram scales to container width.\n\nImplementation: Mermaid flowchart with click callbacks."
+}

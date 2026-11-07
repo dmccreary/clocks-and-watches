@@ -1,6 +1,6 @@
 ---
-title: Battery Drain
-description: Interactive p5.js simulation demonstrating battery discharge rates when powering a motor at different speeds
+title: "Battery Drain"
+description: "Interactive p5.js simulation demonstrating battery discharge rates when powering a motor at different speeds"
 image: /sims/battery-drain/battery-drain.png
 og:image: /sims/battery-drain/battery-drain.png
 quality_score: 82

@@ -1,0 +1,15 @@
+{
+  "sim_id": "ohms-law-explorer",
+  "diagram_name": "Ohm's Law Explorer",
+  "chapter_number": 2,
+  "chapter_title": "Electronics Fundamentals and Breadboard Wiring",
+  "chapter_dir": "02-electronics-fundamentals",
+  "chapter_rel_dir": "chapters/02-electronics-fundamentals",
+  "library": "p5.js",
+  "bloom_level": "Applying",
+  "bloom_verb": "apply",
+  "learning_objective": "Students will *apply* \\( V = IR \\) by changing two values and predicting the third (Bloom: Applying).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: MicroSim\n**sim-id:** ohms-law-explorer<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *apply* \\( V = IR \\) by changing two values and predicting the third (Bloom: Applying).\n\n**Visual elements:** A simple loop circuit (battery, resistor, wire) drawn on a 700 x 400 canvas. Animated dots travel around the loop; their speed and count represent current. The resistor changes width to show resistance.\n\n**Controls:**\n\n- Slider \"Voltage (V)\": 0 to 5 V, default 3.3, step 0.1.\n- Slider \"Resistance (Ω)\": 10 to 1000, default 330.\n- Readouts for current in mA and power in mW, updating live.\n- A \"Quiz me\" button hides the current readout, picks new V and R, and asks the student to type the current, then reveals the answer.\n\n**Responsive design:** The circuit scales to container width and sliders stack under the canvas below 600 px.\n\nImplementation: p5.js with a dot-particle system whose speed is proportional to the computed current."
+}

@@ -1,0 +1,80 @@
+{
+  "title": "Resolution and Memory Calculator",
+  "creator": "Dan McCreary",
+  "subject": [
+    "Display Resolution",
+    "Framebuffer",
+    "Bits Per Pixel",
+    "RAM"
+  ],
+  "description": "Calculate the framebuffer size of five displays and a custom one, and judge whether each fits in the Pico's 264 KB of RAM.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Framebuffer memory and display resolution",
+    "learningObjectives": [
+      "Calculate framebuffer memory from width, height and bits per pixel",
+      "Evaluate whether a display's framebuffer fits in the Pico's 264 KB of RAM",
+      "Compare the memory cost of monochrome and color displays"
+    ],
+    "bloomsTaxonomy": "Evaluate",
+    "duration": "15 minutes",
+    "prerequisites": [
+      "Display resolution and pixel counts (Chapter 11)",
+      "Bits and bytes (Chapter 8)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "Chart.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 470
+    },
+    "responsive": true,
+    "dependencies": [
+      "Chart.js 4.4.4"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Calculation and judgment against a limit",
+    "keyQuestions": [
+      "Why does a color pixel need 16 times the memory of a monochrome pixel?",
+      "Why is 200 KB a safer limit than 264 KB?",
+      "What happens to memory when width and height both double?"
+    ],
+    "commonMisconceptions": [
+      "Memory grows with the screen width only (it grows with width times height)",
+      "All 264 KB are free for the framebuffer (MicroPython and your code need RAM too)"
+    ],
+    "assessmentOpportunities": [
+      "The student computes 128 x 64 x 1 / 8 = 1,024 bytes.",
+      "The student explains why 360 x 360 at 16 bpp leaves almost no RAM for the program.",
+      "The student proposes a way to fit a large display (lower bpp or partial buffers)."
+    ]
+  },
+  "chapter": "11-oled-framebuffers",
+  "controls": [
+    {
+      "type": "select",
+      "label": "Bits per pixel",
+      "description": "1, 8 or 16 bits per pixel for every bar"
+    },
+    {
+      "type": "input",
+      "label": "Custom display width x height",
+      "description": "Adds a sixth bar for any resolution"
+    }
+  ]
+}

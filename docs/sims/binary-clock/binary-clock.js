@@ -1,4 +1,5 @@
 // Use the microsim-2d-geometry.js template
+// CANVAS_HEIGHT: 280
 let canvasWidth = 350;
 let drawHeight = 240;
 let controlHeight = 40;

@@ -1,0 +1,15 @@
+{
+  "sim_id": "rgb565-color-mixer",
+  "diagram_name": "RGB565 Color Mixer",
+  "chapter_number": 15,
+  "chapter_title": "Color Displays and Smartwatch Faces",
+  "chapter_dir": "15-color-displays",
+  "chapter_rel_dir": "chapters/15-color-displays",
+  "library": "p5.js",
+  "bloom_level": "Applying, Analyzing",
+  "bloom_verb": "apply, analyze",
+  "learning_objective": "Students will *apply* the RGB565 packing formula and *analyze* how many bits of color detail are lost (Bloom: Applying, Analyzing).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: MicroSim\n**sim-id:** rgb565-color-mixer<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *apply* the RGB565 packing formula and *analyze* how many bits of color detail are lost (Bloom: Applying, Analyzing).\n\n**Visual elements:** A large color swatch, with a second swatch showing the color after quantizing to RGB565. Beneath them, the 16 bits are drawn in three colored groups (5, 6, 5).\n\n**Controls:** Three sliders (red, green, blue, 0 to 255), a readout of the 16-bit binary, the hex value, and the `color565()` call. A \"Gradient\" toggle shows a smooth ramp in 8-bit and in RGB565 to make the banding visible. A \"Predict\" mode asks the student for the hex value of a given color.\n\n**Responsive design:** Swatches and bit groups stack below 600 px.\n\nImplementation: p5.js with bit operations matching the formula above."
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
+    <title>Framebuffer Pipeline using Mermaid</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { margin: 0px; padding: 0px; font-family: Arial, Helvetica, sans-serif; }
+        main { background: aliceblue; border: 1px solid silver; }
+        .header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+                  gap: 6px; padding: 6px 10px; background: white; border-bottom: 1px solid silver; }
+        .header h2 { margin: 0; font-size: 19px; font-weight: normal; }
+        .toggle button { font-size: 14px; padding: 4px 10px; border: 1px solid #888; background: #f4f4f4;
+                         border-radius: 4px; cursor: pointer; }
+        .toggle button.active { background: #1f4e9c; color: white; border-color: #1f4e9c; }
+        .container { display: flex; }
+        .diagram-panel { flex: 2.3; min-width: 0; padding: 4px; overflow: visible; }
+        .info-panel { flex: 1; min-width: 0; padding: 10px; border-left: 1px solid silver; background: #fbfdff; overflow: visible; }
+        .mermaid { text-align: center; }
+        .mermaid svg { max-width: 100%; height: auto; }
+        .node { cursor: pointer; }
+        .node.dim { opacity: 0.35; }
+        .node.hot { filter: drop-shadow(0 0 3px #ff8c00) drop-shadow(0 0 3px #ff8c00); }
+        .info-title { font-weight: bold; font-size: 16px; margin-bottom: 4px; color: #1f4e9c; }
+        .info-text { font-size: 14px; line-height: 1.35; }
+        .bytes { margin-top: 6px; font-size: 14px; color: #8a4b00; font-weight: bold; }
+        .state { margin-top: 10px; padding-top: 8px; border-top: 1px solid #ddd; font-size: 14px; }
+        .screens { display: flex; gap: 8px; margin-top: 6px; }
+        .screen { flex: 1; text-align: center; font-size: 12px; }
+        .oled { background: black; color: #96dcff; font-family: "Courier New", monospace; font-size: 18px;
+                font-weight: bold; padding: 10px 0; border: 3px solid midnightblue; border-radius: 3px; margin-bottom: 2px; }
+        .oled.changed { box-shadow: 0 0 0 3px #ff8c00; }
+        @media (max-width: 600px) {
+            .container { flex-direction: column; }
+            .info-panel { border-left: none; border-top: 1px solid silver; padding: 6px 10px; }
+            .info-text, .state { font-size: 13px; }
+            .oled { font-size: 15px; padding: 4px 0; }
+            .state .why { display: none; }
+            .state { margin-top: 6px; padding-top: 4px; }
+            .header h2 { font-size: 17px; }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js"></script>
+    <script src="framebuffer-pipeline.js"></script>
+</head>
+<body>
+    <main>
+        <div class="header">
+            <h2>Framebuffer Pipeline</h2>
+            <div class="toggle">
+                <button id="beforeBtn" class="active">Before show()</button>
+                <button id="afterBtn">After show()</button>
+            </div>
+        </div>
+        <div class="container">
+            <div class="diagram-panel"><div class="mermaid" id="diagram"></div></div>
+            <div class="info-panel">
+                <div id="info">
+                    <div class="info-title">Click a box</div>
+                    <div class="info-text">Click (or hover over) any box to see what it does and how many bytes pass through it.</div>
+                </div>
+                <div class="state" id="state"></div>
+            </div>
+        </div>
+    </main>
+    <br/>
+    <a href=".">Back to Lesson Plan</a>
+</body>
+</html>

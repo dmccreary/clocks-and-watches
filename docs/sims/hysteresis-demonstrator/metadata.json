@@ -1,0 +1,97 @@
+{
+  "title": "Hysteresis Demonstrator",
+  "creator": "Dan McCreary",
+  "subject": [
+    "Hysteresis",
+    "Thresholds",
+    "Sensor Noise",
+    "Auto Brightness"
+  ],
+  "description": "Interactive p5.js MicroSim comparing a single threshold with hysteresis on a noisy light-sensor reading. Sliders set the noise and the upper and lower thresholds, and counters show how many times each output switches.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Hysteresis and dead zones for noisy sensors",
+    "learningObjectives": [
+      "Analyze why a single threshold chatters when a noisy signal hovers near it",
+      "Explain how a dead zone between two thresholds removes chatter",
+      "Choose a gap that is wide enough for the noise but still responds to real changes"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "duration": "15 minutes",
+    "prerequisites": [
+      "Reading a light sensor with the ADC",
+      "if/elif decisions and state variables"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 560
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Comparison of two strategies on the same data",
+    "keyQuestions": [
+      "Why does the single-threshold output switch many times in a row?",
+      "How wide must the dead zone be for a given amount of noise?",
+      "What is the cost of a very wide dead zone?"
+    ],
+    "commonMisconceptions": [
+      "Averaging alone always removes flicker (it reduces noise but a slow signal can still hover at the line)",
+      "A wider gap is always better (it makes the display slow to respond to real changes)"
+    ],
+    "assessmentOpportunities": [
+      "Record switch counts for several gaps and noise levels",
+      "Explain the trade-off of a very wide gap"
+    ]
+  },
+  "chapter": "18-sensors-power",
+  "controls": [
+    {
+      "type": "button",
+      "label": "Start / Pause",
+      "description": "Scrolls new readings in. Opens paused with a full window of readings."
+    },
+    {
+      "type": "checkbox",
+      "label": "Lock thresholds together (no gap)",
+      "default": false
+    },
+    {
+      "type": "slider",
+      "label": "Noise amount",
+      "range": "0-5000",
+      "default": 1500
+    },
+    {
+      "type": "slider",
+      "label": "Upper threshold",
+      "range": "20000-40000",
+      "default": 30000
+    },
+    {
+      "type": "slider",
+      "label": "Lower threshold",
+      "range": "16000-40000",
+      "default": 26000
+    }
+  ]
+}

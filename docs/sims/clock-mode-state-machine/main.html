@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
+    <title>Clock Mode State Machine using vis-network</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { margin: 0px; padding: 0px; font-family: Arial, Helvetica, sans-serif; }
+        main { display: block; width: 100%; }
+        #wrap { display: flex; width: 100%; height: 500px; border: 1px solid silver; }
+        #left { position: relative; width: 58%; height: 100%; background: aliceblue; }
+        #title { position: absolute; top: 6px; left: 0; right: 0; text-align: center;
+            font-size: 20px; font-weight: bold; z-index: 5; pointer-events: none; }
+        #network { position: absolute; top: 34px; left: 0; right: 0; bottom: 0; }
+        #panel { width: 42%; height: 100%; background: white; border-left: 1px solid silver;
+            padding: 10px; display: flex; flex-direction: column; gap: 8px; font-size: 16px; }
+        #clock { background: #1d2b1d; color: #9dff9d; border-radius: 10px; padding: 8px 10px;
+            text-align: center; font-family: "Courier New", monospace; }
+        #digits { font-size: 40px; font-weight: bold; letter-spacing: 2px; }
+        #digits span.setting { background: darkorange; color: black; border-radius: 4px; padding: 0 2px; }
+        #modeLabel { font-size: 15px; color: #cfe; }
+        #buttons { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+        #buttons button { font-size: 16px; padding: 4px 14px; cursor: pointer; }
+        #buttons label { cursor: pointer; white-space: nowrap; }
+        #predictBox { display: none; border: 2px solid royalblue; border-radius: 8px; padding: 6px 8px;
+            background: #eef3ff; }
+        #predictBox .q { font-weight: bold; color: darkblue; margin-bottom: 4px; }
+        #predictBox button { font-size: 14px; margin: 2px 2px 0 0; cursor: pointer; }
+        #feedback { min-height: 20px; font-weight: bold; }
+        #info { flex: 1; border: 1px solid silver; border-radius: 8px; padding: 8px 10px; font-size: 15px;
+            line-height: 1.35; overflow: hidden; }
+        #info h3 { margin: 0 0 4px 0; font-size: 16px; color: steelblue; }
+        #info p { margin: 0 0 4px 0; }
+        #code { font-family: "Courier New", monospace; font-size: 14px; background: #2b2b2b; color: khaki;
+            border-radius: 6px; padding: 6px 8px; min-height: 26px; }
+        /* narrow screens: diagram on top, panel below, same total height */
+        @media (max-width: 600px) {
+            #wrap { flex-direction: column; }
+            #left { width: 100%; height: 235px; }
+            #panel { width: 100%; height: 265px; border-left: none; border-top: 1px solid silver; gap: 5px; padding: 6px 8px; }
+            #digits { font-size: 28px; }
+            #info { font-size: 14px; padding: 4px 8px; }
+            #title { font-size: 17px; }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vis-network@9.1.9/standalone/umd/vis-network.min.js"></script>
+    <script src="clock-mode-state-machine.js"></script>
+</head>
+<body>
+    <main>
+        <div id="wrap">
+            <div id="left">
+                <div id="title">Clock Mode State Machine</div>
+                <div id="network"></div>
+            </div>
+            <div id="panel">
+                <div id="clock">
+                    <div id="digits"><span id="hh">12</span>:<span id="mm">00</span></div>
+                    <div id="modeLabel">mode: RUN</div>
+                </div>
+                <div id="buttons">
+                    <button id="modeBtn">Mode</button>
+                    <button id="cycleBtn">Cycle</button>
+                    <label><input type="checkbox" id="predict"> Predict</label>
+                </div>
+                <div id="predictBox">
+                    <div class="q">Mode was pressed. Which state comes next?</div>
+                    <button data-state="RUN">RUN</button>
+                    <button data-state="SET_HOUR">SET_HOUR</button>
+                    <button data-state="SET_MINUTE">SET_MINUTE</button>
+                </div>
+                <div id="feedback"></div>
+                <div id="info"></div>
+                <div id="code">mode = 0   # RUN</div>
+            </div>
+        </div>
+    </main>
+    <br/>
+    <a href=".">Back to Lesson Plan</a>
+</body>
+</html>

@@ -1,0 +1,87 @@
+{
+  "title": "Voltage Divider Lab",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "Adjust the input voltage and two resistors of a voltage divider, watch a bar-graph voltmeter show the output, and judge whether it is safe for a 3.3 V Pico pin.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Electronics",
+    "topic": "Voltage dividers and safe input levels for the Pico",
+    "learningObjectives": [
+      "Apply the voltage divider formula to calculate an output voltage.",
+      "Evaluate whether a divider output is safe for a 3.3 V Pico input pin.",
+      "Choose resistor values that bring a 5 V signal into the safe range with some margin."
+    ],
+    "bloomsTaxonomy": "Evaluate",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Ohm's Law (V = I × R).",
+      "Knowing that the Pico uses 3.3 V logic and its pins are not 5 V tolerant."
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 495
+    },
+    "responsive": true,
+    "dependencies": [],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false,
+      "notes": "Screen-reader description provided; all controls are standard HTML elements."
+    },
+    "controls": [
+      {
+        "type": "slider",
+        "label": "Input voltage Vin",
+        "range": "0-5 V",
+        "default": 5.0,
+        "description": "Voltage at the top of the divider."
+      },
+      {
+        "type": "slider",
+        "label": "R1 (top)",
+        "range": "100 Ω - 10 kΩ (E24 values)",
+        "default": "1.0 kΩ",
+        "description": "Resistor between Vin and the output point."
+      },
+      {
+        "type": "slider",
+        "label": "R2 (bottom)",
+        "range": "100 Ω - 10 kΩ (E24 values)",
+        "default": "2.0 kΩ",
+        "description": "Resistor between the output point and ground."
+      }
+    ]
+  },
+  "pedagogical": {
+    "teachingStrategy": "Calculate, check, and judge against a safety limit",
+    "keyQuestions": [
+      "Which resistor must be larger to bring 5 V down to about 3.3 V?",
+      "Why does the output stay the same when both resistors are multiplied by 10?",
+      "Is 3.33 V safe for a Pico pin? How could you add margin?"
+    ],
+    "commonMisconceptions": [
+      "Putting R1 and R2 in the formula the wrong way round.",
+      "Thinking the output depends on the size of the resistors rather than their ratio.",
+      "Thinking any voltage below 5 V is safe for a Pico pin."
+    ],
+    "assessmentOpportunities": [
+      "Students correctly calculate Vout for any Vin, R1, and R2 shown in the MicroSim.",
+      "Students design a divider that turns 5 V into 3.0 to 3.3 V and justify their resistor choice.",
+      "Students explain why larger resistor values waste less current but give the same output ratio."
+    ],
+    "interactionPattern": "Parameter exploration with live readout and verdict"
+  },
+  "chapter": "02-electronics-fundamentals"
+}

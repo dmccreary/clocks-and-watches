@@ -1,0 +1,90 @@
+{
+  "title": "Bounding Box and Partial Update",
+  "creator": "Dan McCreary",
+  "subject": [
+    "Bounding Box",
+    "Partial Screen Update",
+    "OLED",
+    "Animation"
+  ],
+  "description": "Compare a full redraw with a partial update on an OLED clock by counting the pixels each one redraws when the seconds change.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Bounding boxes and partial screen updates",
+    "learningObjectives": [
+      "Analyze how erasing one bounding box updates part of the screen without disturbing the rest",
+      "Compare the pixels redrawn by a full redraw and a partial update",
+      "Explain why show() still sends the whole buffer on the OLED"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "duration": "14 minutes",
+    "prerequisites": [
+      "Drawing shapes and text with framebuf (Chapter 12)",
+      "The fill, draw, show routine (Chapter 11)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 540
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Comparison of two strategies on the same data",
+    "keyQuestions": [
+      "Why must the old box be erased before drawing the new seconds?",
+      "When does a partial update redraw more than one box?",
+      "What would happen if two bounding boxes overlapped?"
+    ],
+    "commonMisconceptions": [
+      "A partial update makes show() faster on the OLED (show() still sends the whole buffer)",
+      "You can draw new digits over old ones without erasing (the digits smear together)"
+    ],
+    "assessmentOpportunities": [
+      "The student computes the seconds box area as 16 x 8 = 128 pixels.",
+      "The student explains that items whose boxes do not overlap the changed one are untouched.",
+      "The student states that the bus still carries 1,024 bytes per show()."
+    ]
+  },
+  "chapter": "12-drawing-text-animation",
+  "controls": [
+    {
+      "type": "button",
+      "label": "Advance one second",
+      "description": "Adds one second and flashes the redrawn pixels"
+    },
+    {
+      "type": "button",
+      "label": "Jump to :59",
+      "description": "Sets the seconds to 59 to test a minute rollover"
+    },
+    {
+      "type": "select",
+      "label": "Update mode",
+      "description": "Partial update or Full redraw"
+    },
+    {
+      "type": "checkbox",
+      "label": "Bounding boxes",
+      "description": "Shows each item's bounding box outline"
+    }
+  ]
+}

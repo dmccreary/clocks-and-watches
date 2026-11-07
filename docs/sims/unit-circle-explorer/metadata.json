@@ -1,0 +1,96 @@
+{
+  "title": "Unit Circle Explorer",
+  "creator": "Dan McCreary",
+  "subject": [
+    "Trigonometry",
+    "Sine",
+    "Cosine",
+    "Unit Circle",
+    "Radians"
+  ],
+  "description": "See sine and cosine as the vertical and horizontal parts of a point on a circle of radius 1, with matching bars and graphs.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Sine and cosine on the unit circle",
+    "learningObjectives": [
+      "Explain sine as the vertical part and cosine as the horizontal part of a point on a circle",
+      "Predict the sign of sine and cosine in each quarter of the circle",
+      "Convert between degrees and radians for key angles"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "duration": "15 minutes",
+    "prerequisites": [
+      "Degrees and radians (Chapter 10)",
+      "Right triangles: hypotenuse, opposite and adjacent sides"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 490
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Step-through exploration with concrete values",
+    "keyQuestions": [
+      "Why can sine never be larger than 1 on the unit circle?",
+      "Where are sine and cosine equal?",
+      "How is the cosine graph related to the sine graph?"
+    ],
+    "commonMisconceptions": [
+      "Sine is the horizontal part (sine is vertical, cosine is horizontal)",
+      "math.sin() takes degrees (it takes radians)"
+    ],
+    "assessmentOpportunities": [
+      "The student states that cos 90 degrees = 0 and sin 90 degrees = 1 and shows why on the circle.",
+      "The student predicts both signs for an angle such as 225 degrees before checking.",
+      "The student converts 180 degrees to pi radians."
+    ]
+  },
+  "chapter": "10-clock-math",
+  "controls": [
+    {
+      "type": "button",
+      "label": "-15 / +15 degrees",
+      "description": "Steps the angle by 15 degrees (pi/12 in radian mode)"
+    },
+    {
+      "type": "slider",
+      "label": "Angle",
+      "description": "0 to 360 degrees"
+    },
+    {
+      "type": "select",
+      "label": "Units",
+      "description": "Shows angles in degrees or radians"
+    },
+    {
+      "type": "checkbox",
+      "label": "Right triangle",
+      "description": "Shows the triangle legs for cosine and sine"
+    },
+    {
+      "type": "checkbox",
+      "label": "Values",
+      "description": "Shows the angle, sin, cos and point coordinates"
+    }
+  ]
+}

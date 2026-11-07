@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
+    <title>Font Pipeline using Mermaid</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { margin: 0px; padding: 0px; font-family: Arial, Helvetica, sans-serif; }
+        main { background: aliceblue; border: 1px solid silver; }
+        .header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+                  gap: 6px; padding: 6px 10px; background: white; border-bottom: 1px solid silver; }
+        .header h2 { margin: 0; font-size: 19px; font-weight: normal; }
+        .tabs button { font-size: 14px; padding: 4px 10px; border: 1px solid #888; background: #f4f4f4;
+                       border-radius: 4px; cursor: pointer; }
+        .tabs button.active { background: #1f4e9c; color: white; border-color: #1f4e9c; }
+        .container { display: flex; }
+        .diagram-panel { flex: 2.3; min-width: 0; padding: 4px; overflow: visible; }
+        .info-panel { flex: 1; min-width: 0; padding: 10px; border-left: 1px solid silver; background: #fbfdff; overflow: visible; }
+        .mermaid { text-align: center; }
+        .mermaid svg { max-width: 100%; height: auto; }
+        .node { cursor: pointer; }
+        .node.selected { filter: drop-shadow(0 0 3px #ff8c00) drop-shadow(0 0 3px #ff8c00); }
+        .info-title { font-weight: bold; font-size: 16px; margin-bottom: 4px; color: #1f4e9c; }
+        .info-text { font-size: 14px; line-height: 1.35; }
+        .cmd { display: block; margin-top: 8px; padding: 6px 8px; background: #1e1e1e; color: #b5f5b5;
+               font-family: "Courier New", monospace; font-size: 13px; border-radius: 4px; white-space: pre-wrap; word-break: break-all; }
+        /* memory estimate view */
+        #memoryView { display: none; padding: 10px 14px; }
+        .mem-controls { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; font-size: 15px;
+                        background: white; border: 1px solid silver; border-radius: 6px; padding: 8px 10px; }
+        .mem-controls label { display: flex; align-items: center; gap: 6px; }
+        .mem-controls input[type=text] { width: 170px; font-size: 14px; font-family: "Courier New", monospace; }
+        .mem-controls button { font-size: 13px; }
+        .mem-steps { margin-top: 10px; font-size: 15px; line-height: 1.6; background: white; border: 1px solid silver;
+                     border-radius: 6px; padding: 8px 12px; }
+        .mem-steps b { color: #1f4e9c; }
+        .bar-outer { margin-top: 10px; height: 24px; background: #e6e6e6; border-radius: 4px; position: relative; overflow: hidden; }
+        .bar-inner { height: 100%; background: #2e8b57; }
+        .bar-label { font-size: 14px; margin-top: 4px; }
+        .note { font-size: 13px; color: #555; margin-top: 8px; }
+        @media (max-width: 600px) {
+            .container { flex-direction: column; }
+            .info-panel { border-left: none; border-top: 1px solid silver; padding: 6px 10px; }
+            .header h2 { font-size: 17px; }
+            .info-text { font-size: 13px; }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js"></script>
+    <script src="font-pipeline.js"></script>
+</head>
+<body>
+    <main>
+        <div class="header">
+            <h2>Font Pipeline</h2>
+            <div class="tabs">
+                <button id="pipeBtn" class="active">Pipeline</button>
+                <button id="memBtn">Memory estimate</button>
+            </div>
+        </div>
+        <div class="container" id="pipelineView">
+            <div class="diagram-panel"><div class="mermaid" id="diagram"></div></div>
+            <div class="info-panel">
+                <div id="info">
+                    <div class="info-title">Click a box</div>
+                    <div class="info-text">Click (or hover over) any step to see the command it uses or what it does.</div>
+                </div>
+            </div>
+        </div>
+        <div id="memoryView">
+            <div class="mem-controls">
+                <label>Font height <input type="range" id="height" min="8" max="64" step="1" value="32"><b id="heightVal"></b></label>
+                <label>Characters <input type="text" id="chars" value="0123456789:"></label>
+                <button id="digitsBtn">Digits + colon</button>
+                <button id="asciiBtn">Full ASCII (95)</button>
+            </div>
+            <div class="mem-steps" id="memSteps"></div>
+            <div class="bar-outer"><div class="bar-inner" id="memBar"></div></div>
+            <div class="bar-label" id="memBarLabel"></div>
+            <div class="note">This is an estimate. Real sizes depend on the font's actual character widths.
+                Proportional fonts average about 0.6 x the height in width.</div>
+        </div>
+    </main>
+    <br/>
+    <a href=".">Back to Lesson Plan</a>
+</body>
+</html>

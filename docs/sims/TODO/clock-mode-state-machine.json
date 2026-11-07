@@ -1,0 +1,15 @@
+{
+  "sim_id": "clock-mode-state-machine",
+  "diagram_name": "Clock Mode State Machine",
+  "chapter_number": 7,
+  "chapter_title": "Buttons, Interrupts, and State Machines",
+  "chapter_dir": "07-buttons-state-machines",
+  "chapter_rel_dir": "chapters/07-buttons-state-machines",
+  "library": "vis-network",
+  "bloom_level": "Applying",
+  "bloom_verb": "apply",
+  "learning_objective": "Students will *apply* a state machine to predict what a button press does in each mode (Bloom: Applying).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: interactive diagram\n**sim-id:** clock-mode-state-machine<br/>\n**Library:** vis-network<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *apply* a state machine to predict what a button press does in each mode (Bloom: Applying).\n\n**Layout:** Circles for RUN, SET_HOUR, SET_MINUTE (and optionally SET_ALARM_HOUR, SET_ALARM_MINUTE). Arrows are labeled \"Mode press.\"\n\n**Interactions:**\n\n- Two on-screen buttons, \"Mode\" and \"Cycle.\" Pressing Mode moves the highlighted state along the arrows; pressing Cycle changes the value shown in a mock clock face beside the diagram (hour +1 in SET_HOUR, minute +1 in SET_MINUTE, no effect in RUN).\n- Clicking a state opens an infobox describing what the display shows and what each button does there.\n- A \"Predict\" toggle asks the student to name the next state before it moves.\n\n**Responsive design:** The canvas fills the container and calls `network.fit()` on resize.\n\nImplementation: vis-network with three nodes and scripted highlighting."
+}

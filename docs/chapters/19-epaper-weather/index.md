@@ -166,6 +166,10 @@ Here `full_refresh` and `partial_refresh` stand for the driver calls of your par
 
 #### Diagram: E-Paper Refresh Lab
 
+<iframe src="../../sims/epaper-refresh-lab/main.html" height="537px" width="100%" scrolling="no"></iframe>
+
+[Run the E-Paper Refresh Lab MicroSim Fullscreen](../../sims/epaper-refresh-lab/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>E-Paper Refresh Lab</summary>
 Type: MicroSim
@@ -274,6 +278,10 @@ The `due()` function is the non-blocking timer pattern from Chapter 6, one insta
 
 #### Diagram: Weather Station Layout
 
+<iframe src="../../sims/weather-station-layout/main.html" height="547px" width="100%" scrolling="no"></iframe>
+
+[Run the Weather Station Layout MicroSim Fullscreen](../../sims/weather-station-layout/main.html){ .md-button .md-button--primary }
+
 <details markdown="1">
 <summary>Weather Station Layout</summary>
 Type: interactive infographic
@@ -325,3 +333,5 @@ You have now met nearly every display in this course. The right one depends on w
 3. What is ghosting, and what fixes it?
 4. Convert 22 °C to Fahrenheit.
 5. A weather display fetches the forecast every hour but reads the indoor sensor every 5 minutes. Why are the two intervals different?
+
+[See Annotated References](./references.md)

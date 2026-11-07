@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
+    <title>Clock Decomposition Explorer using vis-network</title>
+    <style>
+        * { box-sizing: border-box; }
+        html, body { margin: 0px; padding: 0px; font-family: Arial, Helvetica, sans-serif; }
+        #app {
+            height: 492px;
+            border: 1px solid silver;
+            background: aliceblue;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        #title {
+            height: 38px;
+            line-height: 38px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        #body { flex: 1 1 auto; display: flex; min-height: 0; }
+        #network { flex: 1 1 auto; min-width: 0; height: 100%; }
+        #panel {
+            flex: 0 0 250px;
+            background: white;
+            border-left: 1px solid silver;
+            padding: 10px 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-size: 15px;
+        }
+        #panel label { font-weight: bold; }
+        #symptom { font-size: 15px; padding: 4px; width: 100%; }
+        .card {
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 8px 10px;
+            line-height: 1.4;
+        }
+        .card h4 { margin: 0 0 6px 0; font-size: 16px; color: #4a148c; }
+        .hint { margin-top: 6px; color: #00695c; }
+        .legend { font-size: 13px; color: #333; line-height: 1.6; }
+        .dot { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; border: 1px solid #555; }
+        @media (max-width: 599px) {
+            #title { font-size: 16px; }
+            #body { flex-direction: column; }
+            #network { height: auto; flex: 1 1 auto; min-height: 0; }
+            #panel { flex: 0 0 178px; border-left: none; border-top: 1px solid silver; padding: 6px 8px; font-size: 13px; gap: 6px; }
+            #symptom { font-size: 13px; }
+            .card h4 { font-size: 14px; }
+            .legend { display: none; }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vis-network@9.1.9/standalone/umd/vis-network.min.js"></script>
+    <script src="clock-decomposition-explorer.js"></script>
+</head>
+<body>
+    <main>
+        <div id="app">
+            <div id="title">Decomposing a Digital Clock</div>
+            <div id="body">
+                <div id="network" aria-label="Tree diagram breaking a digital clock into five sub-problems and their smaller tasks"></div>
+                <div id="panel">
+                    <div>
+                        <label for="symptom">Symptom</label>
+                        <select id="symptom">
+                            <option value="">Choose a bug...</option>
+                            <option value="hour">Wrong hour</option>
+                            <option value="colon">Colon does not flash</option>
+                            <option value="buttons">Buttons ignored</option>
+                            <option value="slow">Clock runs slow</option>
+                        </select>
+                    </div>
+                    <div id="info" class="card">
+                        <h4>Explore the tree</h4>
+                        Click any box to see what that piece does and how to test it by itself. Hover a box to see its path back to the whole clock.
+                    </div>
+                    <div class="legend">
+                        <div><span class="dot" style="background:#6a1b9a"></span>Whole problem</div>
+                        <div><span class="dot" style="background:#00897b"></span>Sub-problem</div>
+                        <div><span class="dot" style="background:#e0f2f1"></span>Small task</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <br/>
+    <a href=".">Back to Lesson Plan</a>
+</body>
+</html>

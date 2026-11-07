@@ -1,0 +1,105 @@
+{
+  "title": "Polar to Screen Converter",
+  "creator": "Dan McCreary",
+  "subject": [
+    "Polar Coordinates",
+    "Screen Coordinates",
+    "Trigonometry",
+    "Clock Hands"
+  ],
+  "description": "Convert a radius and a clockwise clock angle into pixel coordinates on a 240 by 240 screen, and practice predicting x and y.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Polar to screen coordinate conversion",
+    "learningObjectives": [
+      "Apply x = cx + r sin(theta) and y = cy - r cos(theta) to find pixel coordinates",
+      "Predict the pixel position of a clock-hand tip before it is revealed",
+      "Explain why screen y uses a minus sign"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "duration": "15 minutes",
+    "prerequisites": [
+      "Sine and cosine (Chapter 10)",
+      "Screen coordinates with the origin at the top-left (Chapter 10)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 630
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Practice with immediate feedback",
+    "keyQuestions": [
+      "Why is sine paired with x on a clock face?",
+      "Where is the point when theta = 180 degrees?",
+      "What happens to x and y when r = 0?"
+    ],
+    "commonMisconceptions": [
+      "y grows upward on the screen (it grows downward)",
+      "Clock angles start at 3 o'clock like math angles (they start at 12 o'clock and go clockwise)"
+    ],
+    "assessmentOpportunities": [
+      "The student computes (220, 120) for r = 100 at 90 degrees.",
+      "The student explains that the minus sign makes points above the center have smaller y.",
+      "The student gets at least four of five Predict mode problems within 1 pixel."
+    ]
+  },
+  "chapter": "10-clock-math",
+  "controls": [
+    {
+      "type": "slider",
+      "label": "Radius r",
+      "description": "0 to 120 pixels"
+    },
+    {
+      "type": "slider",
+      "label": "Angle",
+      "description": "0 to 359 degrees, clockwise from 12 o'clock"
+    },
+    {
+      "type": "checkbox",
+      "label": "Show formula",
+      "description": "Shows both formulas with the current numbers substituted"
+    },
+    {
+      "type": "checkbox",
+      "label": "Predict mode",
+      "description": "Hides the point until the student checks a prediction"
+    },
+    {
+      "type": "button",
+      "label": "New point",
+      "description": "Picks a random radius and angle and turns on Predict mode"
+    },
+    {
+      "type": "input",
+      "label": "x = / y =",
+      "description": "The student's predicted pixel coordinates"
+    },
+    {
+      "type": "button",
+      "label": "Check",
+      "description": "Compares the prediction with the answer (1 pixel tolerance)"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "sim_id": "ldr-light-sensor-lab",
+  "diagram_name": "LDR Light Sensor Lab",
+  "chapter_number": 18,
+  "chapter_title": "Sensors, Power, and Low-Power Design",
+  "chapter_dir": "18-sensors-power",
+  "chapter_rel_dir": "chapters/18-sensors-power",
+  "library": "p5.js",
+  "bloom_level": "Applying",
+  "bloom_verb": "apply",
+  "learning_objective": "Students will *apply* the voltage divider formula to predict the ADC reading for different light levels (Bloom: Applying).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: MicroSim\n**sim-id:** ldr-light-sensor-lab<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *apply* the voltage divider formula to predict the ADC reading for different light levels (Bloom: Applying).\n\n**Visual elements:** A schematic of 3.3 V, an LDR, a 10 kΩ resistor, and the ADC pin, next to a room scene with a lamp. A gauge shows the ADC value (0 to 65535).\n\n**Controls:** A slider for room brightness (dark to sunlight), which maps to LDR resistance (1 MΩ down to 500 Ω); a slider for the fixed resistor (1 kΩ to 100 kΩ). Readouts show \\( R_{LDR} \\), \\( V_{out} \\), and the raw ADC value.\n\n**Responsive design:** The schematic and scene stack on narrow screens.\n\nImplementation: p5.js with the divider formula."
+}

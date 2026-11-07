@@ -1,0 +1,94 @@
+{
+  "title": "Pico Pinout Explorer",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "An interactive Raspberry Pi Pico pinout: hover a pin for its GP number, physical number and functions, click it for MicroPython code, filter by bus, and quiz yourself.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Pico Pinout Explorer",
+    "learningObjectives": [
+      "Identify the GP number and the physical pin number of any Pico pin",
+      "Identify which pins can be used for I2C, SPI, UART, ADC and PWM",
+      "Recall that MicroPython code uses the GP number, not the physical pin number"
+    ],
+    "bloomsTaxonomy": "Remember",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "What a GPIO pin is",
+      "The 3.3 V logic level from Chapter 2"
+    ],
+    "standards": [],
+    "bloomsLevels": [
+      "Remember"
+    ]
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 540
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4 (jsDelivr CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false,
+      "notes": "Controls are standard HTML form elements; the canvas has a describe() text for screen readers"
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Interactive labeled diagram with retrieval-practice quiz",
+    "keyQuestions": [
+      "Which number goes inside Pin(): the GP number or the physical number?",
+      "Which pins can read an analog voltage?",
+      "Why do several different pins offer I2C0?"
+    ],
+    "commonMisconceptions": [
+      "Physical pin numbers are used in code",
+      "Every pin can read analog voltages",
+      "GND and AGND are GPIO pins"
+    ],
+    "assessmentOpportunities": [
+      "Students locate any GP number on the board in quiz mode.",
+      "Students state that GP26, GP27 and GP28 are the only ADC pins.",
+      "Students correct the line `Pin(20)` when the LED is wired to physical pin 20."
+    ]
+  },
+  "chapter": "05-pico-platform",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en",
+  "rights": "CC BY-NC-SA 4.0",
+  "controls": [
+    {
+      "type": "select",
+      "label": "Filter",
+      "description": "Highlights pins for I2C, SPI, UART, ADC or PWM"
+    },
+    {
+      "type": "checkbox",
+      "label": "Quiz mode",
+      "description": "Hides GP labels and asks for a GP number"
+    },
+    {
+      "type": "button",
+      "label": "New question",
+      "description": "Picks a new quiz pin"
+    },
+    {
+      "type": "canvas click",
+      "label": "Pin",
+      "description": "Hover for details, click to pin details and code"
+    }
+  ]
+}

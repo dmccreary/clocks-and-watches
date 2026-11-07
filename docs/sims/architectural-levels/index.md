@@ -1,6 +1,6 @@
 ---
-title: Architectural Levels Zoom
-description: Interactive visualization showing progressive zoom levels of clock system architecture from high-level to component details
+title: "Architectural Levels Zoom"
+description: "Interactive visualization showing progressive zoom levels of clock system architecture from high-level to component details"
 quality_score: 70
 ---
 

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
+    <title>Drift Calculator using Chart.js</title>
+    <style>
+        body { margin: 0px; padding: 0px; font-family: Arial, Helvetica, sans-serif; }
+        main { box-sizing: border-box; min-height: 530px; border: 1px solid silver; background: aliceblue; }
+        #title { text-align: center; font-size: 22px; padding: 8px 0 2px 0; }
+        #chart-wrap { position: relative; height: 320px; margin: 0 10px; background: white; border-radius: 6px; }
+        .controls { background: white; border-top: 1px solid silver; margin-top: 8px; padding: 8px 10px;
+                    display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; font-size: 16px; }
+        .controls label { display: flex; align-items: center; gap: 8px; }
+        #days { width: 220px; }
+        #custom { width: 70px; font-size: 15px; }
+        #readout { background: white; padding: 2px 10px 8px 10px; font-size: 15px; }
+        #readout table { border-collapse: collapse; width: 100%; }
+        #readout th, #readout td { text-align: left; padding: 2px 6px; border-bottom: 1px solid #e5e5e5; }
+        #readout th { font-weight: bold; color: #333; }
+        .chip { display: inline-block; width: 12px; height: 12px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+        @media (max-width: 560px) {
+            #days { width: 140px; }
+            #chart-wrap { height: 260px; }
+            .sub { display: none; }
+            #readout { font-size: 13px; }
+            #readout th, #readout td { padding: 2px 3px; }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+    <script src="clock-drift-calculator.js"></script>
+</head>
+<body>
+    <main>
+        <div id="title">Drift Calculator<span class="sub">: How Far Does Each Clock Wander?</span></div>
+        <div id="chart-wrap"><canvas id="chart"></canvas></div>
+        <div class="controls">
+            <label for="days">Elapsed days: <strong id="days-value">60</strong>
+                <input type="range" id="days" min="1" max="365" step="1" value="60"></label>
+            <label for="custom">Custom ppm:
+                <input type="number" id="custom" min="0.1" max="500" step="0.1" placeholder="e.g. 10"></label>
+        </div>
+        <div id="readout"></div>
+    </main>
+    <br/>
+    <a href=".">Back to Lesson Plan</a>
+</body>
+</html>

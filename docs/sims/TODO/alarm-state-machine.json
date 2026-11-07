@@ -1,0 +1,15 @@
+{
+  "sim_id": "alarm-state-machine",
+  "diagram_name": "Alarm State Machine",
+  "chapter_number": 17,
+  "chapter_title": "Sound, Alarms, and Timers",
+  "chapter_dir": "17-sound-alarms-timers",
+  "chapter_rel_dir": "chapters/17-sound-alarms-timers",
+  "library": "vis-network",
+  "bloom_level": "Applying, Analyzing",
+  "bloom_verb": "apply",
+  "learning_objective": "Students will *apply* a state machine to predict how an alarm responds to buttons and the passing minute (Bloom: Applying, Analyzing).",
+  "completion_status": "specified",
+  "extracted_date": "2026-10-28",
+  "specification": "Type: interactive diagram\n**sim-id:** alarm-state-machine<br/>\n**Library:** vis-network<br/>\n**Status:** Specified\n\n**Learning objective:** Students will *apply* a state machine to predict how an alarm responds to buttons and the passing minute (Bloom: Applying, Analyzing).\n\n**Layout:** States: IDLE (alarm off), ARMED, RINGING, SNOOZED. Arrows are labeled with events: \"time matches,\" \"stop button,\" \"snooze button,\" \"60 seconds pass,\" \"toggle alarm.\"\n\n**Interactions:** On-screen buttons \"Toggle alarm,\" \"Stop,\" and \"Snooze\" plus a \"Time matches\" event button. Each press moves the highlight along the correct arrow and updates a small clock panel showing the alarm time (a snooze adds 9 minutes). Clicking a state shows an infobox with the variables that hold in that state (`alarm_on`, `ringing`, `fired`).\n\n**Responsive design:** The canvas fills the container and calls `network.fit()` on resize.\n\nImplementation: vis-network with scripted highlights and a small time model."
+}

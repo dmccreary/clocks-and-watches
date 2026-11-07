@@ -1,4 +1,5 @@
 
+// CANVAS_HEIGHT: 300
 // Global canvas dimensions
 let canvasWidth = 400;
 let canvasHeight = 300;

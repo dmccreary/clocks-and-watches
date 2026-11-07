@@ -1,0 +1,85 @@
+{
+  "title": "Digit Scaling Explorer",
+  "creator": "Dan McCreary",
+  "subject": [
+    "Text Rendering",
+    "Scaled Digits",
+    "Bitmap Fonts",
+    "OLED"
+  ],
+  "description": "Scale an 8 by 8 font up to 6 times on a 128 by 64 OLED preview and see when the text becomes too wide for the screen.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Scaled bitmap digits",
+    "learningObjectives": [
+      "Apply the scale factor to compute text width as 8 x scale x characters",
+      "Analyze the tradeoff between digit size and how many characters fit",
+      "Center text using x = (128 - width) // 2"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "duration": "14 minutes",
+    "prerequisites": [
+      "The 8 by 8 built-in font and text() (Chapter 12)",
+      "Pixel coordinates on the 128 by 64 OLED (Chapter 11)"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 530
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Practice with immediate feedback",
+    "keyQuestions": [
+      "Why does scale 4 not fit 12:34?",
+      "How tall is a digit at scale 6, and does it fit vertically?",
+      "Why do the scaled digits look blocky instead of smooth?"
+    ],
+    "commonMisconceptions": [
+      "Scaling a bitmap font adds detail (it only makes the same pixels bigger)",
+      "Text that runs off the edge wraps to the next line (framebuf simply clips it)"
+    ],
+    "assessmentOpportunities": [
+      "The student computes 5 x 24 = 120 pixels for 12:34 at scale 3.",
+      "The student states the largest scale for an 8-character string (scale 2).",
+      "The student explains why scaled digits look blocky."
+    ]
+  },
+  "chapter": "12-drawing-text-animation",
+  "controls": [
+    {
+      "type": "input",
+      "label": "Time string",
+      "description": "The text to draw (digits, colon, space, dash, slash, A, P, M)"
+    },
+    {
+      "type": "slider",
+      "label": "Scale",
+      "description": "1 to 6"
+    },
+    {
+      "type": "checkbox",
+      "label": "Show scaled blocks",
+      "description": "Outlines each scale x scale block over the text"
+    }
+  ]
+}
