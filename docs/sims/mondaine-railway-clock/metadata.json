@@ -1,0 +1,52 @@
+{
+  "title": "Mondaine Swiss Railway Clock",
+  "creator": "Dan McCreary",
+  "subject": "Clocks and Watches with AI",
+  "description": "Swiss railway dial study with a 58-second sweep, two-second hold, and discrete minute/hour advance.",
+  "date": "2026-10-28",
+  "educational": {
+    "gradeLevel": [
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Science",
+    "topic": "Mondaine Swiss Railway Clock",
+    "learningObjectives": [
+      "Analyze the sequence of sweep, hold, and coupled minute/hour advance using playback controls."
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Read an analog clock"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 580
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 1.11.10"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Interactive exploration",
+    "keyQuestions": [
+      "When do the black hands advance?",
+      "Why must the second hand complete its circuit in less than sixty seconds?"
+    ],
+    "commonMisconceptions": [],
+    "assessmentOpportunities": []
+  },
+  "chapter": ""
+}

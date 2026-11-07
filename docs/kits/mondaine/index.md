@@ -1,9 +1,9 @@
 ---
 title: Railway Clock Kit (Mondaine-Style)
 description: Build a Swiss-railway-style wall clock with a Raspberry Pi Pico W and a round color screen. Its red second hand glides around the dial, stops at the top, and waits while the minute hand hops ahead. 16 labs, no soldering.
-image: /kits/mondaine/img/15-mondaine-clock.png
-og:image: /kits/mondaine/img/15-mondaine-clock.png
-twitter:image: /kits/mondaine/img/15-mondaine-clock.png
+image: /kits/mondaine/img/social-card.jpg
+og:image: /kits/mondaine/img/social-card.jpg
+twitter:image: /kits/mondaine/img/social-card.jpg
 ---
 
 # Railway Clock Kit (Mondaine-Style)

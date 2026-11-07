@@ -39,7 +39,7 @@
 # screen. Each demo explains its sound ideas in its own lab (04 to 08).
 
 NAME = "main-template.py"
-VERSION = "1.0"
+VERSION = "1.1"
 print("{} v{}".format(NAME, VERSION))
 
 import math
@@ -594,9 +594,9 @@ class Theremin(Demo):
         self.playing = False
 
     def start(self):
-        # A SMALL reserve (about 93 ms at this rate) so the pitch follows
+        # A SMALL reserve (about 128 ms at this rate) so the pitch follows
         # your fingers quickly. Lab 03 explains the trade.
-        start_sound(rate=22050, ibuf=4096)
+        start_sound(rate=16000, ibuf=4096)
         self.playing = False                 # a new visit starts silent
         self.shown = None
         self.marker_x = None

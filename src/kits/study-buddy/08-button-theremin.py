@@ -18,12 +18,12 @@
 # sound.pitch() steers it. Steering is smooth, so the pitch glides instead
 # of jumping, even when your finger is slow.
 #
-# This lab uses a SMALL reserve (4096 bytes, about 93 ms at 22,050 samples
+# This lab uses a SMALL reserve (4096 bytes, about 128 ms at 16,000 samples
 # a second) so the pitch follows your fingers quickly. Lab 03 explains why
 # a bigger reserve is safer but slower.
 
 NAME = "08-button-theremin.py"
-VERSION = "1.0"
+VERSION = "1.1"
 print("{} v{}".format(NAME, VERSION))
 
 import math
@@ -46,7 +46,7 @@ BAR_X, BAR_W, BAR_Y = 40, 280, 206
 display = config.init_display()
 mode_button, up_button, down_button = [
     Button(pin) for pin in config.init_buttons()]
-sound.init(rate=22050, ibuf=4096)
+sound.init(rate=16000, ibuf=4096)
 sound.volume(config.VOLUME)
 
 

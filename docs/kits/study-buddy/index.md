@@ -113,7 +113,11 @@ four signal wires on four neighboring pins, plus power and ground:
 | **VIN** | VBUS (5 V) or 3V3 | 5 V is louder. **(verify)** that the WiFi stays stable at full volume, and add a 100 µF capacitor across VIN and GND near the amplifier. |
 | **GND** | GND | |
 
-Leave the amplifier's **SD** pin unconnected.
+Leave the amplifier's **SD** pin unconnected. On the Adafruit-style breakout
+a pull-up on the board turns the amplifier on. See
+[the SD and GAIN pins](04-audio.md#the-amplifiers-sd-and-gain-pins) for what
+SD does, why the margin is thin when VIN is 3V3, and when to wire it
+differently.
 
 !!! note "The I2S pin rule"
     MicroPython's I2S on the Pico needs the word-select pin (LRC) to be
