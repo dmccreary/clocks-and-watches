@@ -367,8 +367,11 @@ class WLAN:
 
 
 # The answer every forecast request gets: partly cloudy today, rain
-# tomorrow. Replace it to render other weather.
-FORECAST = {"daily": {"time": ["2026-09-25", "2026-09-26"],
+# tomorrow, and 64 F and partly cloudy right now (for a request that asks
+# for "&current=..."; the others ignore it). Replace it to render other
+# weather.
+FORECAST = {"current": {"temperature_2m": 64.4, "weather_code": 2},
+            "daily": {"time": ["2026-09-25", "2026-09-26"],
                       "weather_code": [2, 63],
                       "temperature_2m_max": [70.3, 61.0],
                       "temperature_2m_min": [58.1, 56.8]}}
